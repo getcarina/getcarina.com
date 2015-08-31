@@ -1,0 +1,15 @@
+# Site settings
+title: Rackspace Container Service
+description: >
+  Rackspace-backed containers as a service, making development,
+  testing, and deployment of Docker-powered applications hassle-free.
+
+baseurl: "/" # the subpath of your site, e.g. /blog/
+
+# Build settings
+markdown: kramdown
+
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:title
