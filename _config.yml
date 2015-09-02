@@ -4,12 +4,17 @@ description: >
   Rackspace-backed containers as a service, making development,
   testing, and deployment of Docker-powered applications hassle-free.
 
-baseurl: "/" # the subpath of your site, e.g. /blog/
-
+baseurl: "" # the subpath of your site, e.g. /blog/
 # Build settings
-markdown: kramdown
+markdown: redcarpet
+
+exclude:
+  - script
+  - Gemfile
+  - Gemfile.lock
+  - package.json
 
 collections:
   tutorials:
     output: true
-    permalink: /tutorials/:title
+    permalink: /tutorials/:title/index.html
