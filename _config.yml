@@ -17,4 +17,17 @@ exclude:
 collections:
   tutorials:
     output: true
-    permalink: /tutorials/:title/index.html
+    permalink: /docs/tutorials/:title/
+  best-practices:
+    output: true
+    permalink: /docs/best-practices/:title/
+  references:
+    output: true
+    permalink: /docs/reference/:title/
+
+defaults:
+  -
+    scope:
+      path: "docs"
+    values:
+      layout: "page"

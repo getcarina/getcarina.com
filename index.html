@@ -1,5 +1,31 @@
 ---
 layout: default
 ---
-
-<!-- The contents of this page are all in the control repo -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <h3>Tutorials</h3>
+      <ul>
+        {% for tutorial in site.tutorials %}
+          <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <h3>Best Practices</h3>
+      <ul>
+        {% for bp in site.best-practices %}
+          <li><a href="{{ bp.url }}">{{ bp.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <h3>Tutorials</h3>
+      <ul>
+        {% for reference in site.references %}
+          <li><a href="{{ reference.url }}">{{ reference.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
