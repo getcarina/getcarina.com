@@ -50,4 +50,4 @@ containerized applications start in seconds.  Because its environment and
 resource usage are consistent across systems, a containerized application
 that works on a developer’s system will work the same way on any system.
 
-##How to create a container using Rackspace Container Service##
+##How to create a container##
