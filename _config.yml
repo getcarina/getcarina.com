@@ -31,3 +31,7 @@ defaults:
       path: "docs"
     values:
       layout: "page"
+
+assets:
+  sources:
+  - _assets/img
