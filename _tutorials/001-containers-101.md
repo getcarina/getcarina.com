@@ -1,14 +1,15 @@
 ---
 title: Containers 101
 slug: containers-101-introduction-containers
-description: Introduction to container concepts, and how to create a container using Rackspace Container Service
+description: Introduction to container concepts, and how to create a container using Docker
 topics:
   - containers
+  - Docker
   - beginner
   - tutorial
 ---
 
-###What are containers?###
+###What are containers?
 
 Containers virtualize an operating system, tricking applications into believing
 that they have full, unshared access to their own copy of the OS. However, there
@@ -26,7 +27,7 @@ more efficiently than VMs. While a VM might take up several gigabyes of
 space, a container might only use several megabytes instead, allowing for a
 much greater number of containers that can run on a single host.
 
-###How do containers work?###
+###How do containers work?
 
 In order to create the sandbox environment of a container, the host machine
 does two things: namespace isolation and resource governance.
@@ -48,18 +49,18 @@ containerized applications start in seconds.  Because its environment and
 resource usage are consistent across systems, a containerized application
 that works on a developer’s system will work the same way on any system.
 
-###How to create a container###
+###How to create a container
 
 Before you can create and start working with containers, you need to get set up with Docker. Learn about how to download, install and set up the Docker client in Docker 101. <!--link to Docker 101-->
 
-####Build a docker-machine####
+####Build a docker-machine
 Build a new docker-machine by running the following command:
 
 `docker-machine create --driver virtualbox foo`
 
 Start the new machine with `eval "$(docker-machine env foo)"`.
 
-####Download an image.####
+####Download an image
 To create and run a container, you first need to download an image. Run the following command to download a Docker image:
 
 `docker pull ubuntu`
@@ -71,7 +72,7 @@ Docker does not display which release you are running.
 
 `docker pull ubuntu:14.04`
 
-####Create a container.####
+####Create a container
 To run a container from an ubuntu image, run the following command:
 
 `docker run --interactive --tty ubuntu /bin/bash`
