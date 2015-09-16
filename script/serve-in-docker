@@ -1,0 +1,20 @@
+# RUN FROM THE ROOT OF THE REPO, e.g. sh script/serve-in-docker
+
+set -e
+
+# Build a new image that will build and serve our jekyll content
+docker build --tag rcs-docs --file script/Dockerfile .
+
+# Remove any old images which were built previously
+docker rmi -f $(docker images --filter "dangling=true" -q) > /dev/null 2>&1 || true
+
+echo "*************************************************************************"
+echo "\tYour site is available at http://$(docker-machine ip default):4000"
+echo "*************************************************************************"
+
+# Serve up the content and watch for changes
+docker run --rm \
+  --volume=$(pwd):/src \
+  --publish 4000:4000 \
+  rcs-docs \
+  serve --watch --drafts --force_polling -H 0.0.0.0
