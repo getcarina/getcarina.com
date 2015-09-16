@@ -2,14 +2,20 @@
 
 set -e
 
+# Create a host for our docker container
+if !(docker-machine ls | grep "^rcs-docs "); then
+  docker-machine create --driver virtualbox rcs-docs
+fi
+
 # Build a new image that will build and serve our jekyll content
+eval $(docker-machine env rcs-docs)
 docker build --tag rcs-docs --file script/Dockerfile .
 
 # Remove any old images which were built previously
 docker rmi -f $(docker images --filter "dangling=true" -q) > /dev/null 2>&1 || true
 
 echo "*************************************************************************"
-echo "\tYour site is available at http://$(docker-machine ip default):4000"
+echo "\tYour site is available at http://$(docker-machine ip rcs-docs):4000"
 echo "*************************************************************************"
 
 # Serve up the content and watch for changes
