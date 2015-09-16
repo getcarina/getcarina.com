@@ -3,6 +3,7 @@
 This is a [Jekyll](http://jekyllrb.com/) repo housing documentation and tutorials for Rackspace Container Service
 
 ## Installation
+You can either install Jekyll using the instructions below or if you have Docker Toolbox installed, just run `script/preview`.
 
 1. [Install Jekyll](http://jekyllrb.com/docs/installation/)
 1. Clone this repository
