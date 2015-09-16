@@ -1,0 +1,285 @@
+---
+title: Port your Rails application to Rackspace Container Service
+slug: port-your-rails-application
+description: How to port your existing Rails application to Rackspace Container Service
+topics:
+  - docker
+  - intermediate
+---
+By now you're beginning to understand Docker and how it can benefit your workflow and deployments. This tutorial walks you through porting an existing Rails application, including the Rails app itself along with PostgreSQL, Redis, and Sidekiq workers, to Docker and Rackspace Cloud Files.
+
+## Tools used
+
+This tutorial leverage the following tools:
+
+* [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
+* [PostgreSQL](http://www.postgresql.org/) - Standard database
+* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media store
+* [Redis](http://Redis.io/) - Key-value store for Sidekiq
+* [Sidekiq](http://sidekiq.org/) - Background job processor
+
+## Create a Dockerfile
+
+The `Dockerfile` is an essential part of porting your application. This file tells Docker which commands to run and which packages to install to your container and builds an image. An image is a snapshot of your application's current state. In the root directory of your Rails application, create a new file named `Dockerfile`, and then paste the following code into the file:
+
+```ruby
+FROM ruby:2.2.1
+RUN apt-get update && apt-get install -y \
+  autoconf \
+  automake \
+  bison \
+  build-essential \
+  curl \
+  g++ \
+  gawk \
+  gcc \
+  libc6-dev \
+  libffi-dev \
+  imagemagick \
+  libgdbm-dev \
+  libncurses5-dev \
+  libpq-dev \
+  libreadline6-dev \
+  libsqlite3-dev \
+  libssl-dev \
+  libtool \
+  libyaml-dev \
+  make \
+  nodejs \
+  nodejs-legacy \
+  npm \
+  patch \
+  patch \
+  pkg-config \
+  sqlite3 \
+  vim \
+  zlib1g-dev
+
+RUN npm install -g phantomjs
+RUN mkdir /myapp
+
+WORKDIR /tmp
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install
+
+ADD . /myapp
+WORKDIR /myapp
+
+ENV POSTGRES_PASSWORD mysecretpassword
+ENV POSTGRES_USER postgres
+
+EXPOSE 80
+```
+
+## Update the database.yml file
+
+Now that your base Docker image ready, update your application's `RAILS_ROOT/config/database.yml` file to point to a new database host that you will create in the next steps.
+Use the following to update the file:
+
+```yaml
+development: &default
+  adapter: postgresql
+  encoding: unicode
+  database: myapp_dev
+  pool: 5
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+
+test:
+  <<: *default
+  database: myapp_test
+
+production:
+  <<: *default
+  database: myapp_prod
+```
+
+## Store public assets
+
+This example uses Rackspace's Cloud Files service to store static assets. Rails does not do a good job of serving static assets (Javascript, CSS, images) so you can leverage Rackspace's Cloud Files service to distribute our assets. *Note:* Cloud Files calls folders "containers"; these are simply a folder on a CDN; they are not Docker containers.
+
+1. Log in to the [Rackspace Cloud Control Panel](https://mycloud.rackspace.com/).
+1. In the menu bar at the top of the window, click *Storage > Files*.
+1. Click *Create Container*.
+1. In the pop-up box, provide a name for the container and select *Public (Enabled CDN)* as the type. Then, click *Create Container*.
+1. On the Containers page, click the gear icon next to your new container and select *View All Links*.
+1. Copy the HTTP link.
+1. Open the `RAILS_ROOT/config/environments/production.rb` file.
+1. Add the following line to the file, substituting the example link with the link that you just copied: `config.action_controller.asset_host = "http://2167823940-238946.rackcdn.com"`
+
+
+## Build your containers
+
+1. Go to [http://mycluster.rackspace.com](http://mycluster.rackspace.com).
+1. Create a new cluster.
+1. After a moment or two, refresh the page. You should see a series of icons that you can use to download your cluster credentials.
+1. Download these credentials and extract them to the `RAILS_ROOT/amphora` folder.
+1. Create a script named `RAILS_ROOT/bin/launch_cluster` and add the following code to it:
+
+
+```bash
+
+# Load the Rackspace Cloud Files credentials
+source amphora/docker.env
+
+# Build your app before deploys
+buildImage(){
+  docker build -t myapp .
+}
+
+# Interlock is a HAProxy plugin. It automatically adds containers to its load balancer
+# if a `--hostname` is supplied when creating the container. Hostnames should be
+# identical across the containers you'd like to load balance.
+# The certs listed here are automatically provided in your cluster.
+interlock() {
+  docker rm --force interlock
+  docker run -d \
+    --name interlock \
+    -p 80:80 \
+    --volumes-from swarm-data \
+    ehazlett/interlock \
+    --swarm-url $DOCKER_HOST \
+    --swarm-tls-ca-cert=/etc/docker/ca.pem  \
+    --swarm-tls-cert=/etc/docker/server-cert.pem \
+    --swarm-tls-key=/etc/docker/server-key.pem \
+    --plugin haproxy start
+}
+
+# This function creates a PostgreSQL container and an ambassador
+# (read more about the ambassador pattern: https://docs.docker.com/articles/ambassador_pattern_linking)
+dbCluster() {
+  docker rm --force db
+  docker rm --force db_ambassador
+
+  # Start actual DB server on one Docker host
+  # docker run -d --name db postgres
+  docker run -d \
+    --name db \
+    -h db \
+    -e POSTGRES_PASSWORD=mysecretpassword \
+    postgres
+
+  # Postgres container takes a few seconds to boot / insert defaults.
+  sleep 5
+
+  # DB ambassador
+  # Then add an ambassador linked to the DB server, mapping a port to the outside world
+  docker run -d \
+    --link db:db \
+    --name db_ambassador \
+    -p 5432:5432 \
+    svendowideit/ambassador
+}
+
+# This method will run your db-related rake tasks
+migrate() {
+  docker run \
+    --rm \
+    -e RAILS_ENV=production \
+    -e POSTGRES_HOST=$DB_SERVER \
+    myapp rake db:create db:schema:load db:migrate db:seed
+}
+
+# Much like the DB cluster, we have a Redis container and an ambassador
+RedisCluster() {
+  docker rm --force redis
+  docker rm --force redis_ambassador
+
+  docker run -d \
+    --name redis \
+    -p 6379 \
+    -h redis \
+    redis
+
+  sleep 10
+
+  # Redis ambassador
+  docker run -d \
+    --link redis:redis \
+    --name redis_ambassador \
+    -p 6379:6379 \
+    svendowideit/ambassador
+}
+
+# Sidekiq is a background job runner for Rails. This container will talk
+# to the Redis ambassador container.
+sidekiq() {
+  docker rm --force sidekiq
+  docker run -d \
+    --name sidekiq \
+    --restart always \
+    myapp bundle exec sidekiq
+}
+
+# This method boots up n number of web containers and sets the host name
+# so that Interlock can add them to the load balancer.
+webCluster() {
+  for i in {1..5}
+  do
+    docker rm --force web${i}
+    docker run -d \
+      --name web${i} \
+      -p 80 \
+      -P \
+      --hostname test.com \
+      -e INTERLOCK_DATA='{"port": 80, "warm": true}' \
+      -e POSTGRES_HOST=$DB_SERVER \
+      myapp bundle exec thin start -D -e production -p 80
+  done
+}
+
+# This method will precompile Asset Pipeline resources and sync them
+# to Rackspace Cloud Files (using asset_sync)
+syncAssets() {
+  RAILS_ENV=production rake assets:precompile assets:sync
+}
+
+# Helper method to get public IP of a container
+ipFor(container) {
+   docker inspect container | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4
+}
+
+# The main method. This will boot all necessary containers and clusters.
+# Order is important as some functions rely on env vars to be present.
+# Errors are expected for removing containers the first time as they don't yet exist.
+bootstrap() {
+  buildImage
+
+  interlock
+  export INTERLOCK=ipFor("interlock")
+
+  dbCluster
+  export DB_SERVER=ipFor("db_ambassador")
+
+  RedisCluster
+  export Redis_SERVER=ipFor("Redis_ambassador")
+
+  sidekiq
+  export SIDEKIQ=ipFor("sidekiq")
+
+  migrate
+
+  syncAssets
+
+  webCluster
+}
+
+bootstrap
+```
+
+1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
+1. Run `RAILS_ROOT/bin/launch_cluster`
+
+Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages.
+
+## Add the cluster IP address to your host file
+1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
+1. Edit the /etc/hosts file to add the cluster IP address. Following is an example of the line to add: `104.130.0.17 test.com`
+
+## Launch the Rails application
+After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
+
+## Monitor the cluster's performance
+Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the username is `stats` and the password is `interlock`.
