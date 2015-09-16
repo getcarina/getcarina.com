@@ -11,11 +11,10 @@ topics:
 
 ###What are containers?
 
-Containers virtualize an operating system, tricking applications into believing
-that they have full, unshared access to their own copy of the OS. However, there
+Containers virtualize an operating system and contain logic that treat them as guests for the operating system. Applications run in containers act as though they have full, unshared access to their own copy of the OS, however, there
 is actually only one copy of the OS on the host server system.
 
-Containers are often described as "lightweight" because unlike virtual machines,
+Containers are often described as "lightweight" because unlike virtual machines (VM),
 which have their own copies of OS files, libraries, and application code, along
 with a full in-memory instance of an OS, containers share the host OS,
 including the kernel and libraries, so that they don't need to boot an OS or
@@ -40,7 +39,7 @@ outside of its virtualized namespace, applications behave as if they are
 the only applications running on the system, even if there are actually hundreds.
 
 The host also controls how much of its resources can be used by a container.
-By governing resources such as CPU, RAM, and network bandwidth, the
+By governing resources such as CPU, and RAM, the
 host ensures that each container gets the resources it needs without
 impacting the performance of other containers running on the host.
 
@@ -65,7 +64,7 @@ To create and run a container, you first need to download an image. Run the foll
 
 `docker pull ubuntu`
 
-This syntax pulls the latest release number of the ubuntu OS image.
+This syntax pulls the latest release of the `ubuntu` image.
 We recommend always specifying a release number, such as 12.02 or 14.04.
 When you download the latest release without specifying,
 Docker does not display which release you are running.

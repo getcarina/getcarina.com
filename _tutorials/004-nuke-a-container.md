@@ -10,7 +10,8 @@ topics:
 ---
 If you accidentally launch a container without the `--detach` (`-d`) flag, and the process
 doesn't respond to `ctrl-c` or `ctrl-d`, you can stop the container by
-opening a separate terminal and force quitting the container.
+opening a separate terminal and force-quitting the container. If you force-quit a
+container, you remove both the container and the volume associated with it.
 
 ```
 $ docker run whoa/tiny
@@ -23,8 +24,8 @@ HALP, STAHP
 ^D
 SRSLY^C
 ```
-Open a separate terminal and run `docker ps` to find the container ID. To force
-quit the container, use the following command:
+Open a separate terminal and run `docker ps` to find the container ID. To force-quit
+the container, use the following command:
 
 `docker rm -fv CONTAINER_ID`.
 
@@ -33,8 +34,8 @@ a running container. The `-v` flag is short for `--volumes=false`, which
 removes the volumes associated with the container. You can use the long or
 short version of the flags.
 
-Alternatively, you can kill the client connection to the server, which appears
-as follows:
+Alternatively, you can sever the client connection to the server while keeping the
+Docker container running by killing the `docker run` command shown in `ps aux | grep docker`.
 
 ```
 $ ps aux | grep docker
@@ -46,7 +47,7 @@ rgbkrk        22448   0.0  0.0  2432772    680 s004  S+   10:49AM   0:00.00 grep
 rgbkrk        22434   0.0  0.0 145169880   5664 s002  S+   10:44AM   0:00.16 docker run whoa/tiny
 $ kill -9 22434
 ```
-After this, you can find the running container and stop it:
+After killing the `docker run` command, you can find the running container and stop it:
 
 ```
 $ docker ps
