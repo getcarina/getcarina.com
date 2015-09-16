@@ -10,7 +10,7 @@ topics:
 ---
 If you accidentally launch a container without the `--detach` (`-d`) flag, and the process
 doesn't respond to `ctrl-c` or `ctrl-d`, you can stop the container by
-opening a separate terminal and force-quitting the container. If you force-quit a
+opening a separate terminal and terminating the container. If you terminate a
 container, you remove both the container and the volume associated with it.
 
 ```
@@ -24,7 +24,7 @@ HALP, STAHP
 ^D
 SRSLY^C
 ```
-Open a separate terminal and run `docker ps` to find the container ID. To force-quit
+Open a separate terminal and run `docker ps` to find the container ID. To terminate
 the container, use the following command:
 
 `docker rm -fv CONTAINER_ID`.
