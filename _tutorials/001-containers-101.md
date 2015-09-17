@@ -13,7 +13,7 @@ topics:
 
 Containers house applications and everything needed to run them. Because the only space that containers use is the memory and disk space necessary for the application to run, containers can be created much faster and run more efficiently than virtual machines (VMs). While a VM might use several gigabytes of space, a container might use only several megabytes, allowing for a greater number of containers that can run on a single host.
 
-Containers virtualize an operating system and contain logic that treat them as guests of the operating system. Applications that run in containers act as though they have full, unshared access to their own copy of the OS; however, there
+Containers virtualize an operating system and contain logic that treat them as guests of the operating system (OS). Applications that run in containers act as though they have full, unshared access to their own copy of the OS; however, there
 is actually only one copy of the OS on the host server system.
 
 Containers are often described as "lightweight." Unlike virtual machines (VM),
