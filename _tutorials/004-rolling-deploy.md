@@ -124,7 +124,7 @@ Wrapping this up into a series of commands, we now have:
 
 ```bash
 IFS=':' read IP PORT <<< "$( docker port $CONTAINER_ID 8080 )"
-IP=$( docker run --rm --net=host -e "affinity:container==$CONTAINER_ID" ubuntu sh -c "ip addr show eth1 | grep -Po 'inet \K[\d.]+'" )
+IP=$( docker run --rm --net=host -e "affinity:container==$CONTAINER_ID" racknet/ip service ) 
 ```
 
 Which we can use as `$IP`, `$PORT` pairs for the load balancer above.
