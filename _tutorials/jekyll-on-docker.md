@@ -91,7 +91,7 @@ _If you are on Windows, you must place your site in a sub-directory of
       --volume=/$(pwd):/src \
       --publish 4000:4000 \
       $DOCKER_IMAGE_NAME \
-      serve --watch --drafts -H 0.0.0.0
+      serve --watch --drafts --force_polling -H 0.0.0.0
     ```
 3. Mark the preview script as executable.
 
