@@ -19,7 +19,8 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
 * [Docker Toolbox][docker-toolbox]
 
 _If you are on Windows, you must place your site in a sub-directory of
-  the `C:\Users` directory. That is the only directory exposed from your local machine
+  `C:\Users`, though it can be more deeply nested, e.g. `C:\Users\myuser\repos\my-site`.
+  That is the only directory exposed from your local machine
   to the Docker host via VirtualBox. If you want to use a different directory, you will
   need to manually share the directory using VirtualBox._
 
