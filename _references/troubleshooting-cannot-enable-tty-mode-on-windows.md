@@ -40,8 +40,6 @@ Below are some possible workarounds:
     "C:\Program Files\Git\bin\bash.exe" --login -i
     eval $(docker-machine env default --shell bash)
     ```
-* Use the Docker QuickStart Terminal, which is really just a shortcut to CMD
-  which also loads the default Docker environment.
 
 [run-shell-docs]: https://docs.docker.com/articles/basics/#running-an-interactive-shell
 [conemu]: https://conemu.github.io/
