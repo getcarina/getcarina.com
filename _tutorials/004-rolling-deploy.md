@@ -116,7 +116,7 @@ Alternatively, you can use the ServiceNet IP with load balancers (assuming they'
 # TODO: Figure out if we're able to expose this through API
 # TODO: Make a super minimal image that does the extraction of IPs nicely
 #       (e.g. https://github.com/rgbkrk/peekaboo/blob/master/peekaboo.go#L98-L147)
-docker run --rm --net=host -e "affinity:container==$CONTAINER_ID" racknet/ip service )
+docker run --rm --net=host -e "affinity:container==$CONTAINER_ID" racknet/ip service
 10.176.224.18
 ```
 
