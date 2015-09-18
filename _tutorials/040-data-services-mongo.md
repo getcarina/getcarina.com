@@ -9,6 +9,8 @@ export GB_MONGO_DB=guestbook
 
 env | grep GB_
 
+git clone https://github.com/rackerlabs/guestbook-mongo.git
+cd guestbook-mongo
 docker build --tag="guestbook-mongo:1.0" .
 docker run --detach \
   --env GB_MONGO_HOSTNAME_AND_PORT=$GB_MONGO_HOSTNAME_AND_PORT \
