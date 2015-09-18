@@ -5,19 +5,20 @@ Markdown syntax: http://daringfireball.net/projects/markdown/
 # Tutorial name
 
 <!--
-Limit tutorials to a single task or idea. Choose a name that accurately describes the task. For example: 
+Limit tutorials to a single task. 
 
-# Docker 101
-# How to create a new container
-# How to remove containers without deleting Swarm
+Choose a name that accurately describes the task. For example: 
+
+# Create a new container
+# Remove containers without deleting Swarm
 -->
 
-## Description
+This tutorial describes <x> so that you can <y>.
 
 <!--
-Give a brief summary of what this tutorial covers and why it matters. For example:
+Give a brief summary of what this tutorial describes and why it matters. For example:
 
-"This tutorial covers Docker basics: what Docker is and how to start using it."
+"This tutorial describes Docker basics: what Docker is and how to start using it."
 "This tutorial demonstrates how to remove containers without deleting system-critical containers."
 -->
 
@@ -26,42 +27,28 @@ Give a brief summary of what this tutorial covers and why it matters. For exampl
 <!--
 List any prerequisites for the tutorial: 
 
-* software installed
-* state dependencies
-* any other required setup
-* link to other tutorials
+* Software installed
+* State dependencies
+* Links to other tutorials
+* Any other required setup
 -->
 
-## Actions to take / Concepts to learn
+## Steps
 
 <!--
-* Tasks
+Include a more descriptive heading if possible.
 
-For tasks, list steps in numbered order. Limit steps to a single action.
+List steps in numbered order. Limit steps to a single action.
 
-1. First, do this.
+1. Do this.
 
     Indent any descriptions or information needed between steps.
 
-2. Next, do that.
+2. Do that.
 
-3. Finally, do this other thing.
+3. Do this other thing.
 
 Conclude with a brief description of the end state.
-
-* Ideas
-
-For ideas, present concepts in the order in which your audience will learn them most easily. Use H3 subheadings. Limit each subheading to a single concept.
-
-For example:
-
-### Foundational concept
-
-Understanding this concept will help you understand the next concept.
-
-### Next concept
-
-Continue explaining concepts until you've adequately covered the tightly-scoped idea covered by this tutorial.
 -->
 
 ## Troubleshooting
@@ -73,12 +60,18 @@ Continue explaining concepts until you've adequately covered the tightly-scoped 
 
     Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
 
-* Link to related support articles and generic troubleshooting information.
+* Link to support articles and generic troubleshooting information.
 
     Create a separate article for generic troubleshooting information.
 -->
 
 ## Resources
+
+<!--
+* Links to related content
+-->
+
+## Next Steps
 
 <!--
 * What should your audience read next?
