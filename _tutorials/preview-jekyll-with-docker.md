@@ -1,15 +1,17 @@
 ---
-title: Running Jekyll with Docker
-description: Preview your Jekyll site locally using Docker
+title: Preview a Jekyll Site with Docker
+permalink: docs/tutorials/preview-jekyll-with-docker/
 topics:
   - docker
   - intermediate
 ---
 
+*Note: This tutorial is for Mac OS X and Linux users. If you are using Windows, follow
+[this tutorial]({{ site.baseurl }}/docs/tutorials/preview-jekyll-with-docker-on-windows/) instead.*
+
 [Jekyll][jekyll] is a popular static site generator, most commonly used for blogging on GitHub Pages.
 It is written in ruby and sometimes getting your local machine setup properly to preview your
-changes before publishing can be difficult, especially on Windows.
-
+changes before publishing can be difficult.
 
 In this tutorial, you will learn to your generate and preview your Jekyll site in a Docker container.
 
@@ -17,14 +19,22 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
 
 ## <a name="requirements"></a> Requirements
 * [Docker Toolbox][docker-toolbox]
-
-_If you are on Windows, you must place your site in a sub-directory of
-  `C:\Users`, though it can be more deeply nested, e.g. `C:\Users\myuser\repos\my-site`.
-  That is the only directory exposed from your local machine
-  to the Docker host via VirtualBox. If you want to use a different directory, you will
-  need to manually share the directory using VirtualBox._
+* An existing Jekyll site on your local file system. If you do not have
+  and existing site, a great way to get jump started is to clone or download a
+  [Jekyll theme][jekyll-themes].
 
 [docker-toolbox]: https://www.docker.com/toolbox
+[jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
+
+1. Open a command terminal and navigate to your Jekyll site on the local file system.
+2. Create a Docker host, optionally changing the name of the host from 'my-site'.
+
+    **Bash**
+
+    ```bash
+    docker-machine create my-site --driver virtualbox
+    eval $(docker-machine env my-site --shell bash)
+    ```
 
 ## <a name="setup"></a> Setup
 

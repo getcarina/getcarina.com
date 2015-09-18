@@ -1,0 +1,156 @@
+---
+title: Preview a Jekyll Site with Docker on Windows
+permalink: docs/tutorials/preview-jekyll-with-docker-on-windows/
+topics:
+  - docker
+  - intermediate
+  - windows
+---
+
+*Note: This tutorial is for Windows users. If you are using Mac OS X or Linux, follow
+[this tutorial]({{ site.baseurl }}/docs/tutorials/preview-jekyll-with-docker) instead.*
+
+[Jekyll][jekyll] is a popular static site generator, most commonly used for blogging on GitHub Pages.
+It is written in ruby and sometimes getting your local machine setup properly to preview your
+changes before publishing can be difficult, especially on Windows.
+
+In this tutorial, you will learn to your generate and preview your Jekyll site in a Docker container.
+
+[jekyll]: https://jekyllrb.com/
+
+## <a name="requirements"></a> Requirements
+* [Docker Toolbox][docker-toolbox]
+* An existing Jekyll site on your local file system. If you do not have
+  and existing site, a great way to get jump started is to clone or download a
+  [Jekyll theme][jekyll-themes].
+
+[docker-toolbox]: https://www.docker.com/toolbox
+[jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
+
+1. Open a command terminal and navigate to your Jekyll site on the local file system.
+    You must place your site in a sub-directory of `C:\Users`,
+    though it can be more deeply nested, e.g. `C:\Users\myuser\repos\my-site`.
+    That is the only directory exposed from your local machine
+    to the Docker host via VirtualBox. If you want to use a different directory, you will
+    need to manually share the directory using VirtualBox.
+2. Create a Docker host, optionally changing the name of the host from 'my-site'.
+
+    **Bash**
+
+    ```bash
+    docker-machine create my-site --driver virtualbox
+    eval $(docker-machine env my-site --shell bash)
+    ```
+
+    **Windows CMD**
+
+    ```
+    docker-machine create my-site --driver virtualbox
+    docker-machine env my-site --shell cmd
+    REM Copy the output and paste it into the command prompt
+    ```
+
+    **Windows PowerShell**
+
+    ```powershell
+    docker-machine create my-site --driver virtualbox
+    docker-machine env my-site --shell powershell | Invoke-Expression
+    ```
+## <a name="setup"></a> Setup
+
+1. Create a Dockerfile with the following content. If you are using GitHub Pages,
+    you will use an [existing Docker image][jekyll-image] and should skip to the next step.
+
+    ```
+    FROM grahamc/jekyll:latest
+
+    # Install whatever is in your Gemfile
+    WORKDIR /tmp
+    ADD Gemfile /tmp/
+    ADD Gemfile.lock /tmp/
+    RUN bundle install
+
+    # Change to the jekyll site directory
+    WORKDIR /src
+    ```
+2. Create a script named `preview`. Optionally, edit the
+    `DOCKER_MACHINE_NAME` and `DOCKER_IMAGE_NAME` variables.
+
+    ```bash
+    #!/usr/bin/env bash
+
+    # Set to the name of the docker machine you would like to use
+    DOCKER_MACHINE_NAME=default
+
+    # Set to the name of the docker image you would like to use
+    DOCKER_IMAGE_NAME=my-site
+
+    # Stop on first error
+    set -e
+
+    # Create a host for our docker container
+    if !(docker-machine ls | grep "^$DOCKER_MACHINE_NAME "); then
+      docker-machine create --driver virtualbox $DOCKER_MACHINE_NAME
+    fi
+
+    # Start the host
+    if (docker-machine ls | grep "^default .* Stopped"); then
+      docker-machine start $DOCKER_MACHINE_NAME
+    fi
+
+    # Load our docker machine's environment variables
+    eval $(docker-machine env $DOCKER_MACHINE_NAME --shell bash)
+
+    if [ -e Dockerfile ]; then
+      # Build a custom image that will generate and serve our site
+      docker build --tag $DOCKER_IMAGE_NAME --file Dockerfile .
+
+      # Remove dangling images from previous runs
+      docker rmi -f $(docker images --filter "dangling=true" -q) > /dev/null 2>&1 || true
+    else
+      # Use an existing Jekyll Docker image
+      DOCKER_IMAGE_NAME=grahamc/jekyll
+    fi
+
+    echo "***********************************************************"
+    echo "  Your site is available at http://$(docker-machine ip $DOCKER_MACHINE_NAME):4000"
+    echo "***********************************************************"
+
+    # Serve up the content and watch for changes
+    # The '/' volume prefix and force_polling flag are for Windows compatibility
+    docker run --rm \
+      --volume=/$(pwd):/src \
+      --publish 4000:4000 \
+      $DOCKER_IMAGE_NAME \
+      serve --watch --drafts --force_polling -H 0.0.0.0
+    ```
+3. Mark the preview script as executable.
+
+    ```bash
+    chmod +x preview
+    ```
+
+[jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
+
+## <a name="preview"></a> Previewing Your Changes
+Now when editing your site, run the `preview` script and in your web browser,
+navigate to the URL specified in the output (example below).
+
+```bash
+***********************************************************
+  Your site is available at http://192.168.99.100:4000
+***********************************************************
+Configuration file: /src/_config.yml
+            Source: /src
+       Destination: /src/_site
+      Generating...
+                    done.
+ Auto-regeneration: enabled for / src
+Configuration file: /src/_config.yml
+    Server address: http://0.0.0.0:4000/
+  Server running... press ctrl-c to stop.
+```
+
+Leave this console window open and edit your site. After saving a file, it will be
+automatically regenerated by Jekyll, and you can see the changes by refreshing the
+page in your web browser.
