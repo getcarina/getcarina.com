@@ -29,6 +29,7 @@ List any prerequisites for the tutorial:
 * software installed
 * state dependencies
 * any other required setup
+* link to other tutorials
 -->
 
 ## Actions to take / Concepts to learn
@@ -66,13 +67,19 @@ Continue explaining concepts until you've adequately covered the tightly-scoped 
 ## Troubleshooting
 
 <!--
-List troubleshooting steps here.
+* List troubleshooting steps here.
 
-Cover the most common mistakes and error states first.
+    Cover the most common mistakes and error states first.
+
+    Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
+
+* Link to related support articles and generic troubleshooting information.
+
+    Create a separate article for generic troubleshooting information.
 -->
 
 ## Resources
 
 <!--
-Link to other resources or relevant content.
+* What should your audience read next?
 -->

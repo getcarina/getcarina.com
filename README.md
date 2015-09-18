@@ -18,7 +18,7 @@ The content is split into three separate collections: **tutorials**, **best prac
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
-Use the tutorial template (`/tutorial-template.md`) for creating new tutorials.
+Use the tutorial template (`/_tutorials/000-tutorial-template.md`) for creating new tutorials.
 
 ## Contact
 
