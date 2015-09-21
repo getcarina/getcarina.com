@@ -1,3 +1,13 @@
+---
+title: How to install Docker with Mac OS X
+slug: docker-101-installation-mac
+description: Instructions on how to install Docker on a Mac Operating System.
+topics:
+  -docker
+  -beginner
+  -tutorial
+---
+
 #How to install Docker with Mac OS X
 
 This tutorial covers how to install and set up Docker on Mac OS X.
