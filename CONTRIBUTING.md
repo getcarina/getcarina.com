@@ -8,9 +8,9 @@ The content is split into three separate collections: **tutorials**, **best prac
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
-Create new tutorials using the tutorial template (`/_tutorials/000-tutorial-template.md`).
+Create new tutorials for tasks: (`/_tutorials/000-tutorial-task-template.md`).
 
-Create new references using the reference template (`/_references/000-reference-template.md`).
+Create new tutorials for concepts: (`/_tutorials/000-tutorial-concept-template.md`).
 
 ## Github workflow
 
