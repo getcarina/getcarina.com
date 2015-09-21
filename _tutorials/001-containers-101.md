@@ -11,11 +11,13 @@ topics:
 
 ###What are containers?
 
-Containers package a piece of software with a complete file system that contains everything the software needs to run, such as code, runtime, system tools, and system libraries. Rather than include a full operating system, like virtual machines (VMs), containers share the kernel of the host OS, enabling them to boot in seconds. Because the only space that containers use is the memory and disk space necessary for the software to run, containers are more portable and efficient than VMs.
+Containers package a piece of software with a complete file system that contains everything the software needs to run, such as code, system tools, and system libraries. Rather than include a full operating system, like virtual machines (VMs), containers share the kernel of the host OS, enabling them to boot in seconds. Because the only space that containers use is the memory and disk space necessary for the software to run, containers are more portable and efficient than VMs.
+
+<!--add VM and container architecture diagrams here-->
 
 ###How do containers work?
 
-In order to create the environment of a container, the host machine
+To create the environment of a container, the host machine
 does two things: isolate namespaces and govern resources.
 
 Namespaces include all of the resources that an application can interact with,
