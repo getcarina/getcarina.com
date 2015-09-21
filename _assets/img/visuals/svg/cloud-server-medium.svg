@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="cloud-server-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="49px" height="29px" viewBox="0 0 49 29" enable-background="new 0 0 49 29" xml:space="preserve">
+<path d="M45.762,7.68C45.917,7.146,46,6.582,46,6c0-3.314-2.687-6-6-6c-2.474,0-4.597,1.496-5.516,3.633
+	C33.69,2.928,32.645,2.5,31.5,2.5c-2.486,0-4.5,2.014-4.499,4.6C26.678,7.033,26.343,7,26,7c-2.762,0-5,2.238-5,5H0v17h49V12
+	C49,9.953,47.633,8.225,45.762,7.68z M47,27H2V14h45V27z M42.5,20c-0.829,0-1.5-0.672-1.5-1.5s0.671-1.5,1.5-1.5
+	c0.828,0,1.5,0.672,1.5,1.5S43.328,20,42.5,20z M31,18h8v1h-8V18z M28,16v9H5v-9H28z M17,24h10v-3H17V24z M6,24h10v-3H6V24z M16,17
+	H6v3h10V17z M27,17H17v3h10V17z"/>
+</svg>

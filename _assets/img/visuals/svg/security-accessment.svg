@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="security-accessment" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="31px" height="31px" viewBox="0 0 31 31" enable-background="new 0 0 31 31" xml:space="preserve">
+<path d="M16,9c0-2.209-1.791-4-4-4S8,6.791,8,9v2H7v7h10v-7h-1V9z M14,11h-4V9c0-1.105,0.895-2,2-2c1.104,0,2,0.895,2,2V11z
+	 M31,28.879l-9.533-9.533C23.047,17.312,24,14.768,24,12c0-6.617-5.383-12-12-12S0,5.383,0,12c0,6.615,5.383,12,12,12
+	c2.768,0,5.312-0.953,7.346-2.533L28.879,31L31,28.879z M2,12C2,6.484,6.486,2,12,2s10,4.484,10,10c0,5.514-4.486,10-10,10
+	S2,17.514,2,12z"/>
+</svg>

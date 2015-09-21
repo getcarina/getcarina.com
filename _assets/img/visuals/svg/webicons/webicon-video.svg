@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="video" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="30px" height="30px" viewBox="0 0 30 30" enable-background="new 0 0 30 30" xml:space="preserve">
+<path d="M19,15l-6,5V10L19,15z M30,0v30H0V0H30z M22,6h2V2h-2V6z M18,6h2V2h-2V6z M14,6h2V2h-2V6z M10,6h2V2h-2V6z M6,6h2V2H6V6z
+	 M2,6h2V2H2V6z M4,24H2v4h2V24z M8,24H6v4h2V24z M12,24h-2v4h2V24z M16,24h-2v4h2V24z M20,24h-2v4h2V24z M24,24h-2v4h2V24z M28,24
+	h-2v4h2V24z M28,8H2v14h26V8z M28,2h-2v4h2V2z"/>
+</svg>
