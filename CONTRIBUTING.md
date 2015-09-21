@@ -2,12 +2,15 @@
 
 This is a [Jekyll](http://jekyllrb.com/) repo housing documentation and tutorials for Rackspace Container Service
 
-
 ## Writing
 
 The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, `_assets`, and `_references`, respectively.
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
+
+Create new tutorials using the tutorial template (`/_tutorials/000-tutorial-template.md`).
+
+Create new references using the reference template (`/_references/000-reference-template.md`).
 
 ## Github workflow
 
@@ -23,7 +26,6 @@ Right now, file names are being prefixed with a number like `001-` to control th
 4. To bring your master branch up-to-date with upstream type:
 	
 	 `git pull --rebase upstream master`
-	 
 	 
 **Note** Make sure to create a separate branch for each separate pull request by typing `git checkout -b <new branch>`
 
