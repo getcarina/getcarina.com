@@ -9,7 +9,7 @@ if !(docker-machine ls | grep "^rcs-docs "); then
 fi
 
 # Start the host
-if (docker-machine ls | grep "^default .* Stopped"); then
+if (docker-machine ls | grep "^rcs-docs .* Stopped"); then
   docker-machine start rcs-docs
 fi
 

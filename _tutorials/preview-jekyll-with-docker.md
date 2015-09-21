@@ -74,7 +74,7 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
     fi
 
     # Start the host
-    if (docker-machine ls | grep "^default .* Stopped"); then
+    if (docker-machine ls | grep "^$DOCKER_MACHINE_NAME .* Stopped"); then
       docker-machine start $DOCKER_MACHINE_NAME
     fi
 
