@@ -14,54 +14,36 @@ topics:
 It is written in ruby and sometimes getting your local machine setup properly to preview your
 changes before publishing can be difficult, especially on Windows.
 
-In this tutorial, you will learn to your generate and preview your Jekyll site in a Docker container.
+This tutorial describes how to preview a Jekyll site in a Docker container, so that
+you do not need to install ruby or Jekyll on your local machine.
 
 [jekyll]: https://jekyllrb.com/
 
-## <a name="requirements"></a> Requirements
+## <a name="prerequisites"></a> Prerequisites
 * [Docker Toolbox][docker-toolbox]
 * An existing Jekyll site on your local file system. If you do not have
-  and existing site, a great way to get jump started is to clone or download a
-  [Jekyll theme][jekyll-themes].
+  an existing site, a good way to get jump started is download the
+  [Jekyll Example Project][jekyll-example] or a [Jekyll theme][jekyll-themes].
+
+_You must place your site in a sub-directory of `C:\Users`,
+  though it can be more deeply nested, e.g. `C:\Users\myuser\repos\my-site`.
+  That is the only directory exposed from your local machine
+  to the Docker host via VirtualBox. If you want to use a different directory, you will
+  need to manually share the directory using VirtualBox._
 
 [docker-toolbox]: https://www.docker.com/toolbox
+[jekyll-example]: https://github.com/jekyll/example
 [jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
 
-1. Open a command terminal and navigate to your Jekyll site on the local file system.
-    You must place your site in a sub-directory of `C:\Users`,
-    though it can be more deeply nested, e.g. `C:\Users\myuser\repos\my-site`.
-    That is the only directory exposed from your local machine
-    to the Docker host via VirtualBox. If you want to use a different directory, you will
-    need to manually share the directory using VirtualBox.
-2. Create a Docker host, optionally changing the name of the host from 'my-site'.
+## <a name="steps"></a> Steps
 
-    **Bash**
+1. Open a command terminal and change to your Jekyll site directory.
 
-    ```bash
-    docker-machine create my-site --driver virtualbox
-    eval $(docker-machine env my-site --shell bash)
-    ```
+2. Create a new file named `Dockerfile` with the content below.
+    *If you are using GitHub Pages or are not using any Jekyll plugins,
+    you do not need to a custom Docker image and should skip to the next step.*
 
-    **Windows CMD**
-
-    ```
-    docker-machine create my-site --driver virtualbox
-    docker-machine env my-site --shell cmd
-    REM Copy the output and paste it into the command prompt
-    ```
-
-    **Windows PowerShell**
-
-    ```powershell
-    docker-machine create my-site --driver virtualbox
-    docker-machine env my-site --shell powershell | Invoke-Expression
-    ```
-## <a name="setup"></a> Setup
-
-1. Create a Dockerfile with the following content. If you are using GitHub Pages,
-    you will use an [existing Docker image][jekyll-image] and should skip to the next step.
-
-    ```
+    ```text
     FROM grahamc/jekyll:latest
 
     # Install whatever is in your Gemfile
@@ -70,11 +52,72 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
     ADD Gemfile.lock /tmp/
     RUN bundle install
 
-    # Change to the jekyll site directory
+    # Change back to the Jekyll site directory
     WORKDIR /src
     ```
-2. Create a script named `preview`. Optionally, edit the
-    `DOCKER_MACHINE_NAME` and `DOCKER_IMAGE_NAME` variables.
+
+3. Create a script from the options below with your preferred scripting language.
+    You may want to customize the `DOCKER_MACHINE_NAME` and `DOCKER_IMAGE_NAME`
+    variables defined at the top of the file.
+
+    **PowerShell**
+
+    Create a file named `preview.ps1` with the content below.
+
+    ```powershell
+    # Set to the name of the docker machine you would like to use
+    $DOCKER_MACHINE_NAME='default'
+
+    # Set to the name of the docker image you would like to use
+    $DOCKER_IMAGE_NAME='my-site'
+
+    # Stop on first error
+    $ErrorActionPreference = "Stop"
+
+    # Create a Docker host
+    if( !(@(docker-machine ls) -like "$DOCKER_MACHINE_NAME *" ) ) {
+      docker-machine create --driver virtualbox $DOCKER_MACHINE_NAME
+    }
+
+    # Start the host
+    if( @(docker-machine ls) -like "$DOCKER_MACHINE_NAME * Stopped *" ) {
+      docker-machine start $DOCKER_MACHINE_NAME
+    }
+
+    # Load our docker host's environment variables
+    docker-machine env $DOCKER_MACHINE_NAME --shell powershell | Invoke-Expression
+
+    if( Test-Path Dockerfile ) {
+      # Build a custom Docker image which has custom Jekyll plugins installed
+      docker build --tag $DOCKER_IMAGE_NAME --file Dockerfile .
+
+      # Remove dangling images from previous runs
+      @(docker images --filter "dangling=true" -q) | % {docker rmi -f $_}
+    }
+    else {
+      # Use an existing Jekyll Docker image
+      $DOCKER_IMAGE_NAME='grahamc/jekyll'
+    }
+
+    echo "***********************************************************"
+    echo "  Your site will be available at http://$(docker-machine ip $DOCKER_MACHINE_NAME):4000"
+    echo "***********************************************************"
+
+    # Translate our current directory into the file share mounted in the docker host
+    $host_vol = $pwd.Path.Replace("C:\", "/c/").Replace("\", "/")
+    echo "Mounting $($pwd.Path) ($host_vol) to /src on the Docker container"
+
+    # Start Jekyll and watch for changes
+    docker run --rm `
+      --volume=${host_vol}:/src `
+      --publish 4000:4000 `
+      $DOCKER_IMAGE_NAME `
+      serve --watch --drafts --force_polling -H 0.0.0.0
+    ```
+
+    **Bash**
+
+    Create a file named `preview.sh` with the context below. Then mark it as executable by running `chmod +x preview.sh`.
 
     ```bash
     #!/usr/bin/env bash
@@ -88,7 +131,7 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
     # Stop on first error
     set -e
 
-    # Create a host for our docker container
+    # Create a Docker host
     if !(docker-machine ls | grep "^$DOCKER_MACHINE_NAME "); then
       docker-machine create --driver virtualbox $DOCKER_MACHINE_NAME
     fi
@@ -98,11 +141,11 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
       docker-machine start $DOCKER_MACHINE_NAME
     fi
 
-    # Load our docker machine's environment variables
-    eval $(docker-machine env $DOCKER_MACHINE_NAME --shell bash)
+    # Load our docker host's environment variables
+    eval $(docker-machine env $DOCKER_MACHINE_NAME)
 
     if [ -e Dockerfile ]; then
-      # Build a custom image that will generate and serve our site
+      # Build a custom Docker image which has custom Jekyll plugins installed
       docker build --tag $DOCKER_IMAGE_NAME --file Dockerfile .
 
       # Remove dangling images from previous runs
@@ -113,44 +156,86 @@ In this tutorial, you will learn to your generate and preview your Jekyll site i
     fi
 
     echo "***********************************************************"
-    echo "  Your site is available at http://$(docker-machine ip $DOCKER_MACHINE_NAME):4000"
+    echo "  Your site will be available at http://$(docker-machine ip $DOCKER_MACHINE_NAME):4000"
     echo "***********************************************************"
 
-    # Serve up the content and watch for changes
-    # The '/' volume prefix and force_polling flag are for Windows compatibility
+    # Start Jekyll and watch for changes
     docker run --rm \
       --volume=/$(pwd):/src \
       --publish 4000:4000 \
       $DOCKER_IMAGE_NAME \
       serve --watch --drafts --force_polling -H 0.0.0.0
     ```
-3. Mark the preview script as executable.
+
+4. Execute the preview script to start Jekyll. You can also double-click on the
+    script from Windows Explorer.
+
+    **CMD**
+
+    ```batch
+    powershell.exe -f preview.ps1
+    ```
+
+    **PowerShell**
+
+    ```powershell
+    .\preview.ps1
+    ```
+
+    **Bash**
 
     ```bash
-    chmod +x preview
+    ./preview.sh
     ```
+
+6. In a web browser, navigate to the URL specified in the output (example below).
+
+    ```
+    ***********************************************************
+      Your site will be available at http://192.168.99.100:4000
+    ***********************************************************
+    Configuration file: /src/_config.yml
+                Source: /src
+           Destination: /src/_site
+          Generating...
+                        done.
+     Auto-regeneration: enabled for / src
+    Configuration file: /src/_config.yml
+        Server address: http://0.0.0.0:4000/
+      Server running... press ctrl+c to stop.
+    ```
+<br/>
+
+You are now ready to modify your site and preview the changes.
+After saving a file, it will be automatically regenerated by Jekyll.
+Refresh the page in your web browser to see your changes.
 
 [jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
 
-## <a name="preview"></a> Previewing Your Changes
-Now when editing your site, run the `preview` script and in your web browser,
-navigate to the URL specified in the output (example below).
+## <a name="troubleshooting"></a>Troubleshooting
 
-```bash
-***********************************************************
-  Your site is available at http://192.168.99.100:4000
-***********************************************************
-Configuration file: /src/_config.yml
+### <a name="troubleshooting-stop-jekyll"></a>CTRL+C does not stop Jekyll
+
+PowerShell sometimes doesn't catch `CTRL` + `C` the first time. However pressing that key combination in quick succession usually works.
+
+### <a name="troubleshooting-missing-config"></a> \_config.yml file is not picked up by Jekyll
+If you see output like that below with `Configuration file: none`,
+the most likely cause is that the [Docker data volume][docker-volume], which exposes the Jekyll site on your local file
+system to the Docker container, is configured incorrectly.
+
+```text
+Configuration file: none
             Source: /src
        Destination: /src/_site
       Generating...
-                    done.
- Auto-regeneration: enabled for / src
-Configuration file: /src/_config.yml
-    Server address: http://0.0.0.0:4000/
-  Server running... press ctrl-c to stop.
 ```
 
-Leave this console window open and edit your site. After saving a file, it will be
-automatically regenerated by Jekyll, and you can see the changes by refreshing the
-page in your web browser.
+Verify that the Jekyll site is located in a directory which is exposed via VirtualBox shared folders, e.g. `C:\Users`.
+See the [Prerequisites](#prerequisites) for additional information.
+
+[docker-volume]: https://docs.docker.com/userguide/dockervolumes/
+
+## <a name="resources"></a>Resources
+
+* [Jekyll Documentation](https://jekyllrb.com/docs/home/)
+* [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
