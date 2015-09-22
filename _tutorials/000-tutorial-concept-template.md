@@ -2,28 +2,27 @@
 Markdown syntax: http://daringfireball.net/projects/markdown/
 -->
 
-# Reference name
+# Tutorial name
 
 <!--
-Limit references to a single idea or concept. Choose a name that accurately describes the content. For example: 
+Limit concept-based tutorials to a single idea or concept. Choose a name that accurately describes the content. For example: 
 
 # Docker 101
 # Advanced Docker
 -->
 
-This reference describes <x> so that you can <y>.
+This tutorial describes *x* so that you can *y*.
 
 <!--
-Give a brief summary of what this reference describes and why it matters. For example:
+Give a brief summary of what this tutorial describes and why it matters. For example:
 
 "This tutorial describes Docker basics: what Docker is and how to start using it."
-"This tutorial demonstrates how to remove containers without deleting system-critical containers."
 -->
 
 ## Prerequisites
 
 <!--
-List any prerequisites. Indicate a level of mastery where possible. 
+List any prerequisites. Indicate a level of mastery where possible. Prerequisites might not be relevant for a concept-based tutorial.
 
 * Comfortable entering basic commands in a CLI
 * Basic understanding of network protocols
@@ -43,7 +42,7 @@ Understanding this concept will help you understand the next concept.
 
 ### Next concept
 
-Continue explaining concepts until you've adequately covered the tightly-scoped idea covered by this tutorial or reference.
+Continue explaining concepts until you've adequately covered the tightly scoped idea covered by this tutorial.
 -->
 
 ## Resources
@@ -52,7 +51,7 @@ Continue explaining concepts until you've adequately covered the tightly-scoped 
 * Links to related and supporting content
 -->
 
-## Next Steps
+## Next
 
 <!--
 * What should your audience read next?
