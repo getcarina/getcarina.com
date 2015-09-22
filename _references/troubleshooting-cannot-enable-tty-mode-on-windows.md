@@ -1,5 +1,6 @@
 ---
 title: Error running interactive Docker shell on Windows
+permalink: /docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
 topics:
   - docker
   - troubleshooting
