@@ -48,6 +48,10 @@ List steps in numbered order. Limit steps to a single action.
 
 3. Do this other thing.
 
+4. Clean up.
+
+    Provide instructions on how to remove the containers and images created in this tutorial. After multiple tutorials, cruft will build up in their cluster(s) and may cause problems in other tutorials.
+
 Conclude with a brief description of the end state.
 -->
 
