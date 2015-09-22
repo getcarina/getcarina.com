@@ -20,7 +20,9 @@ If a piece of content requires a diagram, follow these steps.
 
 1. Draw or sketch the diagram. You can create a hand-sketch, or create a rough diagram
    using Draw.io. The sketch or diagram does not have to be a work of art. It must simply
-   display the process or relationship you wish to convey.
+   display the process or relationship you wish to convey. For more tips on creating diagrams,
+   see the ![Diagram standards and practices](https://one.rackspace.com/display/devdoc/Diagram+standards+and+practices) on the
+   Rackspace wiki.
 
 2. Save your diagram or sketch, and email the file to nate.archer@rackspace.com.
    Nate will triage the diagram and ensure that diagram meets visual standards.
