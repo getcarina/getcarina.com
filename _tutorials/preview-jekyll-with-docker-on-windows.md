@@ -23,8 +23,7 @@ you do not need to install Ruby or Jekyll on your local machine.
 ## <a name="prerequisites"></a> Prerequisites
 * [Docker Toolbox][docker-toolbox]
 * An existing Jekyll site on your local file system. If you do not have
-  an existing site, a good way to get started quickly is to download is download the
-  [Jekyll Example Project][jekyll-example] or a [Jekyll theme][jekyll-themes].
+  an existing site, a good way to get started quickly is to download a [Jekyll theme][jekyll-themes].
 
     You must place your site in a sub-directory of **C:\Users**,
     though it can be more deeply nested, for example, **C:\Users\myuser\repos\my-site**.
@@ -33,7 +32,6 @@ you do not need to install Ruby or Jekyll on your local machine.
     you must manually share it with the Docker host by using VirtualBox.
 
 [docker-toolbox]: https://www.docker.com/toolbox
-[jekyll-example]: https://github.com/jekyll/example
 [jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
 
 ## <a name="steps"></a> Steps
