@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="log-management" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="34px" height="34px" viewBox="0 0 34 34" enable-background="new 0 0 34 34" xml:space="preserve">
+<path d="M32,2H2v30h30V2z M0,0h34v34H0V0z M20,20h1v1h-1V20z M20,18h1v1h-1V18z M20,16h1v1h-1V16z M20,22h1v1h-1V22z M16.414,12H17
+	V9h-6v1h3.414L16.414,12z M10,10V8h4V6h8.414L28,11.586V24h-4v-1h3V13h-3.586L24,13.586V26h-4v-1h3V15h-3.586L20,15.586V28H6V10H10z
+	 M15,8h3.414l2,2H21V7h-6V8z M22,11.586L22.414,12H27l-5-5V11.586z M18.414,14H23l-5-5v4.586L18.414,14z M9,14h4v-3H7v16h12V17H9v-1
+	h4v-1H9V14z M14,11v5h5L14,11z M9,22h8v1H9V22z M9,20h8v1H9V20z M9,18h8v1H9V18z M9,24h8v1H9V24z M24,20h1v1h-1V20z M24,14h1v1h-1
+	V14z M24,16h1v1h-1V16z M24,18h1v1h-1V18z"/>
+</svg>

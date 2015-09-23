@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="ssd-hard-drive" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="34px" height="24px" viewBox="0 0 34 24" enable-background="new 0 0 34 24" xml:space="preserve">
+<path d="M32,12c0,0.553,0.447,1,1,1h1v11H0V0h34v11h-1C32.447,11,32,11.447,32,12z M30,12c0-1.307,0.834-2.418,2-2.829V2H8v20h24
+	v-7.171C30.834,14.418,30,13.307,30,12z M2,17h3v2H2v3h5V2H2v3h3v2H2v2h3v2H2v2h3v2H2V17z M14,12l6-7h8l-6,5h3l-6,4h3l-10,6l4-4h-3
+	l4-4H14z"/>
+</svg>

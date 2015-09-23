@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="alert-circle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<path d="M16,2C8.268,2,2,8.268,2,16s6.268,14,14,14s14-6.268,14-14S23.732,2,16,2z M32,16c0,8.836-7.163,16-16,16S0,24.836,0,16
+	C0,7.162,7.163,0,16,0S32,7.162,32,16z M13.656,23.094c0-1.295,1.049-2.344,2.344-2.344s2.344,1.049,2.344,2.344
+	S17.295,25.438,16,25.438S13.656,24.389,13.656,23.094z M13.656,8.906c0-1.295,1.049-2.344,2.344-2.344s2.344,1.049,2.344,2.344
+	v8.188c0,1.295-1.049,2.344-2.344,2.344s-2.344-1.049-2.344-2.344V8.906z"/>
+</svg>

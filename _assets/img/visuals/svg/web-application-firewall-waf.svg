@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="web-application-firewall-waf" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="49px" height="21px" viewBox="0 0 49 21" enable-background="new 0 0 49 21" xml:space="preserve">
+<path d="M31,10V3.87c-1.886-0.108-3.508-0.503-4.748-0.921c-0.707-0.238-1.299-0.486-1.752-0.697
+	c-0.453,0.211-1.045,0.459-1.752,0.697C21.508,3.367,19.886,3.762,18,3.87V10h3.673l2.27-5.188l1.5,8L26.673,10H31z M18,11.199
+	c0,4.527,4.762,6.937,6.5,7.662c1.738-0.726,6.5-3.135,6.5-7.662V11h-3.673l-2.27,5.188l-1.5-8L22.327,11H18V11.199z M0,4h16V1.867
+	C20.959,2.188,24.5,0,24.5,0s3.541,2.188,8.5,1.867V4h16v13H30.688c-2.517,2.815-6.188,4-6.188,4s-3.672-1.185-6.188-4H0V4z M42,6
+	h-9v4h9V6z M16,6H7v4h9V6z M2,6v4h4V6H2z M2,15h10v-4H2V15z M13,15h3.92C16.355,13.904,16,12.643,16,11.199V11h-3V15z M32.08,15H36
+	v-4h-3v0.199C33,12.643,32.645,13.904,32.08,15z M47,15v-4H37v4H47z M47,10V6h-4v4H47z"/>
+</svg>

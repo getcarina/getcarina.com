@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="calendar-large" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="38px" height="34px" viewBox="0 0 38 34" enable-background="new 0 0 38 34" xml:space="preserve">
+<path d="M38,0v34H0V0H38z M2,12h34V2H2V12z M32,28v4h-1v-4h-4v4h-1v-4h-4v4h-1v-4h-4v4h-1v-4h-4v4h-1v-4H7v4H6v-4H2v4h34v-4H32z
+	 M32,17h4v-4h-4V17z M27,17h4v-4h-4V17z M22,17h4v-4h-4V17z M17,17h4v-4h-4V17z M12,17h4v-4h-4V17z M7,17h4v-4H7V17z M2,17h4v-4H2
+	V17z M6,23H2v4h4V23z M11,23H7v4h4V23z M16,23h-4v4h4V23z M21,23h-4v4h4V23z M26,23h-4v4h4V23z M31,23h-4v4h4V23z M36,23h-4v4h4V23z
+	 M32,22h4v-4h-4V22z M27,22h4v-4h-4V22z M22,22h4v-4h-4V22z M17,22h4v-4h-4V22z M12,22h4v-4h-4V22z M7,22h4v-4H7V22z M2,22h4v-4H2
+	V22z"/>
+</svg>
