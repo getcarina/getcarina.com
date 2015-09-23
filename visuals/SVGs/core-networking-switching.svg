@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="core-networking-switching" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="45px" height="21px" viewBox="0 0 45 21" enable-background="new 0 0 45 21" xml:space="preserve">
-<path d="M43,19V2H2v17H43z M0,0h45v21H0V0z M39,13H28v3h11V13z M17,5H6v3h11V5z M17,13H6v3h11V13z M39,5H28v3h11V5z M22.502,11.117
-	L18.538,14h7.927L22.502,11.117z M22.502,9.881L26.463,7h-7.922L22.502,9.881z M18,13.154l3.651-2.656L18,7.842V9h-5.998v3h-1V9H5V4
-	h13l0.002,2h9L27,4h13v5h-5.998v3h-1V9H27l0.001-1.156l-3.649,2.654l3.649,2.654L27,12h13v5H27l0.002-2h-9L18,17H5v-5h13V13.154z"/>
-</svg>

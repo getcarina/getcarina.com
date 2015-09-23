@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="alert-triangle" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="32px" height="27.713px" viewBox="0 0 32 27.713" enable-background="new 0 0 32 27.713" xml:space="preserve">
-<path d="M28.535,25.713L16,4L3.464,25.713H28.535z M16,0l16,27.713H0L16,0z M14.5,18.213v-6c0-0.828,0.672-1.5,1.5-1.5
-	s1.5,0.672,1.5,1.5v6c0,0.828-0.672,1.5-1.5,1.5S14.5,19.041,14.5,18.213z M14.5,22.213c0-0.828,0.672-1.5,1.5-1.5
-	s1.5,0.672,1.5,1.5s-0.672,1.5-1.5,1.5S14.5,23.041,14.5,22.213z"/>
-</svg>

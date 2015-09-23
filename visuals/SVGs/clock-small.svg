@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="clock-small" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="22px" height="22px" viewBox="0 0 22 22" enable-background="new 0 0 22 22" xml:space="preserve">
-<path d="M11,2c-4.971,0-9,4.029-9,9s4.029,9,9,9s9-4.029,9-9S15.971,2,11,2z M0,11C0,4.924,4.926,0,11,0c6.076,0,11,4.924,11,11
-	c0,6.074-4.924,11-11,11C4.926,22,0,17.074,0,11z M16,12h-6V4h2v6h4V12z"/>
-</svg>
