@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="power" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
-<path d="M16,0C7.163,0,0,7.162,0,16c0,8.836,7.163,16,16,16s16-7.164,16-16C32,7.162,24.837,0,16,0z M2,16C2,8.268,8.268,2,16,2
-	c3.728,0,7.105,1.465,9.614,3.84l-12.839,7.793l3.316,0.326L9.246,19.51l3.316,0.326l-6.431,6.092C3.58,23.393,2,19.881,2,16z
-	 M16,30c-3.728,0-7.105-1.467-9.614-3.842l12.839-7.791l-3.316-0.326l6.846-5.551l-3.316-0.326l6.431-6.092
-	C28.42,8.607,30,12.119,30,16C30,23.732,23.732,30,16,30z"/>
-</svg>
