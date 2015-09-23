@@ -144,7 +144,7 @@ Refresh the page in your web browser to see your changes.
 [jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
 
 ## <a name="troubleshooting"></a>Troubleshooting
-You might encounter the following issues when running the preview script.
+You might encounter the following issue when running the preview script.
 
 ### <a name="troubleshooting-missing-config"></a> The \_config.yml file is not picked up by Jekyll
 If you see output as follows where the configuration file is none,
