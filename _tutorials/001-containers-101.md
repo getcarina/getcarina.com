@@ -68,7 +68,7 @@ achieve the same effect. The `-t` flag assigns a pseudo-tty, or terminal, inside
 
 After you run this command, you will be in your new container.
 You can perform the following actions while you are
-inside the container to become familiary with running commands inside a containerized environment:
+inside the container to become familiarity with running commands inside a containerized environment:
 
  * `uname -a` returns certain system information. The appended `-a` prints all information.
  * `hostname` displays the host name.
