@@ -19,7 +19,7 @@ Each article will have it's own folder within the `_assets/img` directory.
 If a piece of content requires a diagram, follow these steps.
 
 1. Draw or sketch the diagram. You can create a hand-sketch, or create a rough diagram
-   using Draw.io. The sketch or diagram does not have to be a work of art. It must simply
+   using ![Draw.io](https://www.draw.io/). The sketch or diagram does not have to be a work of art. It must simply
    display the process or relationship you wish to convey. For more tips on creating diagrams,
    see the ![Diagram standards and practices](https://one.rackspace.com/display/devdoc/Diagram+standards+and+practices) on the
    Rackspace wiki.
@@ -29,7 +29,15 @@ If a piece of content requires a diagram, follow these steps.
 
 3. Afterward the diagram has undergone triage, Nate will send the edited file
    back. With the new diagram in your possession, go ahead an place the file into the
-   `_assets/img` directory for your article.
+   `_assets/img{name of article]` directory for your article. Be sure to save two versions 
+   of the file in the directory, one `.svg` file, and one `.xml` file. This will allow any future 
+   contributors to edit the file.
+
+## Visuals
+
+In `assets/img/visuals/` are Rackspace created stencils that can be used in the creation of diagrams. 
+While there are currently no container specific stencils, the directory contains several "generic" stencils,
+which can be used to represent container items. 
 
 ## Github workflow
 
@@ -51,7 +59,7 @@ If a piece of content requires a diagram, follow these steps.
 
 ## Technical Review
 
-After pushing your content to GitHub, do not merge it by yourself. Your content will be merged after it has been edited and undergone a technical review.
+After pushing your content to GitHub, do not merge it by yourself. Your content will be merged after it has been edited and undergone a techical review.
 
 After committing your changes and pushing them to GitHub, the content will be reviewed by @rackerlabs/rcs-technical-review.
 
