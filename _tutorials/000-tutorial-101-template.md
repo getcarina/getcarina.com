@@ -39,8 +39,6 @@ List any prerequisites. What must users have or do in order to get started?
 It's OK to omit prerequisites if fulfilling them is part of your tutorial. For example, Docker 101 might include steps for downloading and installing the latest version of Docker.
 -->
  
-## Concept detail n (basically however many sections you need to logically explain the idea, using one extra level of heading as needed in each main section
- 
 ## Steps
 
 <!--
@@ -53,6 +51,12 @@ A single numbered list might be impractical for topics with a good amount of sup
 * Identify the main steps with H2-level headings. 
 
     Omit numbering from headings. For example: "Install the latest version of Docker" is OK. "Step One: Install ..." is not OK.
+
+    Include as many sections as needed to logically explain the idea. 
+
+* Limit subheadings to H3.
+
+    Headings requiring further depth deserve their own tutorial. Create a separate tutorial, then link to it.
 
 * In each section, provide a numbered list of substeps.
 
