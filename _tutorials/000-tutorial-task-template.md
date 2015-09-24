@@ -13,7 +13,7 @@ Choose a name that accurately describes the task. For example:
 # Remove containers without deleting Swarm
 -->
 
-This tutorial describes <x> so that you can <y>.
+This tutorial describes *x* so that you can *y*.
 
 <!--
 Give a brief summary of what this tutorial describes and why it matters. For example:
