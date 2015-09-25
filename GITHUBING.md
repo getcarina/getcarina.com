@@ -23,4 +23,35 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 
 	  git pull --rebase upstream master
 
-**Note** Make sure to create a separate branch for each separate pull request by typing `git checkout -b <new branch>`
+5. Create a branch to make a change
+
+    git checkout -b <name-of-branch>
+
+6. Add all files relevant to the change
+
+    git add .
+
+7. Commit the changed files
+
+    git commit -m "The reason for my change"
+
+8. Push your branch to your fork
+
+    git push -u origin <name-of-branch>
+
+9. Create a pull request (PR) to the upstream repo for your branch
+
+    Go to https://github.com/my-github-username/docs-container-service
+    Include a link to the GitHub issue in the comment if relevant
+
+10. Notify rcs-tech a PR is ready for [Tech Review](CONTRIBUTING.md#technical-review)
+
+11. Make updates to your PR by adding more commits
+
+    git add .
+    git commit -m "The reason for my update"
+    git push
+
+12. When the tech review is complete, it's time for the [Editorial Review](CONTRIBUTING.md#editorial-review)
+
+13. When the Editorial Review is complete, [Merge It](CONTRIBUTING.md#merge-it)
