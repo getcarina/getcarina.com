@@ -33,22 +33,9 @@ In `assets/img/visuals/` are Rackspace created stencils that can be used in the 
 While there are currently no container specific stencils, the directory contains several "generic" stencils,
 which can be used to represent container items.
 
-## Github workflow
+## Github Workflow
 
-1. Fork from rackerlabs/docs-container-service.
-2. Clone the repo by typing
-
-    `git clone (*url for your fork*)`
-
-3. CD to your repo and type:
-
-    `git remote add --track master upstream git@github.com:rackerlabs/docs-container-service.git`
-
-4. To bring your master branch up-to-date with upstream type:
-
-	 `git pull --rebase upstream master`
-
-**Note** Make sure to create a separate branch for each separate pull request by typing `git checkout -b <new branch>`
+To follow the GitHub workflow for this repo go to [GITHUBING.md](GITHUBING.md).
 
 ## The Merge Process
 
