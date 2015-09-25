@@ -11,40 +11,40 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 1. Fork from https://github.com/rackerlabs/docs-container-service
 
 2. Clone your fork of the repo using the SSH clone URL
-```bash
-git clone git@github.com:my-github-username/docs-container-service.git
-```
+    ```bash
+    git clone git@github.com:my-github-username/docs-container-service.git
+    ```
 
 3. Track the upstream repo
-```bash
-cd docs-container-service
-git remote add --track master upstream git@github.com:rackerlabs/docs-container-service.git
-```
+    ```bash
+    cd docs-container-service
+    git remote add --track master upstream git@github.com:rackerlabs/docs-container-service.git
+    ```
 
 4. Bring your branch up-to-date with upstream
-```bash
-git pull --rebase upstream master
-```
+    ```bash
+    git pull --rebase upstream master
+    ```
 
 5. Create a branch to make a change. If you'd like to see some lovely graphics, this step is the start of the [Understanding the GitHub Flow](https://guides.github.com/introduction/flow/index.html) guide.
-```bash
-git checkout -b <name-of-branch>
-```
+    ```bash
+    git checkout -b <name-of-branch>
+    ```
 
 6. Add all files relevant to the change
-```bash
-git add .
-```
+    ```bash
+    git add .
+    ```
 
 7. Commit the changed files
-```bash
-git commit -m "The reason for my change"
-```
+    ```bash
+    git commit -m "The reason for my change"
+    ```
 
 8. Push your branch to your fork
-```bash
-git push -u origin <name-of-branch>
-```
+    ```bash
+    git push -u origin <name-of-branch>
+    ```
 
 9. Create a pull request (PR) to the upstream repo for your branch
 
@@ -55,11 +55,11 @@ git push -u origin <name-of-branch>
 10. Notify rcs-tech a PR is ready for [Tech Review](CONTRIBUTING.md#technical-review)
 
 11. Make updates to your PR by adding more commits
-```bash
-git add .
-git commit -m "The reason for my update"
-git push
-```
+    ```bash
+    git add .
+    git commit -m "The reason for my update"
+    git push
+    ```
 
 12. When the tech review is complete, it's time for the [Editorial Review](CONTRIBUTING.md#editorial-review)
 
@@ -70,11 +70,11 @@ git push
 14. When the Editorial Review is complete and the button is green, [Merge It](CONTRIBUTING.md#merge-it)!
 
 15. Update your repo
-```bash
-git checkout master
-git pull --rebase upstream master
-git push
-```
+    ```bash
+    git checkout master
+    git pull --rebase upstream master
+    git push
+    ```
 
 ## Tips and Tricks
 
