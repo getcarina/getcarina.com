@@ -22,7 +22,7 @@ This tutorial describes *x* so that you can *y*.
 <!--
 Give a brief summary of what this tutorial introduces and why it matters. For example:
 
-"This tutorial describes what Docker is, why it's awesome, and how to start using it."
+"This tutorial describes what Docker is and how to start using it."
 "These resources will help you get started with containers and networking."
 -->
  
@@ -83,7 +83,7 @@ A single numbered list might be impractical for topics with a good amount of sup
 * Links to related content
 -->
 
-## Next Steps
+## Next steps
 
 <!--
 * What should your audience read next?
