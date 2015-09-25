@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="plugin-small" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="14px" height="18px" viewBox="0 0 14 18" enable-background="new 0 0 14 18" xml:space="preserve">
-<path d="M3,11v2h3v3h2v-3h3v-2H8V8H6v3H3z M3,6c2.597,0,3.521-1.217,1.83-2.9C4.508,2.777,4.316,2.381,4.316,1.951
-	C4.316,0.873,5.518,0,7,0s2.684,0.873,2.684,1.951c0,0.43-0.191,0.826-0.514,1.148C7.479,4.783,8.403,6,11,6h3v12H0V6H3z"/>
-</svg>
