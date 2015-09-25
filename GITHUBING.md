@@ -23,4 +23,14 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 
 	  git pull --rebase upstream master
 
-**Note** Make sure to create a separate branch for each separate pull request by typing `git checkout -b <new branch>`
+5. Create a branch to make a change
+
+    git checkout -b <new branch>
+
+6. Add all files relevant to the change
+
+    git add .
+
+7. Commit the changed files
+
+    git commit -m "The reason for my change"
