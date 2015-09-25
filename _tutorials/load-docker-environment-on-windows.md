@@ -65,7 +65,8 @@ work with .NET objects, instead of raw text. It is distributed with all versions
 
 ### <a name="bash"></a> Bash
 [Bash][bash-doc] is a Unix shell, installed with [Git for Windows][git-for-windows],
-which is included with Docker Toolbox.
+which is included with Docker Toolbox. If you are using Bash with Cygwin,
+the Docker environment setup remains the same.
 
 **Note:** Even when running on Windows, Bash uses Unix paths and is case-sensitive. For example,
 the Windows path **C:\Users\Bob** would be translated to the Unix path **/C/Users/Bob**.
