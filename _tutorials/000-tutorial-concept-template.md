@@ -1,11 +1,7 @@
-<!--
-Markdown syntax: http://daringfireball.net/projects/markdown/
--->
-
 # Tutorial name
 
 <!--
-Limit concept-based tutorials to a single idea or concept. Choose a name that accurately describes the content. For example: 
+Limit concept-based tutorials to a single idea or concept. Choose a name that accurately describes the content. For example:
 
 # Docker 101
 # Advanced Docker
