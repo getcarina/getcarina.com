@@ -26,7 +26,7 @@ This article provides some possible workarounds.
 * [Use PowerShell](#powershell)
 * [Use an alternative terminal](#other-terminals)
 
-## <a name="ssh"></a> Use SSH to connect to the Docker host
+### <a name="ssh"></a> Use SSH to connect to the Docker host
 Continuing in Git Bash, use the `docker-machine ssh` command to connect to the Docker host,
 and then start an interactive shell:
 
@@ -48,7 +48,7 @@ and then start an interactive shell:
     docker exec --interactive --tty test sh
     ```
 
-## <a name="cmd-with-bash"></a> Use the CMD terminal with the Bash shell
+### <a name="cmd-with-bash"></a> Use the CMD terminal with the Bash shell
 Switch to the CMD terminal with the Bash shell, which is similar to using Git Bash.
 
 1. Run the following commands, which start a Bash shell and then loads the Docker environment named `default`.
@@ -65,7 +65,7 @@ Switch to the CMD terminal with the Bash shell, which is similar to using Git Ba
     docker run --interactive --tty ubuntu sh
     ```
 
-## <a name="cmd"></a>Use the CMD terminal with the Windows shell
+### <a name="cmd"></a>Use the CMD terminal with the Windows shell
 Switch to the CMD terminal with the standard Windows shell.
 
 1. Run the following command, copy the output, and then paste it into the command prompt.
@@ -82,7 +82,7 @@ Switch to the CMD terminal with the standard Windows shell.
     docker run --interactive --tty ubuntu sh
     ```
 
-## <a name="powershell"></a> Use PowerShell
+### <a name="powershell"></a> Use PowerShell
 
 1. Run the following command to load the Docker environment named `default`.
   If you are working with a different Docker environment, replace `default` with the appropriate name.
@@ -97,7 +97,7 @@ Switch to the CMD terminal with the standard Windows shell.
     docker run --interactive --tty ubuntu sh
     ```
 
-## <a name="other-terminals"></a>Use an alternative terminal
+### <a name="other-terminals"></a>Use an alternative terminal
 Use an alternative terminal, such as [ConEmu][conemu] or [ConsoleZ][consolez] and your preferred shell (Bash, CMD, or PowerShell).
 
 [run-shell-docs]: https://docs.docker.com/articles/basics/#running-an-interactive-shell
