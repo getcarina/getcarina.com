@@ -4,7 +4,7 @@ This is a [Jekyll](http://jekyllrb.com/) repo housing documentation and tutorial
 
 ## Writing
 
-The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, `_assets`, and `_references`, respectively.
+The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_references`. The `_assets` file contains images for the content.
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
@@ -14,9 +14,33 @@ Create new tutorials for concepts: `/_tutorials/000-tutorial-concept-template.md
 
 There's also a template for 101-style articles: `/_tutorials/000-tutorial-101-template.md`
 
+Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
+
+- Use [sentence-style capitalization for titles and headings](https://one.rackspace.com/display/devdoc/Titles+and+headings#Titlesandheadings-Capitalizationoftitlesandheadings)
+- Use [consistent text formatting](https://one.rackspace.com/display/devdoc/Text+formatting)
+- Use [active voice](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Useactivevoice)
+- Use [present tense](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Usepresenttense)
+- Write [clear and consistent step text](https://one.rackspace.com/display/devdoc/Tasks+and+procedures)
+
+A few specific guidelines for container content:
+
+- For the first-level headings in an article, use the H3 level (designated by 3 hash marks). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles. 
+
+- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`.
+
+- Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
+ 
+For terminology usage related to container content, see `<termsFileComingSoon>`.  
+
+## Legal
+
+Do not use the name Docker in any public facing repositories. Docker is a trademark and should be used only when referring to the tools produced by Docker. Do *not* include the name Docker in the name of anything that you create.
+
+For an example how Docker responds when someone uses their name in an unauthorized way, see https://github.com/j-bennet/wharfee/issues/89.  
+
 ## Images
 
-If a piece of content requires an image, place the image in `_assets/img/[name of article]`. Each article will have it's own folder within the `_assets/img` directory.
+If a piece of content requires an image, place the image in `_assets/img/<articleName>`. Each article will have it's own folder within the `_assets/img` directory.
 
 ## Diagrams
 
@@ -26,7 +50,7 @@ If a piece of content requires a diagram, follow these steps.
 
 2. Save your diagram in Draw.io by clicking **File**>**Export as**>**SVG** or take a picture of you sketch. Send the saved `.svg` file or the picture to nate.archer@rackspace.com. Nate will either triage the diagram, or create a diagram based off of your sketch.
 
-3. Afterward the diagram has undergone triage, Nate will send the edited file back. With the new diagram in your possession, go ahead an place the file into the `_assets/img/[name of article]` directory for your article. Be sure the you are saving the file as `.svg` file.
+3. Afterward the diagram has undergone triage, Nate will send the edited file back. With the new diagram in your possession, go ahead an place the file into the `_assets/img/<articleName>` directory for your article. Be sure the you are saving the file as `.svg` file.
 
 ## Visuals
 
