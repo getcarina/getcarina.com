@@ -43,13 +43,16 @@ Docker container running.
     ```
     If the first time you run the `kill` command doesn't work, you can use a signal to send a more specific `kill` command. Appending the `-9` signal sends a non-catchable, non-ignorable `kill`.
 
-3. After ending the `docker run` command, find the running container and stop it
-   by using the `rm` command shown earlier:
+3. After ending the `docker run` command, find the non-responsive container using `docker ps`.
 
     ```
     $ docker ps
     CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS              PORTS                        NAMES
     2894da59f72e        whoa/tiny:latest         "/whoa"                6 minutes ago       Up 5 minutes        8080/tcp                     7b0948a3-d660-465a-b32d-5051c25184ba-n2/grave_colden
+    ```
+4. Stop the identified container using the `docker rm` command shown earlier:
+
+    ```
     $ docker rm -fv 2894da59f72e
     2894da59f72e
     ```

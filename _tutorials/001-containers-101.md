@@ -37,12 +37,12 @@ that works on a developer’s system will work the same way on any system.
 
 ###How to create a container
 
-Before you can create and start working with containers, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in Docker 101. <!--link to Docker 101-->
+Before you can create and start working with containers, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](001-docker-101.md). <!--link to our site's Docker 101-->
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
 
-Build a Docker host by running the following command:
+Build a Docker host by running the following command, choosing anything you want for <dockerHostName>:
 
 `docker-machine create --driver virtualbox <dockerHostName>`
 
@@ -66,14 +66,23 @@ Most of the time, you won't see `--interactive` and `--tty` spelled out.
 You can use the shortened versions, `-it` or `-i -t`, to
 achieve the same effect. The `-t` flag assigns a pseudo-tty, or terminal, inside your new container. The `-i` flag creates an interactive connection by getting the standard input (`STDIN`) of the container.
 
-After you run this command, you will be in your new container.
-You can perform the following actions while you are
-inside the container to become familiarity with running commands inside a containerized environment:
+After you run this command, you prompt changes and you are in your new container. Example:
+`root@b6734565b373:/# `
+You can perform the following actions while you are inside the container to become familiar with running commands inside a containerized environment:
 
- * `uname -a` returns certain system information. The appended `-a` prints all information.
- * `hostname` displays the host name.
+ * `uname -a` returns certain system information. The appended `-a` prints all information. Example output:
+   `Linux b6734565b373 4.0.9-boot2docker #1 SMP Thu Aug 13 03:05:44 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux`
+ * `hostname` displays the host name. Example output:
+   `b6734565b373`
  * `ps` displays the currently running processes associated with the current user and terminal session.
+   Example output:
+
+   ```
+      PID TTY          TIME CMD
+        1 ?        00:00:00 bash
+       19 ?        00:00:00 ps
+   ```
 
 **Note**: This is not an exhaustive list of actions that you can perform while inside a container.
 
-To exit out of the container, run `exit`.
+To exit out of the container, run `exit`. Your prompt returns to the previous prompt.
