@@ -47,8 +47,7 @@ CMD, perform the following steps:
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-<!-- TODO: REPLACE WITH REAL URL -->
-[get-cluster-creds]: http://todo
+[get-cluster-creds]: /docs/references/rcs-credentials/
 
 ### <a name="powershell"></a> PowerShell
 [PowerShell][powershell-doc] is built on the Microsoft .NET and is designed to
