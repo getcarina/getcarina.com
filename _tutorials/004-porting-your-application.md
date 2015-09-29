@@ -8,14 +8,14 @@ topics:
 ---
 By now you're beginning to understand Docker and how it can benefit your workflow and deployments. This tutorial walks you through porting an existing Rails application, including the Rails app itself along with PostgreSQL, Redis, and Sidekiq workers, to Docker and Rackspace Cloud Files.
 
-## Prerequisites
+### Prerequisites
 
 This tutorial leverages the following tools:
 
 * [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
 * [PostgreSQL](http://www.postgresql.org/) - Standard database
-* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media store
-* [Redis](http://redis.io/) - Key-value store for Sidekiq
+* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media storage
+* [Redis](http://Redis.io/) - Key-value store for Sidekiq
 * [Sidekiq](http://sidekiq.org/) - Background job processor
 
 This tutorial assumes this software and knowledge exists:
@@ -24,7 +24,7 @@ This tutorial assumes this software and knowledge exists:
 * Existing Rails app above version 2.0 with a Gemfile
 * Knowledge of Ubuntu commands and systems
 
-## Steps
+### Steps
 
 1. Create a Dockerfile.
 
@@ -124,9 +124,9 @@ This example uses Rackspace's Cloud Files service to store static assets. Rails 
 1. Go to [http://mycluster.rackspace.com](http://mycluster.rackspace.com).
 1. Create a new cluster.
 1. After a moment or two, refresh the page. You should see a series of icons that you can use to download your cluster credentials.
-1. Download these credentials in a <clustername>.zip file.
+1. Download these credentials in a clusterName.zip file.
 1. Extract them to a `RAILS_ROOT/amphora` folder so that the following
-script can call amphora/docker.env.
+script can call `amphora/docker.env`.
 1. Create a script named `RAILS_ROOT/bin/launch_cluster` and add the following code to it:
 
 
@@ -289,15 +289,34 @@ bootstrap() {
 bootstrap
 ```
 
-1. Edit the script so that 
 1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
 1. Run `RAILS_ROOT/bin/launch_cluster`
 
-Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages.
+Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see:
+
+```
+Tasks: TOP => environment
+(See full trace by running task with --trace)
+Error response from daemon: Container web1 not found
+Error: failed to remove containers: [web1]
+26a6f467804d575ba6dbe07a09ef434f393173bc5add5f61a3ad83f49ef4f2ae
+Error response from daemon: Container web2 not found
+Error: failed to remove containers: [web2]
+f2e8346d572337b74947deeef635cdc401e4a0972a4941a75098ae71d6932e7b
+Error response from daemon: Container web3 not found
+Error: failed to remove containers: [web3]
+3c8ce5d987eb9a5dd5e1c3da58654e18dff83a2c9a3f9fc4f1d268ae898251c2
+Error response from daemon: Container web4 not found
+Error: failed to remove containers: [web4]
+42cb1f3514202d24d5ac8d28c4b50dd0d4424ce5c5cf34ba86965321dc3fb8be
+Error response from daemon: Container web5 not found
+Error: failed to remove containers: [web5]
+8233af59a1a632a0e3325bdba2a51356d0b929b35e889013469f1e095c21f10f
+```
 
 5. Add the cluster IP address to your host file.
 1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
-1. Edit the /etc/hosts file to add the cluster IP address. Following is an example of the line to add: `104.130.0.17 test.com`
+1. Edit the `/etc/hosts` file to add the cluster IP address. Following is an example of the line to add: `104.130.0.17 test.com`
 
 6. Launch the Rails application.
 After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
@@ -305,7 +324,21 @@ After updating your `/etc/hosts` file, simply navigate to `test.com` in your bro
 7. Monitor the cluster's performance.
 Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the username is `stats` and the password is `interlock`.
 
-## Troubleshooting
+### Troubleshooting
 
 * If you get a permissions error when running `bin/launch_cluster`, make sure you have made the script executable with a chmod command.
 * If you get a syntax error when running `bin/launch_cluster`, ensure you have copied and pasted the entire script from above, ending with bootstrap.
+* If your Rails application isn't displayed after running the migration script, check for any errors in the docker logs for each container.
+
+### Resources
+
+* [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
+* [PostgreSQL](http://www.postgresql.org/) - Standard database
+* [Rackspace Cloud Files](https://developer.rackspace.com/docs/cloud-files/getting-started/) - Media storage
+* [Redis](http://redis.io/) - Key-value store for Sidekiq
+* [Sidekiq](http://sidekiq.org/) - Background job processor
+
+### Next Steps
+
+Try another tutorial or migrate another Rails app.
+
