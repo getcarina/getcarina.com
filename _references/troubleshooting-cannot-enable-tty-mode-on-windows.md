@@ -8,7 +8,7 @@ topics:
 ---
 
 When you try to run an interactive shell on a Docker container via the Windows
-Docker client, as shown in the following example, you may receive the following error message:
+Docker client, as shown in the following example, you might receive the following error message:
 
 ```bash
 $ docker run --interactive --tty ubuntu sh
@@ -16,7 +16,7 @@ cannot enable tty mode on non tty input
 ```
 
 This error is caused by the Git Bash terminal, MinTTY, because it does not have full support for TTY.
-Cygwin users may also encounter this problem.
+Cygwin users might also encounter this problem.
 
 This article provides some possible workarounds.
 
