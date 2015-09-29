@@ -81,3 +81,4 @@ This tutorial covers how to install and set up Docker with Linux distributions l
     For more examples and ideas, visit:
      https://docs.docker.com/userguide/
    ```
+   > If `docker run hello-world` fails, try entering the command `sudo service docker start`. This will start `docker`, and allow you to run any `docker` commands.
