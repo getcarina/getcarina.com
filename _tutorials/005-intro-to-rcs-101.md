@@ -22,12 +22,27 @@ topics:
 * Enables you to quickly go from zero to a running appliation 
  
 ##Before you get started##
+Before you get started with Rackspace Container Service, you should do the following:
+
+* Ensure that your Rackspace Cloud account is enabled for Rackspace Container Services.
+* Familiarize yourself with basic Docker concepts. Read the `Docker documentation`_.
+* Install the Docker client on your computer:
+  * For instructions on how to install the Docker client on a Macintosh computer, see (link to Docker 101)
+  * For instructions on how to install the Docker client on a Windows computer, see (link to Docker for Windows content)
+* If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2. 
+
+.. _Docker documentation https://docs.docker.com/
+
 ###System Requirements###
+
 ####Install Docker Client###
 
 ##Quickstart Guide##
+
 ##Getting Started (Detailed)##
+
 ##Best Practices##
+
 ###Requirements and Restrictions###
 ###Gotchas###
 ##Frequently Asked Questions##
