@@ -32,7 +32,7 @@ specified port published. To resolve this error, you must either [use another po
 [remove the container(s) which are using the port](#remove-container), or
 [add capacity to the cluster](#grow-cluster).
 
-## <a name="remove-container"></a> Remove container using the port
+### <a name="remove-container"></a> Remove container using the port
 1. Run the following command, changing **{port}** to the desired port number,
     to identify the container(s) which are using the port.
 
@@ -51,7 +51,7 @@ specified port published. To resolve this error, you must either [use another po
 
 You can now run your container using the desired port.
 
-## <a name="alternate-port"></a> Publish to an alternate port
+### <a name="alternate-port"></a> Publish to an alternate port
 Use the `--publish` flag to publish the container to an alternate port on the Docker host. For example,
 if the container exposes port 80 and you have selected port 8081 as the alternate port,
 you would use `--publish 8081:80` when running your Docker container.
@@ -60,7 +60,7 @@ you would use `--publish 8081:80` when running your Docker container.
 docker run --detach --publish 8081:80 nginx
 ```
 
-## <a name="grow-cluster"></a> Add capacity to the cluster
+### <a name="grow-cluster"></a> Add capacity to the cluster
 If you are using Rackspace Container Service, execute the **Grow Cluster** action
 on the cluster to add capacity.
 
