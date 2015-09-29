@@ -8,7 +8,7 @@ topics:
   -tutorial
 ---
 
-# How to find and run a Docker Image.
+# How to find and pull a Docker Image.
 
 Docker Images serve as the building blocks for containers. The image acts
 as software you load into the container. They can be as simple as running a single command like `run hello-world`, or as complex as an entire database or host operating system.
@@ -90,7 +90,7 @@ For the purposes of this tutorial, we will create a Docker host inside of Virtua
 
 You can now run `docker` commands on this host.
 
-## Find and run a Docker Image
+## Find and pull a Docker Image
 
 This section shows you how to find and run a Docker Image.
 
