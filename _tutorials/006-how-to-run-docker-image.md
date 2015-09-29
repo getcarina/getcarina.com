@@ -90,4 +90,37 @@ For the purposes of this tutorial, we will create a Docker host inside of Virtua
 
 You can now run `docker` commands on this host.
 
-## 
+## Find and run a Docker Image
+
+This section shows you how to find and run a Docker Image.
+
+1. Run `docker images`. This command lists all images downloaded onto your current Docker machine. ```$ docker images
+   REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE```
+
+2. Because you currently have no images on your machine, you need to search and find an image. To search for an image use `docker search` and than the name of the image you wish to use. For this tutorial, we'll search for an Ubuntu image. Run `docker search ubuntu`. ```$ docker search ubuntu
+   NAME                           DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+   ubuntu                         Ubuntu is a Debian-based Linux operating s...   2325      [OK]       
+   ubuntu-upstart                 Upstart is an event-based replacement for ...   34        [OK]```
+
+   Docker will pull a list of Docker hub repositories containing an Ubuntu image.
+
+3. Now that you have found the image you wish to use, run `docker pull ubuntu:12.04`. Docker will download Ubuntu version 12.04. ```$ docker pull ubuntu:12.04
+   12.04: Pulling from library/ubuntu
+   ba2b457ecfb2: Pull complete
+   26180b0fe8fb: Pull complete
+   edd7c1974a70: Pull complete
+   57bca5139a13: Pull complete
+   library/ubuntu:12.04: The image you are pulling has been verified. Important: image verification is a tech preview feature and should not be relied on to provide security.
+   Digest: sha256:b6055621e534009eb9cddbfbb5766a983d99a73fb9d170cc224209a628f91804
+   Status: Downloaded newer image for ubuntu:12.04```
+
+   > If you run `docker pull <name of image>` without indicating the version you wish to download, Docker will download the latest version of that image.
+
+4. Run `docker images` again to see your downloaded images. ```$ docker images
+   REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
+   ubuntu              latest              91e54dfb1179        5 weeks ago         188.4 MB
+   ubuntu              12.04               57bca5139a13        5 weeks ago         134.8 MB```
+
+   Docker stores a copy of the image onto your computer to save time when you run the image. If you find that you no longer need an image, you can delete the image yourself using the command `docker rmi` followed by the image id.
+
+## Make and share your own Docker Image
