@@ -26,26 +26,42 @@ Before you get started with Rackspace Container Service, you should do the follo
 
 * Ensure that your Rackspace Cloud account is enabled for Rackspace Container Services.
 * Familiarize yourself with basic Docker concepts. Read the `Docker documentation`_.
+* Familiarize yourself with the basic container concepts. Read the Containers 101 (add link) document.
+* Familiarize yourself with scheduling strategies (`Strategy`) and with filters (`Filters`).
+* Learn about the resources and resource limitations of a cluster.
 * Install the Docker client on your computer:
-  * For instructions on how to install the Docker client on a Macintosh computer, see (link to Docker 101)
-  * For instructions on how to install the Docker client on a Windows computer, see (link to Docker for Windows content)
+  * For installation instructions, see the :ref:`Install the Docker client <Install Docker Client>` section.
 * If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2. 
 
-.. _Docker documentation https://docs.docker.com/
+.._ Docker documentation https://docs.docker.com/
+.._ Strategy https://docs.docker.com/swarm/scheduler/strategy/
+.._ Filters https://docs.docker.com/swarm/scheduler/filter/
 
 ###System Requirements###
 
-####Install Docker Client###
 
+####Install Docker Client###
+.. _Install Docker Client
+
+To use Rackspace Container Service, you first need to install the Docker client.
+The Docker client is available for download from http://www.docker.com.
+To install the Docker client on a Mac, follow the installation instructions provided on `Install Docker on Mac OS X`_.
+To install the Docker client on Windows, follow the installation instructions provided on (link to Docker for Windows).
+
+
+.. _Install Docker on Mac OS X https://docs.docker.com/mac/step_one/
 ##Quickstart Guide##
 
+
 ##Getting Started (Detailed)##
+
 
 ##Best Practices##
 
 ###Requirements and Restrictions###
-###Gotchas###
+
 ##Frequently Asked Questions##
+
 
 
 
