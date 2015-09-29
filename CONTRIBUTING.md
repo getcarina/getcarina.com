@@ -4,7 +4,7 @@ This is a [Jekyll](http://jekyllrb.com/) repo housing documentation and tutorial
 
 ## Writing
 
-The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_references`. The `_assets` file contains images for the content.
+The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_references`. The `_assets` directory contains images for the content.
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
@@ -24,9 +24,9 @@ Follow the style guidelines defined at in the [Writing style guide](https://one.
 
 A few specific guidelines for container content:
 
-- For the first-level headings in an article, use the H3 level (designated by 3 hash marks). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles. 
+- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles. 
 
-- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`.
+- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`. For more information, see [Placeholder text](https://one.rackspace.com/display/devdoc/Placeholder+%28variable%29+text).
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
  
@@ -36,7 +36,7 @@ For terminology usage related to container content, see `<termsFileComingSoon>`.
 
 Do not use the name Docker in any public facing repositories. Docker is a trademark and should be used only when referring to the tools produced by Docker. Do *not* include the name Docker in the name of anything that you create.
 
-For an example how Docker responds when someone uses their name in an unauthorized way, see https://github.com/j-bennet/wharfee/issues/89.  
+For an example how Docker responds when someone uses their name in an unauthorized way, see [Legal request - Change domain name to drop Docker](https://github.com/j-bennet/wharfee/issues/89).  
 
 ## Images
 
