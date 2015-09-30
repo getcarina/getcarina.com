@@ -1,3 +1,30 @@
+---
+title: MongoDB with RCS
+slug: mongodb-with-rcs
+description: How to store production data in MongoDB with RCS
+docker-version: 1.8.2
+topics:
+  - docker
+  - intermediate
+  - data-stores
+  - mongodb
+---
+
+### MongoDB with RCS
+
+This tutorial describes using MongoDB with RCS so that you can store temporary data for development/testing in containers and store your production data persistently and securely in ObjectRocket's MongoDB.
+
+#### Prerequisites
+
+1. [Concepts](data-stores)
+1. [RCS Credentials](rcs-credentials)
+
+#### Steps
+
+1. Create a MongoDB container for dev/test
+
+    ```bash
+
 docker run --detach --publish-all mongo:3.0.6
 docker ps --latest
 docker port $(docker ps --quiet --latest) 27017
@@ -66,6 +93,40 @@ open http://$(docker port $(docker ps --quiet --latest) 5000)
 docker rm --force $(docker ps --quiet --latest)
 
 Don't forget to remove your MongoDB if you're not using it.
+
+## Troubleshooting
+
+<!--
+* List troubleshooting steps here.
+
+    Cover the most common mistakes and error states first.
+
+    Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
+
+* Link to support articles and generic troubleshooting information.
+
+    Create a separate article for generic troubleshooting information.
+-->
+
+## Resources
+
+<!--
+* Links to related content
+-->
+
+## Next Steps
+
+<!--
+* What should your audience read next?
+-->
+
+
+
+
+
+
+
+
 
 ## Troubleshooting
 
