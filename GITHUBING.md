@@ -21,8 +21,9 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
     git remote add --track master upstream git@github.com:rackerlabs/docs-container-service.git
     ```
 
-4. Bring your branch up-to-date with upstream
+4. :sunrise: Start new changes here. Bring your branch up-to-date with upstream
     ```bash
+    git checkout master
     git pull --rebase upstream master
     ```
 
@@ -65,7 +66,12 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 
 13. Deal with conflicts
 
-    During your review process, someone may have already updated and merged a file that you are in the process of changing. This can result in a conflict and you won't be able to merge your PR. First you need to bring your branch up-to-date with upstream by running the command from step #4. Then go ahead and [Resolve a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/).
+    During your review process, someone may have already updated and merged a file that you are in the process of changing. This can result in a conflict and you won't be able to merge your PR. First you need to bring your branch up-to-date with upstream. While on your <name-of-branch> do
+    ```
+    git fetch upstream
+    git rebase upstream/master
+    ```
+    Then go ahead and [Resolve a merge conflict from the command line](https://help.github.com/articles/resolving-a-merge-conflict-from-the-command-line/).
 
 14. When the Editorial Review is complete and the button is green, [Merge It](CONTRIBUTING.md#merge-it)!
 
