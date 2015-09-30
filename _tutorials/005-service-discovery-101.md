@@ -2,7 +2,7 @@
 title: Service Discovery 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
-slug: service-discovery-101-introduction
+permalink: docs/tutorials/005-service-discovery/
 description: Introduction to service discovery concepts, reasons for using it, and related software
 docker-verions:
   - 1.8.2
