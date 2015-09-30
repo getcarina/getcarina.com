@@ -33,7 +33,7 @@ Open VirtualBox and make sure the virtual machine is running. You can "Show" the
 
 ![Docker VM Output]({% asset_path 002-troubleshooting-windos-docker-vm-startup/DockerVMSuccessfullyStarted.png %})
 
-Stop and delete the VirtualBox Docker "default" virtual machine, then delete you .docker folder in your user folder (c:\Users\[username]\.docker).
+Stop and delete the VirtualBox Docker "default" virtual machine, then delete you .docker folder in your user folder (c:\\Users\\[username]\\.docker).
 
 Restart your machine, then start the Docker Quickstart Terminal. Everything should be re-downloaded and setup properly.
 
