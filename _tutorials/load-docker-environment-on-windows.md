@@ -18,7 +18,7 @@ text commands and _terminal_ is the graphical window that hosts a shell.
   * [Bash](#bash)
 * [Terminals](#terminals)
   * [Windows Command Prompt](#cmd-prompt)
-  * [mintty](#mintty)
+  * [Mintty](#mintty)
   * [Alternatives](#alternatives)
 
 ### <a name="prerequisites"></a> Prerequisites
@@ -43,14 +43,14 @@ CMD, perform the following steps:
   * If you are using the Rackspace Container Service, follow the instructions in [Working with Your Cluster Credentials][get-cluster-creds]
     to download your credentials. Then, run `docker.cmd`.
   * Otherwise, run `docker-machine env default --shell cmd`, replacing `default`
-    with the name of your Docker environment. Copy the command output, and then paste it into the command line.
+    with the name of your Docker host. Copy the command output, and then paste it into the command line.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
 [get-cluster-creds]: /docs/references/rcs-credentials/
 
 #### <a name="powershell"></a> PowerShell
-[PowerShell][powershell-doc] is built on the Microsoft .NET and is designed to
+[PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
 work with .NET objects instead of raw text. It is distributed with all versions of
 Windows supported by Docker. To load a Docker environment in PowerShell, perform the following steps:
 
@@ -59,7 +59,7 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
   * If you are using the Rackspace Container Service, follow the instructions on [Working with Your Cluster Credentials][get-cluster-creds]
     to download your credentials. Then, run `docker.ps1`.
   * Otherwise, run `docker-machine env default --shell powershell | Invoke-Expression`,
-    replacing `default` with the name of your Docker environment.
+    replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [powershell-doc]: https://technet.microsoft.com/en-us/library/ms714469.aspx
@@ -82,7 +82,7 @@ To load a Docker environment in Bash, perform the following steps:
   * If you are using the Rackspace Container Service, follow the instructions on [Working with Your Cluster Credentials][get-cluster-creds]
     to download your credentials. Then, run `source docker.env`.
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
-    replacing `default` with the name of your Docker environment.
+    replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [git-for-windows]: https://git-for-windows.github.io
@@ -94,7 +94,7 @@ Windows Command Prompt and mintty. If you do not want to use either of those ter
 some alternatives are available to you.
 
 * [Windows Command Prompt](#cmd-prompt)
-* [mintty](#mintty)
+* [Mintty](#mintty)
 * [Alternatives](#alternatives)
 
 #### <a name="cmd-prompt"></a> Windows Command Prompt
@@ -118,8 +118,8 @@ terminals provide. Mintty doesn't provide full TTY support so a
 
 The default shell used when running Git Bash is [Bash](#bash), which will be familiar
 to Linux or Mac OS X users. To take advantage of the mintty terminal and also continue using CMD or PowerShell,
-open Git Bash and then run `cmd.exe` or `powershell.exe` and follow the steps
-in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to setup your Docker environment.
+open Git Bash and then run `cmd.exe` or `powershell.exe`. Then, follow the steps
+in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to set up your Docker environment.
 
 ![Git Bash Screenshot]({% asset_path load-docker-environment-on-windows/gitbash.png %})
 
@@ -159,8 +159,8 @@ be automatically hosted in ConEmu.
 2. Run the installer.
 3. Open ConEmu.
 
-    On startup, you will see a one-time configuration prompt where you can choose a default shell, etc.
-    It is safe to accept the defaults and customize later.
+    On startup, you will see a one-time configuration prompt where you can choose a default shell
+    and perform other configuration tasks. It is safe to accept the defaults and customize later.
 5. To customize ConEmu, right-click the title bar and select **Settings**. You
     can set the default shell, configure tasks, appearance, and so on.
     See [ConEmu Settings][conemu-settings] for an explanation of the available settings.
