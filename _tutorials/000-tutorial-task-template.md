@@ -2,7 +2,7 @@
 title: Tutorial name
 author: First Last <first.last@rackspace.com>
 date: 2015-09-28
-slug: tutorial-name
+permalink: docs/tutorials/tutorial-name/
 description: Do a thing on RCS
 docker-versions:
   - 1.8.2
