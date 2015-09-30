@@ -3,7 +3,7 @@ title: Tutorial name
 author: First Last <first.last@rackspace.com>
 date: 2015-09-28
 slug: tutorial-name
-description: How to log do a thing on RCS
+description: Do a thing on RCS
 docker-versions:
   - 1.8.2
 topics:
@@ -83,7 +83,7 @@ Conclude with a brief description of the end state.
 * Links to related content
 -->
 
-### Next Steps
+### Next
 
 <!--
 * What should your audience read next?
