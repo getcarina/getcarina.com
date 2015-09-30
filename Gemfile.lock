@@ -95,6 +95,3 @@ PLATFORMS
 DEPENDENCIES
   jekyll
   jekyll-assets
-
-BUNDLED WITH
-   1.10.6
