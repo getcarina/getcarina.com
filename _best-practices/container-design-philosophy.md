@@ -2,13 +2,15 @@
 title: Container design philosophy
 slug: container-design-philosophy
 description: Best practices for container design, powered by the Rackspace Container Service
-author: Mike Metral, Rackspace Product Architect
+author: Mike Metral
 topics:
-  - docker
-  - beginner
+- best-practices
+- planning
 ---
 
 # Container design philosophy
+
+*Run one process per container; manage containers as roles; listen to advice from Docker but don't blindly follow.*
 
 Creating new containers is easy. What can be difficult is deciding how to divide your workload most effectively among many containers.
 
@@ -88,3 +90,7 @@ Rackspace Container Service documentation includes *tutorials* and *references*:
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
+
+## About the author
+
+Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
