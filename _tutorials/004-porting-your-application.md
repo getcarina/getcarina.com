@@ -292,9 +292,16 @@ bootstrap
 1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
 1. Run `RAILS_ROOT/bin/launch_cluster`
 
-Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see:
+Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see when it completes:
 
 ```
+Sending build context to Docker daemon 120.8 kB
+Step 0 : FROM ruby:2.2.1
+2.2.1: Pulling from library/ruby
+511136ea3c5a: Pull complete 
+d338bb63f151: Pull complete 
+65688f7c61c4: Pull complete 
+...
 Tasks: TOP => environment
 (See full trace by running task with --trace)
 Error response from daemon: Container web1 not found
@@ -316,7 +323,8 @@ Error: failed to remove containers: [web5]
 
 5. Add the cluster IP address to your host file.
 1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
-1. Edit the `/etc/hosts` file to add the cluster IP address. Following is an example of the line to add: `104.130.0.17 test.com`
+1. Edit the `/etc/hosts` file to add the cluster IP address. Following is an example of the line to add:
+`104.130.0.17 test.com`
 
 6. Launch the Rails application.
 After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
@@ -326,7 +334,7 @@ Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the 
 
 ### Troubleshooting
 
-* If you get a permissions error when running `bin/launch_cluster`, make sure you have made the script executable with a chmod command.
+* If you get a permissions error when running `bin/launch_cluster`, make sure you have made the script executable with a `chmod` command.
 * If you get a syntax error when running `bin/launch_cluster`, ensure you have copied and pasted the entire script from above, ending with bootstrap.
 * If your Rails application isn't displayed after running the migration script, check for any errors in the docker logs for each container.
 
