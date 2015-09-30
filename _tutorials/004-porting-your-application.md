@@ -15,7 +15,7 @@ This tutorial leverage the following tools:
 * [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
 * [PostgreSQL](http://www.postgresql.org/) - Standard database
 * [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media store
-* [Redis](http://Redis.io/) - Key-value store for Sidekiq
+* [Redis](http://redis.io/) - Key-value store for Sidekiq
 * [Sidekiq](http://sidekiq.org/) - Background job processor
 
 ## Create a Dockerfile
@@ -183,7 +183,7 @@ migrate() {
 }
 
 # Much like the DB cluster, we have a Redis container and an ambassador
-RedisCluster() {
+redisCluster() {
   docker rm --force redis
   docker rm --force redis_ambassador
 
@@ -237,8 +237,8 @@ syncAssets() {
 }
 
 # Helper method to get public IP of a container
-ipFor(container) {
-   docker inspect container | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4
+ipFor() {
+   docker inspect $1 | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4
 }
 
 # The main method. This will boot all necessary containers and clusters.
@@ -248,16 +248,16 @@ bootstrap() {
   buildImage
 
   interlock
-  export INTERLOCK=ipFor("interlock")
+  export INTERLOCK=$(ipFor "interlock")
 
   dbCluster
-  export DB_SERVER=ipFor("db_ambassador")
+  export DB_SERVER=$(ipFor "db_ambassador")
 
-  RedisCluster
-  export Redis_SERVER=ipFor("Redis_ambassador")
+  redisCluster
+  export REDIS_SERVER=$(ipFor "redis_ambassador")
 
   sidekiq
-  export SIDEKIQ=ipFor("sidekiq")
+  export SIDEKIQ=$(ipFor "sidekiq")
 
   migrate
 
