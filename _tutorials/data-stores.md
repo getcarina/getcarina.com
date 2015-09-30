@@ -9,15 +9,13 @@ topics:
   - data-stores
 ---
 
-# Data Stores
-
 This tutorial describes using data stores with RCS so that you can store your production data persistently and securely.
 
-## Prerequisites
+### Prerequisites
 
 1. A RCS account <!-- TODO: link -->
 
-## Concepts
+### Concepts
 
 Data is the most important output of your application. In a production environment it must be stored persistently and securely. Ideally it's also in a highly available and redundant data store too.
 
@@ -25,7 +23,7 @@ Containers are good for ephemeral computing but are not so good for persistent s
 
 Using data stores in containers for your development, testing, and quality assurance environments is okay but production data should be stored in a service dedicated to handling your data.
 
-## Next
+### Next
 
 Learn how to use data stores with RCS so that you can store your production data.
 
