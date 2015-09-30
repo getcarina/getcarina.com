@@ -8,19 +8,29 @@ topics:
 ---
 By now you're beginning to understand Docker and how it can benefit your workflow and deployments. This tutorial walks you through porting an existing Rails application, including the Rails app itself along with PostgreSQL, Redis, and Sidekiq workers, to Docker and Rackspace Cloud Files.
 
-## Tools used
+### Prerequisites
 
-This tutorial leverage the following tools:
+This tutorial leverages the following tools:
 
 * [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
 * [PostgreSQL](http://www.postgresql.org/) - Standard database
-* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media store
-* [Redis](http://redis.io/) - Key-value store for Sidekiq
+* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media storage
+* [Redis](http://Redis.io/) - Key-value store for Sidekiq
 * [Sidekiq](http://sidekiq.org/) - Background job processor
 
-## Create a Dockerfile
+This tutorial assumes this software and knowledge exists:
 
-The `Dockerfile` is an essential part of porting your application. This file tells Docker which commands to run and which packages to install to your container and builds an image. An image is a snapshot of your application's current state. In the root directory of your Rails application, create a new file named `Dockerfile`, and then paste the following code into the file:
+* A working Docker environment
+* Existing Rails app above version 2.0 with a Gemfile
+* Knowledge of Ubuntu commands and systems
+
+### Steps
+
+1. Create a Dockerfile.
+
+The `Dockerfile` is an essential part of porting your application. This file tells Docker which commands to run and which packages to install to your container and builds an image. An image is a snapshot of your application's current state.
+
+In the root directory of your Rails application, create a new file named `Dockerfile`, and then paste the following code into the file:
 
 ```ruby
 FROM ruby:2.2.1
@@ -72,9 +82,9 @@ ENV POSTGRES_USER postgres
 EXPOSE 80
 ```
 
-## Update the database.yml file
+2. Update the config/database.yml file.
 
-Now that your base Docker image ready, update your application's `RAILS_ROOT/config/database.yml` file to point to a new database host that you will create in the next steps.
+Now that your base Docker image is ready, update your application's `RAILS_ROOT/config/database.yml` file to point to a new database host that you will create in the next steps.
 Use the following to update the file:
 
 ```yaml
@@ -96,9 +106,9 @@ production:
   database: myapp_prod
 ```
 
-## Store public assets
+3. Store public assets.
 
-This example uses Rackspace's Cloud Files service to store static assets. Rails does not do a good job of serving static assets (Javascript, CSS, images) so you can leverage Rackspace's Cloud Files service to distribute our assets. *Note:* Cloud Files calls folders "containers"; these are simply a folder on a CDN; they are not Docker containers.
+This example uses Rackspace's Cloud Files service to store static assets. Rails does not do a good job of serving static assets (Javascript, CSS, images) so you can leverage Rackspace's Cloud Files service to distribute our assets. *Note:* Cloud Files calls folders "containers"; these are simply a folder on a CDN; they are not Docker containers. If you already have a public container, simply locate the HTTP link as these instructions demonstrate.
 
 1. Log in to the [Rackspace Cloud Control Panel](https://mycloud.rackspace.com/).
 1. In the menu bar at the top of the window, click *Storage > Files*.
@@ -109,13 +119,14 @@ This example uses Rackspace's Cloud Files service to store static assets. Rails 
 1. Open the `RAILS_ROOT/config/environments/production.rb` file.
 1. Add the following line to the file, substituting the example link with the link that you just copied: `config.action_controller.asset_host = "http://2167823940-238946.rackcdn.com"`
 
-
-## Build your containers
+4. Build your containers.
 
 1. Go to [http://mycluster.rackspace.com](http://mycluster.rackspace.com).
 1. Create a new cluster.
 1. After a moment or two, refresh the page. You should see a series of icons that you can use to download your cluster credentials.
-1. Download these credentials and extract them to the `RAILS_ROOT/amphora` folder.
+1. Download these credentials in a clusterName.zip file.
+1. Extract them to a `RAILS_ROOT/amphora` folder so that the following
+script can call `amphora/docker.env`.
 1. Create a script named `RAILS_ROOT/bin/launch_cluster` and add the following code to it:
 
 
@@ -211,7 +222,7 @@ redisCluster() {
     svendowideit/ambassador
 }
 
-# Sidekiq is a background job runner for Rails. This container will talk
+# Sidekiq is a background job runner for Rails. This container talks
 # to the Redis ambassador container.
 sidekiq() {
   docker run -d \
@@ -281,14 +292,61 @@ bootstrap
 1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
 1. Run `RAILS_ROOT/bin/launch_cluster`
 
-Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages.
+Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see when it completes:
 
-## Add the cluster IP address to your host file
+```
+Sending build context to Docker daemon 120.8 kB
+Step 0 : FROM ruby:2.2.1
+2.2.1: Pulling from library/ruby
+511136ea3c5a: Pull complete 
+d338bb63f151: Pull complete 
+65688f7c61c4: Pull complete 
+...
+Tasks: TOP => environment
+(See full trace by running task with --trace)
+Error response from daemon: Container web1 not found
+Error: failed to remove containers: [web1]
+26a6f467804d575ba6dbe07a09ef434f393173bc5add5f61a3ad83f49ef4f2ae
+Error response from daemon: Container web2 not found
+Error: failed to remove containers: [web2]
+f2e8346d572337b74947deeef635cdc401e4a0972a4941a75098ae71d6932e7b
+Error response from daemon: Container web3 not found
+Error: failed to remove containers: [web3]
+3c8ce5d987eb9a5dd5e1c3da58654e18dff83a2c9a3f9fc4f1d268ae898251c2
+Error response from daemon: Container web4 not found
+Error: failed to remove containers: [web4]
+42cb1f3514202d24d5ac8d28c4b50dd0d4424ce5c5cf34ba86965321dc3fb8be
+Error response from daemon: Container web5 not found
+Error: failed to remove containers: [web5]
+8233af59a1a632a0e3325bdba2a51356d0b929b35e889013469f1e095c21f10f
+```
+
+5. Add the cluster IP address to your host file.
 1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
-1. Edit the /etc/hosts file to add the cluster IP address. Following is an example of the line to add: `104.130.0.17 test.com`
+1. Edit the `/etc/hosts` file to add the cluster IP address. Following is an example of the line to add:
+`104.130.0.17 test.com`
 
-## Launch the Rails application
+6. Launch the Rails application.
 After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
 
-## Monitor the cluster's performance
+7. Monitor the cluster's performance.
 Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the username is `stats` and the password is `interlock`.
+
+### Troubleshooting
+
+* If you get a permissions error when running `bin/launch_cluster`, make sure you have made the script executable with a `chmod` command.
+* If you get a syntax error when running `bin/launch_cluster`, ensure you have copied and pasted the entire script from above, ending with bootstrap.
+* If your Rails application isn't displayed after running the migration script, check for any errors in the docker logs for each container.
+
+### Resources
+
+* [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
+* [PostgreSQL](http://www.postgresql.org/) - Standard database
+* [Rackspace Cloud Files](https://developer.rackspace.com/docs/cloud-files/getting-started/) - Media storage
+* [Redis](http://redis.io/) - Key-value store for Sidekiq
+* [Sidekiq](http://sidekiq.org/) - Background job processor
+
+### Next Steps
+
+Try another tutorial or migrate another Rails app.
+
