@@ -124,6 +124,22 @@ This example uses Rackspace's Cloud Files service to store static assets. Rails 
 # Load the Rackspace Cloud Files credentials
 source amphora/docker.env
 
+# Clean up existing containers if necessary
+cleanContainers() {
+  docker rm --force interlock
+  docker rm --force db
+  docker rm --force db_ambassador
+  docker rm --force redis
+  docker rm --force redis_ambassador
+  docker rm --force sidekiq
+
+  for i in {1..5}
+  do
+    docker rm --force web${i}
+  done
+
+}
+
 # Build your app before deploys
 buildImage(){
   docker build -t myapp .
@@ -134,7 +150,6 @@ buildImage(){
 # identical across the containers you'd like to load balance.
 # The certs listed here are automatically provided in your cluster.
 interlock() {
-  docker rm --force interlock
   docker run -d \
     --name interlock \
     -p 80:80 \
@@ -150,11 +165,7 @@ interlock() {
 # This function creates a PostgreSQL container and an ambassador
 # (read more about the ambassador pattern: https://docs.docker.com/articles/ambassador_pattern_linking)
 dbCluster() {
-  docker rm --force db
-  docker rm --force db_ambassador
-
   # Start actual DB server on one Docker host
-  # docker run -d --name db postgres
   docker run -d \
     --name db \
     -h db \
@@ -184,9 +195,6 @@ migrate() {
 
 # Much like the DB cluster, we have a Redis container and an ambassador
 redisCluster() {
-  docker rm --force redis
-  docker rm --force redis_ambassador
-
   docker run -d \
     --name redis \
     -p 6379 \
@@ -206,7 +214,6 @@ redisCluster() {
 # Sidekiq is a background job runner for Rails. This container will talk
 # to the Redis ambassador container.
 sidekiq() {
-  docker rm --force sidekiq
   docker run -d \
     --name sidekiq \
     --restart always \
@@ -218,7 +225,6 @@ sidekiq() {
 webCluster() {
   for i in {1..5}
   do
-    docker rm --force web${i}
     docker run -d \
       --name web${i} \
       -p 80 \
@@ -245,6 +251,9 @@ ipFor() {
 # Order is important as some functions rely on env vars to be present.
 # Errors are expected for removing containers the first time as they don't yet exist.
 bootstrap() {
+
+  # cleanContainers
+
   buildImage
 
   interlock
