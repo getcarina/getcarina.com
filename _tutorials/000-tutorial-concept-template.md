@@ -1,11 +1,19 @@
-<!--
-Markdown syntax: http://daringfireball.net/projects/markdown/
--->
+---
+title: Tutorial name
+author: First Last <first.last@rackspace.com>
+date: 2015-09-28
+slug: tutorial-name
+description: Do a thing on RCS
+docker-versions:
+  - 1.8.2
+topics:
+  - docker
+  - intermediate
+  - etc
+---
 
-# Tutorial name
-
 <!--
-Limit concept-based tutorials to a single idea or concept. Choose a name that accurately describes the content. For example: 
+Limit concept-based tutorials to a single idea or concept. Choose a name that accurately describes the content. For example:
 
 # Docker 101
 # Advanced Docker
@@ -19,7 +27,7 @@ Give a brief summary of what this tutorial describes and why it matters. For exa
 "This tutorial describes Docker basics: what Docker is and how to start using it."
 -->
 
-## Prerequisites
+### Prerequisites
 
 <!--
 List any prerequisites. Indicate a level of mastery where possible. Prerequisites might not be relevant for a concept-based tutorial.
@@ -29,7 +37,7 @@ List any prerequisites. Indicate a level of mastery where possible. Prerequisite
 * Links to other tutorials
 -->
 
-## Concepts
+### Concepts
 
 <!--
 Present concepts in the order in which your audience will learn them most easily. Use H3 subheadings. Limit each subheading to a single concept.
@@ -45,13 +53,13 @@ Understanding this concept will help you understand the next concept.
 Continue explaining concepts until you've adequately covered the tightly scoped idea covered by this tutorial.
 -->
 
-## Resources
+### Resources
 
 <!--
 * Links to related and supporting content
 -->
 
-## Next
+### Next
 
 <!--
 * What should your audience read next?

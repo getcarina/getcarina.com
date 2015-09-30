@@ -1,14 +1,16 @@
-<!--
-This template is designed to help you introduce others to a concept, product, or service.
-
-Some helpful resources:
-
-* Markdown syntax: http://daringfireball.net/projects/markdown/
-
-* Writing style guide: https://one.rackspace.com/display/devdoc/Writing+style+guide
--->
-
-# Tutorial 101
+---
+title: Tutorial name
+author: First Last <first.last@rackspace.com>
+date: 2015-09-28
+slug: tutorial-name
+description: Do a thing on RCS
+docker-versions:
+  - 1.8.2
+topics:
+  - docker
+  - intermediate
+  - etc
+---
 
 <!--
 Limit 101-level tutorials to a single coherent concept. For example:
@@ -25,8 +27,8 @@ Give a brief summary of what this tutorial introduces and why it matters. For ex
 "This tutorial describes what Docker is and how to start using it."
 "These resources will help you get started with containers and networking."
 -->
- 
-## Before you begin
+
+### Prerequisites
 
 <!--
 List any prerequisites. What must users have or do in order to get started?
@@ -38,8 +40,8 @@ List any prerequisites. What must users have or do in order to get started?
 
 It's OK to omit prerequisites if fulfilling them is part of your tutorial. For example, Docker 101 might include steps for downloading and installing the latest version of Docker.
 -->
- 
-## Steps
+
+### Steps
 
 <!--
 List the steps required for users to get to your concept's equivalent of "Hello, world!"
@@ -48,11 +50,11 @@ Use a single numbered list for detailed steps when possible.
 
 A single numbered list might be impractical for topics with a good amount of supporting information at each step. If a single numbered list of steps is not useful:
 
-* Identify the main steps with H2-level headings. 
+* Identify the main steps with H2-level headings.
 
     Omit numbering from headings. For example: "Install the latest version of Docker" is OK. "Step One: Install ..." is not OK.
 
-    Include as many sections as needed to logically explain the idea. 
+    Include as many sections as needed to logically explain the idea.
 
 * Limit subheadings to H3.
 
@@ -62,8 +64,8 @@ A single numbered list might be impractical for topics with a good amount of sup
 
     Also provide paragraphs for explanations, bullet lists, code samples, and examples.
 -->
- 
-## Troubleshooting
+
+### Troubleshooting
 
 <!--
 * List troubleshooting steps here.
@@ -77,13 +79,13 @@ A single numbered list might be impractical for topics with a good amount of sup
     Create a separate article for generic troubleshooting information.
 -->
 
-## Resources
+### Resources
 
 <!--
 * Links to related content
 -->
 
-## Next steps
+### Next
 
 <!--
 * What should your audience read next?
