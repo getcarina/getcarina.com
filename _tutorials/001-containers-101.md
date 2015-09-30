@@ -71,7 +71,7 @@ After you run this command, your prompt changes and you are in your new containe
 You can perform the following actions while you are inside the container to become familiar with running commands inside a containerized environment:
 
  * `uname -a` returns certain system information. The appended `-a` prints all information.
-Example output:
+   Example output:
 
    `Linux b6734565b373 4.0.9-boot2docker #1 SMP Thu Aug 13 03:05:44 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux`
 
