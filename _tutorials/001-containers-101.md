@@ -66,14 +66,20 @@ Most of the time, you won't see `--interactive` and `--tty` spelled out.
 You can use the shortened versions, `-it` or `-i -t`, to
 achieve the same effect. The `-t` flag assigns a pseudo-tty, or terminal, inside your new container. The `-i` flag creates an interactive connection by getting the standard input (`STDIN`) of the container.
 
-After you run this command, you prompt changes and you are in your new container. Example:
+After you run this command, your prompt changes and you are in your new container. Example:
 `root@b6734565b373:/# `
 You can perform the following actions while you are inside the container to become familiar with running commands inside a containerized environment:
 
- * `uname -a` returns certain system information. The appended `-a` prints all information. Example output:
+ * `uname -a` returns certain system information. The appended `-a` prints all information.
+Example output:
+
    `Linux b6734565b373 4.0.9-boot2docker #1 SMP Thu Aug 13 03:05:44 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux`
- * `hostname` displays the host name. Example output:
+
+ * `hostname` displays the host name.
+   Example output:
+
    `b6734565b373`
+
  * `ps` displays the currently running processes associated with the current user and terminal session.
    Example output:
 
