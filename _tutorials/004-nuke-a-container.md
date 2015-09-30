@@ -2,7 +2,7 @@
 title: How to stop a runaway container
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
-slug: containers-101-introduction-containers
+permalink: docs/tutorials/004-nuke-a-container/
 description: How to stop an accidentally attached non-interactive container
 docker-versions:
   - 1.8.1
