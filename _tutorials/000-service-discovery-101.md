@@ -1,7 +1,11 @@
 ---
 title: Service Discovery 101
+author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
+date: 2015-09-30
 slug: service-discovery-101-introduction
-description: Introduction to service discovery concepts, reasons for using it, basic samples, and related software
+description: Introduction to service discovery concepts, reasons for using it, and related software
+docker-verions:
+  - 1.8.2
 topics:
   - services
   - service discovery
@@ -13,7 +17,7 @@ topics:
 
 Services are pieces of software that you call or rely on when running an application. For example, if you have a web application that needs a database, that database is a service. With a potentially large number of services living on multiple hosts, it becomes important to keep track of which services are deployed and where they are located in order to communicate with them.
 
-#What is service discovery?
+###What is service discovery?
 
 In a production system, service locations can change frequently due to scaling, scheduling policies, rolling updates, and host failover. Service discovery is about knowing when a service is responsive, and making it available through a human-readble name.
 
@@ -27,11 +31,11 @@ Some advantages of using centralized service discovery include:
 
 To avoid service interruption, reliable and dynamic service registration and discovery are essential.
 
-#Service discovery tools
+###Service discovery tools
 
 There are several service discovery tools available that manage how processes and services across multiple hosts can find and communicate with each other. Most tools involve creating a central directory of services, registering deployed services in the directory, and locating and connecting to any of the registered services.
 
-##Considerations when choosing a tool
+####Considerations when choosing a tool
 
 Before you choose a service discovery tool, you should consider the following aspects:
 
@@ -49,4 +53,4 @@ To have a reliable and functional service discovery experience, you must ensure 
 
 For example, if you have a WordPress application that needs to communicate with MySQL, instead of hardcoding the private IP address, which has a high likelihood of changing over time, Consul can resolve "mysql" to an appropriate container that might be running anywhere in the cluster.
 
-#Service discovery and DNS
+###Service discovery and DNS
