@@ -1,15 +1,16 @@
 ---
 title: Tutorial name
+author: First Last <first.last@rackspace.com>
+date: 2015-09-28
 slug: tutorial-name
 description: How to log do a thing on RCS
-docker-version: 1.8.2
+docker-versions:
+  - 1.8.2
 topics:
   - docker
   - intermediate
   - etc
 ---
-
-### Tutorial name
 
 <!--
 Limit tutorials to a single task.
@@ -29,7 +30,7 @@ Give a brief summary of what this tutorial describes and why it matters. For exa
 "This tutorial demonstrates how to remove containers without deleting system-critical containers."
 -->
 
-#### Prerequisites
+### Prerequisites
 
 <!--
 List any prerequisites for the tutorial:
@@ -40,7 +41,7 @@ List any prerequisites for the tutorial:
 * Any other required setup
 -->
 
-#### Steps
+### Steps
 
 <!--
 Include a more descriptive heading if possible.
@@ -62,7 +63,7 @@ List steps in numbered order. Limit steps to a single action.
 Conclude with a brief description of the end state.
 -->
 
-#### Troubleshooting
+### Troubleshooting
 
 <!--
 * List troubleshooting steps here.
@@ -76,13 +77,13 @@ Conclude with a brief description of the end state.
     Create a separate article for generic troubleshooting information.
 -->
 
-#### Resources
+### Resources
 
 <!--
 * Links to related content
 -->
 
-#### Next Steps
+### Next Steps
 
 <!--
 * What should your audience read next?
