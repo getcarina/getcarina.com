@@ -34,14 +34,14 @@ to the specified port. To resolve this error, you must either
 
 ### <a name="remove-container"></a> Remove the containers already using the port
 1. To identify the containers that are using the port, run the following command,
-    changing _\<port\>_ to the port number you want to use.
+    changing `<port>` to the port number you want to use.
 
     ```bash
     docker ps -a | grep <port>/tcp
     ```
 
 2. To remove the containers, run the following command for each container identified in step 1,
-    changing _\<containerId\>_ to the id of the container.
+    changing `<containerId>` to the id of the container.
     The `--force` argument ensures that the container is removed even if it
     is currently running.
 
