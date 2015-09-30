@@ -1,7 +1,12 @@
 ---
 title: Containers 101
+author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
+date: 2015-09-30
 slug: containers-101-introduction-containers
 description: Introduction to container concepts, and how to create a container using Docker
+docker-versions:
+  - 1.8.1
+  - 1.8.2
 topics:
   - containers
   - Docker
