@@ -7,7 +7,7 @@ layout: default
       <h3>Tutorials</h3>
       <ul>
         {% for tutorial in site.tutorials %}
-          <li><a href="{{ tutorial.url }}">{{ tutorial.title }}</a></li>
+          <li><a href="{{ site.baseurl }}{{ tutorial.url }}">{{ tutorial.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -15,7 +15,7 @@ layout: default
       <h3>Best Practices</h3>
       <ul>
         {% for bp in site.best-practices %}
-          <li><a href="{{ bp.url }}">{{ bp.title }}</a></li>
+          <li><a href="{{ site.baseurl }}{{ bp.url }}">{{ bp.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -23,7 +23,7 @@ layout: default
       <h3>References</h3>
       <ul>
         {% for reference in site.references %}
-          <li><a href="{{ reference.url }}">{{ reference.title }}</a></li>
+          <li><a href="{{ site.baseurl }}{{ reference.url }}">{{ reference.title }}</a></li>
         {% endfor %}
       </ul>
     </div>
