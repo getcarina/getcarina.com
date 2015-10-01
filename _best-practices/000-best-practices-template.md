@@ -1,8 +1,9 @@
 ---
 title: Article title in sentence style
-slug: file-name-hyphenated
+permalink: docs/_best-practices/file-name-hyphenated/
 description: Best practices for containers, powered by the Rackspace Container Service
 author: full name of the person(s) making these recommendations/suggestions/interpretations
+date: yyyy-mm-dd
 topics:
   - best-practices
   - planning
@@ -11,8 +12,6 @@ topics:
 <!--
 Markdown syntax: http://daringfireball.net/projects/markdown/
 -->
-
-# Article name in sentence style
 
 *Begin with a very short summary statement of the main recommendation that will be supported by the rest of the article; write this after you write the "Comparison and recommendations" section, to make sure they match. Italicize to emphasize it is not the article itself.*
 
