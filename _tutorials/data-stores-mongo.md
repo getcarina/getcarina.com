@@ -22,9 +22,9 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
 ### Steps
 
-1. Create a MongoDB container for dev/test
+1. Run a MongoDB container for dev/test in a container for ephemeral data storage
 
-    Create a MongoDB instance running in a container from an official image.
+    Run a MongoDB instance in a container from an official image.
 
     ```bash
     docker run --detach --publish-all mongo:3.0.6
@@ -45,7 +45,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
     For the containerized MongoDB service, note how you don't care what it's named, what IP address it runs on, or what port it uses.
 
-1. Run a MongoDB container in a container for ephemeral data storage
+1. Create a database and user
 
     Export the necessary environment variables for your application.
 
@@ -63,7 +63,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     env | grep GB_
     ```
 
-    Create the database.
+    Create the database and user.
 
     ```bash
     docker run --interactive --tty --rm mongo:3.0.6 \
