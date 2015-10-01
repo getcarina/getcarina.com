@@ -1,14 +1,13 @@
 ---
 title: Container design philosophy
-slug: container-design-philosophy
+permalink: docs/_best-practices/container-design-philosophy/
 description: Best practices for container design, powered by the Rackspace Container Service
 author: Mike Metral
+date: yyyy-mm-dd
 topics:
 - best-practices
 - planning
 ---
-
-# Container design philosophy
 
 *Run one process per container; manage containers as roles; listen to advice from Docker but don't blindly follow.*
 
