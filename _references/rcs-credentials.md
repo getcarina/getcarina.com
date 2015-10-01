@@ -39,7 +39,7 @@ using the credentials to authenticate to your cluster.
     By default, the files are unzipped into a unique directory, for example, **70a73a74-140b-4c37-bb06-cc113c8a8713**.
     You might want to rename that directory to something easier to remember, such as the name of the cluster.
 
-5. If you are on Windows and use CMD or PowerShell, follow the instructions in the [Create Windows Scripts](#windows)
+5. If you are on Windows and use CMD or PowerShell, follow the instructions in the [Create a Windows Script](#windows)
     section.
 
 6. Load your credentials and use them to interact with your cluster:
