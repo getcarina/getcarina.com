@@ -1,14 +1,13 @@
 ---
 title: Container ecosystem: Mesos versus OpenStack
-slug: container-ecosystem-mesos-openstack
+permalink: docs/_best-practices/container-ecosystem-mesos-openstack/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
+date: 2015-10-01
 topics:
   - best-practices
   - planning
 ---
-
-# Container ecosystem: Mesos versus OpenStack
 
 *Mesos and OpenStack can run separately or together. OpenStack
 splits a cluster across several virtual machines; Mesos can run on bare metal or on Openstack; Mesos combines all resources, whether virtual machines or bare metal,
