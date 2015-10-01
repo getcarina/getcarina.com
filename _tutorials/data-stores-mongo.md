@@ -45,33 +45,6 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
     For the containerized MongoDB service, note how you don't care what it's named, what IP address it runs on, or what port it uses.
 
-1. Create the database and user
-
-    Export the necessary environment variables for your application.
-
-    ```bash
-    export GB_MONGO_HOST=$(docker port $(docker ps --quiet --latest) 27017 | cut -f 1 -d ':')
-    export GB_MONGO_PORT=$(docker port $(docker ps --quiet --latest) 27017 | cut -f 2 -d ':')
-    export GB_MONGO_DB=guestbook
-    export GB_MONGO_DB_USERNAME=guestbook-test
-    export GB_MONGO_DB_PASSWORD=guestbook-test-password
-    ```
-
-    Review the environment variables and ensure `GB_MONGO_HOST` and `GB_MONGO_PORT` were filled in correctly.
-
-    ```bash
-    env | grep GB_
-    ```
-
-    Create the database and user.
-
-    ```bash
-    docker run --rm mongo:3.0.6 \
-      mongo --eval 'db.getSiblingDB("'"$GB_MONGO_DB"'").createUser({"user": "'"$GB_MONGO_DB_USERNAME"'", "pwd": "'"$GB_MONGO_DB_PASSWORD"'", "roles": [ "readWrite" ]})' $GB_MONGO_HOST:$GB_MONGO_PORT
-    ```
-
-    Note: You'll have to hit Enter a couple of times after running the command above to get your prompt back.
-
 1. Get the application source code
 
     Clone the code from GitHub.
@@ -81,19 +54,53 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     cd guestbook-mongo
     ```
 
-1. Build and run the application
+1. Build the image
 
-    Build an image from source code and run a container from the image. The application code uses the environment variables to connect to the MongoDB container, [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
+    Build an image from the source code.
 
     ```bash
     docker build --tag="guestbook-mongo:1.0" .
+    ```
+
+1. Create the database and user
+
+    Export the necessary environment variables for your application.
+
+    ```bash
+    export MONGO_HOST=$(docker port $(docker ps --quiet --latest) 27017 | cut -f 1 -d ':')
+    export MONGO_PORT=$(docker port $(docker ps --quiet --latest) 27017 | cut -f 2 -d ':')
+    export MONGO_DATABASE=guestbook
+    export MONGO_USER=guestbook-test
+    export MONGO_PASSWORD=guestbook-test-password
+    ```
+
+    Review the environment variables and ensure `MONGO_HOST` and `MONGO_PORT` were filled in correctly.
+
+    ```bash
+    env | grep MONGO_
+    ```
+
+    Create the database and user.
+
+    ```bash
+    docker run --rm mongo:3.0.6 \
+      mongo --eval 'db.getSiblingDB("'"$MONGO_DATABASE"'").createUser({"user": "'"$MONGO_USER"'", "pwd": "'"$MONGO_PASSWORD"'", "roles": [ "readWrite" ]})' $MONGO_HOST:$MONGO_PORT
+    ```
+
+    Note: You'll have to hit Enter a couple of times after running the command above to get your prompt back.
+
+1. Run the application
+
+    Run a container from the image. The application code uses the environment variables to connect to the MongoDB container, [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
+
+    ```bash
     docker run --detach \
-      --env GB_MONGO_HOST=$GB_MONGO_HOST \
-      --env GB_MONGO_PORT=$GB_MONGO_PORT \
-      --env GB_MONGO_SSL=$GB_MONGO_SSL \
-      --env GB_MONGO_DB=$GB_MONGO_DB \
-      --env GB_MONGO_DB_USERNAME=$GB_MONGO_DB_USERNAME \
-      --env GB_MONGO_DB_PASSWORD=$GB_MONGO_DB_PASSWORD \
+      --env MONGO_HOST=$MONGO_HOST \
+      --env MONGO_PORT=$MONGO_PORT \
+      --env MONGO_SSL=$MONGO_SSL \
+      --env MONGO_DATABASE=$MONGO_DATABASE \
+      --env MONGO_USER=$MONGO_USER \
+      --env MONGO_PASSWORD=$MONGO_PASSWORD \
       --publish 5000:5000 \
       guestbook-mongo:1.0
     ```
@@ -154,24 +161,24 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     Export the necessary environment variables for your application.
 
     ```bash
-    export GB_MONGO_HOST=iad-sn-mongosX.objectrocket.com # copy this from the Instance Details
-    export GB_MONGO_PORT=54321 # copy this from the Instance Details
-    export GB_MONGO_SSL=True
-    export GB_MONGO_DB=guestbook
-    export GB_MONGO_DB_USERNAME=guestbook-prod
-    export GB_MONGO_DB_PASSWORD=guestbook-prod-password
+    export MONGO_HOST=iad-sn-mongosX.objectrocket.com # copy this from the Instance Details
+    export MONGO_PORT=54321 # copy this from the Instance Details
+    export MONGO_SSL=True
+    export MONGO_DATABASE=guestbook
+    export MONGO_USER=guestbook-prod
+    export MONGO_PASSWORD=guestbook-prod-password
     ```
 
     Run a container from the image. The application code uses the environment variables to connect to ObjectRocket's MongoDB instance, [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
 
     ```bash
     docker run --detach \
-      --env GB_MONGO_HOST=$GB_MONGO_HOST \
-      --env GB_MONGO_PORT=$GB_MONGO_PORT \
-      --env GB_MONGO_SSL=$GB_MONGO_SSL \
-      --env GB_MONGO_DB=$GB_MONGO_DB \
-      --env GB_MONGO_DB_USERNAME=$GB_MONGO_DB_USERNAME \
-      --env GB_MONGO_DB_PASSWORD=$GB_MONGO_DB_PASSWORD \
+      --env MONGO_HOST=$MONGO_HOST \
+      --env MONGO_PORT=$MONGO_PORT \
+      --env MONGO_SSL=$MONGO_SSL \
+      --env MONGO_DATABASE=$MONGO_DATABASE \
+      --env MONGO_USER=$MONGO_USER \
+      --env MONGO_PASSWORD=$MONGO_PASSWORD \
       --publish 5000:5000 \
       guestbook-mongo:1.0
     ```
