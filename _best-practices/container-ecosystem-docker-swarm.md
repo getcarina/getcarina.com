@@ -1,14 +1,13 @@
 ---
 title: Container ecosystem: Docker Swarm
-slug: container-ecosystem-docker-swarm
+permalink: docs/_best-practices/container-ecosystem-docker-swarm/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
+date: 2015-10-01
 topics:
   - best-practices
   - planning
 ---
-
-## Container ecosystem: Docker Swarm
 
 *Swarm's usefulness is unclear; wait for it to develop.*
 
@@ -62,6 +61,7 @@ it today does not seem to be offering anything worth adopting.
 
 - [Introduction to container technologies: orchestration and management of container clusters]
 (/container-technologies-orchestration-clusters)
+
 - <https://docs.docker.com/swarm/>
 
 In addition to *best-practices* articles such as this one,
