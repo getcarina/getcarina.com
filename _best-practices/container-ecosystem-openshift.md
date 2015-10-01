@@ -1,14 +1,13 @@
 ---
 title: Container ecosystem: OpenShift
-slug: container-ecosystem-openshift
+permalink: docs/_best-practices/container-ecosystem-openshift/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
+date: 2015-10-01
 topics:
   - best-practices
   - planning
 ---
-
-# Container ecosystem: OpenShift
 
 *OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.*
 
@@ -62,17 +61,25 @@ in the long run of the “PaaS war”.
 *Numbered citations in this article*
 
 1. <https://www.openshift.com/products/online>
+
 2. <https://www.heroku.com/>
+
 3. <https://cloud.google.com/appengine/docs>
+
 4. <https://enterprise.openshift.com/>
+
 5. <https://www.cloudfoundry.org/>
+
 6. <https://www.openshift.org/>
+
 7. <https://www.openstack.org/summit/openstack-summit-atlanta-2014/session-videos/presentation/openshift-the-state-of-the-art-paas-on-openstack>
+
 8. <https://blog.openshift.com/openshift-v3-platform-combines-docker-kubernetes-atomic-and-more/>
 
 *Other recommended reading*
 
 - [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
+
 - [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
 
 In addition to *best-practices* articles such as this one,
