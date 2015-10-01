@@ -1,8 +1,11 @@
 ---
 title: MongoDB with RCS
-slug: mongodb-with-rcs
+author: Everett Toews <everett.toews@rackspace.com>
+date: 2015-09-28
+permalink: docs/tutorials/mongodb-with-rcs/
 description: How to store production data in MongoDB with RCS
-docker-version: 1.8.2
+docker-versions:
+  - 1.8.2
 topics:
   - docker
   - intermediate
@@ -14,7 +17,6 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
 ### Prerequisites
 
-1. [Concepts](data-stores)
 1. [RCS Credentials](rcs-credentials)
 1. [Git](https://git-scm.com/downloads)
 
@@ -124,7 +126,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     1. Go to Databases > MongoDB
     1. Create an instance by following the [Getting Started with MongoDB](https://objectrocket.com/docs/mongodb_getting_started.html) guide
 
-    When you get to section 1. [Create an instance](https://objectrocket.com/docs/mongodb_getting_started.html#create-an-instance), use the following.
+    When you get to [Create an instance](https://objectrocket.com/docs/mongodb_getting_started.html#create-an-instance), use the following.
 
      * Name: mongo
      * Service: MongoDB
@@ -133,27 +135,27 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
      * Plan: 5GB MEDIUM
      * Zone: US-East-IAD3, AWS Direct Connect
 
-    When you get to section 2. [Create a database](https://objectrocket.com/docs/mongodb_getting_started.html#create-a-database), use the following.
+    When you get to [Create a database](https://objectrocket.com/docs/mongodb_getting_started.html#create-a-database), use the following.
 
      * Database Name: guestbook
      * Username: guestbook-prod
      * Password: guestbook-prod-password
 
-    When you get to section 3. [Add an ACL](https://objectrocket.com/docs/mongodb_getting_started.html#add-an-acl), add two ACLs.
-     * IP Address: 104.130.22.0/24
-     * Description: RCS 1
-     * IP Address: 104.130.0.0/24
-     * Description: RCS 2
+    When you get to [Add an ACL](https://objectrocket.com/docs/mongodb_getting_started.html#add-an-acl), add an Access Control List for the RCS ServiceNet (SNet) IP address range.
+     * IP Address: 10.176.224.0/19
+     * Description: RCS SNet Range
 
-    Make note of the `SSL SNet Connect String` under the Instance Details as you'll need it in the next step.
+    After the instance has been created, make note of the `SSL SNet Connect String` under the Instance Details as you'll need it in the next step.
 
 1. Run the application
+
+    Communication from the application to the MongoDB instance is as secure as possible. You use SSL to encrypt the traffic, ServiceNet to keep the traffic on Rackspace's internal network only, and an ACL to ensure the MongoDB instance only accepts traffic from RCS.
 
     Export the necessary environment variables for your application.
 
     ```bash
-    export GB_MONGO_HOST=iad-sn-mongosX.objectrocket.com # copied from the Instance Details
-    export GB_MONGO_PORT=54321 # copied from the Instance Details
+    export GB_MONGO_HOST=iad-sn-mongosX.objectrocket.com # copy this from the Instance Details
+    export GB_MONGO_PORT=54321 # copy this from the Instance Details
     export GB_MONGO_SSL=True
     export GB_MONGO_DB=guestbook
     export GB_MONGO_DB_USERNAME=guestbook-prod
@@ -187,7 +189,9 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     echo http://$(docker port $(docker ps --quiet --latest) 5000)
     ```
 
-    Remove the container
+    Have `\o/` and `¯\_(ツ)_/¯` sign your Mongo Guestbook.
+
+    Remove the container.
 
     ```bash
     docker rm --force $(docker ps --quiet --latest)
@@ -197,32 +201,26 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
     Don't forget to remove your MongoDB instance in ObjectRocket, if you're not using it.
 
-## Troubleshooting
+### Troubleshooting
 
-    ```bash
-    docker run --interactive --tty --rm mongo:3.0.6 /bin/bash
-    ```
+Run a new Mongo container and open a shell so you can use the `mongo` command to poke around in your MongoDB.
 
-<!--
-* List troubleshooting steps here.
+```bash
+docker run --interactive --tty --rm mongo:3.0.6 /bin/bash
+```
 
-    Cover the most common mistakes and error states first.
+Enter a running container and open a shell so you can poke around.
 
-    Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
+```bash
+docker exec -it $(docker ps -q -l) /bin/bash
+```
 
-* Link to support articles and generic troubleshooting information.
+### Resources
 
-    Create a separate article for generic troubleshooting information.
--->
+* [ObjectRocket's MongoDB features](http://objectrocket.com/mongodb/)
+* [ObjectRocket's MongoDB documentation](http://objectrocket.com/docs/mongodb.html)
+* [Getting Started with the mongo Shell](http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/)
 
-## Resources
+### Next
 
-<!--
-* Links to related content
--->
-
-## Next Steps
-
-<!--
-* What should your audience read next?
--->
+If MongoDB isn't the data store for you, read [Data Stores](data-stores) for links to other data stores.
