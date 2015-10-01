@@ -23,7 +23,7 @@ with more-established alternatives or to grow by attracting contributors:
   Heroku [(2)](#resources) and Google App Engine [(3)](#resources).
 - OpenShift Enterprise [(4)](#resources) competes with
   CloudFoundry [(5)](#resources).
-- OpenShift Origin [(6)](#resources)is RedHat's open-source attempt at contributing to
+- OpenShift Origin [(6)](#resources) is RedHat's open-source attempt at contributing to
   the community while
   benefiting from the enhancements that open source brings to the table.
 
