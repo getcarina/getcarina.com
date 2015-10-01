@@ -292,33 +292,28 @@ bootstrap
 1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
 1. Run `RAILS_ROOT/bin/launch_cluster`
 
-Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see when it completes:
+Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see while it runs:
 
 ```
-Sending build context to Docker daemon 120.8 kB
+interlock
+db
+db_ambassador
+redis
+redis_ambassador
+sidekiq
+web1
+web2
+web3
+web4
+web5
+Sending build context to Docker daemon   703 kB
 Step 0 : FROM ruby:2.2.1
-2.2.1: Pulling from library/ruby
-511136ea3c5a: Pull complete 
-d338bb63f151: Pull complete 
-65688f7c61c4: Pull complete 
-...
-Tasks: TOP => environment
-(See full trace by running task with --trace)
-Error response from daemon: Container web1 not found
-Error: failed to remove containers: [web1]
-26a6f467804d575ba6dbe07a09ef434f393173bc5add5f61a3ad83f49ef4f2ae
-Error response from daemon: Container web2 not found
-Error: failed to remove containers: [web2]
-f2e8346d572337b74947deeef635cdc401e4a0972a4941a75098ae71d6932e7b
-Error response from daemon: Container web3 not found
-Error: failed to remove containers: [web3]
-3c8ce5d987eb9a5dd5e1c3da58654e18dff83a2c9a3f9fc4f1d268ae898251c2
-Error response from daemon: Container web4 not found
-Error: failed to remove containers: [web4]
-42cb1f3514202d24d5ac8d28c4b50dd0d4424ce5c5cf34ba86965321dc3fb8be
-Error response from daemon: Container web5 not found
-Error: failed to remove containers: [web5]
-8233af59a1a632a0e3325bdba2a51356d0b929b35e889013469f1e095c21f10f
+ ---> ef6e4b7dc7cd
+...and so on...
+**********************************************
+Your application is available at: 104.130.0.114
+Please add this to /etc/hosts with a domain
+**********************************************
 ```
 
 5. Source the `amphora/docker.env` locally from within the `RAILS_ROOT/amphora/` directory so that you can inspect your RCS containers: `./amphora/docker.env`
