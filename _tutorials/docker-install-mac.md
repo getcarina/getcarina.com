@@ -14,7 +14,7 @@ This tutorial describes how to install and set up Docker on Mac OS X.
 
 ###Prerequisites
 * A working Terminal application.
-* Ensure that your Mac is running OS X version 10.8 (Mountain Lion) or later. Display the version by clicking the Apple icon the top-left of your screen, then selecting **About this Mac**.
+* A Mac running OS X version 10.8 (Mountain Lion) or later. Display the version by clicking the Apple icon the top-left of your screen, then selecting **About this Mac**.
 
 ###Install Docker
 
@@ -37,25 +37,27 @@ Follow these steps to install Docker:
 
    The installer gives you the option to customize your installation. However, we recommend keeping the defaults.
 
-5. Ensure that every component is selected.
+5. Ensure that every component is selected and then click **Install**.
+
    ![Make sure all boxes are selected](/_assets/img/002-docker-101/mac-toolbox-install-type.png)
 
-   Click **Install**. By default, the binaries will be installed to `/usr/local/bin`.
+   By default, the binaries are installed to `/usr/local/bin`.
 
    After the installation is completed, the installer provides you with shortcuts, which you can ignore.
+
    ![The installer will provide you with shortcuts. Ignore these and click continue.](/_assets/img/002-docker-101/mac-toolbox-install-apps.png)
 
 6. Click **Continue**
 
 7. After the installer has confirmed that the installation was successful, click **Close**.
 
-###Set-up Docker (Mac OS X)
+###Set up Docker (Mac OS X)
 
 To run a Docker container, you must create a new Docker virtual machine (VM) and switch to the VM's environment. From that environment, you can use the `docker` client to manage your containers.
 
 1. Open Launchpad and click the Docker Quickstart Terminal icon.
 
-   A terminal window opens. the terminal sets up Docker for you. Successful out should look as follows:
+   A terminal window opens and sets up Docker for you. Successful output should look as follows:
 
    ```
    Last login: Sat Sep 25 15:15:45 on ttys002
@@ -114,13 +116,12 @@ To run a Docker container, you must create a new Docker virtual machine (VM) and
 
    For more examples and ideas, visit:
    https://docs.docker.com/userguide/`
-
-   If you received the above output, Docker is up and running. Next, we will find
-   and run a Docker image.
    ```
 
+If you received preceding output, Docker is up and running.
+
 **Note:** If the `hello-world` image is not already on your local system, the Docker
-client may take up to a minute to pull the image from Docker hub. If this occurs, you will
+client might take up to a minute to pull the image from Docker Hub. If this occurs, you will
 receive this output when you enter `docker run hello-world`.
 
 ```
@@ -134,3 +135,6 @@ library/hello-world:latest: The image you are pulling has been verified. Importa
 Digest: sha256:02fee8c3220ba806531f606525eceb83f4feb654f62b207191b1c9209188dedd
 Status: Downloaded newer image for hello-world:latest
 ```
+
+###Next step
+<!--Link to Find and pull a Docker image-->
