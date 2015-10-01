@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="antivirus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="29px" height="29px" viewBox="0 0 29 29" enable-background="new 0 0 29 29" xml:space="preserve">
+<path d="M23,0l6,6l-1.414,1.414l-2.293-2.293L21.414,9l4.793,4.793l-1.414,1.414L22.5,12.914l-12,12l-2.5-2.5L1.414,29L0,27.586
+	L6.586,21l-2.5-2.5l12-12l-2.293-2.293l1.414-1.414L20,7.586l3.879-3.879l-2.293-2.293L23,0z M15.086,17.5L11.5,13.914L9.914,15.5
+	l2.293,2.293l-1.414,1.414L8.5,16.914L6.914,18.5l3.586,3.586L15.086,17.5z M12.914,12.5l3.586,3.586l4.586-4.586L17.5,7.914
+	L15.914,9.5l2.293,2.293l-1.414,1.414L14.5,10.914L12.914,12.5z"/>
+</svg>
