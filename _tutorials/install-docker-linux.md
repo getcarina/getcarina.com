@@ -1,5 +1,5 @@
 ---
-title: How to install Docker with Linux
+title: Install Docker with Linux
 slug: docker-101-installation-linux
 description: Instructions on how to install Docker on Linux (Ubuntu, Debain)
 topics:
@@ -8,24 +8,25 @@ topics:
   -tutorial
 ---
 
-#How to install Docker with Linux
+###Install Docker with Linux
 
 This tutorial covers how to install and set up Docker with Linux distributions like Ubuntu and Debain.
 
-##Prerequisites
+###Prerequisites
 * A working Terminal application
 
-##Instructions
+###Install Docker
 
 1. Log into an Ubuntu installation as a user with `sudo` privileges.
 
 2. Make sure that you have `wget` installed.
    `$ which wget`
 
-   If `wget` isn't installed, run these commands.
+   If `wget` isn't installed, run these commands:
 
-   ```sudo apt-get update
-    sudo apt-get install wget
+   ```
+   sudo apt-get update
+   sudo apt-get install wget
    ```
 
 3. Use `wget` to install the latest Docker package.
@@ -33,14 +34,14 @@ This tutorial covers how to install and set up Docker with Linux distributions l
 
    You will be prompted to enter your `sudo` password. After, it will download and install Docker.
 
-
    > The `apt-key` command may fail if your network is behind a filtering proxy. To fix this, add the key directly:
 
      `$ wget -qO- https://get.docker.com/gpg | sudo apt-key add -`
 
 4. Check that `docker` is installed by running `docker run hello-world`.
 
-   ```$ docker run hello-world
+   ```
+   $ docker run hello-world
    Unable to find image 'hello-world:latest' locally
    latest: Pulling from library/hello-world
    535020c3e8ad: Pull complete
@@ -82,3 +83,6 @@ This tutorial covers how to install and set up Docker with Linux distributions l
      https://docs.docker.com/userguide/
    ```
    > If `docker run hello-world` fails, try entering the command `sudo service docker start`. This will start `docker`, and allow you to run any `docker` commands.
+
+### Next step
+<!--Link to "Find and pull Docker Images"-->
