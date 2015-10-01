@@ -321,15 +321,17 @@ Error: failed to remove containers: [web5]
 8233af59a1a632a0e3325bdba2a51356d0b929b35e889013469f1e095c21f10f
 ```
 
-5. Add the cluster IP address to your host file.
+5. Source the `amphora/docker.env` locally from within the `RAILS_ROOT/amphora/` directory so that you can inspect your RCS containers: `./amphora/docker.env`
+
+6. Add the cluster IP address to the host file on the computer where you're browsing to the cluster IP address.
 1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
-1. Edit the `/etc/hosts` file to add the cluster IP address. Following is an example of the line to add:
+1. Edit the `/etc/hosts` file to add the cluster IP address. Interlock uses the hostname to determine routing. Following is an example of the line to add:
 `104.130.0.17 test.com`
 
-6. Launch the Rails application.
+7. Launch the Rails application.
 After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
 
-7. Monitor the cluster's performance.
+8. Monitor the cluster's performance.
 Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the username is `stats` and the password is `interlock`.
 
 ### Troubleshooting
@@ -337,6 +339,7 @@ Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the 
 * If you get a permissions error when running `bin/launch_cluster`, make sure you have made the script executable with a `chmod` command.
 * If you get a syntax error when running `bin/launch_cluster`, ensure you have copied and pasted the entire script from above, ending with bootstrap.
 * If your Rails application isn't displayed after running the migration script, check for any errors in the docker logs for each container.
+* If you see a 503 Service Unavailable error when going to test.com, check the `/etc/hosts` file entry.
 
 ### Resources
 
