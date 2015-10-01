@@ -19,15 +19,16 @@ making it easier to deploy, manage and scale our web application over time.
 Finally, we'll be using Apache to deliver traffic to our app.
 
 If you're unsure about what a Docker container is, I recommend you reading
-our [Docker 101]() tutorial to learn some of the basics first.
+our [Docker 101](../docker-101-introduction-docker) tutorial to learn some of the
+basics first.
 
-## Step 1: Set up the Database
+### Step 1: Set up the MySQL instance
 
 The first thing we'll need to do is create a database instance running MySQL.
 We can do this in the Control Panel by following this instructions:
 
 1. Sign in to https://mycloud.rackspace.com/ using your username and password.
-2. Navigate to Databases > MySQL and click on the "Create Instance button".
+2. Navigate to Databases > MySQL and click on the "Create Instance" button.
 3. Call the instance "WordPress" and select "IAD" as the region. For the Engine,
 be sure to choose MySQL 5.6. For the RAM, 2GB is recommended but you can toggle
 the value according to your preference (a single WordPress container will not
@@ -42,35 +43,49 @@ running MySQL 5.6. Give it a few minutes to build. The `wordpress` user created
 will also  be automatically granted full privileges to the new `wordpress`
 database.
 
-## Step 2: Create a Swarm cluster
+Save your password as an environment variable:
+
+```
+export DB_PASSWORD="$afD566\~H66S460U447M]E6K1#s90|55+yG^P146-vDz'u^Gi"
+```
+
+And do the same for your instance hostname, which should look something like this:
+
+```
+export DB_HOST=cdedf98d3852989dc00f4b6bd0e31f98af746a1c.rackspaceclouddb.com
+```
+
+### Step 2: Create a Swarm cluster
 
 The next step will be to set up the Docker Swarm cluster.  If you're unsure of
-how to do this, you can consult our [Getting Started guide](). Once you've
+how to do this, you can consult our Getting Started guide. Once you've
 followed these steps and have a fully operational cluster, you can resume this
 tutorial.
 
-## Step 3: Deploy the WordPress container
+### Step 3: Deploy the WordPress container
 
 Once you have a MySQL database instance and Docker Swarm cluster, you're
-ready to deploy WordPress:
+ready to deploy WordPress. You'll specify all of the database configuration
+with environment variables, including the database host and password:
 
 ```
-docker run -d -p 80:80 --name wordpress \
-  -e WORDPRESS_DB_HOST= \
-  -e WORDPRESS_DB_USER=wordpress \
-  -e WORDPRESS_DB_PASSWORD= \
-  -e WORDPRESS_DB_NAME=wordpress \
+docker run --detach \
+  --publish 80:80 \
+  --name wordpress \
+  --env WORDPRESS_DB_HOST=$DB_HOST \
+  --env WORDPRESS_DB_USER=wordpress \
+  --env WORDPRESS_DB_PASSWORD=$DB_PASSWORD \
+  --env WORDPRESS_DB_NAME=wordpress \
   wordpress
 ```
 
 Let's breakdown this command and explain each component:
 
-* `-d` as we know from [Docker 101](), daemonizes the container as a background
-process.
-* `-p` pairs port 80 on the Swarm host to the container's own internal port 80.
+* `--detach` daemonizes the container as a background process.
+* `--publish` pairs port 80 on the Swarm host to the container's own internal port 80.
 This is the port Apache listens on for incoming HTTP traffic.
 * `--name` allows us to set a human-readable name for the container.
-* `-e` allows us to set the environment variables which will be injected into
+* `--env` allows us to set the environment variables which will be injected into
 our Docker container (and therefore made available to our PHP app). Here are
 the variables we're setting:
 
@@ -81,7 +96,7 @@ the variables we're setting:
   * `WORDPRESS_DB_PASSWORD` is the password used by the MySQL user.
   * `WORDPRESS_DB_NAME` is the name of the MySQL database that WordPress will use.
 
-## Step 4: Complete!
+### Step 4: Complete!
 
 After running that command, we should see the container's unique identifier
 outputted on a new line. We can check it's running by executing:
@@ -104,5 +119,4 @@ open http://$(docker port wordpress 80)
 which opens up your default browser and points it to the IP.
 
 So there we go! In the next tutorial, we'll be covering how to set up more
-complex container relationships, such as an nginx frontend and a database
-container.
+complex container relationships, such as an nginx frontend.
