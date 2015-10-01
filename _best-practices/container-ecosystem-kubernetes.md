@@ -109,7 +109,7 @@ Another recommended way to perform service discovery is by using a DNS
 server. The DNS server watches the Kubernetes API for new services and
 creates a set of DNS records for each. If DNS has been enabled
 throughout the cluster, then
-all pods* should be able to do name resolution of all services
+all pods should be able to do name resolution of all services
 automatically [(2)](#resources). The takeaway from this is that you don’t need to
 explicitly create links between communicating pods as done natively in
 Docker because Kubernetes does the heavy lifting, so long as you oblige
@@ -191,11 +191,11 @@ week and a very substantial following of almost 300 contributors.
 
 1. <http://www.slideshare.net/timothysc/apache-coneu>
 
-2. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/services.md#how-do-they-work>
+2. <http://kubernetes.io/v1.0/docs/user-guide/services.html>
 
 3. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/networking.md>
 
-4. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/networking.md>
+4. <http://kubernetes.io/v1.0/docs/admin/networking.html>
 
 *Other recommended reading*
 
