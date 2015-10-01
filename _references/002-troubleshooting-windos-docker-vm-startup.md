@@ -8,15 +8,15 @@ This article provides solutions for some of the issues that can occur when you d
  
 ### Conflicts with existing applications
 
-The toolbox comes with its own VirtualBox and Git Bash versions. As such, existing installations of either Git for Windows, other Bash versions, or VirtualBox (especially if the system PATH was modified for them) can potentially cause issues.
+The toolbox comes with its own VirtualBox and Git Bash versions. As such, existing installations of Git for Windows, other Bash versions, or VirtualBox (especially if the system PATH was modified for them) can potentially cause issues.
 
 Solution: 
 
-1. Remove your own Bash versions (such as Cygwin, MinGW, Github for Windows, or babun) from the system PATH. 
+1. Remove your own Bash versions (such as Cygwin, MinGW, GitHub for Windows, or babun) from the system PATH. 
 2. Uninstall VirtualBox. 
 3. Restart Windows. 
-4. Reinstall Docker Toolbox, which reinstalls VirtualBox and Git for Windows with Git-Bash.
-5. Before starting the Docker Quickstart Terminal, ensure that files with **.sh** extensions are associated to the newly installed Git for Windows.
+4. Reinstall Docker Toolbox, which reinstalls VirtualBox and Git for Windows with Git Bash.
+5. Before starting the Docker Quickstart Terminal, ensure that files with **.sh** extensions are associated with the newly installed Git for Windows.
 
 ![Script Association Menu]({% asset_path 002-troubleshooting-windos-docker-vm-startup/StartScriptAssociationMenu.png %})
 
@@ -74,7 +74,7 @@ You can open the VirtualBox Manager and check the VM status. Even if it displays
 
 ### Environment not set up properly
 
-When you open a fresh command prompt different from the Docker Quickstart Terminal, its might not initialize properly. 
+When you open a fresh command prompt different from the Docker Quickstart Terminal, it might not initialize properly. 
 
 Run the following command:
 
