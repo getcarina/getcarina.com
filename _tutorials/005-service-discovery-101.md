@@ -49,8 +49,11 @@ Before you choose a service discovery tool, you should consider the following as
 
 To have a reliable and functional service discovery experience, you must ensure that the tool you choose is compatible with your system and operational needs.
 
+####Discovering services with DNS
+
+Many service discovery tools enable name resolution through DNS records, such as `SRV`. Many also exploit TTL to retire services, which might be failing or over-capacity, which do not announce their availability in a given window. The net benefit of using DNS is that it's an already established system that works well and does not require complex integration with applications.
+
+For example, if you have a WordPress application that needs to communicate with MySQL, instead of hardcoding the private IP address, which has a high likelihood of changing over time, a DNS server (backed by a service registry) can resolve the `mysql` hostname to the appropriate service or container that might be running anywhere in the cluster. This means that your database configuration stays relatively simple and abstracted over time.
+
 [etcd](https://coreos.com/etcd/) and [Consul](https://www.consul.io/) are both highly-available key value stores for shared configuration and service discovery. Essentially, these tools create a service registry where each service is saved with a human-friendly name rather than service IP addresses, and store arbitrary configuration data that your application might need.
-
-For example, if you have a WordPress application that needs to communicate with MySQL, instead of hardcoding the private IP address, which has a high likelihood of changing over time, Consul can resolve "mysql" to an appropriate container that might be running anywhere in the cluster.
-
-###Service discovery and DNS
+Both Consul and etcd are also compatible with DNS-based service discovery; Consul has its own DNS service, and with etcd, you can use add-ons such as SkyDNS.
