@@ -45,7 +45,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
     For the containerized MongoDB service, note how you don't care what it's named, what IP address it runs on, or what port it uses.
 
-1. Create a database and user
+1. Create the database and user
 
     Export the necessary environment variables for your application.
 
@@ -66,7 +66,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     Create the database and user.
 
     ```bash
-    docker run --interactive --tty --rm mongo:3.0.6 \
+    docker run --rm mongo:3.0.6 \
       mongo --eval 'db.getSiblingDB("'"$GB_MONGO_DB"'").createUser({"user": "'"$GB_MONGO_DB_USERNAME"'", "pwd": "'"$GB_MONGO_DB_PASSWORD"'", "roles": [ "readWrite" ]})' $GB_MONGO_HOST:$GB_MONGO_PORT
     ```
 
