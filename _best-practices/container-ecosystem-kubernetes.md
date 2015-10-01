@@ -1,14 +1,13 @@
 ---
 title: Container ecosystem: Kubernetes
-slug: container-ecosystem-kubernetes
+permalink: docs/_best-practices/container-ecosystem-kubernetes/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
+date: 2015-10-01
 topics:
   - best-practices
   - planning
 ---
-
-# Container ecosystem: Kubernetes
 
 *Use Kubernetes with Docker to manage and orchestrate containers in your stack.*
 
@@ -190,20 +189,25 @@ week and a very substantial following of almost 300 contributors.
 
 *Numbered citations in this article*
 
-1. <http://www.slideshare.net/timothysc/apache-­coneu>
-2. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/services.md#how-­do-­they-­work>
+1. <http://www.slideshare.net/timothysc/apache-coneu>
+
+2. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/services.md#how-do-they-work>
+
 3. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/networking.md>
+
 4. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/networking.md>
 
 *Other recommended reading*
 
 - <http://kubernetes.io/>
-- [Docker best practices: data and stateful applications]    (/docker-best-practices-data-stateful-applications/)
-- [Docker best practices: container linking]
-(/docker-best-practices-container-linking/)
-- [Introduction to container technologies: orchestration and management of container clusters] (/container-technologies-orchestration-clusters/)
-- [RFC1918 Address Allocation for Private Internets]
-(https://tools.ietf.org/html/rfc1918)
+
+- [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
+
+- [Docker best practices: container linking](/docker-best-practices-container-linking/)
+
+- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+
+- [RFC1918 Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918)
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
