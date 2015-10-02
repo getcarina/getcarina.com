@@ -30,23 +30,21 @@ One of the common expectations we have of Docker containers is that each one
 should encapsulate a single running process. We discuss this in our [best practices]()
 article, but to summarise the reasons of why this should be done:
 
-- if we ran multiple processes per container we'd need an intermediary
+- If we ran multiple processes per container we'd need an intermediary
 piece of software like [supervisord](http://supervisord.org/) to manage multiple
 processes, which goes against one the core aims of the Docker project: to use a
 solution which is granular, lightweight and focuses on doing one thing well.
 
-- single processes bind the lifecycle of a container with the lifecycle of the
+- Single processes bind the lifecycle of a container with the lifecycle of the
 process itself. This means that if a process like nginx dies, this fatal error
 directly impacts the state of the container itself, making debugging fairly
 straightforward.
 
-- decoupling applications into smaller components aligns with the micro-services
+- Decoupling applications into smaller components aligns with the micro-services
 model which provides far greater scalability than one monolithic application.
 
-- going back to the idea of efficiency, splitting out into multiple containers
-allows you to better allocate compute resources to individual parts of your
-application stack. So, for example, if you only need one instance of nginx, but
-multiple instances of fpm, you don't need to waste memory.
+- Splitting out into multiple containers allows you to better allocate compute
+resources to individual parts of your application stack.
 
 ### Step 1: Create MySQL container
 
@@ -103,8 +101,8 @@ and port of the linked `mysql` container. Nor did we need to specify the
 The final set-up step is to start our nginx frontend container. We will be
 deploying a variant of the base `nginx` Docker image which means you can either:
 
-1. build the image locally from a Dockerfile and push to your own Docker Hub account; or
-2. run a prebuilt image hosted on the `rackspace` Docker Hub account.
+1. Build the image locally from a Dockerfile and push to your own Docker Hub account; or
+2. Run a prebuilt image hosted on the `rackspace` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip the next step and head
 straight to `Step 4: Running your container`.
