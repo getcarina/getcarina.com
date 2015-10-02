@@ -1,9 +1,9 @@
 ---
-title: How to stop a runaway container
+title: How to stop a non-responsive running container
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
-permalink: docs/tutorials/004-nuke-a-container/
-description: How to stop an accidentally attached non-interactive container
+permalink: docs/tutorials/how-to-stop-a-nonresponsive-running-container/
+description: Learn how to stop a running container that doesn't respond to standard kill commands.
 docker-versions:
   - 1.8.1
   - 1.8.2
@@ -14,7 +14,7 @@ topics:
   - troubleshooting
 
 ---
-If you accidentally launch a container without the `--detach` (`-d`) flag, that container will run in the foreground of the terminal. Usually, you can stop the running container by using `Ctrl-C` or `Ctrl-D`. Sometimes, however, the process doesn't respond to `Ctrl-C` or `Ctrl-D`, and the container continues running without response to any input.
+If you launch a container without the `--detach` (`-d`) flag, that container will run in the foreground of the terminal. Usually, you can stop the running container by using `Ctrl-C` or `Ctrl-D`. Sometimes, however, the process doesn't respond to `Ctrl-C` or `Ctrl-D`, and the container continues running without response to any input.
 
 ![Runaway Container]({% asset_path runaway-container.gif %})
 
