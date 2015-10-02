@@ -3,7 +3,7 @@ title: Service Discovery 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
 permalink: docs/tutorials/service-discovery-101/
-description: Learn about how service discovery keeps track of deployed services to facilitate communication and avoid service disruption.
+description: Learn how service discovery tracks deployed services to facilitate communication and avoid service disruption.
 docker-verions:
   - 1.8.2
 topics:
@@ -15,15 +15,15 @@ topics:
 
 ---
 
-Services are pieces of software that you call or rely on when running an application. For example, if you have a web application that needs a database, that database is a service. With a potentially large number of services living on multiple hosts, it becomes important to keep track of which services are deployed and where they are located in order to communicate with them.
+Services are pieces of software that applications call or rely on. For example, if a web application needs a database, that database is a service. With a potentially large number of services living on multiple hosts, it becomes important to be able to track which services are deployed and where they are located in order to communicate with them.
 
 ###What is service discovery?
 
-In a production system, service locations can change frequently due to scaling, scheduling policies, rolling updates, and host failover. Service discovery is about knowing when a service is responsive, and making it available through a human-readble name.
+In a production system, service locations can change frequently because of scaling, scheduling policies, rolling updates, and host failover. Service discovery is about knowing when a service is responsive, and making it available through a human-readable name.
 
-Service discovery is a two-part process that begins with registration. Service registration is the process of a service registering its location with a central directory. Service discovery is when the client application asks the directory for the location of services. The centralized directory includes each service, saved with a human-readable name, its location, and information such as host, port, and sometimes authentication details.
+Service discovery is a two-part process that begins with registration. *Service registration* is the process of a service registering its location with a central directory. *Service discovery* occurs when a client application asks the directory for the location of a service. The centralized directory includes each service, saved with a human-readable name, its location, and information such as host, port, and sometimes authentication details.
 
-Some advantages of using centralized service discovery include:
+Centralized service discovery provides the following advantages:
 
 * A single, global registry that connects services over multiple hosts
 * More control over authentication and security because of a single access point
@@ -33,11 +33,11 @@ To avoid service interruption, reliable and dynamic service registration and dis
 
 ###Service discovery tools
 
-There are several service discovery tools available, such as Consul and etcd, that manage how processes and services across multiple hosts can find and communicate with each other. Most tools involve creating a central directory of services, registering deployed services in the directory, and locating and connecting to any of the registered services.
+Service discovery tools, such as [Consul](https://www.consul.io/) and [etcd](https://coreos.com/etcd/), manage how processes and services across multiple hosts can find and communicate with each other. Most tools involve creating a central directory of services, registering deployed services in the directory, and locating and connecting to any of the registered services.
 
 ####Considerations when choosing a tool
 
-Before you choose a service discovery tool, you should consider the following aspects:
+Before you choose a service discovery tool, consider the following questions:
 
 * Monitoring - Will services that have crashed, or are running on failed nodes, be made available across the cluster? How advanced is the health checking algorithm?
 
@@ -51,9 +51,8 @@ To have a reliable and functional service discovery experience, you must ensure 
 
 ####Discovering services with DNS
 
-Many service discovery tools enable name resolution through DNS records, such as `SRV`. Many also exploit TTL to retire services, which might be failing or over-capacity, which do not announce their availability in a given window. The net benefit of using DNS is that it's an already established system that works well and does not require complex integration with applications.
+Many service discovery tools enable name resolution through DNS records, such as service (SRV) records. Many also exploit time-to-live (TTL) limits to retire services that might be failing or over-capacity and do not announce their availability in a given window of time. The benefit of using DNS is that it's an already established system that works well and does not require complex integration with applications.
 
-For example, if you have a WordPress application that needs to communicate with MySQL, instead of hardcoding the private IP address, which has a high likelihood of changing over time, a DNS server (backed by a service registry) can resolve the `mysql` hostname to the appropriate service or container that might be running anywhere in the cluster. This means that your database configuration stays relatively simple and abstracted over time.
+For example, suppose that have a WordPress application that needs to communicate with MySQL. Instead of hardcoding the private IP address, which has a high likelihood of changing over time, a DNS server (backed by a service registry) can resolve the `mysql` hostname to the appropriate service or container that might be running anywhere in the cluster. This means that your database configuration stays relatively simple and abstracted over time.
 
-[etcd](https://coreos.com/etcd/) and [Consul](https://www.consul.io/) are both highly-available key value stores for shared configuration and service discovery. Essentially, these tools create a service registry where each service is saved with a human-friendly name rather than service IP addresses, and store arbitrary configuration data that your application might need.
-Both Consul and etcd are also compatible with DNS-based service discovery; Consul has its own DNS service, and with etcd, you can use add-ons such as SkyDNS.
+Consul and etcd are highly available key-value stores for shared configuration and service discovery. These tools create a service registry in which each service is saved with a human-readable name rather than a service IP address, and they store arbitrary configuration data that your application might need. Both Consul and etcd are also compatible with DNS-based service discovery; Consul has its own DNS service, and with etcd, you can use add-ons such as SkyDNS.
