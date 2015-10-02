@@ -1,6 +1,6 @@
 ---
 title: Article title in sentence style
-permalink: docs/_best-practices/file-name-hyphenated/
+permalink: docs/best-practices/file-name-hyphenated/
 description: Best practices for containers, powered by the Rackspace Container Service
 author: full name of the person(s) making these recommendations/suggestions/interpretations
 date: yyyy-mm-dd
