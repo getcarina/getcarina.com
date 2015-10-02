@@ -1,6 +1,6 @@
 ---
 title: Container ecosystem: OpenShift
-permalink: docs/_best-practices/container-ecosystem-openshift/
+permalink: docs/best-practices/container-ecosystem-openshift/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
