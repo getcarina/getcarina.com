@@ -2,8 +2,8 @@
 title: Service Discovery 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
-permalink: docs/tutorials/005-service-discovery/
-description: Introduction to service discovery concepts, reasons for using it, and related software
+permalink: docs/tutorials/service-discovery-101/
+description: Learn about how service discovery keeps track of deployed services to facilitate communication and avoid service disruption.
 docker-verions:
   - 1.8.2
 topics:
@@ -33,7 +33,7 @@ To avoid service interruption, reliable and dynamic service registration and dis
 
 ###Service discovery tools
 
-There are several service discovery tools available that manage how processes and services across multiple hosts can find and communicate with each other. Most tools involve creating a central directory of services, registering deployed services in the directory, and locating and connecting to any of the registered services.
+There are several service discovery tools available, such as Consul and etcd, that manage how processes and services across multiple hosts can find and communicate with each other. Most tools involve creating a central directory of services, registering deployed services in the directory, and locating and connecting to any of the registered services.
 
 ####Considerations when choosing a tool
 
