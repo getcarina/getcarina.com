@@ -1,6 +1,6 @@
 ---
 title: Docker best practices: Dockerfile
-permalink: docs/_best-practices/docker-best-practices-dockerfile/
+permalink: docs/best-practices/docker-best-practices-dockerfile/
 description: Docker best practices, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
