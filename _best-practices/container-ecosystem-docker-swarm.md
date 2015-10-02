@@ -1,6 +1,6 @@
 ---
 title: Container ecosystem: Docker Swarm
-permalink: docs/_best-practices/container-ecosystem-docker-swarm/
+permalink: docs/best-practices/container-ecosystem-docker-swarm/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
