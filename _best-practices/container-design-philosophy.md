@@ -1,6 +1,6 @@
 ---
 title: Container design philosophy
-permalink: docs/_best-practices/container-design-philosophy/
+permalink: docs/best-practices/container-design-philosophy/
 description: Best practices for container design, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
