@@ -1,6 +1,6 @@
 ---
 title: Container ecosystem: Kubernetes
-permalink: docs/_best-practices/container-ecosystem-kubernetes/
+permalink: docs/best-practices/container-ecosystem-kubernetes/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
