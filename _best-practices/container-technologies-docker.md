@@ -1,6 +1,6 @@
 ---
 title: Introduction to container technologies: Docker
-permalink: docs/_best-practices/container-technologies-docker/
+permalink: docs/best-practices/container-technologies-docker/
 description: Introduction to container technologies, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
