@@ -2,8 +2,8 @@
 title: Containers 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
-permalink: docs/tutorials/001-containers-101/
-description: Introduction to container concepts, and how to create a container using Docker
+permalink: docs/tutorials/containers-101/
+description: Learn about what containers are and how they work and how to create a container using Docker.
 docker-versions:
   - 1.8.1
   - 1.8.2
