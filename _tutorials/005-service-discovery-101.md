@@ -1,5 +1,5 @@
 ---
-title: Service Discovery 101
+title: Service discovery 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
 date: 2015-09-30
 permalink: docs/tutorials/service-discovery-101/
