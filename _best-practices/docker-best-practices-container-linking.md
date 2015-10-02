@@ -1,6 +1,6 @@
 ---
 title: Docker best practices: container linking
-permalink: docs/_best-practices/docker-best-practices-container-linking/
+permalink: docs/best-practices/docker-best-practices-container-linking/
 description: Docker best practices, powered by the Rackspace Container Service
 author: Mike Metral
 date: 2015-10-01
