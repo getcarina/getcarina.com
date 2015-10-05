@@ -5,7 +5,7 @@ Article templates have the following frontmatter metadata:
 - title: Title of article
 - author: First Last <first.last@rackspace.com> 
 - date: yyyy-mm-dd
-- permalink: docs/articleType/slug-of-article/
+- permalink: docs/article-type/slug-of-article/
 - description: Article description with keywords
 - docker-versions:
  - x.x.x
@@ -36,9 +36,9 @@ Use the format shown in the template, which is the ISO 8601 format and should be
 ## Permalink
 Create the permalink for your article by using the following format:
 
-docs/*articleType*/*slug-of-article*/
+docs/*article-type*/*slug-of-article*/
 
-- *articleType* is the name of the GitHub folder in which the article lives, without the leading underscore. Example: **tutorials**
+- *article-type* is the name of the GitHub folder in which the article lives, without the leading underscore. Example: **tutorials** or **best-practices**
 
 - *slug-of-article* is the title of the article, minus any connecting articles and helper words, hyphenated, and all lowercase. The “slug” should  contain only alphanumeric characters and hypens; no underscores. Example: for the title “Run Wordpress in Docker Swarm,” the slug would be **run-wordpress-docker-swarm**
 
@@ -92,5 +92,3 @@ Example:
 Using standard topics is a key to successful categorization and filtering of information for users. 
 
 [Standard list of terms and further guidelines TBD]
-
-
