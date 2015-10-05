@@ -27,12 +27,12 @@ you created in [the previous tutorial](../wordpress-apache-mysql), and skip the
 [Deploy a WordPress container running a PHP-FPM pool](#deploy-wordpress-container-running-php-fpm-pool)
 sections of this tutorial.
 
-### Prerequisites
+### Prerequisite
 
-- A Rackspace Container Service cluster, with at least 2 nodes, running Docker Swarm.
+A Rackspace Container Service cluster, with at least two nodes, running Docker Swarm.
 
-**Note:** If you completed the [previous article](../wordpress-apache-mysql), you
-can re-use the same cluster, so long as all previous Docker containers have been
+**Note:** If you completed the [previous tutorial](../wordpress-apache-mysql), you
+can reuse the same cluster, so long as all previous Docker containers have been
 removed. You can delete all of them with this command:
 
 ```
