@@ -83,6 +83,8 @@ Example:
 
 - 1.8.2
 
+**Note:** Some best practice, conceptual, or other articles might not be asscoiated with a version of Docker. If this field does not apply to your content, omit the field entirely from your article's metadata. 
+
 ## Topics
 
 *Topics* are used to categorize and filter the content for users, and might eventually be used as a mechanism to suggest articles to users as they perform a task in the control panel.  
