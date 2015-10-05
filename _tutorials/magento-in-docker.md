@@ -33,9 +33,6 @@ git clone https://github.com/rackerlabs/rcs-library
 If you navigate to the `magento` directory, you will see the env file
 (along with a few other files) that we will need for this tutorial.
 
-Open up the env file and populate the `RS_USERNAME` and `RS_API_KEY` variables
-with your Rackspace username and API key respectively.
-
 **Note**: *Never* check this file into version control or expose it publicly.
 
 ### Set up MySQL
