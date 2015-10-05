@@ -75,14 +75,13 @@ The description should provide a succinct and clear overview of the article, usi
 
 ## Docker versions
 
-List the version of Docker that you used when creating the article. This should be the version the steps were tested against, so that a user using that version will get the same results. If the content is compatible with more than one version, list all of the compatible versions.  
+List the version of Docker that you used when creating the article. This should be the version the steps were tested against, so that a user using that version will get the same results. If you know that the content is compatible with more than one version, list all of the compatible versions.  
 
 Currently, Docker versions include up to three digits: *x*.*x*.*x*
 
 Example: 
 
 - 1.8.2
-- 1.8.1 
 
 ## Topics
 
