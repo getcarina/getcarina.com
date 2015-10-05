@@ -1,83 +1,98 @@
 ---
-title: Linking containers using WordPress and nginx
-description: How to spin up a multi-container WordPress application running nginx, php-fpm and MySQL on the Rackspace Container Service
+title: Link containers using WordPress and Nginx
+description: Learn how to spin up a multi-container WordPress application split across linked containers, using Nginx as the frontend and PHP-FPM as the backend.
 topics:
   - docker
   - beginner
 ---
 
-In the previous tutorial we covered how to set up a single Docker container
-running Apache 2 and WordPress. For our database we used an externally hosted
-MySQL instance, thereby avoiding some of the more complicated issues around
-container relationships and data persistence in Docker.
+In the [previous tutorial](../wordpress-apache-mysql), you set up a single
+Docker container running Apache 2 and WordPress. For your database, you used an
+externally hosted MySQL instance, thereby avoiding some of the more complicated
+issues around container relationships and data persistence in Docker.
 
-In this guide we'll explore how to set up container links, in line with the best
-practices set out by the Docker community. By the end, we'll have a single nginx
-container accepting traffic, a backend container running php-fpm and WordPress,
-and a MySQL container handling persistent state.
+This tutorial describes how to set up container links, according to the best
+practices set out by the Docker community. By the end, you will have a single
+Nginx container accepting traffic, a back-end container running PHP-FPM and
+WordPress, and a MySQL container handling persistent state.
 
-Before we begin, it's important to note that storing persistent data in
-containers is quite a hotly contested issue. Many prefer extracting this type
-of functionality out into external services, like Rackspace Cloud Databases. We
-are setting up a MySQL container in this tutorial purely to demonstrate
-container relationships. If you'd rather use a Database instance instead, follow
-steps 1-3 in our [first tutorial](../wordpress-apache-mysql). Once you're done,
-go straight to Step 3 of this tutorial.
+**Note:** Storing persistent data in containers is a hotly contested issue. Many
+prefer to instead use an external service such as Rackspace Cloud Databases.
+This tutorial sets up a MySQL container just to demonstrate container
+relationships. If you'd rather use a database instance, use the instance that
+you created in [the previous tutorial](../wordpress-apache-mysql), and skip the
+[Create a MySQL container](#create-mysql-container) and
+[Deploy a WordPress container running a PHP-FPM pool](#deploy-wordpress-container-running-php-fpm-pool)
+sections of this tutorial.
 
 ### One process per container
 
-One of the common expectations we have of Docker containers is that each one
-should encapsulate a single running process. We discuss this in our [best practices]()
-article, but to summarise the reasons of why this should be done:
+One of the common expectations of Docker containers is that each one should
+encapsulate a single running process. This is the topic of a best practices
+article, but the following list summarizes why "one process per container" is
+ideal:
 
-- If we ran multiple processes per container we'd need an intermediary
-piece of software like [supervisord](http://supervisord.org/) to manage multiple
-processes, which goes against one the core aims of the Docker project: to use a
-solution which is granular, lightweight and focuses on doing one thing well.
+- If multiple processes ran in a single container, an intermediary piece of
+software like [supervisord](http://supervisord.org/) would be needed to manage
+the multiple processes. This added layer would go against one of the core aims
+of the Docker project: to use a solution that is granular, lightweight, and
+focuses on doing one thing well.
 
-- Single processes bind the lifecycle of a container with the lifecycle of the
-process itself. This means that if a process like nginx dies, this fatal error
-directly impacts the state of the container itself, making debugging fairly
-straightforward.
+- Single processes bind the life cycle of a container with the life cycle of the
+process itself. This connection means that if a process like Nginx fails, this
+fatal error directly impacts the state of the container itself, making
+debugging fairly straightforward.
 
 - Decoupling applications into smaller components aligns with the micro-services
 model which provides far greater scalability than one monolithic application.
 
-- Splitting out into multiple containers allows you to better allocate compute
-resources to individual parts of your application stack.
+- Splitting applications into multiple containers allows you to better allocate
+compute resources to individual parts of your application stack.
 
-### Step 1: Create MySQL container
+### Create MySQL container
 
-The first step is to create the container that will be running MySQL. You first
-need to generate two [strong passwords](https://strongpasswordgenerator.com/):
-a root password and a password for the `wordpress` user. It's advisable to
-store these temporarily in environment variables:
+The first step is to create the container that will be running MySQL.
 
-```
-export ROOT_PASSWORD=<rootPassword>
-export WORDPRESS_PASSWORD=<wordpressPassword>
-```
+1. Generate two strong passwords: a root password and a password for the
+`wordpress` user.
 
-Be sure to replace `<rootPassword>` and `<wordpressPassword>`. Once you have these,
-plug them into the following terminal command:
+2. Store these passwords temporarily in environment variables:
 
-```
-docker run --detach \
-  --name mysql \
-  --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
-  --env MYSQL_USER=wordpress \
-  --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
-  --env MYSQL_DATABASE=wordpress \
-  mysql
-```
+  ```
+  export ROOT_PASSWORD=<rootPassword>
+  export WORDPRESS_PASSWORD=<wordpressPassword>
+  ```
 
-You should see the container ID outputted and, when you run `docker ps`, the
-full details of the `mysql` container listening on port `3306/tcp`.
+  Be sure to replace <rootPassword> and <wordpressPassword> with your generated
+  passwords.
 
-### Step 2: Deploy WordPress container running php-fpm pool
+3. Create the container by running the following terminal command. Name the
+   container `mysql` and use the password variables that you just created:
 
-The next step is to set up the backend container running the WordPress
-installation:
+  ```
+  docker run --detach \
+    --name mysql \
+    --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+    --env MYSQL_USER=wordpress \
+    --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+    --env MYSQL_DATABASE=wordpress \
+    mysql
+  ```
+
+  The output should show the container ID.
+
+4. To verify that the container is running, execute the following command:
+
+  ```
+  docker ps
+  ```
+
+  The output shows the full details of the `mysql` container, listening on port
+  `3306/tcp`.
+
+### Deploy WordPress container running PHP-FPM pool
+
+Next, set up the back-end container that is running the WordPress installation:
 
 ```
 docker run -d \
@@ -88,58 +103,54 @@ docker run -d \
   wordpress:fpm
 ```
 
-We are linking this container with the `mysql` container we just started, since
-it will need access for persistent data storage. If you consult the [official
-WordPress image](https://hub.docker.com/_/wordpress/) on Docker Hub, you can
-see a full list of the environment variables that are required. As you will
-notice, we did not specify the `WORDPRESS_DB_HOST` since it defaults to the IP
-and port of the linked `mysql` container. Nor did we need to specify the
-`WORDPRESS_DB_NAME`, since it defaults to `wordpress`.
+You are linking this container with the `mysql` container that you just started,
+because the WordPress container will need access for persistent data storage.
+To see a full list of the environment variables that are required, see the
+[official WordPress image](https://hub.docker.com/_/wordpress/) on Docker Hub.
+You do not need to specify the WORDPRESS_DB_HOST variable because it defaults to
+the IP address and port of the linked mysql container. Nor do you need to
+specify the WORDPRESS_DB_NAME variable, because it defaults to wordpress.
 
-### Step 3: Prepare nginx Docker image
+### Prepare the Nginx Docker image
 
-The final set-up step is to start our nginx frontend container. We will be
-deploying a variant of the base `nginx` Docker image which means you can either:
+The final step is to start an Nginx front-end container. To do so, you deploy a
+variant of the base nginx Docker image. You have the following options:
 
-1. Build the image locally from a Dockerfile and push to your own Docker Hub account; or
-2. Run a prebuilt image hosted on the `rackspace` Docker Hub account.
+- Build the image locally from a Dockerfile and push it to your own Docker Hub account.
+- Run a prebuilt image that is hosted on the `rackspace` Docker Hub account.
 
-If you want to use the prebuilt image, you can skip the next step and head
-straight to `Step 4: Running your container`.
+If you want to use the prebuilt image, you can skip to
+[Run the Nginx container](#run-the-nginx-container).
 
-#### Optional: Building your own image
+To build the Docker image, build it locally and push it to a central repository
+such as Docker Hub.
 
-For the time being, you will need to build the Docker image locally and push
-it to a central repository, like Docker Hub.
+1. Clone the Rackspace [Library repo](https://github.com/rackerlabs/rcs-library),
+which contains the `nginx` Dockerfile and the `nginx` configuration file:
 
-To start, we'll clone Rackspace's [Library repo](https://github.com/rackerlabs/rcs-library)
-which contains the nginx Dockerfile, and the nginx config file:
+  ```
+  git clone https://github.com/rackerlabs/rcs-library
+  ```
 
-```
-git clone https://github.com/rackerlabs/rcs-library
-cd rcs-library/nginx-fpm
-```
+2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
 
-Once we're inside the directory, we can build our image:
+  ```
+  docker build -t <userNamespace>/nginx-fpm nginx-fpm
+  ```
 
-```
-docker build -t <userNamespace>/nginx-fpm .
-```
+3. Push your local image to Docker Hub, just like you would with Git:
 
-Where `<userNamespace>` is your Docker Hub username.
+  ```
+  docker push <userNamespace>/nginx-fpm
+  ```
 
-The final step is to then push your local image to Docker Hub, just like you
-would with git:
+### Run the Nginx container
 
-```
-docker push <userNamespace>/nginx-fpm
-```
+After you've prepared the image, you can start the Nginx container.
 
-### Step 4: Running the nginx container
-
-Once you've prepared the image, you're ready to start the nginx container. You
-will need to substitute `<namespace>` with either your own Docker Hub account
-name, or `rackspace` if you did not build and push your own Docker image.
+Run the following command, substituting `<namespace>` with either your own
+Docker Hub account name, or `rackspace` if you did not build and push your own
+Docker image:
 
 ```
 docker run -d \
@@ -151,30 +162,32 @@ docker run -d \
   <namespace>/nginx-fpm
 ```
 
-This will create a container running nginx which handles traffic for the
+This command creates a container running Nginx, which handles traffic for the
 `/var/www/html` directory. This directory is a volume mount, made available
-(and therefore shared) by the `wordpress` container using the `--volumes-from`
+(and therefore shared) by the `wordpress` container by using the `--volumes-from`
 option.
 
-nginx will proxy all requests to the PHP FPM container (`wordpress`)
-via the FCGI protocol using that container's TCP hostname and port (`fpm:9000`).
+Nginx will proxy all requests to the PHP-FPM container (`wordpress`)
+via the FCGI protocol by using that container's TCP hostname and port (`fpm:9000`).
 
-### Step 4: Complete!
+### Verify the stack is running
 
-We can see whether our stack is running:
+Verify that your stack is running by executing the following command:
 
 ```
 docker ps
 ```
 
-And we can visit our nginx frontend by finding its IPv4 address and opening it
-in our default browser:
+You can also visit your Nginx front end by finding its IPv4 address and opening
+it in your default browser:
 
 ```
 open http://$(docker port nginx 80)
 ```
 
-That's it! You should now see the standard WordPress installation guide.
+You should now see the standard WordPress installation guide.
 
-In the next tutorial, we'll be exploring how to set up a fully load balanced
-and more distributed WordPress cluster on Docker Swarm.
+### Next step
+
+The [next tutorial]() explores how to set up a fully load balanced and more 
+distributed WordPress cluster on Docker Swarm.
