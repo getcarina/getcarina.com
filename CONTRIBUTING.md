@@ -1,6 +1,6 @@
 # Rackspace Container Service - for content contributors
 
-This is a [Jekyll](http://jekyllrb.com/) repo housing documentation and tutorials for Rackspace Container Service
+This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Rackspace Container Service.
 
 ## Writing
 
@@ -20,6 +20,7 @@ Follow the style guidelines defined at in the [Writing style guide](https://one.
 - Use [consistent text formatting](https://one.rackspace.com/display/devdoc/Text+formatting)
 - Use [active voice](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Useactivevoice)
 - Use [present tense](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Usepresenttense)
+- Write to the user [by using second person and imperative mood](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Writetoyou(thecustomer))
 - Write [clear and consistent step text](https://one.rackspace.com/display/devdoc/Tasks+and+procedures)
 
 A few specific guidelines for container content:
@@ -58,17 +59,17 @@ In `assets/img/visuals/` are Rackspace created stencils that can be used in the 
 While there are currently no container specific stencils, the directory contains several "generic" stencils,
 which can be used to represent container items.
 
-## Github Workflow
+## Github workflow
 
 To follow the GitHub workflow for this repo go to [GITHUBING.md](GITHUBING.md).
 
-## The Merge Process
+## The merge process
 
 **The content author owns the merge process.**
 
 We're here to chew bubble gum and merge content. And we're all out of bubble gum.
 
-### Technical Review
+### Technical review
 
 After you've created a pull request, go into the #containers channel in Slack, type `@rcs-tech`, paste in the link, and hit enter. This will notify the RCS tech reviewers that content is ready for tech review.
 
@@ -76,7 +77,7 @@ At least 1 technical reviewer must claim the review. If it's big and/or complica
 
 Work with your technical reviewers to get the content reviewed. Once everything looks good, the reviewer will put their final comment on the review as a :+1:.
 
-### Editorial Review
+### Editorial review
 
 After your tech reviewers are happy, go into the #containers channel in Slack, type `@rcs-edit`, paste in the link, and hit enter. This will notify the RCS editorial reviewers that content is ready for editorial review.
 
@@ -84,6 +85,6 @@ At least 1 editorial reviewer must claim the review. If nobody claims the review
 
 Work with your editorial reviewers to get the content reviewed. Once everything looks good, the reviewer will put their final comment on the review as a :+1:.
 
-### Merge It
+### Merge it
 
 Nice work! Give yourself a pat on the back, a :shipit:, and click the Merge pull request button.
