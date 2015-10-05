@@ -10,16 +10,16 @@ topics:
 ---
 
 WordPress is one of the most prevalent web applications in the world. This
-series of tutorials we'll be covering how to migrate your content management
-system (CMS) application to more of a microservices model.
+series of tutorials covers how to migrate your content management system (CMS)
+application to more of a microservices model.
 
 This tutorial uses the following scenario: setting up WordPress in a single
 Docker container, which runs in a Docker Swarm cluster on the Rackspace
 Container Service.
 
 The MySQL database is hosted externally on the Rackspace Cloud Databases platform,
-which makes it easier to deploy, manage and scale our web application over time.
-Finally, you use Apache to deliver traffic to our application.
+which makes it easier to deploy, manage, and scale our web application over time.
+Finally, you use Apache to deliver traffic to your application.
 
 ### Prerequisites
 
@@ -40,12 +40,15 @@ the Rackspace Cloud Control Panel by following these instructions:
    WordPress container does not require much RAM).
 7. Specify **5 GB** for the disk space.
 8. In the Add Database section, create a database named **wordpress**.
-9. Specify **wordpress** as the username, and assign a [strong password](https://strongpasswordgenerator.com/)
-to it. Be sure to remember this password since you will need it in step 11 and later.
-10. Click **Create instance**. A compute instance with 2 GB of RAM and 5 GB of
-    disk space running MySQL 5.6 is provisioned. It might take a few minutes to
-    build. The **wordpress** user is automatically granted full privileges to
-    the new **wordpress** database.
+9. Specify **wordpress** as the username, and assign a
+   [strong password](https://strongpasswordgenerator.com/) to it. Be sure to
+   remember this password because you will need it in step 11 and later.
+10. Click **Create instance**.
+
+    A compute instance with 2 GB of RAM and 5 GB of disk space running MySQL
+    5.6 is provisioned. It might take a few minutes to build. The **wordpress**
+    user is automatically granted full privileges to the new **wordpress**
+    database.
 11. Save your password as an environment variable:
 
   ```
@@ -100,6 +103,9 @@ setting the following the variables:
   * `WORDPRESS_DB_PASSWORD` is the password used by the MySQL user.
   * `WORDPRESS_DB_NAME` is the name of the MySQL database that WordPress will use.
 
+The default `wordpress` Docker image includes the Apache 2 web server by default,
+meaning that traffic will be handled on port 80.
+
 ### Verify that the container is running
 
 After running the preceding command, you should see the container's unique ID
@@ -126,4 +132,4 @@ open http://$(docker port wordpress 80)
 ### Next step
 
 The [next tutorial](../linking-wordpress-containers) describes how to set up
-more complex container relationships, such as an nginx front end.
+more complex container relationships, such as an NGINX front end.
