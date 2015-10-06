@@ -1,12 +1,17 @@
 ---
-title: Introduction to Rackspace Container Service 
-description: Introduction to Rackspace Container Service
+title: Introduction to RCS
+author: Constanze Kratel <constanze.kratel@rackspace.com>
+date: 2015-10-03
+permalink: docs/tutorials/intro-to-rcs/
+description: How to get started with Rackspace Container Service
+docker-versions:
+  - 1.8.2
 topics:
-  - containers
+  - docker
   - beginner
 ---
 
-#Before you get started#
+#Before you get started
 Before you get started with Rackspace Container Service, you should do the following:
 
 * Watch the [Introduction to Docker](https://sysadmincasts.com/episodes/31-introduction-to-docker) video. 
@@ -19,7 +24,7 @@ Before you get started with Rackspace Container Service, you should do the follo
 * Install the Docker client on your computer. For installation instructions, see the [Install the Docker client] (link_Install_Docker_Client) section.
 * If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2. 
 
-#What is Rackspace Container Service?#
+#What is Rackspace Container Service?
 **Rackspace Container Service** helps you get a quick start with Docker and containers. RCS has been designed to make running and managing containers easier for you. It does so by focusing on the essentials: fast provisioning times, bare-metal performance, and an easy-to-use user interface. Rackspace Container Service provides the following benefits for users:
 
 * Provides an infrastructure for cluster management.
@@ -35,9 +40,9 @@ The following diagram outlines how the Rackspace Container Service works.
 <show diagram here>
 
 
-#Getting Started#
+#Getting Started
 
-##Create a cluster##
+##Create a cluster
 After you have successfully installed Docker, you are ready to create your first cluster.
 
 To create your first cluster
@@ -47,7 +52,7 @@ To create your first cluster
 
 **Note** A cluster can be in one of the following states: *building*, *active*, *growing*
 
-##Retrieve your cluster credentials##
+##Retrieve your cluster credentials
 After you have created your cluster and it is in active state, you need to connect to it. Connection authorization for clusters is established using TLS certificates. 
 Before you can connect to your cluster, you need to download these credentials and to tell the client to use them.
 
@@ -63,7 +68,7 @@ To download your cluster credentials:
 If everything worked, running docker info should now display your RCS cluster details.
 
 
-##Deploy your first workload##
+##Deploy your first workload
 Now that you have assembled all the required ingredients, you can deploy your first workload.
 For example you can deploy a simple Wordpress blog with a MySQL database. 
 To do this, run the following two commands:
@@ -87,6 +92,9 @@ docker run --name my-wordpress --link mysql-db:mysql -p 8080:80 -d wordpress
 Rackspace Container Services currently does not support two-factor authentication. 
 As a workaround you can create a sub-user by following the instructions described in [How do i create a new user in the Cloud Control Panel](https://community.rackspace.com/products/f/54/t/4551)
 
+#Next#
+Using MySQL with RC
+<add other links>
 
 
 
