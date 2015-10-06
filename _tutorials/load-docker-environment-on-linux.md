@@ -31,7 +31,7 @@ To load a Docker environment, perform the following steps:
   * Otherwise, no additional setup is required.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
-[get-cluster-creds]: /docs/references/rcs-credentials/
+[get-cluster-creds]: {{site.baseurl}}/docs/references/rcs-credentials/
 
 ### <a name="references"></a> References
 * [Install Docker on Linux]({{ site.baseurl }}/docs/tutorials/docker-install-linux/)

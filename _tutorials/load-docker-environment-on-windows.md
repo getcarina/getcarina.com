@@ -56,7 +56,7 @@ CMD, perform the following steps:
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-[get-cluster-creds]: /docs/references/rcs-credentials/
+[get-cluster-creds]: {{site.baseurl}}/docs/references/rcs-credentials/
 
 #### <a name="powershell"></a> PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
@@ -133,7 +133,7 @@ in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to set 
 ![Git Bash Screenshot]({% asset_path load-docker-environment-on-windows/gitbash.png %})
 
 [mintty]: https://mintty.github.io
-[troubleshooting-tty]: /docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#ssh
+[troubleshooting-tty]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#ssh
 
 #### <a name="alternatives"></a>Alternatives
 Some alternative terminals provide useful features, such as improved copy and paste,
