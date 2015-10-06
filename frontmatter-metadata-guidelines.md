@@ -3,7 +3,7 @@
 Article templates have the following frontmatter metadata:
 
 - title: Title of article
-- author: First Last <first.last@rackspace.com> 
+- author: First Last &lt;first.last@rackspace.com> 
 - date: yyyy-mm-dd
 - permalink: docs/article-type/slug-of-article/
 - description: Article description with keywords
@@ -28,7 +28,9 @@ Use the following guidelines when creating titles for your articles:
 - Begin troubleshooting topics with a noun or gerund, usually. Example: **Error running interactive Docker shell on Windows** or **Troubleshooting the Docker Toolbox set up on Windows**
 
 ## Author
-Enter the first name and last name of the main person responsible for the creation of the content, followed by the author's Rackspace email address. Currently, only one author can be listed.
+Enter the first name and last name of the main person responsible for the creation of the content, followed by the author's Rackspace email address enclosed in angle brackets. 
+
+Currently, only one author can be listed.
 
 ## Date
 Use the format shown in the template, which is the ISO 8601 format and should be acceptable for international audiences: ***yyyy-mm-dd***. For example, for October 1, 2015, use **2015-10-01**.
