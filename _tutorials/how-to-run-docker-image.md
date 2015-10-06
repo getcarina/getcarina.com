@@ -14,7 +14,7 @@ This is the benefit of Docker Images. Anyone can create and share their images t
 
 This tutorial describes how to find and run any image from Docker hub, as well as creating your own customizable Docker image.
 
-## Before you begin
+### Before you begin
 
 Before you can begin this tutorial, be sure that you have fulfilled these prerequisites:
 
@@ -24,7 +24,8 @@ Before you can begin this tutorial, be sure that you have fulfilled these prereq
 
 To ensure the you fulfill these prerequisites run the command `docker version` in your terminal application:
 
-```$ docker version
+```
+$ docker version
  Client:
  Version:      1.8.2
  API version:  1.20
@@ -40,7 +41,7 @@ Server:
  Git commit:   d12ea79
  Built:        Thu Aug 13 02:49:29 UTC 2015
  OS/Arch:      linux/amd64
- ```
+```
 
 If you received an output similar to the one above, move on to the section "How to find and run a docker image". If you received a different output, move on to the next section.
 
@@ -144,6 +145,7 @@ This section shows you how to find and run a Docker Image.
    > If you run `docker pull <name of image>` without indicating the version you wish to download, Docker will download the latest version of that image.
 
 4. Run `docker images` again to see your downloaded images.
+
    ```
    $ docker images
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
@@ -153,4 +155,4 @@ This section shows you how to find and run a Docker Image.
 
    Docker stores a copy of the image onto your computer to save time when you run the image. If you find that you no longer need an image, you can delete the image yourself using the command `docker rmi` followed by the image id.
 
-## Make and share your own Docker Image
+### Make and share your own Docker Image
