@@ -7,6 +7,10 @@ topics:
   - beginner
 ---
 
+**Note:** This tutorial is for Windows users. If you are using another operating system, follow
+[the tutorial for Linux]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-linux/) or
+[the tutorial for Mac OS X]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/) instead.
+
 This tutorial describes how to load a Docker environment on Windows, so that you can work
 with Docker in the terminal and shell of your choice. For the purpose of this
 tutorial, the term _shell_ refers to a command-line interpreter that executes
@@ -177,3 +181,4 @@ In the following screenshot, ConEmu is configured with tabs for each shell (CMD,
 * [CMD syntax][cmd-doc]
 * [PowerShell syntax](http://ss64.com/ps/syntax.html)
 * [Bash syntax](http://ss64.com/bash/syntax.html)
+* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
