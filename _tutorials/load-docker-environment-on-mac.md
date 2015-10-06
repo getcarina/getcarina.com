@@ -1,6 +1,11 @@
 ---
 title: Load a Docker environment from the command-line on Mac OS X
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2015-09-30
 permalink: docs/tutorials/load-docker-environment-on-mac/
+description: Learn to load a Docker environment on Mac OS X, so that you can work with Docker from the command-line
+docker-versions:
+  - 1.8.2
 topics:
   - docker
   - beginner
