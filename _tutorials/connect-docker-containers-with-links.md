@@ -42,6 +42,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     ```bash
     $ docker inspect --format "{{ .Config.ExposedPorts }}" app
+    
     map[5000/tcp:{}]
     ```
 
@@ -50,7 +51,6 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     to the source container, `app`, and names the link `helloapp`.
 
     ```bash
-    # docker run --detach --name <targetContainer> --link <sourceContainer>:<linkAlias> -P rackerlabs/hello-world-web
     docker run --detach --name web --link app:helloapp -P rackerlabs/hello-world-web
     ```
 
@@ -63,6 +63,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     ```bash
     $ docker port web
+
     5000/tcp -> 0.0.0.0:32770
     ```
 
@@ -95,6 +96,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ env | grep HELLOAPP
+
     HELLOAPP_NAME=/web/helloapp
     HELLOAPP_PORT=tcp://172.17.0.12:5000
     HELLOAPP_PORT_5000_TCP=tcp://172.17.0.12:5000
@@ -122,6 +124,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ grep -i helloapp /etc/hosts
+
     172.17.0.12	helloapp 3432593d47de app
     ```
 
@@ -129,10 +132,13 @@ and how the containers use it to communicate.
 
     ```bash
     $ ping -c 1 helloapp
+
     PING helloapp (172.17.0.12): 56 data bytes
     64 bytes from 172.17.0.12: icmp_seq=0 ttl=64 time=0.105 ms
 
+
     $ ping -c 1 app
+
     PING helloapp (172.17.0.12): 56 data bytes
     64 bytes from 172.17.0.12: icmp_seq=0 ttl=64 time=0.060 ms
     ```
@@ -141,6 +147,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ curl http://helloapp:5000
+
     Hello World!
     ```
 
@@ -162,6 +169,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ env
+
     PYTHON_VERSION=3.4.3
     LANG=C.UTF-8
     PYTHON_PIP_VERSION=7.1.2
@@ -172,6 +180,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ more /etc/hosts
+
     127.0.0.1	localhost
     172.17.0.12	app
     172.17.0.13	web
@@ -181,6 +190,7 @@ and how the containers use it to communicate.
 
     ```bash
     $ ping -c 1 web
+
     PING web (172.17.0.13): 56 data bytes
     64 bytes from 172.17.0.13: icmp_seq=0 ttl=64 time=0.064 ms
     ```
