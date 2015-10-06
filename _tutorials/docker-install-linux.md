@@ -1,23 +1,23 @@
 ---
 title: Install Docker on Linux
-author: Nathaniel Archer nate.archer@rackspace.com
+author: Nathaniel Archer <nate.archer@rackspace.com>
 date: 2015-10-06
 permalink: docs/tutorials/docker-install-linux/
-description: Instructions on how to install Docker on Linux (Ubuntu, Debian)
+description: Learn how to install Docker on Linux (Ubuntu, Debian)
 topics:
   -docker
   -beginner
   -tutorial
 ---
 
-This tutorial covers how to install and set up Docker with Linux distributions like Ubuntu and Debian.
+This tutorial covers how to install and set up Docker on Linux distributions like Ubuntu and Debian.
 
 ###Prerequisite
 
 A working Terminal application
 
 ###Install Docker
-The following steps use Ubuntu. The commands will work with Debian as well. If you are using neither Ubuntu or Debian, substitute the appropriate commands for your Linux distribution.
+The following steps use Ubuntu. If you are not using Ubuntu, you can find installation instructions for your Linux distribution [here](https://docs.docker.com/installation/).
 
 1. Log in to an Ubuntu installation as a user with `sudo` privileges.
 
@@ -25,7 +25,7 @@ The following steps use Ubuntu. The commands will work with Debian as well. If y
    
   `which wget`
 
-   If `wget` isn't installed, run the follwoing commands:
+   If `wget` isn't installed, run the following commands:
 
    ```
    sudo apt-get update
@@ -34,15 +34,19 @@ The following steps use Ubuntu. The commands will work with Debian as well. If y
 
 3. Use `wget` to install the latest Docker package:
 
-   `$ wget -qO- https://get.docker.com/ | sh`
+   `wget -qO- https://get.docker.com/ | sh`
 
    You are prompted to enter your `sudo` password. After you do so, Docker is downloaded and installed.
 
-**Note**: If your network is behind a filtering proxy, any `apt` commands might fail. To fix this, add an `apt-key` directly:
+   **Note**: If your network is behind a filtering proxy, any `apt` commands might fail. To fix this, add an `apt-key` directly:
 
-     `$ wget -qO- https://get.docker.com/gpg | sudo apt-key add -`
+   `wget -qO- https://get.docker.com/gpg | sudo apt-key add -`
 
-4. Check that `docker` is installed by running `docker run hello-world`.
+4. Check that `docker` is installed by running the following command:
+   
+   `docker run hello-world`
+
+   The output should look as follows:
 
    ```
    $ docker run hello-world
@@ -96,4 +100,5 @@ If the `docker run hello-world` command fails, enter the following command:
 This command starts Docker and enables you to run any `docker` commands.
 
 ### Next step
-<!--Link to "Find and pull Docker Images"-->
+
+[Set up your virtual environment with Docker host](docs/tutorials/set-up-docker-machine)
