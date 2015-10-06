@@ -15,7 +15,7 @@ topics:
 This tutorial demonstrates connecting Docker containers with links so that they
 can communicate over the network.
 
-**Note:** Docker links can only be used by containers on the same Docker host.
+**Note:** Docker links can only be used by containers that are on the same Docker host.
 
 ### Prerequisites
 
@@ -27,11 +27,11 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
 ### Steps
 
-1. [Load your Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment/).
+1. [Load your Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
 2. Run the app container. This is the _source_ container for our Docker link. No ports
     are published for this container, so it will only communicate privately with other
-    containers using links.
+    containers by using links.
 
     ```bash
     docker run --detach --name app rackerlabs/hello-world-app
