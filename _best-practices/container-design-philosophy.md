@@ -9,7 +9,7 @@ topics:
 - planning
 ---
 
-*Run one process per container; manage containers as roles; listen to advice from Docker but don't blindly follow.*
+*Run one process per container, manage containers as roles, and listen to advice from Docker but don't follow it blindly.*
 
 Creating new containers is easy. What can be difficult is deciding how to divide your workload most effectively among many containers.
 
