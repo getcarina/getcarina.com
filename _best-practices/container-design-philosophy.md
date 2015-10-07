@@ -15,22 +15,19 @@ Creating new containers is easy after you learn the basic technology. What can b
 
 ### One process per container
 
-Docker’s “Best Practices” guide suggests that you “run only one process per container [(1)](#resources).” Though this initially seems to be a simple design decision that you could easily overlook, this concept has been met with various opinions, discussions, and interpretation in the community.
+Docker’s “Best Practices” guide suggests that you “run only one process per container [(1)](#resources).” Although such a design decision seems simple, this concept has been met with various opinions, discussions, and interpretation in the community.
 
-Though you can actually run more than one process per Docker container, some believe that this diverges from the simple packaging and ease-of-use that containers are supposed to provide. Confusion about this philosophy stems primarily from newcomers to the field who want to find a sensible way to use containers. A beginner's natural instinct is to treat a container as a virtual machine that they would SSH into, creating a necessity for multiple processes representing at least the machine's true workload (such as a database)
-and the tools (such as networking and security tools) that
+Though you can actually run more than one process per Docker container, some believe that this practice diverges from the simple packaging and ease-of-use that containers are supposed to provide. Confusion about this philosophy stems primarily from newcomers to the field who want to find a sensible way to use containers. A beginner's natural instinct is to treat a container as a virtual machine that they would SSH into, creating a necessity for multiple processes representing at least the machine's true workload--such as a database--and the tools--such as networking and security tools--that
 enable productive access to that workload. However,
-once one realizes that there are other methods of working with a
+when you realize that there are other methods of working with a
 container (such as enforcing proper logs and using development containers with
-a TTY for shell interaction) this hurdle of
-packing many different processes into a container is no longer needed.
+a TTY for shell interaction), you can overcome this habit of
+packing many different processes into a container.
 
-With insight into the alternative approaches that are practical in containers, the benefit that containers provide really
-shines through and the instinct to create monolithic packages, such as
-one would do with a virtual machine, becomes less relevant. Thus, the adoption of a
-microservice architecture becomes prominent as its relationship to
-containers not only appears as a better and clearer fit, but as a concept
-that is now synonymous with using containers.
+As a result, the adoption of a
+microservice architecture becomes prominent because its relationship to
+containers is a clear fit, and as a concept
+it is now synonymous with using containers.
 
 Martin Fowler describes this approach:
 
@@ -44,10 +41,10 @@ Martin Fowler describes this approach:
 
 If one is willing to accept the concept of one process per container, then
 it is safe to state that microservices are emerging as the preferred
-methodology when it comes to building your application’s stack. It
-enables software to not only become more modular, but it
+methodology for building your application’s stack. This methodology not only
+enables software to become more modular, but it also
 intrinsically advocates for loose coupling of dependencies. This aids
-in alleviating the pain points of continuous integration and continuous deployment
+in alleviating the pain of continuous integration and continuous deployment
 and ultimately aids in
 creating better software.
 
