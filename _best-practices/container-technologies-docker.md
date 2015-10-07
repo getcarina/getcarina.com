@@ -1,9 +1,10 @@
 ---
 title: Introduction to container technologies: Docker
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-technologies-docker/
 description: Introduction to container technologies, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -14,7 +15,7 @@ topics:
 Docker is an open-source project primarily focused on automating the deployment
 of applications within containers.
 
-## Background
+### Background
 
 Container technology has been around for many years but its popularity
 increased along with the popularity of Docker.
@@ -39,7 +40,7 @@ for containers at
 [Introduction to container technologies: orchestration and management of container clusters]
 (/container-technologies-orchestration-clusters/).
 
-## Overview
+### Overview
 
 Docker is based on Linux Containers (LXC) [(2)](#resources). LXC is a simplified
 virtualization environment that allows you to run multiple, isolated
@@ -114,7 +115,7 @@ Docker has started a forward progression of IT infrastructure and how we
 construct the applications that run on the infrastructure to truly be
 more flexible than ever before.
 
-## Basic concepts
+### Basic concepts
 
 You will encounter these ideas in almost every discussion of Docker:
 
@@ -138,7 +139,7 @@ You will encounter these ideas in almost every discussion of Docker:
   can be browsed and downloaded. The public Docker image repository is
   at <https://hub.docker.com/explore/> but you can also create your own private, local repository if needed.
 
-## Operational concepts
+### Operational concepts
 
 Recall that containers share a common operating system kernel.
 The following concepts allow each container to
@@ -161,7 +162,7 @@ proper resource allocation
   from one environment to another, much like the "small and fast" code repository system
   that git operates [(6)](#resources).
 
-## Current container philosophy
+### Current container philosophy
 
 Since Docker and the Docker ecosystem is currently a emerging field, it is
 worth noting that containers are not intended to be a replacement for all
@@ -178,9 +179,9 @@ state at a future date. For more on this, read
 [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications).
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <http://www.forbes.com/sites/benkepes/2014/09/16/the-rumors-were‐true-docker-funding-confirmed-and-40-million-enters-the-coffers/>
 
@@ -194,7 +195,7 @@ state at a future date. For more on this, read
 
 6. <https://git-scm.com/about/small-and-fast>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
 
@@ -207,13 +208,12 @@ state at a future date. For more on this, read
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
