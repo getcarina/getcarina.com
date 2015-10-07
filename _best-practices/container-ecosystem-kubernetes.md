@@ -32,7 +32,7 @@ resources, and their lifecycles.
 
 In Kubernetes, the *pod* is the central concept. 
 A *pod* is a group of applications in the same physical location and with a shared context.
-The *context* of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,  
+The *context* of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,
 access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes. 
 
 ### Relating Kubernetes to Docker and Mesos
@@ -109,8 +109,8 @@ in the container; you can read more about this at
 remember that we believe they’re implicit and hard to work with.
 Kubernetes can
 also create simplified environmental variables with the pattern
-{SVCNAME}_SERVICE_HOST and
-{SVCNAME}_SERVICE_PORT.
+`{SVCNAME}_SERVICE_HOST` and
+`{SVCNAME}_SERVICE_PORT`.
 
 Another recommended way to perform service discovery is by using a DNS
 server. The DNS server watches the Kubernetes API for new services and
@@ -118,7 +118,7 @@ creates a set of DNS records for each. If DNS has been enabled
 throughout the cluster, then
 all pods should be able to do name resolution of all services
 automatically [(3)](#resources). The takeaway from this is that you don’t need to
-explicitly create links between communicating pods as done natively in
+explicitly create links between communicating pods as you would do natively in
 Docker because Kubernetes does the heavy lifting, so long as you oblige
 by using the networking mechanisms.
 
@@ -180,14 +180,13 @@ see [Introduction to container technologies: orchestration and management of con
 and competing tools.
 
 Although Kubernetes is still at a Beta release level and claims not to be
-production-ready yet, the industry has not strayed away from betting
+production-ready yet, the industry has not hesitated to bet
 on Kubernetes’ future and success. Widespread adoption of Kubernetes appears to
-be based on the fact that
-Google is backing it, as well as in respect for the impressive contributors
-working on it.
+be based on the fact that it is a Google product; respect for the impressive contributors
+working on Kubernetes appears to be another factor.
 
-Aside from the positive publicities in blog posts and community chatter influencing
-its adoption, the community is showing its vested interest:
+In addition to the positive publicity in blog posts and community chatter influencing
+Kubernetes' adoption, the community is showing its vested interest by participating in its development:
 as of April 2015, Kubernetes averaged around 400-500 commits per
 week and a very substantial following of almost 300 contributors.
 
