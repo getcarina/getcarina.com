@@ -52,11 +52,11 @@ creating better software.
 
 From both a mental and a technical
 standpoint, it is easier to manage and use Docker containers as
-roles rather than by the names of
+*roles* rather than by the names of
 individual processes such as nginx, apache2, or sshd.
-Referring to Docker containers by their roles such as
-app, database, cache, or load balancer
-takes advantage of the flexibility and strengths of a container + microservice
+Referring to Docker containers by their roles, such as
+app, database, cache, or load balancer,
+takes advantage of the flexibility and strengths of a container plus microservice
 architecture for your application’s stack.
 
 ### Recommendation and caution
