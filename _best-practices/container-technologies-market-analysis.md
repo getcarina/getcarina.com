@@ -141,7 +141,7 @@ For specific observations and suggestions that you may wish to implement as you 
 
 * [Container design philosophy](/container-design-philosophy/)
 
-> Run one process per container; manage containers as roles; listen to advice from Docker but don't blindly follow.
+> Run one process per container, manage containers as roles, and listen to advice from Docker but don't follow it blindly.
 
 * [Docker best practices: Dockerfile](/docker-best-practices-dockerfile/)
 
