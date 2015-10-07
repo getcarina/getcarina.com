@@ -13,7 +13,7 @@ topics:
   - mysql
 ---
 
-This tutorial describes using MySQL with RCS so that you can store temporary data for development/testing in containers and store your production data persistently and securely in Rackspace's MySQL Cloud Database.
+This tutorial describes using MySQL with Rackspace Container Service (RCS) so that you can store temporary data for development/testing in containers and store your production data persistently and securely in Rackspace's MySQL Cloud Database.
 
 ### Prerequisites
 
@@ -44,20 +44,25 @@ This tutorial describes using MySQL with RCS so that you can store temporary dat
       mysql:5.6
     ```
 
-    Review the status of the container and the id of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
-    docker ps
+    docker ps --latest
+    ```
+
+    View the id of the container you just ran using the `--quiet` parameter.
+
+    ```bash
     docker ps --quiet --latest
     ```
 
-    Combine the above with the `docker port` command and you can discover what IP address and port MySQL is running on.
+    Discover what IP address and port MySQL is running on by combining the `docker port` command, the id of the container you just ran, and the default MySQL port of 3306.
 
     ```bash
     docker port $(docker ps --quiet --latest) 3306
     ```
 
-    For the containerized MySQL service, note how you don't care what it's named, what IP address it runs on, or what port it uses.
+    For the containerized MySQL service, note how you don't care what it's named, what IP address it runs on, or what port it uses. Instead you discover this information dynamically with the command above and use it later in the tutorial to connect to MySQL.
 
 1. Get the application source code
 
@@ -119,14 +124,19 @@ This tutorial describes using MySQL with RCS so that you can store temporary dat
       guestbook-mysql:1.0
     ```
 
-    Review the status of the application container and the logs of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
     docker ps --latest
+    ```
+
+    View the logs of the container you just ran using the `docker logs` command. The logs will contain some information based on the environment variables.
+
+    ```bash
     docker logs $(docker ps --quiet --latest)
     ```
 
-    Open a browser and visit your application.
+    Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
     ```bash
     echo http://$(docker port $(docker ps --quiet --latest) 5000)
@@ -198,14 +208,19 @@ This tutorial describes using MySQL with RCS so that you can store temporary dat
       guestbook-mysql:1.0
     ```
 
-    Review the status of the application container and the logs of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
     docker ps --latest
+    ```
+
+    View the logs of the container you just ran using the `docker logs` command. The logs will contain some information based on the environment variables.
+
+    ```bash
     docker logs $(docker ps --quiet --latest)
     ```
 
-    Open a browser and visit your application.
+    Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
     ```bash
     echo http://$(docker port $(docker ps --quiet --latest) 5000)
@@ -225,13 +240,19 @@ This tutorial describes using MySQL with RCS so that you can store temporary dat
 
 ### Troubleshooting
 
-Run a new MySQL container and open a shell so you can use the `mysql` command to poke around in your MySQL.
+Read the logs of the latest container you
 
 ```bash
-docker run --interactive --tty --rm mysql:5.6 /bin/bash
+docker logs $(docker ps --quiet --latest)
 ```
 
-Enter a running container and open a shell so you can poke around.
+Run a new MySQL container, and open a shell so you can use the `mysql` command to poke around in your MySQL.
+
+```bash
+docker run -it --rm mysql:5.6 /bin/bash
+```
+
+Enter a running container, and open a shell so you can poke around.
 
 ```bash
 docker exec -it $(docker ps -q -l) /bin/bash
