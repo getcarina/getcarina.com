@@ -103,6 +103,19 @@ The output should look as follows:
 
    Docker stores a copy of the image onto your computer to save time when you run the image. If you find that you no longer need an image, you can delete the image yourself using the command `docker rmi` followed by the image id.
 
+### Troubleshooting
+
+Sometimes, when using a `docker` command such as `docker info`, you will receive the following output:
+
+```
+$ docker info
+Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no such file or directory.
+* Are you trying to connect to a TLS-enabled daemon without TLS?
+* Is your docker daemon up and running?
+```
+
+If you receive this output, your virtual machine is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Create a Docker host](docs/tutorials/set-up-docker-machine).
+
 ### Next step
 
 To learn how to create and share your own Docker image, go to [Make and share a Docker image](docs/tutorials/make-docker-image).
