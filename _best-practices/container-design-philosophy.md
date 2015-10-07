@@ -67,22 +67,21 @@ profit-motivated entity, you should take Docker's advice as a starting point and
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <https://docs.docker.com/articles/dockerfile_best-practices/#run-only-one-process-per-container>
 
 2. <http://martinfowler.com/articles/microservices.html>
 
-Other recommended reading
+Other recommended reading:
 
 - <http://www.forbes.com/sites/alexkonrad/2015/07/01/meet-docker-founder-solomon-hykes/>
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
