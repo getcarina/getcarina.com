@@ -1,9 +1,10 @@
 ---
 title: Docker best practices: data and stateful applications
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-data-stateful-applications/
 description: Docker best practices, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -22,7 +23,7 @@ stateful information such as a backend database layer or data in
 general that needs to be preserved, used, and possibly written to logs,
 containers are not the best match, yet.
 
-## Datastore and logs
+### Datastore and logs
 
 There are strong recommendations that you should never store data or
 logs in a container as a container is likely to be short-­lived
@@ -132,7 +133,7 @@ or strictly use data volumes as a means to map to a host directory or
 a file that you can curate and manage external to
 Docker.
 
-## Block storage
+### Block storage
 
 Given the potential of Docker volumes to manage
 your data, and the assumption that you are operating on a cloud
@@ -155,15 +156,15 @@ block storage device and share said container with other containers without havi
 to introduce an additional management layer.
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://docs.docker.com/userguide/dockervolumes/>
 
 2. <http://docs.docker.com/userguide/dockervolumes/>
 
-*Other recommended reading*
+Other recommended reading
 
 - <http://www.rackspace.com/cloud/block-storage>
 
@@ -178,13 +179,12 @@ to introduce an additional management layer.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
