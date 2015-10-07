@@ -111,7 +111,7 @@ This tutorial describes using MySQL with Rackspace Container Service (RCS) so th
 
 1. Run the application
 
-    Run a container from the image. The application code uses the environment variables to connect to the MySQL container, [app.py](https://github.com/rackerlabs/guestbook-mysql/blob/master/app.py).
+    Run a container from the image. The application code uses the environment variables to connect to the MySQL container, see [app.py](https://github.com/rackerlabs/guestbook-mysql/blob/master/app.py).
 
     ```bash
     docker run --detach \
@@ -195,7 +195,7 @@ This tutorial describes using MySQL with Rackspace Container Service (RCS) so th
       python app.py create_tables
     ```
 
-    Run a container from the image. The application code uses the environment variables to connect to the MySQL instance, [app.py](https://github.com/rackerlabs/guestbook-mysql/blob/master/app.py).
+    Run a container from the image. The application code uses the environment variables to connect to the MySQL instance, see [app.py](https://github.com/rackerlabs/guestbook-mysql/blob/master/app.py).
 
     ```bash
     docker run --detach \
