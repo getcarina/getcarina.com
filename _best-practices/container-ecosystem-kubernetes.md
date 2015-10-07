@@ -68,28 +68,21 @@ Anything more than that is beyond the scope of Kubernetes.
 
 #### Volumes
 
-Docker volumes can be *data volumes* or *data volume containers*.  
-
 With *data volumes*, you can either
 let Docker choose a random, unspecified location at which to create the
 volume on the host or you can specify a host directory or file to mount on
 the container. In Kubernetes, new abstractions such as volume and volume
 mounts exist for usage with pods that have volume types `EmptyDir` and
-`HostDir`. However, behind the scenes, these types essentially map to the
-way one can use a Docker Data volume, with additional overhead for
-Kubernetes to maintain the user’s configuration while it interfaces
-directly with Docker to actually enable the sharing of volumes.
+`HostDir`. These Kubernetes volume types are essentially consistent with Docker data volumes, with additional overhead for
+Kubernetes to maintain your configuration while it interfaces
+with Docker to actually enable the sharing of volumes.
 
 Where Kubernetes differs strongly from Docker with regard to volumes is in
-*data volume containers*. Docker's documentation,
-as well as various blog posts and articles,
+*data volume containers*. Docker volumes can be *data volumes* or *data volume containers*. Docker uses data volume containers as a means of sharing data volumes: one container, the data volume container, manages the data volume while other containers can use it. Docker's documentation
 prescribes the data volume containers mechanism as the preferred way to share data among
-containers. As with data volumes,
-various intrinsic issues exist with data volume containers
-when you begin to scale out your
-architecture. The team behind Kubernetes has recognized this methodology
-as a potential for failure and has chosen not to support data volume
-containers as a type in their volumes. The reasoning for this is that data
+containers; various blog posts and articles agree. However, the team behind Kubernetes believes that data volume containers
+are a potential cause of failure in large-scale architectures; they have chosen not to support data volume
+containers as a type for Kubernetes volumes. The reasoning for this is that data
 volume containers are ultimately passive containers that can be
 very unintuitive to understand from a user perspective, and can create
 corner cases and potentially be problematic for management systems.
