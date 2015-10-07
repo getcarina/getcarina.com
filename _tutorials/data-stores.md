@@ -27,4 +27,4 @@ Using data stores in containers for your development, testing, and quality assur
 Learn how to use data stores with RCS so that you can store your production data.
 
 * [MongoDB](data-stores-mongo)
-* [MySQL](TODO)
+* [MySQL](data-stores-mysql)

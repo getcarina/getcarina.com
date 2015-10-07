@@ -30,20 +30,25 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     docker run --detach --publish-all mongo:3.0.6
     ```
 
-    Review the status of the container and the id of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
-    docker ps
+    docker ps --latest
+    ```
+
+    View the id of the container you just ran using the `--quiet` parameter.
+
+    ```bash
     docker ps --quiet --latest
     ```
 
-    Combine the above with the `docker port` command and you can discover what IP address and port Mongo is running on.
+    Discover what IP address and port Mongo is running on by combining the `docker port` command, the id of the container you just ran, and the default Mongo port of 27017.
 
     ```bash
     docker port $(docker ps --quiet --latest) 27017
     ```
 
-    For the containerized MongoDB service, note how you don't care what it's named, what IP address it runs on, or what port it uses.
+    For the containerized Mongo service, note how you don't care what it's named, what IP address it runs on, or what port it uses. Instead you discover this information dynamically with the command above and use it later in the tutorial to connect to Mongo.
 
 1. Get the application source code
 
@@ -87,11 +92,11 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
       mongo --eval 'db.getSiblingDB("'"$MONGO_DATABASE"'").createUser({"user": "'"$MONGO_USER"'", "pwd": "'"$MONGO_PASSWORD"'", "roles": [ "readWrite" ]})' $MONGO_HOST:$MONGO_PORT
     ```
 
-    Note: You'll have to hit Enter a couple of times after running the command above to get your prompt back.
+    Note: You may have to hit Enter a couple of times after running the command above to get your prompt back.
 
 1. Run the application
 
-    Run a container from the image. The application code uses the environment variables to connect to the MongoDB container, [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
+    Run a container from the image. The application code uses the environment variables to connect to the MongoDB container, see [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
 
     ```bash
     docker run --detach \
@@ -105,14 +110,19 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
       guestbook-mongo:1.0
     ```
 
-    Review the status of the application container and the logs of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
     docker ps --latest
+    ```
+
+    View the logs of the container you just ran using the `docker logs` command. The logs will contain some information based on the environment variables.
+
+    ```bash
     docker logs $(docker ps --quiet --latest)
     ```
 
-    Open a browser and visit your application.
+    Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
     ```bash
     echo http://$(docker port $(docker ps --quiet --latest) 5000)
@@ -169,7 +179,7 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
     export MONGO_PASSWORD=guestbook-prod-password
     ```
 
-    Run a container from the image. The application code uses the environment variables to connect to ObjectRocket's MongoDB instance, [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
+    Run a container from the image. The application code uses the environment variables to connect to ObjectRocket's MongoDB instance, see [app.py](https://github.com/rackerlabs/guestbook-mongo/blob/master/app.py).
 
     ```bash
     docker run --detach \
@@ -183,14 +193,19 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
       guestbook-mongo:1.0
     ```
 
-    Review the status of the application container and the logs of that container.
+    Review the container you just ran using the `--latest` parameter. The Status of the container should begin with "Up". If it doesn't, see the Troubleshooting section below
 
     ```bash
     docker ps --latest
+    ```
+
+    View the logs of the container you just ran using the `docker logs` command. The logs will contain some information based on the environment variables.
+
+    ```bash
     docker logs $(docker ps --quiet --latest)
     ```
 
-    Open a browser and visit your application.
+    Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
     ```bash
     echo http://$(docker port $(docker ps --quiet --latest) 5000)
@@ -210,13 +225,13 @@ This tutorial describes using MongoDB with RCS so that you can store temporary d
 
 ### Troubleshooting
 
-Run a new Mongo container and open a shell so you can use the `mongo` command to poke around in your MongoDB.
+Run a new Mongo container, and open a shell so you can use the `mongo` command to poke around in your MongoDB.
 
 ```bash
 docker run --interactive --tty --rm mongo:3.0.6 /bin/bash
 ```
 
-Enter a running container and open a shell so you can poke around.
+Enter a running container, and open a shell so you can poke around.
 
 ```bash
 docker exec -it $(docker ps -q -l) /bin/bash
