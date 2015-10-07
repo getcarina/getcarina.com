@@ -1,9 +1,10 @@
 ---
 title: Container ecosystem: Mesos versus OpenStack
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-mesos-openstack/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -61,7 +62,7 @@ added complexity when you can achieve the same efficiency from Mesos.
 
 At the end of the day, it really comes down to necessity and planning
 for the future infrastructure that your applications will consume.
-Whether that is Mesos, OpenStack, or a mix of the two, will highly
+Whether that is Mesos, OpenStack, or a mix of the two, will 
 depend on how decoupled you want to create your
 datacenter, stack, and application to accommodate the nature of varying
 workloads from different user bases whether they be in virtual machines,
@@ -69,13 +70,13 @@ containers,
 or both.
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://www.openstack.org/summit/vancouver-2015/summit-videos/presentation/platform-as-a-service-kubernetesmesos-openstack>
 
-*Other recommended reading*
+Other recommended reading
 
 - <http://mesos.apache.org/>
 
@@ -84,13 +85,12 @@ or both.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
