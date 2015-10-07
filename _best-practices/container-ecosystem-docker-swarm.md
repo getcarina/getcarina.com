@@ -1,9 +1,10 @@
 ---
 title: Container ecosystem: Docker Swarm
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-docker-swarm/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -23,7 +24,7 @@ said this about Docker Swarm:
 > ingredient of that [standard] interface, [specifically, acting as] the
 > glue between Docker and orchestration backends [(1)](#resources)”.
 
-If you’re taken aback or confused by this explanation of what Swarm’s
+If you are confused by this explanation of what Swarm’s
 added benefit is,
 you are not alone. Swarm attempts to offer entry-level
 orchestration for managing distributed containers, but whenever you’re
@@ -51,13 +52,13 @@ the future holds for Swarm is still to be determined, but the gist of
 it today does not seem to be offering anything worth adopting.
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://twitter.com/solomonstre/status/492111054839615488>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Introduction to container technologies: orchestration and management of container clusters]
 (/container-technologies-orchestration-clusters)
@@ -67,13 +68,12 @@ it today does not seem to be offering anything worth adopting.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
