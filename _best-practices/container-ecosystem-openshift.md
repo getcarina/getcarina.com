@@ -1,9 +1,10 @@
 ---
 title: Container ecosystem: OpenShift
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-openshift/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -15,7 +16,11 @@ RedHat’s OpenShift has always been associated with managing your
 applications at the Platform-as-a-Service (PaaS) layer.
 With three OpenShift offerings--OpenShift
 Online, OpenShift Enterprise, and OpenShift Origin--RedHat aims to claim a
-stake in various markets. The differences between the three offerings are
+stake in various markets. 
+
+### Three kinds of OpenShift
+
+The differences between the three offerings are
 best explained by identifying their primary purpose, which is either to compete
 with more-established alternatives or to grow by attracting contributors:
 
@@ -27,9 +32,11 @@ with more-established alternatives or to grow by attracting contributors:
   the community while
   benefiting from the enhancements that open source brings to the table.
 
+### OpenShift and Kubernetes 
+
 With Kubernetes really paving the way as the standard for container
 orchestration in the Docker world, RedHat has taken the stance with
-the next release of their products, version 3, to really focus, adopt
+the newest release of OpenShift, version 3, to really focus, adopt
 and build on Kubernetes. In doing so, RedHat is not only betting on
 Kubernetes as the future of container orchestration, along with the
 rest of the community, but they are allowing themselves to leverage
@@ -40,6 +47,14 @@ To learn more about Kubernetes and other tools for container orchestration, read
 [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/) and
 [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
 
+How OpenShift’s
+adoption of Kubernetes plays out, especially in terms of
+OpenShift's intent to be a wrapper for Kubernetes,
+is sure to be an interesting story over the
+in the long run of the “PaaS war”.
+
+### OpenShift and OpenStack and Project Atomic
+
 RedHat has stated that OpenShift is capable of integrating with both
 OpenStack [(7)](#resources) and Project Atomic [(8)](#resources),
 but given the nature of RedHat’s
@@ -49,16 +64,12 @@ community. It is possibile that considering OpenShift
 Enterprise as a viable option for managing containers in a
 mission-critical IT shop will require a full top-to-bottom
 adoption of RedHat’s container and virtualization products, if both
-types of workloads are aimed to be co-located. How OpenShift’s
-adoption of Kubernetes plays out, especially in terms of
-OpenShift's intent to be a wrapper for Kubernetes,
-is sure to be an interesting story over the
-in the long run of the “PaaS war”.
+types of workloads are aimed to be co-located. 
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://www.openshift.com/products/online>
 
@@ -76,7 +87,7 @@ in the long run of the “PaaS war”.
 
 8. <https://blog.openshift.com/openshift-v3-platform-combines-docker-kubernetes-atomic-and-more/>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
 
@@ -85,13 +96,12 @@ in the long run of the “PaaS war”.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
