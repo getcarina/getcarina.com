@@ -1,9 +1,10 @@
 ---
 title: Container ecosystem: Kubernetes
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-kubernetes/
 description: Best practices for container ecosystems, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -15,7 +16,7 @@ Kubernetes, from Google, is a a tool for managing and orchestrating containers
 within a stack. Kubernetes works with Docker but
 they differ from each other in key ways.
 
-## Operating model
+### Operating model
 
 Kubernetes’ own documentation at <http://kubernetes.io/> fully describes its
 purpose and its technical capabilities. However, we want to take the
@@ -44,7 +45,7 @@ containers, including adherence to requirements such as resource
 allocation for containers, affinity, replication, and load balancing.
 Anything more than that is beyond the scope of Kubernetes.
 
-## Kubernetes-specific functionality
+### Kubernetes-specific functionality
 
 Kubernetes does not directly intend to reinvent core Docker
 functionality, but it does establish its own slightly divergent
@@ -52,7 +53,7 @@ semantics for concepts such as volumes and container communication.
 In some cases, it has its own implementation of a concept that is also used in
 Docker.
 
-### Volumes
+#### Volumes
 
 Docker volumes can be *data volumes* or *data volume containers*.  
 
@@ -85,7 +86,7 @@ as *data volumes* and *data volume containers*,
 see
 [Docker best practices: data and stateful applications] (/docker-best-practices-data-stateful-applications/).
 
-### Discovery
+#### Discovery
 
 For container service discovery, specifically within a pod, Kubernetes does
 not directly use Docker links as they don’t do well outside of a single
@@ -102,8 +103,8 @@ in the container; you can read more about this at
 remember that we believe they’re implicit and hard to work with.
 Kubernetes can
 also create simplified environmental variables with the pattern
-{SVCNAME}\_SERVICE\_HOST and
-{SVCNAME}\_SERVICE\_PORT.
+{SVCNAME}_SERVICE_HOST and
+{SVCNAME}_SERVICE_PORT.
 
 Another recommended way to perform service discovery is by using a DNS
 server. The DNS server watches the Kubernetes API for new services and
@@ -119,7 +120,7 @@ Lastly, do not forget that non-Kubernetes tools such as etcd, Zookeeper, and
 Consul are also viable options. These and others are discussed in
 [Introduction to container technologies: orchestration and management of container clusters] (/container-technologies-orchestration-clusters/).
 
-### Networking
+#### Networking
 
 Kubernetes deviates from the default Docker networking model. The goal
 of Kubernetes' networking model is to allow each pod to have an IP in a
@@ -165,7 +166,7 @@ communicate with other machines in the network. Furthermore, it
 may even be the case that conflicts and confusion arise due to different
 Docker hosts using the same network space and configuration.
 
-# Community status
+### Community status
 
 Kubernetes is the front-runner among tools for managing and orchestrating
 containers in your stack;
@@ -185,9 +186,9 @@ as of April 2015, Kubernetes averaged around 400-500 commits per
 week and a very substantial following of almost 300 contributors.
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <http://www.slideshare.net/timothysc/apache-coneu>
 
@@ -197,7 +198,7 @@ week and a very substantial following of almost 300 contributors.
 
 4. <http://kubernetes.io/v1.0/docs/admin/networking.html>
 
-*Other recommended reading*
+Other recommended reading
 
 - <http://kubernetes.io/>
 
@@ -212,13 +213,12 @@ week and a very substantial following of almost 300 contributors.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
