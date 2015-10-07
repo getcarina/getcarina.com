@@ -79,11 +79,11 @@ If the text links to or hints at another source beneficial to readers, include i
 Conclude with general suggestions about other doc we provide, encouraging readers to read on.
 -->
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <https://docs.where-i-got-that-long-quote.com>
 
-Other recommended reading
+Other recommended reading:
 
 - <http://www.if-you-really-want-to-understand-this-you-should-dig-in-here.org/>
 
