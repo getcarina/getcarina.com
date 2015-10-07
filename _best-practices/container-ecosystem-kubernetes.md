@@ -16,34 +16,37 @@ Kubernetes, from Google, is a a tool for managing and orchestrating containers
 within a stack. Kubernetes works with Docker but
 they differ from each other in key ways.
 
-### Operating model
+### Operating model: the pod
 
 Kubernetes’ own documentation at <http://kubernetes.io/> fully describes its
 purpose and its technical capabilities. However, we want to take the
 opportunity to take a step back and give a synopsis of how Kubernetes
-is intended to be used and where the real need for including it in
-your stack lies.
+is intended to be used and where the real need for it in
+your stack may lie.
 
 Kubernetes’ added benefit is that it defines a collection of
 primitives to aid in establishing and maintaining a cluster of
 containers. In short, Kubernetes is really just an opinionated model
 of application containers, their dependencies with regards to other
-resources, and their lifecycles. Without going into too much fine-grained detail,
+resources, and their lifecycles. 
+
+In Kubernetes, the *pod* is the central concept. 
+A *pod* is a group of applications in the same physical location and with a shared context.
+The *context* of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,  
+access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes. 
+
+### Relating Kubernetes to Docker and Mesos
+
+Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms, 
+a Kubernetes *pod* "consists of a colocated group of Docker containers with shared volumes [(1)](#resources)."
+
+Kubernetes is not Mesos. Mesos is a scheduling system for containers. In relating Mesos, Docker, and Kubernetes,
+Timothy St. Clair explains that
 *pods* “are the atom of scheduling, and are a group of
 containers that
 are scheduled onto the same host…[that] facilitate data sharing and
 communication [by way of] shared mount point’s, [and] network namespace
-[to create] microservices [(1)](#resources).”
-
-The rest of the concepts/units Kubernetes outlines such as *services*,
-*labels* and *replication controllers* are ways to enhance *pods*.
-They also enable users to declare the intended state
-their containers should hold and have Kubernetes enforce. Therefore, it
-is safe to say that Kubernetes does not even know what an application or
-microservice actually is; it only know how you wish to collect and manage your
-containers, including adherence to requirements such as resource
-allocation for containers, affinity, replication, and load balancing.
-Anything more than that is beyond the scope of Kubernetes.
+[to create] microservices [(2)](#resources).”
 
 ### Kubernetes-specific functionality
 
@@ -52,6 +55,16 @@ functionality, but it does establish its own slightly divergent
 semantics for concepts such as volumes and container communication.
 In some cases, it has its own implementation of a concept that is also used in
 Docker.
+
+Key Kubernetes concepts such as *services*,
+*labels* and *replication controllers* are ways to enhance *pods*.
+Pods also enable users to declare the intended state
+their containers should hold and have Kubernetes enforce. Therefore, it
+is safe to say that Kubernetes does not even know what an application or
+microservice actually is; it only know how you wish to collect and manage your
+containers, including adherence to requirements such as resource
+allocation for containers, affinity, replication, and load balancing.
+Anything more than that is beyond the scope of Kubernetes.
 
 #### Volumes
 
@@ -111,7 +124,7 @@ server. The DNS server watches the Kubernetes API for new services and
 creates a set of DNS records for each. If DNS has been enabled
 throughout the cluster, then
 all pods should be able to do name resolution of all services
-automatically [(2)](#resources). The takeaway from this is that you don’t need to
+automatically [(3)](#resources). The takeaway from this is that you don’t need to
 explicitly create links between communicating pods as done natively in
 Docker because Kubernetes does the heavy lifting, so long as you oblige
 by using the networking mechanisms.
@@ -129,7 +142,7 @@ containers across the cluster. In doing so, pods can be thought of as
 any other node in the network with regards to “port management,
 networking, naming, service discovery, load balancing, application
 configuration, and migration” and can create a NAT-free address space;
-this concept is known as the “IP-per-pod” model [(3)](#resources).
+this concept is known as the “IP-per-pod” model [(4)](#resources).
 
 Because Kubernetes applies IP addresses at the pod scope,
 containers within
@@ -137,7 +150,7 @@ a pod share their network namespaces, including their IP address.
 This means that
 containers within a pod can all reach each other’s ports on `localhost`.
 This implies that containers within a pod must coordinate port usage,
-but this is no different than processes in a virtual machine [(4)](#resources).
+but this is no different than processes in a virtual machine [(5)](#resources).
 
 We can achieve the IP-per-pod model via the prescribed network
 requirements imposed by Kubernetes by allocating each host (minion) with
@@ -190,13 +203,15 @@ week and a very substantial following of almost 300 contributors.
 
 Numbered citations in this article
 
-1. <http://www.slideshare.net/timothysc/apache-coneu>
+1. <http://kubernetes.io/v1.0/docs/user-guide/pods.html>
 
-2. <http://kubernetes.io/v1.0/docs/user-guide/services.html>
+2. [Musings on Mesos: Docker, Kubernetes, and beyond]<http://www.slideshare.net/timothysc/apache-coneu>
 
-3. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/networking.md>
+3. <http://kubernetes.io/v1.0/docs/user-guide/services.html>
 
-4. <http://kubernetes.io/v1.0/docs/admin/networking.html>
+4. <https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/design/networking.md>
+
+5. <http://kubernetes.io/v1.0/docs/admin/networking.html>
 
 Other recommended reading
 
