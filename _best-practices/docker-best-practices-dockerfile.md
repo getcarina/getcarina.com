@@ -1,9 +1,10 @@
 ---
 title: Docker best practices: Dockerfile
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-dockerfile/
 description: Docker best practices, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -22,7 +23,7 @@ Specifics of your application and its dependencies can determine which
 of these methods you must use. If both options are available to you,
 consider using a Dockerfile.
 
-## Dockerfile
+### Dockerfile
 
 Using a Dockerfile is the preferred method of creating and customizing your
 container images, as Dockerfile enables you to use
@@ -61,7 +62,7 @@ but if you are utilizing a bloated operating system base when BusyBox could suff
 then you are not only consuming more space than needed, you are also adding
 time to Docker builds and image repository interactions.
 
-## Update and commit
+### Update and commit
 
 The update-and-commit method requires that you begin with a previously created
 Docker image that you have retrieved from a container
@@ -80,7 +81,7 @@ remote registry with `docker commit`.
 Using the update-and-commit methodology is the simplest way of
 extending an image, but the updated image is not easy to maintain or share.
 
-## Recommendations
+### Recommendations
 
 The following is a collection of unordered recommendations and tips
 that don’t get enough upfront attention when starting off with Dockerfile.
@@ -164,9 +165,9 @@ creation and utilization of Dockerfiles to build your container images.
     confuse users that expect to be able to use the idiom [(3)](#resources).
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://docs.docker.com/userguide/dockerimages/>
 
@@ -174,20 +175,19 @@ creation and utilization of Dockerfiles to build your container images.
 
 3. <http://www.projectatomic.io/docs/docker-image-author-guidance/>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Docker best practices: image repository](/docker-best-practices-image-repository/)
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
