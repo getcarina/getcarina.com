@@ -1,9 +1,10 @@
 ---
 title: Introduction to container technologies: registration and discovery of container services
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/container-technologies-registration-discover/
 description: Introduction to container technologies, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -28,7 +29,7 @@ The technologies described below are the current front-runners in the
 industry with regards to service registration and service
 discovery.
 
-## Apache’s “Zookeeper”
+### Apache’s “Zookeeper”
 
 Zookeeper is a distributed configuration service synchronization service
 and naming registry for large distributed systems. ZooKeeper was a
@@ -41,7 +42,7 @@ cluster [(1)](#resources).
 Many projects use Zookeeper, including Hadoop’s HBase, Yahoo, and
 Rackspace’s Email & Apps.
 
-## CoreOS’ “etcd”
+### CoreOS’ “etcd”
 
 Etcd is a distributed key/value store used for service discovery and shared
 configuration. It is aimed to be a simple implementation of the Raft
@@ -55,7 +56,7 @@ sequential consistency based on a quorum of nodes.
 Many projects use etcd, including Google's Kubernetes, Pivotal's Cloud
 Foundry, Rackspace's Mailgun, Apache's Mesos, and Mesosphere's DCOS [(2)](#resources).
 
-## Hashicorp’s “Consul”
+### Hashicorp’s “Consul”
 
 Consul is a tool for service discovery and configuration. It is distributed,
 highly available, and extremely scalable. Key features include:
@@ -84,7 +85,7 @@ Consul configurations are designed to provide consistency (all nodes see the sam
 
 In a limited search, public projects or companies using Consul were not found.
 
-## Comparison and recommendations
+### Comparison and recommendations
 
 | Org       | Tool      | Client/Server  Architecture | Primitive Key/Value Store | Basic  Service Discovery | Advanced Service Discovery | Consistency | Language |
 |-----------|-----------|-----------------------------|---------------------------|--------------------------|----------------------------|-------------|----------|
@@ -114,9 +115,9 @@ In terms of which technology to use:
 **Current Recommendation** etcd
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://cwiki.apache.org/confluence/display/ZOOKEEPER/Zab1.0>
 
@@ -126,20 +127,19 @@ In terms of which technology to use:
 
 4. https://raft.github.io/
 
-*Other recommended reading*
+Other recommended reading
 
 - <http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed>
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
