@@ -10,16 +10,7 @@ topics:
   -tutorial
 ---
 
-Sometimes, when using a `docker` command such as `docker info`, you will receive the following output:
-
-```
-$ docker info
-Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no such file or directory.
-* Are you trying to connect to a TLS-enabled daemon without TLS?
-* Is your docker daemon up and running?
-```
-
-You receive the above output when you are attempting to run `docker` commands with a Docker host. In order to use the `docker` client, you must be using a linux-based virtual environment through a Docker host.
+In order to use the `docker` client on Mac and Windows computers, you must be using a linux-based virtual environment through a Docker host. The host then allows `docker` to access the Docker daemon, allowing you to interact with your containers with any operating system.
 
 This tutorial will will show you how to create a Docker host inside of a virtual environment.
 
@@ -29,7 +20,7 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
 * You have installed `docker-machine` through the Docker toolbox. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
 
-> Windows and Mac users should already have `docker-machine` installed. If you are a linux user, you can find instructions to install `docker-machine` for linux here [here](https://docs.docker.com/machine/install-machine/).
+Windows and Mac users should already have `docker-machine` installed. If you are a linux user, you can find instructions to install `docker-machine` for linux here [here](https://docs.docker.com/machine/install-machine/). That being said, `docker-machine` is not required to run virtual environments on Linux.
 
 * [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads) or later.
 * A working terminal application.
@@ -38,8 +29,9 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
 1. Run `docker-machine ls`. This command shows all available virtual machines running Docker.
 
+Your output should look as follows:
+
     ```
-    $ docker-machine ls
     NAME   ACTIVE   DRIVER   STATE   URL
     ```
 
@@ -66,26 +58,16 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
 4. Run `eval $(docker-machine env test)`. This command will set environment variables for Docker. You will need to perform this action every time you open a new tab or you restart your machine.
 
-5. Verify the environment variables for your machine. You can do this by running `docker-machine env test`.
+   You can now run `docker` commands on this host.
 
-   ```
-   $ docker-machine env test
-   export DOCKER_TLS_VERIFY="1"
-   export DOCKER_HOST="tcp://172.16.62.130:2376"
-   export DOCKER_CERT_PATH="/Users/<your username>/.docker/machine/machines/dev"
-   export DOCKER_MACHINE_NAME="test"
-   # Run this command to configure your shell:
-   # eval "$(docker-machine env dev)"
-   ```
+   You also can load your Rackspace Container Service credentials into your docker environment. For instructions on how you do so, follow the links to your corresponding operating system below:
 
-You can now run `docker` commands on this host.
+   * [Load a Docker environment on Linux](docs/tutorials/load-docker-environment-on-linux)
+   * [Load a Docker environment on Mac](docs/tutorials/load-docker-environment-on-mac)
+   * [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows)
 
 ### Next steps
 
 Once you have a working Docker host, you can continue to the tutorial [Find and pull a Docker image](docs/tutorials/run-docker-image).
 
-You can also load Rackspace Container Service into your Docker environment. Follow the link for your operating system to find out more:
-
-* [Load a Docker environment on Linux](docs/tutorials/load-docker-environment-on-linux)
-* [Load a Docker environment on Mac](docs/tutorials/load-docker-environment-on-mac)
-* [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows)
+If you wish to learn how to create a container, go to [Containers 101](docs/tutorials/containers-101).
