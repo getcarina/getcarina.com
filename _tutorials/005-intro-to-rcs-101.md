@@ -17,33 +17,28 @@ Before you get started with Rackspace Container Service, you should do the follo
 * Watch the [Introduction to Docker](https://sysadmincasts.com/episodes/31-introduction-to-docker) video. 
 * Ensure that your Rackspace Cloud account is enabled for Rackspace Container Services.
 * Familiarize yourself with basic Docker concepts. Read the [Docker documentation](https://docs.docker.com/
-).
-* Familiarize yourself with the basic container concepts. Read the [Containers 101](add_link) document.
+) and [Docker 101] (docs/tutorials/docker101).
+* Familiarize yourself with the basic container concepts. Read the [Containers 101](docs/tutorials/containers101) document.
 * Familiarize yourself with [scheduling strategies](https://docs.docker.com/swarm/scheduler/strategy/) and with [filters](https://docs.docker.com/swarm/scheduler/filter/).
 * Learn about the resources and resource limitations of a cluster.
 * Install the Docker client on your computer. For installation instructions, see the [Install the Docker client] (link_Install_Docker_Client) section.
 * If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2. 
 
 #What is Rackspace Container Service?
-**Rackspace Container Service** helps you get a quick start with Docker and containers. RCS has been designed to make running and managing containers easier for you. It does so by focusing on the essentials: fast provisioning times, bare-metal performance, and an easy-to-use user interface. Rackspace Container Service provides the following benefits for users:
-
-* Provides an infrastructure for cluster management.
-* Manages the scaling of your pool of Docker nodes. 
-* Enables you to utilize all the benefits of containers (packaging and performance).
-* Supports new use-cases with extremely dynamic application lifecycles.
-* Enables you to quickly go from zero to a running application. 
+**Rackspace Container Service** provides a high-performance service for running and managing Docker containers in a cluster-based infrastructure. Rackspace Container Service gives you a scalable cluster management infrastructure out of the box and allows you to deploy your applications by utilizing one ore more Docker containers across a managed cluster. Rackspace Container Services eliminates the need to install cluster management software, and maintain cluster hardware. Rackspace Container Service sets up and manages clusters made up of Docker containers for you. It launches and terminates the containers and maintains complete information about the state of your cluster.
  
-Rackspace Container Service has its foundations in OpenStack and utilizes the existing Linux Container (LXC) support in Nova. 
-Rackspace has configured Docker to run inside these containers.
-
 The following diagram outlines how the Rackspace Container Service works.
-<show diagram here>
+
+[Insert the diagram that nathan is working on here]
 
 
 #Getting Started
 
 ##Create a cluster
-After you have successfully installed Docker, you are ready to create your first cluster.
+
+Rackspace Container Service is built on the concept of **clusters**. A cluster represents a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. 
+
+Now that you have successfully installed Docker, you are ready to create your first cluster.
 
 To create your first cluster
 
