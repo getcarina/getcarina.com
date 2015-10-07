@@ -1,9 +1,10 @@
 ---
 title: Docker best practices: image repository
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-image-repository/
 description: Docker best practices, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -22,7 +23,7 @@ a manual, multi-step process.
 You can create your containers from publicly-available images saved by the
 community or from custom images that you saved privately for your own reuse.
 
-## Community images
+### Community images
 
 One of the main advantages of using Docker containers is that
 the community has created
@@ -47,7 +48,7 @@ You can pull official images with shortened calls.
 For example, `docker pull mysql` asks for all official images
 contributed by MySQL.
 
-## Personal images
+### Personal images
 
 You can upload your own custom images to several repositories, including
 the Docker Hub Registry,
@@ -71,13 +72,13 @@ logging into your private registry as opposed to the central one. That switch is
 easy as `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <http://www.activestate.com/blog/2014/01/deploying-your-own-private-docker-registry>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Rackspace Cloud Images](https://developer.rackspace.com/docs/user-guides/infrastructure/cloud-config/compute/cloud-images-product-concepts/image-properties/)
 
@@ -90,13 +91,12 @@ easy as `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
