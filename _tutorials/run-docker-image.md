@@ -10,9 +10,9 @@ topics:
   -tutorial
 ---
 
-Docker Images serve as the building blocks for containers. The image acts as software you load into the container. They can be as simple as running a single command like `run hello-world`, or as complex as an entire database or host operating system.
+Docker Images serve as the building blocks for containers. The image acts as software you load into the container. The image can be as simple as running a single command like `run hello-world`, or as complex as an entire database or host operating system.
 
-This is the benefit of Docker Images. Anyone can create and share their images through [Docker hub](https://hub.docker.com/). Even if your computer cannot run the software in a Docker Image, Docker containers will always be able to run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
+The benefit of Docker images is that anyone can create and share their images through [Docker hub](https://hub.docker.com/). Even if your computer cannot run the software in a Docker Image, Docker containers will always be able to run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
 
 This tutorial describes how to find and run any image from Docker hub.
 
@@ -25,7 +25,7 @@ Before you can begin this tutorial, be sure that you have fulfilled these prereq
 * A terminal application.
 * A virtual machine, such as Kitematic or [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
 
-To ensure the you fulfill these prerequisites run the command `docker version` in your terminal application:
+To ensure that you fulfill these prerequisites run the command `docker version` in your terminal application:
 
 ```
 $ docker version
@@ -46,23 +46,26 @@ $ docker version
  OS/Arch:      linux/amd64
  ```
 
-If you received an output similar to the one above, continue to the next section. If your output was different, please review the steps in You have performed the steps in the tutorial [Set up Docker machine and your virtual environment](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
+If you received an output similar to the one above, continue to the next section. If your output was different, please review the steps in the tutorial [Create a Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
 
 ### Find and pull a Docker Image
 
 This section shows you how to find and run a Docker Image.
 
-1. Run `docker images`. This command lists all images downloaded onto your current Docker machine.
+1. Run `docker images`. This command lists all images downloaded onto your Docker machine.
+
+
+The output should look as follows:
 
    ```
-   $ docker images
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
    ```
 
-2. Because you currently have no images on your machine, you need to search and find an image. To search for an image use `docker search` and than the name of the image you wish to use. For this tutorial, we'll search for an Ubuntu image. Run `docker search ubuntu`.
+2. Because you currently have no images on your machine, you need to search and find an image. To search for an image on Docker hub, use `docker search` and type the name of the image you wish to use. For this tutorial, we'll search for an Ubuntu image. Run `docker search ubuntu`.
+
+The output should look as follows:
 
    ```
-   $ docker search ubuntu
    NAME                           DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
    ubuntu                         Ubuntu is a Debian-based Linux operating s...   2325      [OK]       
    ubuntu-upstart                 Upstart is an event-based replacement for ...   34        [OK]
@@ -72,8 +75,10 @@ This section shows you how to find and run a Docker Image.
 
 3. Now that you have found the image you wish to use, run `docker pull ubuntu:12.04`. Docker will download Ubuntu version 12.04.
 
+
+The output should look as follows:
+
    ```
-   $ docker pull ubuntu:12.04
    12.04: Pulling from library/ubuntu
    ba2b457ecfb2: Pull complete
    26180b0fe8fb: Pull complete
@@ -88,8 +93,9 @@ This section shows you how to find and run a Docker Image.
 
 4. Run `docker images` again to see your downloaded images.
 
+The output should look as follows:
+
    ```
-   $ docker images
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
    ubuntu              latest              91e54dfb1179        5 weeks ago         188.4 MB
    ubuntu              12.04               57bca5139a13        5 weeks ago         134.8 MB
@@ -100,3 +106,5 @@ This section shows you how to find and run a Docker Image.
 ### Next step
 
 To learn how to create and share your own Docker image, go to [Make and share a Docker image](docs/tutorials/make-docker-image).
+
+To learn how to create a container from an image, go to [Containers 101](docs/tutorials/containers-101).
