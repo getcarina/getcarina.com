@@ -22,7 +22,7 @@ The following steps use Ubuntu. If you are not using Ubuntu, you can find instal
 1. Log in to an Ubuntu installation as a user with `sudo` privileges.
 
 2. Ensure that `wget` is installed.
-   
+
   `which wget`
 
    If `wget` isn't installed, run the following commands:
@@ -43,8 +43,8 @@ The following steps use Ubuntu. If you are not using Ubuntu, you can find instal
    `wget -qO- https://get.docker.com/gpg | sudo apt-key add -`
 
 4. Check that `docker` is installed by running the following command:
-   
-   `docker run hello-world`
+
+   `sudo docker run hello-world`
 
    The output should look as follows:
 
@@ -90,6 +90,32 @@ The following steps use Ubuntu. If you are not using Ubuntu, you can find instal
     For more examples and ideas, visit:
      https://docs.docker.com/userguide/
    ```
+
+If you want to use the docker command without always prefixing it with sudo, follow
+the instructions below. See [Docker daemon attack surface][daemon-security] for more information on
+the security impacts of adding a user to the docker group.
+
+1. Create a group named `docker` and add your user to it.
+
+    ```bash
+    sudo usermod -aG docker ubuntu
+    ```
+
+2. Restart the docker service.
+
+    ```bash
+    sudo service docker restart
+    ```
+
+3. Log out, then log in again so that your user is recognized as a member of the docker group.
+
+4. Verify that you are able to execute docker commands without sudo.
+
+    ```bash
+    docker version
+    ```
+
+[daemon-security]: https://docs.docker.com/articles/security/#docker-daemon-attack-surface
 
 ### Troubleshooting
 
