@@ -1,9 +1,10 @@
 ---
 title: Docker best practices: container linking
+author: Mike Metral <mike.metral@rackspace.com>
+date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-container-linking/
 description: Docker best practices, powered by the Rackspace Container Service
-author: Mike Metral
-date: 2015-10-01
+docker-versions:
 topics:
   - best-practices
   - planning
@@ -51,7 +52,7 @@ such as the following:
 In addition to the environment variables, Docker adds a host entry for
 the source container to the `/etc/hosts` file.
 
-## Ambassador pattern
+### Ambassador pattern
 
 In Docker linking, a pattern emerged that allows the proxying of
 connections between a server and client container. This separate proxy
@@ -67,7 +68,7 @@ as the community is concerned as it does not necessarily add any benefit
 that links don’t already provide, and it further complicates the
 architecture without solving the underlying issues at hand.
 
-## Issues with linking
+### Issues with linking
 
 As provocative as linking seems, it seems to be met with a couple of
 different nuances and issues when you begin to think of linking
@@ -114,33 +115,32 @@ foreknowledge of the connection itself. The stability and benefits of linking
 just aren’t ready to be integrated into
 mission-critical, production-grade stacks.
 
-## Alternative to linking
+### Alternative to linking
 
 An alternative that is becoming an industry standard is to use a
 service registration and discovery tool. You can read more about this at
 [Introduction to container technologies: registration and discovery of container services] (/container-technologies-registration-discover/).
 
 <a name="resources"></a>
-## Resources
+### Resources
 
-*Numbered citations in this article*
+Numbered citations in this article
 
 1. <https://github.com/docker/docker/issues/7467>
 
-*Other recommended reading*
+Other recommended reading
 
 - [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
 
-* For step-by-step demonstrations, explore the *tutorials* collection.
-* For detailed descriptions of reference architectures designed
-  for specific use cases,
+* For step-by-step demonstrations and instructions, explore the *tutorials* collection.
+* For detailed information about how to solve specific issues or work with specific architectures,
   explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 
-## About the author
+### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at http://www.metralpolis.com/.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
