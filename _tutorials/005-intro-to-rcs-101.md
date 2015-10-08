@@ -151,9 +151,13 @@ As a workaround you can create a sub-user by following the instructions describe
 
 [MySQL with RCS](docs/tutorials/mysql-with-rcs/)
 
-[Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/)
+[Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/) 
+
+[MongoDB with RCS] (docs/tutorials/mongodb-with-rcs/)
 
 [Run Magento in a Docker container](docs/tutorials/magento-in-docker/)
+
+[Introduction to Docker Swarm] (docs/tutorials/introduction-docker-swarm/)
 
 [How to use Drupal on Docker Swarm](docs/tutorials/drupal-and-swarm/) 
 	
