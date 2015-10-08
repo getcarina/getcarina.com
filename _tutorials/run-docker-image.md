@@ -22,7 +22,7 @@ This tutorial describes how to find and download any Docker image from Docker Hu
 Before you can begin this tutorial, be sure that you have fulfilled these prerequisites:
 
 * You have installed Docker. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
-* You have performed the steps in the tutorial, [Set up a virtual environment with Docker host ](docs/tutorials/set-up-docker-machine).
+* You have performed the steps in the tutorial, [Set up a virtual environment with a Docker host ](docs/tutorials/set-up-docker-machine).
 * You have a working terminal application.
 * you have a VM, such as [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
 
@@ -50,7 +50,7 @@ If you receive output with the same format as the following example, continue to
  OS/Arch:      linux/amd64
 ```
 
-If your output was different, please review the steps in the tutorial [Set up a virtual environment with Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
+If your output was different, please review the steps in the tutorial [Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
 
 ### Find and download a Docker Image
 
@@ -123,7 +123,7 @@ Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no s
 * Is your docker daemon up and running?
 ```
 
-If you receive this output, your VM is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Create a virtual environment wit Docker host](docs/tutorials/set-up-docker-machine).
+If you receive this output, your VM is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine).
 
 ### Next steps
 
