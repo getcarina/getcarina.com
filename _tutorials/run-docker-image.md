@@ -1,34 +1,38 @@
 ---
-title: Find and pull a Docker image
+title: Find and download a Docker image
 author: Nathaniel Archer <nate.archer@rackspace.com>
 date: 2015-10-06
 permalink: docs/tutorials/run-docker-image/
-description: Instructions on how to find and run a Docker Image from Docker hub, and the function of Docker Images.
+description: Learn how to find and download a Docker image from Docker hub, and the function of Docker images.
+docker-versions: 1.8.2
 topics:
   -Docker
   -beginner
   -tutorial
 ---
 
-Docker Images serve as the building blocks for containers. The image acts as software you load into the container. The image can be as simple as running a single command like `run hello-world`, or as complex as an entire database or host operating system.
+Docker images are the building blocks of containers. The image can be as simple as running a single command like run hello-world, or as complex as an entire database or host operating system. Even if your computer cannot run the software in a Docker image, a Docker container can always run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
 
 The benefit of Docker images is that anyone can create and share their images through [Docker hub](https://hub.docker.com/). Even if your computer cannot run the software in a Docker Image, Docker containers will always be able to run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
 
-This tutorial describes how to find and run any image from Docker hub.
+This tutorial describes how to find and download any Docker image from Docker Hub.
 
-### Before you begin
+### Prerequisites
 
 Before you can begin this tutorial, be sure that you have fulfilled these prerequisites:
 
-* You have installed `docker`. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
-* You have performed the steps in the tutorial, [Set up Docker machine and your virtual environment](docs/tutorials/set-up-docker-machine).
-* A terminal application.
-* A virtual machine, such as Kitematic or [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
+* You have installed Docker. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
+* You have performed the steps in the tutorial, [Set up a virtual environment with Docker host ](docs/tutorials/set-up-docker-machine).
+* You have a working terminal application.
+* you have a VM, such as [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
 
-To ensure that you fulfill these prerequisites run the command `docker version` in your terminal application:
+To verify that you fulfill these prerequisites, run the following command in your terminal application:
+
+`$ docker version`
+
+If you receive output with the same format as the following example, continue to the next section.
 
 ```
-$ docker version
  Client:
  Version:      1.8.2
  API version:  1.20
@@ -44,26 +48,29 @@ $ docker version
  Git commit:   d12ea79
  Built:        Thu Aug 13 02:49:29 UTC 2015
  OS/Arch:      linux/amd64
- ```
+```
 
-If you received an output similar to the one above, continue to the next section. If your output was different, please review the steps in the tutorial [Create a Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
+If your output was different, please review the steps in the tutorial [Set up a virtual environment with Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
 
-### Find and pull a Docker Image
+### Find and download a Docker Image
 
 This section shows you how to find and run a Docker Image.
 
-1. Run `docker images`. This command lists all images downloaded onto your Docker machine.
+1. List all the images that exist on your Docker host:
 
+   `$ docker images`
 
-The output should look as follows:
+   If you don't have any images, the output should look as follows:
 
    ```
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
    ```
 
-2. Because you currently have no images on your machine, you need to search and find an image. To search for an image on Docker hub, use `docker search` and type the name of the image you wish to use. For this tutorial, we'll search for an Ubuntu image. Run `docker search ubuntu`.
+2. Search for an image on Docker Hub. Use docker search and type the name of the image that you want to find. For this tutorial, search for an Ubuntu image.
 
-The output should look as follows:
+   `$ docker search ubuntu`
+
+   Docker pulls a list of Hub repositories that contain an Ubuntu image. The output should look as follows:
 
    ```
    NAME                           DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
@@ -71,12 +78,15 @@ The output should look as follows:
    ubuntu-upstart                 Upstart is an event-based replacement for ...   34        [OK]
    ```
 
-   Docker will pull a list of Docker hub repositories containing an Ubuntu image.
+3. When you find the image that you want to use, download it by running the following command. Specify the name of the image and the version number.
 
-3. Now that you have found the image you wish to use, run `docker pull ubuntu:12.04`. Docker will download Ubuntu version 12.04.
+   **Note:** If you run this command without indicating the version that you want to download, Docker downloads the latest version of that image.
 
+   `$ docker pull ubuntu:12.04`
 
-The output should look as follows:
+   Docker downloads the image, in this case Ubuntu version 12.04.
+
+   The output should look as follows:
 
    ```
    12.04: Pulling from library/ubuntu
@@ -89,23 +99,22 @@ The output should look as follows:
    Status: Downloaded newer image for ubuntu:12.04
    ```
 
-   > If you run `docker pull <name of image>` without indicating the version you wish to download, Docker will download the latest version of that image.
-
 4. Run `docker images` again to see your downloaded images.
 
-The output should look as follows:
+  The output should look as follows:
 
    ```
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-   ubuntu              latest              91e54dfb1179        5 weeks ago         188.4 MB
    ubuntu              12.04               57bca5139a13        5 weeks ago         134.8 MB
    ```
 
-   Docker stores a copy of the image onto your computer to save time when you run the image. If you find that you no longer need an image, you can delete the image yourself using the command `docker rmi` followed by the image id.
+   Docker stores a copy of the image on your computer to save time when you run the image. If you no longer need an image, you can delete it by running the docker rmi command followed by the image ID. For example:
+
+   `$ docker rmi 57bca5139a13`
 
 ### Troubleshooting
 
-Sometimes, when using a `docker` command such as `docker info`, you will receive the following output:
+Sometimes, when you use a `docker` command such as `docker info`, you will receive the following output:
 
 ```
 $ docker info
@@ -114,9 +123,9 @@ Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no s
 * Is your docker daemon up and running?
 ```
 
-If you receive this output, your virtual machine is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Create a Docker host](docs/tutorials/set-up-docker-machine).
+If you receive this output, your VM is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Create a virtual environment wit Docker host](docs/tutorials/set-up-docker-machine).
 
-### Next step
+### Next steps
 
 To learn how to create and share your own Docker image, go to [Make and share a Docker image](docs/tutorials/make-docker-image).
 
