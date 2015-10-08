@@ -10,14 +10,11 @@ topics:
   -tutorial
 ---
 
-This tutorial covers how to install and set up Docker on Linux distributions like Ubuntu and Debian.
+This tutorial describes how to install and set up Docker on Linux distributions, such as Ubuntu or Debian.
 
-###Prerequisite
-
-A working Terminal application
-
-###Install Docker
-The following steps use Ubuntu. If you are not using Ubuntu, you can find installation instructions for your Linux distribution [here](https://docs.docker.com/installation/).
+### <a name="install"></a> Install Docker
+The following steps use Ubuntu. If you are not using Ubuntu, you can find installation
+instructions for your Linux distribution [the Docker website](https://docs.docker.com/installation/).
 
 1. Log in to an Ubuntu installation as a user with `sudo` privileges.
 
@@ -91,9 +88,10 @@ The following steps use Ubuntu. If you are not using Ubuntu, you can find instal
      https://docs.docker.com/userguide/
    ```
 
-If you want to use the docker command without always prefixing it with sudo, follow
-the instructions below. See [Docker daemon attack surface][daemon-security] for more information on
-the security impacts of adding a user to the docker group.
+### <a name="sudo"></a> Configure Docker to run without sudo
+If you want to use the `docker` command without always prefixing it with `sudo`, follow
+these instructions. For more information on the security impacts of adding a user
+to the docker group, see [Docker daemon attack surface][daemon-security].
 
 1. Create a group named `docker` and add your user to it.
 
@@ -101,15 +99,16 @@ the security impacts of adding a user to the docker group.
     sudo usermod -aG docker ubuntu
     ```
 
-2. Restart the docker service.
+2. Restart the Docker service.
 
     ```bash
     sudo service docker restart
     ```
 
-3. Log out, then log in again so that your user is recognized as a member of the docker group.
+3. Log out of your current shell or desktop session, then log in again so that your
+    user is recognized as a member of the docker group.
 
-4. Verify that you are able to execute docker commands without sudo.
+4. Verify that you are able to execute `docker` commands without `sudo`.
 
     ```bash
     docker version
