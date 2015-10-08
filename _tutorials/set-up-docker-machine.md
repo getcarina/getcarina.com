@@ -3,39 +3,52 @@ title: Set up virtual environment with a Docker host
 author: Nathaniel Archer <nate.archer@rackspace.com>
 date: 2015-10-06
 permalink: docs/tutorials/set-up-docker-machine/
-description: Instructions on how to set up your virtual environment with Docker Machine using a Docker host.
+description: Learn how to set up your virtual environment with a Docker host using a Docker Machine.
+docker-versions:
+  -1.8.2
 topics:
   -Docker
   -beginner
   -tutorial
 ---
 
-In order to use the `docker` client on Mac and Windows computers, you must be using a linux-based virtual environment through a Docker host. The host then allows `docker` to access the Docker daemon, allowing you to interact with your containers with any operating system.
+This tutorial describes how to use Docker Machine to create a Docker host inside of a virtual environment.
 
-This tutorial will will show you how to create a Docker host inside of a virtual environment.
+To use the Docker client on Mac OS X and Windows computers, you must set up a Linux-based virtual environment that contains a Docker host. The host enables the client to access the Docker daemon, which enables you to interact with your containers with any operating system.
+
+**Note**: Linux users do not have to perform the steps outlined in this tutorial, although the commands described within the tutorial are useful for navigating between Docker hosts.
 
 ### Prerequisites
 
 Before you begin this tutorial, be sure that you have fulfilled these prerequisites:
 
-* You have installed `docker-machine` through the Docker toolbox. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
+* You have installed Docker Machine through the Docker Toolbox. For Docker Toolbox installation instructions for Windows and Mac OS X, go to the installation section of [Docker-101](docker-101-introduction-docker) and click the link for your operating system.
 
-Windows and Mac users should already have `docker-machine` installed. If you are a linux user, you can find instructions to install `docker-machine` for linux here [here](https://docs.docker.com/machine/install-machine/). That being said, `docker-machine` is not required to run virtual environments on Linux.
+Docker Machine is not required to run virtual environments on Linux. However, if you are a Linux user, you can find instructions for installing Docker Machine [here](https://docs.docker.com/machine/install-machine/).
 
-* [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads) or later.
-* A working terminal application.
+* You have installed [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads) or later.
 
-### Instructions
+* You have a working terminal application.
 
-1. Run `docker-machine ls`. This command shows all available virtual machines running Docker.
+### Create a VM running a Docker host
 
-Your output should look as follows:
+1. Show all the available virtual machines(VMs)that are running Docker:
 
-    ```
-    NAME   ACTIVE   DRIVER   STATE   URL
-    ```
+   `$ docker-machine ls`
 
-2. To create a virtual machine with Docker running, run `docker-machine create --driver virtualbox test`.  
+   If you have not created any VMs yet, your output should look as follows:
+
+   ```
+   NAME   ACTIVE   DRIVER   STATE   URL
+   ```
+
+2. Create a VM that is running Docker:
+
+   `$ docker-machine create --driver virtualbox test`.  
+
+   The `--driver` flag indicates what type of driver `virtualbox` the machine will run on. In this case, `virtualbox` indicates that the driver is Oracle VirtualBox. The final argument in the command gives the VM a name, in this case, `test`.
+
+   The output should as follows
 
    ```
    $ docker-machine create --driver virtualbox test
@@ -46,21 +59,22 @@ Your output should look as follows:
    To see how to connect Docker to this machine, run: docker-machine env test
    ```
 
-   The `--driver` flag indicates what type of driver `virtualbox` the machine will run on. The final argument in the command `test`, gives the machine a name.
-
-3. Run `docker-machine ls` again to see the machine you created.
+3. Run `docker-machine ls` again to see the VM that you created. The output should look as follows:
 
    ```
-   $ docker-machine ls
    NAME             ACTIVE   DRIVER       STATE     URL                         SWARM
    test                      virtualbox   Running   tcp://192.168.99.101:2376
    ```
 
-4. Run `eval $(docker-machine env test)`. This command will set environment variables for Docker. You will need to perform this action every time you open a new tab or you restart your machine.
+4. Run the following command to set environment variables for Docker:
+
+   `$ eval $(docker-machine env test)`
+
+   You have to perform this action every time you open a new tab or restart your VM.
 
    You can now run `docker` commands on this host.
 
-   You also can load your Rackspace Container Service credentials into your docker environment. For instructions on how you do so, follow the links to your corresponding operating system below:
+   You also can load your Rackspace Container Service credentials into your Docker environment. For instructions, click the following link for your operating system:
 
    * [Load a Docker environment on Linux](docs/tutorials/load-docker-environment-on-linux)
    * [Load a Docker environment on Mac](docs/tutorials/load-docker-environment-on-mac)
@@ -68,6 +82,6 @@ Your output should look as follows:
 
 ### Next steps
 
-Once you have a working Docker host, you can continue to the tutorial [Find and pull a Docker image](docs/tutorials/run-docker-image).
+ After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image](docs/tutorials/run-docker-image).
 
 If you wish to learn how to create a container, go to [Containers 101](docs/tutorials/containers-101).
