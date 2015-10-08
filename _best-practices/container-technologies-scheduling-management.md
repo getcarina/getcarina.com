@@ -4,7 +4,6 @@ author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-scheduling-management/
 description: Introduction to container technologies, powered by the Rackspace Container Service
-docker-versions:
 topics:
   - best-practices
   - planning
@@ -84,19 +83,19 @@ are active users and advocates of Mesos.
 
 These tables compare Fleet and Mesos [(2)](#resources):
 
+**Table 1: Design Comparison**
+
 | Org    | Tool  | Req. Supplied Membership | Basic Task Orchestration | Advanced Task Orchestration | Up to  Hundreds of Hosts | Up to  Thousands of Hosts | Language |
 |--------|-------|--------------------------|--------------------------|-----------------------------|--------------------------|---------------------------|----------|
 | CoreOS | Fleet |             ✓            |             ✓            |                             |             ✓            |                           | Go       |
 | Apache | Mesos |             ✓            |             ✓            |              ✓              |                          |             ✓             | C++      |
 
-**Table 1 -­‐ Scheduling and Management Comparison**
+**Table 2: Functionality Comparison**
 
 | Org    | Tool  | Architecture | Resource Aware | Host Constraints | Host Balancing | Group Affinity | Anti- Affinity | Global Scheduling |
 |--------|-------|--------------|----------------|------------------|----------------|----------------|----------------|-------------------|
 | CoreOS | Fleet | Monolithic   |                |         ✓        |                |        ✓       |        ✓       |         ✓         |
 | Apache | Mesos | Two-level    |        ✓       |         ✓        |        ✓       |                |        ✓       |                   |
-
-**Table 2 – Scheduling and Management Functionality Comparison**
 
 In terms of which technology to use:
 
@@ -111,12 +110,12 @@ In terms of which technology to use:
   framework to support Kubernetes [(3)](#resources) and has gotten a good amount of
   traction.
 
-**Current Recommendation** Mesos
+**Current Recommendation:** Mesos
 
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <http://mesos.apache.org/>
 
@@ -124,7 +123,7 @@ Numbered citations in this article
 
 3. <https://github.com/kubernetes/kubernetes/issues/6676>
 
-Other recommended reading
+Other recommended reading:
 
 - <https://www.linux.com/learn/tutorials/788613-understanding-and-using-systemd>
 
@@ -139,4 +138,4 @@ Rackspace Container Service documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping OpenStack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
