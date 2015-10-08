@@ -3,7 +3,7 @@ title: Connect containers with Docker links
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-1
 permalink: docs/tutorials/connect-docker-containers-with-links/
-description: Learn how to connect Docker containers with links so that they can communicate with each other over the network.
+description: Learn how to connect Docker containers with links so that they can communicate with each other over the network
 docker-versions:
   - 1.8.2
 topics:
@@ -12,24 +12,24 @@ topics:
   - networking
 ---
 
-This tutorial demonstrates connecting Docker containers with links so that they
+This tutorial demonstrates how to connect Docker containers with links so that they
 can communicate over the network.
 
-**Note:** Docker links can only be used by containers that are on the same Docker host.
+**Note:** Only containers that are on the same Docker host can be linked.
 
-### Prerequisites
+### Prerequisite
 
-A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Rackspace Container Service][rcs].
+A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Rackspace Container Service][rcs]
 
 [docker-linux]: http://docs.docker.com/linux/step_one/
 [docker-toolbox]: https://www.docker.com/toolbox
 [rcs]: http://mycluster.rackspacecloud.com/
 
-### Steps
+### <a name="connect"></a> Connect two containers with a Docker link
 
 1. [Load your Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
-2. Run the app container. This is the _source_ container for our Docker link. No ports
+2. Create a container named `app`. This is the _source_ container for your Docker link. No ports
     are published for this container, so it will only communicate privately with other
     containers by using links.
 
@@ -37,16 +37,16 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     docker run --detach --name app rackerlabs/hello-world-app
     ```
 
-3. Inspect the app container and note its exposed port. In the example below, the
+3. Inspect the app container and note its exposed port. In the following example, the
     port is `5000`. This is the port number over which the containers will communicate.
 
     ```bash
     $ docker inspect --format "{{ .Config.ExposedPorts }}" app
-    
+
     map[5000/tcp:{}]
     ```
 
-4. Run a web container. This is the _target_ container for our link.
+4. Create a container named `web`. This is the _target_ container for your link.
     The `--link` flag connects the target container, `web`,
     to the source container, `app`, and names the link `helloapp`.
 
@@ -54,12 +54,12 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     docker run --detach --name web --link app:helloapp -P rackerlabs/hello-world-web
     ```
 
-    The link alias is not arbitrary and must match the alias expected by the target
+    The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
     container. When a Docker container is designed to link to another, the expected
-    link alias is usually documented its the Docker Hub page.
+    link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/rackerlabs/hello-world-web/).
 
-5. Identity the port on which the web container is published by running the command below.
-    In the example below, the port is `32770`.
+5. Identify the port on which the web container is published by running the following command.
+    In the example output, the port is `32770`.
 
     ```bash
     $ docker port web
@@ -74,23 +74,25 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
       The linked container says ... "Hello World!"
       ```
 
-We now have two containers which can communicate via a Docker link.
+You now have two containers that can communicate via a Docker link.
 
 ![Docker Link Topology]({% asset_path connect-docker-containers-with-links/docker-links-topology.svg %})
 
-Follow the instructions below to learn more about the information provided by the Docker link
+### <a name="inspect"></a> Inspect the linked containers
+
+Follow these instructions to learn more about the information provided by the Docker link
 and how the containers use it to communicate.
 
-1. Log in to the web container by running the command below. Depending on your local configuration
-    you might need to use a workarounds from [Error running interactive Docker shell on Windows][tty-workaround].
+1. Log in to the web container by running the following command. Depending on your local configuration
+    you might need to use a workaround from [Error running interactive Docker shell on Windows][tty-workaround].
 
     ```bash
     docker exec --interactive --tty web /bin/bash
     ```
 
-2. Run the command below to view the environment variables created by the Docker link.
+2. Run the following command to view the environment variables created by the Docker link.
     Docker creates variables that describe the link, such as `HELLOAPP_PORT`.
-    In addition, variables from the source container, app, are also exposed with the prefix _linkName_\_ENV.
+    In addition, variables from the source container, `app`, are also exposed with the prefix _linkName_\_ENV.
     For example, Docker created a variable named `HELLOAPP_ENV_PYTHON_VERSION`,
     which contains the value of `PYTHON_VERSION` on the web container.
 
@@ -108,19 +110,19 @@ and how the containers use it to communicate.
     HELLOAPP_ENV_LANG=C.UTF-8
     ```
 
-3. Ping the app container using an environment variable.
+3. Ping the app container by using an environment variable.
 
     ```bash
     ping $HELLOAPP_PORT_5000_TCP_ADDR
     ```
 
-    Using the environment variables is not recommended, as when the source container is restarted,
+    **Note:** Using the environment variables is not recommended, because when the source container is restarted,
     the variables on the target container are not refreshed. In the next steps,
     you will use the host file entries instead, which Docker automatically keeps up to date.
 
-4. View the host entries created by the Docker link using the command below. This
-    is what enables the web container to use **http://helloapp:5000** to connect to the
-    app container.
+4. View the host entries created by the Docker link by using the following command. The
+    host entry that contains the link name enables the web container to
+    use **http://helloapp:5000** to connect to the app container.
 
     ```bash
     $ grep -i helloapp /etc/hosts
@@ -128,7 +130,7 @@ and how the containers use it to communicate.
     172.17.0.12	helloapp 3432593d47de app
     ```
 
-5. Ping the app container using both the link alias, `helloapp`, and the container name, `app`.
+5. Ping the app container by using both the link alias, `helloapp`, and the container name, `app`.
 
     ```bash
     $ ping -c 1 helloapp
@@ -157,14 +159,14 @@ and how the containers use it to communicate.
     exit
     ```
 
-8. Log in to the app container by running the command below. Depending on your local configuration
+8. Log in to the app container by running the following command. Depending on your local configuration
     you might need to use a workarounds from [Error running interactive Docker shell on Windows][tty-workaround].
 
     ```bash
-    docker exec --interactive --tty web /bin/bash
+    docker exec --interactive --tty app /bin/bash
     ```
 
-9. Run the command below to view the environment variables and note that Docker does _not_
+9. Run the following command to view the environment variables. Note that Docker does _not_
     create environment variables for the link on the source container.
 
     ```bash
@@ -175,7 +177,7 @@ and how the containers use it to communicate.
     PYTHON_PIP_VERSION=7.1.2
     ```
 
-10. View the host entries created by the Docker link using the command below. Note that
+10. View the host entries created by the Docker link by using the following command. Note that
     an entry is created only for the target container name, and not the link alias.
 
     ```bash
@@ -195,7 +197,7 @@ and how the containers use it to communicate.
     64 bytes from 172.17.0.13: icmp_seq=0 ttl=64 time=0.064 ms
     ```
 
-12. Log out of the app container:
+12. Log out of the app container.
 
     ```bash
     exit
@@ -206,7 +208,7 @@ and how the containers use it to communicate.
 ### Resources
 
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
-* [Docker Networking Basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
+* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service Discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
+* [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
