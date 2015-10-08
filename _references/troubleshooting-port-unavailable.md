@@ -67,7 +67,7 @@ on the cluster to add capacity.
 1. Log in to the control panel at [https://mycluster.rackspacecloud.com](https://mycluster.rackspacecloud.com).
 2. Click the gear icon next to the cluster and select **Grow Cluster**.
 
-    ![Cluster Action Menu &rarr; Grow Cluster]({% asset_path troubleshooting-port-unavailable/grow-cluster.png %})
+    ![Cluster Action Menu > Grow Cluster]({% asset_path troubleshooting-port-unavailable/grow-cluster.png %})
 
 Otherwise, you can use Docker Machine to add a node to the Docker Swarm cluster.
 See the Docker Machine documentation for additional information about [how to manage

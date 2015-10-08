@@ -1,11 +1,20 @@
 ---
-title: Load a Docker environment from the command-line on Windows
+title: Load a Docker environment from the command line on Windows
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2015-09-30
 permalink: docs/tutorials/load-docker-environment-on-windows/
+description: Learn how to load a Docker environment on Windows, so that you can work with Docker in the terminal and shell of your choice
+docker-versions:
+  - 1.8.2
 topics:
   - docker
   - windows
   - beginner
 ---
+
+**Note:** This tutorial is for Windows users. If you are using another operating system, follow
+[the tutorial for Linux]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-linux/) or
+[the tutorial for Mac OS X]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/) instead.
 
 This tutorial describes how to load a Docker environment on Windows, so that you can work
 with Docker in the terminal and shell of your choice. For the purpose of this
@@ -21,7 +30,7 @@ text commands and _terminal_ is the graphical window that hosts a shell.
   * [Mintty](#mintty)
   * [Alternatives](#alternatives)
 
-### <a name="prerequisites"></a> Prerequisites
+### <a name="prerequisites"></a> Prerequisite
 
 [Docker Toolbox](https://www.docker.com/toolbox)
 
@@ -40,14 +49,14 @@ CMD, perform the following steps:
 
 1. Run `cmd.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, follow the instructions in [Working with Your Cluster Credentials][get-cluster-creds]
-    to download your credentials. Then, run `docker.cmd`.
+  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+    Then, run `docker.cmd`.
   * Otherwise, run `docker-machine env default --shell cmd`, replacing `default`
     with the name of your Docker host. Copy the command output, and then paste it into the command line.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-[get-cluster-creds]: /docs/references/rcs-credentials/
+[get-cluster-creds]: {{site.baseurl}}/docs/references/rcs-credentials/
 
 #### <a name="powershell"></a> PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
@@ -56,8 +65,8 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
 
 1. Run `powershell.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, follow the instructions on [Working with Your Cluster Credentials][get-cluster-creds]
-    to download your credentials. Then, run `docker.ps1`.
+  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+    Then, run `docker.ps1`.
   * Otherwise, run `docker-machine env default --shell powershell | Invoke-Expression`,
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
@@ -79,8 +88,8 @@ To load a Docker environment in Bash, perform the following steps:
     * In Windows Explorer, right-click a directory and select **Git Bash Here**.
     * From a terminal, run `"C:\Program Files\Git\bin\bash.exe" --login -i`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, follow the instructions on [Working with Your Cluster Credentials][get-cluster-creds]
-    to download your credentials. Then, run `source docker.env`.
+  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+    Then, run `source docker.env`.
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
@@ -124,7 +133,7 @@ in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to set 
 ![Git Bash Screenshot]({% asset_path load-docker-environment-on-windows/gitbash.png %})
 
 [mintty]: https://mintty.github.io
-[troubleshooting-tty]: /docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#ssh
+[troubleshooting-tty]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#ssh
 
 #### <a name="alternatives"></a>Alternatives
 Some alternative terminals provide useful features, such as improved copy and paste,
@@ -140,7 +149,7 @@ Windows terminal used by CMD and PowerShell.
 1. [Download ConsoleZ from GitHub][consolez-downloads].
 2. Unzip the files to any location, such as **C:\Program Files\ConsoleZ**.
 3. Open `console.exe`.
-4. To customize ConsoleZ, right-click and select **Edit &rarr; Settings**. You can
+4. To customize ConsoleZ, right-click and select **Edit > Settings**. You can
     set the default shell, configure tabs, appearance, and so on.
 
 In the following screenshot, ConsoleZ is configured with tabs for each shell (CMD, Bash and PowerShell).
@@ -177,3 +186,4 @@ In the following screenshot, ConEmu is configured with tabs for each shell (CMD,
 * [CMD syntax][cmd-doc]
 * [PowerShell syntax](http://ss64.com/ps/syntax.html)
 * [Bash syntax](http://ss64.com/bash/syntax.html)
+* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
