@@ -4,13 +4,12 @@ author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-docker/
 description: Introduction to container technologies, powered by the Rackspace Container Service
-docker-versions:
 topics:
   - best-practices
   - planning
 ---
 
-*Docker automates the deployment of applications within containers. Each container has a much smaller resource footprint than a comparable conventional virtual machine. Containers are most likely to be most immediately helpful in greenfield projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.*
+*Docker automates the deployment of applications within containers. Each container has a much smaller resource footprint than a comparable conventional virtual machine. Containers are most likely to be most immediately helpful in new projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.*
 
 Docker is an open-source project primarily focused on automating the deployment
 of applications within containers.
@@ -65,14 +64,14 @@ This allows for far more efficient usage of your resources, and because containe
 much lighter they can be instantiated much more quickly than non-containerized
 virtual machines.
 
-Unfortunately, the one key functionality that the hypervisor hosting virtual machines provides today
+The one key functionality that the hypervisor hosting virtual machines provides today
 that a container does not provide is that you can co-locate different operating
 systems or kernels on the same platform. Therefore, if you have decided to run
 instances of Windows alongside instances of Debian, Ubuntu, or Red Hat,
-then containers aren’t applicable to your use case. This is due to the fact
-that hypervisors abstract an entire machine whereas containers only
+then containers aren’t applicable to your use case. This is because
+hypervisors abstract an entire machine whereas containers only
 abstract the physical host’s operating system kernel. Nevertheless, as of
-October 2014 Microsoft and Docker announced a partnership to invest in
+October 2014, Microsoft and Docker announced a partnership to invest in
 enabling the Windows Server container in the Docker engine, in addition to
 other Docker support in the suite of Microsoft products at a future date [(3)](#resources).
 
@@ -132,7 +131,7 @@ You will encounter these ideas in almost every discussion of Docker:
 - **Dockerfile**: A set of instructions to run over a
   base image. Docker follows these instructions to build a customized image.
 
-- **Docker **mage**: Blueprint or template used to launch the Docker
+- **Docker image**: Blueprint or template used to launch the Docker
   container.
 
 - **Docker index / image repository:** Registry of Docker images that
@@ -169,7 +168,7 @@ worth noting that containers are not intended to be a replacement for all
 virtual machines or bare metal machines, let alone be applied to all use cases.
 Containers are certainly providing a solution to some painful problems
 for developers, operations and devops with regard to the
-lifecycle of applications and managing their environments, but they are most likely to be most immediately helpful in greenfield projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.
+lifecycle of applications and managing their environments, but they are most likely to be most immediately helpful in new projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.
 
 Also, there is a lot of competition and overlap across several of the
 options within the Docker ecosystem and it is difficult to pinpoint which one is better than the other. That being said, not all use cases can be adapted perfectly into containers
@@ -181,7 +180,7 @@ state at a future date. For more on this, read
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <http://www.forbes.com/sites/benkepes/2014/09/16/the-rumors-were‐true-docker-funding-confirmed-and-40-million-enters-the-coffers/>
 
@@ -195,7 +194,7 @@ Numbered citations in this article
 
 6. <https://git-scm.com/about/small-and-fast>
 
-Other recommended reading
+Other recommended reading:
 
 - [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
 
@@ -216,4 +215,4 @@ Rackspace Container Service documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping OpenStack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
