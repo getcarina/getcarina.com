@@ -26,7 +26,7 @@ using the credentials to authenticate to your cluster.
 
 2. Click the gear icon next to your cluster name and select **Download Credentials**.
 
-    ![Cluster Context Menu &rarr; Download Credentials]({% asset_path rcs-credentials/download-credentials.png %})
+    ![Cluster Context Menu > Download Credentials]({% asset_path rcs-credentials/download-credentials.png %})
 
 3. When prompted, click **Download File**.
 
@@ -44,7 +44,7 @@ using the credentials to authenticate to your cluster.
 
 6. Load your credentials and use them to interact with your cluster:
   * (_Linux and Mac OSX users_) Run `source docker.env`.
-  * (_Windows users_) See [Load Docker environment from the command-line on Windows](/docs/tutorials/load-docker-environment-on-windows/).
+  * (_Windows users_) See [Load Docker environment from the command line on Windows](/docs/tutorials/load-docker-environment-on-windows/).
 
 ### <a name="windows"></a> Create a Windows script
 The cluster credentials zip file includes a Bash script, **docker.env**,

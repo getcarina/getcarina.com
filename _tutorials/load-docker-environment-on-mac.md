@@ -1,9 +1,9 @@
 ---
-title: Load a Docker environment from the command-line on Mac OS X
+title: Load a Docker environment from the command line on Mac OS X
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-09-30
 permalink: docs/tutorials/load-docker-environment-on-mac/
-description: Learn to load a Docker environment on Mac OS X, so that you can work with Docker from the command-line
+description: Learn how to load a Docker environment on Mac OS X, so that you can work with Docker from the command line
 docker-versions:
   - 1.8.2
 topics:
@@ -17,17 +17,15 @@ topics:
 
 This tutorial describes how to load a Docker environment on Mac OS X.
 
-### <a name="prerequisites"></a> Prerequisites
+### <a name="prerequisites"></a> Prerequisite
 
 [Docker Toolbox](https://www.docker.com/toolbox)
 
-#### <a name="steps"></a> Steps
-To load a Docker environment, perform the following steps:
-
+#### <a name="load"></a> Load the Docker environment
 1. Open a command terminal.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, follow the instructions on [Working with Your Cluster Credentials][get-cluster-creds]
-    to download your credentials. Then, run `source docker.env`.
+  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+    Then, run `source docker.env`.
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
