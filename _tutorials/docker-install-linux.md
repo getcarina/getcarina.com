@@ -20,73 +20,81 @@ instructions for your Linux distribution [the Docker website](https://docs.docke
 
 2. Ensure that `wget` is installed.
 
-  `which wget`
+    ```bash
+    which wget
+    ```
 
-   If `wget` isn't installed, run the following commands:
+     If `wget` isn't installed, run the following commands:
 
-   ```
-   sudo apt-get update
-   sudo apt-get install wget
-   ```
+     ```bash
+     sudo apt-get update
+     sudo apt-get install wget
+     ```
 
 3. Use `wget` to install the latest Docker package:
 
-   `wget -qO- https://get.docker.com/ | sh`
+     ```bash
+     wget -qO- https://get.docker.com/ | sh
+     ```
 
-   You are prompted to enter your `sudo` password. After you do so, Docker is downloaded and installed.
+     You are prompted to enter your `sudo` password. After you do so, Docker is downloaded and installed.
 
-   **Note**: If your network is behind a filtering proxy, any `apt` commands might fail. To fix this, add an `apt-key` directly:
+     **Note**: If your network is behind a filtering proxy, any `apt` commands might fail. To fix this, add an `apt-key` directly:
 
-   `wget -qO- https://get.docker.com/gpg | sudo apt-key add -`
+     ```bash
+     wget -qO- https://get.docker.com/gpg | sudo apt-key add -
+     ```
 
 4. Check that `docker` is installed by running the following command:
 
-   `sudo docker run hello-world`
+     ```bash
+     sudo docker run hello-world
+     ```
 
-   The output should look as follows:
+     The output should look as follows:
 
-   ```
-   $ docker run hello-world
-   Unable to find image 'hello-world:latest' locally
-   latest: Pulling from library/hello-world
-   535020c3e8ad: Pull complete
-   af340544ed62: Pull complete
-   Digest: sha256:a68868bfe696c00866942e8f5ca39e3e31b79c1e50feaee4ce5e28df2f051d5c
-   Status: Downloaded newer image for hello-world:latest
-
-
-   Hello from Docker.
-   This message shows that your installation appears to be working correctly.
+     ```bash
+     $ docker run hello-world
+     Unable to find image 'hello-world:latest' locally
+     latest: Pulling from library/hello-world
+     535020c3e8ad: Pull complete
+     af340544ed62: Pull complete
+     Digest: sha256:a68868bfe696c00866942e8f5ca39e3e31b79c1e50feaee4ce5e28df2f051d5c
+     Status: Downloaded newer image for hello-world:latest
 
 
-   To generate this message, Docker took the following steps:
-    1. The Docker client contacted the Docker daemon.
-    2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-    3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
-    4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
+     Hello from Docker.
+     This message shows that your installation appears to be working correctly.
 
 
-    To try something more ambitious, you can run an Ubuntu container with:
-     $ docker run -it ubuntu bash
+     To generate this message, Docker took the following steps:
+      1. The Docker client contacted the Docker daemon.
+      2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+      3. The Docker daemon created a new container from that image which runs the
+      executable that produces the output you are currently reading.
+      4. The Docker daemon streamed that output to the Docker client, which sent it
+      to your terminal.
 
 
-    Share images, automate workflows, and more with a free Docker Hub account:
-     https://hub.docker.com
+      To try something more ambitious, you can run an Ubuntu container with:
+       $ docker run -it ubuntu bash
 
 
-    For more examples and ideas, visit:
-     https://docs.docker.com/userguide/
+      Share images, automate workflows, and more with a free Docker Hub account:
+       https://hub.docker.com
 
 
-    To try something more ambitious, you can run an Ubuntu container with:
-     $ docker run -it ubuntu bash
+      For more examples and ideas, visit:
+       https://docs.docker.com/userguide/
 
 
-    For more examples and ideas, visit:
-     https://docs.docker.com/userguide/
-   ```
+      To try something more ambitious, you can run an Ubuntu container with:
+       $ docker run -it ubuntu bash
+
+
+      For more examples and ideas, visit:
+       https://docs.docker.com/userguide/
+     ````
 
 ### <a name="sudo"></a> Configure Docker to run without sudo
 If you want to use the `docker` command without always prefixing it with `sudo`, follow
@@ -120,7 +128,9 @@ to the docker group, see [Docker daemon attack surface][daemon-security].
 
 If the `docker run hello-world` command fails, enter the following command:
 
-   `sudo service docker start`
+```bash
+sudo service docker start
+```
 
 This command starts Docker and enables you to run any `docker` commands.
 
