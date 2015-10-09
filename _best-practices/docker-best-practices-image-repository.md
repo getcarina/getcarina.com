@@ -4,7 +4,6 @@ author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-image-repository/
 description: Docker best practices, powered by the Rackspace Container Service
-docker-versions:
 topics:
   - best-practices
   - planning
@@ -29,13 +28,14 @@ One of the main advantages of using Docker containers is that
 the community has created
 many Docker container images that you can use for your own purposes.
 Many of the images created
-by users have been uploaded to the [Docker Hub Registry]
-(https://registry.hub.docker.com/) and this allows everyone to examine and use
-them.
+by users have been uploaded to the 
+[Docker Hub Registry](https://registry.hub.docker.com/) and this allows everyone to examine and use
+those images.
 
-You can retrieve or pull an image by identifying the
-<user/image_name> and passing it to Docker. For example, `docker pull
-cpuguy83/openvpn` asks for an image named `openvpn`
+Anyone who has a Docker Hub account can retrieve an image from the Docker Hub Registry.
+To retrieve an image, login to Docker Hub and ask Docker for the image by providing the image's
+<user/image_name> identifier.
+For example, `docker pull cpuguy83/openvpn` asks for an image named `openvpn`
 owned by a user named `cpuguy83`.
 
 In addition to images contributed by individual community members,
@@ -74,11 +74,11 @@ easy as `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <http://www.activestate.com/blog/2014/01/deploying-your-own-private-docker-registry>
 
-Other recommended reading
+Other recommended reading:
 
 - [Rackspace Cloud Images](https://developer.rackspace.com/docs/user-guides/infrastructure/cloud-config/compute/cloud-images-product-concepts/image-properties/)
 
@@ -99,4 +99,4 @@ Rackspace Container Service documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping OpenStack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
