@@ -11,9 +11,9 @@ topics:
   -tutorial
 ---
 
-Docker images are the building blocks of containers. The image can be as simple as running a single command like run hello-world, or as complex as an entire database or host operating system. Even if your computer cannot run the software in a Docker image, a Docker container can always run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
+Docker images are the building blocks of containers. The image can be as simple as running a single command like `run hello-world`, or as complex as an entire database or host operating system. Even if your computer cannot run the software in a Docker image, a Docker container can always run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
 
-The benefit of Docker images is that anyone can create and share their images through [Docker hub](https://hub.docker.com/). Even if your computer cannot run the software in a Docker Image, Docker containers will always be able to run that image. This offers a clear advantage over virtual machines(VMs), which are limited to the scope of the hardware running the VMs.
+The benefit of Docker images is that anyone can create and share their images through [Docker Hub](https://hub.docker.com/).
 
 This tutorial describes how to find and download any Docker image from Docker Hub.
 
@@ -21,10 +21,10 @@ This tutorial describes how to find and download any Docker image from Docker Hu
 
 Before you can begin this tutorial, be sure that you have fulfilled these prerequisites:
 
-* You have installed Docker. For installation instructions, go to the installation section of [Docker-101](docker-101-introduction-docker), and click the link for your operating system.
-* You have performed the steps in the tutorial, [Set up a virtual environment with a Docker host ](docs/tutorials/set-up-docker-machine).
+* You have installed Docker. For installation instructions, go to the installation section of [Docker 101](docker-101-introduction-docker), and click the link for your operating system.
+* You have performed the steps in the tutorial [Set up a virtual environment with a Docker host ](docs/tutorials/set-up-docker-machine).
 * You have a working terminal application.
-* you have a VM, such as [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
+* You have a VM, such as [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
 
 To verify that you fulfill these prerequisites, run the following command in your terminal application:
 
@@ -50,7 +50,7 @@ If you receive output with the same format as the following example, continue to
  OS/Arch:      linux/amd64
 ```
 
-If your output was different, please review the steps in the tutorial [Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
+If your output was different, review the steps in the tutorial [Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine) to ensure you are running on a Docker host.
 
 ### Find and download a Docker Image
 
@@ -66,7 +66,7 @@ This section shows you how to find and run a Docker Image.
    REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
    ```
 
-2. Search for an image on Docker Hub. Use docker search and type the name of the image that you want to find. For this tutorial, search for an Ubuntu image.
+2. Search for an image on Docker Hub. Use `docker search` and type the name of the image that you want to find. For this tutorial, search for an Ubuntu image.
 
    `$ docker search ubuntu`
 
@@ -108,13 +108,13 @@ This section shows you how to find and run a Docker Image.
    ubuntu              12.04               57bca5139a13        5 weeks ago         134.8 MB
    ```
 
-   Docker stores a copy of the image on your computer to save time when you run the image. If you no longer need an image, you can delete it by running the docker rmi command followed by the image ID. For example:
+   Docker stores a copy of the image on your computer to save time when you run the image. If you no longer need an image, you can delete it by running the `docker rmi` command followed by the image ID. For example:
 
    `$ docker rmi 57bca5139a13`
 
 ### Troubleshooting
 
-Sometimes, when you use a `docker` command such as `docker info`, you will receive the following output:
+Sometimes, when you use a `docker` command such as `docker info`, you receive the following output:
 
 ```
 $ docker info
