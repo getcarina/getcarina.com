@@ -63,21 +63,21 @@ workloads and frameworks to run top of it.
 Some of the biggest technology companies such as HubSpot and Twitter
 are active users and advocates of Mesos.
 
-### CoreOS’ “Fleet”
+### CoreOS’ “fleet”
 
 Fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
 
 - etcd for its manifest of tasks
 - systemd to do the task execution
 
-Jonathan Corbet explains Fleet's use of etcd and systemd in this way:
+Jonathan Corbet explains fleet's use of etcd and systemd in this way:
 
 > Fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
 > It needs to respond to events like a machine going down and reschedule tasks as needed.
 > The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work. 
 > It is thus not surprising that fleet's commands look a lot like systemd commands [(2)](#resources).
 
-Because systemd is part of Linux itself and interacting with Fleet resembles interacting with systemd, learning Fleet can seem natural and easy to those already skilled in Linux. Fleet can be seen as an extension
+Because systemd is part of Linux itself and interacting with fleet resembles interacting with systemd, learning fleet can seem natural and easy to those already skilled in Linux. Fleet can be seen as an extension
 of Linux systemd that operates at the cluster level and can be used to deploy
 a systemd unit file anywhere on the cluster.
 
@@ -88,27 +88,27 @@ machines based on metadata and attributes.
 
 ### Comparison and recommendations
 
-These tables compare Fleet and Mesos [(3)](#resources):
+These tables compare fleet and Mesos [(3)](#resources):
 
 **Table 1: Design Comparison**
 
 | Org    | Tool  | Req. Supplied Membership | Basic Task Orchestration | Advanced Task Orchestration | Up to  Hundreds of Hosts | Up to  Thousands of Hosts | Language |
 |--------|-------|--------------------------|--------------------------|-----------------------------|--------------------------|---------------------------|----------|
-| CoreOS | Fleet |             ✓            |             ✓            |                             |             ✓            |                           | Go       |
+| CoreOS | fleet |             ✓            |             ✓            |                             |             ✓            |                           | Go       |
 | Apache | Mesos |             ✓            |             ✓            |              ✓              |                          |             ✓             | C++      |
 
 **Table 2: Functionality Comparison**
 
 | Org    | Tool  | Architecture | Resource Aware | Host Constraints | Host Balancing | Group Affinity | Anti- Affinity | Global Scheduling |
 |--------|-------|--------------|----------------|------------------|----------------|----------------|----------------|-------------------|
-| CoreOS | Fleet | Monolithic   |                |         ✓        |                |        ✓       |        ✓       |         ✓         |
+| CoreOS | fleet | Monolithic   |                |         ✓        |                |        ✓       |        ✓       |         ✓         |
 | Apache | Mesos | Two-level    |        ✓       |         ✓        |        ✓       |                |        ✓       |                   |
 
 In terms of which technology to use:
 
 - Fleet has a strong community following, but
   it seems limited in its capabilities with regard to advance
-  scheduling and health metrics. It’s also early in Fleet's development.
+  scheduling and health metrics. It’s also early in fleet's development.
 
 - Mesos is the front-runner with some heavy names utilizing it today
   in their infrastructure. Also, Mesosphere, the company that is
