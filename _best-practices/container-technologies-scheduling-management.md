@@ -46,22 +46,6 @@ container orchestration.
 The technologies described below are the current front-runners in the
 industry with regards to service and resource scheduling.
 
-### CoreOS’ “Fleet”
-
-Fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
-
-- etcd for its manifest of tasks
-- systemd to do the task execution
-
-Fleet can be seen as an extension
-of systemd that operates at the cluster level and can be used to deploy
-a systemd unit file anywhere on the cluster.
-
-Fleet can automatically reschedule units in response to machine failure, and can abide
-by policies such as ensuring that units are deployed together on the
-same machine, forbidding colocation of some resources, and deploying to specific
-machines based on metadata and attributes.
-
 ### Apache’s “Mesos”
 
 Mesos is a distributed systems kernel. It is built using the same
@@ -79,9 +63,32 @@ workloads and frameworks to run top of it.
 Some of the biggest technology companies such as HubSpot and Twitter
 are active users and advocates of Mesos.
 
+### CoreOS’ “Fleet”
+
+Fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
+
+- etcd for its manifest of tasks
+- systemd to do the task execution
+
+Jonathan Corbet explains Fleet's use of etcd and systemd in this way:
+
+> Fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
+> It needs to respond to events like a machine going down and reschedule tasks as needed.
+> The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work. 
+> It is thus not surprising that fleet's commands look a lot like systemd commands [(2)](#resources).
+
+Because systemd is part of Linux itself and interacting with Fleet resembles interacting with systemd, learning Fleet can seem natural and easy to those already skilled in Linux. Fleet can be seen as an extension
+of Linux systemd that operates at the cluster level and can be used to deploy
+a systemd unit file anywhere on the cluster.
+
+Fleet can automatically reschedule units in response to machine failure, and can abide
+by policies such as ensuring that units are deployed together on the
+same machine, forbidding colocation of some resources, and deploying to specific
+machines based on metadata and attributes.
+
 ### Comparison and recommendations
 
-These tables compare Fleet and Mesos [(2)](#resources):
+These tables compare Fleet and Mesos [(3)](#resources):
 
 **Table 1: Design Comparison**
 
@@ -99,15 +106,15 @@ These tables compare Fleet and Mesos [(2)](#resources):
 
 In terms of which technology to use:
 
-- Fleet is new to the scene and has a decent community following, but
+- Fleet has a strong community following, but
   it seems limited in its capabilities with regard to advance
-  scheduling an health metrics. It’s also early in Fleet's development.
+  scheduling and health metrics. It’s also early in Fleet's development.
 
 - Mesos is the front-runner with some heavy names utilizing it today
   in their infrastructure. Also, Mesosphere, the company that is
   commercializing Mesos and is a separate entity from Apache (the
   developer of Mesos) has currently started work on a Mesos
-  framework to support Kubernetes [(3)](#resources) and has gotten a good amount of
+  framework to support Kubernetes [(4)](#resources) and has gotten a good amount of
   traction.
 
 **Current Recommendation:** Mesos
@@ -119,9 +126,11 @@ Numbered citations in this article:
 
 1. <http://mesos.apache.org/>
 
-2. <http://gabrtv.github.io/deis-qconsf-2014/#/22>
+2. <https://lwn.net/Articles/617452/>
 
-3. <https://github.com/kubernetes/kubernetes/issues/6676>
+3. <http://gabrtv.github.io/deis-qconsf-2014/#/22>
+
+4. <https://github.com/kubernetes/kubernetes/issues/6676>
 
 Other recommended reading:
 
