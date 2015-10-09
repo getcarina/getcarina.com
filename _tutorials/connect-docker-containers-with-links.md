@@ -116,7 +116,8 @@ and how the containers use it to communicate.
     ping $HELLOAPP_PORT_5000_TCP_ADDR
     ```
 
-    **Note:** Using the environment variables is not recommended, because when the source container is restarted,
+    **Note:** Normally using the environment variables to ping containers is not recommended.
+    When the source container is restarted,
     the variables on the target container are not refreshed. In the next steps,
     you will use the host file entries instead, which Docker automatically keeps up to date.
 
