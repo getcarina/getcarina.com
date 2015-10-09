@@ -1,8 +1,12 @@
 ---
 title: Download Rackspace Container Service credentials
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2015-09-28
 permalink: docs/references/rcs-credentials/
+description: Learn how to use your Rackspace Container Service credentials to get started with containers today
 topics:
   - rcs
+  - beginner
 ---
 
 Rackspace Container Service clusters are secured with TLS certificates. Each cluster
