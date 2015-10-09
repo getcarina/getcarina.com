@@ -1,5 +1,5 @@
 ---
-title: Set up virtual environment with a Docker host
+title: Set up a virtual environment with a Docker host
 author: Nathaniel Archer <nate.archer@rackspace.com>
 date: 2015-10-06
 permalink: docs/tutorials/set-up-docker-machine/
@@ -22,9 +22,9 @@ To use the Docker client on Mac OS X and Windows computers, you must set up a Li
 
 Before you begin this tutorial, be sure that you have fulfilled these prerequisites:
 
-* You have installed Docker Machine through the Docker Toolbox. For Docker Toolbox installation instructions for Windows and Mac OS X, go to the installation section of [Docker-101](docker-101-introduction-docker) and click the link for your operating system.
+* You have installed Docker Machine through the Docker Toolbox. For Docker Toolbox installation instructions for Windows and Mac OS X, go to the installation section of [Docker 101](docker-101-introduction-docker) and click the link for your operating system.
 
-Docker Machine is not required to run virtual environments on Linux. However, if you are a Linux user, you can find instructions for installing Docker Machine [here](https://docs.docker.com/machine/install-machine/).
+Docker Machine is not required to run virtual environments on Linux. However, if you are a Linux user, you can find instructions for installing Docker Machine [the Docker website](https://docs.docker.com/machine/install-machine/).
 
 * You have installed [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads) or later.
 
@@ -32,7 +32,7 @@ Docker Machine is not required to run virtual environments on Linux. However, if
 
 ### Create a VM running a Docker host
 
-1. Show all the available virtual machines(VMs)that are running Docker:
+1. Show all the available virtual machines (VMs) that are running Docker:
 
    `$ docker-machine ls`
 
@@ -46,12 +46,11 @@ Docker Machine is not required to run virtual environments on Linux. However, if
 
    `$ docker-machine create --driver virtualbox test`.  
 
-   The `--driver` flag indicates what type of driver `virtualbox` the machine will run on. In this case, `virtualbox` indicates that the driver is Oracle VirtualBox. The final argument in the command gives the VM a name, in this case, `test`.
+   The `--driver` flag indicates what type of driver the machine will run on. In this case, `virtualbox` indicates that the driver is Oracle VirtualBox. The final argument in the command gives the VM a name, in this case, `test`.
 
    The output should as follows
 
    ```
-   $ docker-machine create --driver virtualbox test
    Creating VirtualBox VM...
    Creating SSH key...
    Starting VirtualBox VM...
