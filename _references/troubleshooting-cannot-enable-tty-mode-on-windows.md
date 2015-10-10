@@ -1,6 +1,11 @@
 ---
 title: Error running interactive Docker shell on Windows
-permalink: /docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2015-09-29
+permalink: docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
+description: Learn how to workaround the "cannot enable tty mode on non tty input" error when running an interactive Docker shell on Windows
+docker-versions:
+  - 1.8.2
 topics:
   - docker
   - troubleshooting
