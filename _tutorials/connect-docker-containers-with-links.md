@@ -13,7 +13,7 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers with links so that they
-can communicate over the network.
+can communicate over the network. For information about Docker links, see [Docker networking basics][networking-basics].
 
 **Note:** Only containers that are on the same Docker host can be linked.
 
@@ -209,7 +209,9 @@ and how the containers use it to communicate.
 ### Resources
 
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
-* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
+* [Docker networking basics][networking-basics]
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
+
+[networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/
