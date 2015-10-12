@@ -28,13 +28,14 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
 1. [Load your first Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
-2. Create a container named `app`. This is the _source container_. No ports
-    are published for this container, so it will only communicate privately with other
-    containers by using links.
+2. Create a container named `app`.
 
     ```bash
     docker run --detach --name app rackerlabs/hello-world-app
     ```
+
+    This is the _source container_. No ports are published for this container,
+    so it will only communicate privately with other containers by using links.
 
 3. Inspect the app container and note its exposed port. In the following example, the
     port is `5000`. This is the port number over which the ambassador will
@@ -46,21 +47,22 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     map[5000/tcp:{}]
     ```
 
-4. Create an ambassador container named `app-ambassador`. This is the _source ambassador_
-    and it is responsible for forwarding messages from other containers to the source container.
-    This ambassador container is linked to the source container and publishes the same port number
-    exposed by the source container.
+4. Create an ambassador container named `app-ambassador`.
 
     ```bash
     docker run --detach --link app:helloapp --name app-ambassador --publish 5000:5000 svendowideit/ambassador
     ```
+
+    This is the _source ambassador_ and it is responsible for forwarding messages
+    from other containers to the source container. The source ambassador is linked
+    to the source container and publishes the same port number exposed by the source container.
 
     **Note**: Although it is not required for the ambassador containers to communicate over the same port
     number that is exposed by the source container, it does simplify configuration.
 
 5. Identify the connection information to the source ambassador container, as it will be required
     when configuring the other ambassador container. In the example output,
-    the connection value to the source ambassador is `tcp://104.130.0.192:5000`.
+    the connection information to the source ambassador is `104.130.0.192:5000`.
 
     ```bash
     $ docker port app-ambassador
@@ -70,24 +72,30 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
 6. [Load your second Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
-7. Create an ambassador container named `app-ambassador`. This is the _target ambassador_
-    and it is responsible for forwarding messages from other containers to the source ambassador.
-    The ambassador container is provided an environment variable containing the connection
-    information to the source ambassador and it exposes the same port number published by the source container.
+7. Create an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
+    the connection information from step 5.
 
     ```bash
-    docker run --detach --name app-ambassador --expose 5000 --env HELLOAPP_PORT_5000_TCP=tcp://104.130.0.192:5000 svendowideit/ambassador
+    docker run --detach --name app-ambassador --expose 5000 --env HELLOAPP_PORT_5000_TCP=tcp://<connectionInformation> svendowideit/ambassador
     ```
+
+    This is the _target ambassador_ and it is responsible for forwarding messages
+    to the source ambassador. The target ambassador is provided an environment variable,
+    `HELLOAPP_PORT_5000_TCP`, containing the connection information to the source ambassador
+    and it exposes the same port number published by the source container.
 
     **Note**: It is not required to use the same name for the source and target ambassadors.
 
-8. Create a container named `web`. This is the _target container_.
+8. Create a container named `web`.
 
     ```bash
     docker run --detach --link app-ambassador:helloapp --name web rackerlabs/hello-world-web
     ```
 
-    The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
+    This is the _target container_ and it communicates with the source container
+    via its link to the target ambassador.
+
+    **Note:** The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
     container. When a Docker container is designed to link to another, the expected
     link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/rackerlabs/hello-world-web/).
 
