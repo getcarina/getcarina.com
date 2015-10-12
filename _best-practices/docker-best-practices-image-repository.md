@@ -19,22 +19,23 @@ and repeatable,
 saving you from the potential delays and inconsistencies that are likely in
 a manual, multi-step process.
 
-You can create your containers from publicly-available images saved by the
+You can create your containers from publicly available images saved by the
 community or from custom images that you saved privately for your own reuse.
 
 ### Community images
 
 One of the main advantages of using Docker containers is that
 the community has created
-many Docker container images that you can use for your own purposes.
+a variety of Docker container images that you can use for your own purposes.
 Many of the images created
 by users have been uploaded to the 
-[Docker Hub Registry](https://registry.hub.docker.com/) and this allows everyone to examine and use
+[Docker Hub Registry](https://registry.hub.docker.com/), which allows everyone to examine and use
 those images.
 
 Anyone who has a Docker Hub account can retrieve an image from the Docker Hub Registry.
 To retrieve an image, login to Docker Hub and ask Docker for the image by providing the image's
 <user/image_name> identifier.
+
 For example, `docker pull cpuguy83/openvpn` asks for an image named `openvpn`
 owned by a user named `cpuguy83`.
 
@@ -42,9 +43,8 @@ In addition to images contributed by individual community members,
 the Docker Hub Registry has official images from software providers, including
 companies that provide operating systems.
 Providers of official images in the Docker Hub Registry include Ubuntu,
-MySQL, Golang, and many others.
+MySQL, Golang, and many others. You can pull official images with shortened calls.
 
-You can pull official images with shortened calls.
 For example, `docker pull mysql` asks for all official images
 contributed by MySQL.
 
@@ -56,20 +56,20 @@ the Docker Hub Registry,
 your own private image registry available from a variety of providers [(1)](#resources).
 Each image repository has its own method of
 accepting contributions.
+
 For example, to contribute an image to
 the Docker Hub Registry,
 log in using `docker login` and then issue
 `docker push <user/image_name>`.
-You can also tag the image if you wish to give it a label
-such as "dev", "production", or "v2" to distinguish among several flavors
-of your image.
+
+You can also tag your image if you wish to give it a label
+to distinguish among several flavors of your image. Careful use of tags makes it possible to retrieve an image based on its purpose or status, such as `dev`, `v2`, or `production`. 
+
+For example, `docker tag openvpn dev` applies a `dev` tag to an image named `openvpn`. If you push that image to the repository without specifying any tags, such as with `docker push openvpn`, all the image's tags are preserved in the the repository. If multiple tags have been applied to an image but you only want one tag pushed with it to the repository, you can accomplish that by specifying the tag. For example, `docker push openvpn:dev` adds the `openvpn` image, tagged only as `dev`, to the repository.
 
 The default behavior for `docker push` is to push to the central
-Docker Hub Registry, but if you prefer your own private
-Docker registry there is an image for that too. Once your image is running,
-you can save it to your private registry simply by
-logging into your private registry as opposed to the central one. That switch is as
-easy as `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
+Docker Hub Registry; alternatively, you can push your image to your own private
+Docker registry. After your image is running, log in to your private registry rather than the central registry with `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
 
 <a name="resources"></a>
 ### Resources
