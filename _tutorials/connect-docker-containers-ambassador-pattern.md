@@ -41,11 +41,13 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     port is `5000`. This is the port number over which the ambassador will
     communicate with the source container.
 
+    {% raw %}
     ```bash
     $ docker inspect --format "{{ .Config.ExposedPorts }}" app
 
     map[5000/tcp:{}]
     ```
+    {% endraw %}
 
 4. Create an ambassador container named `app-ambassador`.
 
