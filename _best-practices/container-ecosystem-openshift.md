@@ -33,37 +33,31 @@ with more-established alternatives or to grow by attracting contributors:
 
 ### OpenShift and Kubernetes 
 
-With Kubernetes really paving the way as the standard for container
-orchestration in the Docker world, RedHat has taken the stance with
-the newest release of OpenShift, version 3, to really focus, adopt
-and build on Kubernetes. In doing so, RedHat is not only betting on
-Kubernetes as the future of container orchestration, along with the
-rest of the community, but they are allowing themselves to leverage
-their Project Atomic, which is their preferred hosting platform for
+With Kubernetes paving the way as the standard for container
+orchestration in the Docker world, RedHat's newest release of OpenShift, version 3, focuses on adopting
+and building on Kubernetes. In doing so, RedHat is not only betting on
+Kubernetes as the future of container orchestration, but they are also able to leverage
+Project Atomic, their preferred hosting platform for
 Docker containers that competes with CoreOS.
 
 To learn more about Kubernetes and other tools for container orchestration, read
 [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/) and
 [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
 
-How OpenShift’s
-adoption of Kubernetes plays out, especially in terms of
-OpenShift's intent to be a wrapper for Kubernetes,
-is sure to be an interesting story over the
-in the long run of the “PaaS war”.
-
-### OpenShift and OpenStack and Project Atomic
+### OpenShift, OpenStack, and Project Atomic
 
 RedHat has stated that OpenShift is capable of integrating with both
 OpenStack [(7)](#resources) and Project Atomic [(8)](#resources),
 but given the nature of RedHat’s
 previous business models, the OpenStack integration is most likely
 inline with the intent of OpenShift Origin: to appease the open-source
-community. It is possibile that considering OpenShift
-Enterprise as a viable option for managing containers in a
+community. As Diane Mueller explains [(7)](#resources), OpenShift Origin serves as the upstream source for OpenShift Enterprise, enabling integration that begins in OpenShift Origin to make its way to OpenShift Enterprise as the OpenShift team deems appropriate. 
+
+It is possible that considering OpenShift
+Enterprise for managing containers in a
 mission-critical IT shop will require a full top-to-bottom
 adoption of RedHat’s container and virtualization products, if both
-types of workloads are aimed to be co-located. 
+types of workloads will be co-located. 
 
 <a name="resources"></a>
 ### Resources
