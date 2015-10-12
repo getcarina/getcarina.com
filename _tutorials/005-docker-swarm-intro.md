@@ -11,9 +11,9 @@ topics:
   - intermediate
 ---
 
-Docker Swarm is a management system for Docker. It enables an application to be containerized and run across multiple segments in a cluster. Rackspace Container Service offers one segment by default and is scalable up to 10 segments. A segment (or node) is a slice of resources available in the cluster. Docker enables you to use the commands you're familiar with to manage the cluster as though it were a single host.
+Docker Swarm is a management system for Docker. It enables an application to be containerized and run across multiple segments in a cluster. Rackspace Container Service offers one segment by default and is scalable up to 10 segments. A *segment* (or node) is a slice of resources available in the cluster. Docker enables you to use commands that you're familiar with to manage the cluster as though it were a single host.
 
-A Docker Swarm cluster has a few management containers that are necessary for cluster management. When we run `docker ps -a` on a cluster the below is displayed:
+A Docker Swarm cluster has a few management containers that are necessary for cluster management. When you run `docker ps -a` on a cluster, the following result is displayed:
 
 ```bash
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                                    NAMES
@@ -28,16 +28,16 @@ This result shows three containers. At the far right, the names of these contain
 * `swarm-agent` is the client to `swarm-manager`.
 * `swarm-data` is a central data share for a particular segment.
 
-Usually you do not need to think about these containers. However, ensure that you don’t delete all the containers via a command like `docker rm --force 'docker ps -qa'`. If you remove these containers the cluster will need to be rebuilt.
+Usually you do not need to think about these containers. However, ensure that you don’t delete all the containers via a command like `docker rm --force 'docker ps -qa'`. If you remove these containers, the cluster will need to be rebuilt.
 
 **Note:** As you scale segments, these containers also scale, three containers per segment.
 
 ### Strategies for distributing containers to segments
-The `scheduler` is responsible for maintaining the life cycle of a container. It chooses the best segment in your cluster and starts, stops, destroys the container when asked.
+The *scheduler* is responsible for maintaining the life cycle of a container. It chooses the best segment in your cluster and starts, stops, destroys the container when asked.
 Different scheduler strategies can be used to pick the best segment to hold a container.
 
 * `spread` (default): This strategy spreads containers as thinly as possible across all segments in the cluster.
-  If there are identical segments a random one is chosen and the container is placed on that segment.
+  If there are identical segments, a random one is chosen and the container is placed on that segment.
 * `binpack`: This strategy leaves room on the cluster for a large containers by stacking smaller containers on one segment in the cluster.
 * `random`: This strategy places containers on a random segment on the cluster.
 
@@ -52,7 +52,7 @@ To use scheduling filters, you must label the segment as you add it to the clust
 
 #### Scheduling constraints
 
-Scheduling constraints are key-value pairs associated to particular segments. They act much like segment tags.
+Scheduling constraints are key-value pairs associated with particular segments. They act much like segment tags.
 When creating a container, you can select a subset of segments that should be considered for scheduling by specifying one or more sets of matching key-value pairs.
 
 Docker Swarm allows you to filter segments based on key-values available via `docker info`.
@@ -75,9 +75,9 @@ Docker Swarm provides a way to place containers in relation to other containers.
 
 #### Port
 
-The `port` filter instructs Docker Swarm to treat ports as unique resources. If you want containers to serve a particular port (in this example, port 80) using the `port` filter will instruct Docker Swarm to schedule a new container on a segment that has port 80 available.
+The `port` filter instructs Docker Swarm to treat ports as unique resources. If you want containers to serve a particular port (in this example, port 80), using the `port` filter will instruct Docker Swarm to schedule a new container on a segment that has port 80 available.
 
-If you have a four-segment cluster you can run the following command four times (equal to the number of segments). If you run it a fifth time, the command fails because all segments have port 80 already mapped.
+If you have a four-segment cluster, you can run the following command four times (equal to the number of segments). If you run it a fifth time, the command fails because all segments have port 80 already mapped.
 
 `docker run -d -p 80:80 nginx`
 
