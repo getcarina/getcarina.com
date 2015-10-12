@@ -50,7 +50,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 4. Create an ambassador container named `app-ambassador`.
 
     ```bash
-    docker run --detach --link app:helloapp --name app-ambassador --publish 5000:5000 svendowideit/ambassador
+    docker run --detach --name app-ambassador \
+    --link app:helloapp \
+    --publish 5000:5000 svendowideit/ambassador
     ```
 
     This is the _source ambassador_ and it is responsible for forwarding messages
@@ -76,7 +78,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     the connection information from step 5.
 
     ```bash
-    docker run --detach --name app-ambassador --expose 5000 --env HELLOAPP_PORT_5000_TCP=tcp://<connectionInformation> svendowideit/ambassador
+    docker run --detach --name app-ambassador \
+    --env HELLOAPP_PORT_5000_TCP=tcp://<connectionInformation> \
+    --expose 5000 svendowideit/ambassador
     ```
 
     This is the _target ambassador_ and it is responsible for forwarding messages
@@ -89,7 +93,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 8. Create a container named `web`.
 
     ```bash
-    docker run --detach --link app-ambassador:helloapp --name web rackerlabs/hello-world-web
+    docker run --detach --name web \
+    --link app-ambassador:helloapp \
+    rackerlabs/hello-world-web
     ```
 
     This is the _target container_ and it communicates with the source container
