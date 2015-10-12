@@ -2,6 +2,7 @@
 title: Configuring Docker to Use Amphora
 seo:
   description: Configure the Docker command line client to connect to the Amphora Docker Daemon
+featured: true
 ---
 
 In Docker, there are two main components you interact with during almost every operation: the **client** and the **daemon**. The client is the Docker executable that runs on your machine, and the daemon listens for instructions from your client to build, create, or run images and containers.

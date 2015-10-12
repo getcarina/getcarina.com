@@ -8,6 +8,9 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 # Build settings
 markdown: redcarpet
 
+redcarpet:
+  extensions: ["with_toc_data"]
+
 exclude:
   - script
   - Gemfile
@@ -30,7 +33,7 @@ defaults:
     scope:
       path: "docs"
     values:
-      layout: "page"
+      layout: "plain"
 
 assets:
   sources:
