@@ -13,7 +13,8 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers using the Ambassador pattern
-so that they can communicate over the network and across Docker hosts.
+so that they can communicate over the network and across Docker hosts. For information about
+the Ambassador pattern, see [Docker networking basics][networking-basics].
 
 ### Prerequisite
 
@@ -113,7 +114,9 @@ You now have two containers that can communicate across Docker hosts.
 ### Resources
 
 * [Docker Ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
-* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
+* [Docker networking basics][networking-basics]
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
+
+[networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/
