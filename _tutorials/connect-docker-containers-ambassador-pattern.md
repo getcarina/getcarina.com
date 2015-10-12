@@ -97,7 +97,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     ```bash
     docker run --detach --name web \
     --link app-ambassador:helloapp \
-    rackerlabs/hello-world-web
+    --publish-all rackerlabs/hello-world-web
     ```
 
     This is the _target container_ and it communicates with the source container
