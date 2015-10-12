@@ -119,9 +119,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 10. Open http://_dockerHost_:_webPort_, where _dockerHost_ is the IP address or host name of the second Docker host,
     for example **http://104.130.0.177:32770**. You should see the following output:
 
-      ```bash
-      The linked container says ... "Hello World!"
-      ```
+    ```bash
+    The linked container says ... "Hello World!"
+    ```
 
 You now have two containers that can communicate across Docker hosts.
 
