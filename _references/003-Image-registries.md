@@ -12,7 +12,7 @@ To use a specific registry, use
 docker login {registy address, such as index.docker.io}
 ```
 
-Once you have invoked `docker login`, all of your `docker push` and `docker pull` commands will be associated with that registry. For more information about how to use Docker images, read the [Find and download a Docker image](/docs/tutorial/run-docker-image.md) tutorial.
+Once you have invoked `docker login`, all of your `docker push` and `docker pull` commands will be associated with that registry. For more information about how to use Docker images, read the [Find and download a Docker image](/docs/tutorials/run-docker-image) tutorial.
 
 Registries
 --- 
