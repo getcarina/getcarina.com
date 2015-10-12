@@ -43,7 +43,7 @@ In addition to images contributed by individual community members,
 the Docker Hub Registry has official images from software providers, including
 companies that provide operating systems.
 Providers of official images in the Docker Hub Registry include Ubuntu,
-MySQL, Golang, and many others. You can pull official images with shortened calls.
+MySQL, Golang, and many others. You can pull official images with shortened calls that are consistent with the name of the images' providers.
 
 For example, `docker pull mysql` asks for all official images
 contributed by MySQL.
@@ -58,14 +58,14 @@ Each image repository has its own method of
 accepting contributions.
 
 For example, to contribute an image to
-the Docker Hub Registry,
-log in using `docker login` and then issue
+the Docker Hub Registry, create a Docker account,
+log in to that account using `docker login`, and then issue
 `docker push <user/image_name>`.
 
 You can also tag your image if you wish to give it a label
-to distinguish among several flavors of your image. Careful use of tags makes it possible to retrieve an image based on its purpose or status, such as `dev`, `v2`, or `production`. 
+to distinguish among several flavors. Careful use of tags makes it possible to identify an image based on its purpose or status, such as `dev`, `v2`, or `production`. 
 
-For example, `docker tag openvpn dev` applies a `dev` tag to an image named `openvpn`. If you push that image to the repository without specifying any tags, such as with `docker push openvpn`, all the image's tags are preserved in the the repository. If multiple tags have been applied to an image but you only want one tag pushed with it to the repository, you can accomplish that by specifying the tag. For example, `docker push openvpn:dev` adds the `openvpn` image, tagged only as `dev`, to the repository.
+For example, `docker tag openvpn dev` applies a `dev` tag to an image named `openvpn`. If you use `docker push openvpn` to push that image to the repository without specifying any tags, all the image's tags are preserved in the the repository. If multiple tags have been applied to an image but you only want one tag pushed with it to the repository, you can accomplish that by specifying the tag. For example, `docker push openvpn:dev` adds the `openvpn` image, tagged only as `dev`, to the repository; any other tags you may have applied are not preserved in the repository.
 
 The default behavior for `docker push` is to push to the central
 Docker Hub Registry; alternatively, you can push your image to your own private
