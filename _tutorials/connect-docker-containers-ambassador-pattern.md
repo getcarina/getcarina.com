@@ -1,9 +1,9 @@
 ---
-title: Connect containers using the Ambassador pattern
+title: Connect containers using the ambassador pattern
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-01
 permalink: docs/tutorials/connect-docker-containers-ambassador-pattern/
-description: Learn how to connect Docker containers using the Ambassador pattern so that they can communicate with each other over the network and across Docker hosts
+description: Learn how to connect Docker containers using the ambassador pattern so that they can communicate with each other over the network and across Docker hosts
 docker-versions:
   - 1.8.2
 topics:
@@ -12,9 +12,9 @@ topics:
   - networking
 ---
 
-This tutorial demonstrates how to connect Docker containers using the Ambassador pattern
+This tutorial demonstrates how to connect Docker containers using the ambassador pattern
 so that they can communicate over the network and across Docker hosts. For information about
-the Ambassador pattern, see [Docker networking basics][networking-basics].
+the ambassador pattern, see [Docker networking basics][networking-basics].
 
 ### Prerequisite
 
@@ -125,11 +125,11 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
 You now have two containers that can communicate across Docker hosts.
 
-![Docker Ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %})
+![Docker ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %})
 
 ### Resources
 
-* [Docker Ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
+* [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker networking basics][networking-basics]
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
