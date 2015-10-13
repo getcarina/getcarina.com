@@ -102,7 +102,7 @@ Next, you start the following containers:
   plug-ins have been preinstalled in the Docker image for the `web` container.
 
 The **magento** directory contains a **docker-compose.yml** file that enables
-you to setup both containers by using a single `docker-compose` command. Simply
+you to set up both containers by using a single `docker-compose` command. Simply
 run:
 
 ```
@@ -171,10 +171,10 @@ You can verify that Redis is being used by Magento for caching.
   docker exec -it redis redis-cli
   ```
 
-2. When the CLI prompt is ready, write `MONITOR` and hit Enter.
+2. When the CLI prompt is ready, write `MONITOR` and press Enter.
   All I/O will now be outputted.
 
-3. Go to any front end webpage on your Magento website.
+3. Go to any front-end web page on your Magento website.
   You should see all of the relevant activity outputted to your terminal.
 
 4. To test that sessions are being stored, go to the Admin login portal and
