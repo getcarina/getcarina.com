@@ -1,5 +1,5 @@
 ---
-title: Introduction to container technologies: registration and discovery of container services
+title: 'Introduction to container technologies: registration and discovery of container services'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-registration-discover/
