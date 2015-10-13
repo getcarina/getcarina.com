@@ -33,7 +33,7 @@ by users have been uploaded to the
 those images.
 
 Anyone who has a Docker Hub account can retrieve an image from the Docker Hub Registry.
-To retrieve an image, login to Docker Hub and ask Docker for the image by providing the image's
+To retrieve an image, log in to Docker Hub and ask Docker for the image by providing the image's
 <user/image_name> identifier.
 
 For example, `docker pull cpuguy83/openvpn` asks for an image named `openvpn`
