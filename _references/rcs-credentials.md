@@ -27,7 +27,7 @@ using the credentials to authenticate to your cluster.
 
 ### <a name="download"></a> Download credentials
 
-1. Log in to the control panel at http://mycluster.rackspacecloud.com.
+1. Log in to the control panel at [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
 
 2. Click the gear icon next to your cluster name and select **Download Credentials**.
 
@@ -48,4 +48,4 @@ using the credentials to authenticate to your cluster.
 
 6. Load your credentials and use them to interact with your cluster:
   * (_Linux and Mac OSX users_) Run `source docker.env`.
-  * (_Windows users_) See [Load Docker environment from the command line on Windows](/docs/tutorials/load-docker-environment-on-windows/).
+  * (_Windows users_) See [Load Docker environment from the command line on Windows]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/).
