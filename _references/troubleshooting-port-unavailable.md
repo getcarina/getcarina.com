@@ -42,7 +42,7 @@ to the specified port. To resolve this error, you must either
     changing `<port>` to the port number that you want to use.
 
     ```bash
-    docker ps -a | grep <port>/tcp
+    $ docker ps -a | grep <port>/tcp
     ```
 
 2. To remove the containers, run the following command for each container identified in step 1,
@@ -51,7 +51,7 @@ to the specified port. To resolve this error, you must either
     is currently running.
 
     ```bash
-    docker rm --force --volumes <containerId>
+    $ docker rm --force --volumes <containerId>
     ```
 
 You can now run your container using the port number.
@@ -62,7 +62,7 @@ if the container exposes port 80 and you have selected port 8081 as the alternat
 you would use `--publish 8081:80` when running your Docker container. For example:
 
 ```bash
-docker run --detach --publish 8081:80 nginx
+$ docker run --detach --publish 8081:80 nginx
 ```
 
 ### <a name="grow-cluster"></a> Add capacity to the cluster
@@ -79,10 +79,10 @@ See the Docker Machine documentation for additional information about [how to ma
 a Docker Swarm with Docker Machine][docker-machine-swarm].
 
 ```bash
-docker-machine create
-    --driver <driver> \
-    --swarm --swarm-discovery token://<swarmToken> \
-    <nodeName>
+$ docker-machine create
+  --driver <driver> \
+  --swarm --swarm-discovery token://<swarmToken> \
+  <nodeName>
 ```
 
 You can now run your container using the port number.

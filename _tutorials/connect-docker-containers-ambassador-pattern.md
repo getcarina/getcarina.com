@@ -31,7 +31,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 2. Run a container named `app`.
 
     ```bash
-    docker run --detach --name app rackerlabs/hello-world-app
+    $ docker run --detach --name app rackerlabs/hello-world-app
     ```
 
     This is the _source container_. No ports are published for this container,
@@ -44,7 +44,6 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     {% raw %}
     ```bash
     $ docker inspect --format "{{ .Config.ExposedPorts }}" app
-
     map[5000/tcp:{}]
     ```
     {% endraw %}
@@ -52,9 +51,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 4. Run an ambassador container named `app-ambassador`.
 
     ```bash
-    docker run --detach --name app-ambassador \
-    --link app:helloapp \
-    --publish 5000:5000 svendowideit/ambassador
+    $ docker run --detach --name app-ambassador \
+      --link app:helloapp \
+      --publish 5000:5000 svendowideit/ambassador
     ```
 
     This is the _source ambassador_ and it is responsible for forwarding messages
@@ -70,7 +69,6 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
     ```bash
     $ docker port app-ambassador
-
     5000/tcp -> 104.130.0.192:5000
     ```
 
@@ -80,9 +78,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     the connection information from step 5.
 
     ```bash
-    docker run --detach --name app-ambassador \
-    --env HELLOAPP_PORT_5000_TCP=tcp://<connectionInformation> \
-    --expose 5000 svendowideit/ambassador
+    $ docker run --detach --name app-ambassador \
+      --env HELLOAPP_PORT_5000_TCP=tcp://<connectionInformation> \
+      --expose 5000 svendowideit/ambassador
     ```
 
     This is the _target ambassador_ and it is responsible for forwarding messages
@@ -95,9 +93,9 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 8. Run a container named `web`.
 
     ```bash
-    docker run --detach --name web \
-    --link app-ambassador:helloapp \
-    --publish-all rackerlabs/hello-world-web
+    $ docker run --detach --name web \
+      --link app-ambassador:helloapp \
+      --publish-all rackerlabs/hello-world-web
     ```
 
     This is the _target container_ and it communicates with the source container
@@ -112,7 +110,6 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
     ```bash
     $ docker port web
-
     5000/tcp -> 104.130.0.177:32770
     ```
 
