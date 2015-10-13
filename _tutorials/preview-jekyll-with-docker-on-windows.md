@@ -175,7 +175,7 @@ you do not need to install Ruby or Jekyll on your local machine.
 4. If you created **preview.sh** by using Bash, mark it as executable by running the following command:
 
     ```bash
-    chmod +x preview.sh
+    $ chmod +x preview.sh
     ```
 
 5. Execute the preview script to start Jekyll. You can also double-click on the
@@ -184,19 +184,19 @@ you do not need to install Ruby or Jekyll on your local machine.
     **CMD**
 
     ```batch
-    powershell.exe -f preview.ps1
+    > powershell.exe -f preview.ps1
     ```
 
     **PowerShell**
 
     ```powershell
-    .\preview.ps1
+    > .\preview.ps1
     ```
 
     **Bash**
 
     ```bash
-    ./preview.sh
+    $ ./preview.sh
     ```
 
 6. In a web browser, navigate to the URL specified in the output.

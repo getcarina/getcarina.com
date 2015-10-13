@@ -38,19 +38,19 @@ and then start an interactive shell:
 1. Start the container with a name specified so that it is easy to connect to later:
 
     ```bash
-    docker run --name test --detach --interactive --tty ubuntu
+    $ docker run --name test --detach --interactive --tty ubuntu
     ```
 
 2. Use SSH to connect to the active Docker host:
 
     ```bash
-    docker-machine ssh $(docker-machine active)
+    $ docker-machine ssh $(docker-machine active)
     ```
 
 3. Connect to the container using its name from step 1:
 
     ```bash
-    docker exec --interactive --tty test sh
+    $ docker exec --interactive --tty test sh
     ```
 
 ### <a name="cmd-with-bash"></a> Use the CMD terminal with the Bash shell
@@ -60,14 +60,14 @@ Switch to the CMD terminal with the Bash shell, which is similar to using Git Ba
   If you are working with a different Docker environment, replace `default` with the appropriate name.
 
     ```bash
-    "C:\Program Files\Git\bin\bash.exe" --login -i
-    eval $(docker-machine env default --shell bash)
+    > "C:\Program Files\Git\bin\bash.exe" --login -i
+    $ eval $(docker-machine env default --shell bash)
     ```
 
 2. Connect to the container:
 
     ```bash
-    docker run --interactive --tty ubuntu sh
+    $ docker run --interactive --tty ubuntu sh
     ```
 
 ### <a name="cmd"></a>Use the CMD terminal with the Windows shell
@@ -78,13 +78,13 @@ Switch to the CMD terminal with the standard Windows shell.
     with a different Docker environment, replace `default` with the appropriate name.
 
     ```batch
-    docker-machine env default --shell cmd
+    $ docker-machine env default --shell cmd
     ```
 
 2. Connect to the container:
 
     ```batch
-    docker run --interactive --tty ubuntu sh
+    $ docker run --interactive --tty ubuntu sh
     ```
 
 ### <a name="powershell"></a> Use PowerShell
@@ -93,13 +93,13 @@ Switch to the CMD terminal with the standard Windows shell.
   If you are working with a different Docker environment, replace `default` with the appropriate name.
 
     ```powershell
-    docker-machine env default --shell powershell | Invoke-Expression
+    $ docker-machine env default --shell powershell | Invoke-Expression
     ```
 
 2. Connect to the container:
 
     ```powershell
-    docker run --interactive --tty ubuntu sh
+    $ docker run --interactive --tty ubuntu sh
     ```
 
 ### <a name="other-terminals"></a>Use an alternative terminal

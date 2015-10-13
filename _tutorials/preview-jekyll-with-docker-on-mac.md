@@ -115,12 +115,12 @@ you do not need to install Ruby or Jekyll on your local machine.
 4. Mark the preview script as executable.
 
     ```bash
-    chmod +x preview
+    $ chmod +x preview
     ```
 5. Execute the preview script to start Jekyll.
 
     ```bash
-    ./preview
+    $ ./preview
     ```
 
 6. In a web browser, navigate to the URL specified in the output.

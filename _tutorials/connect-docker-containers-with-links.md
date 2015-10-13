@@ -34,7 +34,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     containers by using links.
 
     ```bash
-    docker run --detach --name app rackerlabs/hello-world-app
+    $ docker run --detach --name app rackerlabs/hello-world-app
     ```
 
 3. Inspect the app container and note its exposed port. In the following example, the
@@ -42,7 +42,6 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     ```bash
     $ docker inspect --format "{{ .Config.ExposedPorts }}" app
-
     map[5000/tcp:{}]
     ```
 
@@ -51,7 +50,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     to the source container, `app`, and names the link `helloapp`.
 
     ```bash
-    docker run --detach --name web --link app:helloapp -P rackerlabs/hello-world-web
+    $ docker run --detach --name web --link app:helloapp -P rackerlabs/hello-world-web
     ```
 
     The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
@@ -63,7 +62,6 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     ```bash
     $ docker port web
-
     5000/tcp -> 0.0.0.0:32770
     ```
 
@@ -87,7 +85,7 @@ and how the containers use it to communicate.
     you might need to use a workaround from [Error running interactive Docker shell on Windows][tty-workaround].
 
     ```bash
-    docker exec --interactive --tty web /bin/bash
+    $ docker exec --interactive --tty web /bin/bash
     ```
 
 2. Run the following command to view the environment variables created by the Docker link.
@@ -98,7 +96,6 @@ and how the containers use it to communicate.
 
     ```bash
     $ env | grep HELLOAPP
-
     HELLOAPP_NAME=/web/helloapp
     HELLOAPP_PORT=tcp://172.17.0.12:5000
     HELLOAPP_PORT_5000_TCP=tcp://172.17.0.12:5000
@@ -113,7 +110,7 @@ and how the containers use it to communicate.
 3. Ping the app container by using an environment variable.
 
     ```bash
-    ping $HELLOAPP_PORT_5000_TCP_ADDR
+    $ ping $HELLOAPP_PORT_5000_TCP_ADDR
     ```
 
     **Note:** Normally using the environment variables to ping containers is not recommended.
@@ -127,7 +124,6 @@ and how the containers use it to communicate.
 
     ```bash
     $ grep -i helloapp /etc/hosts
-
     172.17.0.12	helloapp 3432593d47de app
     ```
 
@@ -135,13 +131,10 @@ and how the containers use it to communicate.
 
     ```bash
     $ ping -c 1 helloapp
-
     PING helloapp (172.17.0.12): 56 data bytes
     64 bytes from 172.17.0.12: icmp_seq=0 ttl=64 time=0.105 ms
 
-
     $ ping -c 1 app
-
     PING helloapp (172.17.0.12): 56 data bytes
     64 bytes from 172.17.0.12: icmp_seq=0 ttl=64 time=0.060 ms
     ```
@@ -150,21 +143,20 @@ and how the containers use it to communicate.
 
     ```bash
     $ curl http://helloapp:5000
-
     Hello World!
     ```
 
 7. Log out of the web container.
 
     ```bash
-    exit
+    $ exit
     ```
 
 8. Log in to the app container by running the following command. Depending on your local configuration
     you might need to use a workarounds from [Error running interactive Docker shell on Windows][tty-workaround].
 
     ```bash
-    docker exec --interactive --tty app /bin/bash
+    $ docker exec --interactive --tty app /bin/bash
     ```
 
 9. Run the following command to view the environment variables. Note that Docker does _not_
@@ -172,7 +164,6 @@ and how the containers use it to communicate.
 
     ```bash
     $ env
-
     PYTHON_VERSION=3.4.3
     LANG=C.UTF-8
     PYTHON_PIP_VERSION=7.1.2
@@ -183,7 +174,6 @@ and how the containers use it to communicate.
 
     ```bash
     $ more /etc/hosts
-
     127.0.0.1	localhost
     172.17.0.12	app
     172.17.0.13	web
@@ -193,7 +183,6 @@ and how the containers use it to communicate.
 
     ```bash
     $ ping -c 1 web
-
     PING web (172.17.0.13): 56 data bytes
     64 bytes from 172.17.0.13: icmp_seq=0 ttl=64 time=0.064 ms
     ```
@@ -201,7 +190,7 @@ and how the containers use it to communicate.
 12. Log out of the app container.
 
     ```bash
-    exit
+    $ exit
     ```
 
 [tty-workaround]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
