@@ -38,9 +38,7 @@ defining environment variables on the target container and adding entries to the
 environments but is not recommended in production. The single-host restriction
 limits your topology and hinders scalability and availability.
 
-{%comment%}
-<!-- ![Docker links topology]({% asset_path connect-docker-containers-with-links/docker-links-topology.svg %}) -->
-{%endcomment%}
+![Docker links topology]({% asset_path connect-docker-containers-with-links/docker-links-topology.svg %})
 
 ### <a name="ambassador"></a> Ambassador pattern
 The ambassador pattern uses Docker links with specialized _ambassador_ containers to
@@ -50,9 +48,7 @@ on the same host via a Docker link. The target ambassador forwards messages to t
 container on another Docker host. The source ambassador then relays those messages
 to the source container via a Docker link.
 
-{%comment%}
-<!-- ![Ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %}) -->
-{%endcomment%}
+![Ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %})
 
 An application written to take advantage of Docker links does not require modification
 in order to use the ambassador pattern, because the ambassador containers transparently forward
