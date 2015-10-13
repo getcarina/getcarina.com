@@ -14,10 +14,13 @@ Create new tutorials for concepts: `/_tutorials/000-tutorial-concept-template.md
 
 There's also a template for 101-style articles: `/_tutorials/000-tutorial-101-template.md`
 
+Create reference topics: `/_references/000-reference-template.md`
+
 Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
 
 - Use [sentence-style capitalization for titles and headings](https://one.rackspace.com/display/devdoc/Titles+and+headings#Titlesandheadings-Capitalizationoftitlesandheadings)
 - Use [consistent text formatting](https://one.rackspace.com/display/devdoc/Text+formatting)
+- Write [clear and consistent code examples](https://one.rackspace.com/display/devdoc/Code+examples)
 - Use [active voice](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Useactivevoice)
 - Use [present tense](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Usepresenttense)
 - Write to the user [by using second person and imperative mood](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Writetoyou(thecustomer))
@@ -31,7 +34,11 @@ A few specific guidelines for container content:
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
  
-For terminology usage related to container content, see `<termsFileComingSoon>`.  
+For terminology usage related to container content, see `<termsFileComingSoon>`.
+
+## Metadata
+
+When populating the frontmatter metadata of your article, use the guidelines in [frontmatter-metadata-guidelines.md](frontmatter-metadata-guidelines.md). 
 
 ## Legal
 
