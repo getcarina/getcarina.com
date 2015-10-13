@@ -12,9 +12,9 @@ topics:
 
 In this tutorial you will be expanding on the previous WordPress tutorials by
 focusing on how to set up a redundant, load-balanced web application cluster
-running WordPress, NGINX, PHP-FPM, Redis and MySQL. You will decompose a standard
+running WordPress, NGINX, PHP-FPM, Redis, and MySQL. You will decompose a standard
 application into discrete microservices, keeping in mind the future goals of
-scalability and redundancy in mind.
+scalability and redundancy.
 
 Before you begin, read
 [Running WordPress, Apache and MySQL in Docker](../wordpress-apache-mysql) and
@@ -67,7 +67,7 @@ do this is by using `rack`, a command line tool for Rackspace. If you have not
 installed this tool already, see the
 [Rackspace CLI installation instructions](https://developer.rackspace.com/docs/rack-cli/configuration/).
 
-**Note**: Cloud Files calls folders (or directories if you're using Unix) _containers_.
+**Note**: Cloud Files calls folders (or directories if you're using UNIX) _containers_.
 These are simply folders on a CDN; they are not Docker containers.
 
 1. Using the `rack` command-line tool, create a new container named **wordpress**:
@@ -102,7 +102,7 @@ These are simply folders on a CDN; they are not Docker containers.
 
 **Note**: The preceding command also uploads PHP files, which is an unfortunate
 side effect of uploading the entire directories. If you'd rather upload _only_
-public assets (for example, JavaSript, CSS, and font files) you can run the
+public assets (for example, JavaScript, CSS, and font files) you can run the
 following command, but it will be much slower:
 
 ```
@@ -133,8 +133,8 @@ files to it, you need to enable CDN by following these steps:
 ### Set up MySQL
 
 If you followed our previous tutorials and would like to reuse the same
-database instance, you can follow steps 1, 10, 12, and 14 of this guide and skip
-the rest.
+database instance, you can follow steps 1, 10, 12, and 14 of this procedure and
+skip the rest.
 
 The next step is to create a database instance that is running MySQL. You can
 do this in the Rackspace Cloud Control Panel by following these instructions:
@@ -185,7 +185,7 @@ To improve performance, you will use Redis to cache content in memory.
     redis
   ```
 
-  Note the `--memory` flag, which limits memory usage to a maximum of 4GB.
+  Note the `--memory` flag, which limits memory usage to a maximum of 4 GB.
 
 2. After your Redis container is up and running, run the following command to
    find its IP address:
@@ -199,7 +199,7 @@ To improve performance, you will use Redis to cache content in memory.
 
 ### Prepare images
 
-The final step is to start your NGINX frontend and PHP-FPM backend containers.
+The final step is to start your NGINX front-end and PHP-FPM back-end containers.
 You will be deploying variants of the following base images:
 
 - `nginx` - Configuration values are edited to allow higher upload sizes, and a
@@ -209,9 +209,9 @@ You will be deploying variants of the following base images:
 - `wordpress:fpm` - This image is edited in the following ways:
 
   - The [Redis PHP extension](https://github.com/phpredis/phpredis) is installed
-    and a WordPress add-on downloaded that allows content to be cached in Redis
+    and a WordPress add-on that allows content to be cached in Redis
     is downloaded.
-  - A plugin named [W3 cache](https://wordpress.org/plugins/w3-total-cache/) is
+  - A plug-in named [W3 cache](https://wordpress.org/plugins/w3-total-cache/) is
     installed, enabled, and configured to use your CDN-enabled Cloud Files
     container. It will transfer _all_ the assets uploaded via the WordPress
     Admin control panel automatically to the cloud, ensuring that there is not
@@ -248,7 +248,7 @@ such as Docker Hub.
 
 By now you should have a value for each of the keys in the **env** configuration
 file. Now you are ready to create a set of five WordPress container pairings,
-each composed of two containers: a NGINX frontend and a PHP-FPM backend.
+each composed of two containers: a NGINX front end and a PHP-FPM back end.
 
 1. Ensure that you're in the **wordpress** directory in the repo that you
    cloned at the beginning of this tutorial.
