@@ -1,5 +1,8 @@
 # Rackspace Container Service
 
+[![Build Status](https://travis-ci.org/rackerlabs/docs-container-service.svg?branch=master)](https://travis-ci.org/rackerlabs/docs-container-service)
+
+
 This [Jekyll](http://jekyllrb.com/) repository houses documentation and tutorials for Rackspace Container Service.
 
 ## Installation

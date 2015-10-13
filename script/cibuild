@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# Used by Travis to submit content to Nexus production
+
+set -euo pipefail
+
+if [ "${TRAVIS_PULL_REQUEST}" = "false" ] && [ "${TRAVIS_BRANCH}" = "master" ]; then
+  echo "Submitting content to production."
+  export CONTENT_STORE_URL=https://developer.rackspace.com:9000/
+  export CONTENT_STORE_APIKEY=${PROD1}${PROD2}${PROD3}
+else
+  echo "Not submitting ${TRAVIS_BRANCH} anywhere."
+fi
+
+cd .
+deconst-preparer-jekyll
