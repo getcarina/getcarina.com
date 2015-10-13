@@ -21,13 +21,12 @@ This tutorial describes how to install Docker on Windows.
 
 ###Installing Docker Toolbox on Windows
 
-To successfully run Docker on Windows, you need to install the Docker Toolbox software and several “helper” applications:
-​
-  * Docker Client for Windows
-  * Docker Toolbox management tool and ISO
-  * Oracle VM VirtualBox
-  * Git MSYS-git UNIX tools
-​
+You install Docker on Windows by installing Docker Toolbox. Docker Toolbox comes packaged with the following components:
+
+* Oracle VM VirtualBox
+* The `docker` client for Windows
+* The `docker-machine` binary, which helps create Docker hosts
+
 To install the Docker Toolbox, perform the following steps:
 ​
 1. If you have a previous installation of VirtualBox running, shut it down before running the installer.
