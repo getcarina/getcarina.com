@@ -73,7 +73,7 @@ highly available, and extremely scalable. Key features include:
 
 - **Key-value storage:** Flexible key-value store enables
   dynamic configuration, feature flagging, coordination, leader
-  election and more. 
+  election and more.
 
 - **Multi-datacenter:** Consul is built to be datacenter-aware
   and can support any number of regions without complex

@@ -28,7 +28,7 @@ One of the main advantages of using Docker containers is that
 the community has created
 a variety of Docker container images that you can use for your own purposes.
 Many of the images created
-by users have been uploaded to the 
+by users have been uploaded to the
 [Docker Hub Registry](https://registry.hub.docker.com/), which allows everyone to examine and use
 those images.
 
@@ -63,7 +63,7 @@ log in to that account using `docker login`, and then issue
 `docker push <user/image_name>`.
 
 You can also tag your image if you wish to give it a label
-to distinguish among several flavors. Careful use of tags makes it possible to identify an image based on its purpose or status, such as `dev`, `v2`, or `production`. 
+to distinguish among several flavors. Careful use of tags makes it possible to identify an image based on its purpose or status, such as `dev`, `v2`, or `production`.
 
 For example, `docker tag openvpn dev` applies a `dev` tag to an image named `openvpn`. If you use `docker push openvpn` to push that image to the repository without specifying any tags, all the image's tags are preserved in the the repository. If multiple tags have been applied to an image but you only want one tag pushed with it to the repository, you can accomplish that by specifying the tag. For example, `docker push openvpn:dev` adds the `openvpn` image, tagged only as `dev`, to the repository; any other tags you may have applied are not preserved in the repository.
 
