@@ -1,5 +1,5 @@
 ---
-title: Container ecosystem: Docker Swarm
+title: 'Container ecosystem: Docker Swarm'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-docker-swarm/
