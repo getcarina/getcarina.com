@@ -71,6 +71,18 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
+You may encounter the following error message when loading your Rackspace Container Service credentials:
+
+```powershell
+docker.ps1 cannot be loaded because running scripts is disabled on this system.
+```
+
+Run the following command to enable running PowerShell scripts. Then, run `docker.ps1` again.
+
+```powershell
+> Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+```
+
 [powershell-doc]: https://technet.microsoft.com/en-us/library/ms714469.aspx
 
 #### <a name="bash"></a> Bash
