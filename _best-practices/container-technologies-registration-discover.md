@@ -1,5 +1,5 @@
 ---
-title: Introduction to container technologies: registration and discovery of container services
+title: 'Introduction to container technologies: registration and discovery of container services'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-registration-discover/
@@ -73,7 +73,7 @@ highly available, and extremely scalable. Key features include:
 
 - **Key-value storage:** Flexible key-value store enables
   dynamic configuration, feature flagging, coordination, leader
-  election and more. 
+  election and more.
 
 - **Multi-datacenter:** Consul is built to be datacenter-aware
   and can support any number of regions without complex

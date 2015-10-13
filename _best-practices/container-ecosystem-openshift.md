@@ -1,5 +1,5 @@
 ---
-title: Container ecosystem: OpenShift
+title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-openshift/
@@ -15,7 +15,7 @@ RedHat’s OpenShift has always been associated with managing your
 applications at the Platform-as-a-Service (PaaS) layer.
 With three OpenShift offerings--OpenShift
 Online, OpenShift Enterprise, and OpenShift Origin--RedHat aims to claim a
-stake in various markets. 
+stake in various markets.
 
 ### Three kinds of OpenShift
 
@@ -31,7 +31,7 @@ with more-established alternatives or to grow by attracting contributors:
   the community while
   benefiting from the enhancements that open source brings to the table.
 
-### OpenShift and Kubernetes 
+### OpenShift and Kubernetes
 
 With Kubernetes paving the way as the standard for container
 orchestration in the Docker world, RedHat's newest release of OpenShift, version 3, focuses on adopting
@@ -51,13 +51,13 @@ OpenStack [(7)](#resources) and Project Atomic [(8)](#resources),
 but given the nature of RedHat’s
 previous business models, the OpenStack integration is most likely
 inline with the intent of OpenShift Origin: to appease the open-source
-community. As Diane Mueller explains [(7)](#resources), OpenShift Origin serves as the upstream source for OpenShift Enterprise, enabling integration that begins in OpenShift Origin to make its way to OpenShift Enterprise as the OpenShift team deems appropriate. 
+community. As Diane Mueller explains [(7)](#resources), OpenShift Origin serves as the upstream source for OpenShift Enterprise, enabling integration that begins in OpenShift Origin to make its way to OpenShift Enterprise as the OpenShift team deems appropriate.
 
 It is possible that considering OpenShift
 Enterprise for managing containers in a
 mission-critical IT shop will require a full top-to-bottom
 adoption of RedHat’s container and virtualization products, if both
-types of workloads will be co-located. 
+types of workloads will be co-located.
 
 <a name="resources"></a>
 ### Resources
