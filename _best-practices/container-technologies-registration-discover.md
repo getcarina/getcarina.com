@@ -30,12 +30,14 @@ discovery.
 
 ### CoreOS’ “etcd”
 
-Etcd is a distributed key-value store used for service discovery and shared
+etcd is a distributed key-value store used for service discovery and shared
 configuration. It is intended to be a simple implementation of the Raft
-consensus algorithm [(1)](#resources). Etcd's consistency with Raft informs how leaders are nominated and elected within a cluster and how a leader handles data for the cluster.
+consensus algorithm [(1)](#resources), enabling decision-making among a large and unstable number of cluster participants. Within a cluster, etcd's consistency with Raft informs how leaders are nominated and elected and how a leader handles data for the cluster.
 
-Etcd configurations are designed to provide consistency and partition tolerance: all nodes see the same data at the same time and operation continues despite partitioning caused by network failures.
-Etcd chooses consistency over availability. Specifically, etcd implements
+Consensus is the process of agreeing on one result among a group of participants. This problem becomes difficult when the participants or their communication medium may experience failures.
+
+etcd configurations are designed to provide consistency and partition tolerance: all nodes see the same data at the same time and operation continues despite partitioning caused by network failures.
+etcd chooses consistency over availability. Specifically, etcd implements
 sequential consistency based on a quorum of nodes.
 
 Many projects use etcd, including Google's Kubernetes, Pivotal's Cloud
@@ -59,32 +61,32 @@ Rackspace’s Email & Apps.
 Consul is a tool for service discovery and configuration. It is distributed,
 highly available, and extremely scalable. Key features include:
 
-- **service discovery:** Consul makes it simple for services to
+- **Service discovery:** Consul makes it simple for services to
   register themselves and to discover other services via DNS or HTTP
   interface. External services such as SaaS providers can be
   registered as well.
 
-- **health checking:** Health checking enables Consul to quickly
+- **Health checking:** Health checking enables Consul to quickly
   alert operators about any issues in a cluster. The integration with
   service discovery prevents routing traffic to unhealthy hosts and
   enables service level circuit breakers.
 
-- **key/value storage:** Flexible key-value store enables
+- **Key-value storage:** Flexible key-value store enables
   dynamic configuration, feature flagging, coordination, leader
   election and more. 
 
-- **multi-datacenter:** Consul is built to be datacenter-aware
+- **Multi-datacenter:** Consul is built to be datacenter-aware
   and can support any number of regions without complex
   configuration [(4)](#resources).
 
-Consul implements the Raft consensus algorithm [(1)](#resources), as does etcd.
-Consul configurations are designed to provide consistency (all nodes see the same data at the same time) and partition tolerance (operation continues despite partitioning caused by network failures).
+Like etcd, Consul implements the Raft consensus algorithm [(1)](#resources).
+Consul configurations are designed to provide consistency, so that all nodes see the same data at the same time, and partition tolerance, which allows operations to continue despite partitioning caused by network failures.
 
 In a limited search, public projects or companies using Consul were not found.
 
 ### Comparison and recommendations
 
-Service Discovery is rated as "basic" or "advanced" based on whether, in an advanced setting, the technology has more service monitoring and health-checking capabilities. In this sense, Consul has some advanced features when compared to Zookeeper and etcd.
+Service Discovery is rated as "basic" or "advanced" based on whether the technology has more service monitoring and health-checking capabilities. In this sense, Consul has some advanced features when compared to Zookeeper and etcd.
 
 | Org       | Tool      | Client/Server  Architecture | Primitive Key-Value Store | Basic  Service Discovery | Advanced Service Discovery | Consistency | Language |
 |-----------|-----------|-----------------------------|---------------------------|--------------------------|----------------------------|-------------|----------|
@@ -95,13 +97,12 @@ Service Discovery is rated as "basic" or "advanced" based on whether, in an adva
 In terms of which technology to use:
 
 - Zookeeper has been around longer and thus is considered to be mature,
-  but its dependency and usage of Java tends to deter many users. It
-  is also worth noting many think that it may be starting to show some
-  age and its adaptability into cloud infrastructures isn’t the
-  easiest process as its proven to be complicated, hard to work with
+  but its dependency on Java tends to deter many users. It
+  is also worth noting that many think that Zookeeper is starting to show some
+  age, can be complicated to adapt into cloud infrastructures, and is difficult to work with
   and troubleshoot.
 
-- Etcd and Consul are both new to the scene, but etcd is slightly older
+- etcd and Consul are both new to the scene, but etcd is slightly older
   than Consul. The community seems to prefer etcd and uses etcd far more than Consul.
 
 **Current Recommendation:** etcd
