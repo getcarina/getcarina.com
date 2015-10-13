@@ -1,5 +1,5 @@
 ---
-title: Container ecosystem: OpenShift
+title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-openshift/
