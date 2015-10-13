@@ -1,9 +1,13 @@
-language: python
-python:
-- '3.4'
+language: ruby
+ruby:
+- '2.2.0'
 sudo: false
 install:
-- pip install -e git+https://github.com/deconst/preparer-sphinx.git#egg=deconstrst
+- gem install rake bundler
+- git clone https://github.com/deconst/preparer-jekyll.git /tmp/preparer-jekyll
+- cd /tmp/preparer-jekyll
+- rake install
+- cd ${TRAVIS_BUILD_DIR}
 script:
 - script/cibuild
 env:
