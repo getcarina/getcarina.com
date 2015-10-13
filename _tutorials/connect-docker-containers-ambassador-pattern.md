@@ -1,9 +1,9 @@
 ---
-title: Connect containers using the ambassador pattern
+title: Connect containers by using the ambassador pattern
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-01
 permalink: docs/tutorials/connect-docker-containers-ambassador-pattern/
-description: Learn how to connect Docker containers using the ambassador pattern so that they can communicate with each other over the network and across Docker hosts
+description: Learn how to connect Docker containers by using the ambassador pattern so that they can communicate with each other over the network and across Docker hosts
 docker-versions:
   - 1.8.2
 topics:
@@ -12,7 +12,7 @@ topics:
   - networking
 ---
 
-This tutorial demonstrates how to connect Docker containers using the ambassador pattern
+This tutorial demonstrates how to connect Docker containers by using the ambassador pattern
 so that they can communicate over the network and across Docker hosts. For information about
 the ambassador pattern, see [Docker networking basics][networking-basics].
 
@@ -24,11 +24,11 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 [docker-toolbox]: https://www.docker.com/toolbox
 [rcs]: http://mycluster.rackspacecloud.com/
 
-### Steps
+### Connect containers
 
 1. [Load your first Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
-2. Create a container named `app`.
+2. Run a container named `app`.
 
     ```bash
     docker run --detach --name app rackerlabs/hello-world-app
@@ -49,7 +49,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     ```
     {% endraw %}
 
-4. Create an ambassador container named `app-ambassador`.
+4. Run an ambassador container named `app-ambassador`.
 
     ```bash
     docker run --detach --name app-ambassador \
@@ -64,7 +64,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     **Note**: Although it is not required for the ambassador containers to communicate over the same port
     number that is exposed by the source container, it does simplify configuration.
 
-5. Identify the connection information to the source ambassador container, as it will be required
+5. Identify the connection information to the source ambassador container; it will be required
     when configuring the other ambassador container. In the example output,
     the connection information to the source ambassador is `104.130.0.192:5000`.
 
@@ -76,7 +76,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
 6. [Load your second Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
 
-7. Create an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
+7. In the second host environment, run an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
     the connection information from step 5.
 
     ```bash
@@ -87,12 +87,12 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
     This is the _target ambassador_ and it is responsible for forwarding messages
     to the source ambassador. The target ambassador is provided an environment variable,
-    `HELLOAPP_PORT_5000_TCP`, containing the connection information to the source ambassador
+    `HELLOAPP_PORT_5000_TCP`, containing the connection information to the source ambassador,
     and it exposes the same port number published by the source container.
 
-    **Note**: It is not required to use the same name for the source and target ambassadors.
+    **Note**: You do not have to use the same name for the source and target ambassadors.
 
-8. Create a container named `web`.
+8. Run a container named `web`.
 
     ```bash
     docker run --detach --name web \
