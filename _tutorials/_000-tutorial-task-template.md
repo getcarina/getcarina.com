@@ -17,8 +17,8 @@ Limit tutorials to a single task.
 
 Choose a name that accurately describes the task. For example:
 
-# Create a new container
-# Remove containers without deleting Swarm
+### Create a new container
+### Remove containers without deleting Swarm
 -->
 
 This tutorial describes *x* so that you can *y*.
