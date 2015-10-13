@@ -2,7 +2,7 @@
 
 title: Article title in sentence style
 author: First Last <first.last@rackspace.com>
-date: yyyy-mm-dd
+date: 2015-09-27
 permalink: docs/references/reference-title-hyphenated/
 description: Do a thing on RCS
 docker-versions:
@@ -33,17 +33,17 @@ Provide a descriptive introduction for the article. If it is a troubleshooting a
 ### Section heading
 
 <!--
-Divide the content into sections as needed, and provide descriptive headings for each section. For example, if there are several subsets of commands to describe, describe them in separate sections. If there are two or more ways to resolve an issue, describe each in a subsection. 
+Divide the content into sections as needed, and provide descriptive headings for each section. For example, if there are several subsets of commands to describe, describe them in separate sections. If there are two or more ways to resolve an issue, describe each in a subsection.
 
-Do not create only one heading in the article. Create two or more, or none. 
+Do not create only one heading in the article. Create two or more, or none.
 
-If you need to include steps for resolving an issue, do so by using a numbered list. 
+If you need to include steps for resolving an issue, do so by using a numbered list.
 -->
 
 ### Section heading
 
 <!--
-See the preceding description. 
+See the preceding description.
 -->
 
 ### Resources

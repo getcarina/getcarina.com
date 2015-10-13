@@ -3,8 +3,7 @@ title: Load balance WordPress in Docker containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-09
 permalink: docs/tutorials/load-balance-wordpress-docker-containers/
-description: Learn how to spin up a multi-container WordPress application
-running NGINX, PHP-FPM and MySQL on the Rackspace Container Service
+description: Learn how to spin up a multi-container WordPress application running NGINX, PHP-FPM and MySQL on the Rackspace Container Service
 topics:
   - docker
   - intermediate

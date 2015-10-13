@@ -11,10 +11,10 @@ topics:
   - beginner
 ---
 
-#Before you get started
+### Before you get started
 Before you get started with Rackspace Container Service, you should do the following:
 
-* Watch the [Introduction to Docker](https://sysadmincasts.com/episodes/31-introduction-to-docker) video. 
+* Watch the [Introduction to Docker](https://sysadmincasts.com/episodes/31-introduction-to-docker) video.
 * Ensure that your Rackspace Cloud account is enabled for Rackspace Container Services.
 * Familiarize yourself with basic Docker concepts. Read the [Docker documentation](https://docs.docker.com/
 ) and [Docker 101] (docs/tutorials/docker101).
@@ -22,36 +22,41 @@ Before you get started with Rackspace Container Service, you should do the follo
 * Familiarize yourself with [scheduling strategies](https://docs.docker.com/swarm/scheduler/strategy/) and with [filters](https://docs.docker.com/swarm/scheduler/filter/).
 * Learn about the resources and resource limitations of a cluster.
 * Install the Docker client on your computer. For installation instructions, see the [Install the Docker client] (link_Install_Docker_Client) section.
-* If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2. 
+* If you already have the Docker client installed, ensure that you have the right version. Rackspace Container Service, currently supports Docker version 1.8.2.
 
-#What is Rackspace Container Service?
+### What is Rackspace Container Service?
 **Rackspace Container Service** provides a high-performance service for running and managing Docker containers in a cluster-based infrastructure. Rackspace Container Service gives you a scalable cluster management infrastructure out of the box and allows you to deploy your applications by utilizing one ore more Docker containers across a managed cluster. Rackspace Container Service eliminates the need to install cluster management software and to deploy and operate cluster management hardware. With Rackspace Container Service, you can get started right away and get your containerized application running in a short time.
- 
+
 The following diagram outlines how the Rackspace Container Service works.
 
 [Insert the diagram that Nate is working on here]
 
 
-#Getting Started
+### Getting Started
 
-##Understanding the Rackspace Container Service UI
+#### Understanding the Rackspace Container Service UI
 
 *Wait until we have the final UI*
 
-##Using the Actions icons
+#### Using the Actions icons
 
-###Download credentials icon
+##### Download credentials icon
+
 Clicking this icon brings up a dialog box that prompts you to save your cluster credentials on your computer. Choose **Save File**, click **OK**, and then select a location on your computer to save the credentials to.
-###Share credentials icon
+
+##### Share credentials icon
+
 Clicking this icon brings up a dialog box that lists the URL for your cluster. You can copy this URL and share it with other users.
-###Grow cluster icon
+
+##### Grow cluster icon
+
 Clicking this icon brings up a dialog box the provides you with the option to grow your cluster by 1 node, 2 nodes, or to grow to the maximum, which is 10 nodes.
-###Rebuild cluster icon
+##### Rebuild cluster icon
 Clicking this icon lets you choose the option to rebuild your cluster services.
-###Delete cluster icon
+##### Delete cluster icon
 Clicking this icon lets you choose the option to delete the specific cluster.
 
-##Create a cluster
+#### Create a cluster
 
 Rackspace Container Service is built on the concept of **clusters**. A cluster represents a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Rackspace Container Service sets up and manages clusters made up of Docker containers for you. It launches and terminates the containers and maintains complete information about the state of your cluster.
 
@@ -71,8 +76,8 @@ A cluster can be in one of the following states:
 | growing       | Indicates that the cluster is in the process of adding new nodes.                           |
 
 
-##Download your cluster credentials
-After you have created your cluster and it is in active state, you need to connect to it. Connection authorization for clusters is established using TLS certificates. 
+#### Download your cluster credentials
+After you have created your cluster and it is in active state, you need to connect to it. Connection authorization for clusters is established using TLS certificates.
 Before you can connect to your cluster, you need to download these credentials and tell the client to use them.
 
 To download your cluster credentials:
@@ -80,8 +85,8 @@ To download your cluster credentials:
 1. Click the download credentials icon.
 2. Save the <cluster_name>.zip file to a location on your computer.
 2. Extract the zipped credential folder by typing ```unzip {.zip-file-name}-d {/directory/to/extract}``` at a command-line interface.
-3. Navigate to the extracted credential folder by typing ```cd\{name of extracted folder}``` at a command-line interface. **Note**: The name of the extracted folder is a multi-digit id that has been auto-generated by Rackspace Container Serve. 
-4. Point your Docker client to use the contents of the folder by typing ```source docker.env```. 
+3. Navigate to the extracted credential folder by typing ```cd\{name of extracted folder}``` at a command-line interface. **Note**: The name of the extracted folder is a multi-digit id that has been auto-generated by Rackspace Container Serve.
+4. Point your Docker client to use the contents of the folder by typing ```source docker.env```.
 5. Type ```docker info``` at a command-line interface. Running ```docker info``` will display your RCS cluster details as shown in the following example:
 
 ```
@@ -103,10 +108,10 @@ Name: 9958d3e9d602
 
 For more information, see [Download Rackspace Container Service credentials](docs/references/rcs-credentials/)
 
-##Deploy your first workload
+#### Deploy your first workload
 Now that you have assembled all the required ingredients, you can deploy your first workload.
 
-The following example shows how to set up a Wordpress blog with a MySQL database as a backend. 
+The following example shows how to set up a Wordpress blog with a MySQL database as a backend.
 
 1. Start a MySQL instance, give it a name and use "my-root-pw" as a password by issuing the following command at a command-line interface:
 
@@ -138,20 +143,20 @@ f75da262c529        wordpress                    "/entrypoint.sh apach"   16 sec
 
 This example takes advantage of Docker links. To learn more about container linking go through the [Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/) tutorial.
 
-##Best Practices##
+#### Best Practices
 
-###Requirements and Restrictions###
+##### Requirements and Restrictions
 
-Rackspace Container Services currently does not support two-factor authentication. 
+Rackspace Container Services currently does not support two-factor authentication.
 As a workaround you can create a sub-user by following the instructions described in [How do I create a new user in the Cloud Control Panel](https://community.rackspace.com/products/f/54/t/4551)
 
-#Next#
+#### Next
 
 [Download Rackspace Container Service credentials](docs/references/rcs-credentials/)
 
 [MySQL with RCS](docs/tutorials/mysql-with-rcs/)
 
-[Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/) 
+[Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/)
 
 [MongoDB with RCS] (docs/tutorials/mongodb-with-rcs/)
 
@@ -159,12 +164,4 @@ As a workaround you can create a sub-user by following the instructions describe
 
 [Introduction to Docker Swarm] (docs/tutorials/introduction-docker-swarm/)
 
-[How to use Drupal on Docker Swarm](docs/tutorials/drupal-and-swarm/) 
-	
-
-
-
-
-
-
-
+[How to use Drupal on Docker Swarm](docs/tutorials/drupal-and-swarm/)
