@@ -1,5 +1,5 @@
 ---
-title: Article title in sentence style
+title: 'Article title in sentence style'
 author: First Last <first.last@rackspace.com>
 date: 2015-09-27
 permalink: docs/best-practices/file-name-hyphenated/
