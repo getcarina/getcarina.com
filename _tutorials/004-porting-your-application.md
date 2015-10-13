@@ -2,6 +2,7 @@
 title: Port your Rails application to Rackspace Container Service
 slug: port-your-rails-application
 description: How to port your existing Rails application to Rackspace Container Service
+featured: true
 topics:
   - docker
   - intermediate
@@ -347,4 +348,3 @@ This tutorial assumes this software and knowledge exists:
 ### Next Steps
 
 Try another tutorial or migrate another Rails app.
-

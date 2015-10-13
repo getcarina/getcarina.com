@@ -1,7 +1,7 @@
 ---
 title: Article title in sentence style
 author: First Last <first.last@rackspace.com>
-date: yyyy-mm-dd
+date: 2015-09-27
 permalink: docs/best-practices/file-name-hyphenated/
 description: Best practices for containers, powered by the Rackspace Container Service
 docker-versions:

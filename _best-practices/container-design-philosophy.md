@@ -4,6 +4,7 @@ author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-design-philosophy/
 description: Best practices for container design, powered by the Rackspace Container Service
+featured: true
 topics:
 - best-practices
 - planning

@@ -1,0 +1,98 @@
+---
+layout: default
+---
+<section class="docs-section featured-articles">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="intro">
+        <h2><span class="accent yellow">Everything you need to get started</span></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id nihil dolore similique ab autem facilis hic, corporis laudantium esse dolores provident totam perferendis voluptates animi architecto optio consectetur cumque.</p>
+      </div>
+      <div class="featured-sets">
+        <div class="set">
+          <div class="image">
+            <img src="{% asset_path 'featured-set-tutorials.svg' %}" alt="Rackspace Container Service Tutorials">
+          </div>
+          <h3>Getting Started</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <ul>
+            {% for article in site.tutorials %}
+              {% if article.featured %}
+                <li>
+                  <h4>
+                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
+                  </h4>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="set">
+          <div class="image">
+            <img src="{% asset_path 'featured-set-best-practices.svg' %}" alt="Rackspace Container Service Best Practices">
+          </div>
+          <h3>Best Practices</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <ul>
+            {% for article in site.best-practices %}
+              {% if article.featured %}
+                <li>
+                  <h4>
+                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
+                  </h4>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="set">
+          <div class="image">
+            <img src="{% asset_path 'featured-set-technology.svg' %}" alt="Rackspace Container Service Technology">
+          </div>
+          <h3>Container Technology</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <ul>
+            {% for article in site.references %}
+              {% if article.featured %}
+                <li>
+                  <h4>
+                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
+                  </h4>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="docs-section all-articles">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="heading">
+        <h2><span class="accent yellow">All Articles</span></h2>
+      </div>
+      <div class="tools">
+        <ul>
+          <li><a href="">Getting Started</a></li>
+          <li><a href="">Best Practices</a></li>
+          <li><a href="">All</a></li>
+        </ul>
+      </div>
+      <div class="articles">
+        <ul>
+          {% for collection in site.collections %}
+            {% for doc in collection[1].docs %}
+              <li>
+                <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
+                <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
+                <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
+              </li>
+            {% endfor %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
