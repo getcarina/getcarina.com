@@ -1,7 +1,11 @@
 ---
 title: Application logging
-slug: appliction-logging
+author: Matt Darby <matt.darby@rackspace.com>
+date: 2015-10-09
+permalink: docs/tutorials/introduction-docker-swarm/
 description: How to log applications with the Rackspace Container Service
+docker-versions:
+  - 1.8
 topics:
   - docker
   - intermediate
@@ -64,7 +68,7 @@ You will see the following log from the `redis1` container:
 ```
 
 There is a helpful option available named `max-size` when using the `json-file` logging method that automatically rolls over the log file when it reaches a specified size:
-`--log-opt max-size=[0-9+][k|m|g]` (`k`, `m`, `g` standing for kilobyte, megabyte and gigabyte respectfully.) If this option is not set the logs will no roll over.
+`--log-opt max-size=[0-9+][k|m|g]` (`k`, `m`, `g` standing for kilobyte, megabyte and gigabyte respectfully.) If this option is not set the logs will not roll over.
 
 #### syslog log driver
 
@@ -78,7 +82,9 @@ Docker also supports streaming its log to a remote `rsyslog` server via these op
 ```
 
 Example command:
-`docker run --log-driver=syslog --log-opt syslog-address=tcp://192.168.0.42:514`
+`docker run --log-driver=syslog --log-opt syslog-address=tcp://192.168.0.42:514 --name redis2 -d redis`
+
+*Note* that the above command is just an example; please supply the correct `syslog-address` IP address for your environment.
 
 The `syslog-tag` option specifies a tag that identifies the container’s syslog messages.
 By default, the system uses the first 12 characters of the container id. To override this behavior, specify a `syslog-tag` option.
