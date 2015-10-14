@@ -1,5 +1,5 @@
 ---
-title: Introduction to container technologies: scheduling and management of services and resources
+title: 'Introduction to container technologies: scheduling and management of services and resources'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-scheduling-management/
@@ -11,44 +11,26 @@ topics:
 
 *For efficient isolation of resources facilitating different types of workloads and frameworks, use the Mesos distributed systems kernel.*
 
-Within a container cluster, service and resource schedulers and managers
-are tools that are
-aware of the underlying resources available, are capable of placing
-tasks across the cluster in
-a specified and expected manner, abide by rules and constraints, and can
-offer the ability to execute tasks and services.
+Within a container cluster, service and resource schedulers and managers are tools that track the availablity of underlying resources, place tasks across the cluster in a specified and expected manner, abide by rules and constraints, and offer the ability to execute tasks and services.
 
-In the container ecosystem, the need for specialized tools for service and resource scheduling  becomes evident in complex recurring situations such as:
+In the container ecosystem, the need for specialized tools for service and resource scheduling becomes evident in complex recurring situations such as:
 
-- the lifecycle of installing and maintaining the Docker engine and its dependencies
-- setting up the requirements needed by your applications
-- servicing the system you implement for orchestration and management of your container cluster
+- The lifecycle of installing and maintaining the Docker engine and its dependencies
+- Setting up the requirements needed by your applications
+- Servicing the system you implement for orchestration and management of your container cluster
 
-To be clear, service/resource schedulers and managers do just that: they
-allocate the resources needed to execute a job, such as the execution of
-Docker containers.
+To be clear, schedulers allocate the resources needed to execute a job, such as the execution of Docker containers, but it takes more than scheduling to create a Platform-as-a-Service offering. Schedulers assign work to resources; orchestrators ensure that the resources necessary to perform the work are available when needed. For example, if scheduled work requires load balancing, failure recovery, and scaling, an orchestrator creates an environment in which those services are available and then a scheduler can send work to make use of those services.
 
-However, by themselves, resource scheduling technologies should not be seen as options to
-create a Platform-as-a-Service offering or to solely orchestrate a set of containers.
-These tools serve a far
-more basic purpose in respect to Docker services' requirements
-such as load balancing, failure recovery,
-deployment, and scaling;
-these are handled by an actual orchestrator
-sitting on top of your stack.
-
-Therefore, just because they can run any
-service or task from a simple ``hello world`` application to a much more
-complex stack across a cluster to instantiating a Docker container
-on said cluster, this does not mean that they should be fully in charge of
-container orchestration.
+A scheduler can run any
+service or task from a simple ``hello world`` application to instantiating a Docker container
+on a cluster, but you are likely to need an orchestration tool to work with it; for some suggestions, read [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
 
 The technologies described below are the current front-runners in the
-industry with regards to service and resource scheduling.
+industry with regard to service and resource scheduling.
 
 ### Apache’s “Mesos”
 
-Mesos is a distributed systems kernel. It is built using the same
+Mesos is a distributed systems kernel developed by Apache. It is built using the same
 principles as the Linux kernel but at a different level of abstraction.
 The Mesos kernel runs on every machine and provides
 APIs for resource management
@@ -61,34 +43,34 @@ resources and is truly all about facilitating different types of
 workloads and frameworks to run top of it.
 
 Some of the biggest technology companies such as HubSpot and Twitter
-are active users and advocates of Mesos.
+are active users and advocates of Mesos.Mesophere's Datacenter Operating System (DCOS) is built on top of Mesos.
 
 ### CoreOS’ “fleet”
 
-Fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
+fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
 
 - etcd for its manifest of tasks
 - systemd to do the task execution
 
 Jonathan Corbet explains fleet's use of etcd and systemd in this way:
 
-> Fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
+> fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
 > It needs to respond to events like a machine going down and reschedule tasks as needed.
 > The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work. 
 > It is thus not surprising that fleet's commands look a lot like systemd commands [(2)](#resources).
 
-Because systemd is part of Linux itself and interacting with fleet resembles interacting with systemd, learning fleet can seem natural and easy to those already skilled in Linux. Fleet can be seen as an extension
+Because systemd is part of Linux itself and interacting with fleet resembles interacting with systemd, learning fleet can seem natural and easy to those already skilled in Linux. You can think of fleet as an extension
 of Linux systemd that operates at the cluster level and can be used to deploy
 a systemd unit file anywhere on the cluster.
 
-Fleet can automatically reschedule units in response to machine failure, and can abide
+fleet can automatically reschedule units in response to machine failure, and can abide
 by policies such as ensuring that units are deployed together on the
 same machine, forbidding colocation of some resources, and deploying to specific
 machines based on metadata and attributes.
 
 ### Comparison and recommendations
 
-These tables compare fleet and Mesos [(3)](#resources):
+The following tables compare the design and functionality of fleet and Mesos [(3)](#resources):
 
 **Table 1: Design Comparison**
 
@@ -106,16 +88,13 @@ These tables compare fleet and Mesos [(3)](#resources):
 
 In terms of which technology to use:
 
-- Fleet has a strong community following, but
+- fleet has a strong community following, but
   it seems limited in its capabilities with regard to advance
   scheduling and health metrics. It’s also early in fleet's development.
 
-- Mesos is the front-runner with some heavy names utilizing it today
-  in their infrastructure. Also, Mesosphere, the company that is
-  commercializing Mesos and is a separate entity from Apache (the
-  developer of Mesos) has currently started work on a Mesos
-  framework to support Kubernetes [(4)](#resources) and has gotten a good amount of
-  traction.
+- Mesos is the front-runner, utilized in the infrastructure of several large companies.
+  Also, Mesosphere has started work on a Mesos framework to support Kubernetes [(4)](#resources)
+  and seems to be making good progress.
 
 **Current Recommendation:** Mesos
 
@@ -133,6 +112,8 @@ Numbered citations in this article:
 4. <https://github.com/kubernetes/kubernetes/issues/6676>
 
 Other recommended reading:
+
+- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
 
 - <https://www.linux.com/learn/tutorials/788613-understanding-and-using-systemd>
 
