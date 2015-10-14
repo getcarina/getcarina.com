@@ -8,13 +8,13 @@ The content is split into three separate collections: **tutorials**, **best prac
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
-Create new tutorials for tasks: `/_tutorials/000-tutorial-task-template.md`
+Templates for content are available in each of the directories:
 
-Create new tutorials for concepts: `/_tutorials/000-tutorial-concept-template.md`
-
-There's also a template for 101-style articles: `/_tutorials/000-tutorial-101-template.md`
-
-Create reference topics: `/_references/000-reference-template.md`
+- Create new tutorials for tasks: `/_tutorials/_000-tutorial-task-template.md`
+- Create new tutorials for concepts: `/_tutorials/_000-tutorial-concept-template.md`
+- Create 101-style articles: `/_tutorials/_000-tutorial-101-template.md`
+- Create reference topics: `/_references/_000-reference-template.md`
+- Create best practices topics: `/_best-practices/_000-best-practices-template.md`
 
 Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
 
