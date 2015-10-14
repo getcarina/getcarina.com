@@ -1,5 +1,5 @@
 ---
-title: Introduction to container technologies: container operating systems
+title: 'Introduction to container technologies: container operating systems'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-operating-systems/
@@ -9,24 +9,24 @@ topics:
   - planning
 ---
 
-*To provide the minimal functionality required to deploy applications along with self-updating and healing properties, use container-oriented operating systems CoreOS or Project Atomic.*
+*Use container-oriented operating systems CoreOS or Project Atomic for the functionality required to deploy applications along with self-updating and healing properties.*
 
-With the success and popularity of containers made by Docker, modern operating systems have emerged that embrace the container culture and are designed to work optimally with it. These operating systems tend to provide the minimal functionality required to deploy applications along with self-updating and healing properties which are different from today's standard maintenance-intensive operating systems. These container-oriented operating systems have evolved the operating model that users are accustomed to by moving toward deploying applications inside containers and away from deploying applications at the application layer. More simply put, applications can be thought of as self-contained binaries that you can move around in your container environments based on your requirements such as quality of service, affinity, and replication.
+With the success and popularity of Docker containers, modern operating systems have emerged that embrace the container culture and are designed to work optimally with a container ecosystem. These operating systems tend to provide the minimal functionality required to deploy applications along with self-updating and healing properties that are different from today's standard maintenance-intensive operating systems. Container-oriented operating systems have evolved the traditional operating model by moving toward deploying applications inside containers and away from deploying applications at the application layer. More simply put, applications are self-contained binaries that you can move around in your container environments based on criteria such as quality of service, affinity, and replication.
 
 ### CoreOS’s “CoreOS”
 
-CoreOS, the operating system from the company of the same name, is a new Linux distribution that has been architected to provide features needed to run modern infrastructure stacks via containers with a hands-off approach to keeping the operating system up to date. CoreOS' update philosophy is that "frequent, reliable updates are critical to good security [(1)](#resources)." Updates to CoreOS are pushed out as they are available, much as browsers such as Firefox can be automatically updated. The strategies and architectures that influence CoreOS are similar to the mechanisms that allow companies like Google, Facebook, and Twitter to run their services at scale with high resilience.
+CoreOS, the operating system from the company of the same name, is a new Linux distribution that provides the features needed to run modern infrastructure stacks via containers with a hands-off approach to operating system updates. CoreOS' update philosophy is that "frequent, reliable updates are critical to good security [(1)](#resources)." Updates to CoreOS are distributed as they are available and can be installed immediately and automatically, much like the automated update process for browsers such as Firefox. The strategies and architectures that influence CoreOS are similar to the mechanisms that allow companies like Google, Facebook, and Twitter to run their services at scale with high resilience.
 
-In addition to the self-updating nature of the CoreOS operating system, the operating system's real value lies in
-its integration with CoreOS' other flagship products:
+In addition to self-updating, the CoreOS operating system
+integrates seamlessly with CoreOS' other flagship products:
 
-- **etcd** highly-available key-value store for shared configuration
+- **etcd**: a highly-available key-value store for shared configuration
   and service discovery.
 
-- **fleet**: distributed init system that uses etcd as its manifest
+- **fleet**: a distributed init system that uses etcd as its manifest
   and systemd as its mechanism for instantiating units. Units are
   configuration files that describe the properties of the process
-  that you want to run. One could think of it as an extension of
+  that you want to run. You can think of fleet as an extension of
   Debian's systemd that operates at the cluster level instead of the machine
   level, so it functions as a simple orchestration system for systemd
   units across your cluster.
@@ -39,25 +39,24 @@ fleet at [Introduction to container technologies: scheduling and management of s
 ### Red Hat's "Project Atomic"
 
 Red Hat’s Project Atomic facilitates application-centric IT architecture
-by providing a end-to-end solution for deploying containerized
-applications quickly and reliably. xxxxxxxx, with atomic update and rollback for
-application and host alike.
+by providing an end-to-end solution for deploying containerized
+applications quickly and reliably. Atomic update and rollback for applications and hosts enables implementation of frequent, small improvements. 
 
 The core of Project Atomic is the Project Atomic Host. This is a
-lightweight operating system that has been assembled from upstream RPM Package Manager (RPM) content. Project Atomic Host is designed to run applications in Docker containers. Hosts based on Red Hat Enterprise Linux and Fedora are available now. Hosts based on CentOS will be available soon.
+lightweight operating system that has been assembled from upstream RPM Package Manager (RPM) content. Project Atomic Host is designed to run applications in Docker containers.
 
 Project Atomic hosts inherit the full features and advantages of their
 base distributions [(2)](#resources). Hosts can be based on several Linux distributions:
 
 - Red Hat Enterprise Linux (RHEL)
 - Fedora
-- CentOS
+- CentOS [(3)](#resources)
 
 Project Atomic takes advantage of key Linux capabilities:
 
-- *systemd*, a system and service manager, which provides
+- *systemd*: a system and service manager, which provides
 container dependency management and fault recovery
-- *journald*, a system logging method, which provides secure aggregation and attribution of container
+- *journald*: a system logging method, which provides secure aggregation and attribution of container
 logs
 
 <a name="resources"></a>
@@ -68,6 +67,8 @@ Numbered citations in this article:
 1. <https://coreos.com/using-coreos/updates/>
 
 2. <http://www.projectatomic.io/docs/introduction/>
+
+3. <http://www.projectatomic.io/blog/2015/06/centos-atomic-host-rebuild-released/>
 
 Other recommended reading:
 
