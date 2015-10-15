@@ -58,6 +58,7 @@ To install the Docker Toolbox, perform the following steps:
 To verify the installation, you start Docker Toolbox and run a simple Docker command.
 
 The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox on your desktop.
+
 ​
 1. On your Desktop, click the Docker Quickstart Terminal icon to launch the terminal application.
 
