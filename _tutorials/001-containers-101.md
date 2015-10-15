@@ -42,12 +42,12 @@ that works on a developer’s system will work the same way on any system.
 
 ###How to create a container
 
-Before you can create and start working with containers, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](001-docker-101.md). 
+Before you can create and start working with containers, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](001-docker-101.md).
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
 
-Build a Docker host by running the following command, choosing anything you want for <dockerHostName>:
+Build a Docker host by running the following command, choosing anything you want for *dockerHostName*:
 
 `docker-machine create --driver virtualbox <dockerHostName>`
 
@@ -60,7 +60,7 @@ To create and run a container, you must first download an image. For example, th
 
 `docker pull ubuntu:14.04`
 
-You can download the latest release by omitting the release number tag, but we don't recommend it. Build your applications on specific image versions for greater stability. Move new versions in a controlled fashion through your <!--[CI/CD pipeline](link-to-ci-cd-tutorial).-->
+You can download the latest release by omitting the release number tag, but we don't recommend it. Build your applications on specific image versions for greater stability. Move new versions in a controlled fashion through your [CI/CD pipeline](link-to-ci-cd-tutorial).
 
 ####Run a container
 To create a container from an Ubuntu image, you use the following command. The `run` command creates the container and then starts it.
