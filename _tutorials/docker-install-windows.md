@@ -28,7 +28,8 @@ You install Docker on Windows by installing Docker Toolbox. Docker Toolbox comes
 * The `docker-machine` binary, which helps create Docker hosts
 
 To install the Docker Toolbox, perform the following steps:
-​
+
+
 1. If you have a previous installation of VirtualBox running, shut it down before running the installer.
 
 2. Go to the [Docker Toolbox](https://www.docker.com/toolbox) page.
@@ -49,7 +50,7 @@ To install the Docker Toolbox, perform the following steps:
 
 10. When it completes, the installer reports it was successful.
 
-    ![When it completes, the installer reports it was successful.](/_assets/img/docker-install-windows/windows-install-complete)
+    ![When it completes, the installer reports it was successful.](/_assets/img/docker-install-windows/windows-install-complete.png)
 
 11. Clear the **View Shortcuts in File Explorer** and then click **Finish**.
 
@@ -110,6 +111,8 @@ Post http:///var/run/docker.sock/v1.20/containers/create: dial unix /var/run/doc
 ```
 
 If you receive this output, your VM is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine).
+
+Lastly, Docker Toolbox may have have conflicts with some of your existing applications such as VirtualBox and Git Bash. For solutions on how to handle these conflicts, go to [Troubleshooting the Docker Toolbox setup on Windows](/_references/002-toubleshooting-windos-docker-vm-startup).
 
 ### Next step
 
