@@ -59,7 +59,6 @@ To verify the installation, you start Docker Toolbox and run a simple Docker com
 
 The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox on your desktop.
 
-​
 1. On your Desktop, click the Docker Quickstart Terminal icon to launch the terminal application.
 
 2. If the system displays a User Account Control prompt to allow VirtualBox to make changes to your computer, choose **Yes**.
