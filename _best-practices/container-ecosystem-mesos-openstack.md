@@ -14,32 +14,29 @@ topics:
 splits a cluster across several virtual machines; Mesos can run on bare metal or on Openstack; Mesos combines all resources, whether virtual machines or bare metal,
 and presents them as a single entity.*
 
-With Docker’s rise in fame, the ecosystem built on top of it as well as
-the one that empowers it has introduced technologies, both new and
-existing, to be considered as options in the stack. Mesos is one of the
-technologies that have gotten traction in the container ecosystem.
+As Docker's popularity has increased, considering what options to include in your stack increasingly means exploring the ecosystem of tools built on top of Docker as well as
+the tools that empower Docker. Mesos, a cluster manager developed by Apache, is one of the
+technologies that has gained importance in the container ecosystem.
+
 Mesos' recent support of Docker containers and the development of
-Mesosphere to orchestrates containers on top of Mesos have helped Mesos
+Mesosphere to orchestrate containers on top of Mesos have helped Mesos
 increase in popularity. However, there
-is confusion about whether one should integrate Mesos into their
-stack or should alternatively be using OpenStack
-or even some other technology to empower
-the Platform-as-a-Service offering from the infrastructure layer.
+is confusion about how Mesos compares to other methods of
+establishing Platform-as-a-Service from the infrastructure layer: 
+- Is it best to integrate Mesos into a stack? 
+- Is OpenStack a better or easier method?
+- Is Kubernetes or some other technology a better fit than either Mesos or OpenStack?
 
 People tend to think of Mesos and OpenStack as competitors.
-However, Mesos and OpenStack are so different that,
-like the apples versus oranges debate, it isn't completely practical to
+However, Mesos and OpenStack are so different that it isn't completely practical to
 compare them. In fact, one can run Mesos on top of OpenStack [(1)](#resources); this tends
 to be a very common operating model but, if you choose to, you can also
-just run Mesos directly on bare metal.
+run Mesos directly on bare metal.
 
-The differentiating factor between Mesos and OpenStack is that OpenStack
-splits up your cluster across several virtual machines
-for your applications to run on, and Mesos
-combines all of your resources, whether virtual machines or bare metal,
-and presents them as a
-single entity or machine.
-Therefore, one could think of Mesos as one
+The differentiating factor between Mesos and OpenStack is the way they group resources:
+- OpenStack splits up your cluster across several virtual machines for your applications to run on
+- Mesos combines all of your resources, whether virtual machines or bare metal, and presents them as a single entity or machine.
+Therefore, you can think of Mesos as one
 very large machine on which to run your applications.
 
 The promoters of Mesos argue that virtual machines were meant
@@ -50,24 +47,20 @@ simplifying management of resources,
 and moving away from traditional virtualization which was plagued with
 horrible turnarounds and bottlenecks. This much is true. In contrast,
 Mesos to a degree reverses this pattern at the cost of removing full
-isolation for your application due to the nature of how Linux containers
-operate differently from virtual machines.
+isolation for your application due to the operational differences between Linux containers
+and virtual machines.
 
 In particular, recent attention to Mesos in the Docker ecosystem centers
-around the concept that greenfield projects expect to create more
-of their applications in containers rather than virtual machines,
-so designing your
-infrastructure to run and consume OpenStack seems like overkill and an
-added complexity when you can achieve the same efficiency from Mesos.
+around the assumption that new projects are more likely to create applications in containers than in virtual machines,
+so designing an infrastructure to run and consume OpenStack seems to add unneeded complexity when you can achieve the same efficiency from Mesos.
 
-At the end of the day, it really comes down to necessity and planning
-for the future infrastructure that your applications will consume.
-Whether that is Mesos, OpenStack, or a mix of the two, will
-depend on how decoupled you want to create your
-datacenter, stack, and application to accommodate the nature of varying
-workloads from different user bases whether they be in virtual machines,
-containers,
-or both.
+You can decide whether to implement Mesos, OpenStack, a combination, or an alternative based on your current needs and your plans for infrastructure to support future applications.
+A key consideration to investigate is the degree to which your
+your datacenter, stack, and application must be decoupled
+to accommodate workloads that may be in virtual machines, containers, or both.
+Timothy Prickett Morgan	suggests that OpenStack may seem most relevant to those who are most focused on datacenter operation while Mesos and Kubernetes may appeal most to those most focused on application development:
+
+> OpenStack is gaining traction in the datacenter and Mesos and Kubernetes, while in their relative infancy, are drawing attention to the higher layers of the software stack.\[...\] It would be natural enough to think that OpenStack would end up being the center of gravity for all control functions, at least for those parts of the datacenter where open source software is preferred.\[...\] When OpenStack was formed, software containers had been around for a long time but had faded for a time as virtual machines and the server consolidation they enabled took the datacenter by storm.\[...\] With the advent of software containers, the need for OpenStack has not necessarily abated, but the rise of the Mesos and Kubernetes schedulers and the idea of containerized application development and deployment has come to the forefront, and this naturally begs the question of which kind of controller will ultimately be in charge of the application clusters of the future.\[...\][(2)](#resources)
 
 <a name="resources"></a>
 ### Resources
@@ -75,6 +68,8 @@ or both.
 Numbered citations in this article
 
 1. <https://www.openstack.org/summit/vancouver-2015/summit-videos/presentation/platform-as-a-service-kubernetesmesos-openstack>
+
+2. <http://www.theplatform.net/2015/08/13/will-openstack-kubernetes-or-mesos-control-future-clusters/>
 
 Other recommended reading
 
