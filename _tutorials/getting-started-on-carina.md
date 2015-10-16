@@ -2,10 +2,10 @@
 title: Getting started on Carina
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2015-09-28
-permalink: docs/tutorials/getting-started/
+permalink: docs/tutorials/getting-started-on-carina/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
-  - 1.8.2
+  - 1.8.3
 topics:
   - docker
   - beginner
@@ -24,7 +24,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 To create your cluster, perform the following steps:
 
 1. Sign in to [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
-1. Enter a cluster name in the **Create New** field.
+1. Enter a cluster name in the **Create New** field. For example: `mycluster`
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
 
@@ -39,7 +39,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Unzip the file to a location on your computer. For example:
 
     ```bash
-    /Users/octopus/Downloads/57d513b9-ed36-487d-8415-4ac65b6d41a8
+    /Users/carina/Downloads/mycluster
     ```
 
 1. Open a terminal application.
@@ -47,13 +47,13 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Change to the unzipped directory. For example,
 
     ```bash
-    $ cd /Users/octopus/Downloads/57d513b9-ed36-487d-8415-4ac65b6d41a8
+    $ cd /Users/carina/Downloads/mycluster
     ```
 
-1. Download the Docker 1.8.2 client into the unzipped directory.
- * [Linux](https://get.docker.com/builds/Linux/x86_64/docker-1.8.2)
- * [Mac](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.2)
- * [Windows](https://get.docker.com/builds/Windows/x86_64/docker-1.8.2.exe)
+1. Download the Docker 1.8.3 client into the unzipped directory.
+ * [Linux](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3)
+ * [Mac](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3)
+ * [Windows](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe)
 
 1. Rename the client.
 
