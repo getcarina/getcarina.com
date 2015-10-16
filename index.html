@@ -14,7 +14,7 @@ layout: default
         </form>
       </div>
       <div class="hero-graphic">
-        {% include "_includes/svg/hero-cube.svg" %}
+        {% include svg/hero-cube.svg %}
       </div>
     </div>
   </div>
@@ -75,7 +75,7 @@ layout: default
       </div>
       <div class="resource">
         <div class="image">
-          <a href="{% asset_path resource-1.svg %}"><img src="" alt="chairs"></a>
+          <a href="{% asset_path resource-1.svg %}"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
         </div>
         <h3>Getting Started</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit soluta unde aspernatur quos.</p>
