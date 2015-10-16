@@ -1,16 +1,28 @@
+---
+title: Glossary
+date: 2015-10-16
+permalink: docs/references/glossary/
+description: Provides a glossary of the terms used in Carina documentation
+topics:
+  - docker
+  - containers
+---
+
 The following terms are used in the documentation for Carina.
 
 ##### ambassador pattern
 
 A pattern for linking containers. The ambassador pattern uses Docker links with specialized ambassador containers to enable communication between containers across Docker hosts. 
 
+<!--
 ##### Carina
 
 [add a definition]
+-->
 
 ##### cluster
 
-[add a definition]
+A pool of compute, storage, and networking resources that serves as a host for one or more containerized applications.
 
 ##### container
 
