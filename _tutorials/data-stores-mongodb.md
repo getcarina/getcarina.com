@@ -5,7 +5,7 @@ date: 2015-09-28
 permalink: docs/tutorials/data-stores-mongodb/
 description: Learn how to use MongoDB on Carina
 docker-versions:
-  - 1.8.2
+  - 1.8.3
 topics:
   - docker
   - intermediate
@@ -17,8 +17,7 @@ This tutorial describes using MongoDB on Carina so that you can store data in a 
 
 ### Prerequisites
 
-1. [RCS credentials](rcs-credentials)
-1. [Git](https://git-scm.com/downloads)
+1. [Carina cluster and credentials](cluster-and-credentials)
 
 ### Run a MongoDB instance
 
@@ -131,7 +130,7 @@ DEBUG: mongodb://guestbook-user:guestbook-user-password@104.130.0.124:32769/gues
 INFO:  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 
-The output of this `docker logs` command is the log messages being logged to stdout and stderr from the application.
+The output of this `docker logs` command is the log messages being logged to stdout and stderr from the application in the container.
 
 1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
