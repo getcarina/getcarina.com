@@ -39,7 +39,7 @@ tutorial.
 1. Clone the Rackspace Container Service library by running the following command:
 
   ```
-  git clone https://github.com/rackerlabs/rcs-library
+  git clone https://github.com/rackerlabs/carina-examples.git
   ```
 
 2. Navigate to the **magento** directory to find the **env** file (and a few
