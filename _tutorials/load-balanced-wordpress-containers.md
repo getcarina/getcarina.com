@@ -36,7 +36,7 @@ tutorial.
 1. Run the following commands:
 
   ```
-  git clone https://github.com/rackerlabs/rcs-library
+  git clone https://github.com/rackerlabs/carina-examples.git
   ```
 
 2. Navigate to the **wordpress** directory to find the **env** file (and a few
