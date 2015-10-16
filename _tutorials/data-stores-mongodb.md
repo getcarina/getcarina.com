@@ -36,9 +36,11 @@ The output of this `docker run` command is your running MongoDB container ID.
 
 ```bash
 $ docker ps --latest
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                            NAMES
+47c6d35c63ec        mongo:3.0.6         "/entrypoint.sh mongo"   2 minutes ago       Up 2 minutes        104.130.0.124:32768->27017/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/sad_heisenberg
 ```
 
-The output of this `docker ps` command is your running containers.
+The output of this `docker ps` command is your running MongoDB container.
 
 The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
 
@@ -81,16 +83,21 @@ $ env | grep MONGO_
 MONGO_HOST=104.130.0.124
 MONGO_PORT=32768
 MONGO_DATABASE=guestbook
-MONGO_USER=guestbook-test
-MONGO_PASSWORD=guestbook-test-password
+MONGO_USER=guestbook-user
+MONGO_PASSWORD=guestbook-user-password
 ```
 
 1. Create the database and user.
 
 ```bash
-docker run --rm mongo:3.0.6 \
+$ docker run --rm mongo:3.0.6 \
   mongo --eval 'db.getSiblingDB("'"$MONGO_DATABASE"'").createUser({"user": "'"$MONGO_USER"'", "pwd": "'"$MONGO_PASSWORD"'", "roles": [ "readWrite" ]})' $MONGO_HOST:$MONGO_PORT
+MongoDB shell version: 3.0.6
+connecting to: 104.130.0.124:32768/test
+Successfully added user: { "user" : "guestbook-user", "roles" : [ "readWrite" ] }
 ```
+
+The output of this `docker run` command is the result of running the `mongo` command.
 
 ### Run the application
 
@@ -99,7 +106,7 @@ Run the Guestbook web application and view it in your web browser.
 1. Run a container from the image. The application code uses the environment variables to connect to the MongoDB container. See [app.py](https://github.com/rackerlabs/carina-examples/blob/master/guestbook-mongo/app.py).
 
 ```bash
-docker run --detach \
+$ docker run --detach \
   --env MONGO_HOST=$MONGO_HOST \
   --env MONGO_PORT=$MONGO_PORT \
   --env MONGO_SSL=$MONGO_SSL \
@@ -108,25 +115,30 @@ docker run --detach \
   --env MONGO_PASSWORD=$MONGO_PASSWORD \
   --publish 5000:5000 \
   rackerlabs/guestbook-mongo:1.0
+08d0383a775f05bbf6e0d3e21ceb96cfcf1a0ca1b96e023e390cd52592c9f360  
 ```
+
+The output of this `docker run` command is your running application container ID.
 
 1. View the status of the container by using the `--latest` parameter.
 
 ```bash
 $ docker ps --latest
+CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                          NAMES
+08d0383a775f        rackerlabs/guestbook-mongo:1.0   "/bin/sh -c 'python a"   47 seconds ago      Up 47 seconds       104.130.0.124:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/gloomy_hodgkin
 ```
 
-The output of this `docker ps` command is your running containers.
+The output of this `docker ps` command is your running application container.
 
 The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
 
-1. View the logs of the container. The logs contain some information based on the environment variables.
+1. View the logs of the application. The logs contain some information based on the environment variables.
 
 ```bash
 $ docker logs $(docker ps --quiet --latest)
 INFO: Welcome to Guestbook: Mongo Edition
 DEBUG: The log statement below is for educational purposes only. Do not log credentials.
-DEBUG: mongodb://guestbook-user:guestbook-user-password@104.130.0.124:32769/guestbook?ssl=False
+DEBUG: mongodb://guestbook-user:guestbook-user-password@104.130.0.124:32768/guestbook?ssl=False
 INFO:  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 
@@ -135,7 +147,8 @@ The output of this `docker logs` command is the log messages being logged to std
 1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
 ```bash
-echo http://$(docker port $(docker ps --quiet --latest) 5000)
+$ echo http://$(docker port $(docker ps --quiet --latest) 5000)
+http://104.130.0.124:5000
 ```
 
 The output of this `docker port` command is the IP address and port that the application is using.
@@ -146,6 +159,8 @@ Have `\o/` and `¯\_(ツ)_/¯` sign your Mongo Guestbook.
 
 ```bash
 $ docker rm --force $(docker ps --quiet -n=-2)
+47c6d35c63ec
+08d0383a775f
 ```
 
 The output of this `docker rm` command are the shortened IDs of the MongoDB and application containers that you removed.
@@ -172,4 +187,4 @@ $ docker exec -it $(docker ps -q -l) /bin/bash
 
 ### Next
 
-If MongoDB isn't the data store for you, read [Use MySQL on Carina](data-stores-mongodb).
+If MongoDB isn't the data store for you, read [Use MySQL on Carina](data-stores-mysql).
