@@ -14,7 +14,7 @@ This tutorial describes how to install and set up Docker on Linux distributions,
 
 ### <a name="install"></a> Install Docker
 The following steps use Ubuntu. If you are not using Ubuntu, you can find installation
-instructions for your Linux distribution [the Docker website](https://docs.docker.com/installation/).
+instructions for your Linux distribution on [the Docker website](https://docs.docker.com/installation/).
 
 1. Log in to an Ubuntu installation as a user with `sudo` privileges.
 
