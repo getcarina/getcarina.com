@@ -136,7 +136,7 @@ Run a WordPress blog with a MySQL database.
 1. View your WordPress site by running the following command and pasting the result into the address bar of a browser.
 
     ```bash
-    $ echo http://$(./docker port $(./docker ps --quiet --latest) 80)
+    $ echo http://$(./docker port wordpress 80)
     ```
 
     The output of this `docker port` command is the IP address and port that WordPress is using.
