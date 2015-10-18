@@ -28,6 +28,12 @@ A pool of compute, storage, and networking resources that serves as a host for o
 
 Packages a piece of software with a complete file system that contains everything that the software needs to run, such as code, system tools, and system libraries. Each container is an isolated and secure application platform. A container is created from an *image*. Containers can be run, started, stopped, moved, and deleted.
 
+<!--
+##### credentials
+
+[add a definition]
+-->
+
 ##### Docker
 
 An open-source, client-server platform for building, shipping, and running distributed applications in containers. Also referred to as the Docker Engine. 
