@@ -129,7 +129,7 @@ layout: default
       <div class="blog">
         <h2>Carina Blog</h2>
         <ul class="news-list">
-          {% for post in paginator.posts %}
+          {% for post in site.posts limit: 3 %}
             <li class="news-item">
               <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
               <div class="detail">{{ post.author }} &ndash; {{ post.date | date: "%B %-d, %Y" }}</div>
