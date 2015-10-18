@@ -127,20 +127,14 @@ layout: default
   <div class="section-container">
     <div class="section-grid">
       <div class="blog">
-        <h2>Blog Articles</h2>
+        <h2>Carina Blog</h2>
         <ul class="news-list">
-          <li class="news-item">
-            <h3><a href="">Article Title 1</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
-          <li class="news-item">
-            <h3><a href="">Article Title 2</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
-          <li class="news-item">
-            <h3><a href="">Article Title 3</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
+          {% for post in paginator.posts %}
+            <li class="news-item">
+              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <div class="detail">{{ post.author }} &ndash; {{ post.date | date: "%B %-d, %Y" }}</div>
+            </li>
+          {% endfor %}
         </ul>
       </div>
       <div class="product">
