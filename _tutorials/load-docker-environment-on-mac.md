@@ -24,7 +24,7 @@ This tutorial describes how to load a Docker environment on Mac OS X.
 #### <a name="load"></a> Load the Docker environment
 1. Open a command terminal.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+  * If you are using Carina, [download your credentials][get-cluster-creds].
     Then, run `source docker.env`.
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
     replacing `default` with the name of your Docker host.

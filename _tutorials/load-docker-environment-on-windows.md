@@ -49,7 +49,7 @@ CMD, perform the following steps:
 
 1. Run `cmd.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+  * If you are using Carina, [download your credentials][get-cluster-creds].
     Then, run `docker.cmd`.
   * Otherwise, run `docker-machine env default --shell cmd`, replacing `default`
     with the name of your Docker host. Copy the command output, and then paste it into the command line.
@@ -65,7 +65,7 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
 
 1. Run `powershell.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+  * If you are using Carina, [download your credentials][get-cluster-creds].
     Then, run `docker.ps1`.
   * Otherwise, run `docker-machine env default --shell powershell | Invoke-Expression`,
     replacing `default` with the name of your Docker host.
@@ -88,7 +88,7 @@ To load a Docker environment in Bash, perform the following steps:
     * In Windows Explorer, right-click a directory and select **Git Bash Here**.
     * From a terminal, run `"C:\Program Files\Git\bin\bash.exe" --login -i`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+  * If you are using Carina, [download your credentials][get-cluster-creds].
     Then, run `source docker.env`.
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
     replacing `default` with the name of your Docker host.

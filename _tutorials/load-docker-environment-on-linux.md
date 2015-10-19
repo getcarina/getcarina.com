@@ -24,7 +24,7 @@ This tutorial describes how to load a Docker environment on Linux.
 #### <a name="load"></a> Load the Docker environment
 
 1. Open a command terminal.
-2. If you are using the Rackspace Container Service, [download your credentials][get-cluster-creds].
+2. If you are using Carina, [download your credentials][get-cluster-creds].
     Then, run `source docker.env`.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 

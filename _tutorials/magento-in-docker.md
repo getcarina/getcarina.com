@@ -36,7 +36,7 @@ local environment file that contains most of your configuration. So it makes
 sense to download it early so you can populate it as you progress through this
 tutorial.
 
-1. Clone the Rackspace Container Service library by running the following command:
+1. Clone Carina library by running the following command:
 
   ```
   git clone https://github.com/rackerlabs/carina-examples.git

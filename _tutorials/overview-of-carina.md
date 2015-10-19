@@ -27,14 +27,14 @@ Before you get started with Rackspace Container Service, you should do the follo
 #What is Rackspace Container Service?
 **Rackspace Container Service** provides a high-performance service for running and managing Docker containers in a cluster-based infrastructure. Rackspace Container Service gives you a scalable cluster management infrastructure out of the box and allows you to deploy your applications by utilizing one ore more Docker containers across a managed cluster. Rackspace Container Service eliminates the need to install cluster management software and to deploy and operate cluster management hardware. With Rackspace Container Service, you can get started right away and get your containerized application running in a short time.
 
-The following diagram outlines how the Rackspace Container Service works.
+The following diagram outlines how Carina works.
 
 [Insert the diagram that Nate is working on here]
 
 
 #Getting Started
 
-##Understanding the Rackspace Container Service UI
+##Understanding Carina UI
 
 *Wait until we have the final UI*
 
