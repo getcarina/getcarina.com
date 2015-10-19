@@ -330,18 +330,19 @@ XXXXXXXX
 Nate is rebuilding them from https://github.com/rose-coste/whitepapers/tree/master/images
 XXXXXXXXX
 
-![Strata of the container ecosystem](images/container-ecosystem-layers.jpg)
+![Strata of the container ecosystem](../_assets/img/_best-practices/orchestration-clusters/container-ecosystem.svg)
 
 **Figure 1 -­‐ Strata of container ecosystem  [(10)](#resources)**
 
 (Note: OpenStack can also be options at layers 2 & 5)
 
-![Deploy and manage code as app in PaaS](images/container-paas-code-as-app.jpg)
+![Deploy and manage code as app in PaaS](../assets/img/best-practices/orchestration-clusters/containers-orchestration.svg)
 
 **Figure 2 -­‐ Venn diagram of container orchestrators and managers**
 
 **Current Recommendation:** Kubernetes
 
+!
 XXXXXXXX
 2 images fit in this section somewhere
 Nate is rebuilding them from https://github.com/rose-coste/whitepapers/tree/master/images
