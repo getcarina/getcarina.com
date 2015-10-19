@@ -2,16 +2,16 @@
 title: Run WordPress across linked front end and back end containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-05
+permalink: docs/tutorials/linking-wordpress-containers/
 description: Learn how to spin up a multi-container WordPress application split across linked containers, using NGINX as the front end and PHP-FPM as the back end.
 topics:
   - docker
   - beginner
 ---
 
-In the [previous tutorial](../wordpress-apache-mysql), you set up a single
-Docker container running Apache 2 and WordPress. For your database, you used an
-externally hosted MySQL instance, thereby avoiding some of the more complicated
-issues around container relationships and data persistence in Docker.
+In the [previous tutorial](../wordpress-apache-mysql), you set up a Docker
+container running Apache 2 and WordPress. For your database, you ran MySQL in a
+Docker container.
 
 This tutorial describes how to set up container links, according to the best
 practices set out by the Docker community. By the end, you will have a single

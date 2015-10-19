@@ -15,10 +15,7 @@ application to more of a microservices model.
 
 This tutorial uses the following scenario: setting up WordPress in a single
 Docker container, which runs in a Docker Swarm cluster on the Rackspace
-Container Service.
-
-The MySQL database is hosted externally on the Rackspace Cloud Databases platform,
-which makes it easier to deploy, manage, and scale our web application over time.
+Container Service. The MySQL database is also hosted in a Docker container.
 Finally, you use Apache to deliver traffic to your application.
 
 ### Prerequisites
@@ -26,47 +23,52 @@ Finally, you use Apache to deliver traffic to your application.
 If you're not sure what a Docker container is, read the
 [Docker 101](../docker-101-introduction-docker) tutorial to learn some basics.
 
-### Set up the MySQL instance
-
-First you create a database instance that is running MySQL. You can do this in
-the Rackspace Cloud Control Panel by following these instructions:
-
-1. Log in to the [Cloud Control Panel](https://mycloud.rackspace.com/).
-2. At the top of the panel, click **Databases > MySQL**.
-3. On the Cloud Databases page, click **Create Instance**.
-4. Name the instance **WordPress** and select **IAD** as the region.
-5. For the engine, select **MySQL 5.6**.
-6. For the RAM, **2 GB** is recommended, but use the value that you prefer (a single
-   WordPress container does not require much RAM).
-7. Specify **5 GB** for the disk space.
-8. In the Add Database section, create a database named **wordpress**.
-9. Specify **wordpress** as the username, and assign a
-   [strong password](https://strongpasswordgenerator.com/) to it. Be sure to
-   remember this password because you will need it in step 11 and later.
-10. Click **Create instance**.
-
-    A compute instance with 2 GB of RAM and 5 GB of disk space running MySQL
-    5.6 is provisioned. It might take a few minutes to build. The **wordpress**
-    user is automatically granted full privileges to the new **wordpress**
-    database.
-11. Save your password as an environment variable:
-
-  ```
-  export DB_PASSWORD="<strongPassword>"
-  ```
-
-12. Save your instance hostname as an environment variable, which should look
-    something like this:
-
-  ```
-  export DB_HOST=cdedf98d3852989dc00f4b6bd0e31f98af746a1c.rackspaceclouddb.com
-  ```
-
 ### Create a Swarm cluster
 
 Now you need to set up the Docker Swarm cluster. If you need instructions, read
 the getting started guide. After you've followed the steps and have a fully
 operational cluster, you can resume this tutorial.
+
+### Create MySQL container
+
+The first step is to create the container that will be running MySQL.
+
+1. Generate two [strong passwords](https://strongpasswordgenerator.com/): a
+root password and a password for the `wordpress` user.
+
+2. Store these passwords temporarily in environment variables:
+
+  ```
+  export ROOT_PASSWORD=<rootPassword>
+  export WORDPRESS_PASSWORD=<wordpressPassword>
+  ```
+
+  Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
+  generated passwords.
+
+3. Create the container by running the following terminal command. Name the
+   container `mysql` and use the password variables that you just created:
+
+  ```
+  docker run --detach \
+    --name mysql \
+    --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+    --env MYSQL_USER=wordpress \
+    --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+    --env MYSQL_DATABASE=wordpress \
+    mysql
+  ```
+
+  The output should show the container ID.
+
+4. To verify that the container is running, execute the following command:
+
+  ```
+  docker ps
+  ```
+
+  The output shows the full details of the `mysql` container, listening on port
+  `3306/tcp`.
 
 ### Deploy the WordPress container
 
@@ -79,10 +81,9 @@ password:
 docker run --detach \
   --publish 80:80 \
   --name wordpress \
-  --env WORDPRESS_DB_HOST=$DB_HOST \
+  --link mysql:mysql \
   --env WORDPRESS_DB_USER=wordpress \
-  --env WORDPRESS_DB_PASSWORD=$DB_PASSWORD \
-  --env WORDPRESS_DB_NAME=wordpress \
+  --env WORDPRESS_DB_PASSWORD=$WORDPRESS_PASSWORD \
   wordpress
 ```
 
@@ -93,15 +94,17 @@ The following list explains each component of this command:
 This is the port that Apache listens on for incoming HTTP traffic.
 * `--name` enables you to set a human-readable name for the container.
 * `--env` enables you to set the environment variables that will be injected into
-your Docker container (and therefore made available to our PHP app). You are
-setting the following the variables:
+your Docker container (and therefore made available to our PHP app). You can
+set the following the variables:
 
-  * `WORDPRESS_DB_HOST` is the hostname of your MySQL instance. This variable
-     resolves to an IPv4 address in the IAD ServiceNet subnet, which is a
-     private network that only resources inside the IAD region can access.
+  * `WORDPRESS_DB_HOST` is the hostname of your MySQL instance.
   * `WORDPRESS_DB_USER` is the name of the MySQL user that WordPress will use.
   * `WORDPRESS_DB_PASSWORD` is the password used by the MySQL user.
   * `WORDPRESS_DB_NAME` is the name of the MySQL database that WordPress will use.
+
+You do not need to specify the WORDPRESS_DB_HOST variable because it defaults to
+the IP address and port of the linked `mysql` container. Nor do you need to
+specify the WORDPRESS_DB_NAME variable, because it defaults to `wordpress`.
 
 The default `wordpress` Docker image includes the Apache 2 web server by default,
 meaning that traffic will be handled on port 80.
