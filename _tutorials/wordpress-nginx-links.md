@@ -21,11 +21,7 @@ WordPress, and a MySQL container handling persistent state.
 **Note:** Storing persistent data in containers is a hotly contested issue. Many
 prefer to instead use an external service such as Rackspace Cloud Databases.
 This tutorial sets up a MySQL container just to demonstrate container
-relationships. If you'd rather use a database instance, use the instance that
-you created in [the previous tutorial](../wordpress-apache-mysql), and skip the
-[Create a MySQL container](#create-mysql-container) and
-[Deploy a WordPress container running a PHP-FPM pool](#deploy-wordpress-container-running-php-fpm-pool)
-sections of this tutorial.
+relationships.
 
 ### Prerequisite
 
