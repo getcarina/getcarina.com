@@ -29,13 +29,13 @@ we've modified interlock to require only your username, API key, and the name of
 Assuming you have a cluster named `boatie`, this is how you would run the `example` plugin (swapping in your own username and API key):
 
 ```bash
-docker run carina/interlock --username $USERNAME  --apikey $APIKEY --clustername boatie --plugin example start
+docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
 ```
 
 which results in output like so:
 
 ```
-$ docker run carina/interlock --username $USERNAME  --apikey $APIKEY --clustername boatie --plugin example start
+$ docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
 time="2015-10-19T01:22:59Z" level=info msg="interlock running version=0.3.2 (2df2d23)"
 time="2015-10-19T01:22:59Z" level=info msg="loading plugin name=example version=0.1"
 time="2015-10-19T01:22:59Z" level=info msg="[interlock] dispatching event to plugin: name=example version=0.1"
