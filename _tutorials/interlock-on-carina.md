@@ -23,7 +23,7 @@ Interlock has plugins for
 * stat forwarding to Carbon
 
 Normally for interlock you need to mount a volume with certificates, set TLS options, and optionally set
-environment variables. Using [libcarina, the go bindings for carina](https://github.com/getcarina/libcarina),
+environment variables. Using [libcarina, the go bindings for carina](https://github.com/rackerlabs/libcarina),
 we've modified interlock to require only your username, API key, and the name of the cluster you want to run on.
 
 Assuming you have a cluster named `boatie`, this is how you would run the `example` plugin (swapping in your own username and API key):
