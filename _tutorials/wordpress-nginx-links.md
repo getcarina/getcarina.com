@@ -29,7 +29,7 @@ sections of this tutorial.
 
 ### Prerequisite
 
-A Rackspace Container Service cluster, with at least two nodes, running Docker Swarm.
+A Carina cluster, with at least two nodes, running Docker Swarm.
 
 **Note:** If you completed the [previous tutorial](../wordpress-apache-mysql), you
 can reuse the same cluster, so long as all previous Docker containers have been

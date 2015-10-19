@@ -3,7 +3,7 @@ title: Load a Docker environment from the command line on Linux
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-09-30
 permalink: docs/tutorials/load-docker-environment-on-linux/
-description: Learn how to load a Rackspace Container Service Docker environment on Linux, so that you can work with your Docker cluster from the command line
+description: Learn how to load a Carina Docker environment on Linux, so that you can work with your Docker cluster from the command line
 docker-versions:
   - 1.8.2
 topics:

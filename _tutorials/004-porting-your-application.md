@@ -1,7 +1,7 @@
 ---
-title: Port your Rails application to Rackspace Container Service
+title: Port your Rails application to Carina
 slug: port-your-rails-application
-description: How to port your existing Rails application to Rackspace Container Service
+description: How to port your existing Rails application to Carina
 featured: true
 topics:
   - docker

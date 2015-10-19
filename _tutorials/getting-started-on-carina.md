@@ -161,7 +161,7 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 * If you get the error message `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` then read the [Version Conflict](/docs/references/version-conflict) guide.
 
-* If you had trouble downloading your credentials, see [Download Rackspace Container Service credentials](/docs/references/carina-credentials/) guide.
+* If you had trouble downloading your credentials, see [Download Carina credentials](/docs/references/carina-credentials/) guide.
 
 * If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the error message `Cannot connect to the Docker daemon. Is "docker - d" running on this host?`. To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
 
