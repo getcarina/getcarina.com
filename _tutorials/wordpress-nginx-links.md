@@ -203,5 +203,6 @@ You should now see the standard WordPress installation guide.
 
 ### Next step
 
-The [next tutorial]() explores how to set up a fully load balanced and more
-distributed WordPress cluster on Docker Swarm.
+The [next tutorial](../load-balance-wordpress-docker-containers/) explores how
+to set up a fully load balanced and more distributed WordPress cluster on
+Docker Swarm.
