@@ -1,9 +1,9 @@
 ---
 title: Docker Compose with Carina
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-09-28
+date: 2015-10-19
 permalink: docs/tutorials/docker-compose-with-carina/
-description: Learn how to use Docker Swarm on Carina
+description: Learn how to use Docker Compose with Carina
 docker-versions:
   - 1.8.3
 topics:
@@ -14,8 +14,8 @@ topics:
 
 Docker Compose is a tool for defining and running multi-container applications.
 To do this, you define the different components - or microservices - that
-compose the application in a single YAML file. You then specify this file
-when running the command to launch your application.
+compose the application in a single YAML file. You then specify this file as a
+command-line argument when running the command to launch your application.
 
 ### What advantages does it give?
 
@@ -66,8 +66,8 @@ container name is `redis`.
 
 ### Limitations
 
-Docker have officially said that Compose is **not yet production-ready** because
-it does not fully integrate with Docker Swarm yet. Eventually they aim to have
+Docker have said that Compose is **not yet production-ready** because
+it does not fully integrate with Docker Swarm. Eventually they aim to have
 full integration - meaning that you will be able to deploy multi-container
 applications spread over multiple hosts - but this is not currently the case
 due to limitations in Docker networking.
