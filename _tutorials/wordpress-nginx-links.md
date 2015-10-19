@@ -131,10 +131,10 @@ The final step is to start an NGINX front-end container. To do so, you deploy a
 variant of the base `nginx` Docker image. You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
-- Run a prebuilt image that is hosted on the `rackspace` Docker Hub account.
+- Run a prebuilt image that is hosted on the `rackerlabs` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip to
-[Run the NGINX container](#run-the-NGINX-container).
+[Run the NGINX container](#run-the-nginx-container).
 
 To build the Docker image, build it locally and push it to a central repository
 such as Docker Hub.
@@ -149,13 +149,13 @@ which contains the `nginx` Dockerfile and the `nginx` configuration file:
 2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
 
   ```
-  docker build -t <userNamespace>/NGINX-fpm NGINX-fpm
+  docker build -t <userNamespace>/nginx-fpm nginx-fpm
   ```
 
 3. Push your local image to Docker Hub, just like you would with Git:
 
   ```
-  docker push <userNamespace>/NGINX-fpm
+  docker push <userNamespace>/nginx-fpm
   ```
 
 ### Run the NGINX container
@@ -163,7 +163,7 @@ which contains the `nginx` Dockerfile and the `nginx` configuration file:
 After you've prepared the image, you can start the NGINX container.
 
 Run the following command, substituting `<namespace>` with either your own
-Docker Hub account name, or `rackspace` if you did not build and push your own
+Docker Hub account name, or `rackerlabs` if you did not build and push your own
 Docker image:
 
 ```
@@ -173,7 +173,7 @@ docker run -d \
   --link wordpress-fpm:fpm \
   --volumes-from wordpress-fpm \
   -e "affinity:container==wordpress-fpm" \
-  <namespace>/NGINX-fpm
+  <namespace>/nginx-fpm
 ```
 
 This command creates a container running NGINX, which handles traffic for the
@@ -196,7 +196,7 @@ You can also visit your NGINX front end by finding its IPv4 address and opening
 it in your default browser:
 
 ```
-open http://$(docker port NGINX 80)
+open http://$(docker port nginx 80)
 ```
 
 You should now see the standard WordPress installation guide.
