@@ -3,7 +3,7 @@ title: Run WordPress, Apache, and MySQL in Docker
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-05
 permalink: docs/tutorials/wordpress-apache-mysql/
-description: Learn how to spin up a single WordPress application running Apache and MySQL on the Rackspace Container Service
+description: Learn how to spin up a single WordPress application running Apache and MySQL on Carina
 topics:
   - docker
   - beginner

@@ -20,7 +20,7 @@ options: [Docker links](#links) and the [ambassador pattern](#ambassador).
 
 **Note:** Weave is a commonly recommended solution, but because it requires
 privileged access to the Docker host, it is not an option with container as a service
-providers, such as Rackspace Container Service.
+providers, such as Carina.
 
 This tutorial describes how to network Docker containers so that they can communicate
 among themselves.

@@ -22,7 +22,7 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
 
 ### Prerequisites
 
-A [Carina cluster](mycluster.rackspace.com)
+A [Carina cluster](app.getcarina.com.rackspace.com)
 
 ### Set up Drupal in Carina
 
@@ -89,6 +89,6 @@ Drupal is installed and you are given a link to the new Drupal site.
 
 ### Resources
 
-* [Carina](mycluster.rackspace.com)
+* [Carina](app.getcarina.com.rackspace.com)
 * [Drupal](drupal.org)
 * [MySQL](mysql.com)

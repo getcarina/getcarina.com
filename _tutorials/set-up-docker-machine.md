@@ -73,7 +73,7 @@ Docker Machine is not required to run virtual environments on Linux. However, if
 
    You can now run `docker` commands on this host.
 
-   You also can load your Rackspace Container Service credentials into your Docker environment. For instructions, click the following link for your operating system:
+   You also can load your Carina credentials into your Docker environment. For instructions, click the following link for your operating system:
 
    * [Load a Docker environment on Linux](docs/tutorials/load-docker-environment-on-linux)
    * [Load a Docker environment on Mac](docs/tutorials/load-docker-environment-on-mac)
