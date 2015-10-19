@@ -13,10 +13,9 @@ topics:
 *To create a network in which Docker containers are part of the same virtual network switch no matter where they are running, use Weave.*
 
 Containers become useful when they are connected to each other and to the rest
-of your network. Several tools can help you establish and maintain a network of
-containers.
+of your network. Adding a container-focused network tool such as those introduced below can help you establish and maintain a a useful container configuration.
 
-### Weaveworks “Weave”
+### Weaveworks' “Weave”
 
 Weave "makes the network fit the application, not the other way round,"
 as Weave co-founder Alexis Richardson puts it.
@@ -25,15 +24,16 @@ of a virtual network switch no matter where they are running. Services can
 be selectively exposed across the network to the outside world through
 firewalls and using encryption for wide-area connections [(1)](#resources).
 
-When using Weave, “applications use the network just as if the containers
-were all plugged into the same network switch, with no need to configure
-port mappings, links, etc. Services provided by application containers
-on the weave network can be made accessible to the outside world,
-regardless of where those containers are running. Similarly, existing
-internal systems can be exposed to application containers irrespective of
-their location [(2)](#resources).”
+When using Weave, 
+> applications use the network just as if the containers
+> were all plugged into the same network switch, with no need to configure
+> port mappings, links, etc. Services provided by application containers
+> on the weave network can be made accessible to the outside world,
+> regardless of where those containers are running. Similarly, existing
+> internal systems can be exposed to application containers irrespective of
+> their location [(2)](#resources).
 
-Richardson also stated that "weave establishes per application
+Richardson also stated that "Weave establishes per application
 Layer 2 networks for containers across hosts, even across cloud providers
 and other seemingly complex cases with minimum fuss [(3)](#resources)." Add this
 functionality to the fact
@@ -43,18 +43,20 @@ Weave as a viable option.
 
 ### CoreOS’s “Flannel”
 
-Flannel is positioned as CoreOS’ primary way to manage container
-networking via a private mesh network for the containers in a cluster.
-This eliminates issues such as port mapping.
+Flannel is CoreOS’ primary way to manage container
+networking. It establishes a private mesh network to enable the containers in a cluster to communicate with each other.
+Because a mesh network connects devices to each other without any centralized organization,
+configuration management issues such as port mapping, which can be complex in a large network of ephemeral containers, are not relevent with Flannel.
 
-At its core, Flannel is an overlay network that provides a subnet to
-each machine. This is the main operating model that Kubernetes prescribes for all
-minions and nodes that host containers. For more about networking and Kubernetes, read [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/).
+In an overlay network, a virtual network runs in a layer above the physical network.
+Flannel creates an overlay mesh network that provisions a subnet to each server [(4)](#resources).
+This is the main operating model that Kubernetes prescribes for all
+minions and nodes that host containers. For more about networking and Kubernetes, read [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/). Though Flannel was originally intended for Kubernetes, it has
+evolved into a generic overlay.
 
 Flannel is backed by and based on CoreOS’
-etcd to serve as the key/value store for the networking configuration and
-state management. Though Flannel was originally intended for Kubernetes, it has
-evolved into a generic overlay.
+etcd to serve as the key-value store for the networking configuration and
+state management. 
 
 Flannel is still in its early stages and development is very much in
 flux and somewhat happens in spurts. It should be perceived as
@@ -64,31 +66,33 @@ the container space.
 
 ### Metaswitch’s “Calico”
 
-Project Calico “integrates seamlessly with the cloud orchestration
-system (such as OpenStack) to enable secure IP communication between
-virtual machines. As VMs are created or destroyed, their IP addresses are
-advertised to the rest of the network and they are able to send/receive data
-over IP just as they would with the native networking implementation – but with
-higher security, scalability and performance [(4)](#resources).”
+Project Calico 
+> integrates seamlessly with the cloud orchestration
+> system (such as OpenStack) to enable secure IP communication between
+> virtual machines. As VMs are created or destroyed, their IP addresses are
+> advertised to the rest of the network and they are able to send/receive data
+> over IP just as they would with the native networking implementation – but with
+> higher security, scalability and performance [(5)](#resources).”
 
 In late 2014, the Calico team managed to create a prototype of the Calico stack
-that runs as Docker containers, in addition to a plugin that informs it
+that runs in Docker containers, in addition to a plugin that informs it
 of all containers in the system. This prototype established as a proof
 of concept that the networking model that Calico enables does work for containers.
 
 Though the team seems to have some ideas as to how to proceed with
 Calico and Docker, there are no short-term plans to evolve the prototype.
 This has put the drive and initiative to do so into the hands of the
-community.
+community. Calico is compatible with OpenStack Neutron [(6)](#resources), as is [Rackspace Cloud Networks](http://www.rackspace.com/en-us/cloud/networks). 
 
 ### SocketPlane’s “SocketPlane”
 
-Socketplane’s concept is to bring Open vSwitch to the Docker host so that one can
+Socketplane’s concept is to bring Open vSwitch
+"production quality, multilayer virtual switch" [(7)](#resources) capabilities to the Docker host,
+making it possible to
 “have a container that’s going to be able to manage the data path and
-also manage either overlays or underlays [(5)](#resources).”
+also manage either overlays or underlays [(8)](#resources).”
 
-However, if one were to look for an actual project to evaluate or even
-their webpage, you’ll be met with neither as Socketplane is still very
+However, few details have been published as Socketplane is still very
 much in a semi-stealth mode. Its relevance and consideration as an
 option stems from the fact that its founders, who left RedHat to start Socketplane,
 are three very well known
@@ -96,12 +100,11 @@ networking gurus who are also contributors to the OpenDaylight Project.
 The team currently consists of Madhu
 Venugopal, Brent Salisbury, and Dave Tucker.
 
-It is expected that a SocketPlane product is going to be made available
-sometime in
-2015, so with both the concept and the team behind it, this could evolve
-into a sound and promising technology. It has recently been made public
-that SocketPlane was purchased by Docker, Inc and they plan to natively
-integrate SocketPlane with the Docker portfolio [(6)](#resources).
+SocketPlane was purchased by Docker, Inc., in 2014 and they plan to natively
+integrate SocketPlane with the Docker portfolio [(8)](#resources). 
+A "SocketPlane Technology Preview" is available at <https://github.com/socketplane/socketplane/blob/master/README.md>.
+The concepts and the team behind SocketPlane predict that it could evolve
+into a sound and promising technology. 
 
 ### Comparison
 
@@ -109,8 +112,8 @@ It is very early in the Docker ecosystem to tell which
 container-networking solution will prevail, let alone which tools are
 being used at production scale, as this space is quite new. Though
 intriguing and backed by some powerful teams, Flannel, Calico for
-Docker, and SocketPlane show signs that either not enough attention is
-being given to the project or there have not been any concrete products to
+Docker, and SocketPlane all show signs that either not enough attention is
+being given to the project or there have not yet been enough concrete features released to
 seriously evaluate and test.
 
 **Current Recommendation** Weave (based on project attention, evolution
@@ -127,17 +130,29 @@ Numbered citations in this article
 
 3. <http://www.eweek.com/cloud/weaveworks-raises-5-million-for-docker-container-networking.html>
 
+4. [Introducing flannel: An etcd backed overlay network for containers](https://coreos.com/blog/introducing-rudder/)
+
 4. <http://www.projectcalico.org/about-calico/>
 
 5. <http://www.sdxcentral.com/articles/news/madhu-venugopal-brent-salisbury-opendaylight-starts-open-shop-docker-startup/2014/10/>
 
-6. <http://thenewstack.io/docker-acquires-sdn-technology-startup-socketplane-io/>
+6. <http://www.tomsitpro.com/articles/project-calico-networking-openstack-docker,1-2821.html>
+
+7. <http://openvswitch.org/>
+
+8. <http://thenewstack.io/docker-acquires-sdn-technology-startup-socketplane-io/>
 
 Other recommended reading
 
 - [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
 
 - <http://www.projectcalico.org/getting-started/openstack/>
+
+- <http://www.wired.com/2014/01/its-time-to-take-mesh-networks-seriously-and-not-just-for-the-reasons-you-think/>
+
+- <http://searchsdn.techtarget.com/essentialguide/Overlay-networks-Understanding-the-basics-making-it-a-reality>
+
+- [Rackspace Cloud Networks](http://www.rackspace.com/en-us/cloud/networks)
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
