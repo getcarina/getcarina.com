@@ -2,7 +2,7 @@
 title: Overview of RCS
 author: Constanze Kratel <constanze.kratel@rackspace.com>
 date: 2015-10-03
-permalink: docs/tutorials/overview-of-rcs/
+permalink: docs/tutorials/overview-of-carina/
 description: How to get started with Rackspace Container Service
 docker-versions:
   - 1.8.2
@@ -73,13 +73,13 @@ As a workaround you can create a sub-user by following the instructions describe
 
 #Next#
 
-[Download Rackspace Container Service credentials](docs/references/rcs-credentials/)
+[Download Rackspace Container Service credentials](docs/references/carina-credentials/)
 
-[MySQL with RCS](docs/tutorials/mysql-with-rcs/)
+[MySQL with RCS](docs/tutorials/mysql-with-carina/)
 
 [Connect containers with Docker links] (docs/tutorials/connect-docker-containers-with-links/)
 
-[MongoDB with RCS] (docs/tutorials/mongodb-with-rcs/)
+[MongoDB with RCS] (docs/tutorials/mongodb-with-carina/)
 
 [Run Magento in a Docker container](docs/tutorials/magento-in-docker/)
 

@@ -33,7 +33,7 @@ To get started with Docker on Windows, you need to do the following:
 
 * [Install Docker Toolbox on Windows](docs/tutorials/docker-install-windows/)
 * [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows/)
-* [Download Rackspace Container Service credentials](docs/references/rcs-credentials/)
+* [Download Rackspace Container Service credentials](docs/references/carina-credentials/)
 
 
 #Troubleshooting Docker on Windows

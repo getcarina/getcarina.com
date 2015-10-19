@@ -30,7 +30,7 @@ This tutorial describes how to load a Docker environment on Mac OS X.
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
-[get-cluster-creds]: {{site.baseurl}}/docs/references/rcs-credentials/
+[get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
 ### <a name="references"></a> References
 * [Install Docker on Mac OS X]({{ site.baseurl }}/docs/tutorials/install-docker-with-mac-os-x/)

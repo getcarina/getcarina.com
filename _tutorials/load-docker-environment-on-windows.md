@@ -56,7 +56,7 @@ CMD, perform the following steps:
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-[get-cluster-creds]: {{site.baseurl}}/docs/references/rcs-credentials/
+[get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
 #### <a name="powershell"></a> PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to

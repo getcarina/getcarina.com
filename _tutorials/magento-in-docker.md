@@ -24,7 +24,7 @@ container for caching, and an external MySQL database for persistent storage.
 ### Prerequisites
 
 A Rackspace Container Service cluster running Docker Swarm. Read our
-[Introduction to RCS](../intro-to-rcs/) if you need help with this.
+[Introduction to RCS](../intro-to-carina/) if you need help with this.
 
 If you're not sure what a Docker container is, read the
 [Docker 101](../docker-101-introduction-docker) tutorial to learn some basics.

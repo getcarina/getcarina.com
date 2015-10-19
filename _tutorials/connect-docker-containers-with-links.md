@@ -19,11 +19,11 @@ can communicate over the network. For information about Docker links, see [Docke
 
 ### Prerequisite
 
-A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Rackspace Container Service][rcs]
+A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Rackspace Container Service][carina]
 
 [docker-linux]: http://docs.docker.com/linux/step_one/
 [docker-toolbox]: https://www.docker.com/toolbox
-[rcs]: http://mycluster.rackspacecloud.com/
+[carina]: http://mycluster.rackspacecloud.com/
 
 ### <a name="connect"></a> Connect two containers with a Docker link
 
