@@ -2,8 +2,8 @@
 title: Application logging
 author: Matt Darby <matt.darby@rackspace.com>
 date: 2015-10-09
-permalink: docs/tutorials/introduction-docker-swarm/
-description: How to log applications with the Rackspace Container Service
+permalink: docs/reference/introduction-docker-swarm/
+description: Learn how to log applications with Carina
 docker-versions:
   - 1.8
 topics:
@@ -11,15 +11,15 @@ topics:
   - intermediate
 ---
 
-### Prerequisites
+When you use Carina to containerize your applications, Docker enables you to log your applications in a variety of ways. This tutorial describes each in turn.
 
-A working Docker installation and container.
+### Prerequisite
 
-### Concepts
-
-Docker allows you to log your application in a variety of ways. This tutorial will show each in turn.
+A working Carina cluster and a container to log its output.
 
 ### Types of logging
+
+Docker provides the following types of logs:
 
 * `json-file`
 * `syslog`
@@ -27,18 +27,20 @@ Docker allows you to log your application in a variety of ways. This tutorial wi
 * `gelf`
 * `fluentd`
 
-Please note that the `docker logs` command is only available when using the `json-file` logging type.
-This is enabled by default.
+**Note:** The `docker logs` command is available only when you use the `json-file` logging type.
+This log type is enabled by default.
 
 ### Accessing logs
 
+This section describes how you can use the different log types to log your applications.
+
 #### json-file log driver
-By default the Docker daemon uses `json-file` logging driver, and we can access logs simply by running the `docker logs <CONTAINER_ID_OR_NAME>` command:
+By default the Docker daemon uses the `json-file` logging driver. You can access the for the applications running in the containers on the daemon by using the `docker logs <containerNameOrId>` command.
 
-1. `docker run --name redis1 -d redis`
-1. `docker logs redis1`
+1. Start a container. For example: `$ docker run --name redis1 -d redis`
+1. View the log for the container `$ docker logs redis1`
 
-You will see the following log from the `redis1` container:
+The following log from the `redis1` container is displayed:
 
 ```
 1:C 02 Oct 14:43:24.708 # Warning: no config file specified, using the default config. In order to specify a config file use redis-server /path/to/redis.conf
@@ -67,12 +69,12 @@ You will see the following log from the `redis1` container:
 1:M 02 Oct 14:43:24.709 * The server is now ready to accept connections on port 6379
 ```
 
-There is a helpful option available named `max-size` when using the `json-file` logging method that automatically rolls over the log file when it reaches a specified size:
-`--log-opt max-size=[0-9+][k|m|g]` (`k`, `m`, `g` standing for kilobyte, megabyte and gigabyte respectfully.) If this option is not set the logs will not roll over.
+The `json-file` logging method has a helpful option available named `max-size` that automatically rolls over the log file when it reaches a specified size:
+`--log-opt max-size=[0-9+][k|m|g]`. `k`, `m`, and `g` standing for kilobyte, megabyte and gigabyte. If this option is not set, the logs will not roll over.
 
 #### syslog log driver
 
-Docker also supports streaming its log to a remote `rsyslog` server via these options:
+Docker also supports streaming its log to a remote `rsyslog` server via the following options:
 
 ```
 --log-opt syslog-address=[tcp|udp]://host:port
@@ -81,24 +83,26 @@ Docker also supports streaming its log to a remote `rsyslog` server via these op
 --log-opt syslog-tag="mailer"
 ```
 
+The following is an example command for sending the log for the `redis2` container to a `rsyslog` server:
+
 Example command:
-`docker run --log-driver=syslog --log-opt syslog-address=tcp://192.168.0.42:514 --name redis2 -d redis`
+`$ docker run --log-driver=syslog --log-opt syslog-address=tcp://192.168.0.42:514 --name redis2 -d redis`
 
-*Note* that the above command is just an example; please supply the correct `syslog-address` IP address for your environment.
+be sure to provide the correct `syslog-address` IP address for your environment.
 
-The `syslog-tag` option specifies a tag that identifies the container’s syslog messages.
-By default, the system uses the first 12 characters of the container id. To override this behavior, specify a `syslog-tag` option.
+The `syslog-tag` option specifies a tag that identifies the container’s `syslog` messages.
+By default, the system uses the first 12 characters of the container ID. To override this behavior, specify a `syslog-tag` option.
 
-Setting up rsyslogd is outside the scope of this article; more information is available via the "rsyslogd" link in the *Resources* section of this article.
+Setting up `rsyslogd` is outside the scope of this article. For more information, see the *Resources* section of this article.
 
 #### journald log driver
 
-The journald logging driver sends container logs to a `systemd` journal. Log entries can be retrieved using the `journalctl` command or through use of the journal API.
-In addition to the log message `journald` also sends the container name.
+The `journald` logging driver sends container logs to a `systemd` journal. You can retreive log entries can be retrieved by using the `journalctl` command or by using of the `journald` API.
+In addition to the log message `journald`, also sends the container name.
 
 #### gelf log driver
 
-The [Graylog Extended Log Format](https://www.graylog.org/resources/gelf/)(GELF) logging driver supports the following options:
+The [Graylog Extended Log Format](https://www.graylog.org/resources/gelf/) (GELF) logging driver supports the following options:
 
 ```
 --log-opt gelf-address=udp://host:port
@@ -110,16 +114,14 @@ Currently, only `UDP` connections are allowed via the specified `port` value.
 
 #### Fluentd log driver
 
-[Fluentd](https://www.graylog.org/resources/gelf/) is an open source data collection application that aims to unify your logging layer.
+[Fluentd](http://www.fluentd.org) is an open source, data-collection application, designed to unify your logging layer.
 
-Here is an example showing the options that Docker may use to log to a Fluentd server:
-`docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 --log-opt fluentd-tag=docker.{{.Name}}`
+The following example shows the options that Docker might use to log to a Fluentd server:
+`$ docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 --log-opt fluentd-tag=docker.{{.Name}}`
 
-Note that the container using this logging method will immediately stop if it cannot connect to the Fluentd server.
+**Note:** A container using this logging method will immediately stop if it cannot connect to the Fluentd server.
 
 ### Resources
 
 [rsyslogd](https://vexxhost.com/resources/tutorials/how-to-setup-remote-system-logging-with-rsyslog-on-ubuntu-14-04-lts/)
 [systemd](http://www.freedesktop.org/software/systemd/man/systemd-journald.service.html)
-
-### Next
