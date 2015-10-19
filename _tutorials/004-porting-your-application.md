@@ -122,7 +122,7 @@ This tutorial assumes this software and knowledge exists:
 
 4. Build your containers.
 
-    1. Go to [http://mycluster.rackspace.com](http://mycluster.rackspace.com).
+    1. Go to [http://app.getcarina.com.rackspace.com](http://app.getcarina.com.rackspace.com).
     1. Create a new cluster.
     1. After a moment or two, refresh the page. You should see a series of icons that you can use to download your cluster credentials.
     1. Download these credentials in a clusterName.zip file.

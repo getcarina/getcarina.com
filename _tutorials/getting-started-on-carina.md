@@ -15,7 +15,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 ### Sign up for Carina
 
-To run applications on Carina, get an account by following the [sign up process](https://mycluster.rackspacecloud.com/managed).
+To run applications on Carina, get an account by following the [sign up process](https://app.getcarina.com.rackspacecloud.com/managed).
 
 ### Create your cluster
 
@@ -23,8 +23,8 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 To create your cluster, perform the following steps:
 
-1. Sign in to [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
-1. Enter a cluster name in the **Create New** field. For example: `mycluster`
+1. Sign in to [http://app.getcarina.com.rackspacecloud.com](http://app.getcarina.com.rackspacecloud.com).
+1. Enter a cluster name in the **Create New** field. For example: `app.getcarina.com`
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
 
@@ -39,7 +39,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Unzip the file to a location on your computer. For example:
 
     ```bash
-    /Users/carina/Downloads/mycluster
+    /Users/carina/Downloads/app.getcarina.com
     ```
 
 1. Open a terminal application.
@@ -47,7 +47,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Change to the unzipped directory. For example,
 
     ```bash
-    $ cd /Users/carina/Downloads/mycluster
+    $ cd /Users/carina/Downloads/app.getcarina.com
     ```
 
 1. Download the Docker 1.8.3 client into the unzipped directory.

@@ -22,7 +22,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
 [docker-linux]: http://docs.docker.com/linux/step_one/
 [docker-toolbox]: https://www.docker.com/toolbox
-[carina]: http://mycluster.rackspacecloud.com/
+[carina]: http://app.getcarina.com.rackspacecloud.com/
 
 ### Connect containers
 
