@@ -15,7 +15,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 ### Sign up for Carina
 
-To run applications on Carina, get an account by following the [sign up process](https://app.getcarina.com.rackspacecloud.com/managed).
+To run applications on Carina, get an account by following the [sign up process](https://app.getcarina.com/managed).
 
 ### Create your cluster
 
@@ -23,7 +23,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 To create your cluster, perform the following steps:
 
-1. Sign in to [http://app.getcarina.com.rackspacecloud.com](http://app.getcarina.com.rackspacecloud.com).
+1. Sign in to [http://app.getcarina.com](http://app.getcarina.com).
 1. Enter a cluster name in the **Create New** field. For example: `app.getcarina.com`
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
