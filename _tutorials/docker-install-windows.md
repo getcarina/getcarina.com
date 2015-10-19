@@ -15,6 +15,7 @@ topics:
 This tutorial describes how to install Docker on Windows.
 
 ### Prerequisites
+
 * To run Docker on Windows, your system must be running Windows 7.1, 8/8.1 or newer to run Docker Toolbox.
 
 * Make sure your Windows system supports **Hardware Virtualization Technology** and that virtualization is enabled.
@@ -55,11 +56,12 @@ To install the Docker Toolbox, perform the following steps:
 11. Clear the **View Shortcuts in File Explorer** and then click **Finish**.
 
 ###Verify your installation
-To verify the installation, you start Docker Toolbox and run a simple Docker command.
+
+To verify the installation, start Docker Toolbox and run a simple Docker command.
 
 The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox on your desktop.
 
-1. On your Desktop, click the Docker Quickstart Terminal icon to launch the terminal application.
+1. On your Desktop, click the Docker Quickstart Terminal to launch the terminal application.
 
 2. If the system displays a User Account Control prompt to allow VirtualBox to make changes to your computer, choose **Yes**.
 
