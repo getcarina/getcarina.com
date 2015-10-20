@@ -68,7 +68,7 @@ Shopify, and CenturyLink.
 
 ### OpDemand’s “Deis”
 
-Deis is an open-source PaaS that facilitates the deployment and
+Deis is an open-source Platform-as-a-Service that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
 fleet, and the operating system itself, to “provide lightweight PaaS with
 Heroku-inspired workflow [(4)](#resources).”
@@ -91,9 +91,10 @@ no major companies have announced their use of it.
 
 ### ClusterHQ’s “Flocker”
 
-Flocker is an open-source data volume and multi-host container manager that supports and works with the file format syntax used by Docker’s Compose (formerly known as Fig). Where Docker naturally shines with applications such as
+Flocker is an open-source data volume and multi-host container manager that supports and works with the file format syntax used by Docker’s Compose.
+Where Docker naturally shines with applications such as
 frontend or API servers, which utilize shared storage and are replicated
-or made highly available in some capacity, Flocker’s intention is to
+or made highly available, Flocker’s intention is to
 offer the same portability for applications with systems
 such as databases and messaging or queuing systems. State management in
 containers is still an incomplete feature that is missing in the
@@ -155,28 +156,29 @@ containers.
 Marathon is a cluster-wide initiation and control system for services in
 cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
 and the Mesosphere Chronos job scheduler framework. Where Mesos operates as the
-kernel for your datacenter, Marathon is aimed to be the cluster’s init
+kernel for your datacenter, Marathon serves as a cluster’s init
 or upstart daemon. Marathon has a UI and a REST API for managing and
 scheduling Mesos frameworks, including Docker containers.
 
 Marathon is a *meta framework*: you can start other Mesos frameworks
-with it. It can launch anything that can be launched in a standard shell. In
-fact, you can even start other Marathon instances via Marathon [(7)](#resources).
-Because Marathon is a framework built on Mesos, it can be seen as a comparable
-model to Clocker which is itself a blueprint (analogous to a framework)
+with it. It can launch anything that can be launched in a standard shell.
+You can even start other Marathon instances via Marathon [(7)](#resources).
+Because Marathon is a framework built on Mesos, it is comparable
+to Clocker which is itself a blueprint (analogous to a framework)
 for Apache’s Brooklyn.
 
-Because of its flexibility, Marathon can be seen as a cluster-­wide
+Because of its flexibility, Marathon can operate as a cluster-wide
 process supervisor. Marathon operates as a private Platform-as-a-Servuce through
 functionality that includes service discovery, failure handling, deployment, and scalability.
 
-With Marathon, containers are first-class citizens, utilizing Deimos as if it were a Docker containerizer plugin for Mesos. Using Deimos while being
-based on Mesos, this combination of frameworks allows Marathon to
+Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization. 
+Marathon, based on Mesos, uses the Deimos plugin.
+This combination of frameworks allows Marathon to
 become an orchestration and management layer for Docker containers and
 provides the key services and dependencies one would expect in
-these particular toolsets.
+those toolsets.
 
-Many major companies are using Marathon including Airbnb, eBay,
+Major companies using Marathon include Airbnb, eBay,
 Groupon, OpenTable, Paypal, and Yelp.
 
 ### Google’s “Kubernetes”
@@ -401,6 +403,8 @@ Other recommended reading
 - <https://jclouds.apache.org/>
 
 - <http://yaml.org/>
+
+- <https://github.com/mesosphere/deimos>
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
