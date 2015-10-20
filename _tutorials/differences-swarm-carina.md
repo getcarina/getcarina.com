@@ -40,7 +40,7 @@ can see all of these with `docker info` or by reading the tip in the
 [Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
 section below.
 
-Each segment has 2 GB of memory and roughly the equivalent of 2 vCPUs. The 
+Each segment has 2 GB of memory and roughly the equivalent of 2 vCPUs. The
 maximum number of segments you can provision per cluster is 3. The maximum
 number of clusters you are allowed per account is 3.
 
@@ -121,8 +121,7 @@ by using an AppArmor profile as an additional security layer. Specifically, it:
 By default, Docker containers cannot access any devices on the host. If, however,
 the `--privileged` flag is used with the `docker run` command, it allows the
 container to access all of the devices on the host as if it were a normal process.
-Due to security concerns, Carina disallows this and forces all containers to run
-in unprivileged mode.
+Carina disallows this and forces all containers to run in unprivileged mode.
 
 In line with Linux conventions, Docker uses capabilities to restrict the behavior
 of containers. Operations can override these security rules using the `--cap-add`
