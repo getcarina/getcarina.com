@@ -5,8 +5,8 @@ layout: default
   <div class="section-container">
     <div class="section-grid">
       <div class="intro">
-        <h2><span class="accent yellow">Everything you need to get started</span></h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id nihil dolore similique ab autem facilis hic, corporis laudantium esse dolores provident totam perferendis voluptates animi architecto optio consectetur cumque.</p>
+        <h2><span class="accent yellow">Everything You Need to Know</span></h2>
+        <p>Our documentation includes getting started, tutorials, and best practice information. These three information types combine together to give you a structured path to build your Carina and containter technology knowledge in a straightforward and highly-useable manner.</p>
       </div>
       <div class="featured-sets">
         <div class="set">
@@ -14,9 +14,9 @@ layout: default
             <img src="{% asset_path 'featured-set-tutorials.svg' %}" alt="Rackspace Container Service Tutorials">
           </div>
           <h3>Getting Started</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <p>Get up and running with Carina, a cluster, and a basic container instance.</p>
           <ul>
-            {% for article in site.tutorials %}
+            {% for article in site.getting_started %}
               {% if article.featured %}
                 <li>
                   <h4>
@@ -31,10 +31,10 @@ layout: default
           <div class="image">
             <img src="{% asset_path 'featured-set-best-practices.svg' %}" alt="Rackspace Container Service Best Practices">
           </div>
-          <h3>Best Practices</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <h3>Tutorials</h3>
+          <p>Extend and apply Carina and containers in meaningful real-world applications using our step-by-step instructions.</p>
           <ul>
-            {% for article in site.best-practices %}
+            {% for article in site.tutorials %}
               {% if article.featured %}
                 <li>
                   <h4>
@@ -49,10 +49,10 @@ layout: default
           <div class="image">
             <img src="{% asset_path 'featured-set-technology.svg' %}" alt="Rackspace Container Service Technology">
           </div>
-          <h3>Container Technology</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis alias a aliquid id eligendi excepturi inventore perspiciatis ducimus.</p>
+          <h3>Best Practices</h3>
+          <p>Review recommendations and industry standard approaches for Carina and containers, along with an introduction to advanced topics.</p>
           <ul>
-            {% for article in site.references %}
+            {% for article in site.best_practices %}
               {% if article.featured %}
                 <li>
                   <h4>
