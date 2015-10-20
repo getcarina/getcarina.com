@@ -79,7 +79,7 @@ For example, if you need
 to know the name of the protocol being used, you must first know that the environmental variable identifying it is named
 `DB_PORT_3306_TCP_PROTO`; the `TCP` in the variable name is sufficient to determine that the protocol in use is TCP.
 
-Also, once you discover the environmental variables, you’ll have to
+Also, after you discover the environmental variables, you’ll have to
 parse the various strings for each connection to compose the full
 connection information, so you may as well just have a single
 environment variable containing all information about hosts, ports, and interfaces,
