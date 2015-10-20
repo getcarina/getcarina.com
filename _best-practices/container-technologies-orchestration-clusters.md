@@ -69,20 +69,20 @@ Shopify, and CenturyLink.
 ### OpDemand’s “Deis”
 
 Deis is an open-source PaaS that facilitates the deployment and
-management of applications. It is built on Docker and CoreOS (including etcd,
-fleet and the operating system itself) to “provide lightweight PaaS with
-Heroku-­inspired workflow [(4)](#resources).”
+management of applications. It is built on Docker and CoreOS, including etcd,
+fleet, and the operating system itself, to “provide lightweight PaaS with
+Heroku-inspired workflow [(4)](#resources).”
 To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/).
 
 Deis can deploy an application or service that works in a Docker container and its
-structure mimics Heroku’s 12-factor stateless methodology for how apps
+structure mimics Heroku’s 12-factor stateless methodology for how applications
 should be created and managed. Deis also leverages Heroku’s Buildpacks
 and comes with out-of-the-box support for Ruby, Python, Node.js,
 Java, Clojure, Scala, Play, PHP, Perl, Dart and Go.
 
-Much like Flynn, Deis looks a lot like a Heroku clone that you can
+Much like Flynn, Deis resembles a Heroku clone that you can
 self-host. However, Deis lacks persistent storage and state-aware
-support for use cases such as databases; instead, Deis depends on a third-party
+support for use cases such as databases. Instead, Deis depends on a third-party
 cloud database solution. In this regard, Flynn seems to be ahead of
 Deis as the front-runner in Heroku-like projects.
 
@@ -94,8 +94,8 @@ no major companies have announced their use of it.
 Flocker is an open-source data volume and multi-host container manager that supports and works with the file format syntax used by Docker’s Compose (formerly known as Fig). Where Docker naturally shines with applications such as
 frontend or API servers, which utilize shared storage and are replicated
 or made highly available in some capacity, Flocker’s intention is to
-offer the same portability but for applications with systems
-such as databases and messaging/queuing systems. State management in
+offer the same portability for applications with systems
+such as databases and messaging or queuing systems. State management in
 containers is still an incomplete feature that is missing in the
 community, giving Flocker an opportunity to meet this need.
 
@@ -106,14 +106,14 @@ models, full support of data in many use cases is still a work in progress
 and operations aren not met without undergoing downtime of some capacity.
 
 Flocker alleviates the issue of managing data for containers by
-utilizing the Z File System (ZFS) as the underlying technology for containers' attached datastore, with volume behaviors and such operated by ZFS itself.
+utilizing Zookeeper's Z File System (ZFS) as the underlying technology for containers' attached datastore, with volume behaviors and such operated by ZFS itself.
 In addition to the ZFS properties, Flocker imposes a network proxy across
 all of the Flocker nodes to handle container linking, storage mapping
 and user interaction throughout the cluster.
 
 ### Cloudsoft’s “Clocker”
 
-Clocker is an open source project that enables users to spin up Docker
+Clocker is an open-source project that enables users to spin up Docker
 containers in a cloud-agnostic manner without generating excess containers. The project is built on top of Apache Brooklyn, undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
 
 Some features of Clocker are:
@@ -127,31 +127,32 @@ Some features of Clocker are:
 - Use of any public or private cloud as the underlying infrastructure for
   Docker Hosts
 
-- Deployment of existing Brooklyn/CAMP blueprints to Docker locations,
+- Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms) blueprints to Docker locations,
   without modifications
 
+Clocker uses Apache Brooklyn to create a Docker cloud [(5)](#resources).
 Brooklyn uses Apache jclouds, a multi-cloud toolkit, to
 provision and configure secure communications (SSH) with cloud virtual
 machines. The Docker architecture provides containers on host
 machines. Brooklyn provisions cloud machines using jclouds and uses
 them as Docker hosts.
 
-Brooklyn uses Dockerfile which makes an SSH server available in each
+Brooklyn uses Dockerfile to make an SSH server available in each
 Docker container, after which the container can be treated like any virtual
 machine. Brooklyn receives sensor data from the application, every Docker
 host, every Docker container, and every software component making up the
-application and can effect changes in each of these. This enables Brooklyn to
-manage distribution of the application across the Docker Cloud [(5)](#resources).
+application and can make changes in each of these. This enables Brooklyn to
+manage distribution of the application across the Docker cloud [(6)](#resources).
 
 In short, Brooklyn is a platform that monitors and manages Docker
-containers using a YAML configuration known as blueprints for its
+containers using YAML blueprints for its configuration
 instructions. Clocker then is essentially a blueprint for Brooklyn with
-extra intelligence geared at configuring and managing Docker hosts and
+extra intelligence for configuring and managing Docker hosts and
 containers.
 
 ### Mesosphere’s “Marathon”
 
-Marathon is a cluster-­‐wide init and control system for services in
+Marathon is a cluster-wide initiation and control system for services in
 cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
 and the Mesosphere Chronos job scheduler framework. Where Mesos operates as the
 kernel for your datacenter, Marathon is aimed to be the cluster’s init
@@ -160,7 +161,7 @@ scheduling Mesos frameworks, including Docker containers.
 
 Marathon is a *meta framework*: you can start other Mesos frameworks
 with it. It can launch anything that can be launched in a standard shell. In
-fact, you can even start other Marathon instances via Marathon [(6)](#resources).
+fact, you can even start other Marathon instances via Marathon [(7)](#resources).
 Because Marathon is a framework built on Mesos, it can be seen as a comparable
 model to Clocker which is itself a blueprint (analogous to a framework)
 for Apache’s Brooklyn.
@@ -205,7 +206,7 @@ Specifically, Kubernetes:
 Kubernetes builds upon a decade and a half of experience at Google running
 production workloads at scale, combined with best-of-breed ideas and
 practices from the community. It is written in Golang and is lightweight,
-modular, portable and extensible [(7)](#resources).
+modular, portable and extensible [(8)](#resources).
 
 #### Kubernetes concepts
 
@@ -225,7 +226,7 @@ Some of the key ideas behind Kubernetes include:
 
 - **services:** A set of containers performing a common function with a
   single, stable name and address for a set of pods. Services act like a
-  basic load balancer [(8)](#resources).
+  basic load balancer [(9)](#resources).
 
 #### Comparing Kubernetes and Mesos
 Being one of the hottest, if not *the* hottest, technologies in the
@@ -259,7 +260,7 @@ Lastly, some say Kubernetes and Mesos can be a match made in heaven:
   load-balancing, and replication control.
 - Mesos provides the fine-grained resource allocations for pods across nodes in a cluster,
   and facilitates resource sharing among Kubernetes and other frameworks
-  running on the same cluster [(9)](#resources).
+  running on the same cluster [(10)](#resources).
 
 However, Mesos can easily be replaced by
 OpenStack and if you’ve bought into Openstack, then the dependency on and
@@ -290,7 +291,7 @@ on requirements of the application and performance. Solomon Hykes, CTO of
 Docker, stated, “Docker will give devs a standard interface to all
 [orchestration tools] and [Swarm] is an ingredient of that standard
 interface. [It] can be thought of as the glue between Docker and orchestration
-backends [(10)](#resources).”
+backends [(11)](#resources).”
 
 Swarm is designed to provide a smooth Docker deployment workflow,
 working with some existing container workflow frameworks such as Deis,
@@ -334,7 +335,7 @@ XXXXXXXXX
 
 ![Strata of the container ecosystem](/_assets/img/_best-practices/orchestration-clusters/container-ecosystem.svg)
 
-**Figure 1 -­‐ Strata of container ecosystem  [(11)](#resources)**
+**Figure 1 -­‐ Strata of container ecosystem  [(12)](#resources)**
 
 (Note: OpenStack can also be options at layers 2 & 5)
 
@@ -363,19 +364,21 @@ Numbered citations in this article
 
 4. <http://deis.io/overview/>
 
-5. <http://www.infoq.com/news/2014/06/clocker>
+5. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
 
-6. <https://github.com/mesosphere/marathon>
+6. <http://www.infoq.com/news/2014/06/clocker>
 
-7. <https://github.com/GoogleCloudPlatform/kubernetes>
+7. <https://github.com/mesosphere/marathon>
 
-8. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
+8. <https://github.com/GoogleCloudPlatform/kubernetes>
 
-9. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
+9. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
 
-10. <https://twitter.com/solomonstre/status/492111054839615488>
+10. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
 
-11. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
+11. <https://twitter.com/solomonstre/status/492111054839615488>
+
+12. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
 
 Other recommended reading
 
@@ -392,6 +395,8 @@ Other recommended reading
 - <http://open-zfs.org/wiki/Main_Page>
 
 - <https://brooklyn.incubator.apache.org/>
+
+- <https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=camp#technical>
 
 - <https://jclouds.apache.org/>
 
