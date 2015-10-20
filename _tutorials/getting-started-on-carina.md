@@ -41,35 +41,55 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Unzip the file to a location on your computer. For example:
 
     ```bash
-    /Users/carina/Downloads/mycluster
+    Downloads/mycluster
     ```
 
-1. Open a terminal application.
+1. Open an application to run commands.
+
+    On Linux and Mac OS X, open a terminal.
+
+    On Windows, open a Command Prompt or PowerShell.
 
 1. Change to the unzipped directory. For example,
 
     ```bash
-    $ cd /Users/carina/Downloads/mycluster
+    $ cd Downloads/mycluster
     ```
 
 1. Download the Docker 1.8.3 client into the unzipped directory.
- * [Linux](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3)
- * [Mac](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3)
- * [Windows](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe)
-  * If you're on Windows, use `docker-1.8.3.exe` instead of `./docker` in the commands below.
 
-1. On Linux and Mac OS X, rename the client and make it executable.
+     On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3).
+
+     On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3).
+
+     On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe).
+
+1. Configure the client.
+
+    On Linux and Mac OS X, run the commands.
 
     ```bash
-    $ mv docker-1.8.2 docker
+    $ mv docker-1.8.3 docker
     $ chmod u+x docker
-    ```
-
-1. Source the cluster credentials and configuration.
-
-    ```bash
     $ source docker.env
     ```
+
+    On Windows Command Prompt, run the commands.
+
+    ```
+    $ rename docker-1.8.3.exe docker.exe
+    $ docker.cmd
+    ```
+
+    On Windows PowerShell, run the commands.
+
+    ```
+    $ Rename-Item docker-1.8.3.exe docker.exe
+    $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    $ .\docker.ps1
+    ```
+
+    On Windows, use `.\docker.exe` instead of `./docker` in the commands below.
 
 1. Connect to your cluster and display information about it.
 
@@ -98,10 +118,7 @@ Run a WordPress blog with a MySQL database.
 1. Run a MySQL instance in a container. Give it a name and use **my-root-pw** as a password.
 
   	```bash
-  	$ ./docker run --detach \
-      --name mysql \
-      --env MYSQL_ROOT_PASSWORD=my-root-pw \
-      mysql:5.6
+  	$ ./docker run --detach --name mysql --env MYSQL_ROOT_PASSWORD=my-root-pw mysql:5.6
     ab8ca480c46d10143217c0ee323f8420b6ab93737033c937c2f4dbf8578435bb
   	```
 
@@ -110,11 +127,7 @@ Run a WordPress blog with a MySQL database.
 1. Run a WordPress instance in a container. Give it a name, link it to the MySQL instance, and publish the internal port 80 to the external port 8080.
 
   	```bash
-  	$ ./docker run --detach \
-      --name wordpress \
-      --link mysql \
-      --publish 8080:80 \
-      wordpress
+  	$ ./docker run --detach --name wordpress --link mysql --publish 8080:80 wordpress
     6770c91929409196976f5ad30631b0f2836cd3d888c39bb3e322e0f60ca7eb18
   	```
 
@@ -144,10 +157,13 @@ Run a WordPress blog with a MySQL database.
     If you aren't going to use your WordPress site, we recommend that you remove it. Doing so removes both your WordPress and MySQL containers. This will delete any data and any posts you've made in the WordPress site.
 
     ```bash
-    $ ./docker rm --force $(./docker ps --quiet -n=-2)
+    $ ./docker rm --force wordpress
+    wordpress
+    $ ./docker rm --force mysql
+    mysql
     ```
 
-    The output of this `docker rm` command are the shortened IDs of the WordPress and MySQL containers that you removed.
+    The output of this `docker rm` command are the names of the WordPress and MySQL containers that you removed.
 
 ### Congratulations!
 
