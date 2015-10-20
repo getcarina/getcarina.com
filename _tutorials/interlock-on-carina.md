@@ -3,7 +3,7 @@ title: Running interlock, the event driven Docker Swarm plugin system, on Carina
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 date: 2015-10-18
 permalink: docs/tutorials/interlock-on-carina/
-description: 
+description: Using interlock to load balance containers or emit statistics across your swarm cluster.
 topics:
   - docker
   - interlock
@@ -12,7 +12,7 @@ topics:
 ---
 
 To load balance your containers across a swarm cluster, send on statistics to carbon,
-or other swarm event driven operations, we can use [interlock](https://github.com/ehazlett/interlock). 
+or other swarm event driven operations, you can use [interlock](https://github.com/ehazlett/interlock). 
 Interlock listens for new Docker events, such as a new container being started and, according to your
 configuration, notifies plugins.
 
