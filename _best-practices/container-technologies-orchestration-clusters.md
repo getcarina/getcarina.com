@@ -14,8 +14,30 @@ topics:
 
 Orchestrating and managing a cluster of Docker containers is an emerging
 trend that is not only very competitive but is evolving rapidly. Many options currently exist with
-various feature sets, and the race to be the front-runner is in full
-swing.
+various feature sets; some of those feature sets overlap, making it challenging to choose between seemingly-similar tools.
+One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you. 
+
+![Strata of the container ecosystem](/_assets/img/_best-practices/orchestration-clusters/container-ecosystem.svg)
+
+- Layer 7 = Workflow
+- Layer 6 = Orchestration
+- Layer 5 = Scheduling
+- Layer 4 = Container engine
+- Layer 3 = Operating system
+- Layer 2 = Virtual infrastructure
+- Layer 1 = Physical infrastructure
+ 
+Kubernetes and Marathon are leaders in the container orchestration layer. 
+For other container management activities such as workflow and scheduling, leaders include Deis and Mesos [(1)](#resources).
+OpenStack also offers features that are especially relevant at scheduling layer and the virtual infrastructure layer.
+
+Another basis for comparison is a tool's ability to offer features beyond simple orchestration.
+
+![Intersections between PaaS, container orchestration, and specialized offerings](/assets/img/best-practices/orchestration-clusters/containers-orchestration.svg)
+
+- Docker Compose is in the intersection between traditional Platform-as-a-Service and container orchestration.
+- Flynn is in the intersection between traditional Platform-as-a-Service and specialized offerings such as stateful  applications.
+- Flocker is in the intersection between specialized offerings and container orchestration.
 
 Below is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case you intend to fulfill and the scale at you wish to operate.
 
@@ -26,7 +48,7 @@ orchestration framework intended to allow the definition of fast,
 isolated development environments for Docker containers.
 
 You can run Compose on OS/X and 64-bit Linux;
-it is not supported on Windows [(1)](#resources).
+it is not supported on Windows [(2)](#resources).
 
 Its sweet spot really lies in applications that revolve around a single-purpose
 server that could easily scale out based on the notion that
@@ -42,7 +64,7 @@ The community's reception of Compose has been notably positive, but the practica
 ### Prime Directive’s “Flynn”
 
 Prime Directive labels Flynn as “the product that ops provides to
-developers [(2)](#resources).” They believe that “ops should be a product team, not
+developers [(3)](#resources).” They believe that “ops should be a product team, not
 consultants” and that “Flynn is the single platform that ops can provide
 to developers to power production, testing, and development, freeing
 developers to focus.”
@@ -56,7 +78,7 @@ Flynn differs from other PaaS like Heroku, Cloud
 Foundry, Deis, or Dokku in that “the other PaaS technologies mainly focus on
 scaling a stateless app tier. They may run one or two persistent services for you, but for the most
 part you are on your own to figure that part out. Flynn is really trying
-to solve the state problems, which is pretty unique [(3)](#resources).”
+to solve the state problems, which is pretty unique [(4)](#resources).”
 
 With regard to stateful management,
 particularly in databases, Flynn supports Postgres now. Offering automated backup, automated failover, zero downtime and no configuration effort, Flynn's goal
@@ -71,7 +93,7 @@ Shopify, and CenturyLink.
 Deis is an open-source Platform-as-a-Service that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
 fleet, and the operating system itself, to “provide lightweight PaaS with
-Heroku-inspired workflow [(4)](#resources).”
+Heroku-inspired workflow [(5)](#resources).”
 To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/).
 
 Deis can deploy an application or service that works in a Docker container and its
@@ -131,7 +153,7 @@ Some features of Clocker are:
 - Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms) blueprints to Docker locations,
   without modifications
 
-Clocker uses Apache Brooklyn to create a Docker cloud [(5)](#resources).
+Clocker uses Apache Brooklyn to create a Docker cloud [(6)](#resources).
 Brooklyn uses Apache jclouds, a multi-cloud toolkit, to
 provision and configure secure communications (SSH) with cloud virtual
 machines. The Docker architecture provides containers on host
@@ -143,7 +165,7 @@ Docker container, after which the container can be treated like any virtual
 machine. Brooklyn receives sensor data from the application, every Docker
 host, every Docker container, and every software component making up the
 application and can make changes in each of these. This enables Brooklyn to
-manage distribution of the application across the Docker cloud [(6)](#resources).
+manage distribution of the application across the Docker cloud [(7)](#resources).
 
 In short, Brooklyn is a platform that monitors and manages Docker
 containers using YAML blueprints for its configuration
@@ -162,7 +184,7 @@ scheduling Mesos frameworks, including Docker containers.
 
 Marathon is a *meta framework*: you can start other Mesos frameworks
 with it. It can launch anything that can be launched in a standard shell.
-You can even start other Marathon instances via Marathon [(7)](#resources).
+You can even start other Marathon instances via Marathon [(8)](#resources).
 Because Marathon is a framework built on Mesos, it is comparable
 to Clocker which is itself a blueprint (analogous to a framework)
 for Apache’s Brooklyn.
@@ -214,7 +236,7 @@ You can read more about how Kubernetes relates to Docker and Mesos at
 Kubernetes builds upon a decade and a half of experience at Google running
 production workloads at scale, combined with best-of-breed ideas and
 practices from the community. It is written in Golang and is lightweight,
-modular, portable and extensible [(8)](#resources).
+modular, portable and extensible [(9)](#resources).
 
 #### Kubernetes concepts
 
@@ -234,7 +256,7 @@ Some of the key ideas behind Kubernetes include:
 
 - **services:** A set of containers performing a common function with a
   single, stable name and address for a set of pods. Services act like a
-  basic load balancer [(9)](#resources).
+  basic load balancer [(10)](#resources).
 
 #### Comparing Kubernetes and Mesos
 
@@ -275,7 +297,7 @@ Some say Kubernetes and Mesos can be a match made in heaven:
   load-balancing, and replication control.
 - Mesos provides the fine-grained resource allocations for pods across nodes in a cluster,
   and facilitates resource sharing among Kubernetes and other frameworks
-  running on the same cluster [(10)](#resources).
+  running on the same cluster [(11)](#resources).
 
 However, Mesos can be replaced by
 OpenStack and if you’ve adopted Openstack then the dependency on and
@@ -299,7 +321,7 @@ on requirements of the application and performance. Solomon Hykes, CTO of
 Docker, stated, “Docker will give devs a standard interface to all
 [orchestration tools] and [Swarm] is an ingredient of that standard
 interface. [It] can be thought of as the glue between Docker and orchestration
-backends [(11)](#resources).”
+backends [(12)](#resources).”
 
 Swarm is designed to provide a smooth Docker deployment workflow,
 working with some existing container workflow frameworks such as Deis,
@@ -336,57 +358,36 @@ place in the ecosystem is still to be determined.
 **Table 5 -­‐ Functionality comparison of container orchestrators and
 managers**
 
-XXXXXXXX
-2 images fit in this section somewhere
-Nate is rebuilding them from https://github.com/rose-coste/whitepapers/tree/master/images
-XXXXXXXXX
-
-![Strata of the container ecosystem](/_assets/img/_best-practices/orchestration-clusters/container-ecosystem.svg)
-
-**Figure 1 -­‐ Strata of container ecosystem  [(12)](#resources)**
-
-(Note: OpenStack can also be options at layers 2 & 5)
-
-![Deploy and manage code as app in PaaS](/assets/img/best-practices/orchestration-clusters/containers-orchestration.svg)
-
-**Figure 2 -­‐ Venn diagram of container orchestrators and managers**
-
 **Current Recommendation:** Kubernetes
-
-!
-XXXXXXXX
-2 images fit in this section somewhere
-Nate is rebuilding them from https://github.com/rose-coste/whitepapers/tree/master/images
-XXXXXXXXX
 
 <a name="resources"></a>
 ### Resources
 
 Numbered citations in this article
 
-1. <https://docs.docker.com/compose/install/>
+1. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
 
-2. <https://flynn.io/>
+2. <https://docs.docker.com/compose/install/>
 
-3. <http://www.centurylinklabs.com/interviews/what-is-flynn-an-open-source-docker-paas/>
+3. <https://flynn.io/>
 
-4. <http://deis.io/overview/>
+4. <http://www.centurylinklabs.com/interviews/what-is-flynn-an-open-source-docker-paas/>
 
-5. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
+5. <http://deis.io/overview/>
 
-6. <http://www.infoq.com/news/2014/06/clocker>
+6. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
 
-7. <https://github.com/mesosphere/marathon>
+7. <http://www.infoq.com/news/2014/06/clocker>
 
-8. <https://github.com/GoogleCloudPlatform/kubernetes>
+8. <https://github.com/mesosphere/marathon>
 
-9. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
+9. <https://github.com/GoogleCloudPlatform/kubernetes>
 
-10. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
+10. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
 
-11. <https://twitter.com/solomonstre/status/492111054839615488>
+11. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
 
-12. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
+12. <https://twitter.com/solomonstre/status/492111054839615488>
 
 Other recommended reading
 
