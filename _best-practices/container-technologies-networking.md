@@ -96,10 +96,10 @@ in a semi-stealth mode. Its relevance and consideration as an option stems from 
 are three very well known networking experts.
 Madhu Venugopal, Brent Salisbury, and Dave Tucker left RedHat to start SocketPlane;
 they also contribute to the OpenDaylight project,
-developing an open source platform for building programmable, software-defined networks [(8)](#resources).
+developing an open source platform for building programmable, software-defined networks [(9)](#resources).
 
 SocketPlane was purchased by Docker, Inc. in 2014 and they plan to
-integrate SocketPlane into the Docker portfolio [(9)](#resources). 
+integrate SocketPlane into the Docker portfolio [(10)](#resources). 
 A "SocketPlane Technology Preview" is available at <https://github.com/socketplane/socketplane/blob/master/README.md>.
 The concepts and the team behind SocketPlane predict that it could evolve
 into a sound and promising technology. 
@@ -130,17 +130,17 @@ Numbered citations in this article:
 
 4. [Introducing flannel: An etcd backed overlay network for containers](https://coreos.com/blog/introducing-rudder/)
 
-4. <http://www.projectcalico.org/about-calico/>
+5. <http://www.projectcalico.org/about-calico/>
 
-5. <http://www.sdxcentral.com/articles/news/madhu-venugopal-brent-salisbury-opendaylight-starts-open-shop-docker-startup/2014/10/>
+6. <http://www.sdxcentral.com/articles/news/madhu-venugopal-brent-salisbury-opendaylight-starts-open-shop-docker-startup/2014/10/>
 
-6. <http://www.tomsitpro.com/articles/project-calico-networking-openstack-docker,1-2821.html>
+7. <http://www.tomsitpro.com/articles/project-calico-networking-openstack-docker,1-2821.html>
 
-7. <http://openvswitch.org/>
+8. <http://openvswitch.org/>
  
-8. <https://www.opendaylight.org/lithium>
+9. <https://www.opendaylight.org/lithium>
 
-9. <http://thenewstack.io/docker-acquires-sdn-technology-startup-socketplane-io/>
+10. <http://thenewstack.io/docker-acquires-sdn-technology-startup-socketplane-io/>
 
 Other recommended reading:
 
@@ -151,6 +151,8 @@ Other recommended reading:
 - <http://www.wired.com/2014/01/its-time-to-take-mesh-networks-seriously-and-not-just-for-the-reasons-you-think/>
 
 - <http://searchsdn.techtarget.com/essentialguide/Overlay-networks-Understanding-the-basics-making-it-a-reality>
+
+- <https://github.com/socketplane/socketplane/blob/master/README.md>
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
