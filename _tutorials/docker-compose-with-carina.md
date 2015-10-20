@@ -13,8 +13,8 @@ topics:
 ---
 
 Docker Compose is a tool for defining and running multi-container applications.
-To do this, you define the different components - or microservices - that
-compose the application in a single YAML file. You then specify this file as a
+To do this, you define the different components - or services - that compose
+the application in a single YAML file. You then specify this file as a
 command-line argument when running the command to launch your application.
 
 ### What advantages does it give?
