@@ -11,10 +11,10 @@ topics:
   - intermediate
 ---
 
-To load balance your containers across a swarm cluster, send on statistics to carbon,
-or other swarm event driven operations, you can use [interlock](https://github.com/ehazlett/interlock). 
-Interlock listens for new Docker events, such as a new container being started and, according to your
-configuration, notifies plugins.
+This tutorial shows you how to use [interlock](https://github.com/ehazlett/interlock)
+to load balance your containers across a swarm cluster, send on statistics to
+carbon, or other swarm event driven operations. Interlock listens for new Docker events,
+such as a new container being started and, according to your configuration, notifies plugins.
 
 Interlock has plugins for
 
