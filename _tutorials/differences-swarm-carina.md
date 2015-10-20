@@ -17,6 +17,33 @@ Although these clusters offer much of the native functionality you usually get
 with Docker Swarm, there are certain differences between native Docker and Carina
 that you should be aware of.
 
+### Carina segments
+
+Docker Swarm uses the concept of a "host" to represent a machine that runs a
+Docker daemon and can store containers. In Carina, the concept is almost
+identical, but the term is "segment".
+
+A Carina segment is similar to a Docker host, since both of them host a set of
+Docker containers given to them by the Swarm scheduler. One of the key differences,
+however, is their underlying virtualization technology. A segment is an LXC
+container provisioned by libvirt, whereas a Docker host is typically a virtual
+machine provisioned by docker-machine. Tests have shown a 60% performance boost
+when using LXC containers instead of VM hosts.
+
+Due to the fact that your Docker containers will live on segments, you cannot
+SSH into the Swarm host like you can a traditional VM. There are also
+restrictions on mounting paths from the host filesystem, which is discussed in
+greater detail in the [Volumes](#volumes) section below.
+
+Each segment is assigned a public IPv4 address like a normal Docker host. You
+can see all of these with `docker info` or by reading the tip in the
+[Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
+section below.
+
+Each segment has 2 GB of memory and roughly the equivalent of 2 vCPUs. The 
+maximum number of segments you can provision per cluster is 3. The maximum
+number of clusters you are allowed per account is 3.
+
 ### CLI creation
 
 The usual way you provision a Swarm cluster is via the command-line. You will
@@ -82,11 +109,11 @@ With Carina you do not get this option: the `spread` strategy is used (the
 
 Carina builds on the standard restrictions set out by
 [libcontainer](https://github.com/opencontainers/runc/blob/master/libcontainer/SPEC.md#security)
-by using AppArmor profiles as an additional security layer. Specifically, it:
+by using an AppArmor profile as an additional security layer. Specifically, it:
 
 - denies access to sensitive file paths on the hosts (such as system files and
   mount locations)
-- sets up various mount rules for the container filesystem
+- whitelists expected mount calls for the container filesystem
 - restricts the device capabilities of the Docker process
 
 ### Privileged and capability run flags
@@ -104,9 +131,11 @@ and `--cap-drop` flags to add fine grain control. Carina disallows this.
 ### Volumes
 
 One of the features of Docker containers is the ability to mount directories
-from the host machine, but with Carina this is disabled for security.
+from the host machine, but with Carina this is disabled for security. This
+means that you cannot use the `--volume` flag when referring to host paths.
 
-This means that you cannot use the `--volume` flag when referring to host paths.
+What you can use instead is a data volume container. To find out more information,
+read our [Introduction to Data Volume containers]() article.
 
 ### TLS certificates
 
