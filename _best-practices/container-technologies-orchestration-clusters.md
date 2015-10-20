@@ -17,7 +17,7 @@ trend that is not only very competitive but is evolving rapidly. Many options cu
 various feature sets; some of those feature sets overlap, making it challenging to choose between seemingly-similar tools.
 One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you. 
 
-![Strata of the container ecosystem](/_assets/img/_best-practices/orchestration-clusters/container-ecosystem.svg)
+![Strata of the container ecosystem](/_assets/img/best-practices/orchestration-clusters/container-ecosystem.svg)
 
 - Layer 7 = Workflow
 - Layer 6 = Orchestration
