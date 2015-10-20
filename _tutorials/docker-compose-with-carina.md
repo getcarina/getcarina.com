@@ -34,7 +34,8 @@ have a single point of authority which centralizes this logic in a succinct way.
 
 At the heart of Docker Compose is the **docker-compose.yml** file. Each
 container, or _service_, is represented in its own YAML section, like so:
-```
+
+```yaml
 web:
   # define here...
 redis:
@@ -44,7 +45,7 @@ redis:
 In each YAML section, you define the characteristics of your service and how it
 will operate:
 
-```
+```yaml
 web:
   image: rackerlabs/magento
   ports:
@@ -66,6 +67,9 @@ container name is `redis`.
 
 ### Limitations
 
+For more information on how Carina relates to Docker Swarm, please read our
+[Differences between Carina and Docker Swarm](../differences-swarm-carina) article.
+
 Docker have said that Compose is **not yet production-ready** because
 it does not fully integrate with Docker Swarm. Eventually they aim to have
 full integration - meaning that you will be able to deploy multi-container
@@ -80,3 +84,9 @@ in the future as Docker networking is revamped.
 To ensure that reliant containers can contact eachother, you must use the
 `links` keyword in your **docker-compose.yml** file. This will ensure they are
 deployed to the same host.
+
+### Resources
+
+- [Overview of Docker Compose](https://docs.docker.com/compose/)
+- [docker-compose.yml reference](https://docs.docker.com/compose/yml/)
+- [Docker compose environment variable reference](https://docs.docker.com/compose/env/)
