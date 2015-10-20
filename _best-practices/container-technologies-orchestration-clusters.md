@@ -178,6 +178,9 @@ become an orchestration and management layer for Docker containers and
 provides the key services and dependencies one would expect in
 those toolsets.
 
+You can read more about how Mesos relates to Docker in
+[Container ecosystem: Mesos versus OpenStack](/container-ecosystem-mesos-openstack/).
+
 Major companies using Marathon include Airbnb, eBay,
 Groupon, OpenTable, Paypal, and Yelp.
 
@@ -205,6 +208,9 @@ Specifically, Kubernetes:
   The system automatically chooses hosts on which to run those containers,
   using a scheduler that is policy-rich, topology-aware, and workload-specific.
 
+You can read more about how Kubernetes relates to Docker and Mesos at
+[Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/).
+
 Kubernetes builds upon a decade and a half of experience at Google running
 production workloads at scale, combined with best-of-breed ideas and
 practices from the community. It is written in Golang and is lightweight,
@@ -219,9 +225,9 @@ Some of the key ideas behind Kubernetes include:
   containers sharing a single IP address, multiple volumes, and a
   single set of ports.
 
-- **replication controllers:** A way to handle the lifecycle of pods. They
-  ensure that a specified number of pods are running at any given
-  time, by creating or killing pods as required.
+- **replication controllers:** A way to handle the lifecycle of pods.
+  By creating or killing pods as required, replication controllers
+  ensure that a specified number of pods are running at any given time.
 
 - **labels:** A way to organize and select groups of objects based on
   key/value pair.
@@ -231,16 +237,23 @@ Some of the key ideas behind Kubernetes include:
   basic load balancer [(9)](#resources).
 
 #### Comparing Kubernetes and Mesos
-Being one of the hottest, if not *the* hottest, technologies in the
-Docker ecosystem right now has forced many comparisons of Kubernetes to
+
+The increasing popularity of Kubernetes has forced many comparisons of Kubernetes to
 Mesos, the leader in cluster-oriented development and
 management for the past couple of years.
 
-However, while there is some overlap in terms of their basic vision, Kubernetes and Mesos have important differences. The products are at quite different points in their
+Kubernetes is an opinionated declarative model of how to address
+microservices, and Mesos is the layer that provides an imperative
+framework by which developers can define a scheduling policy in a
+programmatic fashion. When leveraged together, they provide a
+datacenter with the ability to do both.
+
+However, while there is some overlap in terms of their basic vision, Kubernetes and Mesos differ in important ways.
+The products are at different points in their
 lifecycles and have different sweet spots. Mesos is a distributed
 systems kernel that stitches together many different machines into
 a logical computer. It was born for a world in which you own many
-physical resources anc can combine them to create a big static computing cluster.
+physical resources and can combine them to create a big static computing cluster.
 
 Many modern scalable data processing
 applications (Hadoop, Kafka, Spark) run well on Mesos and you can run them all on the same basic resource pool, along
@@ -248,15 +261,15 @@ with modern container-packaged applications. Mesos is somewhat more heavyweight 
 Kubernetes project, but is getting easier and easier to manage thanks
 to the work of folks like Mesosphere.
 
-Now what gets really interesting is that Mesos is currently being
-adapted to add a lot of the Kubernetes concepts and to support the
+Mesos is currently being
+adapted to incorporate many Kubernetes concepts and to support the
 Kubernetes API. So Mesos will be a gateway to getting more capabilities
 for your Kubernetes application, such as a high-availability master, more advanced
 scheduling semantics, and the ability to scale to a very large number of
 nodes. This will make Mesos well suited to run production
 workloads.
 
-Lastly, some say Kubernetes and Mesos can be a match made in heaven:
+Some say Kubernetes and Mesos can be a match made in heaven:
 
 - Kubernetes enables the pod, along with labels for service discovery,
   load-balancing, and replication control.
@@ -264,24 +277,17 @@ Lastly, some say Kubernetes and Mesos can be a match made in heaven:
   and facilitates resource sharing among Kubernetes and other frameworks
   running on the same cluster [(10)](#resources).
 
-However, Mesos can easily be replaced by
-OpenStack and if you’ve bought into Openstack, then the dependency on and
+However, Mesos can be replaced by
+OpenStack and if you’ve adopted Openstack then the dependency on and
 usage of Mesos can be eliminated.
-
-To get back to the comparison,
-Kubernetes is an opinionated declarative model of how to address
-microservices, and Mesos is the layer that provides an imperative
-framework by which developers can define a scheduling policy in a
-programmatic fashion. When leveraged together, they provide a
-datacenter with the ability to do both.
 
 #### Best fits for Kubernetes
 
 The main take-away for Kubernetes is that right now it is best fit for
 typical webapps and stateless applications and that it is in
 pre-production beta. However, Kubernetes is one of the most active and
-tracked projects on Github, so expect many changes in not only its
-functionality, stability and supported use cases, but also in the number
+tracked projects on GitHub. You can expect many changes in not only its
+functionality, stability, and supported use cases, but also in the number
 of technologies working to become highly interoperable with Kubernetes.
 
 ### Docker’s “Swarm”
@@ -384,11 +390,15 @@ Numbered citations in this article
 
 Other recommended reading
 
-- [Heroku](https://www.heroku.com/)
-
 - [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
 
-- [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/).
+- [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/)
+
+- [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
+
+- [Container ecosystem: Mesos versus OpenStack](/container-ecosystem-mesos-openstack/)
+
+- <https://www.heroku.com/>
 
 - <http://12factor.net/>
 
