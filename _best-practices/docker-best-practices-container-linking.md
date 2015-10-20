@@ -69,17 +69,11 @@ Some problems and needs which are not addressed by links include:
 - Links work only for containers hosted on the same node; 
   the [ambassador pattern](#ambassador), sometimes offered as a solution for this, does not fully address the limitation.
 
-With such complications, it becomes difficult to use containers with links in
-many situations. 
-
-Additionally, the exposure of the environmental variables in linking is
-done in a very odd manner:
-you must know know the intended interface and the port of the service
-set in the environment beforehand, so then you can supply them
-to the service that is supposed to be
-supplying you with what the interface and port
-*are*. For example, if you need
-to know the name of the protocol being used in the connection to environmental variables, you must first know that the environmental variable is named
+Environmental variables in linking are exposed in a convoluted manner:
+before you can use environmental variables to tell you what the interface and port *are*,
+you must know know the services's intended interface and the port.
+For example, if you need
+to know the name of the protocol being used, you must first know that the environmental variable identifying it is named
 `DB_PORT_3306_TCP_PROTO`; the `TCP` in the variable name is sufficient to determine that the protocol in use is TCP.
 
 Also, once you discover the environmental variables, you’ll have to
@@ -91,11 +85,8 @@ such as the following:
     DB_NAME=/web2/db
     DB_PORTS=tcp://172.17.0.5:3306,udp://172.17.0.5: 3306
 
-In summary, links are not at a state that easily aids the developer in
-connecting server and client containers without much
-foreknowledge of the connection itself. The stability and benefits of linking
-are not ready to be integrated into
-mission-critical, production-grade stacks.
+With such complications, it becomes difficult to use linked containers in
+many situations.
 
 <a name="ambassador"></a>
 ### Ambassador pattern: linking through a proxy
@@ -113,6 +104,13 @@ that links don’t already provide, and it further complicates the
 architecture without solving the underlying issues at hand.
 
 ### Alternative to linking: service discovery
+
+The stability and benefits of linking
+are not ready to be integrated into
+mission-critical, production-grade stacks.
+Container links do not make it easy for the developer to
+interact with linked server and client containers without detailed
+foreknowledge of the connection itself. 
 
 An alternative to container linking that is becoming an industry standard is to use a
 service registration and discovery tool. If all the services that are available to your containers are known (registered) and can easily be located (discovered), there is no need to define specific links between services in multiple containers. You can read more about this at
