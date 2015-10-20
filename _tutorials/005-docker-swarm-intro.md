@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-Docker Swarm is a management system for Docker. It enables an application to be containerized and run across multiple segments in a cluster. Carina offers one segment by default and is scalable up to 10 segments. A *segment* (or node) is a slice of resources available in the cluster. Docker enables you to use commands that you're familiar with to manage the cluster as though it were a single host.
+Docker Swarm is a management system for Docker. It enables an application to be containerized and run across multiple segments in a cluster. Rackspace Container Service offers one segment by default and is scalable up to 3 segments. A *segment* (or node) is a slice of resources available in the cluster. Docker enables you to use commands that you're familiar with to manage the cluster as though it were a single host.
 
 A Docker Swarm cluster has a few management containers that are necessary for cluster management. When you run `docker ps -a` on a cluster, the following result is displayed:
 

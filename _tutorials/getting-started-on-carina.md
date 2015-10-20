@@ -39,7 +39,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Unzip the file to a location on your computer. For example:
 
     ```bash
-    /Users/carina/Downloads/app.getcarina.com
+    /Users/carina/Downloads/mycluster
     ```
 
 1. Open a terminal application.
@@ -47,7 +47,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 1. Change to the unzipped directory. For example,
 
     ```bash
-    $ cd /Users/carina/Downloads/app.getcarina.com
+    $ cd /Users/carina/Downloads/mycluster
     ```
 
 1. Download the Docker 1.8.3 client into the unzipped directory.

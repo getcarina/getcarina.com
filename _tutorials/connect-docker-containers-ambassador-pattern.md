@@ -31,7 +31,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 2. Run a container named `app`.
 
     ```bash
-    $ docker run --detach --name app rackerlabs/hello-world-app
+    $ docker run --detach --name app carinamarina/hello-world-app
     ```
 
     This is the _source container_. No ports are published for this container,
@@ -95,7 +95,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     ```bash
     $ docker run --detach --name web \
       --link app-ambassador:helloapp \
-      --publish-all rackerlabs/hello-world-web
+      --publish-all carinamarina/hello-world-web
     ```
 
     This is the _target container_ and it communicates with the source container
@@ -103,7 +103,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
     **Note:** The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
     container. When a Docker container is designed to link to another, the expected
-    link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/rackerlabs/hello-world-web/).
+    link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
 
 9. Identify the port on which the web container is published by running the following command.
     In the example output, the port is `32770`.

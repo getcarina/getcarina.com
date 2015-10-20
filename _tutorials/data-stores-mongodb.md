@@ -103,7 +103,7 @@ The output of this `docker run` command is the result of running the `mongo` com
 
 Run the Guestbook web application and view it in your web browser.
 
-1. Run a container from the image. The application code uses the environment variables to connect to the MongoDB container. See [app.py](https://github.com/rackerlabs/carina-examples/blob/master/guestbook-mongo/app.py).
+1. Run a container from the image. The application code uses the environment variables to connect to the MongoDB container. See [app.py](https://github.com/getcarina/examples/blob/master/guestbook-mongo/app.py).
 
 ```bash
 $ docker run --detach \
@@ -114,7 +114,7 @@ $ docker run --detach \
   --env MONGO_USER=$MONGO_USER \
   --env MONGO_PASSWORD=$MONGO_PASSWORD \
   --publish 5000:5000 \
-  rackerlabs/guestbook-mongo:1.0
+  carinamarina/guestbook-mongo
 08d0383a775f05bbf6e0d3e21ceb96cfcf1a0ca1b96e023e390cd52592c9f360  
 ```
 
@@ -124,8 +124,8 @@ The output of this `docker run` command is your running application container ID
 
 ```bash
 $ docker ps --latest
-CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                          NAMES
-08d0383a775f        rackerlabs/guestbook-mongo:1.0   "/bin/sh -c 'python a"   47 seconds ago      Up 47 seconds       104.130.0.124:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/gloomy_hodgkin
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                          NAMES
+08d0383a775f        carinamarina/guestbook-mongo   "/bin/sh -c 'python a"   47 seconds ago      Up 47 seconds       104.130.0.124:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/gloomy_hodgkin
 ```
 
 The output of this `docker ps` command is your running application container.

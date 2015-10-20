@@ -139,11 +139,11 @@ If you want to use the prebuilt image, you can skip to
 To build the Docker image, build it locally and push it to a central repository
 such as Docker Hub.
 
-1. Clone the Rackspace [Examples repo](https://github.com/rackerlabs/carina-examples),
+1. Clone the Rackspace [Examples repo](https://github.com/getcarina/examples),
 which contains the `nginx` Dockerfile and the `nginx` configuration file:
 
   ```
-  git clone https://github.com/rackerlabs/carina-examples.git
+  git clone https://github.com/getcarina/examples.git
   ```
 
 2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
