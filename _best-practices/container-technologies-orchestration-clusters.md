@@ -41,6 +41,145 @@ Another basis for comparison is a tool's ability to offer features beyond simple
 
 Below is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case you intend to fulfill and the scale at you wish to operate.
 
+### Mesosphere’s “Marathon”
+
+Marathon is a cluster-wide initiation and control system for services in
+cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
+and the Mesosphere Chronos job scheduler framework. Where Mesos operates as the
+kernel for your datacenter, Marathon serves as a cluster’s init
+or upstart daemon. Marathon has a UI and a REST API for managing and
+scheduling Mesos frameworks, including Docker containers.
+
+Marathon is a *meta framework*: you can start other Mesos frameworks
+with it. It can launch anything that can be launched in a standard shell.
+You can even start other Marathon instances via Marathon [(2)](#resources).
+Because Marathon is a framework built on Mesos, it is comparable
+to Clocker which is itself a blueprint (analogous to a framework)
+for Apache’s Brooklyn.
+
+Because of its flexibility, Marathon can operate as a cluster-wide
+process supervisor. Marathon operates as a private Platform-as-a-Servuce through
+functionality that includes service discovery, failure handling, deployment, and scalability.
+
+Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization. 
+Marathon, based on Mesos, uses the Deimos plugin.
+This combination of frameworks allows Marathon to
+become an orchestration and management layer for Docker containers and
+provides the key services and dependencies one would expect in
+those toolsets.
+
+You can read more about how Mesos relates to Docker in
+[Container ecosystem: Mesos versus OpenStack](/container-ecosystem-mesos-openstack/).
+
+Major companies using Marathon include Airbnb, eBay,
+Groupon, OpenTable, Paypal, and Yelp.
+
+### Google’s “Kubernetes”
+
+Kubernetes is a system for managing containerized clusters applications
+across multiple hosts. It provides basic mechanisms for deployment,
+maintenance, and scaling of applications.
+
+Specifically, Kubernetes:
+
+- Uses Docker to package, instantiate, and run containerized
+  applications.
+
+- Establishes robust declarative primitives for maintaining the
+  desired state requested by the user. Because it has active controllers, not
+  just imperative orchestration, it enables self-healing mechanisms
+  such as auto-restarting, re-scheduling,
+  and replicating containers.
+
+- Is primarily targeted at applications comprised of multiple
+  containers, such as elastic, distributed micro-services.
+
+- Enables users to ask a cluster to run a set of containers.
+  The system automatically chooses hosts on which to run those containers,
+  using a scheduler that is policy-rich, topology-aware, and workload-specific.
+
+You can read more about how Kubernetes relates to Docker and Mesos at
+[Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/).
+
+Kubernetes builds upon a decade and a half of experience at Google running
+production workloads at scale, combined with best-of-breed ideas and
+practices from the community. It is written in Golang and is lightweight,
+modular, portable and extensible [(3)](#resources).
+
+#### Kubernetes concepts
+
+Some of the key ideas behind Kubernetes include:
+
+- **pods:** A way to co-locate group containers with shared
+  volumes. A pod is a collocation of one or more
+  containers sharing a single IP address, multiple volumes, and a
+  single set of ports.
+
+- **replication controllers:** A way to handle the lifecycle of pods.
+  By creating or killing pods as required, replication controllers
+  ensure that a specified number of pods are running at any given time.
+
+- **labels:** A way to organize and select groups of objects based on
+  key-value pair.
+
+- **services:** A set of containers performing a common function with a
+  single, stable name and address for a set of pods. Services act like a
+  basic load balancer [(4)](#resources).
+
+#### Comparing Kubernetes and Mesos
+
+The increasing popularity of Kubernetes has forced many comparisons of Kubernetes to
+Mesos, the leader in cluster-oriented development and
+management for the past couple of years.
+
+Kubernetes is an opinionated declarative model of how to address
+microservices, and Mesos is the layer that provides an imperative
+framework by which developers can define a scheduling policy in a
+programmatic fashion. When leveraged together, they provide a
+datacenter with the ability to do both.
+
+However, while there is some overlap in terms of their basic vision, Kubernetes and Mesos differ in important ways.
+The products are at different points in their
+lifecycles and have different sweet spots. Mesos is a distributed
+systems kernel that stitches together many different machines into
+a logical computer. It was born for a world in which you own many
+physical resources and can combine them to create a big static computing cluster.
+
+Many modern scalable data processing
+applications (Hadoop, Kafka, Spark) run well on Mesos and you can run them all on the same basic resource pool, along
+with modern container-packaged applications. Mesos is somewhat more heavyweight than the
+Kubernetes project, but is getting easier and easier to manage thanks
+to the work of folks like Mesosphere.
+
+Mesos is currently being
+adapted to incorporate many Kubernetes concepts and to support the
+Kubernetes API. So Mesos will be a gateway to getting more capabilities
+for your Kubernetes application, such as a high-availability master, more advanced
+scheduling semantics, and the ability to scale to a very large number of
+nodes. This will make Mesos well suited to run production
+workloads.
+
+Some say Kubernetes and Mesos can be a match made in heaven:
+
+- Kubernetes enables the pod, along with labels for service discovery,
+  load-balancing, and replication control.
+- Mesos provides the fine-grained resource allocations for pods across nodes in a cluster,
+  and facilitates resource sharing among Kubernetes and other frameworks
+  running on the same cluster [(5)](#resources).
+
+However, Mesos can be replaced by
+OpenStack and if you’ve adopted Openstack then the dependency on and
+usage of Mesos can be eliminated.
+
+#### Best fits for Kubernetes
+
+The main take-away for Kubernetes is that right now it is best fit for
+typical webapps and stateless applications and that it is in
+pre-production beta. However, Kubernetes is one of the most active and
+tracked projects on GitHub. You can expect many changes in not only its
+functionality, stability, and supported use cases, but also in the number
+of technologies working to become highly interoperable with Kubernetes.
+
 ### Docker’s “Compose”
 
 Compose, known as “Fig” prior to its acquisition by Docker, Inc, is a simple
@@ -48,7 +187,7 @@ orchestration framework intended to allow the definition of fast,
 isolated development environments for Docker containers.
 
 You can run Compose on OS/X and 64-bit Linux;
-it is not supported on Windows [(2)](#resources).
+it is not supported on Windows [(6)](#resources).
 
 Its sweet spot really lies in applications that revolve around a single-purpose
 server that could easily scale out based on the notion that
@@ -64,7 +203,7 @@ The community's reception of Compose has been notably positive, but the practica
 ### Prime Directive’s “Flynn”
 
 Prime Directive labels Flynn as “the product that ops provides to
-developers [(3)](#resources).” They believe that “ops should be a product team, not
+developers [(7)](#resources).” They believe that “ops should be a product team, not
 consultants” and that “Flynn is the single platform that ops can provide
 to developers to power production, testing, and development, freeing
 developers to focus.”
@@ -78,7 +217,7 @@ Flynn differs from other PaaS like Heroku, Cloud
 Foundry, Deis, or Dokku in that “the other PaaS technologies mainly focus on
 scaling a stateless app tier. They may run one or two persistent services for you, but for the most
 part you are on your own to figure that part out. Flynn is really trying
-to solve the state problems, which is pretty unique [(4)](#resources).”
+to solve the state problems, which is pretty unique [(8)](#resources).”
 
 With regard to stateful management,
 particularly in databases, Flynn supports Postgres now. Offering automated backup, automated failover, zero downtime and no configuration effort, Flynn's goal
@@ -93,7 +232,7 @@ Shopify, and CenturyLink.
 Deis is an open-source Platform-as-a-Service that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
 fleet, and the operating system itself, to “provide lightweight PaaS with
-Heroku-inspired workflow [(5)](#resources).”
+Heroku-inspired workflow [(9)](#resources).”
 To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/).
 
 Deis can deploy an application or service that works in a Docker container and its
@@ -153,7 +292,7 @@ Some features of Clocker are:
 - Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms) blueprints to Docker locations,
   without modifications
 
-Clocker uses Apache Brooklyn to create a Docker cloud [(6)](#resources).
+Clocker uses Apache Brooklyn to create a Docker cloud [(10)](#resources).
 Brooklyn uses Apache jclouds, a multi-cloud toolkit, to
 provision and configure secure communications (SSH) with cloud virtual
 machines. The Docker architecture provides containers on host
@@ -165,152 +304,13 @@ Docker container, after which the container can be treated like any virtual
 machine. Brooklyn receives sensor data from the application, every Docker
 host, every Docker container, and every software component making up the
 application and can make changes in each of these. This enables Brooklyn to
-manage distribution of the application across the Docker cloud [(7)](#resources).
+manage distribution of the application across the Docker cloud [(11)](#resources).
 
 In short, Brooklyn is a platform that monitors and manages Docker
 containers using YAML blueprints for its configuration
 instructions. Clocker then is essentially a blueprint for Brooklyn with
 extra intelligence for configuring and managing Docker hosts and
 containers.
-
-### Mesosphere’s “Marathon”
-
-Marathon is a cluster-wide initiation and control system for services in
-cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
-and the Mesosphere Chronos job scheduler framework. Where Mesos operates as the
-kernel for your datacenter, Marathon serves as a cluster’s init
-or upstart daemon. Marathon has a UI and a REST API for managing and
-scheduling Mesos frameworks, including Docker containers.
-
-Marathon is a *meta framework*: you can start other Mesos frameworks
-with it. It can launch anything that can be launched in a standard shell.
-You can even start other Marathon instances via Marathon [(8)](#resources).
-Because Marathon is a framework built on Mesos, it is comparable
-to Clocker which is itself a blueprint (analogous to a framework)
-for Apache’s Brooklyn.
-
-Because of its flexibility, Marathon can operate as a cluster-wide
-process supervisor. Marathon operates as a private Platform-as-a-Servuce through
-functionality that includes service discovery, failure handling, deployment, and scalability.
-
-Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization. 
-Marathon, based on Mesos, uses the Deimos plugin.
-This combination of frameworks allows Marathon to
-become an orchestration and management layer for Docker containers and
-provides the key services and dependencies one would expect in
-those toolsets.
-
-You can read more about how Mesos relates to Docker in
-[Container ecosystem: Mesos versus OpenStack](/container-ecosystem-mesos-openstack/).
-
-Major companies using Marathon include Airbnb, eBay,
-Groupon, OpenTable, Paypal, and Yelp.
-
-### Google’s “Kubernetes”
-
-Kubernetes is a system for managing containerized clusters applications
-across multiple hosts. It provides basic mechanisms for deployment,
-maintenance, and scaling of applications.
-
-Specifically, Kubernetes:
-
-- Uses Docker to package, instantiate, and run containerized
-  applications.
-
-- Establishes robust declarative primitives for maintaining the
-  desired state requested by the user. Because it has active controllers, not
-  just imperative orchestration, it enables self-healing mechanisms
-  such as auto-restarting, re-scheduling,
-  and replicating containers.
-
-- Is primarily targeted at applications comprised of multiple
-  containers, such as elastic, distributed micro-services.
-
-- Enables users to ask a cluster to run a set of containers.
-  The system automatically chooses hosts on which to run those containers,
-  using a scheduler that is policy-rich, topology-aware, and workload-specific.
-
-You can read more about how Kubernetes relates to Docker and Mesos at
-[Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/).
-
-Kubernetes builds upon a decade and a half of experience at Google running
-production workloads at scale, combined with best-of-breed ideas and
-practices from the community. It is written in Golang and is lightweight,
-modular, portable and extensible [(9)](#resources).
-
-#### Kubernetes concepts
-
-Some of the key ideas behind Kubernetes include:
-
-- **pods:** A way to co-locate group containers with shared
-  volumes. A pod is a collocation of one or more
-  containers sharing a single IP address, multiple volumes, and a
-  single set of ports.
-
-- **replication controllers:** A way to handle the lifecycle of pods.
-  By creating or killing pods as required, replication controllers
-  ensure that a specified number of pods are running at any given time.
-
-- **labels:** A way to organize and select groups of objects based on
-  key/value pair.
-
-- **services:** A set of containers performing a common function with a
-  single, stable name and address for a set of pods. Services act like a
-  basic load balancer [(10)](#resources).
-
-#### Comparing Kubernetes and Mesos
-
-The increasing popularity of Kubernetes has forced many comparisons of Kubernetes to
-Mesos, the leader in cluster-oriented development and
-management for the past couple of years.
-
-Kubernetes is an opinionated declarative model of how to address
-microservices, and Mesos is the layer that provides an imperative
-framework by which developers can define a scheduling policy in a
-programmatic fashion. When leveraged together, they provide a
-datacenter with the ability to do both.
-
-However, while there is some overlap in terms of their basic vision, Kubernetes and Mesos differ in important ways.
-The products are at different points in their
-lifecycles and have different sweet spots. Mesos is a distributed
-systems kernel that stitches together many different machines into
-a logical computer. It was born for a world in which you own many
-physical resources and can combine them to create a big static computing cluster.
-
-Many modern scalable data processing
-applications (Hadoop, Kafka, Spark) run well on Mesos and you can run them all on the same basic resource pool, along
-with modern container-packaged applications. Mesos is somewhat more heavyweight than the
-Kubernetes project, but is getting easier and easier to manage thanks
-to the work of folks like Mesosphere.
-
-Mesos is currently being
-adapted to incorporate many Kubernetes concepts and to support the
-Kubernetes API. So Mesos will be a gateway to getting more capabilities
-for your Kubernetes application, such as a high-availability master, more advanced
-scheduling semantics, and the ability to scale to a very large number of
-nodes. This will make Mesos well suited to run production
-workloads.
-
-Some say Kubernetes and Mesos can be a match made in heaven:
-
-- Kubernetes enables the pod, along with labels for service discovery,
-  load-balancing, and replication control.
-- Mesos provides the fine-grained resource allocations for pods across nodes in a cluster,
-  and facilitates resource sharing among Kubernetes and other frameworks
-  running on the same cluster [(11)](#resources).
-
-However, Mesos can be replaced by
-OpenStack and if you’ve adopted Openstack then the dependency on and
-usage of Mesos can be eliminated.
-
-#### Best fits for Kubernetes
-
-The main take-away for Kubernetes is that right now it is best fit for
-typical webapps and stateless applications and that it is in
-pre-production beta. However, Kubernetes is one of the most active and
-tracked projects on GitHub. You can expect many changes in not only its
-functionality, stability, and supported use cases, but also in the number
-of technologies working to become highly interoperable with Kubernetes.
 
 ### Docker’s “Swarm”
 
@@ -343,7 +343,7 @@ place in the ecosystem is still to be determined.
 | Mesosphere      | Marathon   |                  |                              |                                   |                 ✓                 |
 | Google          | Kubernetes |                  |                              |                                   |                 ✓                 |
 
-**Table 4 -‐ Size comparison of container orchestrators and managers**
+**Table 1 -‐ Size comparison of container orchestrators and managers**
 
 | Org             | Tool       | Cluster State Management | Monitoring &  Healing | Deploy Spec                                 | Allows Docker Dependency & Architectural Mapping | Deployment Method | Language |
 |-----------------|------------|--------------------------|-----------------------|---------------------------------------------|--------------------------------------------------|-------------------|----------|
@@ -355,41 +355,40 @@ place in the ecosystem is still to be determined.
 | Mesosphere      | Marathon   |             ✓            |           ✓           | JSON                                        |                         ✓                        | API / CLI         | C++      |
 | Google          | Kubernetes |             ✓            |           ✓           | YAML / JSON                                 |                         ✓                        | API / CLI         |          |
 
-**Table 5 -­‐ Functionality comparison of container orchestrators and
-managers**
+**Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
 **Current Recommendation:** Kubernetes
 
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
 1. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
+ 
+2. <https://github.com/mesosphere/marathon>
 
-2. <https://docs.docker.com/compose/install/>
+3. <https://github.com/GoogleCloudPlatform/kubernetes>
 
-3. <https://flynn.io/>
+4. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
 
-4. <http://www.centurylinklabs.com/interviews/what-is-flynn-an-open-source-docker-paas/>
+5. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
 
-5. <http://deis.io/overview/>
+6. <https://docs.docker.com/compose/install/>
 
-6. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
+7. <https://flynn.io/>
 
-7. <http://www.infoq.com/news/2014/06/clocker>
+8. <http://www.centurylinklabs.com/interviews/what-is-flynn-an-open-source-docker-paas/>
 
-8. <https://github.com/mesosphere/marathon>
+9. <http://deis.io/overview/>
 
-9. <https://github.com/GoogleCloudPlatform/kubernetes>
+10. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
 
-10. <http://stackoverflow.com/questions/26705201/whats-the-difference-between-apaches-mesos-and-googles-kubernetes>
-
-11. <https://github.com/mesosphere/kubernetes-mesos/blob/master/README.md>
+11. <http://www.infoq.com/news/2014/06/clocker>
 
 12. <https://twitter.com/solomonstre/status/492111054839615488>
 
-Other recommended reading
+Other recommended reading:
 
 - [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
 
