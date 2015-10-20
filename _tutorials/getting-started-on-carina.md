@@ -15,7 +15,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 ### Sign up for Carina
 
-To run applications on Carina, get an account by following the [sign up process](https://mycluster.rackspacecloud.com/managed).
+To run applications on Carina, get an account by following the [sign up process](https://app.getcarina.com/managed).
 
 ### Create your cluster
 
@@ -23,8 +23,8 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 To create your cluster, perform the following steps:
 
-1. Sign in to [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
-1. Enter a cluster name in the **Create New** field. For example: `mycluster`
+1. Sign in to [http://app.getcarina.com](http://app.getcarina.com).
+1. Enter a cluster name in the **Create New** field. For example: `app.getcarina.com`
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
 
@@ -161,7 +161,7 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 * If you get the error message `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` then read the [Version Conflict](/docs/references/version-conflict) guide.
 
-* If you had trouble downloading your credentials, see [Download Rackspace Container Service credentials](/docs/references/carina-credentials/) guide.
+* If you had trouble downloading your credentials, see [Download Carina credentials](/docs/references/carina-credentials/) guide.
 
 * If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the error message `Cannot connect to the Docker daemon. Is "docker - d" running on this host?`. To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
 

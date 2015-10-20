@@ -3,7 +3,7 @@ title: Load balance WordPress in Docker containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-09
 permalink: docs/tutorials/load-balance-wordpress-docker-containers/
-description: Learn how to spin up a multi-container WordPress application running NGINX, PHP-FPM and MySQL on the Rackspace Container Service
+description: Learn how to spin up a multi-container WordPress application running NGINX, PHP-FPM and MySQL on Carina
 topics:
   - docker
   - intermediate
@@ -328,7 +328,7 @@ Following are some details about this command:
   connections.
 - You mount the volumes from the `swarm-data` container. This might be confusing
   because you never created a container under this name, but it's a system
-  container provided to you by the Rackspace Container Service. The `swarm-data`
+  container provided to you by Carina. The `swarm-data`
   container has all the necessary SSL certificates for the parent cluster,
   allowing interlock to connect to the Docker API and listen for interesting
   events.

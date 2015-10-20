@@ -18,11 +18,11 @@ the ambassador pattern, see [Docker networking basics][networking-basics].
 
 ### Prerequisite
 
-Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Rackspace Container Service][rcs]
+Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Carina][carina]
 
 [docker-linux]: http://docs.docker.com/linux/step_one/
 [docker-toolbox]: https://www.docker.com/toolbox
-[rcs]: http://mycluster.rackspacecloud.com/
+[carina]: http://app.getcarina.com/
 
 ### Connect containers
 
