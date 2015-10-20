@@ -108,7 +108,7 @@ $ docker run --rm \
   --env MYSQL_DATABASE=$MYSQL_DATABASE \
   --env MYSQL_USER=$MYSQL_USER \
   --env MYSQL_PASSWORD=$MYSQL_PASSWORD \
-  rackerlabs/guestbook-mysql:1.0 \
+  carinamarina/guestbook-mysql \
   python app.py create_tables
 INFO: Welcome to Guestbook: MySQL Edition
 DEBUG: The log statement below is for educational purposes only. Do not log credentials.
@@ -133,7 +133,7 @@ The output of this `docker run` command is the result of creating the tables.
 
 Run the Guestbook web application and view it in your web browser.
 
-1. Run a container from the image. The application code uses the environment variables to connect to the MySQL container. See [app.py](https://github.com/rackerlabs/carina-examples/blob/master/guestbook-mysql/app.py).
+1. Run a container from the image. The application code uses the environment variables to connect to the MySQL container. See [app.py](https://github.com/getcarina/examples/blob/master/guestbook-mysql/app.py).
 
 ```bash
 $ docker run --detach \
@@ -143,7 +143,7 @@ $ docker run --detach \
   --env MYSQL_USER=$MYSQL_USER \
   --env MYSQL_PASSWORD=$MYSQL_PASSWORD \
   --publish 5000:5000 \
-  rackerlabs/guestbook-mysql:1.0
+  carinamarina/guestbook-mysql
 3e731021acbeef0a1fdff85dc7b026e18cef51f6e3da49f8920cf5f8bbdef4d0
 ```
 
@@ -153,8 +153,8 @@ The output of this `docker run` command is your running application container ID
 
 ```bash
 $ docker ps --latest
-CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                          NAMES
-3e731021acbe        rackerlabs/guestbook-mysql:1.0   "/bin/sh -c 'python a"   51 seconds ago      Up 50 seconds       104.130.0.111:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/backstabbing_stallman
+CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                          NAMES
+3e731021acbe        carinamarina/guestbook-mysql   "/bin/sh -c 'python a"   51 seconds ago      Up 50 seconds       104.130.0.111:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/backstabbing_stallman
 ```
 
 The output of this `docker ps` command is your running application container.
