@@ -182,8 +182,9 @@ Carina has many more features and there is more to learn. Review the [Resources]
 ### Resources
 
 * If you're new to Docker, learn more at [Docker 101](/docs/tutorials/002-docker-102).
-* 1-2 more links
 
 ### Next step
+
+On Linux, Mac OS X, or Windows, put the Docker client somewhere on your system's path.
 
 Learn about all of the features available to you in the [Overview of Carina](/docs/tutorials/overview-of-carina)
