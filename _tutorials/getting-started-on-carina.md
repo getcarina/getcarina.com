@@ -13,6 +13,8 @@ topics:
 
 This tutorial shows you how to get your first containerized application up and running on Carina in a minimal amount of time.
 
+No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+
 ### Sign up for Carina
 
 To run applications on Carina, get an account by following the [sign up process](https://mycluster.rackspacecloud.com/managed).
@@ -54,16 +56,12 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
  * [Linux](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3)
  * [Mac](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3)
  * [Windows](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe)
+  * If you're on Windows, use `docker-1.8.3.exe` instead of `./docker` in the commands below.
 
-1. Rename the client.
+1. On Linux and Mac OS X, rename the client and make it executable.
 
     ```bash
     $ mv docker-1.8.2 docker
-    ```
-
-1. On Linux and Mac OS X, ensure that the client is executable.
-
-    ```bash
     $ chmod u+x docker
     ```
 
@@ -136,7 +134,7 @@ Run a WordPress blog with a MySQL database.
 1. View your WordPress site by running the following command and pasting the result into the address bar of a browser.
 
     ```bash
-    $ echo http://$(./docker port wordpress 80)
+    $ ./docker port wordpress 80
     ```
 
     The output of this `docker port` command is the IP address and port that WordPress is using.
