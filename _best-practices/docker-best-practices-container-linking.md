@@ -10,9 +10,9 @@ topics:
   - planning
 ---
 
-*Avoid container linking; use a service registration and discovery tool instead.*
+*Use a service registration and discovery tool instead of Docker container linking.*
 
-Docker has a concept known as “linking” that allows you to connect
+Docker has a concept known as *linking* that allows you to connect
 containers via a socket or through a hostname using a sender and
 recipient model. Links can also be used to leverage service discovery
 between containers. Links work by having the client
@@ -42,14 +42,14 @@ the source container in the `/etc/hosts` file [(1)](#resources).
 In the environmental variables, the client will see information
 such as the following:
 
-    DB_NAME=/webapp/db
-    DB_PORT=tcp://172.17.0.5:3306
-    DB_PORT_3306_TCP=tcp://172.17.0.5:3306
-    DB_PORT_3306_TCP_PROTO=tcp
-    DB_PORT_3306_TCP_PORT=3306
-    DB_PORT_3306_TCP_ADDR=172.17.0.5
-
-
+```
+DB_NAME=/webapp/db
+DB_PORT=tcp://172.17.0.5:3306
+DB_PORT_3306_TCP=tcp://172.17.0.5:3306
+DB_PORT_3306_TCP_PROTO=tcp
+DB_PORT_3306_TCP_PORT=3306
+DB_PORT_3306_TCP_ADDR=172.17.0.5`
+```
 
 ### Issues with linking
 
@@ -59,7 +59,10 @@ lifecycle a particular container can hold.
 
 Some problems and needs which are not addressed by links include:
 
-- Service discovery suffers from the static nature of linking.
+- Service discovery among linked containers relies on static sources of links information:
+  environmental variables and `/etc/hosts` files.
+  In a configuration with large numbers of ephemeral containers,
+  maintaining static information about their links is impractical.
 
 - Links are volatile. IP addresses, port mappings, and link names can
   change as the result of manipulating a link, and other containers
@@ -82,8 +85,10 @@ connection information, so you may as well just have a single
 environment variable containing all information about hosts, ports, and interfaces,
 such as the following:
 
-    DB_NAME=/web2/db
-    DB_PORTS=tcp://172.17.0.5:3306,udp://172.17.0.5: 3306
+```
+DB_NAME=/web2/db
+DB_PORTS=tcp://172.17.0.5:3306,udp://172.17.0.5: 3306
+```
 
 With such complications, it becomes difficult to use linked containers in
 many situations.
