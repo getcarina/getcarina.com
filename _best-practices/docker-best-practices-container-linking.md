@@ -25,12 +25,12 @@ For example, to link a MySQL database backend server named `mysql_server` to a c
 
 1. Start the database server, `mysql_server`, from a stored image named `mysql`:
 
-    docker run -d --name mysql_server mysql
+    `docker run -d --name mysql_server mysql`
 
 2. Create the client container, `webapp`, with a link to the serving container, `mysql_server`,
    assigned an alias of `db` and enabled to run the bash shell:
 
-    docker run -t -i --name webapp --link mysql_server:db /bin/bash
+    `docker run -t -i --name webapp --link mysql_server:db /bin/bash`
 
 With links forming a secure tunnel between the containers,
 the client is allowed to access data on the serving container.
