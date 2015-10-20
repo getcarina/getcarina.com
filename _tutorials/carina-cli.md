@@ -3,8 +3,6 @@ Author: Anne Gentle <anne.gentle@rackspace.com>
 date: 2015-10-20
 permalink: docs/tutorials/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
-docker-versions:
-  - 1.8.2
 topics:
   - carina
   - cli
@@ -19,7 +17,7 @@ This tutorial demonstrates how to install and configure the Carina client so tha
 
 * You have a working terminal application.
 
-* You have credentials for [Carina](https://mycluster.rackspace.com).
+* You have credentials for [Carina](https://app.getcarina.com).
 
 ### Download and install the Carina CLI
 
@@ -140,4 +138,3 @@ Take a look at the active swarm manager images:
 
 Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
 
-Try running [Drupal on your Swarm Cluster]({{ site.baseurl }}/docs/tutorials/drupal-and-swarm/)
