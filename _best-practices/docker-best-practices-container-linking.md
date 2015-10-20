@@ -25,12 +25,12 @@ For example, to link a MySQL database backend server named `mysql_server` to a c
 
 1. Start the database server, `mysql_server`, from a stored image named `mysql`:
 
-       `docker run -d --name mysql_server mysql`.
+    docker run -d --name mysql_server mysql
 
 2. Create the client container, `webapp`, with a link to the serving container, `mysql_server`,
    assigned an alias of `db` and enabled to run the bash shell:
 
-       `docker run -t -i --name webapp --link mysql_server:db /bin/bash`
+    docker run -t -i --name webapp --link mysql_server:db /bin/bash
 
 With links forming a secure tunnel between the containers,
 the client is allowed to access data on the serving container.
@@ -49,42 +49,28 @@ such as the following:
     DB_PORT_3306_TCP_PORT=3306
     DB_PORT_3306_TCP_ADDR=172.17.0.5
 
-### Ambassador pattern
 
-In Docker linking, a pattern emerged that allows the proxying of
-connections between a server and client container. This separate proxy
-container, the ambassador, transparently redirects connections based on parameters.
-
-However, because ambassador containers themselves depend on links, they
-too are exposed to the issues linking has, primarily that it is beneficial
-to use linking only as long as it
-does not fail or crash.
-
-In essence, the usage of the ambassador pattern has dwindled down as far
-as the community is concerned as it does not necessarily add any benefit
-that links don’t already provide, and it further complicates the
-architecture without solving the underlying issues at hand.
 
 ### Issues with linking
 
-As provocative as linking seems, it seems to be met with a couple of
-different nuances and issues when you begin to think of linking
+As potentially useful as linking seems, its drawbacks become clear when you begin to think of linking
 containers across different hosts as well as how much of an ephemeral
 lifecycle a particular container can hold.
 
 Some problems and needs which are not addressed by links include:
 
--   Service discovery suffers from the static nature of linking.
+- Service discovery suffers from the static nature of linking.
 
--   Links are volatile. IP addresses, port mappings, and link names can
-    change as the result of manipulating a link, and other containers
-    are not notified of these changes nor can they trivially deal with
-    these issues [(2)](#resources).
+- Links are volatile. IP addresses, port mappings, and link names can
+  change as the result of manipulating a link, and other containers
+  are not notified of these changes nor can they trivially deal with
+  these issues [(2)](#resources).
+
+- Links work only for containers hosted on the same node; 
+  the [ambassador pattern](#ambassador), sometimes offered as a solution for this, does not fully address the limitation.
 
 With such complications, it becomes difficult to use containers with links in
-certain situations. Links functionality can only work for
-containers on the same node or by using the ambassador model,
-which itself isn’t being adopted much.
+many situations. 
 
 Additionally, the exposure of the environmental variables in linking is
 done in a very odd manner:
@@ -92,8 +78,8 @@ you must know know the intended interface and the port of the service
 set in the environment beforehand, so then you can supply them
 to the service that is supposed to be
 supplying you with what the interface and port
-*are*. This is quite a useless feature. For example, if one cares
-to know the name of the protocol being used in the connection to environmental variables, one must know that the environmental variable is named
+*are*. For example, if you need
+to know the name of the protocol being used in the connection to environmental variables, you must first know that the environmental variable is named
 `DB_PORT_3306_TCP_PROTO`; the `TCP` in the variable name is sufficient to determine that the protocol in use is TCP.
 
 Also, once you discover the environmental variables, you’ll have to
@@ -105,16 +91,31 @@ such as the following:
     DB_NAME=/web2/db
     DB_PORTS=tcp://172.17.0.5:3306,udp://172.17.0.5: 3306
 
-In summary, links are not at the state to easily aid the developer in
-terms of connecting server and client containers without much
+In summary, links are not at a state that easily aids the developer in
+connecting server and client containers without much
 foreknowledge of the connection itself. The stability and benefits of linking
-just aren’t ready to be integrated into
+are not ready to be integrated into
 mission-critical, production-grade stacks.
 
-### Alternative to linking
+<a name="ambassador"></a>
+### Ambassador pattern: linking through a proxy
 
-An alternative that is becoming an industry standard is to use a
-service registration and discovery tool. You can read more about this at
+With the *ambassador* pattern, you can define container links 
+between a server and client container to be handled through a proxy. This separate proxy
+container, the ambassador, transparently redirects connections based on parameters. Lucas Carlson explains this as each container acting as its own country, with each country represented by its own local ambassador who is empowered to speak through the network to another country's foreign ambassador:
+>  (container) –> (local ambassador) –network–> (foreign ambassador) –> (container) [(3)](#resources).
+
+However, because ambassador containers themselves depend on links, they
+are exposed to linking's issues, primarily that linking is disrupted when one of the linked containers fails.
+
+Use of the ambassador pattern has dwindled in popularity as it does not necessarily add any benefit
+that links don’t already provide, and it further complicates the
+architecture without solving the underlying issues at hand.
+
+### Alternative to linking: service discovery
+
+An alternative to container linking that is becoming an industry standard is to use a
+service registration and discovery tool. If all the services that are available to your containers are known (registered) and can easily be located (discovered), there is no need to define specific links between services in multiple containers. You can read more about this at
 [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/).
 
 <a name="resources"></a>
@@ -125,6 +126,8 @@ Numbered citations in this article:
 1. <https://docs.docker.com/userguide/dockerlinks/>
 
 2. <https://github.com/docker/docker/issues/7467>
+
+3. <https://labs.ctl.io/deploying-multi-server-docker-apps-with-ambassadors/>
 
 Other recommended reading:
 
