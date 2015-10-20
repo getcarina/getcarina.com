@@ -1,6 +1,6 @@
 ---
 title: Image registries
-author: Zack Shoylev zack.shoylev@rackspace.com
+author: Zack Shoylev <zack.shoylev@rackspace.com>
 date: 2015-10-16
 permalink: docs/references/image-registries/
 description: Learn about Docker Hub and other public registries that house Docker images
@@ -15,7 +15,7 @@ can run your own registry or use one of the publicly available registries.
 To use a specific registry, run the following command:
 
 ```
-docker login {registy address, such as index.docker.io}
+docker login {registry address, such as index.docker.io}
 ```
 
 
@@ -24,7 +24,7 @@ After you invoke `docker login`, all of your `docker push` and `docker pull` com
 Registries
 --- 
 
-Multiple Docker registries are available online. Here we list some of the more popular ones.
+Multiple Docker registries are available online. Following are some of the more popular ones.
 
 ### Docker Hub
 
