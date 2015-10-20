@@ -33,7 +33,7 @@ OpenStack also offers features that are especially relevant at scheduling layer 
 
 Another basis for comparison is a tool's ability to offer features beyond simple orchestration.
 
-![Intersections between PaaS, container orchestration, and specialized offerings](/assets/img/best-practices/orchestration-clusters/containers-orchestration.svg)
+![Intersections between PaaS, container orchestration, and specialized offerings](/_assets/img/best-practices/orchestration-clusters/containers-orchestration.svg)
 
 - Docker Compose is in the intersection between traditional Platform-as-a-Service and container orchestration.
 - Flynn is in the intersection between traditional Platform-as-a-Service and specialized offerings such as stateful  applications.
