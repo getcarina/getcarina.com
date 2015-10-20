@@ -108,12 +108,12 @@ Note: Instructions to be updated with Windows-specific commands.
    Strategy: spread
    Filters: affinity, health, constraint, port, dependency
    Nodes: 2
-    4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1: 104.130.0.48:42376
+    1ca87d26-0d26-48cb-8a34-1b68ce124e6e-n1: 104.120.0.18:42376
      └ Containers: 3
      └ Reserved CPUs: 0 / 12
      └ Reserved Memory: 0 B / 4.2 GiB
      └ Labels: executiondriver=native-0.2, kernelversion=3.18.21-1-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
-    4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2: 104.130.0.42:42376
+    4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2: 103.140.0.22:42376
      └ Containers: 3
      └ Reserved CPUs: 0 / 12
      └ Reserved Memory: 0 B / 4.2 GiB
@@ -122,4 +122,22 @@ Note: Instructions to be updated with Windows-specific commands.
    Total Memory: 8.4 GiB
    Name: a1bc2d3456e7
 
+Take a look at the active swarm manager images:
+
+   $ docker ps -a
+
+
+   CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                   NAMES
+   d7cd5d3487a0        swarm               "/swarm manage -H=tcp"   12 minutes ago      Up 12 minutes       2375/tcp, 104.130.0.42:2376->2376/tcp   4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2/swarm-manager
+   1c9ed0342277        swarm               "/swarm join --addr=1"   12 minutes ago      Up 12 minutes       2375/tcp                                4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2/swarm-agent
+   338ec9846bc5        cirros              "/sbin/init"             12 minutes ago                                                                  4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2/swarm-data
+   3f77440215be        swarm               "/swarm manage -H=tcp"   13 minutes ago      Up 13 minutes       2375/tcp, 104.130.0.48:2376->2376/tcp   4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1/swarm-manager
+   06491282ee7b        swarm               "/swarm join --addr=1"   13 minutes ago      Up 13 minutes       2375/tcp                                1ca87d26-0d26-48cb-8a34-1b68ce124e6e-n1/swarm-agent
+   62a5e84fa358        cirros              "/sbin/init"             13 minutes ago                                                                  4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1/swarm-data
+
+
 ### Next steps
+
+Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
+
+Try running [Drupal on your Swarm Cluster]({{ site.baseurl }}/docs/tutorials/drupal-and-swarm/)
