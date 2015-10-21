@@ -1,9 +1,9 @@
 ---
-title: Differences between Carina and Docker Swarm
+title: Understanding how Carina uses Docker Swarm
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-30
-permalink: docs/tutorials/differences-swarm-carina/
-description: Learn the differences between the Carina service and Docker Swarm
+permalink: docs/tutorials/docker-swarm-carina/
+description: Learn how Carina uses Docker Swarm
 docker-versions:
   - 1.8.3
 topics:
@@ -54,7 +54,7 @@ perform the following steps:
 - Add a set of Swarm nodes with the Swarm agent installed
 
 But with Carina, these steps are done for you, meaning that you skip this
-initial set up. Instead, you use the Carina control panel or 
+initial set up. Instead, you use the Carina control panel or
 [CLI](https://github.com/getcarina/carina) to
 deploy, manage, and visualize your clusters.
 
