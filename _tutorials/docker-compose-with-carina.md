@@ -24,8 +24,8 @@ A Magento application, for example, can store persistent state in a MySQL
 database, cache page requests in Redis, aggregate logs with Logstash, and
 handle catalog searching with Elasticsearch.
 
-Managing these components &mdash; their installation, configuration, and relationships
-with one another &mdash; can be a tedious and onerous task. Normally, you'd have to
+Managing these components&mdash;their installation, configuration, and relationships
+with one another&mdash;can be a tedious and onerous task. Normally, you'd have to
 deploy each service manually and set up the container links by yourself. Doing
 so could introduce the risk of errors and downtime. But with Docker Compose, you
 have a single point of authority that centralizes this logic in a succinct way.
