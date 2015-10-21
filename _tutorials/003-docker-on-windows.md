@@ -12,7 +12,7 @@ topics:
   - windows
 ---
 
-Docker now supports running the Docker Toolbox on Windows systems. You can use a Docker client directly from your Windows machine to manage containers running on Linux hosts.
+Docker supports running the Docker Toolbox on Windows systems. You can use a Docker client directly from your Windows machine to manage containers that are running on Linux hosts.
 
 #Prerequisites
 To run Docker on Windows, your system must be running Windows 7.1, 8/8.1 or newer to run Docker Toolbox. 
@@ -21,8 +21,10 @@ Make sure your Windows system supports **Hardware Virtualization Technology** an
 
 ####For Windows 8 or Windows 8.1
 
-1. Choose **Start** > **Task Manager** and navigate to the Performance tab. In **Task Manager**, under **CPU**, you should see Virtualization: Enabled (add screenshot here).
-2. If virtualization is not enabled on your system, follow the manufacturer’s instructions for enabling it.
+1. Choose **Start** > **Task Manager** and navigate to the **Performance** tab. In **Task Manager**, under **CPU**, you should see **Virtualization: Enabled**.  
+![Windows Control Panel Screenshot]({% asset_path window-8-virtualization-enabled-highlighted.png %})
+
+2. If virtualization is **not** enabled on your system, follow the manufacturer’s instructions for enabling it.
 
 ####For Windows 7
 
@@ -33,14 +35,15 @@ To get started with Docker on Windows, you need to do the following:
 
 * [Install Docker Toolbox on Windows](docs/tutorials/docker-install-windows/)
 * [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows/)
-* [Download Carina credentials](docs/references/carina-credentials/)
+* [Download Carina credentials](docs/references/rcs-credentials/)
 
 
 #Troubleshooting Docker on Windows
+To troubleshoot Docker on Windows, read the follwoing articles:
 
-[Error running interactive Docker shell on Windows](docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [Error running interactive Docker shell on Windows](docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
 
-[Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](docs/references/troubleshooting-windos-docker-vm-startup)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](docs/references/troubleshooting-windos-docker-vm-startup)
 
 #Next
 [Preview a Jekyll site with Docker on Windows](docs/tutorials/preview-jekyll-with-docker-on-windows/)
