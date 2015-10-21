@@ -15,7 +15,7 @@ This is an introduction to the various
 technologies emerging in and around the container space; as an introduction, it does not
 dive deeply into the details of any one
 technology. Instead, this introduction provides some starting points from which you can begin to explore
-what containers and prepare for the architecture
+containers and prepare for the architecture
 decisions that you face in adapting containers into both your
 infrastructure and toolbox. In addition, this introduction links to detailed analyses that highlight which container systems
 and utilities serve as the best solutions depending on the use case, as
@@ -42,7 +42,7 @@ computing resources.
 
 In short, the virtualization we’ve all come to know and use today is
 possible because of the development and rise of the hypervisor. If virtualization as enabled by hypervisors has been so ubiquitous and successful, why has the focus changed to containers and Docker? James Bottomley, leading Linux kernel
-developer and CTO of server virtualization for Parallels, explained to that VM hypervisors, such as Hyper-V, KVM, and Xen, are all "based on emulating virtual hardware. That means
+developer and CTO of server virtualization for Parallels, explained that VM hypervisors, such as Hyper-V, KVM, and Xen, are all "based on emulating virtual hardware. That means
 they’re fat in terms of system requirements."
 
 Containers, however, use shared operating systems. That means they are
@@ -101,7 +101,7 @@ that span and even spill over from one technology to the other, and
 noticing these subtleties is a very complex and tedious task. Figuring
 out which set of technologies will help you establish your future
 roadmap comes down to understanding the types of users you’re trying to enable, as
-well as classes of workloads you wish to manage across your resources.
+well as the classes of workloads that you wish to manage across your resources.
 
 Whether or not you intend to work directly with Docker, learning about Docker will help you develop the vocabulary and understand the concepts to make sense of other container tools.
 [Docker's documentation](http://docs.docker.com/) is a good place to begin that effort.
