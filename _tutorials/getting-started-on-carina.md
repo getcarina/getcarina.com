@@ -56,7 +56,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 
     On Linux and Mac OS X, open a terminal.
 
-    On Windows, open a Command Prompt or PowerShell.
+    On Windows, open a PowerShell.
 
 1. Configure the client.
 
@@ -74,17 +74,6 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     $ source docker.env
     ```
 
-    On Windows Command Prompt, run the commands.
-
-    ```
-    $ cd Downloads\mycluster
-    $ md "%USERPROFILE%\bin"
-    $ move docker-1.8.3.exe "%USERPROFILE%\bin\docker.exe"
-    $ setx PATH "%PATH%;%USERPROFILE%\bin"
-    $ PATH="%PATH%;%USERPROFILE%\bin"
-    $ docker.cmd
-    ```
-
     On Windows PowerShell, run the commands.
 
     ```
@@ -97,7 +86,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     $ .\docker.ps1
     ```
 
-    On Windows, use `docker.exe` instead of `docker` in all of the commands below.
+    On Windows PowerShell, use `docker.exe` instead of `docker` in all of the commands below.
 
 1. Connect to your cluster and display information about it.
 
