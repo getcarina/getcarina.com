@@ -68,7 +68,7 @@ container name is `redis`.
 ### Limitations
 
 **Note:** For more information about how Docker Swarm works in Carina, see the
-[Understanding Docker Swarm in Carina](../differences-swarm-carina) article.
+[Understanding how Carina uses Docker Swarm](../docker-swarm-carina) article.
 
 Docker has said that Compose is **not yet production-ready** because
 it does not fully integrate with Docker Swarm. Eventually, Docker aims to have
