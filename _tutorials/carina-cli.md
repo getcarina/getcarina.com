@@ -1,4 +1,5 @@
 ---
+title: Getting started with the Carina CLI
 Author: Anne Gentle <anne.gentle@rackspace.com>
 date: 2015-10-20
 permalink: docs/tutorials/getting-started-carina-cli/
@@ -13,11 +14,7 @@ This tutorial demonstrates how to install and configure the Carina client so tha
 
 ### Prerequisites
 
-* You have access to a 64-bit operating system. Clients are available for Mac OSX, Linux, and Windows 64-bit.
-
-* You have a working terminal application.
-
-* You have credentials for [Carina](https://app.getcarina.com).
+* Your API Key. Go to [Carina control panel](app.getcarina.com), click your username in the top right corner, then click API Key.
 
 ### Download and install the Carina CLI
 
@@ -25,9 +22,9 @@ Note: Instructions to be updated with Windows-specific commands.
 
 1. Download and save the binary matching your operating system:
 
-* [Mac OSX, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.3.1/carina-darwin-amd64)
-* [Linux, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.3.1/carina-linux-amd64)
-* [Windows, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.3.1/carina.exe)
+* [Mac OSX, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-darwin-amd64)
+* [Linux, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-linux-amd64)
+* [Windows, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina.exe)
 
 2. Rename the binary to `carina`. For example, on Mac OSX, enter:
 
@@ -45,7 +42,7 @@ Note: Instructions to be updated with Windows-specific commands.
 
 4. Add the binary to your path with this command:
 
-    export PATH=$PATH:/usr/local/bin
+    export PATH=$PATH:$HOME/bin
 
 ### Configure with Carina credentials
 
@@ -69,22 +66,22 @@ Note: Instructions to be updated with Windows-specific commands.
    websocketsrock    container1-2G    2        true         active
    railsanne         container1-4G    4        true         active
 
-### Manage Docker Swarm Clusters with Carina
+### Manage Carina clusters
 
-1. Create a Swarm Cluster using the `carina create...` command. For example:
+1. Create a Carina cluster using the `carina create...` command. For example:
 
-   $ carina create myswarmcluster --wait --nodes=2 --autoscale
+   $ carina create mycluster --wait --nodes=2 --autoscale
    
-   myswarmcluster    container1-4G    2    true    active
+   mycluster    container1-4G    2    true    active
    
    Read more about the parameters below:
    * --wait       wait for swarm cluster completion
    * --nodes=1    number of nodes for the initial cluster
-   * --autoscale  Turn autoscale on or off. Turning it on means management functions are available for that cluster.
+   * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds segments as they are needed.
 
 2. Once it completes, download the credentials for the cluster:
 
-   $ carina credentials --path=/tmp/ myswarmcluster
+   $ carina credentials --path=/tmp/ mycluster
 
    Where --path=PATH indicates the local directory path to write the credentials files.
 
@@ -120,7 +117,7 @@ Note: Instructions to be updated with Windows-specific commands.
    Total Memory: 8.4 GiB
    Name: a1bc2d3456e7
 
-Take a look at the active swarm manager images:
+View the Swarm management containers:
 
    $ docker ps -a
 
