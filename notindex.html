@@ -1,0 +1,162 @@
+---
+layout: default
+---
+<section class="home-section hero">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="hero-message">
+        <h1 class="headline">Carina&trade;</h1>
+        <p class="tagline">A high performance, instant-on &amp; portable container environment.</p>
+        <form>
+          <input type="email" placeholder="Enter Your E-mail Address...">
+          <input type="password" placeholder="Create a password...">
+          <button type="submit">Sign up!</button>
+        </form>
+      </div>
+      <div class="hero-graphic">
+        {% include svg/hero-cube.svg %}
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section features">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="summary">
+        <h2>
+          <span class="accent red">Features</span>
+        </h2>
+        <p>Carina by Rackspace provides a “zero infrastructure” hosted container environment, where users no longer worry about building, managing, and updating your container environments.</p>
+      </div>
+      <div class="feature">
+        <img src="{% asset_path feature-1.svg %}" alt="">
+        <h3>Performance</h3>
+        <p>Built for speed - no hypervisor overhead or additional complexity. You get "bare-metal" performance where applications deploy and run up to 20% faster.</p>
+      </div>
+      <div class="feature">
+        <img src="{% asset_path feature-2.svg %}" alt="">
+        <h3>Container-Native Tools</h3>
+        <p>Instant access to the Docker&trade; toolchain that offers portability across providers, form-factors and container orchestration environments.</p>
+      </div>
+      <div class="feature">
+        <img src="{% asset_path feature-3.svg %}" alt="">
+        <h3>Easy to Use</h3>
+        <p>Accelerated ramp up through quick installation, intuitive UI &amp; CLI access, world-class documentation and direct developer community support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section cp-demo">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="text">
+        <h2>
+          <span class="accent yellow">At Your Fingertips</span>
+        </h2>
+        <p>Carina streamlines the entire experience to allow you to get started with containers <strong></strong><a href="/docs/tutorials/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="https://github.com/rackerlabs/carina"><code>carina</code></a>, the command line tool.</strong></p>
+      </div>
+      <div class="demo">
+        <div class="demo-frame">
+          <!-- TODO: Lightbox like a boss instead -->
+          <a href="{% asset_path carina-demo4big.gif %}" alt="bigger version of demo carina command line">
+            <img src="{% asset_path carina-demo4.gif %}" alt="demo">
+          </a>
+          <!-- <img src="//fpoimg.com/400x250" alt=""> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section resources">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="summary">
+        <h2>
+          <span class="accent blue">Everything you need to know</span>
+        </h2>
+        <p>Carina makes containers more accessible to everyone, from novices to professional developers. Our documentation includes getting started, tutorials, and best practice information.  These three information types combine together to give users a structured path to build their Carina and containter technology knowledge in a straightforward and highly-useable manner.</p>
+      </div>
+      <div class="resource">
+        <div class="image">
+          <a href="docs/tutorials/getting-started-on-carina/"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
+        </div>
+        <h3>Getting Started</h3>
+        <p>Get up and running with Carina, a cluster, and a basic container instance.</p>
+      </div>
+      <div class="resource">
+        <div class="image">
+          <img src="{% asset_path resource-2.svg %}" alt="">
+        </div>
+        <h3>Tutorials</h3>
+        <p>Extend and apply Carina and containers in meaningful real-world applications using our step-by-step instructions.</p>
+      </div>
+      <div class="resource">
+        <div class="image">
+          <img src="{% asset_path resource-3.svg %}" alt="">
+        </div>
+        <h3>Best Practices</h3>
+        <p>Review recommendations and industry standard approaches for Carina and containers, along with an introduction to advanced topics.</p>
+      </div>
+      <div class="resources-button">
+        <a href="">View All Resources</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section sign-up">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="heading">
+        <h2>Start developing with containers, for free, right now!</h2>
+      </div>
+      <form class="form">
+        <div class="username">
+          <input type="email" placeholder="Enter Your E-mail Address...">
+        </div>
+        <div class="password">
+          <input type="password" placeholder="Create a password...">
+        </div>
+        <div class="submit">
+          <button type="submit">Sign up!</button>
+        </div>
+      </form>
+      <div class="more-info">
+        <p>Need more info?<br>Get all the details about our <a href="">free beta offering</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-section news">
+  <div class="section-container">
+    <div class="section-grid">
+      <div class="blog">
+        <h2>Carina Blog</h2>
+        <ul class="news-list">
+          {% for post in site.posts limit: 3 %}
+            <li class="news-item">
+              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <div class="detail">{{ post.author }} &ndash; {{ post.date | date: "%B %-d, %Y" }}</div>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="product">
+        <h2>Product News</h2>
+        <ul class="news-list">
+          <li class="news-item">
+            <h3><a href="">Article Title 1</a></h3>
+            <div class="detail">Author Name &ndash; July 20, 2015</div>
+          </li>
+          <li class="news-item">
+            <h3><a href="">Article Title 2</a></h3>
+            <div class="detail">Author Name &ndash; July 20, 2015</div>
+          </li>
+          <li class="news-item">
+            <h3><a href="">Article Title 3</a></h3>
+            <div class="detail">Author Name &ndash; July 20, 2015</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
