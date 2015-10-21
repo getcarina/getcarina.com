@@ -17,7 +17,7 @@ No prior knowledge of containers or Docker is necessary. This tutorial works on 
 
 ### Sign up for Carina
 
-To run applications on Carina, get an account by following the [sign up process](https://app.getcarina.com/managed).
+To run applications on Carina, get an account by following the [sign up process](https://mycluster.rackspacecloud.com/managed/).
 
 ### Create your cluster
 
@@ -25,8 +25,8 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 To create your cluster, perform the following steps:
 
-1. Sign in to [http://app.getcarina.com](http://app.getcarina.com).
-1. Enter a cluster name in the **Create New** field. For example: `app.getcarina.com`
+1. Sign in to [mycluster.rackspacecloud.com/managed/](https://mycluster.rackspacecloud.com/managed/).
+1. Enter a cluster name in the **Create New** field. For example: `mycluster`
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
 
@@ -66,7 +66,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
 
 1. Configure the client.
 
-    On Linux and Mac OS X, run the commands.
+    On Linux and Mac OS X terminal, run the commands.
 
     ```bash
     $ mv docker-1.8.3 docker
@@ -89,7 +89,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     $ .\docker.ps1
     ```
 
-    On Windows, use `.\docker.exe` instead of `./docker` in the commands below.
+    On Windows, use `.\docker.exe` instead of `./docker` in all of the commands below.
 
 1. Connect to your cluster and display information about it.
 
