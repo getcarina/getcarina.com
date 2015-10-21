@@ -57,8 +57,9 @@ The CLI [Getting started with the Carina CLI](/docs/tutorials/getting-started-ca
 
 ### Resources
 
-* [Differences between Carina and Docker Swarm](/docs/tutorials/differences-swarm-carina/)
-* Link to all of the things I could have linked to in the What is Carina? section here?
+* [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/)
+* [Documentation](/docs/)
+* [Community Forums](https://getcarina.com/community/)
 
 ### Next steps
 
