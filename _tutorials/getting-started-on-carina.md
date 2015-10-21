@@ -44,25 +44,19 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     Downloads/mycluster
     ```
 
-1. Open an application to run commands.
-
-    On Linux and Mac OS X, open a terminal.
-
-    On Windows, open a Command Prompt or PowerShell.
-
-1. Change to the unzipped directory. For example,
-
-    ```bash
-    $ cd Downloads/mycluster
-    ```
-
 1. Download the Docker 1.8.3 client into the unzipped directory.
 
-     On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3).
+     On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
 
-     On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3).
+     On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
 
-     On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe).
+     On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
+
+1. Open an application to run commands.
+
+   On Linux and Mac OS X, open a terminal.
+
+   On Windows, open a Command Prompt or PowerShell.
 
 1. Configure the client.
 
@@ -71,6 +65,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     On Linux and Mac OS X terminal, run the commands.
 
     ```bash
+    $ cd Downloads/mycluster
     $ mkdir $HOME/bin
     $ mv docker-1.8.3 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
@@ -82,15 +77,18 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     On Windows Command Prompt, run the commands.
 
     ```
+    $ cd Downloads\mycluster
     $ md "%USERPROFILE%\bin"
     $ move docker-1.8.3.exe "%USERPROFILE%\bin\docker.exe"
     $ setx PATH "%PATH%;%USERPROFILE%\bin"
+    $ PATH="%PATH%;%USERPROFILE%\bin"
     $ docker.cmd
     ```
 
     On Windows PowerShell, run the commands.
 
     ```
+    $ cd Downloads\mycluster
     $ mkdir "$env:USERPROFILE\bin"
     $ mv docker-1.8.3.exe "$env:USERPROFILE\bin\docker.exe"
     $ $env:PATH += ";$env:USERPROFILE\bin"
