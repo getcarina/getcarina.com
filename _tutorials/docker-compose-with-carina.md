@@ -24,8 +24,8 @@ A Magento application, for example, can store persistent state in a MySQL
 database, cache page requests in Redis, aggregate logs with Logstash, and
 handle catalog searching with Elasticsearch.
 
-Managing these components &em; their installation, configuration, and relationships
-with one another &em; can be a tedious and onerous task. Normally, you'd have to
+Managing these components &mdash; their installation, configuration, and relationships
+with one another &mdash; can be a tedious and onerous task. Normally, you'd have to
 deploy each service manually and set up the container links by yourself. Doing
 so could introduce the risk of errors and downtime. But with Docker Compose, you
 have a single point of authority that centralizes this logic in a succinct way.
@@ -80,10 +80,8 @@ If services in your application rely on one another through the `--link` flag,
 you must ensure they are provisioned on the same Docker host, since container
 linking does not currently work for containers on different hosts. This will
 change in the future as Docker networking is revamped. To find out more
-information about container linking and steps you can take to mitigate
-networking issues, read our
-[Connect containers by using the ambassador pattern](../connect-docker-containers-ambassador-pattern/)
-and [Connect containers with Docker links](../connect-docker-containers-with-links/)
+information about networking in Docker, read the
+[Docker networking basics](../docker-networking-basics) article.
 
 To ensure that reliant containers can contact eachother, you must use the
 `links` keyword in your **docker-compose.yml** file. This will ensure they are
