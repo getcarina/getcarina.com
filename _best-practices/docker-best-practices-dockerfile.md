@@ -14,10 +14,11 @@ topics:
 
 You can save a customized Docker image in either of two ways:
 
--   Use a Dockerfile.
+- Use a Dockerfile.
 
--   Create a container from an image, update the container,
-    and commit the changes to an image.
+- Create a container from an image,
+  update the container,
+  and commit the changes to an image.
 
 Specifics of your application and its dependencies can determine which
 of these methods you must use. If both options are available to you,
@@ -35,16 +36,22 @@ configuring options.
 
 Here is a snippet of a simple Dockerfile:
 
-    # This is a comment
-    FROM ubuntu:14.04
-    MAINTAINER Kate Smith ksmith@example.com
-    RUN apt-get update && apt-get install -y ruby ruby-dev
-    RUN gem install sinatra
+````
+# This is a comment
+FROM ubuntu:14.04
+MAINTAINER Kate Smith ksmith@example.com
+RUN apt-get update && apt-get install -y ruby ruby-dev
+RUN gem install sinatra
+````
 
-Each instruction creates a new layer of the image. At the time of this
-report, an image cannot have more than 127 layers regardless of the
+An image provides the foundation layer for a container.
+Based on the instructions in your Dockerfile,
+new tools, applications, content, and patches form additional layers
+on the foundation [(1)](#resources).
+
+An image cannot have more than 127 layers regardless of the
 storage driver. This limitation is set globally to encourage
-optimization of the overall size of images [(1)](#resources).
+optimization of the overall size of images [(2)](#resources).
 
 Most newcomers to containers choose to provide their containers with
 the base operating system that they are most accustomed to working with
@@ -55,10 +62,12 @@ However, it becomes evident that most of the interaction with the container's
 operating system revolves around the filesystem layout and its binaries.
 For example,
 if you chose Ubuntu as your base operating system and you aren’t doing anything
-extravagant in terms of the operating system itself, then you could potentially
+unusual in terms of the operating system itself, then you could potentially
 switch to the Debian image as it will most likely have everything you need and
-can save you at least 100MB in size. You must investigate this on a per case basis,
-but if you are utilizing a bloated operating system base when BusyBox could suffice,
+can save you at least 100MB in size.
+You must investigate this on a case-by-case basis,
+but if you are utilizing a full-size operating system such as Linux
+when a stripped-down operating system such as BusyBox could suffice,
 then you are not only consuming more space than needed, you are also adding
 time to Docker builds and image repository interactions.
 
@@ -66,7 +75,8 @@ time to Docker builds and image repository interactions.
 
 The update-and-commit method requires that you begin with a previously created
 Docker image that you have retrieved from a container
-image registry. Image registries can be public or private;
+image registry such as Docker Hub.
+Image registries can be public or private and are available from several providers;
 you can read more about image registries at
 [Docker best practices: image repository](/docker-best-practices-image-repository/).
 
@@ -118,7 +128,7 @@ creation and utilization of Dockerfiles to build your container images.
     For example, when processing a `RUN apt-get -y` update
     command, the files updated in the container are not
     examined to determine whether a cache hit exists. In that case, only
-    the command string itself is used to find a match [(2)](#resources).
+    the command string itself is used to find a match [(3)](#resources).
 
 - Build every time. Building is very fast because Docker re-uses
   previously-cached build steps whenever possible.
@@ -139,9 +149,7 @@ creation and utilization of Dockerfiles to build your container images.
   rather than using the ADD command in the Dockerfile.
 
 - Know the differences Between CMD and ENTRYPOINT.
-  Expressing exactly what you want is key
-  to ensuring that users of your image have the right experience.
-  The CMD and ENTRYPOINT nstructions are similar in that they both specify
+  The CMD and ENTRYPOINT instructions are similar in that they both specify
   commands that run in an image, but there is an important
   difference: CMD simply sets a command to run in the image if
   no arguments are passed to `docker run`, while ENTRYPOINT is
@@ -162,22 +170,29 @@ creation and utilization of Dockerfiles to build your container images.
   - Be careful with using ENTRYPOINT; it can make it more difficult to
     get a shell inside your image. While this may not be an issue if your
     image is designed to be used as a single command, it can frustrate or
-    confuse users that expect to be able to use the idiom [(3)](#resources).
+    confuse users that expect to be able to use the idiom [(4)](#resources).
+
+  Expressing exactly what you want is key
+  to ensuring that users of your image have the right experience.
 
 <a name="resources"></a>
 ### Resources
 
-Numbered citations in this article
+Numbered citations in this article:
 
-1. <https://docs.docker.com/userguide/dockerimages/>
+1. <http://www.projectatomic.io/docs/docker-building-images/>
 
-2. <https://docs.docker.com/articles/dockerfile_best-practices/#build-cache>
+2. <https://docs.docker.com/userguide/dockerimages/>
 
-3. <http://www.projectatomic.io/docs/docker-image-author-guidance/>
+3. <https://docs.docker.com/articles/dockerfile_best-practices/#build-cache>
 
-Other recommended reading
+4. <http://www.projectatomic.io/docs/docker-image-author-guidance/>
+
+Other recommended reading:
 
 - [Docker best practices: image repository](/docker-best-practices-image-repository/)
+
+- <http://www.busybox.net/about.html>
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
