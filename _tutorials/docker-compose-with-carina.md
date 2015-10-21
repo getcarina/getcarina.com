@@ -12,27 +12,27 @@ topics:
   - docker-compose
 ---
 
-Docker Compose is a tool for defining and running multi-container applications.
-To do this, you define the different components - or services - that compose
-the application in a single YAML file. You then specify this file as a
+Docker Compose is a tool that you can use to define and run multicontainer
+applications. To use it, you define the different components, or services, that
+compose the application in a single YAML file. You then specify this file as a
 command-line argument when running the command to launch your application.
 
 ### What advantages does it give?
 
-Complicated applications often rely on multiple components in order to work.
+Complicated applications often rely on multiple components to work.
 A Magento application, for example, can store persistent state in a MySQL
-database, cache page requests in Redis, aggregate logs with logstash, and
-handle catalog searching with ElasticSearch.
+database, cache page requests in Redis, aggregate logs with Logstash, and
+handle catalog searching with Elasticsearch.
 
-Managing these components - their installation, configuration and relationship
-with one another - can be a fiddly and onerous task. Normally, you'd have to
+Managing these components &em; their installation, configuration, and relationships
+with one another &em; can be a tedious and onerous task. Normally, you'd have to
 deploy each service manually and set up the container links by yourself. Doing
-so may introduce the risk of errors and downtime. But with Docker Compose, you
-have a single point of authority which centralizes this logic in a succinct way.
+so could introduce the risk of errors and downtime. But with Docker Compose, you
+have a single point of authority that centralizes this logic in a succinct way.
 
 ### The docker-compose.yml file
 
-At the heart of Docker Compose is the **docker-compose.yml** file. Each
+Central to Docker Compose is the **docker-compose.yml** file. Each
 container, or _service_, is represented in its own YAML section, like so:
 
 ```yaml
@@ -58,32 +58,36 @@ redis:
   container_name: redis
 ```
 
-In the first section, we indicate that the `web` service uses the `rackerlabs/magento`
-Docker image hosted on Docker Hub, it binds to port 80, it links to the `redis`
-service, and its container's name is `web`.
+The first section of this example indicates that the `web` service uses the
+`rackerlabs/magento` Docker image hosted on Docker Hub, it binds to port 80, it
+links to the `redis` service, and its container's name is `web`.
 
 The `redis` service uses the base `redis` image hosted on Docker Hub, and its
 container name is `redis`.
 
 ### Limitations
 
-For more information on how Carina relates to Docker Swarm, please read our
-[Differences between Carina and Docker Swarm](../differences-swarm-carina) article.
+**Note:** For more information about how Docker Swarm works in Carina, see the
+[Understanding Docker Swarm in Carina](../differences-swarm-carina) article.
 
-Docker have said that Compose is **not yet production-ready** because
-it does not fully integrate with Docker Swarm. Eventually they aim to have
-full integration - meaning that you will be able to deploy multi-container
-applications spread over multiple hosts - but this is not currently the case
-due to limitations in Docker networking.
+Docker has said that Compose is **not yet production-ready** because
+it does not fully integrate with Docker Swarm. Eventually, Docker aims to have
+full integration, meaning that you will be able to deploy multicontainer
+applications spread over multiple Docker hosts. However, this integration is not
+currently in place because of limitations in Docker networking.
 
-If services in your application rely on one another through container linking,
-you must ensure they are provisioned on the same Swarm host, since linking
-does not currently work for containers on different hosts. This will change
-in the future as Docker networking is revamped.
+If services in your application rely on one another through the `--link` flag,
+you must ensure they are provisioned on the same Docker host, since container
+linking does not currently work for containers on different hosts. This will
+change in the future as Docker networking is revamped. To find out more
+information about container linking and steps you can take to mitigate
+networking issues, read our
+[Connect containers by using the ambassador pattern](../connect-docker-containers-ambassador-pattern/)
+and [Connect containers with Docker links](../connect-docker-containers-with-links/)
 
 To ensure that reliant containers can contact eachother, you must use the
 `links` keyword in your **docker-compose.yml** file. This will ensure they are
-deployed to the same host.
+deployed to the same Docker host.
 
 ### Resources
 
