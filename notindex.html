@@ -7,11 +7,36 @@ layout: default
       <div class="hero-message">
         <h1 class="headline">Carina&trade;</h1>
         <p class="tagline">A high performance, instant-on &amp; portable container environment.</p>
-        <form>
-          <input type="email" placeholder="Enter Your E-mail Address...">
-          <input type="password" placeholder="Create a password...">
-          <button type="submit">Sign up!</button>
-        </form>
+        <div data-ng-controller="SignupFormCtrl as signup">
+          <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
+            <div class="control" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
+              <input type="email" name="email" required placeholder="Enter Your E-mail Address..." data-ng-model="signup.formData.username">
+              <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
+                A valid email address is required.
+              </div>
+            </div>
+            <div class="control" data-ng-class="{'error': form.$submitted && form.password.$invalid}">
+              <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'">
+              <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.required">
+                A password is required.
+              </div>
+              <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.pattern">
+                Your password isn’t strong enough. It should be at least 8 characters long and contain lowercase, uppercase and numeric characters.
+              </div>
+            </div>
+            <div class="control" data-ng-class="{'error': signup.errorMessage}">
+              <button type="submit" data-ng-disabled="signup.status == 'submitting'">
+                <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
+                <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
+              </button>
+              <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
+            </div>
+          </form>
+          <div class="form-submitted" data-ng-cloak data-ng-show="signup.status == 'submitted'">
+            <h3>Thanks for signing up for Carina<sup>&trade;</sup>!</h3>
+            <p><strong>Check your email</strong> to verify your account and start using Carina<sup>&trade;</sup> right away.</p>
+          </div>
+        </div>
       </div>
       <div class="hero-graphic">
         {% include svg/hero-cube.svg %}
@@ -109,17 +134,32 @@ layout: default
       <div class="heading">
         <h2>Start developing with containers, for free, right now!</h2>
       </div>
-      <form class="form">
-        <div class="username">
-          <input type="email" placeholder="Enter Your E-mail Address...">
-        </div>
-        <div class="password">
-          <input type="password" placeholder="Create a password...">
-        </div>
-        <div class="submit">
-          <button type="submit">Sign up!</button>
-        </div>
-      </form>
+      <div class="signup-form inline">
+        <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
+          <div class="control email" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
+            <input type="email" name="email" required placeholder="Enter Your E-mail Address..." data-ng-model="signup.formData.username">
+            <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
+              A valid email address is required.
+            </div>
+          </div>
+          <div class="control password" data-ng-class="{'error': form.$submitted && form.password.$invalid}">
+            <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'">
+            <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.required">
+              A password is required.
+            </div>
+            <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.pattern">
+              Your password isn’t strong enough. It should be at least 8 characters long and contain lowercase, uppercase and numeric characters.
+            </div>
+          </div>
+          <div class="control submit" data-ng-class="{'error': signup.errorMessage}">
+            <button type="submit" data-ng-disabled="signup.status == 'submitting'">
+              <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
+              <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
+            </button>
+            <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
+          </div>
+        </form>
+      </div>
       <div class="more-info">
         <p>Need more info?<br>Get all the details about our <a href="">free beta offering</a>.</p>
       </div>
