@@ -29,7 +29,7 @@ One way to make a useful choice is to focus your investigation on tools that are
  
 Kubernetes and Marathon are leaders in the container orchestration layer. 
 For other container management activities such as workflow and scheduling, leaders include Deis and Mesos [(1)](#resources).
-OpenStack also offers features that are especially relevant at scheduling layer and the virtual infrastructure layer.
+OpenStack also offers features that are especially relevant at the scheduling virtual infrastructure layers.
 
 Another basis for comparison is a tool's ability to offer features beyond simple orchestration.
 
@@ -39,7 +39,7 @@ Another basis for comparison is a tool's ability to offer features beyond simple
 - Flynn is in the intersection between traditional Platform-as-a-Service and specialized offerings such as stateful  applications.
 - Flocker is in the intersection between specialized offerings and container orchestration.
 
-Below is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case you intend to fulfill and the scale at you wish to operate.
+Following is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case you intend to fulfill and the scale at you wish to operate.
 
 ### Mesosphere’s “Marathon”
 
@@ -58,7 +58,7 @@ to Clocker which is itself a blueprint (analogous to a framework)
 for Apache’s Brooklyn.
 
 Because of its flexibility, Marathon can operate as a cluster-wide
-process supervisor. Marathon operates as a private Platform-as-a-Servuce through
+process supervisor. Marathon operates as a private Platform-as-a-Service through
 functionality that includes service discovery, failure handling, deployment, and scalability.
 
 Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization. 
@@ -76,7 +76,7 @@ Groupon, OpenTable, Paypal, and Yelp.
 
 ### Google’s “Kubernetes”
 
-Kubernetes is a system for managing containerized clusters applications
+Kubernetes is a system for managing containerized applications
 across multiple hosts. It provides basic mechanisms for deployment,
 maintenance, and scaling of applications.
 
@@ -92,7 +92,7 @@ Specifically, Kubernetes:
   and replicating containers.
 
 - Is primarily targeted at applications comprised of multiple
-  containers, such as elastic, distributed micro-services.
+  containers, such as elastic, distributed microservices.
 
 - Enables users to ask a cluster to run a set of containers.
   The system automatically chooses hosts on which to run those containers,
@@ -110,19 +110,19 @@ modular, portable and extensible [(3)](#resources).
 
 Some of the key ideas behind Kubernetes include:
 
-- **pods:** A way to co-locate group containers with shared
+- **Pods:** A way to co-locate group containers with shared
   volumes. A pod is a collocation of one or more
   containers sharing a single IP address, multiple volumes, and a
   single set of ports.
 
-- **replication controllers:** A way to handle the lifecycle of pods.
+- **Replication controllers:** A way to handle the lifecycle of pods.
   By creating or killing pods as required, replication controllers
   ensure that a specified number of pods are running at any given time.
 
-- **labels:** A way to organize and select groups of objects based on
+- **Labels:** A way to organize and select groups of objects based on
   key-value pair.
 
-- **services:** A set of containers performing a common function with a
+- **Services:** A set of containers performing a common function with a
   single, stable name and address for a set of pods. Services act like a
   basic load balancer [(4)](#resources).
 
@@ -148,8 +148,7 @@ physical resources and can combine them to create a big static computing cluster
 Many modern scalable data processing
 applications (Hadoop, Kafka, Spark) run well on Mesos and you can run them all on the same basic resource pool, along
 with modern container-packaged applications. Mesos is somewhat more heavyweight than the
-Kubernetes project, but is getting easier and easier to manage thanks
-to the work of folks like Mesosphere.
+Kubernetes project, but is getting easier and easier to manage because of companies like Mesosphere.
 
 Mesos is currently being
 adapted to incorporate many Kubernetes concepts and to support the
@@ -196,7 +195,7 @@ which tend to bake in an all-in-one method of operation, obviously
 fit well into this requirement. This makes Compose shine as a viable
 option for software developers.
 
-Based on use cases, something as simple as Compose may be all that one needs. However, because this is a space in which a solution such as Compose has both limited capabilities and overhead, teams can decide to independently develop micro-solutions of this kind for the sake of not taking on extra overhead in their stack.
+Based on use cases, something as simple as Compose may be all that you need. However, because this is a space in which a solution such as Compose has both limited capabilities and overhead, teams can decide to independently develop micro-solutions of this kind for the sake of not taking on extra overhead in their stack.
 
 The community's reception of Compose has been notably positive, but the practicality of its usage and the lack of ability to create a long-term vision around it tend to minimize the actual legitimacy of adopting it as a container orchestration technology.
 
@@ -275,8 +274,8 @@ and user interaction throughout the cluster.
 
 ### Cloudsoft’s “Clocker”
 
-Clocker is an open-source project that enables users to spin up Docker
-containers in a cloud-agnostic manner without generating excess containers. The project is built on top of Apache Brooklyn, undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
+Clocker is an open-source project that enables users to establish a Docker Cloud over any cloud or fixed infrastructure
+without generating excess containers [(10)](#resources). The project is built on top of Apache Brooklyn, undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
 
 Some features of Clocker are:
 
@@ -292,7 +291,7 @@ Some features of Clocker are:
 - Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms) blueprints to Docker locations,
   without modifications
 
-Clocker uses Apache Brooklyn to create a Docker cloud [(10)](#resources).
+Clocker uses Apache Brooklyn to create a Docker cloud [(11)](#resources).
 Brooklyn uses Apache jclouds, a multi-cloud toolkit, to
 provision and configure secure communications (SSH) with cloud virtual
 machines. The Docker architecture provides containers on host
@@ -304,7 +303,7 @@ Docker container, after which the container can be treated like any virtual
 machine. Brooklyn receives sensor data from the application, every Docker
 host, every Docker container, and every software component making up the
 application and can make changes in each of these. This enables Brooklyn to
-manage distribution of the application across the Docker cloud [(11)](#resources).
+manage distribution of the application across the Docker cloud [(12)](#resources).
 
 In short, Brooklyn is a platform that monitors and manages Docker
 containers using YAML blueprints for its configuration
@@ -321,17 +320,18 @@ on requirements of the application and performance. Solomon Hykes, CTO of
 Docker, stated, “Docker will give devs a standard interface to all
 [orchestration tools] and [Swarm] is an ingredient of that standard
 interface. [It] can be thought of as the glue between Docker and orchestration
-backends [(12)](#resources).”
+backends [(13)](#resources).”
 
 Swarm is designed to provide a smooth Docker deployment workflow,
 working with some existing container workflow frameworks such as Deis,
 but flexible enough to yield to heavyweight deployment and resource
 management such as Mesos. It is said to be a very simple add-on to
-Docker. It currently does not provide all the
-features of something as comprehensive as Kubernetes and its usage and
+Docker. It currently not as comprehensive as Kubernetes and its
 place in the ecosystem is still to be determined.
 
 ### Comparison and recommendations
+
+**Table 1 -‐ Size comparison of container orchestrators and managers**
 
 | Org             | Tool       | One  Host (nano) | Up to  Tens of Hosts (micro) | Up to  Hundreds of Hosts (medium) | Up to  Thousands of Hosts (large) |
 |-----------------|------------|------------------|------------------------------|-----------------------------------|-----------------------------------|
@@ -343,7 +343,7 @@ place in the ecosystem is still to be determined.
 | Mesosphere      | Marathon   |                  |                              |                                   |                 ✓                 |
 | Google          | Kubernetes |                  |                              |                                   |                 ✓                 |
 
-**Table 1 -‐ Size comparison of container orchestrators and managers**
+**Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
 | Org             | Tool       | Cluster State Management | Monitoring &  Healing | Deploy Spec                                 | Allows Docker Dependency & Architectural Mapping | Deployment Method | Language |
 |-----------------|------------|--------------------------|-----------------------|---------------------------------------------|--------------------------------------------------|-------------------|----------|
@@ -354,8 +354,6 @@ place in the ecosystem is still to be determined.
 | CloudSoft       | Clocker    |             ✓            |           ✓           | Apache Brooklyn YAML blueprint + Dockerfile |                         ✓                        | API / Web         | Java     |
 | Mesosphere      | Marathon   |             ✓            |           ✓           | JSON                                        |                         ✓                        | API / CLI         | C++      |
 | Google          | Kubernetes |             ✓            |           ✓           | YAML / JSON                                 |                         ✓                        | API / CLI         |          |
-
-**Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
 **Current Recommendation:** Kubernetes
 
@@ -382,11 +380,13 @@ Numbered citations in this article:
 
 9. <http://deis.io/overview/>
 
-10. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
+10. <http://www.cloudsoftcorp.com/community/>
 
-11. <http://www.infoq.com/news/2014/06/clocker>
+11. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
 
-12. <https://twitter.com/solomonstre/status/492111054839615488>
+12. <http://www.infoq.com/news/2014/06/clocker>
+
+13. <https://twitter.com/solomonstre/status/492111054839615488>
 
 Other recommended reading:
 
