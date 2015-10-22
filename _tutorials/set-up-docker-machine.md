@@ -81,6 +81,6 @@ Docker Machine is not required to run virtual environments on Linux. However, if
 
 ### Next steps
 
- After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image](docs/tutorials/run-docker-image).
+After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image](docs/tutorials/run-docker-image).
 
-If you wish to learn how to create a container, go to [Containers 101](docs/tutorials/containers-101).
+To learn how to create a container, go to [Containers 101](docs/tutorials/containers-101).

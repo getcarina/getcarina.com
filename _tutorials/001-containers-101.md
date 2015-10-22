@@ -62,7 +62,7 @@ To create and run a container, you must first download an image. For example, th
 
 `docker pull ubuntu:14.04`
 
-You can download the latest release by omitting the release number tag, but we don't recommend it. Build your applications on specific image versions for greater stability. Move new versions in a controlled fashion through your [CI/CD pipeline](link-to-ci-cd-tutorial).
+You can download the latest release by omitting the release number tag, but we don't recommend it. Build your applications on specific image versions for greater stability. Move new versions in a controlled fashion through your CI/CD pipeline.
 
 ####Run a container
 To create a container from an Ubuntu image, you use the following command. The `run` command creates the container and then starts it.
