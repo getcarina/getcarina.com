@@ -12,9 +12,7 @@ topics:
 *Begin thinking about containers by comparing a container to a hypervisor; explore the ecosystem of container tools; focus on one major tool, Docker; investigate detailed recommendations relevant to your use case.*
 
 This is an introduction to the various
-technologies emerging in and around the container space; as an introduction, it does not
-dive deeply into the details of any one
-technology. Instead, this introduction provides some starting points from which you can begin to explore
+technologies emerging in and around the container space, providing some starting points from which you can begin to explore
 containers and prepare for the architecture
 decisions that you face in adapting containers into both your
 infrastructure and toolbox. In addition, this introduction links to detailed analyses that highlight which container systems
@@ -35,7 +33,7 @@ discussions, articles, and blog posts. You can see some of those sources listed 
 
 ### How containers differ from the hypervisor
 
-The excitement about containers in the recent two years becomes understandable
+The recent excitement about containers becomes understandable
 when you think of IT infrastructure from a traditional virtualization
 perspective and consider the potential for even more elasticity and capability utilizing
 computing resources.
@@ -43,19 +41,19 @@ computing resources.
 In short, the virtualization we’ve all come to know and use today is
 possible because of the development and rise of the hypervisor. If virtualization as enabled by hypervisors has been so ubiquitous and successful, why has the focus changed to containers and Docker? James Bottomley, leading Linux kernel
 developer and CTO of server virtualization for Parallels, explained that VM hypervisors, such as Hyper-V, KVM, and Xen, are all "based on emulating virtual hardware. That means
-they’re fat in terms of system requirements."
+they’re fat in terms of system requirements" [(1)](#resources).
 
 Containers, however, use shared operating systems. That means they are
-much more efficient than hypervisors in system resource terms. Instead
+much more efficient than hypervisors in terms of system resources. Instead
 of virtualizing hardware, containers rest on top of a single Linux
-instance on the host. This in turn means you can “leave behind
+instance on the host. According to Bottomley, his means that you can “leave behind
 the useless 99.9% VM junk, leaving you with a small, neat capsule
-containing your application,” said Bottomley.
+containing your application” [(1)](#resources).
 
-Therefore, according to Bottomley, with a perfectly tuned container
-system, you can have as many as four-to-six times the number of
-server application instances as you can using Xen or KVM VMs on the same
-hardware [(1)](#resources).
+Therefore, with a perfectly tuned container
+system, you can have as many as four-to-six times as many
+server application instances as you can using Xen or KVM virtual machines on the same
+hardware.
 
 ### An evolving ecosystem
 
