@@ -78,7 +78,7 @@ Docker image that you have retrieved from a container
 image registry such as Docker Hub.
 Image registries can be public or private and are available from several providers;
 you can read more about image registries at
-[Docker best practices: image repository](/docker-best-practices-image-repository/).
+[Docker best practices: image repository](../docker-best-practices-image-repository/).
 
 After you retrieve a container, you must
 instantiate the container on your host
@@ -190,7 +190,7 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Docker best practices: image repository](/docker-best-practices-image-repository/)
+- [Docker best practices: image repository](../docker-best-practices-image-repository/)
 
 - <http://www.busybox.net/about.html>
 
