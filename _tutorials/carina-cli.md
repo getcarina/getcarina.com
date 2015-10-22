@@ -1,6 +1,6 @@
 ---
 title: Getting started with the Carina CLI
-Author: Anne Gentle <anne.gentle@rackspace.com>
+author: Anne Gentle <anne.gentle@rackspace.com>
 date: 2015-10-20
 permalink: docs/tutorials/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
@@ -9,67 +9,71 @@ topics:
   - cli
   - intermediate
 ---
+This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring with credentials.
 
-This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The Carina CLI ``carina`` is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, then configuring with credentials.
+### Prerequisites <a name="Prereq"></a>
 
-### Prerequisites
-
-* Your API Key. Go to [Carina control panel](app.getcarina.com), click your username in the top right corner, then click API Key.
+Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
 ### Download and install the Carina CLI
 
-Note: Instructions to be updated with Windows-specific commands. 
+Note: Instructions will be updated with Windows-specific commands. 
 
-1. Download and save the binary matching your operating system:
+1. Download and save the CLI binary that matches your operating system:
 
 * [Mac OSX, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-darwin-amd64)
 * [Linux, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-linux-amd64)
 * [Windows, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina.exe)
 
-2. Rename the binary to `carina`. For example, on Mac OSX, enter:
+2. Rename the binary to `carina`. For example, on Mac OS X, enter the following:
 
-   mkdir ~/bin
+```bash
+   $ mkdir ~/bin
    mv carina-darwin-amd64 ~/bin/carina
+```
 
-3. Make the binary executable. On Mac OSX and Linux enter:
-
+3. On Mac OSX and Linux, make the binary executable:
+```bash
     chmod u+x ~/bin/carina
-
-3. Link the binary to /usr/local/bin/ with these commands:
-
+```
+3. Link the binary to /usr/local/bin/ with the following commands:
+```bash
    mkdir -p /usr/local/bin/
    ln -s ~/bin/carina /usr/local/bin/carina 
+```   
 
-4. Add the binary to your path with this command:
-
+4. Add the binary to your path with the following command:
+```bash
     export PATH=$PATH:$HOME/bin
+```
 
 ### Configure with Carina credentials
 
 1. Gather the required information:
 
-* Username (CARINA_USERNAME): a Carina username from https://mycluster.rackspace.com
-* API key (CARINA_APIKEY) a Carina API key
+* Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](app.getcarina.com).
+* API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsite](#Prereq).
 
-2. Set your environment variables to contain these credentials:
-
+2. Set your environment variables to contain these credentials. For example:
+```bash
    export CARINA_USERNAME=fnamelname
    export CARINA_APIKEY=ddd1233abcdef4a0bc5da6789123ab45c
+```
 
 3. Verify you can issue `carina` commands:
-
+```bash
    $ carina list
-
-   If you have some clusters already running, you see:
-
+```
+   If you have some clusters already running, you see output similiar to the following:
+```
    ClusterName       Flavor           Nodes    AutoScale    Status
    websocketsrock    container1-2G    2        true         active
    railsanne         container1-4G    4        true         active
-
+```
 ### Manage Carina clusters
 
-1. Create a Carina cluster using the `carina create...` command. For example:
-
+1. Create a Carina cluster by using the `carina create...` command. For example:
+```bash
    $ carina create mycluster --wait --nodes=2 --autoscale
    
    mycluster    container1-4G    2    true    active
@@ -78,22 +82,24 @@ Note: Instructions to be updated with Windows-specific commands.
    * --wait       wait for swarm cluster completion
    * --nodes=1    number of nodes for the initial cluster
    * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds segments as they are needed.
-
-2. Once it completes, download the credentials for the cluster:
-
+```
+2. After the cluster is created, download the credentials for the cluster:
+```bash
    $ carina credentials --path=/tmp/ mycluster
-
-   Where --path=PATH indicates the local directory path to write the credentials files.
-
-   #
-   # Credentials written to /tmp/
-   #
+```
+   `--path=PATH` indicates the local directory path to write the credentials files to. 
+   
+   ```bash
+   Credentials written to /tmp/.
    source "/tmp/docker.env"
-   # Run the command above or eval a subshell with your arguments to carina
-   #   eval "$( carina command... )"
+   ```
+   Run the previous command, or eval a subshell with your arguments to carina as follows:
+```bash
+   eval "$( carina command... )"
+```
 
 3. Source the `docker.env` environment variables for use with `docker info`:
-
+```bash
    $ source /tmp/docker.env
    $ docker info
 
@@ -116,9 +122,9 @@ Note: Instructions to be updated with Windows-specific commands.
    CPUs: 24
    Total Memory: 8.4 GiB
    Name: a1bc2d3456e7
-
-View the Swarm management containers:
-
+```
+4. View the Swarm management containers:
+```bash
    $ docker ps -a
 
 
@@ -129,9 +135,9 @@ View the Swarm management containers:
    3f77440215be        swarm               "/swarm manage -H=tcp"   13 minutes ago      Up 13 minutes       2375/tcp, 104.130.0.48:2376->2376/tcp   4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1/swarm-manager
    06491282ee7b        swarm               "/swarm join --addr=1"   13 minutes ago      Up 13 minutes       2375/tcp                                1ca87d26-0d26-48cb-8a34-1b68ce124e6e-n1/swarm-agent
    62a5e84fa358        cirros              "/sbin/init"             13 minutes ago                                                                  4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1/swarm-data
-
+```
 
 ### Next steps
 
-Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
+Learn about all of the features available to you in the [Carina Overview]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
 
