@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: market analysis'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-market-analysis/
-description: Introduction to container technologies, powered by the Rackspace Container Service
+description: Explore the ecosystem of container-related tools
 topics:
   - best-practices
   - planning
