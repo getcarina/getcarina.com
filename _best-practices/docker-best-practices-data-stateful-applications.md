@@ -134,7 +134,7 @@ hit. However, Flocker is open-source and free to use, so you can experiment and 
 ClusterHQ seems to be becoming an important provider of container tools, so monitoring the growth of both the Flocker tool and the ClusterHQ company is well-advised.
 
 You can read more about Flocker and other orchestration tools at
-[Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 For Docker to truly flourish as the new infrastructure stack that
 powers the next web, containers need serious work mitigating the data
@@ -191,7 +191,7 @@ Other recommended reading:
 
 - <http://www.rackspace.com/cloud/databases>
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 In addition to *best-practices* articles such as this one,
 Rackspace Container Service documentation includes *tutorials* and *references*:
