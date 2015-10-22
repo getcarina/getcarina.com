@@ -4,6 +4,7 @@ author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-09
 permalink: docs/tutorials/load-balance-wordpress-docker-containers/
 description: Learn how to spin up a multi-container WordPress application running NGINX, PHP-FPM and MySQL on Carina
+published: false
 topics:
   - docker
   - intermediate
@@ -84,10 +85,16 @@ These are simply folders on a CDN; they are not Docker containers.
   ```
   cd /tmp
   curl -sO https://wordpress.org/latest.zip
-  unzip latest.zip
+  unzip latest.zip && cd wordpress
   ```
 
-4. Upload all of the public assets to the container that you just created:
+4. Delete all of the PHP files, since you only want to upload public assets:
+
+  ```
+  find . -regex ".*\.php$" -type f | xargs rm
+  ```
+
+5. Upload all of the files to your Cloud Files container:
 
   ```
   rack files object upload-dir \
@@ -95,19 +102,7 @@ These are simply folders on a CDN; they are not Docker containers.
     --dir . \
     --recurse \
     --region ord
-
-  cd -
   ```
-
-**Note**: The preceding command also uploads PHP files, which is an unfortunate
-side effect of uploading the entire directories. If you'd rather upload _only_
-public assets (for example, JavaScript, CSS, and font files) you can run the
-following command, but it will be much slower:
-
-```
-find . -type f -not -name "*.php" \
-  -exec sh -c "rack files object upload --file {} --name {} --region ord --container wordpress" \;
-```
 
 ### Enable CDN on the Cloud Files container
 
@@ -129,45 +124,61 @@ files to it, you need to enable CDN by following these steps:
    value of RS_CNAME to the HTTPS URL that you just copied. Be sure to omit
    the *https://* scheme from the beginning of the URL.
 
-### Set up MySQL
+### Create MySQL container
 
-If you followed our previous tutorials and would like to reuse the same
-database instance, you can follow steps 1, 10, 12, and 14 of this procedure and
-skip the rest.
-
-The next step is to create a database instance that is running MySQL. You can
-do this in the Rackspace Cloud Control Panel by following these instructions:
+The first step is to create the container that will be running MySQL.
 
 1. Open up the **env** file that you downloaded in
    [Download an environment file](#download-an-environment-file).
-2. Log in to the [Cloud Control Panel](https://mycloud.rackspace.com/).
-3. At the top of the panel, click **Databases > MySQL**.
-4. On the Cloud Databases page, click **Create Instance**.
-5. Name the instance **WordPress** and select **IAD** as the region.
-6. For the engine, select **MySQL 5.6**.
-7. For the RAM, **2 GB** is recommended, but use the value that you prefer (a single
-   WordPress container does not require much RAM).
-8. Specify **5 GB** for the disk space.
-9. In the Add Database section, create a database named **wordpress**.
-10. In the **env** file, set the value for the WORDPRESS_DB_NAME to the
-    database name that you previously specified.
-11. Specify **wordpress** as the username, and assign a
-   [strong password](https://strongpasswordgenerator.com/) to it.
-12. In the **env** file, set the value for WORDPRESS_DB_USER and
-    WORDPRESS_DB_PASSWORD to the two values previously specified.
-13. Click **Create instance**.
 
-    A compute instance with 2 GB of RAM and 5 GB of disk space running MySQL
-    5.6 is provisioned. It might take a few minutes to build. The **wordpress**
-    user is automatically granted full privileges to the new **wordpress**
-    database.
-14. When the instance hostname is displayed in the control panel, set the value
-    of the WORDPRESS_DB_HOST variable in the **env** file to it. The hostname
-    looks like the following example:
+2. Generate two [strong passwords](https://strongpasswordgenerator.com/): a
+   root password and a password for the `wordpress` user. Set them as
+   environment variables so that you do not forget them:
+
+   ```
+   export ROOT_PASSWORD=<rootPassword>
+   export WORDPRESS_PASSWORD=<wordpressPassword>
+   ```
+
+3. In the **env** file, set WORDPRESS_DB_PASSWORD to the value of
+    `<wordpressPassword>` previously specified.
+
+4. Create the container by running the following terminal command. Name the
+  container `mysql` and use the password variables that you just created:
+
+ ```
+ docker run --detach \
+   --name mysql \
+   --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+   --env MYSQL_USER=wordpress \
+   --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+   --env MYSQL_DATABASE=wordpress \
+   mysql
+ ```
+
+ The output should show the container ID.
+
+5. In the **env** file, set the WORDPRESS_DB_NAME value to `wordpress` and the
+   WORDPRESS_USER to `wordpress`.
+
+6. To verify that the container is running, execute the following command:
+
+ ```
+ docker ps
+ ```
+
+ The output shows the full details of the `mysql` container, listening on port
+ `3306/tcp`.
+
+7. After your MySQL container is up and running, run the following command to
+   find its IP address:
 
   ```
-  cdedf98d3852989dc00f4b6bd0e31f98af746a1c.rackspaceclouddb.com
+  docker inspect mysql | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4
   ```
+
+8. In the **env** file, set WORDPRESS_DB_HOST to the value of the IP address
+   from the previous step.
 
 ### Set up Redis
 
@@ -221,7 +232,7 @@ You will be deploying variants of the following base images:
 You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
-- Run a prebuilt image that is hosted on the `rackspace` Docker Hub account.
+- Run a prebuilt image that is hosted on the `carinamarina` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip to [Deploy WordPress](#deploy-wordpress).
 
@@ -284,7 +295,7 @@ each composed of two containers: a NGINX front end and a PHP-FPM back end.
     make this up and include a test domain. If you use a made-up domain,
     remember this value because you'll need it again later.
   - For `<namespace>`, use your own Docker Hub account name or, if you did not
-    build and push your own Docker image, use `rackspace`.
+    build and push your own Docker image, use `carinamarina`.
 
   You can use the following command to help you replace values in your file:
 

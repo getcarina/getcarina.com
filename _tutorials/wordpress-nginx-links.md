@@ -2,16 +2,16 @@
 title: Run WordPress across linked front end and back end containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-05
+permalink: docs/tutorials/linking-wordpress-containers/
 description: Learn how to spin up a multi-container WordPress application split across linked containers, using NGINX as the front end and PHP-FPM as the back end.
 topics:
   - docker
   - beginner
 ---
 
-In the [previous tutorial](../wordpress-apache-mysql), you set up a single
-Docker container running Apache 2 and WordPress. For your database, you used an
-externally hosted MySQL instance, thereby avoiding some of the more complicated
-issues around container relationships and data persistence in Docker.
+In the [previous tutorial](../wordpress-apache-mysql), you set up a Docker
+container running Apache 2 and WordPress. For your database, you ran MySQL in a
+Docker container.
 
 This tutorial describes how to set up container links, according to the best
 practices set out by the Docker community. By the end, you will have a single
@@ -21,11 +21,7 @@ WordPress, and a MySQL container handling persistent state.
 **Note:** Storing persistent data in containers is a hotly contested issue. Many
 prefer to instead use an external service such as Rackspace Cloud Databases.
 This tutorial sets up a MySQL container just to demonstrate container
-relationships. If you'd rather use a database instance, use the instance that
-you created in [the previous tutorial](../wordpress-apache-mysql), and skip the
-[Create a MySQL container](#create-mysql-container) and
-[Deploy a WordPress container running a PHP-FPM pool](#deploy-wordpress-container-running-php-fpm-pool)
-sections of this tutorial.
+relationships.
 
 ### Prerequisite
 
@@ -131,10 +127,10 @@ The final step is to start an NGINX front-end container. To do so, you deploy a
 variant of the base `nginx` Docker image. You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
-- Run a prebuilt image that is hosted on the `rackspace` Docker Hub account.
+- Run a prebuilt image that is hosted on the `carinamarina` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip to
-[Run the NGINX container](#run-the-NGINX-container).
+[Run the NGINX container](#run-the-nginx-container).
 
 To build the Docker image, build it locally and push it to a central repository
 such as Docker Hub.
@@ -149,13 +145,13 @@ which contains the `nginx` Dockerfile and the `nginx` configuration file:
 2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
 
   ```
-  docker build -t <userNamespace>/NGINX-fpm NGINX-fpm
+  docker build -t <userNamespace>/nginx-fpm nginx-fpm
   ```
 
 3. Push your local image to Docker Hub, just like you would with Git:
 
   ```
-  docker push <userNamespace>/NGINX-fpm
+  docker push <userNamespace>/nginx-fpm
   ```
 
 ### Run the NGINX container
@@ -163,17 +159,17 @@ which contains the `nginx` Dockerfile and the `nginx` configuration file:
 After you've prepared the image, you can start the NGINX container.
 
 Run the following command, substituting `<namespace>` with either your own
-Docker Hub account name, or `rackspace` if you did not build and push your own
+Docker Hub account name, or `carinamarina` if you did not build and push your own
 Docker image:
 
 ```
 docker run -d \
   -p 80:80 \
-  --name NGINX \
+  --name nginx \
   --link wordpress-fpm:fpm \
   --volumes-from wordpress-fpm \
   -e "affinity:container==wordpress-fpm" \
-  <namespace>/NGINX-fpm
+  <namespace>/nginx-fpm
 ```
 
 This command creates a container running NGINX, which handles traffic for the
@@ -196,12 +192,13 @@ You can also visit your NGINX front end by finding its IPv4 address and opening
 it in your default browser:
 
 ```
-open http://$(docker port NGINX 80)
+open http://$(docker port nginx 80)
 ```
 
 You should now see the standard WordPress installation guide.
 
 ### Next step
 
-The [next tutorial]() explores how to set up a fully load balanced and more
-distributed WordPress cluster on Docker Swarm.
+The [next tutorial](../load-balance-wordpress-docker-containers/) explores how
+to set up a fully load balanced and more distributed WordPress cluster on
+Docker Swarm.
