@@ -59,11 +59,7 @@ hardware.
 
 The immense evolution that containers are bringing forth has created a
 space for a slew of technologies and tools to emerge, particularly at
-the orchestration level.
-
-Being somewhat of the Wild West right now in terms of competition does
-not mean that one tool is the be-all and end-all to enable a
-container offering.
+the orchestration level. However, no single tool is a clear best option to enable a container offering.
 
 Viewing the ecosystem as a complimentary vertical stack rather than a
 horizontal one where tools are constantly bumping heads helps alleviate
@@ -86,27 +82,28 @@ serves as its driving force.
 All container-related tools are not only young, but are also moving at a rapid pace.
 For some, their statements of what they’re meant
 to aid with and which technologies they respectively
-interoperate with lack clarity or are still to be determined. It is the author’s opinion
-that throughout 2015 the community will make it known which
-technologies are meant to stick and which should be shelved.
+interoperate with lack clarity or are still to be determined.
+Ultimately, the community will decide which
+technologies will grow and evolve and which should be shelved.
 
 ### Docker
 
-Of all the container-related tools available, Docker is the best known and most popular; Docker's wide adoption has spawned a slew of technical opportunities to revamp and
+Of all the container-related tools available, Docker is the best known and most popular.
+Docker's wide adoption has spawned a slew of technical opportunities to revamp and
 reconstitute how datacenters and application stacks should look and
 operate. There are varying degrees of features and capabilities
 that span and even spill over from one technology to the other, and
 noticing these subtleties is a very complex and tedious task. Figuring
 out which set of technologies will help you establish your future
 roadmap comes down to understanding the types of users you’re trying to enable, as
-well as the classes of workloads that you wish to manage across your resources.
+well as the classes of workloads that you want to manage across your resources.
 
 Whether or not you intend to work directly with Docker, learning about Docker will help you develop the vocabulary and understand the concepts to make sense of other container tools.
 [Docker's documentation](http://docs.docker.com/) is a good place to begin that effort.
 
 ### Recommendations
 
-For specific observations and suggestions that you may wish to implement as you begin working with containers, we have developed a collection of best-practices articles about tools and practices in the container ecosystem. After the title of each article here, it's key recommendations are summarized; for details explaining a recommendation, follow the link to the article.
+For specific observations and suggestions that you may wish to implement as you begin working with containers, we have developed a collection of best-practices articles about tools and practices in the container ecosystem. After the title of each article here, it's key recommendations are summarized. For details explaining a recommendation, follow the link to the article.
 
 * [Introduction to container technologies: Docker](/container-technologies-docker/)
 
@@ -132,10 +129,6 @@ For specific observations and suggestions that you may wish to implement as you 
 
 > Use Weave to create a network in which Docker containers are part of the same virtual network switch no matter where they are running.
 
-* [Introduction to container technologies: market analysis](/container-technologies-market-analysis/)
-
-> *This article:* Begin thinking about containers by comparing a container to a hypervisor; explore the ecosystem of container tools; focus on one major tool, Docker; investigate detailed recommendations relevant to your use case.
-
 * [Container design philosophy](/container-design-philosophy/)
 
 > Run one process per container, manage containers as roles, and listen to advice from Docker but don't follow it blindly.
@@ -150,7 +143,7 @@ For specific observations and suggestions that you may wish to implement as you 
 
 * [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
 
-> Never store data or logs in a container. Instead, use Docker volume mounts to create either a data volume or a data volume container.
+> Instead of storing data or logs in a container, use Docker volume mounts to create either a data volume or a data volume container.
 
 * [Docker best practices: container linking](/docker-best-practices-container-linking/)
 
