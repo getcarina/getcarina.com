@@ -1,6 +1,7 @@
 ---
 title: Carina glossary
-date: 2015-10-21
+author: Kelly Holcomb <kelly.holcomb@rackspace.com>
+date: 2015-10-22
 permalink: docs/references/glossary/
 description: Provides a glossary of the terms used in Carina documentation
 topics:
@@ -16,11 +17,15 @@ A pattern for linking containers. The ambassador pattern uses Docker links with 
 
 ##### AppArmor profile
 
-A security layer in Carina that keeps conatiner resources isolated. It denies access to sensitive file paths on the hosts, whitelists expected mount calls for the container file system, and restricts the device capabilities of the Docker process.
+A security layer in Carina that keeps container resources isolated. AppArmor is a Linux kernel security module. The profile denies access to sensitive file paths on the hosts, whitelists expected mount calls for the container file system, and restricts the device capabilities of the Docker process.
 
 ##### Carina
 
-A hosted container runtime environment provided by Rackspace. Carina is built on the open-source Docker Swarm project and provides bare-metal speeds, security, and portability for running yor applications in containers. 
+A hosted container runtime environment provided by Rackspace. Carina is built on the open-source Docker Swarm project and provides bare-metal speeds, security, and portability for running your applications in containers. 
+
+##### Carina CLI
+
+A command-line interface for Carina that you can use to launch and control Docker Swarm clusters on a Carina endpoint.
 
 ##### cluster
 
@@ -28,7 +33,7 @@ A pool of compute, storage, and networking resources that serves as a host for o
 
 ##### container
 
-An userspace instance that packages a piece of software with a complete file system that contains everything that the software needs to run, such as code, system tools, and system libraries. Each container is an isolated and secure application platform. A container is created from an *image*. Containers can be run, started, stopped, moved, and deleted.
+A userspace instance that packages a piece of software with a complete file system that contains everything that the software needs to run, such as code, system tools, and system libraries. Each container is an isolated and secure application platform. A container is created from an *image*. Containers can be run, started, stopped, moved, and deleted.
 
 ##### credentials
 
@@ -52,7 +57,7 @@ Runs in a Docker host and builds, runs, and distributes containers. Users intera
 
 ##### Docker host
 
-Runs in a virtual machine built by the *Docker Machine*. The host contains the daemon, and it is where images are built and containers are created. In Carina, the equivalent of a Docker host is a *segment*.
+A machine that runs the *Docker daemon*. The host is also where images are built and containers are created. When Docker is run locally on Windows and Mac OS X machines, the host runs in a virtual machine built by the *Docker Machine*. In Carina clusters, the equivalent of a Docker host is a *segment*.
 
 ##### Docker Hub
 
@@ -64,7 +69,7 @@ A read-only template that is used to create Docker containers. For example, an i
 
 ##### Docker links
 
-A pattern for linking containers that enables containers that are on the same host to communicate. 
+A Docker configuration option that connects containers. Links enable containers that are on the same host to communicate. 
 
 ##### Docker Machine	
 
