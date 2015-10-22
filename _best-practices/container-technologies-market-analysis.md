@@ -105,31 +105,31 @@ Whether or not you intend to work directly with Docker, learning about Docker wi
 
 For specific observations and suggestions that you may wish to implement as you begin working with containers, we have developed a collection of best-practices articles about tools and practices in the container ecosystem. After the title of each article here, it's key recommendations are summarized. For details explaining a recommendation, follow the link to the article.
 
-* [Introduction to container technologies: Docker](/container-technologies-docker/)
+* [Introduction to container technologies: Docker](../container-technologies-docker/)
 
 > Docker automates the deployment of applications within containers. Each container has a much smaller resource footprint than a comparable conventional virtual machine. Containers are most likely to be most immediately helpful in new projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.
 
-* [Introduction to container technologies: container operating systems](/container-technologies-operating-systems/)
+* [Introduction to container technologies: container operating systems](../container-technologies-operating-systems/)
 
 > Use container-oriented operating systems CoreOS or Project Atomic for the functionality required to deploy applications along with self-updating and healing properties.
 
-* [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+* [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 
 > For service discovery and shared configuration, use the etcd distributed key-value store.
 
-* [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/)
+* [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/)
 
 > For efficient isolation of resources facilitating different types of workloads and frameworks, use the Mesos distributed systems kernel.
 
-* [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+* [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 > The best tool for orchestration and management of container clusters varies with the size of the cluster: Kubernetes and Marathon excel with thousands of hosts while Compose is ideal for a single host.
 
-* [Introduction to container technologies: container networking](/container-technologies-networking/)
+* [Introduction to container technologies: container networking](../container-technologies-networking/)
 
 > Use Weave to create a network in which Docker containers are part of the same virtual network switch no matter where they are running.
 
-* [Container design philosophy](/container-design-philosophy/)
+* [Container design philosophy](../container-design-philosophy/)
 
 > Run one process per container, manage containers as roles, and listen to advice from Docker but don't follow it blindly.
 
@@ -137,34 +137,34 @@ For specific observations and suggestions that you may wish to implement as you 
 
 > Create and customize your container images with a Dockerfile.
 
-* [Docker best practices: image repository](/docker-best-practices-image-repository/)
+* [Docker best practices: image repository](../docker-best-practices-image-repository/)
 
 > Create containers consistently and rapidly from saved container images.
 
-* [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
+* [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/)
 
 > Instead of storing data or logs in a container, use Docker volume mounts to create either a data volume or a data volume container.
 
-* [Docker best practices: container linking](/docker-best-practices-container-linking/)
+* [Docker best practices: container linking](../docker-best-practices-container-linking/)
 
 > Use a service registration and discovery tool instead of Docker container linking.
 
-* [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
+* [Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/)
 
 > Use Kubernetes with Docker to manage and orchestrate containers in your stack.
 
-* [Container ecosystem: Mesos versus OpenStack](/container-ecosystem-mesos-openstack/)
+* [Container ecosystem: Mesos versus OpenStack](../container-ecosystem-mesos-openstack/)
 
 > Mesos and OpenStack can run separately or together. OpenStack
 splits a cluster across several virtual machines; Mesos runs on bare metal or on Openstack; Mesos
 combines all resources, whether virtual machines or bare metal,
 and presents them as a single entity.
 
-* [Container ecosystem: Docker Swarm](/container-ecosystem-docker-swarm/)
+* [Container ecosystem: Docker Swarm](../container-ecosystem-docker-swarm/)
 
 > Swarm's usefulness is unclear; wait for it to develop.
 
-* [Container ecosystem: OpenShift](/container-ecosystem-openshift/)
+* [Container ecosystem: OpenShift](../container-ecosystem-openshift/)
 
 > OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.
 
