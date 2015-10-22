@@ -18,7 +18,7 @@ topics:
 
 Containers package a piece of software with a complete file system that contains everything that the software needs to run, such as code, runtime, system tools, and system libraries. Rather than include a full operating system, like virtual machines (VMs) do, containers share the kernel of the host OS, enabling them to boot in seconds. Because the only space that containers use is the memory and disk space necessary for the software to run, containers are more portable and efficient than VMs.
 
-![Containers are more lightweight and efficient than virtual machines](% asset_path containers-101/containers-vs-vms.svg)
+![Containers are more lightweight and efficient than virtual machines]({% asset_path containers-101/containers-vs-vms.svg %})
 
 ###How do containers work?
 
