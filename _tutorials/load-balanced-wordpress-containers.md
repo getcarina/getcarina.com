@@ -4,6 +4,7 @@ author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-09
 permalink: docs/tutorials/load-balance-wordpress-docker-containers/
 description: Learn how to spin up a multi-container WordPress application running NGINX, PHP-FPM and MySQL on Carina
+published: false
 topics:
   - docker
   - intermediate
@@ -231,7 +232,7 @@ You will be deploying variants of the following base images:
 You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
-- Run a prebuilt image that is hosted on the `rackspace` Docker Hub account.
+- Run a prebuilt image that is hosted on the `carinamarina` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip to [Deploy WordPress](#deploy-wordpress).
 
@@ -294,7 +295,7 @@ each composed of two containers: a NGINX front end and a PHP-FPM back end.
     make this up and include a test domain. If you use a made-up domain,
     remember this value because you'll need it again later.
   - For `<namespace>`, use your own Docker Hub account name or, if you did not
-    build and push your own Docker image, use `rackspace`.
+    build and push your own Docker image, use `carinamarina`.
 
   You can use the following command to help you replace values in your file:
 

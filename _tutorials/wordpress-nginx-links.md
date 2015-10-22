@@ -127,7 +127,7 @@ The final step is to start an NGINX front-end container. To do so, you deploy a
 variant of the base `nginx` Docker image. You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
-- Run a prebuilt image that is hosted on the `rackerlabs` Docker Hub account.
+- Run a prebuilt image that is hosted on the `carinamarina` Docker Hub account.
 
 If you want to use the prebuilt image, you can skip to
 [Run the NGINX container](#run-the-nginx-container).
@@ -159,7 +159,7 @@ which contains the `nginx` Dockerfile and the `nginx` configuration file:
 After you've prepared the image, you can start the NGINX container.
 
 Run the following command, substituting `<namespace>` with either your own
-Docker Hub account name, or `rackerlabs` if you did not build and push your own
+Docker Hub account name, or `carinamarina` if you did not build and push your own
 Docker image:
 
 ```
