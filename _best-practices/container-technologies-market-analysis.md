@@ -46,12 +46,12 @@ they’re fat in terms of system requirements" [(1)](#resources).
 Containers, however, use shared operating systems. That means they are
 much more efficient than hypervisors in terms of system resources. Instead
 of virtualizing hardware, containers rest on top of a single Linux
-instance on the host. According to Bottomley, his means that you can “leave behind
+instance on the host. According to Bottomley, this means that you can “leave behind
 the useless 99.9% VM junk, leaving you with a small, neat capsule
 containing your application” [(1)](#resources).
 
 Therefore, with a perfectly tuned container
-system, you can have as many as four-to-six times as many
+system, you can have up to six times as many
 server application instances as you can using Xen or KVM virtual machines on the same
 hardware.
 
