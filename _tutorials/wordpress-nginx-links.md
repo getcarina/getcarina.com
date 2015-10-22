@@ -165,7 +165,7 @@ Docker image:
 ```
 docker run -d \
   -p 80:80 \
-  --name NGINX \
+  --name nginx \
   --link wordpress-fpm:fpm \
   --volumes-from wordpress-fpm \
   -e "affinity:container==wordpress-fpm" \
