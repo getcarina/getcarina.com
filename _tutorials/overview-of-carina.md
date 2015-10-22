@@ -23,11 +23,10 @@ You'll also have access to an intuitive user interface and Carina specific devel
 
 Creating an account to running a containerized application on a cluster takes under 2 minutes. You'll be using open source software like Docker to compose your applications. The infrastructure is managed by Rackspace so you can focus on what's important to you, your business and your applications.
 
-### How does Rackspace Container Service work?
+### How does Carina even work?
 
 Intro paragraph
-
-![Carina overview](% asset_path overview-of-carina/carina-cluster.svg)
+![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
 
 Details
 

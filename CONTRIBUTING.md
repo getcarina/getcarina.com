@@ -60,7 +60,10 @@ If a piece of content requires a diagram, follow these steps.
 
 3. Afterward the diagram has undergone triage, Nate will send the edited file back. With the new diagram in your possession, go ahead an place the file into the `_assets/img/<articleName>` directory for your article. Be sure the you are saving the file as `.svg` file.
 
-4. In your content file, add your diagram by using this syntax: `![<title of diagram](% assest_path <article-name>/<name of diagram file>)`. `assest_path` is relative to the `_assets/img` directory.
+4. In your content file, add your diagram by using this syntax: `![<titleOfDiagram>]({% asset_path
+<articleName>/<nameOfDiagramFile> %})`. `assest_path` is relative to the `_assets/img` directory.
+
+    e.g. `![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})`
 
 ## Visuals
 
