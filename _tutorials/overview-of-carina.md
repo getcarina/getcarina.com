@@ -29,8 +29,7 @@ Before you get started with Carina, you should do the following:
 
 The following diagram outlines how Carina works.
 
-[Insert the diagram that Nate is working on here]
-
+![Carina overview](% asset_path overview-of-carina/carina-cluster.svg)
 
 #Getting Started
 

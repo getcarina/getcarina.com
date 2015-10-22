@@ -28,17 +28,17 @@ Follow the style guidelines defined at in the [Writing style guide](https://one.
 
 A few specific guidelines for container content:
 
-- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles. 
+- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles.
 
 - When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`. For more information, see [Placeholder text](https://one.rackspace.com/display/devdoc/Placeholder+%28variable%29+text).
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
- 
+
 For terminology usage related to container content, see `<termsFileComingSoon>`.
 
 ## Metadata
 
-When populating the frontmatter metadata of your article, use the guidelines in [frontmatter-metadata-guidelines.md](frontmatter-metadata-guidelines.md). 
+When populating the frontmatter metadata of your article, use the guidelines in [frontmatter-metadata-guidelines.md](frontmatter-metadata-guidelines.md).
 
 ## Legal
 
@@ -59,6 +59,8 @@ If a piece of content requires a diagram, follow these steps.
 2. Save your diagram in Draw.io by clicking **File**>**Export as**>**SVG** or take a picture of you sketch. Send the saved `.svg` file or the picture to nate.archer@rackspace.com. Nate will either triage the diagram, or create a diagram based off of your sketch.
 
 3. Afterward the diagram has undergone triage, Nate will send the edited file back. With the new diagram in your possession, go ahead an place the file into the `_assets/img/<articleName>` directory for your article. Be sure the you are saving the file as `.svg` file.
+
+4. In your content file, add your diagram by using this syntax: `![<title of diagram](% assest_path <article-name>/<name of diagram file>)`. `assest_path` is relative to the `_assets/img` directory.
 
 ## Visuals
 
