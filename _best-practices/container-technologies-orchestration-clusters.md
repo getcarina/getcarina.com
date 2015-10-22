@@ -17,7 +17,7 @@ trend that is not only very competitive but is evolving rapidly. Many options cu
 various feature sets; some of those feature sets overlap, making it challenging to choose between seemingly-similar tools.
 One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you. 
 
-![Strata of the container ecosystem]({% asset_path /_assets/img/best-practices/orchestration-clusters/container-ecosystem.svg %})
+![Strata of the container ecosystem]({% asset_path best-practices/orchestration-clusters/container-ecosystem.svg %})
 
 - Layer 7 = Workflow
 - Layer 6 = Orchestration
@@ -33,7 +33,7 @@ OpenStack also offers features that are especially relevant at the scheduling vi
 
 Another basis for comparison is a tool's ability to offer features beyond simple orchestration.
 
-![Intersections between PaaS, container orchestration, and specialized offerings]({% asset_path /_assets/img/best-practices/orchestration-clusters/containers-orchestration.svg %})
+![Intersections between PaaS, container orchestration, and specialized offerings]({% asset_path best-practices/orchestration-clusters/containers-orchestration.svg %})
 
 - Docker Compose is in the intersection between traditional Platform-as-a-Service and container orchestration.
 - Flynn is in the intersection between traditional Platform-as-a-Service and specialized offerings such as stateful  applications.
