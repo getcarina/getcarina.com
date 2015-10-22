@@ -3,7 +3,7 @@ title: 'Docker best practices: Dockerfile'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-dockerfile/
-description: Docker best practices, powered by the Rackspace Container Service
+description: Explore methods of creating and customizing container images
 docker-versions:
 topics:
   - best-practices
