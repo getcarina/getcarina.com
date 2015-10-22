@@ -10,35 +10,35 @@ topics:
   - planning
 ---
 
-*Never store data or logs in a container. Instead, use Docker volume mounts to create either a data volume or a data volume container.*
-
-A natural way to begin learning what containers can provide is to build an
-actual stack for a containerized application that could benefit from Docker.
+*Instead of storing data or logs in a container, use Docker volume mounts to create either a data volume or a data volume container.*
 
 Containers are ideal for stateless applications, meaning that data generated in one session is not recorded for use in another session.
-However, many applications require some ability to record user session activity, making some aspects of the application stateful.
-Because containers facilitate separation of concerns in a complex application, stateless and stateful aspects of an application can each be configured optimally.
+However, many applications require the ability to record user session activity, making some aspects of the application stateful.
+Because containers facilitate separation of concerns in a complex application, both stateless and stateful aspects of an application can be configured optimally.
 
 A common use case is a three-tier web application with a
 user interface at the front end,
 a logic layer in the middle,
 and a database at the backend.
 In such an application, the
-frontend and middle logic layers, if they are stateless, are perfect fits to be containerized.
+frontend and middle logic layers, if they are stateless, are ideal for containerization.
 However, for
 stateful information such as a backend database layer, or for any data that must be preserved or reused, containers are not the best match.
 
 ### Datastore and logs
 
-Because containers are likely to be short-lived and are conceptually ephemeral,
-more so than virtual machines, you should never store data or
+Because containers are likely to be short lived and are even more conceptually ephemeral than virtual machines,
+you should never store data or
 logs in a container. Instead, store data and logs by leveraging
 Docker’s volume mounts to create either a data volume or a data volume
 container that can be used and shared by other containers.
 
-Union file systems, or UnionFS, are lightweight, fast file systems that operate by creating layers. Docker uses union file systems to provide the building blocks for containers. Docker can use several union file system variants including AUFS, btrfs, vfs, and DeviceMapper [(1)](#resources).
+Union file systems, or UnionFS, are lightweight, fast file systems that operate by creating layers.
+Docker uses several union file system variants,
+including AUFS, btrfs, vfs, and DeviceMapper [(1)](#resources),
+to provide the building blocks for containers. 
 Using a Docker volume mount creates a specially designed directory within one
-or more containers that bypasses the union file system and provides a
+or more containers that bypasses the UnionFS and provides the following
 set of features for persistent and shared data:
 
 - Volumes are initialized when a container is created. If the
@@ -53,6 +53,8 @@ set of features for persistent and shared data:
 
 - Data volumes persist even if the container itself is deleted.
 
+### Data volumes and data volume containers
+
 **Data volumes** are designed to persist data, independent of the
 container's life cycle. Docker, therefore, *never* automatically
 deletes volumes when you remove a container, nor will it "garbage
@@ -62,7 +64,7 @@ or by using the `VOLUME` instruction in your Dockerfile.
 Both options perform the same task: create a volume in the
 container that is mapped to a directory on the host itself.
 In both cases, the location of the volume is irrelevant.
-The only variation is that, if you do care about the volume's location
+However, if you do care about the volume's location
 from the host's perspective,
 you can use `docker run` with the `-v` flag to request
 mounting a particular file or directory from the host
@@ -78,29 +80,34 @@ and in the container directory as `/opt/demo`.
 but are designed to persist data that you want to share between
 containers or that you want to use from non-persistent containers. To use a
 data volume container with other containers, you begin by creating
-it with something like `docker create -v /data –name datastore mysql`.
-This command will
-start a container and exit immediately, because it is used as a
-container shell that references a newly created volume that other
-containers will use, rather than an active process like other application
-containers. After the data volume container exits, you can reference it
-from other containers by using the `--volumes-from` flag on
-subsequent containers such as: `docker run –d --volumes-from datastore
-–name mywebapp demo/webapp`.
+it with a command structured like `docker create -v /data –-name datastore mysql`,
+in which `-v /data` asks for a data volume container,
+`--name datastore` makes the data volume container accessible by the name `datastore`,
+and `mysql` creates it from a saved image by that name.
 
-If you remove the datastore container or
-the containers that reference it, this does not delete the volume where
+This `docker create` command
+starts a data volume container and exist immediately because, 
+instead of an active process like other application containers,
+it is used as a
+container shell that references a newly created volume for other containers to use. 
+After the data volume container exits, you can reference it
+from other containers by using the `--volumes-from` flag on
+subsequent containers.
+For example, `docker run –d --volumes-from datastore -–name mywebapp demo/webapp`
+has access to a data volume container named `datastore`.
+
+Removing the datastore container or
+the containers that reference it does not delete the volume where
 your data is stored. To delete the volume from disk, you must explicitly
 call `docker rm –v` against the last container with a reference to the
-volume [(3)](#resources). This allows you to upgrade or effectively migrate data volumes
-between containers or even the containers using the data volume
+volume [(2)](#resources). This allows you to upgrade or effectively migrate data volumes
+between containers or migrate the containers using the data volume
 container with no worries of losing the data itself.
 
-If you use volumes with containers, when you need to back up
-a database or log that lives on the volume which in turn lives on
-the host, you can use your familiar tools on the host itself as you had
-been doing in your organization before containers were implemented. After doing
-so, you can carry out tasks such as upgrading the image itself by
+If you use volumes with containers, you can back up
+a database or log that lives on the volume by using the same method that you used before implementing containers.
+After performing a backup,
+you can upgrade the image by
 shutting down the previous container and starting the updated one with
 the same volume or volumes, or you can perform any other routine updates and
 maintenance. In summary, the general rule is that if it gets
@@ -110,8 +117,10 @@ Using a data volume container sounds like a great solution to the data
 management issue, in theory. However, when you want to
 scale out where your data resides or when your host machine restarts
 due to maintenance or failure, data volume containers may not be a complete solution.
-The current recommendation is what common sense might lead you to guess: move
-data management tasks to self-managed systems. For example, you can use
+The current recommendation is to move
+data management tasks to self-managed systems. 
+
+For example, you can use
 dedicated rsyslog servers for logs.
 You can also use redundant cloud
 services such as cloud block storage and cloud database as a service
@@ -125,11 +134,14 @@ containers.
 In theory, we should be able to co-locate the stateless applications with the
 data management services they rely on, with all of these services
 running in containers, but Docker is not ready to handle this.
-With their Flocker tool, ClusterHQ is attempting to tackle this problem by using ZFS as the foundation for
-data management and replication for containers. However, Flocker is still in very
+With their Flocker tool, ClusterHQ is attempting to tackle this problem by using 
+Zettabyte File System (ZFS) replication technology
+as to provide
+data management and replication for containers [(3)](#resources). 
+However, Flocker is still in very
 early developmental stages, and it assumes you can accept
 a clustered filesystem model and the nuances it can introduce such as
-relying on a storage pool; Flocker can also cause I/O to take a performance
+relying on a storage pool. Flocker can also cause I/O to take a performance
 hit. However, Flocker is open-source and free to use, so you can experiment and make up your own mind.
 ClusterHQ seems to be becoming an important provider of container tools, so monitoring the growth of both the Flocker tool and the ClusterHQ company is well-advised.
 
@@ -148,8 +160,8 @@ Docker.
 
 Given the potential of Docker volumes to manage
 your data, and the assumption that you are operating on a cloud
-provider, it is only logical to think that you could use the
-provider’s block storage as a service (for example, Rackspace Cloud Block Storage)
+provider, it is only logical to think that you could use your cloud
+provider’s block storage as a service, such as Rackspace Cloud Block Storage,
 in conjunction with volume
 mounts.
 
@@ -159,14 +171,14 @@ individual volumes, it is only a matter of time
 before you hit a limit of some sort at the account level, or more
 restrictively, at the service provider’s infrastructure level.
 Exceeding an infrastructure's limit is a problem you might have run into whether or not
-you were running containers; because people who run containers probably run large numbers of containers, they are likely to hit such limits sooner than otherwise.
+you were running containers. Because people who run containers probably run large numbers of containers, they are likely to hit such limits sooner than otherwise.
 
 Adding cloud block storage can help you expand your storage infrastructure as needed.
 Cloud block storage that is attached to a host is indistinguishable from direct attached storage [(4)](#resources).
 This means you can
 map a data volume container to a block storage device and share that container with other containers without having
 to introduce an additional management layer,
-just as you can [map a data volume](#mapping) so that it is known to the host by one name and to the container by another name.
+just as you can [map a data volume](#mapping) so that the host knows it by one name and the container knows it by another name.
 
 <a name="resources"></a>
 ### Resources
@@ -177,7 +189,7 @@ Numbered citations in this article:
 
 2. <https://docs.docker.com/userguide/dockervolumes/>
 
-3. <http://docs.docker.com/userguide/dockervolumes/>
+3. <http://www.eweek.com/virtualization/clusterhq-brings-docker-virtualization-to-data-storage.html>
 
 4. <http://cloud-mechanic.blogspot.com/2014/10/storage-concepts-in-docker-network-and.html>
 
@@ -188,6 +200,8 @@ Other recommended reading:
 - <http://unionfs.filesystems.org/>
 
 - <https://developer.rackspace.com/blog/rsyslog-and-elasticsearch/>
+
+- <https://docs.docker.com/reference/commandline/create/>
 
 - <http://www.rackspace.com/cloud/databases>
 
