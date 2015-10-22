@@ -20,29 +20,28 @@ You can save a customized Docker image in either of two ways:
   update the container,
   and commit the changes to an image.
 
-Specifics of your application and its dependencies can determine which
-of these methods you must use. If both options are available to you,
+The specifics of your application and its dependencies will determine which of these methods you must use. However, if both options are available to you,
 consider using a Dockerfile.
 
-### Dockerfile
+### Build image from Dockerfile
 
 Using a Dockerfile is the preferred method of creating and customizing your
-container images, as Dockerfile enables you to use
+container images because Dockerfile enables you to use
 the `docker build` command to
 build images from scratch. In a Dockerfile, you can prescribe the base
-operating system for the container. You can add the instructions you want to
+operating system for the container. You can also add the instructions you want to
 execute inside the image, such as installing packages and setting and
 configuring options.
 
-Here is a snippet of a simple Dockerfile:
+Following is an example of a simple Dockerfile:
 
-````
+```
 # This is a comment
 FROM ubuntu:14.04
 MAINTAINER Kate Smith ksmith@example.com
 RUN apt-get update && apt-get install -y ruby ruby-dev
 RUN gem install sinatra
-````
+```
 
 An image provides the foundation layer for a container.
 Based on the instructions in your Dockerfile,
@@ -58,31 +57,32 @@ the base operating system that they are most accustomed to working with
 in non-container-based configurations. For example, Ubuntu, CentOS, and Fedora
 are common choices.
 
-However, it becomes evident that most of the interaction with the container's
+However, most of the interaction with the container's
 operating system revolves around the filesystem layout and its binaries.
 For example,
 if you chose Ubuntu as your base operating system and you aren’t doing anything
 unusual in terms of the operating system itself, then you could potentially
-switch to the Debian image as it will most likely have everything you need and
-can save you at least 100MB in size.
+switch to the Debian without worrying about a lack of familiarity with the operating system. In this scenario, the Debian image most likely has everything that you would need from the Ubuntu image, but
+saves you at least 100MB in size.
+
 You must investigate this on a case-by-case basis,
 but if you are utilizing a full-size operating system such as Linux
 when a stripped-down operating system such as BusyBox could suffice,
 then you are not only consuming more space than needed, you are also adding
 time to Docker builds and image repository interactions.
 
-### Update and commit
+### Update and commit image
 
 The update-and-commit method requires that you begin with a previously created
 Docker image that you have retrieved from a container
 image registry such as Docker Hub.
-Image registries can be public or private and are available from several providers;
-you can read more about image registries at
+Image registries can be public or private and are available from several providers.
+You can read more about image registries at
 [Docker best practices: image repository](../docker-best-practices-image-repository/).
 
-After you retrieve a container, you must
-instantiate the container on your host
-running the Docker daemon, preferably with an activated TTY. Once you
+After you retrieve a container,
+you must instantiate the container on your host that is running the Docker daemon,
+preferably with an activated TTY. Once you
 have access to the container, you can make any changes required to
 personalize it. After you make those changes, you exit the container and
 save a copy of the container to your local or
@@ -93,8 +93,8 @@ extending an image, but the updated image is not easy to maintain or share.
 
 ### Recommendations
 
-The following is a collection of unordered recommendations and tips
-that don’t get enough upfront attention when starting off with Dockerfile.
+Following is a collection of recommendations and tips
+for using Dockerfile.
 Keep these tips in mind so that you can ultimately improve
 creation and utilization of Dockerfiles to build your container images.
 
@@ -131,14 +131,14 @@ creation and utilization of Dockerfiles to build your container images.
     the command string itself is used to find a match [(3)](#resources).
 
 - Build every time. Building is very fast because Docker re-uses
-  previously-cached build steps whenever possible.
+  previously cached build steps whenever possible.
   By building every time, you can use containers as reliable artifacts.
   For example,
   you can go back and run a container from four changes ago to inspect a
   problem, or you can run long tests on a version while editing the code.
 
 - When testing an edit to your codebase, write a simple Dockerfile
-  describing your build process, then
+  describing your build process and then
   build a new container from that source with `docker build`.
   Such a Dockerfile is usually short, probably between five and ten lines long.
 
@@ -172,8 +172,8 @@ creation and utilization of Dockerfiles to build your container images.
     image is designed to be used as a single command, it can frustrate or
     confuse users that expect to be able to use the idiom [(4)](#resources).
 
-  Expressing exactly what you want is key
-  to ensuring that users of your image have the right experience.
+Expressing exactly what you want is key
+to ensuring that users of your image have the right experience.
 
 <a name="resources"></a>
 ### Resources
