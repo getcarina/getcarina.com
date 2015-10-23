@@ -1,8 +1,12 @@
 ---
-title: Container Security
-seo:
-  description: Security Best Practices for deploy Docker applications in a safe way.
-
+title: Container security
+author: Major Hayden <major.hayden@rackspace.com>
+date: 2015-09-11
+permalink: docs/best-practices/001-container-security/
+description: Security best practices for safely deploying Docker applications
+topics:
+  - best-practices
+  - security
 featured: true
 ---
 
