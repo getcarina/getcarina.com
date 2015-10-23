@@ -18,21 +18,27 @@ This tutorial describes using data volume containers so that you can share data 
 
 1. [Carina cluster and credentials](cluster-and-credentials)
 
+### Data volumes
+
+A data volume is a directory within a container that is meant to persist beyond the lifecycle of a container. For this reason they are not automatically deleted when a container is removed. All volumes are stored on the Docker host in a system path, meaning that volumes can be shared and reused among containers. Changes to a volume are made directly and are not reflected in the Docker image, since they bypass the Union File System.
+
 ### Data volume containers
 
-A data volume container (DVC) is a container with a volume mounted inside of it that is used to share data with other containers. The volume is mounted from the Docker host to the container. Other containers can also mount this volume. All containers mounting this volume will all run on the same Docker host.
+A data volume container (DVC) is a container with a volume inside and whose sole aim is to store data in a persistent way. Because volumes can be shared with other containers, DVCs are often used as a centralized data store across multiple containers on the same Docker host. Other containers can mount the volume inside a DVC and save their data to it, providing non-persistent containers with a way to handle persistent storage.
 
 Some advantages of using a DVC are:
 
-* data can be shared between containers
-* short-lived containers can access the data
-* services can be upgraded without impacting the data
-* data can be backed up, restored, and migrated more easily
-* you don't have to concern yourself with permissions and other security mechanisms on the Docker host when mounting volumes
+* Data can be shared between containers on the same Docker host.
+* Non-persistent containers can access and save data in a persistent way.
+* Services can be upgraded without impacting the data.
+* Data can be backed up, restored, and migrated more easily.
+* You don't need to manually specify host mount points and handle the additional concerns of file permissions, AppArmor profiles, and security restrictions.
+
+For example, upgrading the MySQL version in a container would not experience the risk of data loss, if its data files are stored in a separate DVC
 
 ### Create a data volume container
 
-Create a DVC for use by a MySQL instance running in another container. The `--volume` parameter mounts a volume in the container's filesystem from a location on the host's filesystem determined by the Docker Engine.
+To understand the benefits of using data-only containers, you will create a DVC that will later be used by a container running a MySQL instance. The `--volume` flag mounts a volume in the container's filesystem from a location on the host's filesystem determined by the Docker Engine.
 
 ```bash
 $ docker create --name data \
@@ -46,7 +52,7 @@ The output of this `docker run` command is the container ID.
 
 ### Use a data volume container
 
-Run a MySQL instance that uses the DVC. The `--volumes-from` parameter mounts all the defined volumes from the listed containers. In the example below, it mounts the `/var/lib/mysql` volume from the container named data. The data saved by this MySQL instance will be stored there.
+Next, you will run a MySQL instance container that mounts the volume inside the DVC. The `--volumes-from <containerName>` flag mounts all of the volumes inside the specified container. You can specify this flag multiple times to mount volumes from multiple containers. In the example below, you mount the volume located at `/var/lib/mysql` inside the `data` container. All of the data files used by MySQL in this container will be stored there.
 
 ```bash
 $ docker run --detach \
@@ -61,6 +67,8 @@ $ docker run --detach \
 ```
 
 The output of this `docker run` command is the container ID.
+
+**Note**: You can also mount a volume from a non-DVC if that container itself mounts volumes from a DVC; this is called extending the chain.
 
 ### Inspect the volume
 
@@ -77,7 +85,7 @@ $ docker inspect --format '{{ .Mounts }}' data
 }]
 ```
 
-The output of this `docker run` command is all of the volumes mounted for the container named data. The output will appear as one line but has been separated out here for clarity. The information return is as follows.
+The output of this `docker run` command is a list of all the volumes mounted in the `data` container. The output will appear as one line but has been separated out here for clarity. The information returned is defined in the following way:
 
 1. The volume ID.
 1. The volume location on the host.
@@ -106,7 +114,7 @@ The output of this `docker run` command is the list of files in the `/var/lib/my
 
 ### Copy the data
 
-Copy the data from your DVC to the directory your in on your local machine.
+You can copy all of the data from your DVC into a directory on your local machine. This is useful when backing up databases or similar activities. Copy all of the files inside /var/lib/mysql in the DVC to the current directory on your local machine.
 
 ```bash
 $ docker cp \
@@ -120,7 +128,7 @@ There is no output from the `docker cp` (copy) command. The output of the `ls` c
 
 ### Delete the data
 
-Delete the containers. The `--volumes` parameter will remove the volumes associated with the container from the host.
+Delete the containers. The `--volumes` flag will remove the volumes associated with the container from the host.
 
 ```bash
 $ docker rm --force mysql56
@@ -131,7 +139,7 @@ data
 
 The output of these `docker rm` commands are the names of the containers that you removed.
 
-Note: Docker will not warn you when removing a container without providing the --volumes option to delete its volumes. If you remove containers without using the --volumes option, you may end up with "dangling" volumes; volumes that are no longer referenced by a container. Dangling volumes are difficult to get rid of and can take up a large amount of disk space.
+**Note**: Docker will not warn you when removing a container without providing the --volumes option to delete its volumes. If you remove containers without using the --volumes option, you may end up with "dangling" volumes; volumes that are no longer referenced by a container. Dangling volumes are difficult to get rid of and can take up a large amount of disk space.
 
 ### Resources
 
