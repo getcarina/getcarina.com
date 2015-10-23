@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: orchestration and management of 
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-orchestration-clusters/
-description: Introduction to container technologies, powered by the Rackspace Container Service
+description: Explore options for orchestration and management of container clusters
 docker-versions:
 topics:
   - best-practices
@@ -15,7 +15,7 @@ topics:
 Orchestrating and managing a cluster of Docker containers is an emerging
 trend that is not only very competitive but is evolving rapidly. Many options currently exist with
 various feature sets; some of those feature sets overlap, making it challenging to choose between seemingly-similar tools.
-One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you. 
+One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you.
 
 ![Strata of the container ecosystem]({% asset_path best-practices/orchestration-clusters/container-ecosystem.svg %})
 
@@ -26,8 +26,8 @@ One way to make a useful choice is to focus your investigation on tools that are
 - Layer 3 = Operating system
 - Layer 2 = Virtual infrastructure
 - Layer 1 = Physical infrastructure
- 
-Kubernetes and Marathon are leaders in the container orchestration layer. 
+
+Kubernetes and Marathon are leaders in the container orchestration layer.
 For other container management activities such as workflow and scheduling, leaders include Deis and Mesos [(1)](#resources).
 OpenStack also offers features that are especially relevant at the scheduling virtual infrastructure layers.
 
@@ -61,7 +61,7 @@ Because of its flexibility, Marathon can operate as a cluster-wide
 process supervisor. Marathon operates as a private Platform-as-a-Service through
 functionality that includes service discovery, failure handling, deployment, and scalability.
 
-Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization. 
+Deimos, also from Mesosphere, is a plugin for Mesos, enabling it to work with Docker; Deimos provides external containerization.
 Marathon, based on Mesos, uses the Deimos plugin.
 This combination of frameworks allows Marathon to
 become an orchestration and management layer for Docker containers and
@@ -363,7 +363,7 @@ place in the ecosystem is still to be determined.
 Numbered citations in this article:
 
 1. <https://pbs.twimg.com/media/B33GFtNCUAE-vEX.png:large>
- 
+
 2. <https://github.com/mesosphere/marathon>
 
 3. <https://github.com/GoogleCloudPlatform/kubernetes>
