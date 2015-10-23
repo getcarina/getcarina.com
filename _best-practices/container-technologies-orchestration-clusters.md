@@ -339,9 +339,9 @@ place in the ecosystem is still to be determined.
     <th align="left">Org</th>
     <th align="left">Tool</th>
     <th align="left">One Host (nano)</th>
-    <th align="left">Up to Tens of Hosts (micro)</th>
-    <th align="left">Up to Hundreds of Hosts (medium)</th>
-    <th align="left">Up to Thousands of Hosts (large)</th>
+    <th align="left">Up to 10s of Hosts (micro)</th>
+    <th align="left">Up to 100s of Hosts (medium)</th>
+    <th align="left">Up to 1000s of Hosts (large)</th>
   </tr>
  </thead>
  <tbody>
@@ -406,15 +406,92 @@ place in the ecosystem is still to be determined.
 
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
-| Org             | Tool       | Cluster State Management | Monitoring &  Healing | Deploy Spec                                 | Allows Docker Dependency & Architectural Mapping | Deployment Method | Language |
-|-----------------|------------|--------------------------|-----------------------|---------------------------------------------|--------------------------------------------------|-------------------|----------|
-| Docker          | Compose    |                          |                       | Dockerfile + YAML manifest                  |                         ✓                        | CLI               | Python   |
-| Prime Directive | Flynn      |                          |                       | Procfile,  Heroku Buildpack                 |                                                  | git push          | Go       |
-| OpDemand        | Deis       |                          |                       | Dockerfile,  Heroku Buildpack               |                                                  | git push          | Go       |
-| ClusterHQ       | Flocker    |             ✓            |                       | Dockerfile + YAML manifest                  |                         ✓                        | CLI               | Python   |
-| CloudSoft       | Clocker    |             ✓            |           ✓           | Apache Brooklyn YAML blueprint + Dockerfile |                         ✓                        | API / Web         | Java     |
-| Mesosphere      | Marathon   |             ✓            |           ✓           | JSON                                        |                         ✓                        | API / CLI         | C++      |
-| Google          | Kubernetes |             ✓            |           ✓           | YAML / JSON                                 |                         ✓                        | API / CLI         |          |
+<table>
+ <thead>
+  <tr>
+   <th align="left">Org</th>
+   <th align="left">Tool</th>
+   <th align="left">Cluster State Management</th>
+   <th align="left">Monitoring &amp; Healing</th>
+   <th align="left">Deploy Spec</th>
+   <th align="left">Allows Docker Dependency &amp; Architectural Mapping</th>
+   <th align="left">Deployment Method</th>
+   <th align="left">Language</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td align="left">Docker</td>
+   <td align="left">Compose</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">Dockerfile + YAML manifest</td>
+   <td align="left">✓</td>
+   <td align="left">CLI</td>
+   <td align="left">Python</td>
+  </tr>
+  <tr>
+   <td align="left">Prime Directive</td>
+   <td align="left">Flynn</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">Procfile, Heroku Buildpack</td>
+   <td align="left"></td>
+   <td align="left">git push</td>
+   <td align="left">Go</td>
+  </tr>
+  <tr>
+   <td align="left">OpDemand</td>
+   <td align="left">Deis</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">Dockerfile, Heroku Buildpack</td>
+   <td align="left"></td>
+   <td align="left">git push</td>
+   <td align="left">Go</td>
+  </tr>
+  <tr>
+   <td align="left">ClusterHQ</td>
+   <td align="left">Flocker</td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+   <td align="left">Dockerfile + YAML manifest</td>
+   <td align="left">✓</td>
+   <td align="left">CLI</td>
+   <td align="left">Python</td>
+  </tr>
+  <tr>
+   <td align="left">CloudSoft</td>
+   <td align="left">Clocker</td>
+   <td align="left">✓</td>
+   <td align="left">✓</td>
+   <td align="left">Apache Brooklyn YAML blueprint + Dockerfile</td>
+   <td align="left">✓</td>
+   <td align="left">API / Web</td>
+   <td align="left">Java</td>
+  </tr>
+  <tr>
+   <td align="left">Mesosphere</td>
+   <td align="left">Marathon</td>
+   <td align="left">✓</td>
+   <td align="left">✓</td>
+   <td align="left">JSON</td>
+   <td align="left">✓</td>
+   <td align="left">API / CLI</td>
+   <td align="left">C++</td>
+  </tr>
+  <tr>
+   <td align="left">Google</td>
+   <td align="left">Kubernetes</td>
+   <td align="left">✓</td>
+   <td align="left">✓</td>
+   <td align="left">YAML / JSON</td>
+   <td align="left">✓</td>
+   <td align="left">API / CLI</td>
+   <td align="left"></td>
+  </tr>
+ </tbody>
+</table>
 
 **Current Recommendation:** Kubernetes
 
