@@ -79,13 +79,14 @@ layout: default
           <span class="accent yellow">At Your Fingertips</span>
         </h2>
         <p>Carina streamlines the entire experience to allow you to get started with containers <strong></strong><a href="/docs/tutorials/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="https://github.com/rackerlabs/carina"><code>carina</code></a>, the command line tool.</strong></p>
+        <p>
+          <a href="" class="carina-link">Get Started with Carina</a>
+        </p>
       </div>
       <div class="demo">
         <div class="demo-frame">
           <!-- TODO: Lightbox like a boss instead -->
-          <a href="{% asset_path carina-demo4big.gif %}" alt="bigger version of demo carina command line">
-            <img src="{% asset_path carina-demo4.gif %}" alt="demo">
-          </a>
+            <img src="{% asset_path carina-demo-simple.gif %}" alt="demo">
           <!-- <img src="//fpoimg.com/400x250" alt=""> -->
         </div>
       </div>
@@ -105,25 +106,34 @@ layout: default
         <div class="image">
           <a href="docs/tutorials/getting-started-on-carina/"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
         </div>
-        <h3>Getting Started</h3>
-        <p>Get up and running with Carina, a cluster, and a basic container instance.</p>
+        {% for post in site.tutorials %}{% if post.url == '/docs/overview-of-carina/' %}
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p>{{ post.description }}</p>
+          <p><a href="{{ post.url }}">Read More</a></p>
+        {% endif %}{% endfor %}
       </div>
       <div class="resource">
         <div class="image">
           <img src="{% asset_path resource-2.svg %}" alt="">
         </div>
-        <h3>Tutorials</h3>
-        <p>Extend and apply Carina and containers in meaningful real-world applications using our step-by-step instructions.</p>
+        {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-on-carina/' %}
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p>{{ post.description }}</p>
+          <p><a href="{{ post.url }}">Read More</a></p>
+        {% endif %}{% endfor %}
       </div>
       <div class="resource">
         <div class="image">
           <img src="{% asset_path resource-3.svg %}" alt="">
         </div>
-        <h3>Best Practices</h3>
-        <p>Review recommendations and industry standard approaches for Carina and containers, along with an introduction to advanced topics.</p>
+        {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-carina-cli/' %}
+          <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+          <p>{{ post.description }}</p>
+          <p><a href="{{ post.url }}">Read More</a></p>
+        {% endif %}{% endfor %}
       </div>
       <div class="resources-button">
-        <a href="">View All Resources</a>
+        <a href="/docs#articles">View All Resources</a>
       </div>
     </div>
   </div>

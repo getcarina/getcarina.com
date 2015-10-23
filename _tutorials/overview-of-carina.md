@@ -3,7 +3,7 @@ title: Overview of Carina
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2015-10-28
 permalink: docs/overview-of-carina/
-description: An overview of Carina
+description: Definition and introduction to Carina including key concepts and next steps for implementation.
 docker-versions:
   - 1.8.3
 topics:
