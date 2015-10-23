@@ -3,8 +3,7 @@ title: 'Introduction to container technologies: registration and discovery of co
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-registration-discover/
-description: Introduction to container technologies, powered by the Rackspace Container Service
-topics:
+description: Compare options for registration and discovery of container services
   - best-practices
   - planning
 ---
@@ -28,7 +27,7 @@ The technologies described below are the current front-runners in the
 industry with regard to service registration and service
 discovery.
 
-### CoreOS’ “etcd”
+### CoreOS’ etcd
 
 etcd is a distributed key-value store used for service discovery and shared
 configuration. It is intended to be a simple implementation of the Raft
@@ -43,7 +42,7 @@ sequential consistency based on a quorum of nodes.
 Many projects use etcd, including Google's Kubernetes, Pivotal's Cloud
 Foundry, Rackspace's Mailgun, Apache's Mesos, and Mesosphere's DCOS [(2)](#resources).
 
-### Apache’s “Zookeeper”
+### Apache’s Zookeeper
 
 Zookeeper is a distributed configuration service synchronization service
 and naming registry for large distributed systems. ZooKeeper was a
@@ -56,7 +55,7 @@ cluster [(3)](#resources).
 Many projects use Zookeeper, including Hadoop’s HBase, Yahoo, and
 Rackspace’s Email & Apps.
 
-### Hashicorp’s “Consul”
+### Hashicorp’s Consul
 
 Consul is a tool for service discovery and configuration. It is distributed,
 highly available, and extremely scalable. Key features include:
@@ -125,7 +124,7 @@ Other recommended reading:
 - <http://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

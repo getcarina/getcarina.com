@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: scheduling and management of ser
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-scheduling-management/
-description: Introduction to container technologies, powered by the Rackspace Container Service
+description: Compare options for scheduling and management
 topics:
   - best-practices
   - planning
@@ -23,12 +23,12 @@ To be clear, schedulers allocate the resources needed to execute a job, such as 
 
 A scheduler can run any
 service or task from a simple ``hello world`` application to instantiating a Docker container
-on a cluster, but you are likely to need an orchestration tool to work with it; for some suggestions, read [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+on a cluster, but you are likely to need an orchestration tool to work with it; for some suggestions, read [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 The technologies described below are the current front-runners in the
 industry with regard to service and resource scheduling.
 
-### Apache’s “Mesos”
+### Apache’s Mesos
 
 Mesos is a distributed systems kernel developed by Apache. It is built using the same
 principles as the Linux kernel but at a different level of abstraction.
@@ -45,7 +45,7 @@ workloads and frameworks to run top of it.
 Some of the biggest technology companies such as HubSpot and Twitter
 are active users and advocates of Mesos.Mesophere's Datacenter Operating System (DCOS) is built on top of Mesos.
 
-### CoreOS’ “fleet”
+### CoreOS’ fleet
 
 fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
 
@@ -54,9 +54,9 @@ fleet is a distributed initialization system based on CoreOS etcd and Linux syst
 
 Jonathan Corbet explains fleet's use of etcd and systemd in this way:
 
-> fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
+> fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster.
 > It needs to respond to events like a machine going down and reschedule tasks as needed.
-> The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work. 
+> The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work.
 > It is thus not surprising that fleet's commands look a lot like systemd commands [(2)](#resources).
 
 Because systemd is part of Linux itself and interacting with fleet resembles interacting with systemd, learning fleet can seem natural and easy to those already skilled in Linux. You can think of fleet as an extension
@@ -113,12 +113,12 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 - <https://www.linux.com/learn/tutorials/788613-understanding-and-using-systemd>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

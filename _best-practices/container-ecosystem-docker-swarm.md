@@ -3,7 +3,7 @@ title: 'Container ecosystem: Docker Swarm'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-docker-swarm/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Examine the usefulness of Docker Swarm
 topics:
   - best-practices
   - planning
@@ -28,8 +28,7 @@ orchestration for managing distributed containers, but whenever you’re
 ready to adopt another orchestrator that aligns with your goals for
 scale, you can easily swap out Swarm’s engine for the one of your
 choice. For some ideas about alternative orchestration tools, read
-[Introduction to container technologies: orchestration and management of container clusters]
-(/container-technologies-orchestration-clusters).
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters).
 
 It is possible that the strategy behind Swarm is that
 Docker is unwilling to get into the orchestration battle between
@@ -56,13 +55,12 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: orchestration and management of container clusters]
-(/container-technologies-orchestration-clusters)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters)
 
 - <https://docs.docker.com/swarm/>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

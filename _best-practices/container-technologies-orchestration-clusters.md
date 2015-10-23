@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: orchestration and management of 
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-orchestration-clusters/
-description: Explore options for orchestration and management of container clusters
+description: Compare options for orchestration and management of container clusters
 docker-versions:
 topics:
   - best-practices
@@ -42,7 +42,7 @@ Another basis for comparison is a tool's ability to offer features beyond simple
 
 Following is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case that you intend to fulfill and the scale at which you want to operate.
 
-### Mesosphere’s “Marathon”
+### Mesosphere’s Marathon
 
 Marathon is a cluster-wide initiation and control system for services in
 cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
@@ -76,7 +76,7 @@ You can read more about how Mesos relates to Docker in
 Major companies using Marathon include Airbnb, eBay,
 Groupon, OpenTable, PayPal, and Yelp.
 
-### Google’s “Kubernetes”
+### Google’s Kubernetes
 
 Kubernetes is a system for managing containerized applications in clusters
 across multiple hosts. It provides basic mechanisms for deployment,
@@ -184,7 +184,7 @@ tracked projects on GitHub. You can expect many changes in not only its
 functionality, stability, and supported use cases, but also in the number
 of technologies working to become highly interoperable with Kubernetes.
 
-### Docker’s “Compose”
+### Docker’s Compose
 
 Compose, known as “Fig” before its acquisition by Docker, Inc, is a simple
 orchestration framework intended to allow the definition of fast,
@@ -205,7 +205,7 @@ However, because a solution such as Compose has both limited capabilities and ov
 
 The community's reception of Compose has been notably positive, but the practicality of its usage and the lack of ability to create a long-term vision around it tend to minimize the actual legitimacy of adopting it as a container orchestration technology.
 
-### Prime Directive’s “Flynn”
+### Prime Directive’s Flynn
 
 Prime Directive labels Flynn as "the product that ops provides to
 developers" [(7)](#resources). They believe that “ops should be a product team, not
@@ -232,7 +232,7 @@ To learn more about working with data and stateful applications in containers, r
 Sponsors and users of Flynn include but are not limited to Coinbase,
 Shopify, and CenturyLink.
 
-### OpDemand’s “Deis”
+### OpDemand’s Deis
 
 Deis is an open-source PaaS that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
@@ -255,7 +255,7 @@ Deis as the front-runner in Heroku-like projects.
 Users of Deis include small and medium size businesses and technology companies, but
 no major companies have announced their use of it.
 
-### ClusterHQ’s “Flocker”
+### ClusterHQ’s Flocker
 
 Flocker is an open-source data volume and multihost container manager that supports and works with the file format syntax used by Docker’s Compose.
 Docker works well with applications such as
@@ -279,7 +279,7 @@ In addition to the ZFS properties, Flocker imposes a network proxy across
 all of the Flocker nodes to handle container linking, storage mapping
 and user interaction throughout the cluster.
 
-### Cloudsoft’s “Clocker”
+### Cloudsoft’s Clocker
 
 Clocker is an open-source project that enables users to establish a Docker Cloud over any cloud or fixed infrastructure
 without generating excess containers [(11)](#resources). The project is built on top of Apache Brooklyn, which is undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
@@ -318,7 +318,7 @@ instructions. Clocker then is essentially a blueprint for Brooklyn with
 extra intelligence for configuring and managing Docker hosts and
 containers.
 
-### Docker’s “Swarm”
+### Docker’s Swarm
 
 Swarm aims to provide a common interface for the many
 orchestration and scheduling frameworks available. It serves as a
@@ -568,7 +568,7 @@ Other recommended reading:
 - <https://github.com/mesosphere/deimos>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

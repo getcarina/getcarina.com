@@ -3,7 +3,7 @@ title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-openshift/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Explore the place of RedHat OpenShift in the container ecosystem
 topics:
   - best-practices
   - planning
@@ -41,8 +41,8 @@ Project Atomic, their preferred hosting platform for
 Docker containers that competes with CoreOS.
 
 To learn more about Kubernetes and other tools for container orchestration, read
-[Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/) and
-[Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+[Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/) and
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 ### OpenShift, OpenStack, and Project Atomic
 
@@ -82,12 +82,12 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
+- [Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/)
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

@@ -3,7 +3,7 @@ title: 'Docker best practices: container linking'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-container-linking/
-description: Docker best practices, powered by the Rackspace Container Service
+description: Explore container linking
 docker-versions:
 topics:
   - best-practices
@@ -69,7 +69,7 @@ Some problems and needs which are not addressed by links include:
   are not notified of these changes nor can they trivially deal with
   these issues [(2)](#resources).
 
-- Links work only for containers hosted on the same node; 
+- Links work only for containers hosted on the same node;
   the [ambassador pattern](#ambassador), sometimes offered as a solution for this, does not fully address the limitation.
 
 Environmental variables in linking are exposed in a convoluted manner:
@@ -96,7 +96,7 @@ many situations.
 <a name="ambassador"></a>
 ### Ambassador pattern: linking through a proxy
 
-With the *ambassador* pattern, you can define container links 
+With the *ambassador* pattern, you can define container links
 between a server and client container to be handled through a proxy. This separate proxy
 container, the ambassador, transparently redirects connections based on parameters. Lucas Carlson explains this as each container acting as its own country, with each country represented by its own local ambassador who is empowered to speak through the network to another country's foreign ambassador:
 >  (container) –> (local ambassador) –network–> (foreign ambassador) –> (container) [(3)](#resources).
@@ -115,11 +115,11 @@ are not ready to be integrated into
 mission-critical, production-grade stacks.
 Container links do not make it easy for the developer to
 interact with linked server and client containers without detailed
-foreknowledge of the connection itself. 
+foreknowledge of the connection itself.
 
 An alternative to container linking that is becoming an industry standard is to use a
 service registration and discovery tool. If all the services that are available to your containers are known (registered) and can easily be located (discovered), there is no need to define specific links between services in multiple containers. You can read more about this at
-[Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/).
+[Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/).
 
 <a name="resources"></a>
 ### Resources
@@ -134,10 +134,10 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+- [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

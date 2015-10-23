@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: container operating systems'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-operating-systems/
-description: Introduction to container technologies, powered by the Rackspace Container Service
+description: Compare container-oriented operating systems
 topics:
   - best-practices
   - planning
@@ -13,7 +13,7 @@ topics:
 
 With the success and popularity of Docker containers, modern operating systems have emerged that embrace the container culture and are designed to work optimally with a container ecosystem. These operating systems tend to provide the minimal functionality required to deploy applications along with self-updating and healing properties that are different from today's standard maintenance-intensive operating systems. Container-oriented operating systems have evolved the traditional operating model by moving toward deploying applications inside containers and away from deploying applications at the application layer. More simply put, applications are self-contained binaries that you can move around in your container environments based on criteria such as quality of service, affinity, and replication.
 
-### CoreOS’s “CoreOS”
+### CoreOS’s CoreOS
 
 CoreOS, the operating system from the company of the same name, is a new Linux distribution that provides the features needed to run modern infrastructure stacks via containers with a hands-off approach to operating system updates. CoreOS' update philosophy is that "frequent, reliable updates are critical to good security [(1)](#resources)." Updates to CoreOS are distributed as they are available and can be installed immediately and automatically, much like the automated update process for browsers such as Firefox. The strategies and architectures that influence CoreOS are similar to the mechanisms that allow companies like Google, Facebook, and Twitter to run their services at scale with high resilience.
 
@@ -31,16 +31,16 @@ integrates seamlessly with CoreOS' other flagship products:
   level, so it functions as a simple orchestration system for systemd
   units across your cluster.
 
-You can learn more about 
-etcd at [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+You can learn more about
+etcd at [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 and more about
-fleet at [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/).
+fleet at [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/).
 
-### Red Hat's "Project Atomic"
+### Red Hat's Project Atomic
 
 Red Hat’s Project Atomic facilitates application-centric IT architecture
 by providing an end-to-end solution for deploying containerized
-applications quickly and reliably. Atomic update and rollback for applications and hosts enables implementation of frequent, small improvements. 
+applications quickly and reliably. Atomic update and rollback for applications and hosts enables implementation of frequent, small improvements.
 
 The core of Project Atomic is the Project Atomic Host. This is a
 lightweight operating system that has been assembled from upstream RPM Package Manager (RPM) content. Project Atomic Host is designed to run applications in Docker containers.
@@ -76,12 +76,12 @@ Other recommended reading:
 
 - <http://www.rpm.org/>
 
-- [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+- [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 
-- [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/)
+- [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

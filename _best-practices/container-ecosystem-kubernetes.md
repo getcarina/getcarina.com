@@ -3,7 +3,7 @@ title: 'Container ecosystem: Kubernetes'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-kubernetes/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Explore the place of Google Kubernetes in the container ecosystem
 topics:
   - best-practices
   - planning
@@ -24,16 +24,16 @@ this article discusses Kubernetes' intended use more objectively and suggests ho
 Kubernetes defines a collection of primitives to aid in establishing and maintaining a cluster of
 containers. Kubernetes is really just an opinionated model
 of application containers, their dependencies with regard to other
-resources, and their lifecycles. 
+resources, and their lifecycles.
 
-In Kubernetes, the pod is the central concept. 
+In Kubernetes, the pod is the central concept.
 A pod is a group of applications in the same physical location and with a shared context.
 The context of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,
-access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes. 
+access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes.
 
 ### Relating Kubernetes to Docker and Mesos
 
-Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms, 
+Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms,
 a Kubernetes pod "consists of a colocated group of Docker containers with shared volumes [(1)](#resources)."
 
 Kubernetes does not function like Mesos, either. Mesos is a scheduling system for containers. In relating Mesos, Docker, and Kubernetes,
@@ -85,7 +85,7 @@ corner cases, potentially causing problems for management systems.
 For more discussion of Docker volumes
 as data volumes and data volume containers,
 see
-[Docker best practices: data and stateful applications] (/docker-best-practices-data-stateful-applications/).
+[Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/).
 
 #### Service discovery
 
@@ -119,7 +119,7 @@ use the networking mechanisms.
 
 Lastly, remember that tools outside of Kubernetes, such as etcd, Zookeeper, and
 Consul, are also viable options. These and others are discussed in
-[Introduction to container technologies: orchestration and management of container clusters] (/container-technologies-orchestration-clusters/).
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 #### Networking
 
@@ -151,8 +151,7 @@ new bridge for the Docker host to use within it. Some tools that are
 great for this particular purpose, especially in a cloud environment,
 are container-intended networking technologies such as Flannel, Weave,
 SocketPlane and even Open vSwitch. Several of these tools are discussed in
-[Introduction to container technologies: container networking]
-(container-technologies-networking).
+[Introduction to container technologies: container networking](../container-technologies-networking/).
 
 This approach to networking is different from the standard Docker model.
 In the standard Docker model, each
@@ -170,7 +169,7 @@ Docker hosts can use the same network space and configuration.
 
 Kubernetes is the front-runner among tools for managing and orchestrating
 containers in your stack.
-See [Introduction to container technologies: orchestration and management of container clusters] (/container-technologies-orchestration-clusters/) for a comparison of Kubernetes
+See [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/) for a comparison of Kubernetes
 and competing tools.
 
 Although Kubernetes is still at a Beta release level and claims not to be
@@ -201,16 +200,16 @@ Other recommended reading:
 
 - <http://kubernetes.io/>
 
-- [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications/)
+- [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/)
 
-- [Docker best practices: container linking](/docker-best-practices-container-linking/)
+- [Docker best practices: container linking](../docker-best-practices-container-linking/)
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 - [RFC1918 Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,
