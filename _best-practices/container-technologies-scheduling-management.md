@@ -28,7 +28,7 @@ on a cluster, but you are likely to need an orchestration tool to work with it; 
 The technologies described below are the current front-runners in the
 industry with regard to service and resource scheduling.
 
-### Apache’s “Mesos”
+### Apache’s Mesos
 
 Mesos is a distributed systems kernel developed by Apache. It is built using the same
 principles as the Linux kernel but at a different level of abstraction.
@@ -45,7 +45,7 @@ workloads and frameworks to run top of it.
 Some of the biggest technology companies such as HubSpot and Twitter
 are active users and advocates of Mesos.Mesophere's Datacenter Operating System (DCOS) is built on top of Mesos.
 
-### CoreOS’ “fleet”
+### CoreOS’ fleet
 
 fleet is a distributed initialization system based on CoreOS etcd and Linux systemd:
 

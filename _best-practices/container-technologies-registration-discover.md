@@ -28,7 +28,7 @@ The technologies described below are the current front-runners in the
 industry with regard to service registration and service
 discovery.
 
-### CoreOS’ “etcd”
+### CoreOS’ etcd
 
 etcd is a distributed key-value store used for service discovery and shared
 configuration. It is intended to be a simple implementation of the Raft
@@ -43,7 +43,7 @@ sequential consistency based on a quorum of nodes.
 Many projects use etcd, including Google's Kubernetes, Pivotal's Cloud
 Foundry, Rackspace's Mailgun, Apache's Mesos, and Mesosphere's DCOS [(2)](#resources).
 
-### Apache’s “Zookeeper”
+### Apache’s Zookeeper
 
 Zookeeper is a distributed configuration service synchronization service
 and naming registry for large distributed systems. ZooKeeper was a
@@ -56,7 +56,7 @@ cluster [(3)](#resources).
 Many projects use Zookeeper, including Hadoop’s HBase, Yahoo, and
 Rackspace’s Email & Apps.
 
-### Hashicorp’s “Consul”
+### Hashicorp’s Consul
 
 Consul is a tool for service discovery and configuration. It is distributed,
 highly available, and extremely scalable. Key features include:

@@ -15,7 +15,7 @@ topics:
 In a robust application architecture, containers are connected to each other and to the rest
 of your network. Adding a container-focused network tool such as those introduced below can help you establish and maintain a useful container configuration.
 
-### Weaveworks' “Weave”
+### Weaveworks' Weave
 
 Weave "makes the network fit the application, not the other way round,"
 as Weave co-founder Alexis Richardson puts it.
@@ -41,7 +41,7 @@ that Weaveworks recently raised five million dollars in
 Series A venture capital funding, and it makes a compelling argument for considering
 Weave as a viable option.
 
-### CoreOS’ “flannel”
+### CoreOS’ flannel
 
 flannel is CoreOS’ primary way to manage container
 networking. It establishes a private mesh network to enable the containers in a cluster to communicate with each other.
@@ -63,7 +63,7 @@ experimental. However, don’t disregard flannel’s presence in the market, as
 their roadmap looks very optimistic given that CoreOS plans to be a big player in
 the container space.
 
-### Metaswitch’s “Calico”
+### Metaswitch’s Calico
 
 Project Calico
 > integrates seamlessly with the cloud orchestration
@@ -83,7 +83,7 @@ Calico and Docker, there are no short-term plans to evolve the prototype.
 This has put the drive and initiative to do so into the hands of the
 community. Calico is compatible with OpenStack Neutron [(6)](#resources).
 
-### SocketPlane’s “SocketPlane”
+### SocketPlane’s SocketPlane
 
 SocketPlane’s concept is to bring Open vSwitch
 "production quality, multilayer virtual switch" [(7)](#resources) capabilities to the Docker host,
