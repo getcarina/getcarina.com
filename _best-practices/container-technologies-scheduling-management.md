@@ -54,9 +54,9 @@ fleet is a distributed initialization system based on CoreOS etcd and Linux syst
 
 Jonathan Corbet explains fleet's use of etcd and systemd in this way:
 
-> fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster. 
+> fleet is a cluster scheduler, meaning that its job is to distribute tasks across the machines in a cluster.
 > It needs to respond to events like a machine going down and reschedule tasks as needed.
-> The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work. 
+> The fleet scheduler gets its marching orders (the "manifest") via etcd, then gets systemd to do the real work.
 > It is thus not surprising that fleet's commands look a lot like systemd commands [(2)](#resources).
 
 Because systemd is part of Linux itself and interacting with fleet resembles interacting with systemd, learning fleet can seem natural and easy to those already skilled in Linux. You can think of fleet as an extension
@@ -118,7 +118,7 @@ Other recommended reading:
 - <https://www.linux.com/learn/tutorials/788613-understanding-and-using-systemd>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

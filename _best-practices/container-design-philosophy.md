@@ -79,7 +79,7 @@ Other recommended reading:
 - <http://www.forbes.com/sites/alexkonrad/2015/07/01/meet-docker-founder-solomon-hykes/>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

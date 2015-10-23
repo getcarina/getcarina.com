@@ -22,8 +22,8 @@ Mesos' recent support of Docker containers and the development of
 Mesosphere to orchestrate containers on top of Mesos have helped Mesos
 increase in popularity. However, there
 are some questions about how Mesos compares to other methods of
-establishing Platform-as-a-Service from the infrastructure layer: 
-- Is it best to integrate Mesos into a stack? 
+establishing Platform-as-a-Service from the infrastructure layer:
+- Is it best to integrate Mesos into a stack?
 - Is OpenStack a better or easier method?
 - Is Kubernetes or some other technology a better fit than either Mesos or OpenStack?
 
@@ -76,7 +76,7 @@ Other recommended reading
 - <https://wiki.openstack.org/wiki/Magnum>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

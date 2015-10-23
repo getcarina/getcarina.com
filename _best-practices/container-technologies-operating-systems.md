@@ -31,7 +31,7 @@ integrates seamlessly with CoreOS' other flagship products:
   level, so it functions as a simple orchestration system for systemd
   units across your cluster.
 
-You can learn more about 
+You can learn more about
 etcd at [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
 and more about
 fleet at [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/).
@@ -40,7 +40,7 @@ fleet at [Introduction to container technologies: scheduling and management of s
 
 Red Hat’s Project Atomic facilitates application-centric IT architecture
 by providing an end-to-end solution for deploying containerized
-applications quickly and reliably. Atomic update and rollback for applications and hosts enables implementation of frequent, small improvements. 
+applications quickly and reliably. Atomic update and rollback for applications and hosts enables implementation of frequent, small improvements.
 
 The core of Project Atomic is the Project Atomic Host. This is a
 lightweight operating system that has been assembled from upstream RPM Package Manager (RPM) content. Project Atomic Host is designed to run applications in Docker containers.
@@ -81,7 +81,7 @@ Other recommended reading:
 - [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

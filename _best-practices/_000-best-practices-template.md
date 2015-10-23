@@ -3,7 +3,7 @@ title: 'Article title in sentence style'
 author: First Last <first.last@rackspace.com>
 date: 2015-09-27
 permalink: docs/best-practices/file-name-hyphenated/
-description: Best practices for containers, powered by the Rackspace Container Service
+description: Best practices for containers, powered by Carina
 docker-versions:
 topics:
   - best-practices
@@ -88,7 +88,7 @@ Other recommended reading:
 - <http://www.if-you-really-want-to-understand-this-you-should-dig-in-here.org/>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

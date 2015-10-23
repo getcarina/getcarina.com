@@ -24,16 +24,16 @@ this article discusses Kubernetes' intended use more objectively and suggests ho
 Kubernetes defines a collection of primitives to aid in establishing and maintaining a cluster of
 containers. Kubernetes is really just an opinionated model
 of application containers, their dependencies with regard to other
-resources, and their lifecycles. 
+resources, and their lifecycles.
 
-In Kubernetes, the pod is the central concept. 
+In Kubernetes, the pod is the central concept.
 A pod is a group of applications in the same physical location and with a shared context.
 The context of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,
-access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes. 
+access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes.
 
 ### Relating Kubernetes to Docker and Mesos
 
-Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms, 
+Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms,
 a Kubernetes pod "consists of a colocated group of Docker containers with shared volumes [(1)](#resources)."
 
 Kubernetes does not function like Mesos, either. Mesos is a scheduling system for containers. In relating Mesos, Docker, and Kubernetes,
@@ -210,7 +210,7 @@ Other recommended reading:
 - [RFC1918 Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918)
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,

@@ -24,7 +24,7 @@ of a virtual network switch no matter where they are running. Services can
 be selectively exposed across the network to the outside world through
 firewalls and using encryption for wide-area connections [(1)](#resources).
 
-When using Weave, 
+When using Weave,
 > applications use the network just as if the containers
 > were all plugged into the same network switch, with no need to configure
 > port mappings, links, etc. Services provided by application containers
@@ -56,7 +56,7 @@ evolved into a generic overlay.
 
 flannel is backed by and based on CoreOS’
 etcd to serve as the key-value store for the networking configuration and
-state management. 
+state management.
 
 flannel is still in its early stages and development can be sporadic. It should be perceived as
 experimental. However, don’t disregard flannel’s presence in the market, as
@@ -65,7 +65,7 @@ the container space.
 
 ### Metaswitch’s “Calico”
 
-Project Calico 
+Project Calico
 > integrates seamlessly with the cloud orchestration
 > system (such as OpenStack) to enable secure IP communication between
 > virtual machines. As VMs are created or destroyed, their IP addresses are
@@ -92,17 +92,17 @@ making it possible to
 also manage either overlays or underlays [(8)](#resources).”
 
 However, few details have been published as SocketPlane is
-in a semi-stealth mode. Its relevance and consideration as an option stems from the fact that its founders 
+in a semi-stealth mode. Its relevance and consideration as an option stems from the fact that its founders
 are three very well known networking experts.
 Madhu Venugopal, Brent Salisbury, and Dave Tucker left RedHat to start SocketPlane;
 they also contribute to the OpenDaylight project,
 developing an open source platform for building programmable, software-defined networks [(9)](#resources).
 
 SocketPlane was purchased by Docker, Inc. in 2014 and they plan to
-integrate SocketPlane into the Docker portfolio [(10)](#resources). 
+integrate SocketPlane into the Docker portfolio [(10)](#resources).
 A "SocketPlane Technology Preview" is available at <https://github.com/socketplane/socketplane/blob/master/README.md>.
 The concepts and the team behind SocketPlane predict that it could evolve
-into a sound and promising technology. 
+into a sound and promising technology.
 
 ### Comparison
 
@@ -137,7 +137,7 @@ Numbered citations in this article:
 7. <http://www.tomsitpro.com/articles/project-calico-networking-openstack-docker,1-2821.html>
 
 8. <http://openvswitch.org/>
- 
+
 9. <https://www.opendaylight.org/lithium>
 
 10. <http://thenewstack.io/docker-acquires-sdn-technology-startup-socketplane-io/>
@@ -155,7 +155,7 @@ Other recommended reading:
 - <https://github.com/socketplane/socketplane/blob/master/README.md>
 
 In addition to *best-practices* articles such as this one,
-Rackspace Container Service documentation includes *tutorials* and *references*:
+Carina documentation includes *tutorials* and *references*:
 
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
 * For detailed information about how to solve specific issues or work with specific architectures,
