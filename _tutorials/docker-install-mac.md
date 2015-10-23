@@ -44,13 +44,13 @@ Follow these steps to install Docker:
 
 5. Ensure that every component is selected and then click **Install**.
 
-   ![Make sure all boxes are selected](/_assets/img/002-docker-101/mac-toolbox-install-type.png)
+   ![Make sure all boxes are selected]({% asset_path 002-docker-101/mac-toolbox-install-type.png %})
 
    By default, the binaries are installed to `/usr/local/bin`.
 
    After the installation is completed, the installer provides you with shortcuts, which you can ignore.
 
-   ![The installer will provide you with shortcuts. Ignore these and click continue.](/_assets/img/002-docker-101/mac-toolbox-install-apps.png)
+   ![The installer will provide you with shortcuts. Ignore these and click continue.]({% asset_path 002-docker-101/mac-toolbox-install-apps.png %})
 
 6. Click **Continue**
 
