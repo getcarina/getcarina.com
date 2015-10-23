@@ -36,7 +36,7 @@ container that can be used and shared by other containers.
 Union file systems, or UnionFS, are lightweight, fast file systems that operate by creating layers.
 Docker uses several union file system variants,
 including AUFS, btrfs, vfs, and DeviceMapper [(1)](#resources),
-to provide the building blocks for containers. 
+to provide the building blocks for containers.
 Using a Docker volume mount creates a specially designed directory within one
 or more containers that bypasses the UnionFS and provides the following
 set of features for persistent and shared data:
@@ -86,10 +86,10 @@ in which `-v /data` asks for a data volume container,
 and `mysql` creates it from a saved image by that name.
 
 This `docker create` command
-starts a data volume container and exist immediately because, 
+starts a data volume container and exist immediately because,
 instead of an active process like other application containers,
 it is used as a
-container shell that references a newly created volume for other containers to use. 
+container shell that references a newly created volume for other containers to use.
 After the data volume container exits, you can reference it
 from other containers by using the `--volumes-from` flag on
 subsequent containers.
@@ -118,7 +118,7 @@ management issue, in theory. However, when you want to
 scale out where your data resides or when your host machine restarts
 due to maintenance or failure, data volume containers may not be a complete solution.
 The current recommendation is to move
-data management tasks to self-managed systems. 
+data management tasks to self-managed systems.
 
 For example, you can use
 dedicated rsyslog servers for logs.
@@ -134,10 +134,10 @@ containers.
 In theory, we should be able to co-locate the stateless applications with the
 data management services they rely on, with all of these services
 running in containers, but Docker is not ready to handle this.
-With their Flocker tool, ClusterHQ is attempting to tackle this problem by using 
+With their Flocker tool, ClusterHQ is attempting to tackle this problem by using
 Zettabyte File System (ZFS) replication technology
-as to provide
-data management and replication for containers [(3)](#resources). 
+to provide
+data management and replication for containers [(3)](#resources).
 However, Flocker is still in very
 early developmental stages, and it assumes you can accept
 a clustered filesystem model and the nuances it can introduce such as
