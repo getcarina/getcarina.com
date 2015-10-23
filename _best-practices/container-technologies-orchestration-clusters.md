@@ -267,7 +267,8 @@ models, full support of data in many use cases is still a work in progress
 and operations aren not met without undergoing downtime of some capacity.
 
 Flocker alleviates the issue of managing data for containers by
-utilizing Zookeeper's Z File System (ZFS) as the underlying technology for containers' attached datastore, with volume behaviors and such operated by ZFS itself.
+using Zettabyte File System (ZFS) replication technology as the underlying technology for containers' attached datastore, with ZFS handling volume behaviors [(10)](#resources).
+However, Flocker is still in very
 In addition to the ZFS properties, Flocker imposes a network proxy across
 all of the Flocker nodes to handle container linking, storage mapping
 and user interaction throughout the cluster.
@@ -275,7 +276,7 @@ and user interaction throughout the cluster.
 ### Cloudsoft’s “Clocker”
 
 Clocker is an open-source project that enables users to establish a Docker Cloud over any cloud or fixed infrastructure
-without generating excess containers [(10)](#resources). The project is built on top of Apache Brooklyn, undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
+without generating excess containers [(11)](#resources). The project is built on top of Apache Brooklyn, undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
 
 Some features of Clocker are:
 
@@ -291,7 +292,7 @@ Some features of Clocker are:
 - Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms) blueprints to Docker locations,
   without modifications
 
-Clocker uses Apache Brooklyn to create a Docker cloud [(11)](#resources).
+Clocker uses Apache Brooklyn to create a Docker cloud [(12)](#resources).
 Brooklyn uses Apache jclouds, a multi-cloud toolkit, to
 provision and configure secure communications (SSH) with cloud virtual
 machines. The Docker architecture provides containers on host
@@ -303,7 +304,7 @@ Docker container, after which the container can be treated like any virtual
 machine. Brooklyn receives sensor data from the application, every Docker
 host, every Docker container, and every software component making up the
 application and can make changes in each of these. This enables Brooklyn to
-manage distribution of the application across the Docker cloud [(12)](#resources).
+manage distribution of the application across the Docker cloud [(13)](#resources).
 
 In short, Brooklyn is a platform that monitors and manages Docker
 containers using YAML blueprints for its configuration
@@ -320,7 +321,7 @@ on requirements of the application and performance. Solomon Hykes, CTO of
 Docker, stated, “Docker will give devs a standard interface to all
 [orchestration tools] and [Swarm] is an ingredient of that standard
 interface. [It] can be thought of as the glue between Docker and orchestration
-backends [(13)](#resources).”
+backends [(14)](#resources).”
 
 Swarm is designed to provide a smooth Docker deployment workflow,
 working with some existing container workflow frameworks such as Deis,
@@ -518,13 +519,15 @@ Numbered citations in this article:
 
 9. <http://deis.io/overview/>
 
-10. <http://www.cloudsoftcorp.com/community/>
+10. <http://www.eweek.com/virtualization/clusterhq-brings-docker-virtualization-to-data-storage.html>
 
-11. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
+11. <http://www.cloudsoftcorp.com/community/>
 
-12. <http://www.infoq.com/news/2014/06/clocker>
+12. <http://www.cloudsoftcorp.com/blog/2014/06/clocker-creating-a-docker-cloud-with-apache-brooklyn/>
 
-13. <https://twitter.com/solomonstre/status/492111054839615488>
+13. <http://www.infoq.com/news/2014/06/clocker>
+
+14. <https://twitter.com/solomonstre/status/492111054839615488>
 
 Other recommended reading:
 
@@ -541,8 +544,6 @@ Other recommended reading:
 - <http://12factor.net/>
 
 - <https://elements.heroku.com/buildpacks>
-
-- <http://open-zfs.org/wiki/Main_Page>
 
 - <https://brooklyn.incubator.apache.org/>
 
