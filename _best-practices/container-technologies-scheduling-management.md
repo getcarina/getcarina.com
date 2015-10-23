@@ -110,10 +110,45 @@ The following tables compare the design and functionality of fleet and Mesos [(3
 
 **Table 2: Functionality Comparison**
 
-| Org    | Tool  | Architecture | Resource Aware | Host Constraints | Host Balancing | Group Affinity | Anti- Affinity | Global Scheduling |
-|--------|-------|--------------|----------------|------------------|----------------|----------------|----------------|-------------------|
-| CoreOS | fleet | Monolithic   |                |         ✓        |                |        ✓       |        ✓       |         ✓         |
-| Apache | Mesos | Two-level    |        ✓       |         ✓        |        ✓       |                |        ✓       |                   |
+<table border="1">
+<thead>
+<tr>
+<th align="left">Organization</th>
+<th align="left">Tool</th>
+<th align="left">Architecture</th>
+<th align="left">Resource aware</th>
+<th align="left">Host constraints</th>
+<th align="left">Host balancing</th>
+<th align="left">Group affinity</th>
+<th align="left">Anti-affinity</th>
+<th align="left">Global scheduling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CoreOS</td>
+<td align="left">fleet</td>
+<td align="center">Monolithic</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="left">Apache</td>
+<td align="left">Mesos</td>
+<td align="center">Two-level</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 
 In terms of which technology to use:
 
