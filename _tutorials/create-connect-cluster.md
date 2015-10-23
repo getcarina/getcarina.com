@@ -154,4 +154,4 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 
 On Linux, Mac OS X, or Windows, put the Docker client somewhere on your system's path.
 
-Run your application in a container. Use the right tutorial for your application from the **Tutorials** section. 
+Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the Dcoumentation page on the Carina website. 
