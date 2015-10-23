@@ -102,7 +102,7 @@ having to go through the full setup and configuration process for each
 tool or worrying about whether it will function on your virtualization platform.
 
 You can learn more about image repositories at
-[Docker best practices: image repository](/docker-best-practices-image-repository/).
+[Docker best practices: image repository](../docker-best-practices-image-repository/).
 
 Prefabricated container images are possible because Docker enables you to easily and quickly snapshot your application and its operating system components into a
 common image that can be deployed on other hosts that also run the Docker engine. This capability
@@ -177,7 +177,7 @@ within the Docker ecosystem and it is difficult to pinpoint which one is better 
 today. This is particularly true of stateful applications, but work in this space is
 being addressed by several technologies and should be in a much better
 state at a future date. For more on this, read
-[Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications).
+[Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications).
 
 <a name="resources"></a>
 ### Resources
@@ -198,13 +198,13 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 - <https://hub.docker.com/explore/>
 
-- [Docker best practices: data and stateful applications](/docker-best-practices-data-stateful-applications)
+- [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications)
 
-- [Docker best practices: image repository](/docker-best-practices-image-repository/)
+- [Docker best practices: image repository](../docker-best-practices-image-repository/)
 
 In addition to *best-practices* articles such as this one,
 Carina documentation includes *tutorials* and *references*:

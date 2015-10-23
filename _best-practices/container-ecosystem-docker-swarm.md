@@ -28,8 +28,7 @@ orchestration for managing distributed containers, but whenever you’re
 ready to adopt another orchestrator that aligns with your goals for
 scale, you can easily swap out Swarm’s engine for the one of your
 choice. For some ideas about alternative orchestration tools, read
-[Introduction to container technologies: orchestration and management of container clusters]
-(/container-technologies-orchestration-clusters).
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters).
 
 It is possible that the strategy behind Swarm is that
 Docker is unwilling to get into the orchestration battle between
@@ -56,8 +55,7 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: orchestration and management of container clusters]
-(/container-technologies-orchestration-clusters)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters)
 
 - <https://docs.docker.com/swarm/>
 

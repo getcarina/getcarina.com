@@ -32,9 +32,9 @@ integrates seamlessly with CoreOS' other flagship products:
   units across your cluster.
 
 You can learn more about
-etcd at [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+etcd at [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 and more about
-fleet at [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/).
+fleet at [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/).
 
 ### Red Hat's "Project Atomic"
 
@@ -76,9 +76,9 @@ Other recommended reading:
 
 - <http://www.rpm.org/>
 
-- [Introduction to container technologies: registration and discovery of container services](/container-technologies-registration-discover/)
+- [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
 
-- [Introduction to container technologies: scheduling and management of services and resources](/container-technologies-scheduling-management/)
+- [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/)
 
 In addition to *best-practices* articles such as this one,
 Carina documentation includes *tutorials* and *references*:

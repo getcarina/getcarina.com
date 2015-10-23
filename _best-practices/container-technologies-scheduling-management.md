@@ -23,7 +23,7 @@ To be clear, schedulers allocate the resources needed to execute a job, such as 
 
 A scheduler can run any
 service or task from a simple ``hello world`` application to instantiating a Docker container
-on a cluster, but you are likely to need an orchestration tool to work with it; for some suggestions, read [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+on a cluster, but you are likely to need an orchestration tool to work with it; for some suggestions, read [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 The technologies described below are the current front-runners in the
 industry with regard to service and resource scheduling.
@@ -113,7 +113,7 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 - <https://www.linux.com/learn/tutorials/788613-understanding-and-using-systemd>
 

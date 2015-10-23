@@ -41,8 +41,8 @@ Project Atomic, their preferred hosting platform for
 Docker containers that competes with CoreOS.
 
 To learn more about Kubernetes and other tools for container orchestration, read
-[Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/) and
-[Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/).
+[Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/) and
+[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
 
 ### OpenShift, OpenStack, and Project Atomic
 
@@ -82,9 +82,9 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Container ecosystem: Kubernetes](/container-ecosystem-kubernetes/)
+- [Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/)
 
-- [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
 
 In addition to *best-practices* articles such as this one,
 Carina documentation includes *tutorials* and *references*:
