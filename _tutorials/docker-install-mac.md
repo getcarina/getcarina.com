@@ -1,7 +1,12 @@
 ---
 title: Install Docker with Mac OS X
-slug: docker-101-installation-mac
+author: Nathaniel Archer
+date: 2015-10-03
+permalink: docs/tutorials/docker-install-mac
 description: Instructions on how to install Docker on a Mac Operating System.
+docker-versions:
+  -1.8.1
+  -1.8.2
 topics:
   -docker
   -beginner
@@ -137,4 +142,5 @@ Status: Downloaded newer image for hello-world:latest
 ```
 
 ###Next step
-<!--Link to Find and pull a Docker image-->
+
+[Find and download a Docker image](run-docker-image)
