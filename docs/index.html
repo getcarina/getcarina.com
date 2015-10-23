@@ -5,69 +5,45 @@ layout: default
   <div class="section-container">
     <div class="section-grid">
       <div class="intro">
-        <h2><span class="accent yellow">Everything You Need to Know</span></h2>
-        <p>Our documentation includes getting started, tutorial, and best practice information. These three types of information combine to give you a structured path for building your Carina and container technology knowledge in a straightforward and highly useable manner.</p>
+        <h2><span class="accent yellow">Everything you need to get started</span></h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos id nihil dolore similique ab autem facilis hic, corporis laudantium esse dolores provident totam perferendis voluptates animi architecto optio consectetur cumque.</p>
       </div>
       <div class="featured-sets">
         <div class="set">
           <div class="image">
             <img src="{% asset_path 'featured-set-tutorials.svg' %}" alt="Rackspace Container Service Tutorials">
           </div>
-          <h3>Getting Started</h3>
-          <p>Get up and running quickly with Carina, a cluster, and a basic container instance.</p>
-          <ul>
-            {% for article in site.getting_started %}
-              {% if article.featured %}
-                <li>
-                  <h4>
-                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
-                  </h4>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description }}</p>
+            <p><a href="{{ post.url }}">Read More</a></p>
+          {% endif %}{% endfor %}
         </div>
         <div class="set">
           <div class="image">
             <img src="{% asset_path 'featured-set-best-practices.svg' %}" alt="Rackspace Container Service Best Practices">
           </div>
-          <h3>Tutorials</h3>
-          <p>Extend and apply Carina and containers in meaningful real-world applications by using our step-by-step instructions.</p>
-          <ul>
-            {% for article in site.tutorials %}
-              {% if article.featured %}
-                <li>
-                  <h4>
-                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
-                  </h4>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description }}</p>
+            <p><a href="{{ post.url }}">Read More</a></p>
+          {% endif %}{% endfor %}
         </div>
         <div class="set">
           <div class="image">
             <img src="{% asset_path 'featured-set-technology.svg' %}" alt="Rackspace Container Service Technology">
           </div>
-          <h3>Best Practices</h3>
-          <p>Review recommendations and industry standard approaches for Carina and containers, along with an introduction to advanced topics.</p>
-          <ul>
-            {% for article in site.best_practices %}
-              {% if article.featured %}
-                <li>
-                  <h4>
-                    <a href="{{ site.baseurl }}{{ article.url }}">{{ article.title }}</a>
-                  </h4>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
+          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p>{{ post.description }}</p>
+            <p><a href="{{ post.url }}">Read More</a></p>
+          {% endif %}{% endfor %}
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="docs-section all-articles">
+<section class="docs-section all-articles" data-ng-controller="DocsListCtrl as docs">
   <div class="section-container">
     <div class="section-grid">
       <div class="heading">
@@ -75,24 +51,23 @@ layout: default
       </div>
       <div class="tools">
         <ul>
-          <li><a href="">Getting Started</a></li>
-          <li><a href="">Tutorials</a></li>
-          <li><a href="">Best Practices</a></li>
-          <li><a href="">All</a></li>
+          <li><a href="#" data-ng-click="docs.showCollection = 'tutorials'">Tutorials</a></li>
+          <li><a href="#" data-ng-click="docs.showCollection = 'best-practices'">Best Practices</a></li>
+          <li><a href="#" data-ng-click="docs.showCollection = 'references'">References</a></li>
         </ul>
       </div>
       <div class="articles">
-        <ul>
-          {% for collection in site.collections %}
-            {% for doc in collection[1].docs %}
-              <li>
-                <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
-                <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
-                <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
-              </li>
+        {% for collection in site.collections %}
+          <ul data-ng-show="docs.showCollection == '{{ collection[0] }}'">
+          {% for doc in collection[1].docs %}
+            <li data-collection="{{ collection[0] }}">
+              <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
+              <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
+              <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
+            </li>
             {% endfor %}
-          {% endfor %}
-        </ul>
+          </ul>
+        {% endfor %}
       </div>
     </div>
   </div>
