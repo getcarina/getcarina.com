@@ -13,37 +13,28 @@ layout: default
           <div class="image">
             <img src="{% asset_path 'featured-set-tutorials.svg' %}" alt="Rackspace Container Service Tutorials">
           </div>
-          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
-            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-            <p>{{ post.description }}</p>
-            <p><a href="{{ post.url }}">Read More</a></p>
-          {% endif %}{% endfor %}
+          <h3>Getting Started</h3>
+          <p>Get up and running with Carina, a cluster, and a basic container instance.</p>
         </div>
         <div class="set">
           <div class="image">
             <img src="{% asset_path 'featured-set-best-practices.svg' %}" alt="Rackspace Container Service Best Practices">
           </div>
-          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
-            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-            <p>{{ post.description }}</p>
-            <p><a href="{{ post.url }}">Read More</a></p>
-          {% endif %}{% endfor %}
+          <h3>Tutorials</h3>
+          <p>Extend and apply Carina and containers in meaningful real-world applications using our step-by-step instructions.</p>
         </div>
         <div class="set">
           <div class="image">
             <img src="{% asset_path 'featured-set-technology.svg' %}" alt="Rackspace Container Service Technology">
           </div>
-          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/containers-101/' %}
-            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-            <p>{{ post.description }}</p>
-            <p><a href="{{ post.url }}">Read More</a></p>
-          {% endif %}{% endfor %}
+          <h3>Best Practices</h3>
+          <p>Review recommendations and industry standard approaches for Carina and containers, along with an introduction to advanced topics.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section class="docs-section all-articles" data-ng-controller="DocsListCtrl as docs">
+<section id="articles" class="docs-section all-articles" data-ng-controller="DocsListCtrl as docs">
   <div class="section-container">
     <div class="section-grid">
       <div class="heading">
