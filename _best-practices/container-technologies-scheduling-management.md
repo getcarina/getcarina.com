@@ -74,10 +74,39 @@ The following tables compare the design and functionality of fleet and Mesos [(3
 
 **Table 1: Design Comparison**
 
-| Org    | Tool  | Req. Supplied Membership | Basic Task Orchestration | Advanced Task Orchestration | Up to  Hundreds of Hosts | Up to  Thousands of Hosts | Language |
-|--------|-------|--------------------------|--------------------------|-----------------------------|--------------------------|---------------------------|----------|
-| CoreOS | fleet |             ✓            |             ✓            |                             |             ✓            |                           | Go       |
-| Apache | Mesos |             ✓            |             ✓            |              ✓              |                          |             ✓             | C++      |
+<table border="1">
+<thead>
+<tr>
+<th align="left">Organization</th>
+<th align="left">Tool</th>
+<th align="left">Basic task orchestration</th>
+<th align="left">Advanced task orchestration</th>
+<th align="left">Up to 100s of hosts</th>
+<th align="left">Up to 1000s of hosts</th>
+<th align="left">Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CoreOS</td>
+<td align="left">fleet</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">Go</td>
+</tr>
+<tr>
+<td align="left">Apache</td>
+<td align="left">Mesos</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">C++</td>
+</tr>
+</tbody>
+</table>
 
 **Table 2: Functionality Comparison**
 
