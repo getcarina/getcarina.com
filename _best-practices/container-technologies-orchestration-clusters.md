@@ -339,8 +339,8 @@ place in the ecosystem is still to be determined.
 ### Comparison and recommendations
 
 Following are tables identifying which orchestration tools are
-best suited for configurations of different sizes [Table 1](#compare-sizes)
-and comparing key elements of their functionality [Table 2](#compare-features):
+best suited for configurations of different sizes [(Table 1)](#compare-sizes)
+and comparing key elements of their functionality [(Table 2)](#compare-features):
 
 <a name="compare-sizes"></a>
 **Table 1 -‐ Size comparison of container orchestrators and managers**
