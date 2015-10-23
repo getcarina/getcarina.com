@@ -1,13 +1,15 @@
 ---
-title: Best Practices Using Ansible and Docker
-slug: best-practices-Ansible-Docker
-seo:
-  description: Best practices for using Ansible and Docker for the deployment of containers
-  author: Ash Wilson
-  topics: - best practices
-          - Ansible
-          - Docker
+title: Best practices using Ansible and Docker
+author: Ash Wilson <ash.wilson@rackspace.com>
+date: 2015-10-01
+permalink: docs/best-practices/036-best-practices-ansible-docker/
+description: Best practices for using Ansible and Docker to deploy containers
+topics:
+  - best practices
+  - Ansible
+  - Docker
 ---
+
 ###Best Practices using Ansible and Docker
 It can seem that [Ansible](http://www.ansible.com/) and [Docker](https://www.docker.com/) are redundant; both offer solutions to configuration management problems through very different mechanisms. While each one has a reliable and repeatable process on their own, it is when they are used together where the result is a fast, clean deployment process.
 
