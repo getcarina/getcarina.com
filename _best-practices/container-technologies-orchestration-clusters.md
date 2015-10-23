@@ -333,15 +333,76 @@ place in the ecosystem is still to be determined.
 
 **Table 1 -‐ Size comparison of container orchestrators and managers**
 
-| Org             | Tool       | One  Host (nano) | Up to  Tens of Hosts (micro) | Up to  Hundreds of Hosts (medium) | Up to  Thousands of Hosts (large) |
-|-----------------|------------|------------------|------------------------------|-----------------------------------|-----------------------------------|
-| Docker          | Compose    |         ✓        |                              |                                   |                                   |
-| Prime Directive | Flynn      |                  |               ✓              |                                   |                                   |
-| OpDemand        | Deis       |                  |               ✓              |                                   |                                   |
-| ClusterHQ       | Flocker    |                  |               ✓              |                                   |                                   |
-| CloudSoft       | Clocker    |                  |                              |                 ✓                 |                                   |
-| Mesosphere      | Marathon   |                  |                              |                                   |                 ✓                 |
-| Google          | Kubernetes |                  |                              |                                   |                 ✓                 |
+<table>
+ <thead>
+   <tr>
+    <th align="left">Org</th>
+    <th align="left">Tool</th>
+    <th align="left">One Host (nano)</th>
+    <th align="left">Up to Tens of Hosts (micro)</th>
+    <th align="left">Up to Hundreds of Hosts (medium)</th>
+    <th align="left">Up to Thousands of Hosts (large)</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td align="left">Docker</td>
+   <td align="left">Compose</td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left"></td>
+  </tr>
+  <tr>
+   <td align="left">Prime Directive</td>
+   <td align="left">Flynn</td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+   <td align="left"></td>
+  </tr>
+  <tr>
+   <td align="left">OpDemand</td>
+   <td align="left">Deis</td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+   <td align="left"></td>
+  </tr>
+  <tr>
+   <td align="left">ClusterHQ</td>
+   <td align="left">Flocker</td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+   <td align="left"></td>
+  </tr>
+  <tr>
+   <td align="left">CloudSoft</td>
+   <td align="left">Clocker</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+   <td align="left"></td>
+  </tr>
+  <tr>
+   <td align="left">Mesosphere</td>
+   <td align="left">Marathon</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+  </tr>
+  <tr>
+   <td align="left">Google</td>
+   <td align="left">Kubernetes</td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left"></td>
+   <td align="left">✓</td>
+  </tr>
+ </tbody>
+</table>
 
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
