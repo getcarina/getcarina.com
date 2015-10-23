@@ -15,7 +15,7 @@ topics:
 
 This tutorial shows you how to create a cluster in Carina and then download its credentials so that you can securely connect to the cluster. 
 
-A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which you can download in a zip file from the Carina control panel. The credentials zip file contains the following files:
+A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which you can download in a zip file from the Carina Control Panel. The credentials zip file contains the following files:
 
 * ca.pem - Certificate Authority, used by clients to validate servers
 * cert.pem - Client Certificate, used by clients to identify themselves to servers
@@ -29,14 +29,19 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 ### Prerequisite
 
-A Carina account. If you do not already have one, follow the [sign up process](https://mycluster.rackspacecloud.com/managed).
+A Carina account. If you do not already have one, follow the [sign up process](https://app.getcarina.com).
 
 ### Create a cluster
 
-1. Log in to [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
-1. In the **Create New** field, enter a name for the cluster. For example, `mycluster`.
+1. Log in to [the Carina Control Panel](https://app.getcarina.com).
+
+1. On the Clusters page, click **Add Cluster**.
+
+1. On the Create Cluster page, enter a name for the cluster. For example, `mycluster`.
+
 1. Click **Create Cluster**.
-1. Click the **Refresh** button until your cluster reaches a status of **active**.
+
+    After a few moments, your cluster reaches a status of **active**.
 
 ### Connect to your cluster
 
@@ -44,7 +49,7 @@ Connect to your cluster by loading the cluster credentials and downloading the D
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. On the Carina control panel, click **Download credentials**.
+1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download Credentials**.
 
 1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
