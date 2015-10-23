@@ -21,7 +21,7 @@ Carina is built on the open source Docker Swarm project.  It exposes Docker API 
 
 You'll also have access to an intuitive user interface (UI), a command line interface (CLI), and Carina specific developer tooling in addition to the entire ecosystem of tools already compatible with the Docker API. There is also a wealth of documentation, from getting started guides to detailed tutorials and best practices. If you need help, there's community support directly from other developers.
 
-Creating a free account (no credit card required) to running a containerized application on a cluster takes under 2 minutes. You'll be using open source software like Docker to compose your applications. Because the infrastructure is managed by Carina you can take advantage of features like auto-scaling. Now you can focus on what's important to you, your business and your applications.
+Creating a free account (no credit card required) to running a containerized application on a cluster takes under 2 minutes. You'll be using open source software like Docker to compose your applications. Because the infrastructure is managed by Carina you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business and your applications.
 
 ### How does Carina work?
 
@@ -51,13 +51,13 @@ Containers are created by Docker. You can use the Docker CLI or other Docker eco
 
 Containers are composed of your applications, configuration, and anything else you need to build into them. They are created from Docker images. A Docker image is a template containing the instructions that will run your application. It includes everything necessary to run your containerized applications.
 
-#### Auto-Scaling
+#### Autoscaling
 
-Because the infrastructure is managed by Rackspace you can choose to turn on auto-scaling for your clusters. If you do, every cluster will be monitored on a five minute interval. If we find that a cluster needs resources, we automatically add additional Segments.
+Because the infrastructure is managed by Carina you can choose to turn on autoscaling for your clusters. If you do, every cluster will be monitored on a five minute interval. If we find that a cluster needs resources, we automatically add additional Segments.
 
-If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. Our automated scaling action will trigger when either 50% of memory or CPU is being consumed. To avoid data-loss, we will never scale down or delete one of your nodes automatically.
+If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. Our automated scaling action will trigger when either 80% of reserved memory or CPU is being consumed. To avoid data loss, we will never scale down or delete one of your nodes automatically.
 
-Alternatively, you can manually scale the cluster through the the control surfaces.
+Alternatively, you can manually scale a cluster through the control surfaces.
 
 ### The control surfaces
 
