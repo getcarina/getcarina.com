@@ -3,7 +3,7 @@ title: 'Docker best practices: image repository'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/docker-best-practices-image-repository/
-description: Docker best practices, powered by the Rackspace Container Service
+description: Explore reusable container images
 topics:
   - best-practices
   - planning

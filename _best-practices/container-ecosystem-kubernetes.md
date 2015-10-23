@@ -3,7 +3,7 @@ title: 'Container ecosystem: Kubernetes'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-kubernetes/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Explore the place of Google Kubernetes in the container ecosystem
 topics:
   - best-practices
   - planning

@@ -3,7 +3,7 @@ title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-openshift/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Explore the place of RedHat OpenShift in the container ecosystem
 topics:
   - best-practices
   - planning

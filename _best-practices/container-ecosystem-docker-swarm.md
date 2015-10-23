@@ -3,7 +3,7 @@ title: 'Container ecosystem: Docker Swarm'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-docker-swarm/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Examine the usefulness of Docker Swarm
 topics:
   - best-practices
   - planning

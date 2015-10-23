@@ -3,8 +3,7 @@ title: 'Introduction to container technologies: registration and discovery of co
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-registration-discover/
-description: Introduction to container technologies, powered by the Rackspace Container Service
-topics:
+description: Compare options for registration and discovery of container services
   - best-practices
   - planning
 ---

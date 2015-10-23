@@ -3,7 +3,7 @@ title: 'Container ecosystem: Mesos versus OpenStack'
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-ecosystem-mesos-openstack/
-description: Best practices for container ecosystems, powered by the Rackspace Container Service
+description: Compare Mesos and OpenStack
 docker-versions:
 topics:
   - best-practices

@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: scheduling and management of ser
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-scheduling-management/
-description: Introduction to container technologies, powered by the Rackspace Container Service
+description: Compare options for scheduling and management
 topics:
   - best-practices
   - planning

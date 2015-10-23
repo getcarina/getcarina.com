@@ -3,7 +3,7 @@ title: 'Introduction to container technologies: orchestration and management of 
 author: Mike Metral <mike.metral@rackspace.com>
 date: 2015-10-01
 permalink: docs/best-practices/container-technologies-orchestration-clusters/
-description: Explore options for orchestration and management of container clusters
+description: Compare options for orchestration and management of container clusters
 docker-versions:
 topics:
   - best-practices
