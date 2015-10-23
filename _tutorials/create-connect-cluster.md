@@ -22,6 +22,8 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 * key.pem - Client Private Key, used by clients to encrypt their requests
 * ca-key.pem - Certificate Authority Key, private file used to generate more client certificates
 * docker.env - Shell environment configuration script
+* docker.ps1 - PowerShell environment configuration script
+* docker.cmd - CMD shell environment configuration script
 
 **Note:** The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
@@ -32,7 +34,7 @@ A Carina account. If you do not already have one, follow the [sign up process](h
 ### Create a cluster
 
 1. Log in to [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
-1. In the **Create New** field, enter a name for the cluster.
+1. In the **Create New** field, enter a name for the cluster. For example, `mycluster`.
 1. Click **Create Cluster**.
 1. Click the **Refresh** button until your cluster reaches a status of **active**.
 
@@ -42,52 +44,62 @@ Connect to your cluster by loading the cluster credentials and downloading the D
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. On the Carina control panel, click **Download credentials** [insert-download-icon-here] in the **Actions** column for your cluster.
+1. On the Carina control panel, click **Download credentials**.
 
-1. Save the zip file to a location on your computer.
+1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
     The name of the zip file is the same as the name of your cluster.
 
 1. Unzip the file.
 
-    The name of the directory that is created is the same as the name of the cluster.
+    The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. If you are using Windows and use CMD or PowerShell, follow the instructions in the [Create a Windows script](#windows) section and then precede to the next step.
+1. Download the Docker 1.8.3 client into the credentials directory.
 
-1. Open a terminal application.
+    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
 
-1. Change to the credentials directory. For example:
+    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
+
+    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
+
+1. Open an application in which to run commands.
+
+    - On Linux and Mac OS X, open a terminal.
+
+    - On Windows, open a PowerShell.
+
+1. Configure the client.
+
+    **Note:** If you already have the Docker client in your home bin directory, make a backup of it first.
+
+    On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
-    $ cd /Users/octopus/Downloads/mycluster
+    $ cd Downloads/mycluster
+    $ mkdir $HOME/bin
+    $ mv docker-1.8.3 $HOME/bin/docker
+    $ chmod u+x $HOME/bin/docker
+    $ export PATH=$HOME/bin:$PATH
+    $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
+    $ source docker.env
     ```
 
-1. Download the Docker 1.8.2 client for your OS into the credentials directory.
- * [Linux](https://get.docker.com/builds/Linux/x86_64/docker-1.8.2)
- * [Mac](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.2)
- * [Windows](https://get.docker.com/builds/Windows/x86_64/docker-1.8.2.exe)
+    On Windows PowerShell, run the following commands:
 
-1. Rename the client to `docker`.
-
-    ```bash
-    $ mv docker-1.8.2 docker
+    ```
+    $ cd Downloads\mycluster
+    $ mkdir "$env:USERPROFILE\bin"
+    $ mv docker-1.8.3.exe "$env:USERPROFILE\bin\docker.exe"
+    $ $env:PATH += ";$env:USERPROFILE\bin"
+    $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
+    $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    $ .\docker.ps1
     ```
 
-1. On Linux and Mac OS X, ensure that the client is executable.
+1. Connect to your cluster and display information about it. If you are using Windows PowerShell, use `docker.exe` instead of `docker`.
 
     ```bash
-    $ chmod u+x docker
-    ```
-
-1. Load the cluster credentials and configuration.
-    * (_Linux and Mac OSX users_) Run `source docker.env`.
-    * (_Windows CMD users_) Run `docker.cmd`.
-    * (_Windows PowerShell users_) Run `docker.ps1`.
-
-1. Connect to your cluster and display information about it.
-
-    ```bash
-    $ ./docker info
+    $ docker info
     Containers: 3
     Images: 2
     Role: primary
@@ -106,30 +118,9 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     **Note:** A newly created cluster contains three containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/005-docker-swarm-intro).  
 
-### <a name="windows"></a> Create a Windows script
-The cluster credentials zip file includes a Bash script, **docker.env**, that defines the environment variables necessary for authenticating to your cluster. Use the following instructions to create an equivalent script in CMD or PowerShell.
-
-1. Open **docker.env** and note the IP address of your cluster. It is on the line that defines the DOCKER_HOST variable.
-
-2. To create a CMD script, create a file named **docker.cmd** in the credentials directory, and populate it with the following content. Replace `<ipAddress>` with the IP address of your cluster.
-
-    ```batch
-    set DOCKER_HOST=tcp://<ipAddress>:2376
-    set DOCKER_TLS_VERIFY=1
-    set DOCKER_CERT_PATH=%~dp0
-    ```
-
-3. To create a PowerShell script, create a file named **docker.ps1** in the credentials directory, and populate it with the following content. Replace `<ipAddress>` with the IP address of your cluster.
-
-    ```powershell
-    $env:DOCKER_HOST="tcp://<ipAddress>:2376"
-    $env:DOCKER_TLS_VERIFY=1
-    $env:DOCKER_CERT_PATH=$PSScriptRoot
-    ```
-
 ### Troubleshooting
 
-* If you get the following error message,  read the [version conflict](/docs/references/version-conflict) guide: 
+* If you get the following error message, read the [version conflict](/docs/references/version-conflict) guide: 
 
     `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` 
 
@@ -138,6 +129,18 @@ The cluster credentials zip file includes a Bash script, **docker.env**, that de
     `Cannot connect to the Docker daemon. Is "docker - d" running on this host?` 
 
     To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
+    
+* You might encounter the following error message when loading your credentials in PowerShell:
+
+    ```powershell
+    docker.ps1 cannot be loaded because running scripts is disabled on this system.
+    ```
+
+    Run the following command to enable running PowerShell scripts. Then, run `docker.ps1` again.
+
+    ```powershell
+    > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    ```
 
 ### Resources
 
@@ -147,8 +150,8 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 * [Docker 101](/docs/tutorials/002-docker-101)
 * [Container 101](/docs/tutorials/001-containers-101)
 
-### Next step
+### Next steps
 
-Run your applications in containers. Use the right tutorial for your application:
+On Linux, Mac OS X, or Windows, put the Docker client somewhere on your system's path.
 
-* [provide links to all the tutorials that are relevant]
+Run your application in a container. Use the right tutorial for your application from the **Tutorials** section. 
