@@ -21,12 +21,15 @@ collections:
   tutorials:
     output: true
     permalink: /docs/tutorials/:title/
+    label: tutorials
   best-practices:
     output: true
     permalink: /docs/best-practices/:title/
+    label: best-practices
   references:
     output: true
     permalink: /docs/reference/:title/
+    label: references
 
 defaults:
   -

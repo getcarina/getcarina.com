@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Announcing Carina by Rackspace"
 date: 2015-10-18 00:01
 comments: true
