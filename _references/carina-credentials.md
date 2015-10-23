@@ -1,16 +1,16 @@
 ---
-title: Download Rackspace Container Service credentials
+title: Download Carina credentials
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-09-28
-permalink: docs/references/rcs-credentials/
-description: Learn how to use your Rackspace Container Service credentials to get started with containers today
+permalink: docs/references/carina-credentials/
+description: Learn how to use your Carina credentials to get started with containers today
 featured: true
 topics:
-  - rcs
+  - carina
   - beginner
 ---
 
-Rackspace Container Service clusters are secured with TLS certificates. Each cluster
+Carina clusters are secured with TLS certificates. Each cluster
 has its own set of credentials, which are provided as a zip file that you can download from the control panel.
 The credentials zip file contains the following files:
 
@@ -18,7 +18,9 @@ The credentials zip file contains the following files:
 * cert.pem - Client Certificate, used by clients to identify themselves to servers
 * key.pem - Client Private Key, used by clients to encrypt their requests
 * ca-key.pem - Certificate Authority Key, private file used to generate more client certificates
-* docker.env - Shell environment configuration script
+* docker.env - Bash environment configuration script
+* docker.ps1 - PowerShell environment configuration script
+* docker.cmd - CMD shell environment configuration script
 
 **Note:** The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
@@ -31,18 +33,17 @@ using the credentials to authenticate to your cluster.
 
 2. Click the gear icon next to your cluster name and select **Download Credentials**.
 
-    ![Cluster Context Menu > Download Credentials]({% asset_path rcs-credentials/download-credentials.png %})
+    ![Cluster Context Menu > Download Credentials]({% asset_path carina-credentials/download-credentials.png %})
 
 3. When prompted, click **Download File**.
 
-    ![Confirm Download File]({% asset_path rcs-credentials/confirm-download-file.png %})
+    ![Confirm Download File]({% asset_path carina-credentials/confirm-download-file.png %})
 
     Your cluster credentials are now saved to **clusterName.zip**, where _clusterName_ is the name of your cluster.
 
 4. Unzip the file.
 
-    By default, the files are unzipped into a unique directory, for example, **70a73a74-140b-4c37-bb06-cc113c8a8713**.
-    You might want to rename that directory to something easier to remember, such as the name of the cluster.
+    The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
 5. Open a command terminal and change to the credentials directory.
 
