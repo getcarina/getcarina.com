@@ -39,7 +39,7 @@ To get started with Docker on Windows, you perform the following tasks:
 3. [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows/)
 
 
-#Troubleshooting Docker on Windows
+###Troubleshooting Docker on Windows
 To troubleshoot Docker on Windows, read the follwoing articles:
 
 * [Error running interactive Docker shell on Windows](docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
