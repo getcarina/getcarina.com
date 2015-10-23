@@ -74,17 +74,81 @@ The following tables compare the design and functionality of fleet and Mesos [(3
 
 **Table 1: Design Comparison**
 
-| Org    | Tool  | Req. Supplied Membership | Basic Task Orchestration | Advanced Task Orchestration | Up to  Hundreds of Hosts | Up to  Thousands of Hosts | Language |
-|--------|-------|--------------------------|--------------------------|-----------------------------|--------------------------|---------------------------|----------|
-| CoreOS | fleet |             ✓            |             ✓            |                             |             ✓            |                           | Go       |
-| Apache | Mesos |             ✓            |             ✓            |              ✓              |                          |             ✓             | C++      |
+<table border="1">
+<thead>
+<tr>
+<th align="left">Organization</th>
+<th align="left">Tool</th>
+<th align="left">Basic task orchestration</th>
+<th align="left">Advanced task orchestration</th>
+<th align="left">Up to 100s of hosts</th>
+<th align="left">Up to 1000s of hosts</th>
+<th align="left">Language</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CoreOS</td>
+<td align="left">fleet</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">Go</td>
+</tr>
+<tr>
+<td align="left">Apache</td>
+<td align="left">Mesos</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">C++</td>
+</tr>
+</tbody>
+</table>
 
 **Table 2: Functionality Comparison**
 
-| Org    | Tool  | Architecture | Resource Aware | Host Constraints | Host Balancing | Group Affinity | Anti- Affinity | Global Scheduling |
-|--------|-------|--------------|----------------|------------------|----------------|----------------|----------------|-------------------|
-| CoreOS | fleet | Monolithic   |                |         ✓        |                |        ✓       |        ✓       |         ✓         |
-| Apache | Mesos | Two-level    |        ✓       |         ✓        |        ✓       |                |        ✓       |                   |
+<table border="1">
+<thead>
+<tr>
+<th align="left">Organization</th>
+<th align="left">Tool</th>
+<th align="left">Architecture</th>
+<th align="left">Resource aware</th>
+<th align="left">Host constraints</th>
+<th align="left">Host balancing</th>
+<th align="left">Group affinity</th>
+<th align="left">Anti-affinity</th>
+<th align="left">Global scheduling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">CoreOS</td>
+<td align="left">fleet</td>
+<td align="center">Monolithic</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+</tr>
+<tr>
+<td align="left">Apache</td>
+<td align="left">Mesos</td>
+<td align="center">Two-level</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center">✓</td>
+<td align="center"></td>
+<td align="center">✓</td>
+<td align="center"></td>
+</tr>
+</tbody>
+</table>
 
 In terms of which technology to use:
 

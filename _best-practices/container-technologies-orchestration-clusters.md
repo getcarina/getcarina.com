@@ -345,7 +345,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-sizes"></a>
 **Table 1 -‐ Size comparison of container orchestrators and managers**
 
-<table>
+<table border="1">
  <thead>
    <tr>
     <th align="left">Organization</th>
@@ -360,58 +360,58 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
   <tr>
    <td align="left">Docker</td>
    <td align="left">Compose</td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left"></td>
+   <td align="center">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center"></td>
   </tr>
   <tr>
    <td align="left">Prime Directive</td>
    <td align="left">Flynn</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
   </tr>
   <tr>
    <td align="left">OpDemand</td>
    <td align="left">Deis</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
   </tr>
   <tr>
    <td align="left">ClusterHQ</td>
    <td align="left">Flocker</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
   </tr>
   <tr>
    <td align="left">CloudSoft</td>
    <td align="left">Clocker</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left"></td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
+   <td align="center"></td>
   </tr>
   <tr>
    <td align="left">Mesosphere</td>
    <td align="left">Marathon</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
   </tr>
   <tr>
    <td align="left">Google</td>
    <td align="left">Kubernetes</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">✓</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">✓</td>
   </tr>
  </tbody>
 </table>
@@ -419,7 +419,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
-<table>
+<table border="1">
  <thead>
   <tr>
    <th align="left">Organization</th>
@@ -436,72 +436,72 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
   <tr>
    <td align="left">Docker</td>
    <td align="left">Compose</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">Dockerfile + YAML manifest</td>
-   <td align="left">✓</td>
-   <td align="left">CLI</td>
-   <td align="left">Python</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">Dockerfile + YAML manifest</td>
+   <td align="center">✓</td>
+   <td align="center">CLI</td>
+   <td align="center">Python</td>
   </tr>
   <tr>
    <td align="left">Prime Directive</td>
    <td align="left">Flynn</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">Procfile, Heroku Buildpack</td>
-   <td align="left"></td>
-   <td align="left">Git push</td>
-   <td align="left">Go</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">Procfile, Heroku Buildpack</td>
+   <td align="center"></td>
+   <td align="center">Git push</td>
+   <td align="center">Go</td>
   </tr>
   <tr>
    <td align="left">OpDemand</td>
    <td align="left">Deis</td>
-   <td align="left"></td>
-   <td align="left"></td>
-   <td align="left">Dockerfile, Heroku Buildpack</td>
-   <td align="left"></td>
-   <td align="left">Git push</td>
-   <td align="left">Go</td>
+   <td align="center"></td>
+   <td align="center"></td>
+   <td align="center">Dockerfile, Heroku Buildpack</td>
+   <td align="center"></td>
+   <td align="center">Git push</td>
+   <td align="center">Go</td>
   </tr>
   <tr>
    <td align="left">ClusterHQ</td>
    <td align="left">Flocker</td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left">Dockerfile + YAML manifest</td>
-   <td align="left">✓</td>
-   <td align="left">CLI</td>
-   <td align="left">Python</td>
+   <td align="center">✓</td>
+   <td align="center"></td>
+   <td align="center">Dockerfile + YAML manifest</td>
+   <td align="center">✓</td>
+   <td align="center">CLI</td>
+   <td align="center">Python</td>
   </tr>
   <tr>
    <td align="left">CloudSoft</td>
    <td align="left">Clocker</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">Apache Brooklyn YAML blueprint + Dockerfile</td>
-   <td align="left">✓</td>
-   <td align="left">API / Web</td>
-   <td align="left">Java</td>
+   <td align="center">✓</td>
+   <td align="center">✓</td>
+   <td align="center">Apache Brooklyn YAML blueprint + Dockerfile</td>
+   <td align="center">✓</td>
+   <td align="center">API / Web</td>
+   <td align="center">Java</td>
   </tr>
   <tr>
    <td align="left">Mesosphere</td>
    <td align="left">Marathon</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">JSON</td>
-   <td align="left">✓</td>
-   <td align="left">API / CLI</td>
-   <td align="left">C++</td>
+   <td align="center">✓</td>
+   <td align="center">✓</td>
+   <td align="center">JSON</td>
+   <td align="center">✓</td>
+   <td align="center">API / CLI</td>
+   <td align="center">C++</td>
   </tr>
   <tr>
    <td align="left">Google</td>
    <td align="left">Kubernetes</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">YAML / JSON</td>
-   <td align="left">✓</td>
-   <td align="left">API / CLI</td>
-   <td align="left"></td>
+   <td align="center">✓</td>
+   <td align="center">✓</td>
+   <td align="center">YAML / JSON</td>
+   <td align="center">✓</td>
+   <td align="center">API / CLI</td>
+   <td align="center"></td>
   </tr>
  </tbody>
 </table>
