@@ -345,7 +345,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-sizes"></a>
 **Table 1 -‐ Size comparison of container orchestrators and managers**
 
-<table>
+<table border="1">
  <thead>
    <tr>
     <th align="left">Organization</th>
@@ -419,7 +419,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
-<table>
+<table border="1">
  <thead>
   <tr>
    <th align="left">Organization</th>
@@ -505,7 +505,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
   </tr>
  </tbody>
 </table>
-
+ 
 **Current Recommendation:** Kubernetes
 
 <a name="resources"></a>
