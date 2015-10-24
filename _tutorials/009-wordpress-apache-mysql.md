@@ -1,7 +1,7 @@
 ---
 title: Run WordPress, Apache, and MySQL in Docker
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-05
+date: 2015-10-26
 permalink: docs/tutorials/wordpress-apache-mysql/
 description: Learn how to spin up a single WordPress application running Apache and MySQL on Carina
 topics:
@@ -13,15 +13,14 @@ WordPress is one of the most prevalent web applications in the world. This
 series of tutorials covers how to migrate your content management system (CMS)
 application to more of a microservices model.
 
-This tutorial uses the following scenario: setting up WordPress in a single
-Docker container, which runs in a Docker Swarm cluster on the Rackspace
-Container Service. The MySQL database is also hosted in a Docker container.
-Finally, you use Apache to deliver traffic to your application.
+This tutorial uses the following scenario: set up WordPress in a single
+Docker container, which runs in a Docker Swarm cluster on the Carina. Host the MySQL database 
+in a Docker container. Finally, use Apache to deliver traffic to your application.
 
 ### Prerequisites
 
 If you're not sure what a Docker container is, read the
-[Docker 101](../docker-101-introduction-docker) tutorial to learn some basics.
+[Docker 101](/docs/tutorials/docker-101/) tutorial to learn some basics.
 
 ### Create a Swarm cluster
 
@@ -39,18 +38,18 @@ root password and a password for the `wordpress` user.
 2. Store these passwords temporarily in environment variables:
 
   ```
-  export ROOT_PASSWORD=<rootPassword>
-  export WORDPRESS_PASSWORD=<wordpressPassword>
+  $ export ROOT_PASSWORD=<rootPassword>
+  $ export WORDPRESS_PASSWORD=<wordpressPassword>
   ```
 
   Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
   generated passwords.
 
 3. Create the container by running the following terminal command. Name the
-   container `mysql` and use the password variables that you just created:
+   container `mysql`, and use the password variables that you just created:
 
   ```
-  docker run --detach \
+  $ docker run --detach \
     --name mysql \
     --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
     --env MYSQL_USER=wordpress \
@@ -64,7 +63,7 @@ root password and a password for the `wordpress` user.
 4. To verify that the container is running, execute the following command:
 
   ```
-  docker ps
+  $ docker ps
   ```
 
   The output shows the full details of the `mysql` container, listening on port
@@ -73,12 +72,12 @@ root password and a password for the `wordpress` user.
 ### Deploy the WordPress container
 
 After you have a MySQL database instance and have a Docker Swarm cluster, you're
-ready to deploy the WordPress container. You specify all of the database
+ready to deploy the WordPress container. Specify all of the database
 configuration with environment variables, including the database host and
-password:
+password by running the following command:
 
 ```
-docker run --detach \
+$docker run --detach \
   --publish 80:80 \
   --name wordpress \
   --link mysql:mysql \
@@ -116,20 +115,19 @@ on a new line in the output. You can verify that it’s running by executing the
 following command:
 
 ```
-docker ps
+$ docker ps
 ```
 
 The output of this command should show your new `wordpress` container, with its
 public IPv4 address and the port that the container is listening on (in the
 `PORTS` column). If you copy the public IP address and paste it into your
-browser, you can see your WordPress front end and also log in to the admin back
-end.
+browser, you can see your WordPress front-end and also log in to the admin back-end.
 
 You could also run the following command, which opens your default browser and
 points it to the IP address:
 
 ```
-open http://$(docker port wordpress 80)
+$ open http://$(docker port wordpress 80)
 ```
 
 ### Next step
