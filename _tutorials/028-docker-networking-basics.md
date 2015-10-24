@@ -60,11 +60,11 @@ with any application.
 
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
-* [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
-* [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
+* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
+* [Service discovery 101](/docs/tutorials/005-service-discovery-101/)
+* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
 ### Next step
 
-* [Connect Docker containers with Docker links]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-with-links/)
-* [Connect Docker containers using the ambassador pattern]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-ambassador-pattern/)
+* [Connect Docker containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
+* [Connect Docker containers using the ambassador pattern](/docs/tutorials/connect-docker-containers-ambassador-pattern/)
