@@ -29,7 +29,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 ### Prerequisite
 
-A Carina account. If you do not already have one, follow the [sign up process](https://app.getcarina.com).
+A Carina account. If you do not already have one, follow the [sign up process](https://app.getcarina.com/signup).
 
 ### Create a cluster
 
