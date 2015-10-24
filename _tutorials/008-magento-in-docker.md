@@ -1,7 +1,7 @@
 ---
 title: Run Magento in a Docker container
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-05
+date: 2015-10-26
 permalink: docs/tutorials/magento-in-docker/
 description: Learn how to set up Magento to run in a Docker container, linked with Redis and MySQL
 docker-versions:
@@ -13,37 +13,37 @@ topics:
 
 Magento is one of the most well-established ecommerce platforms in the PHP
 community, but the task of installing it on a virtual machine and configuring
-everything can be daunting for beginners and onerous for experienced developers.
+everything can be daunting, for beginners, and onerous, for experienced developers.
 With Docker, most of the complications are taken away, because you have a
-portable and reproducible environment already set up: all you need to do is run
+portable and reproducible environment already set up. All you need to do is run
 it.
 
-In this tutorial you will set up a Docker container running Magento, a Redis
-container for caching, and an external MySQL database for persistent storage.
+In this tutorial, you will set up a Docker container running Magento, a Redis
+container (for caching), and an external MySQL database (for persistent storage).
 
 ### Prerequisites
 
 A Carina cluster running Docker Swarm. Read our
-[Introduction to RCS](../intro-to-carina/) if you need help with this.
+[Introduction to Carina](/docs/tutorials/overview-of-carina/), if you need help with this.
 
 If you're not sure what a Docker container is, read the
-[Docker 101](../docker-101-introduction-docker) tutorial to learn some basics.
+[Docker 101](/docs/tutorials/docker-101/) tutorial to learn some basics.
 
 ### Download an environment file
 
 When you run your Magento container later in this tutorial, you will link to a
-local environment file that contains most of your configuration. So it makes
+local environment file that contains most of your configuration. It makes
 sense to download it early so you can populate it as you progress through this
 tutorial.
 
-1. Clone Carina library by running the following command:
+1. Clone the Carina library by running the following command:
 
   ```
   git clone https://github.com/getcarina/examples.git
   ```
 
 2. Navigate to the **magento** directory to find the **env** file (and a few
-  other files) that you will need for this tutorial.
+  other files) that you need for this tutorial.
 
 **Note**: _Never_ check this file into version control or expose it publicly.
 
@@ -55,8 +55,8 @@ these values according to your preference.
 
 ### Set up MySQL
 
-The next step is to create a database instance that is running MySQL. You can
-do this in the Rackspace Cloud Control Panel by following these instructions:
+Next, create a database instance that is running MySQL. You can
+do this, in the Rackspace Cloud Control Panel, by following these instructions:
 
 1. Open the **env** file that you downloaded in
    [Download an environment file](#download-an-environment-file).
@@ -90,23 +90,23 @@ do this in the Rackspace Cloud Control Panel by following these instructions:
 
 ### Run web and Redis containers
 
-Next, you start the following containers:
+Next, start the following containers:
 
-- A `web` container running Apache 2. This container will accept connections on
-  port 80 just like a normal web server.
+- A `web` container running Apache 2. This container accepts connections on
+  port 80, just like a normal web server.
 
 - A `redis` container that will handle back-end and session caching. Because
   Magento does not support this by default, the
   [Cm_RedisSession](https://github.com/colinmollenhour/Cm_RedisSession) and
   [Cm_Cache_Backend_Redis](https://github.com/colinmollenhour/Cm_Cache_Backend_Redis)
-  plug-ins have been preinstalled in the Docker image for the `web` container.
+  plug-ins were preinstalled in the Docker image for the `web` container.
 
 The **magento** directory contains a **docker-compose.yml** file that enables
 you to set up both containers by using a single `docker-compose` command. Simply
 run:
 
 ```
-docker-compose up -d
+$ docker-compose up -d
 ```
 
 This command provisions two containers, links them, binds port 80 to the
@@ -119,7 +119,7 @@ into the `web` container.
    following command:
 
   ```
-  docker ps
+  $ docker ps
   ```
 
   You should see two containers running, one of which has a public IPv4 address
@@ -168,7 +168,7 @@ You can verify that Redis is being used by Magento for caching.
 1. Run the following command:
 
   ```
-  docker exec -it redis redis-cli
+  $ docker exec -it redis redis-cli
   ```
 
 2. When the CLI prompt is ready, write `MONITOR` and press Enter.
