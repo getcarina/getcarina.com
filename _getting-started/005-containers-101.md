@@ -1,9 +1,9 @@
 ---
 title: Containers 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
-date: 2015-09-30
+date: 2015-10-26
 permalink: docs/tutorials/containers-101/
-description: Learn about what containers are and how they work and how to create a container using Docker.
+description: Learn what containers are, how they work, and how to create one in Carina or in a local Docker environment
 docker-versions:
   - 1.8.1
   - 1.8.2
@@ -14,16 +14,17 @@ topics:
   - tutorial
 ---
 
+This tutorial explains what containers are, how they work, and how you can starting creating them in Carina by Rackspace and Docker.
+
 ###What are containers?
 
-Containers package a piece of software with a complete file system that contains everything that the software needs to run, such as code, runtime, system tools, and system libraries. Rather than include a full operating system, like virtual machines (VMs) do, containers share the kernel of the host OS, enabling them to boot in seconds. Because the only space that containers use is the memory and disk space necessary for the software to run, containers are more portable and efficient than VMs.
+Containers package a piece of software with a complete file system that contains everything that the software needs to run, such as code, system tools, and system libraries. Rather than include a full operating system, like virtual machines (VMs) do, containers share the kernel of the host OS, enabling them to start in seconds. Because the only space that containers use is the memory and disk space necessary for the software to run, containers are more portable and efficient than VMs.
 
 ![Containers are more lightweight and efficient than virtual machines]({% asset_path containers-101/containers-vs-vms.svg %})
 
 ###How do containers work?
 
-In order to create the environment of a container, the host machine
-does two things: isolates namespaces and governs resources.
+To create the environment of a container, the host machine does two things: isolates namespaces and governs resources.
 
 Namespaces include all of the resources that an application can interact with,
 including files and network ports. By isolating namespaces, the host can
@@ -44,7 +45,11 @@ that works on a developer’s system will work the same way on any system.
 
 ###How to create a container
 
-Before you can create and start working with containers, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](002-docker-101.md).
+Before you can create and start working with containers, you need to set up the environment for them. You can do this by using the Carina by Rackspace hosted environment or by setting up a local Docker environment.
+
+- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster](docs/tutorials/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
+
+- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](docs/getting-started/006-docker-101.md). Then, proceed with the remainder of this article.
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
@@ -73,9 +78,10 @@ Most of the time, you won't see `--interactive` and `--tty` spelled out.
 You can use the shortened versions, `-it` or `-i -t`, to
 achieve the same effect. The `-t` flag assigns a pseudo-tty, or terminal, inside your new container. The `-i` flag creates an interactive connection by getting the standard input (`STDIN`) of the container.
 
-After you run this command, your prompt changes and you are in your new container. Example:
-`root@b6734565b373:/# `
-You can perform the following actions while you are inside the container to become familiar with running commands inside a containerized environment:
+After you run this command, your prompt changes and you are in your new container. For example, `root@b6734565b373:/# `.
+
+####Work in a container
+When you are inside the container, you can perform the following actions to become familiar with running commands inside a containerized environment:
 
  * `uname -a` returns certain system information. The appended `-a` prints all information.
    Example output:
@@ -99,3 +105,6 @@ You can perform the following actions while you are inside the container to beco
 **Note**: This is not an exhaustive list of actions that you can perform while inside a container.
 
 To exit out of the container, run `exit`. Your prompt returns to the previous prompt.
+
+###Resources
+[Overview of Carina](docs/getting-started/overview-of-carina)
