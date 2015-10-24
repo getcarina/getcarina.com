@@ -55,7 +55,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
     container. When a Docker container is designed to link to another, the expected
-    link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
+    link alias is usually documented on its [Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
 
 5. Identify the port on which the web container is published by running the following command.
     In the example output, the port is `32770`.
