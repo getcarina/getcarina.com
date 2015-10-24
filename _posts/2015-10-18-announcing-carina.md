@@ -100,14 +100,20 @@ Yeah, that's 3 independent docker hosts. You get a host, you get a host, and you
 
 ## Wrap it up, Jesse
 
-I really hope you sign up and try Carina out - the entire team was focused on making something developers would love and experiment with. It's a Beta; and we acknowledge there's going to bugs. Thats ok!
+I really hope you sign up and try Carina out - the entire team was focused on making something developers would love and experiment with. It's a Beta; and we acknowledge there's going to bugs. Thats ok! Talk with us, share - and share with your friends. Honest and candid feedback is always welcome.
 
-## More Reading:
+Thanks - and welcome to Carina!
+
+## More Reading, community, GitHub!:
 * [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/tutorials/docker-swarm-carina/)
 * [Documentation](https://getcarina.com/docs/)
 * [Community Forums](https://community.getcarina.com/)
 * IRC: **irc.freenode.net - #carina**
 * GitHub: [https://github.com/getcarina](https://github.com/getcarina)
+
+{% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
+
+
 
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
