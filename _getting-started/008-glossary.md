@@ -11,6 +11,10 @@ topics:
 
 The following terms are used in the documentation for Carina.
 
+##### autoscaling
+
+A process that monitors your cluster resources and automatically grows a cluster if needed. A scaling action is triggered when either the average CPU or average memory consumption exceeds 80 percent across the cluster.
+
 ##### ambassador pattern
 
 A pattern for linking containers. The ambassador pattern uses Docker links with specialized ambassador containers to enable communication between containers across Docker hosts. 
@@ -35,9 +39,21 @@ A pool of compute, storage, and networking resources that serves as a host for o
 
 A userspace instance that packages a piece of software with a complete file system that contains everything that the software needs to run, such as code, system tools, and system libraries. Each container is an isolated and secure application platform. A container is created from an *image*. Containers can be run, started, stopped, moved, and deleted.
 
+##### control plane
+
+The component of Carina that takes the commands that you input in the UI or CLI and performs functions such as creating clusters and adding segments to clusters. 
+
 ##### credentials
 
 A set of TLS certificates and environment configuration files that you need to download and use to authenticate to your Carina cluster. 
+
+##### data volume
+
+A directory within a container that stores data and is meant to persist beyond the life cycle of the container. Data volumes can be shared and reused among containers, and they can be created in special *data volume containers*. 
+
+##### data volume container (DVC)
+
+A container that houses one or more volumes and whose sole aim is to store data in a persistent way. DVCs are often used as a centralized data store across multiple containers on the same Docker host. Other containers can mount the volume inside a DVC and save their data to it, providing non-persistent containers with a way to handle persistent storage.
 
 ##### Docker
 
@@ -97,7 +113,7 @@ An open-source service application that stores and distributes Docker images. Yo
 
 ##### segment
 
-A portion of the resources available in a cluster. Containers are housed in segments on the cluster. A Carina segment is an LXC container provisioned by libvirt.
+A portion of the resources available in a cluster. Containers are housed in segments on the cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent, a Docker Engine, and containers. 
 
 ##### service discovery
 
@@ -106,3 +122,11 @@ The process of discovering what services are available for an application. Servi
 ##### scheduler
 
 A mechanism that is responsible for the life cycle of a container. The scheduler chooses the best *segment* to put the container in, and starts, stops, and destroys the container when requested. Different scheduler strategies can be used to pick the best segment to hold a container. In Carina, the spread scheduler strategy is used.
+
+##### Swarm agent
+
+The component on a segment that accepts commands from the *Swarm manager*. The agent communicates with the Docker Engine to perform the commands, such as running containers.
+
+##### Swarm manager
+
+The component that orchestrates and schedules containers across an entire cluster. The Swarm manager assigns your containers to the segments in the cluster via the *Swarm agent*.
