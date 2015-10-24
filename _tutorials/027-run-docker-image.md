@@ -22,7 +22,7 @@ This tutorial describes how to find and download any Docker image from Docker Hu
 Before you can begin this tutorial, be sure that you have fulfilled these prerequisites:
 
 * You have installed Docker. For installation instructions, go to the installation section of [Docker 101](/docs/tutorials/docker-101/), and click the link for your operating system.
-* You have performed the steps in the tutorial [Set up a virtual environment with a Docker host ](/docs/tutorials/set-up-docker-machine).
+* You have performed the steps in the tutorial [Set up a virtual environment with a Docker host ](/docs/tutorials/set-up-docker-machine/).
 * You have a working terminal application.
 * You have a VM, such as [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads)
 
