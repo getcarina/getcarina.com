@@ -61,7 +61,7 @@ with any application.
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101](/docs/tutorials/service-discovery-101/)
+* [Service discovery 101](/docs/tutorials/005-service-discovery-101/)
 * [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
 ### Next step
