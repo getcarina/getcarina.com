@@ -14,7 +14,7 @@ topics:
   - troubleshooting
 
 ---
-If you launch a container without the `--detach` (`-d`) flag, that container will run in the foreground of the terminal. Usually, you can stop the running container by using `Ctrl-C` or `Ctrl-D`. Sometimes, however, the process doesn't respond to `Ctrl-C` or `Ctrl-D`, and the container continues running without response to any input.
+If you launch a container without the `--detach` (`-d`) flag, that container runs in the foreground of the terminal. Usually, you can stop the running container by using `Ctrl-C` or `Ctrl-D`. Sometimes, however, the process doesn't respond to `Ctrl-C` or `Ctrl-D`, and the container continues running without responding to any input.
 
 ![Runaway Container]({% asset_path runaway-container.gif %})
 
@@ -27,7 +27,7 @@ In this situation, you can stop the container by opening a separate terminal and
 
     The `-f` flag is short for `--force=false`, which forces the removal of a running container. The `-v` flag is short for `--volumes=false`, which removes the volumes associated with the container. You can use the long or short version of the flags.
 
-Alternatively, you can sever the client connection to the server while keeping the
+Alternatively, you can disconnect the client from the server while keeping the
 Docker container running.
 
 1. Run `ps aux | grep docker` to find the `docker run` command.
@@ -46,7 +46,7 @@ Docker container running.
     rgbkrk        22434   0.0  0.0 145169880   5664 s002  S+   10:44AM   0:00.16 docker run whoa/tiny
     $ kill -9 22434
     ```
-    If the first time you run the `kill` command doesn't work, you can use a signal to send a more specific `kill` command. Appending the `-9` signal sends a non-catchable, non-ignorable `kill`.
+    If the `kill` command doesn't work the first time you run it, you can use a signal to send a more specific `kill` command. Appending the `-9` signal sends a non-catchable, non-ignorable `kill`.
 
 3. After ending the `docker run` command, find the non-responsive container using `docker ps`.
 
