@@ -1,7 +1,7 @@
 ---
 title: Run WordPress across linked front end and back end containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-05
+date: 2015-10-26
 permalink: docs/tutorials/linking-wordpress-containers/
 description: Learn how to spin up a multi-container WordPress application split across linked containers, using NGINX as the front end and PHP-FPM as the back end.
 topics:
@@ -9,7 +9,7 @@ topics:
   - beginner
 ---
 
-In the [previous tutorial](../wordpress-apache-mysql), you set up a Docker
+In the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you set up a Docker
 container running Apache 2 and WordPress. For your database, you ran MySQL in a
 Docker container.
 
@@ -27,12 +27,12 @@ relationships.
 
 A Carina cluster, with at least two nodes, running Docker Swarm.
 
-**Note:** If you completed the [previous tutorial](../wordpress-apache-mysql), you
+**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you
 can reuse the same cluster, so long as all previous Docker containers have been
 removed. You can delete all of them with this command:
 
 ```
-docker rm -fv $(docker ps -q)
+$ docker rm -fv $(docker ps -q)
 ```
 
 ### One process per container
@@ -43,13 +43,13 @@ article, but the following list summarizes why "one process per container" is
 ideal:
 
 - If multiple processes ran in a single container, an intermediary piece of
-software like [supervisord](http://supervisord.org/) would be needed to manage
+software, like [supervisord](http://supervisord.org/), would be needed to manage
 the multiple processes. This added layer would go against one of the core aims
 of the Docker project: to use a solution that is granular, lightweight, and
 focuses on doing one thing well.
 
 - Single processes bind the life cycle of a container with the life cycle of the
-process itself. This connection means that if a process like NGINX fails, this
+process itself. This connection means that if a process, like NGINX, fails, this
 fatal error directly impacts the state of the container itself, making
 debugging fairly straightforward.
 
@@ -69,8 +69,8 @@ root password and a password for the `wordpress` user.
 2. Store these passwords temporarily in environment variables:
 
   ```
-  export ROOT_PASSWORD=<rootPassword>
-  export WORDPRESS_PASSWORD=<wordpressPassword>
+  $ export ROOT_PASSWORD=<rootPassword>
+  $ export WORDPRESS_PASSWORD=<wordpressPassword>
   ```
 
   Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
@@ -80,7 +80,7 @@ root password and a password for the `wordpress` user.
    container `mysql` and use the password variables that you just created:
 
   ```
-  docker run --detach \
+  $ docker run --detach \
     --name mysql \
     --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
     --env MYSQL_USER=wordpress \
@@ -94,7 +94,7 @@ root password and a password for the `wordpress` user.
 4. To verify that the container is running, execute the following command:
 
   ```
-  docker ps
+  $ docker ps
   ```
 
   The output shows the full details of the `mysql` container, listening on port
@@ -105,7 +105,7 @@ root password and a password for the `wordpress` user.
 Next, set up the back-end container that is running the WordPress installation:
 
 ```
-docker run -d \
+$ docker run -d \
   --link mysql:mysql \
   --name wordpress-fpm \
   -e WORDPRESS_DB_USER=wordpress \
@@ -123,7 +123,7 @@ specify the WORDPRESS_DB_NAME variable, because it defaults to `wordpress`.
 
 ### Prepare the NGINX Docker image
 
-The final step is to start an NGINX front-end container. To do so, you deploy a
+The final step is to start an NGINX front-end container, by deploying a
 variant of the base `nginx` Docker image. You have the following options:
 
 - Build the image locally from a Dockerfile and push it to your own Docker Hub account.
@@ -139,19 +139,19 @@ such as Docker Hub.
 which contains the `nginx` Dockerfile and the `nginx` configuration file:
 
   ```
-  git clone https://github.com/getcarina/examples.git
+  $ git clone https://github.com/getcarina/examples.git
   ```
 
 2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
 
   ```
-  docker build -t <userNamespace>/nginx-fpm nginx-fpm
+  $ docker build -t <userNamespace>/nginx-fpm nginx-fpm
   ```
 
 3. Push your local image to Docker Hub, just like you would with Git:
 
   ```
-  docker push <userNamespace>/nginx-fpm
+  $ docker push <userNamespace>/nginx-fpm
   ```
 
 ### Run the NGINX container
@@ -163,7 +163,7 @@ Docker Hub account name, or `carinamarina` if you did not build and push your ow
 Docker image:
 
 ```
-docker run -d \
+$ docker run -d \
   -p 80:80 \
   --name nginx \
   --link wordpress-fpm:fpm \
@@ -185,14 +185,14 @@ via the FCGI protocol by using that container's TCP hostname and port (`fpm:9000
 Verify that your stack is running by executing the following command:
 
 ```
-docker ps
+$ docker ps
 ```
 
 You can also visit your NGINX front end by finding its IPv4 address and opening
 it in your default browser:
 
 ```
-open http://$(docker port nginx 80)
+$ open http://$(docker port nginx 80)
 ```
 
 You should now see the standard WordPress installation guide.
