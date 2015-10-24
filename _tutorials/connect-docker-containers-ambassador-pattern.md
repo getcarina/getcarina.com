@@ -128,8 +128,8 @@ You now have two containers that can communicate across Docker hosts.
 
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker networking basics][networking-basics]
-* [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/tutorials/service-discovery-101/)
-* [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
+* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
+* [Service discovery 101](/docs/tutorials/service-discovery-101/)
+* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
 [networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/
