@@ -69,7 +69,7 @@ system (such as OpenStack) to enable secure IP communication between
 virtual machines. As VMs are created or destroyed, their IP addresses are 
 advertised to the rest of the network, and they are able to send and receive data 
 over IP just as they would with the native networking implementation – but with 
-higher security, scalability, and performance [(5)](#resources).”
+higher security, scalability, and performance” [(5)](#resources).
 
 In late 2014, the Calico team created a prototype of the Calico stack
 that runs in Docker containers, in addition to a plugin that informs it
@@ -87,7 +87,7 @@ SocketPlane’s concept is to bring Open vSwitch
 "production quality, multilayer virtual switch" [(7)](#resources) capabilities to the Docker host,
 making it possible to
 “have a container that’s going to be able to manage the data path and
-also manage either overlays or underlays [(8)](#resources).”
+also manage either overlays or underlays” [(8)](#resources).
 
 However, few details have been published as SocketPlane is
 in a semi-stealth mode. Its relevance and consideration as an option stems from the fact that its founders
