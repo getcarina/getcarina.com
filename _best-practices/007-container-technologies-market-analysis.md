@@ -20,7 +20,7 @@ and utilities serve as the best solutions depending on the use case, as
 well as which of these options compete with and overlap one another.
 
 The container ecosystem is one of the fastest evolving technology trends
-that we’ve seen since the virtualized movement of the previous
+that we have seen since the virtualized movement of the previous
 decade. As such, bear in mind that the findings and
 opinions expressed in this report are *extremely* time sensitive.
 A timespan as small as six months can rapidly shift what
@@ -38,12 +38,12 @@ when you think of IT infrastructure from a traditional virtualization
 perspective and consider the potential for even more elasticity and capability utilizing
 computing resources.
 
-In short, the virtualization we’ve all come to know and use today is
+In short, the virtualization we have all come to know and use today is
 possible because of the development and rise of the hypervisor. If virtualization as enabled by hypervisors has been so ubiquitous and successful, why has the focus changed to containers and Docker? James Bottomley, leading Linux kernel
 developer and CTO of server virtualization for Parallels, explained that VM hypervisors, such as Hyper-V, KVM, and Xen, are all "based on emulating virtual hardware. That means
 they’re fat in terms of system requirements" [(1)](#resources).
 
-Containers, however, use shared operating systems. That means they are
+Containers, however, use shared operating systems. That means that they are
 much more efficient than hypervisors in terms of system resources. Instead
 of virtualizing hardware, containers rest on top of a single Linux
 instance on the host. According to Bottomley, this means that you can “leave behind
@@ -80,7 +80,7 @@ popularity of the tool and its reception in the strong community that
 serves as its driving force.
 
 All container-related tools are not only young, but are also moving at a rapid pace.
-For some, their statements of what they’re meant
+For some, their statements of what they are meant
 to aid with and which technologies they respectively
 interoperate with lack clarity or are still to be determined.
 Ultimately, the community will decide which
@@ -95,7 +95,7 @@ operate. There are varying degrees of features and capabilities
 that span and even spill over from one technology to the other, and
 noticing these subtleties is a very complex and tedious task. Figuring
 out which set of technologies will help you establish your future
-roadmap comes down to understanding the types of users you’re trying to enable, as
+roadmap comes down to understanding the types of users you are trying to enable, as
 well as the classes of workloads that you want to manage across your resources.
 
 Whether or not you intend to work directly with Docker, learning about Docker will help you develop the vocabulary and understand the concepts to make sense of other container tools.
@@ -103,68 +103,68 @@ Whether or not you intend to work directly with Docker, learning about Docker wi
 
 ### Recommendations
 
-For specific observations and suggestions that you may wish to implement as you begin working with containers, we have developed a collection of best-practices articles about tools and practices in the container ecosystem. After the title of each article here, it's key recommendations are summarized. For details explaining a recommendation, follow the link to the article.
+For specific observations and suggestions that you may wish to implement as you begin working with containers, we have developed a collection of best-practices articles about tools and practices in the container ecosystem. After the title of each article here, its key recommendations are summarized. For details explaining a recommendation, follow the link to the article.
 
-* [Introduction to container technologies: Docker](../container-technologies-docker/)
+* [Introduction to container technologies: Docker](/docs/best-practices/container-technologies-docker/)
 
 > Docker automates the deployment of applications within containers. Each container has a much smaller resource footprint than a comparable conventional virtual machine. Containers are most likely to be most immediately helpful in new projects, where work can begin in a containerized environment rather than requiring conversion from other configurations.
 
-* [Introduction to container technologies: container operating systems](../container-technologies-operating-systems/)
+* [Introduction to container technologies: container operating systems](/docs/best-practices/container-technologies-operating-systems/)
 
-> Use container-oriented operating systems CoreOS or Project Atomic for the functionality required to deploy applications along with self-updating and healing properties.
+> Use container-oriented operating systems, CoreOS or Project Atomic, for the functionality required to deploy applications along with self-updating and healing properties.
 
-* [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/)
+* [Introduction to container technologies: registration and discovery of container services](/docs/best-practices/container-technologies-registration-discover/)
 
 > For service discovery and shared configuration, use the etcd distributed key-value store.
 
-* [Introduction to container technologies: scheduling and management of services and resources](../container-technologies-scheduling-management/)
+* [Introduction to container technologies: scheduling and management of services and resources](/docs/best-practices/container-technologies-scheduling-management/)
 
 > For efficient isolation of resources facilitating different types of workloads and frameworks, use the Mesos distributed systems kernel.
 
-* [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
+* [Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/)
 
-> The best tool for orchestration and management of container clusters varies with the size of the cluster: Kubernetes and Marathon excel with thousands of hosts while Compose is ideal for a single host.
+> The best tool for orchestration and management of container clusters varies with the size of the cluster. Kubernetes and Marathon excel with thousands of hosts while Compose is ideal for a single host.
 
-* [Introduction to container technologies: container networking](../container-technologies-networking/)
+* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
 > Use Weave to create a network in which Docker containers are part of the same virtual network switch no matter where they are running.
 
-* [Container design philosophy](../container-design-philosophy/)
+* [Container design philosophy](/docs/best-practices/container-design-philosophy/)
 
-> Run one process per container, manage containers as roles, and listen to advice from Docker but don't follow it blindly.
+> Run one process per container, manage containers as roles, and listen to advice from Docker but do not follow it blindly.
 
-* [Docker best practices: Dockerfile](/docker-best-practices-dockerfile/)
+* [Docker best practices: Dockerfile](/docs/best-practices/docker-best-practices-dockerfile/)
 
 > Create and customize your container images with a Dockerfile.
 
-* [Docker best practices: image repository](../docker-best-practices-image-repository/)
+* [Docker best practices: image repository](/docs/best-practices/docker-best-practices-image-repository/)
 
 > Create containers consistently and rapidly from saved container images.
 
-* [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/)
+* [Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications/)
 
 > Instead of storing data or logs in a container, use Docker volume mounts to create either a data volume or a data volume container.
 
-* [Docker best practices: container linking](../docker-best-practices-container-linking/)
+* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
 
 > Use a service registration and discovery tool instead of Docker container linking.
 
-* [Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/)
+* [Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/)
 
 > Use Kubernetes with Docker to manage and orchestrate containers in your stack.
 
-* [Container ecosystem: Mesos versus OpenStack](../container-ecosystem-mesos-openstack/)
+* [Container ecosystem: Mesos versus OpenStack](/docs/best-practices/container-ecosystem-mesos-openstack/)
 
 > Mesos and OpenStack can run separately or together. OpenStack
-splits a cluster across several virtual machines; Mesos runs on bare metal or on Openstack; Mesos
+splits a cluster across several virtual machines. Mesos runs on bare metal or on Openstack. Mesos
 combines all resources, whether virtual machines or bare metal,
 and presents them as a single entity.
 
-* [Container ecosystem: Docker Swarm](../container-ecosystem-docker-swarm/)
+* [Container ecosystem: Docker Swarm](/docs/best-practices/container-ecosystem-docker-swarm/)
 
-> Swarm's usefulness is unclear; wait for it to develop.
+> Swarm's usefulness is unclear. Wait for it to develop.
 
-* [Container ecosystem: OpenShift](../container-ecosystem-openshift/)
+* [Container ecosystem: OpenShift](/docs/best-practices/container-ecosystem-openshift/)
 
 > OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.
 
