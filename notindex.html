@@ -80,7 +80,9 @@ layout: default
         </h2>
         <p>Carina streamlines the entire experience to allow you to get started with containers <strong></strong><a href="/docs/tutorials/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="https://github.com/rackerlabs/carina"><code>carina</code></a>, the command line tool.</strong></p>
         <p>
-          <a href="" class="carina-link">Get Started with Carina</a>
+          {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-on-carina/' %}
+            <a href="{{ post.url }}" class="carina-link">Get Started with Carina</a>
+          {% endif %}{% endfor %}
         </p>
       </div>
       <div class="demo">
@@ -98,7 +100,7 @@ layout: default
     <div class="section-grid">
       <div class="summary">
         <h2>
-          <span class="accent blue">Everything you need to know</span>
+          <span class="accent blue">Everything you need to get started</span>
         </h2>
         <p>Carina makes container clusters more accessible to everyone, from novices to professional developers.</p>
       </div>
