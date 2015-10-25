@@ -1,7 +1,7 @@
 ---
 title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-26
 permalink: docs/best-practices/container-ecosystem-openshift/
 description: Explore the place of RedHat OpenShift in the container ecosystem
 topics:
@@ -9,7 +9,8 @@ topics:
   - planning
 ---
 
-*OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.*
+*OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise might 
+require top-to-bottom adoption of RedHat’s container and virtualization products.*
 
 RedHat’s OpenShift has always been associated with managing your
 applications at the Platform-as-a-Service (PaaS) layer.
@@ -41,8 +42,8 @@ Project Atomic, their preferred hosting platform for
 Docker containers that competes with CoreOS.
 
 To learn more about Kubernetes and other tools for container orchestration, read
-[Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/) and
-[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
+[Container ecosystem: Kubernetes]((/docs/best-practices/container-ecosystem-kubernetes/)) and
+[Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/).
 
 ### OpenShift, OpenStack, and Project Atomic
 
@@ -82,9 +83,9 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/)
+- [Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/)
 
-- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/)
 
 In addition to *best-practices* articles such as this one,
 Carina documentation includes *tutorials* and *references*:
@@ -97,4 +98,14 @@ Carina documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping OpenStack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product 
+organization and is tasked with performing bleeding edge R&D and providing market 
+analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace 
+in 2012 as a Solutions Architect with the intent of helping OpenStack become the open 
+standard for cloud management. At Rackspace, Mike has led the integration effort with 
+strategic partner RightScale; aided in the assessment, development, and evolution of 
+Rackspace Private Cloud; and served as the Chief Architect of the Service Provider 
+Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National 
+Laboratories, a subsidiary of Lockheed Martin, performing research and development in 
+cybersecurity with regard to distributed systems, cloud, and mobile computing. 
+Follow Mike on [Twitter](https://twitter.com/@mikemetral).
