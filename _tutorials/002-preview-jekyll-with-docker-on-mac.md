@@ -152,6 +152,7 @@ Refresh the page in your web browser to see your changes.
 You might encounter the following issue when running the preview script:
 
 * <a name="troubleshooting-missing-config"></a> The \_config.yml file is not picked up by Jekyll
+
 If you see the following output where the configuration file is listed as `none`,
 the most likely cause is that the [Docker data volume][docker-volume], which exposes the Jekyll site on your local file
 system to the Docker container, is configured incorrectly.
