@@ -1,7 +1,7 @@
 ---
 title: Preview a Jekyll site with Docker on Windows
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-23
+date: 2015-10-26
 permalink: docs/tutorials/preview-jekyll-with-docker-on-windows/
 description: Learn how to preview a Jekyll site in a Docker container, so that you do not need to install Ruby or Jekyll on your local machine
 docker-versions:
@@ -200,7 +200,7 @@ you do not need to install Ruby or Jekyll on your local machine.
     ```
 
 6. In a web browser, navigate to the URL specified in the output.
-    Following is an example of the output:
+    The following is an example of the output:
 
     ```
     ***********************************************************
@@ -227,12 +227,14 @@ Refresh the page in your web browser to see your changes.
 ## <a name="troubleshooting"></a>Troubleshooting
 You might encounter the following issues when running the preview script.
 
-### <a name="troubleshooting-stop-jekyll"></a>Ctrl + C does not stop Jekyll
-PowerShell sometimes doesn't catch **Ctrl + C** the first time. However pressing
-that key combination twice in quick succession usually works.
+* <a name="troubleshooting-stop-jekyll"></a>Ctrl + C does not stop Jekyll
 
-### <a name="troubleshooting-missing-config"></a> The \_config.yml file is not picked up by Jekyll
-If you see output as follows where the configuration file is none,
+PowerShell sometimes doesn't catch **Ctrl + C** the first time; pressing
+the key combination twice in quick succession usually works.
+
+* <a name="troubleshooting-missing-config"></a> The \_config.yml file is not picked up by Jekyll
+
+If you see the following output where the configuration file is listed as `none`,
 the most likely cause is that the [Docker data volume][docker-volume], which exposes the Jekyll site on your local file
 system to the Docker container, is configured incorrectly.
 
@@ -252,3 +254,8 @@ See the [Prerequisites](#prerequisites) section for additional information.
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
+
+### Next 
+
+For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+
