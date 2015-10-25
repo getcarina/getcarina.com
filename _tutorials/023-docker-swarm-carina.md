@@ -1,7 +1,7 @@
 ---
 title: Understanding how Carina uses Docker Swarm
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-30
+date: 2015-10-26
 permalink: docs/tutorials/docker-swarm-carina/
 description: Learn how Carina uses Docker Swarm
 docker-versions:
@@ -12,7 +12,7 @@ topics:
   - beginner
 ---
 
-Carina provisions Docker Swarm clusters for you to deploy your containers to.
+Carina provisions Docker Swarm clusters for you to deploy your containers to. 
 Although these clusters offer much of the native functionality of Docker Swarm,
 you should be aware of the specific ways in which Carina implements Docker Swarm.
 
@@ -26,11 +26,11 @@ A Carina segment is similar to a Docker host because both of them house a set of
 Docker containers given to them by the Swarm scheduler. One of the key differences,
 however, is their underlying virtualization technology. A segment is an LXC
 container provisioned by libvirt, whereas a Docker host is typically installed
-by you or a tool like Docker Machine onto an operating system, often in a
+by you, or by a tool like Docker Machine, onto an operating system, often in a
 Virtual Machine (VM). Tests have shown a 60 percent performance boost when LXC
 containers are used instead of VM hosts.
 
-Because your Docker containers will live on segments, you cannot connect to the
+Because your Docker containers live on segments, you cannot connect to the
 parent host using SSH, like you can with a traditional VM. There are also
 restrictions on mounting paths from the host file system, which is discussed in
 the [Volumes](#volumes) section.
@@ -61,9 +61,9 @@ deploy, manage, and visualize your clusters.
 
 ### Discovery back ends
 
-Swarm uses the concept of a discovery back end to track all the hosts (or
+Swarm uses the concept of a discovery back-end to track all the hosts (or
 Carina segments) registered on the cluster. Many different kinds of discovery
-back ends are used in the the Docker ecosystem:
+back-ends are used in the the Docker ecosystem:
 
 - Hosted Discovery with Docker Hub
 - Static files
@@ -71,7 +71,7 @@ back ends are used in the the Docker ecosystem:
 - Zookeeper
 - Consul
 
-You can even use a static list of IP addresses, or IP ranges. With
+You can even use a static list of IP addresses or IP address ranges. With
 Carina, however, the only supported option is Hosted Discovery with Docker Hub.
 Each cluster is assigned its own Discovery token ID, and hosts use Docker Hub
 for service discovery.
@@ -92,7 +92,7 @@ command used to provision the manager container, since it contains the cluster I
 To list the host IP addresses in your cluster, run the following command:
 
 ```
-swarm list token://<cluster_id>
+$ swarm list token://<cluster_id>
 ```
 
 For information about how to install and use the `swarm` binary, see the
@@ -104,11 +104,11 @@ The Docker Swarm scheduler can distribute containers to hosts in different ways,
 and it allows you to specify a scheduling strategy when a manager is provisioned.
 You do this by passing the `--strategy` flag to the `swarm manage` command.
 
-With Carina you do not get this option; the `spread` strategy, which is the
+With Carina you do not get this option. Instead, the `spread` strategy, which is the
 Swarm default, is used.
 
 To find out more information about Swarm scheduling strategies, read the
-[Strategies for distributing containers to segments](../introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
+[Strategies for distributing containers to segments](/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
 section of the "Introduction to Docker Swarm" article.
 
 ### AppArmor profiles
@@ -138,7 +138,7 @@ these overrides.
 ### Volumes
 
 One of the features of Docker containers is the ability to mount directories
-from the host machine, but with Carina this feature is disabled for security.
+from the host machine, but, with Carina, this feature is disabled for security.
 As a result, you cannot you cannot use the `--volume` flag when referring to
 host paths.
 

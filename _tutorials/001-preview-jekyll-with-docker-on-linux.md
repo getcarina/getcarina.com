@@ -1,9 +1,9 @@
 ---
 title: Preview a Jekyll site with Docker on Linux
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-23
+date: 2015-10-26
 permalink: docs/tutorials/preview-jekyll-with-docker-on-linux/
-description: Learn how to preview a Jekyll site in a Docker container, so that you do not need to install Ruby or Jekyll on your local machine
+description: Learn how to preview a Jekyll site in a Docker container, so that there is no need to install Ruby or Jekyll on your local machine
 docker-versions:
   - 1.8.2
 topics:
@@ -128,3 +128,7 @@ Refresh the page in your web browser to see your changes.
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
+
+### Next
+
+For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).

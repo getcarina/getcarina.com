@@ -1,7 +1,7 @@
 ---
 title: How to stop a non-responsive running container
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
-date: 2015-09-30
+date: 2015-10-26
 permalink: docs/tutorials/stop-nonresponsive-running-container/
 description: Learn how to stop a running container that doesn't respond to standard kill commands.
 docker-versions:
@@ -46,7 +46,8 @@ Docker container running.
     rgbkrk        22434   0.0  0.0 145169880   5664 s002  S+   10:44AM   0:00.16 docker run whoa/tiny
     $ kill -9 22434
     ```
-    If the `kill` command doesn't work the first time you run it, you can use a signal to send a more specific `kill` command. Appending the `-9` signal sends a non-catchable, non-ignorable `kill`.
+    If the `kill` command doesn't work the first time you run it, you can use a signal to send a more specific `kill` command. 
+    Appending the `-9` signal sends a non-catchable, non-ignorable `kill` instruction.
 
 3. After ending the `docker run` command, find the non-responsive container using `docker ps`.
 

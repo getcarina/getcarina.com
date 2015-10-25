@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to container technologies: orchestration and management of container clusters'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-26
 permalink: docs/best-practices/container-technologies-orchestration-clusters/
 description: Compare options for orchestration and management of container clusters
 docker-versions:
@@ -10,39 +10,49 @@ topics:
   - planning
 ---
 
-*The best tool for orchestration and management of container clusters varies with the size of the cluster: Kubernetes and Marathon excel with thousands of hosts while Compose is ideal for a single host.*
+*The best tool for orchestration and management of container clusters varies with the size of the cluster. Kubernetes and Marathon excel with thousands of hosts while Compose is ideal for a single host.*
 
 Orchestrating and managing a cluster of Docker containers is an emerging
 trend that is very competitive and evolving rapidly. Many options currently exist with
-various feature sets; some of those feature sets overlap, making it challenging to choose between seemingly similar tools.
+various feature sets. Some of those feature sets overlap, making it challenging to choose between seemingly similar tools.
 
 One way to make a useful choice is to focus your investigation on tools that are designed primarily for the container ecosystem layers of most interest to you.
 
 ![Strata of the container ecosystem]({% asset_path best-practices/orchestration-clusters/container-ecosystem.svg %})
 
+As shown in the figure above, the following are the ecosystem layers:
+
 - Layer 7 = Workflow
+
 - Layer 6 = Orchestration
+
 - Layer 5 = Scheduling
+
 - Layer 4 = Container engine
+
 - Layer 3 = Operating system
+
 - Layer 2 = Virtual infrastructure
+
 - Layer 1 = Physical infrastructure
 
 Kubernetes and Marathon are leaders in the container orchestration layer.
 For other container management activities such as workflow and scheduling, leaders include Deis and Mesos [(1)](#resources).
 OpenStack also offers features that are especially relevant at scheduling and virtual infrastructure layers.
 
-Another basis for comparison is a tool's ability to offer features beyond simple orchestration.
+Another basis for comparison is a tool's ability to offer features beyond simple orchestration as shown in the following figure:
+
+- Docker Compose is in the intersection between traditional platform as a service (PaaS) and container orchestration.
+
+- Flynn is in the intersection between traditional PaaS and specialized offerings such as stateful  applications.
+
+- Flocker is in the intersection between specialized offerings and container orchestration.
 
 ![Intersections between PaaS, container orchestration, and specialized offerings]({% asset_path best-practices/orchestration-clusters/containers-orchestration.svg %})
 
-- Docker Compose is in the intersection between traditional platform as a service (PaaS) and container orchestration.
-- Flynn is in the intersection between traditional PaaS and specialized offerings such as stateful  applications.
-- Flocker is in the intersection between specialized offerings and container orchestration.
+Following is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools. Before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case that you intend to fulfill and the scale at which you want to operate.
 
-Following is a discussion of notable open-source container orchestration engines and managers, along with a summary of what they each aim to achieve. This is a general introduction to those tools; before you adopt any of them, you should perform your own careful analysis of which option to choose given the use case that you intend to fulfill and the scale at which you want to operate.
-
-### Mesosphere’s Marathon
+### Marathon from Mesosphere
 
 Marathon is a cluster-wide initiation and control system for services in
 cgroups (Linux kernel control groups) or Docker containers. It requires and is based on Apache Mesos
@@ -51,11 +61,11 @@ kernel for your data center, Marathon serves as a cluster’s init
 or upstart daemon. Marathon has a UI and a REST API for managing and
 scheduling Mesos frameworks, including Docker containers.
 
-Marathon is a *meta framework*: you can start other Mesos frameworks
+Marathon is a *meta framework*. You can start other Mesos frameworks
 with it. It can launch anything that can be launched in a standard shell.
 You can even start other Marathon instances via Marathon [(2)](#resources).
 Because Marathon is a framework built on Mesos, it is comparable
-to Clocker which is itself a blueprint (analogous to a framework)
+to Clocker, which is itself a blueprint (analogous to a framework)
 for Apache’s Brooklyn.
 
 Because of its flexibility, Marathon can operate as a cluster-wide
@@ -71,12 +81,12 @@ provides the key services and dependencies one would expect in
 those toolsets.
 
 You can read more about how Mesos relates to Docker in
-[Container ecosystem: Mesos versus OpenStack](../container-ecosystem-mesos-openstack/).
+[Container ecosystem: Mesos versus OpenStack](/docs/best-practices/container-ecosystem-mesos-openstack/).
 
 Major companies using Marathon include Airbnb, eBay,
 Groupon, OpenTable, PayPal, and Yelp.
 
-### Google’s Kubernetes
+### Kubernetes from Google
 
 Kubernetes is a system for managing containerized applications in clusters
 across multiple hosts. It provides basic mechanisms for deployment,
@@ -101,12 +111,12 @@ Specifically, Kubernetes provides the following features:
   using a scheduler that is policy rich, topology aware, and workload specific.
 
 You can read more about how Kubernetes relates to Docker and Mesos at
-[Container ecosystem: Kubernetes](../container-ecosystem-kubernetes/).
+[Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/).
 
 Kubernetes builds upon a decade and a half of experience at Google running
 production workloads at scale, combined with best-of-breed ideas and
 practices from the community. It is written in Golang and is lightweight,
-modular, portable and extensible [(3)](#resources).
+modular, portable, and extensible [(3)](#resources).
 
 #### Kubernetes concepts
 
@@ -131,7 +141,7 @@ Following are some of the key ideas behind Kubernetes:
 #### Comparing Kubernetes and Mesos
 
 The increasing popularity of Kubernetes has forced many comparisons of Kubernetes to
-Mesos, which as been the leader in cluster-oriented development and
+Mesos, which has been the leader in cluster-oriented development and
 management for the past couple of years.
 
 Kubernetes is an opinionated declarative model of how to address
@@ -149,7 +159,7 @@ a logical computer. It was created for a world in which you own many
 physical resources and can combine them to create a big static computing cluster.
 
 Many modern scalable data processing
-applications (such as Hadoop, Kafka, Spark) run well on Mesos,
+applications (such as Hadoop, Kafka, and Spark) run well on Mesos,
 and you can run them all on the same basic resource pool, along
 with modern container-packaged applications. Mesos is somewhat more heavyweight than
 Kubernetes, but is getting easier to manage because of the work of companies like Mesosphere.
@@ -166,12 +176,12 @@ Some say Kubernetes and Mesos can be a good match:
 
 - Kubernetes enables the pod, along with labels for service discovery,
   load-balancing, and replication control.
-- Mesos provides the fine-grained resource allocations for pods across nodes in a cluster,
+- Mesos provides the fine-grained resource allocations for pods across nodes in a cluster
   and facilitates resource sharing among Kubernetes and other frameworks
   running on the same cluster [(5)](#resources).
 
 However, Mesos can be replaced by
-OpenStack. If you’ve adopted Openstack, the dependency on and
+OpenStack. If you have adopted Openstack, the dependency on and
 usage of Mesos can be eliminated.
 
 #### Best fits for Kubernetes
@@ -184,14 +194,14 @@ tracked projects on GitHub. You can expect many changes in not only its
 functionality, stability, and supported use cases, but also in the number
 of technologies working to become highly interoperable with Kubernetes.
 
-### Docker’s Compose
+### Compose from Docker
 
-Compose, known as “Fig” before its acquisition by Docker, Inc, is a simple
+Compose, known as “Fig” before its acquisition by Docker, Inc., is a simple
 orchestration framework intended to allow the definition of fast,
 isolated development environments for Docker containers.
 
-You can run Compose on Mac OS X and 64-bit Linux;
-it is not supported on Windows [(6)](#resources).
+You can run Compose on Mac OS X and 64-bit Linux.
+It is not supported on Windows [(6)](#resources).
 
 Its real advantage is for applications that revolve around a single-purpose
 server that could easily scale out if
@@ -205,7 +215,7 @@ However, because a solution such as Compose has both limited capabilities and ov
 
 The community's reception of Compose has been notably positive, but the practicality of its usage and the lack of ability to create a long-term vision around it tend to minimize the actual legitimacy of adopting it as a container orchestration technology.
 
-### Prime Directive’s Flynn
+### Flynn from Price Directive
 
 Prime Directive labels Flynn as "the product that ops provides to
 developers" [(7)](#resources). They believe that “ops should be a product team, not
@@ -222,25 +232,25 @@ Flynn differs from other PaaS like Heroku, Cloud
 Foundry, Deis, or Dokku in that “the other PaaS technologies mainly focus on
 scaling a stateless app tier. They may run one or two persistent services for you, but for the most
 part you are on your own to figure that part out. Flynn is really trying
-to solve the state problems, which is pretty unique [(8)](#resources).”
+to solve the state problems, which is pretty unique" [(8)](#resources).
 
 With regard to stateful management,
-particularly in databases, Flynn supports Postgres. Offering automated backup, automated failover, zero downtime and no configuration effort, Flynn's goal
+particularly in databases, Flynn supports Postgres. Offering automated backup, automated failover, zero downtime, and no configuration effort, Flynn's goal
 is to manage your database service for you.
-To learn more about working with data and stateful applications in containers, read [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/).
+To learn more about working with data and stateful applications in containers, read [Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications/).
 
 Sponsors and users of Flynn include but are not limited to Coinbase,
 Shopify, and CenturyLink.
 
-### OpDemand’s Deis
+### Deis from OpDemand
 
 Deis is an open-source PaaS that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
 fleet, and the operating system itself, to "provide lightweight PaaS with
 Heroku-inspired workflow" [(9)](#resources).
-To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](../container-technologies-operating-systems/).
+To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](/docs/best-practices/container-technologies-operating-systems/).
 
-Deis can deploy an application or service that works in a Docker container and its
+Deis can deploy an application or service that works in a Docker container, and its
 structure mimics Heroku’s 12-factor stateless methodology for how applications
 should be created and managed. Deis also leverages Heroku’s Buildpacks
 and comes with out-of-the-box support for Ruby, Python, Node.js,
@@ -255,12 +265,12 @@ Deis as the front-runner in Heroku-like projects.
 Users of Deis include small and medium size businesses and technology companies, but
 no major companies have announced their use of it.
 
-### ClusterHQ’s Flocker
+### Flocker from ClusterHQ
 
 Flocker is an open-source data volume and multihost container manager that supports and works with the file format syntax used by Docker’s Compose.
 Docker works well with applications such as
 front-end or API servers, which use shared storage and are replicated
-or made highly available;
+or made highly available.
 Flocker offers the same portability for applications with systems
 such as databases and messaging or queuing systems. State management in
 containers is still an incomplete feature that is missing in the
@@ -276,10 +286,10 @@ Flocker alleviates the issue of managing data for containers by
 using Zettabyte File System (ZFS) replication technology as the underlying technology for containers' attached datastore, with ZFS handling volume behaviors [(10)](#resources).
 However, Flocker is still in very
 In addition to the ZFS properties, Flocker imposes a network proxy across
-all of the Flocker nodes to handle container linking, storage mapping
+all of the Flocker nodes to handle container linking, storage mapping,
 and user interaction throughout the cluster.
 
-### Cloudsoft’s Clocker
+### Clocker from Cloudsoft
 
 Clocker is an open-source project that enables users to establish a Docker Cloud over any cloud or fixed infrastructure
 without generating excess containers [(11)](#resources). The project is built on top of Apache Brooklyn, which is undergoing incubation at the Apache Software Foundation as a tool for modeling, deploying, and managing multi-cloud application software.
@@ -287,16 +297,16 @@ without generating excess containers [(11)](#resources). The project is built on
 Following are some features of Clocker:
 
 - Automatic creation and management of multiple Docker hosts in cloud
-  infrastructure
+  infrastructure.
 
 - Intelligent container placement, providing fault tolerance, easy
-  scaling, and efficient use of resources
+  scaling, and efficient use of resources.
 
 - Use of any public or private cloud as the underlying infrastructure for
-  Docker Hosts
+  Docker Hosts.
 
 - Deployment of Brooklyn/CAMP (Cloud Application Management for Platforms)
-  blueprints to Docker locations, without modifications
+  blueprints to Docker locations, without modifications.
 
 Clocker uses Apache Brooklyn to create a Docker cloud [(12)](#resources).
 Brooklyn uses Apache jclouds, a multicloud toolkit, to
@@ -318,7 +328,7 @@ instructions. Clocker then is essentially a blueprint for Brooklyn with
 extra intelligence for configuring and managing Docker hosts and
 containers.
 
-### Docker’s Swarm
+### Swarm from Docker
 
 Swarm aims to provide a common interface for the many
 orchestration and scheduling frameworks available. It serves as a
@@ -333,7 +343,7 @@ Swarm is designed to provide a smooth Docker deployment workflow,
 working with some existing container workflow frameworks such as Deis,
 but flexible enough to yield to heavyweight deployment and resource
 management such as Mesos. It is said to be a very simple add-on to
-Docker. It currently not as comprehensive as Kubernetes and its
+Docker. It currently not as comprehensive as Kubernetes, and its
 place in the ecosystem is still to be determined.
 
 ### Comparison and recommendations
@@ -415,6 +425,8 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
   </tr>
  </tbody>
 </table>
+
+<p> </p>
 
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
@@ -506,6 +518,8 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
  </tbody>
 </table>
 
+<p> </p>
+
 **Current Recommendation:** Kubernetes
 
 <a name="resources"></a>
@@ -578,4 +592,4 @@ Carina documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. You can follow him in GitHub at https://github.com/metral and at Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping Openstack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner Rightscale, aided in the assessment, development, and evolution of Rackspace Private Cloud, and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on [Twitter](https://twitter.com/mikemetral).

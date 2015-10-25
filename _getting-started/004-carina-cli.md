@@ -2,7 +2,7 @@
 title: Getting started with the Carina CLI
 author: Anne Gentle <anne.gentle@rackspace.com>
 date: 2015-10-20
-permalink: docs/tutorials/getting-started-carina-cli/
+permalink: docs/getting-started/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
 topics:
   - carina
@@ -17,7 +17,7 @@ Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.c
 
 ### Download and install the Carina CLI
 
-Note: Instructions will be updated with Windows-specific commands. 
+Note: Instructions will be updated with Windows-specific commands.
 
 1. Download and save the CLI binary that matches your operating system:
 
@@ -39,7 +39,7 @@ Note: Instructions will be updated with Windows-specific commands.
 3. Link the binary to /usr/local/bin/ with the following commands:
 ```bash
    mkdir -p /usr/local/bin/
-   ln -s ~/bin/carina /usr/local/bin/carina 
+   ln -s ~/bin/carina /usr/local/bin/carina
 ```   
 
 4. Add the binary to your path with the following command:
@@ -75,9 +75,9 @@ Note: Instructions will be updated with Windows-specific commands.
 1. Create a Carina cluster by using the `carina create...` command. For example:
 ```bash
    $ carina create mycluster --wait --nodes=2 --autoscale
-   
+
    mycluster    container1-4G    2    true    active
-   
+
    Read more about the parameters below:
    * --wait       wait for swarm cluster completion
    * --nodes=1    number of nodes for the initial cluster
@@ -87,8 +87,8 @@ Note: Instructions will be updated with Windows-specific commands.
 ```bash
    $ carina credentials --path=/tmp/ mycluster
 ```
-   `--path=PATH` indicates the local directory path to write the credentials files to. 
-   
+   `--path=PATH` indicates the local directory path to write the credentials files to.
+
    ```bash
    Credentials written to /tmp/.
    source "/tmp/docker.env"
@@ -140,4 +140,3 @@ Note: Instructions will be updated with Windows-specific commands.
 ### Next steps
 
 Learn about all of the features available to you in the [Carina Overview]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
-

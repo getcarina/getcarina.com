@@ -1,7 +1,7 @@
 ---
 title: 'Container ecosystem: Kubernetes'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-26
 permalink: docs/best-practices/container-ecosystem-kubernetes/
 description: Explore the place of Google Kubernetes in the container ecosystem
 topics:
@@ -19,7 +19,8 @@ they differ from each other in key ways.
 
 Although Kubernetes’ documentation at <http://kubernetes.io/> fully describes its
 purpose and its technical capabilities,
-this article discusses Kubernetes' intended use more objectively and suggests how your stack could benefit from adopting it.
+this article discusses Kubernetes' intended use more objectively and suggests how your 
+stack could benefit from adopting it.
 
 Kubernetes defines a collection of primitives to aid in establishing and maintaining a cluster of
 containers. Kubernetes is really just an opinionated model
@@ -28,21 +29,23 @@ resources, and their lifecycles.
 
 In Kubernetes, the pod is the central concept.
 A pod is a group of applications in the same physical location and with a shared context.
-The context of the pod, created by sharing several Linux namespaces, enables applications within the pod to share a hostname, coordinate through message queues,
-access the same IP and port space, and see each other's processes. Applications within a pod can also share volumes.
+The context of the pod, created by sharing several Linux namespaces, enables applications 
+within the pod to share a hostname, coordinate through message queues, access the same IP 
+and port space, and see each other's processes. Applications within a pod can also share 
+volumes.
 
 ### Relating Kubernetes to Docker and Mesos
 
-Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In Docker terms,
-a Kubernetes pod "consists of a colocated group of Docker containers with shared volumes [(1)](#resources)."
+Kubernetes is not Docker. Kubernetes is an orchestration system for Docker containers. In 
+Docker terms,
+a Kubernetes pod "consists of a colocated group of Docker containers with shared volumes 
+[(1)](#resources)."
 
-Kubernetes does not function like Mesos, either. Mesos is a scheduling system for containers. In relating Mesos, Docker, and Kubernetes,
-Timothy St. Clair explains that
-pods “are the atom of scheduling, and are a group of
-containers that
-are scheduled onto the same host…[that] facilitate data sharing and
-communication [by way of] shared mount points, [and] network namespace
-[to create] microservices [(2)](#resources).”
+Kubernetes does not function like Mesos, either. Mesos is a scheduling system for containers. 
+In relating Mesos, Docker, and Kubernetes, Timothy St. Clair explains that pods “are the 
+atom of scheduling, and are a group of containers that are scheduled onto the same 
+host…[that] facilitate data sharing and communication [by way of] shared mount points, 
+[and] network namespace [to create] microservices [(2)](#resources).”
 
 ### Kubernetes-specific functionality
 
@@ -73,19 +76,20 @@ Kubernetes to maintain your configuration while it interfaces
 with Docker to actually enable the sharing of volumes.
 
 Where Kubernetes differs strongly from Docker with regard to volumes is in
-*data volume containers*. Docker volumes can be data volumes or data volume containers. Docker uses data volume containers as a means of sharing data volumes: one container, the data volume container, manages the data volume while other containers can use it. Docker
-prescribes the data volume containers mechanism as the preferred way to share data among
-containers. However, the team behind Kubernetes believes that data volume containers
-are a potential cause of failure in large-scale architectures and have chosen not to support data volume
-containers as a type for Kubernetes volumes. The reasoning for this is that data
-volume containers in Kubernetes are ultimately passive containers that can be
-unintuitive from a user perspective and can create
-corner cases, potentially causing problems for management systems.
+*data volume containers*. Docker volumes can be data volumes or data volume containers. 
+Docker uses data volume containers as a means of sharing data volumes: one container, 
+the data volume container, manages the data volume while other containers can use it. 
+Docker prescribes the data volume containers mechanism as the preferred way to share data 
+among containers. However, the team behind Kubernetes believes that data volume containers
+are a potential cause of failure in large-scale architectures and have chosen not to 
+support data volume containers as a type for Kubernetes volumes. The reasoning for this 
+is that data volume containers in Kubernetes are ultimately passive containers that can be
+unintuitive from a user perspective and can create corner cases, potentially causing 
+problems for management systems.
 
-For more discussion of Docker volumes
-as data volumes and data volume containers,
+For more discussion of Docker volumes as data volumes and data volume containers,
 see
-[Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/).
+[Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications/).
 
 #### Service discovery
 
@@ -99,8 +103,7 @@ environmental variables and DNS.
 If a Kubernetes service exists, then Kubernetes has a backward-compatible method
 to create Docker-style link environment variables
 in the container. You can read more about this at
-[Docker best practices: container linking]
-(/docker-best-practices-container-linking/), but
+[Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/), but
 remember that we believe they’re implicit and hard to work with.
 Kubernetes can
 also create simplified environmental variables with the pattern
@@ -119,7 +122,7 @@ use the networking mechanisms.
 
 Lastly, remember that tools outside of Kubernetes, such as etcd, Zookeeper, and
 Consul, are also viable options. These and others are discussed in
-[Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/).
+[Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/).
 
 #### Networking
 
@@ -151,7 +154,7 @@ new bridge for the Docker host to use within it. Some tools that are
 great for this particular purpose, especially in a cloud environment,
 are container-intended networking technologies such as Flannel, Weave,
 SocketPlane and even Open vSwitch. Several of these tools are discussed in
-[Introduction to container technologies: container networking](../container-technologies-networking/).
+[Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/).
 
 This approach to networking is different from the standard Docker model.
 In the standard Docker model, each
@@ -169,17 +172,17 @@ Docker hosts can use the same network space and configuration.
 
 Kubernetes is the front-runner among tools for managing and orchestrating
 containers in your stack.
-See [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/) for a comparison of Kubernetes
-and competing tools.
+See [Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/) 
+for a comparison of Kubernetes and competing tools.
 
 Although Kubernetes is still at a Beta release level and claims not to be
-production-ready yet, it has been widely adopted across the industry. Some of Kubernetes' popularity appears to
-be based on the fact that it is developed by Google; respect for the impressive contributors
-working on Kubernetes appears to be another factor.
+production-ready yet, it has been widely adopted across the industry. Some of Kubernetes' 
+popularity appears to be based on the fact that it is developed by Google; respect for 
+the impressive contributors working on Kubernetes appears to be another factor.
 
-In addition to the positive publicity in blog posts, the community is showing its vested interest by participating in Kubernetes' development:
-as of April 2015, Kubernetes averaged around 400-500 commits per
-week and a very substantial following of almost 300 contributors.
+In addition to the positive publicity in blog posts, the community is showing its vested 
+interest by participating in Kubernetes' development: as of April 2015, Kubernetes averaged 
+around 400-500 commits per week and a very substantial following of almost 300 contributors.
 
 <a name="resources"></a>
 ### Resources
@@ -188,7 +191,7 @@ Numbered citations in this article:
 
 1. <http://kubernetes.io/v1.0/docs/user-guide/pods.html>
 
-2. [Musings on Mesos: Docker, Kubernetes, and beyond]<http://www.slideshare.net/timothysc/apache-coneu>
+2. [Musings on Mesos: Docker, Kubernetes, and beyond](http://www.slideshare.net/timothysc/apache-coneu)
 
 3. <http://kubernetes.io/v1.0/docs/user-guide/services.html>
 
@@ -200,11 +203,11 @@ Other recommended reading:
 
 - <http://kubernetes.io/>
 
-- [Docker best practices: data and stateful applications](../docker-best-practices-data-stateful-applications/)
+- [Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications/)
 
-- [Docker best practices: container linking](../docker-best-practices-container-linking/)
+- [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
 
-- [Introduction to container technologies: orchestration and management of container clusters](../container-technologies-orchestration-clusters/)
+- [Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/)
 
 - [RFC1918 Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918)
 
@@ -219,4 +222,13 @@ Carina documentation includes *tutorials* and *references*:
 
 ### About the author
 
-Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product organization and is tasked with performing bleeding edge R&D and providing market analysis, design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a Solutions Architect with the intent of helping OpenStack become the open standard for cloud management. At Rackspace, Mike has led the integration effort with strategic partner RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, performing research and development in cybersecurity with regard to distributed systems, cloud, and mobile computing. Follow Mike on Twitter: @mikemetral.
+Mike Metral is a Product Architect at Rackspace. He works in the Private Cloud Product 
+organization and is tasked with performing bleeding edge R&D and providing market analysis, 
+design, and strategic advice in the container ecosystem. Mike joined Rackspace in 2012 as a 
+Solutions Architect with the intent of helping OpenStack become the open standard for cloud 
+management. At Rackspace, Mike has led the integration effort with strategic partner 
+RightScale; aided in the assessment, development, and evolution of Rackspace Private Cloud; 
+and served as the Chief Architect of the Service Provider Program. Prior to joining Rackspace, 
+Mike held senior technical roles at Sandia National Laboratories, a subsidiary of Lockheed Martin, 
+performing research and development in cybersecurity with regard to distributed systems, cloud, 
+and mobile computing. Follow Mike on [Twitter](https://twitter.com/mikemetral).

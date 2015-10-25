@@ -108,7 +108,7 @@ layout: default
         <div class="image">
           <a href="docs/tutorials/getting-started-on-carina/"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
         </div>
-        {% for post in site.tutorials %}{% if post.url == '/docs/overview-of-carina/' %}
+        {% for post in site.getting-started %}{% if post.url == '/docs/overview-of-carina/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <p>{{ post.description }}</p>
           <p><a href="{{ post.url }}">Read More</a></p>
@@ -118,7 +118,7 @@ layout: default
         <div class="image">
           <img src="{% asset_path resource-2.svg %}" alt="">
         </div>
-        {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-on-carina/' %}
+        {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-on-carina/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <p>{{ post.description }}</p>
           <p><a href="{{ post.url }}">Read More</a></p>
@@ -128,7 +128,7 @@ layout: default
         <div class="image">
           <img src="{% asset_path resource-3.svg %}" alt="">
         </div>
-        {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-carina-cli/' %}
+        {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-carina-cli/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
           <p>{{ post.description }}</p>
           <p><a href="{{ post.url }}">Read More</a></p>
@@ -173,7 +173,7 @@ layout: default
         </form>
       </div>
       <div class="more-info">
-        <p>Need more info?<br>Get all the details about our <a href="">free beta offering</a>.</p>
+        <p>Need more info?<br>Get all the details about our <a href="/docs/overview-of-carina/">free beta offering</a>.</p>
       </div>
     </div>
   </div>
@@ -193,21 +193,16 @@ layout: default
         </ul>
       </div>
       <div class="product">
-        <h2>Product News</h2>
-        <ul class="news-list">
-          <li class="news-item">
-            <h3><a href="">Article Title 1</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
-          <li class="news-item">
-            <h3><a href="">Article Title 2</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
-          <li class="news-item">
-            <h3><a href="">Article Title 3</a></h3>
-            <div class="detail">Author Name &ndash; July 20, 2015</div>
-          </li>
-        </ul>
+        <h2>Join us on Github</h2>
+        <p>We’ve published several Carina<sup>&trade;</sup> and Docker<sup>&trade;</sup>-related resources to our <a href="https://github.com/getcarina">public Github organization, getcarina</a>. We hope you’ll find these tools useful as you develop applications on Carina. And in the spirit of open source, feel free to submit issues or pull requests to make the Carina beta experience even better!</p>
+        <p><a href="https://github.com/getcarina">Visit the getcarina Github organization</a>.</p>
+        <h2>Tools &amp; Resources</h2>
+        <h3><a href="https://github.com/getcarina/carina">Carina CLI</a></h3>
+        <p>The <a href="/docs/getting-started/getting-started-carina-cli/">command line client for Carina</a> makes using Carina from the command line or integrating Carina actions with other shell scripts fast and easy. <a href="https://github.com/getcarina/carina">Download the Carina CLI</a>.</p>
+        <h3><a href="https://github.com/getcarina/libcarina">libcarina</a></h3>
+        <p>If you’re a do-it-yourselfer developing in Go, libcarina provides Go bindings for the beta release of Carina by Rackspace.</p>
+        <h3><a href="https://webchat.freenode.net/?channels=getcarina">#getcarina on IRC</a></h3>
+        <p>Get real-time help from the Carina<sup>&trade;</sup> community on our Freenode IRC channel, <a href="https://webchat.freenode.net/?channels=rackspace">#getcarina</a>.</p>
       </div>
     </div>
   </div>

@@ -27,7 +27,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
 ### <a name="connect"></a> Connect two containers with a Docker link
 
-1. [Load your Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
+1. [Load your Docker host environment](/docs/tutorials/load-docker-environment-on-mac/).
 
 2. Create a container named `app`. This is the _source_ container for your Docker link. No ports
     are published for this container, so it will only communicate privately with other
@@ -55,7 +55,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
     The link alias, which in this example is `helloapp`, is not arbitrary and must match the alias expected by the target
     container. When a Docker container is designed to link to another, the expected
-    link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
+    link alias is usually documented on its [Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
 
 5. Identify the port on which the web container is published by running the following command.
     In the example output, the port is `32770`.
@@ -199,8 +199,8 @@ and how the containers use it to communicate.
 
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
 * [Docker networking basics][networking-basics]
-* [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/tutorials/005-service-discovery-101/)
-* [Introduction to container technologies: container networking]({{ site.baseurl }}/best-practices/container-technologies-networking/)
+* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
+* [Service discovery 101](/docs/tutorials/service-discovery-101/)
+* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
 [networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/

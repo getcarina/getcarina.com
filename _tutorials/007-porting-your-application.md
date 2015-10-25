@@ -7,7 +7,7 @@ topics:
   - docker
   - intermediate
 ---
-By now you're beginning to understand Docker and how it can benefit your workflow and deployments. This tutorial walks you through porting an existing Rails application, including the Rails app itself along with PostgreSQL, Redis, and Sidekiq workers, to Docker and Rackspace Cloud Files.
+By now, you're beginning to understand Docker and how it can benefit your workflow and deployments. This tutorial walks you through porting an existing Rails application (along with PostgreSQL, Redis, and Sidekiq workers) to Docker and Rackspace Cloud Files.
 
 ### Prerequisites
 
@@ -15,21 +15,21 @@ This tutorial leverages the following tools:
 
 * [Interlock](https://github.com/ehazlett/interlock) - HAProxy plug-in
 * [PostgreSQL](http://www.postgresql.org/) - Standard database
-* [Rackspace Cloud Files](https://mycloud.rackspace.com) - Media storage
+* [Rackspace Cloud Files](https://developer.rackspace.com/docs/cloud-files/getting-started/) - Media storage
 * [Redis](http://Redis.io/) - Key-value store for Sidekiq
 * [Sidekiq](http://sidekiq.org/) - Background job processor
 
-This tutorial assumes this software and knowledge exists:
+This tutorial requires that you have the following software and understanding:
 
 * A working Docker environment
-* Existing Rails app above version 2.0 with a Gemfile
+* An existing Rails app above version 2.0 with a Gemfile
 * Knowledge of Ubuntu commands and systems
 
 ### Steps
 
 1. Create a Dockerfile.
 
-    The `Dockerfile` is an essential part of porting your application. This file tells Docker which commands to run and which packages to install to your container and builds an image. An image is a snapshot of your application's current state.
+    The `Dockerfile`, an essential part of porting your application, tells Docker which commands to run, which packages to install to your container, and builds an image. An image is a snapshot of your application's current state.
 
     In the root directory of your Rails application, create a new file named `Dockerfile`, and then paste the following code into the file:
 
@@ -86,7 +86,7 @@ This tutorial assumes this software and knowledge exists:
 2. Update the config/database.yml file.
 
     Now that your base Docker image is ready, update your application's `RAILS_ROOT/config/database.yml` file to point to a new database host that you will create in the next steps.
-    Use the following to update the file:
+    Use the following code to update the file:
 
         ```yaml
         development: &default
@@ -109,7 +109,7 @@ This tutorial assumes this software and knowledge exists:
 
 3. Store public assets.
 
-    This example uses Rackspace's Cloud Files service to store static assets. Rails does not do a good job of serving static assets (Javascript, CSS, images) so you can leverage Rackspace's Cloud Files service to distribute our assets. *Note:* Cloud Files calls folders "containers"; these are simply a folder on a CDN; they are not Docker containers. If you already have a public container, simply locate the HTTP link as these instructions demonstrate.
+    This example uses Rackspace's Cloud Files service to store static assets. Rails does not do a good job of serving static assets (Javascript, CSS, images), so you can leverage Rackspace's Cloud Files service to distribute our assets. *Note:* Cloud Files calls folders "containers". These are simply folders on a CDN and are not Docker containers. If you already have a public container, simply locate the HTTP link as these instructions demonstrate.
 
         1. Log in to the [Rackspace Cloud Control Panel](https://mycloud.rackspace.com/).
         1. In the menu bar at the top of the window, click *Storage > Files*.
@@ -126,7 +126,7 @@ This tutorial assumes this software and knowledge exists:
     1. Create a new cluster.
     1. After a moment or two, refresh the page. You should see a series of icons that you can use to download your cluster credentials.
     1. Download these credentials in a clusterName.zip file.
-    1. Extract them to a `RAILS_ROOT/amphora` folder so that the following
+    1. Extract them to the `RAILS_ROOT/amphora` folder so that the following
     script can call `amphora/docker.env`.
     1. Create a script named `RAILS_ROOT/bin/launch_cluster` and add the following code to it:
 
@@ -291,9 +291,9 @@ This tutorial assumes this software and knowledge exists:
         ```
 
     1. Run the following command to make the script executable: `chmod u+x RAILS_ROOT/bin/launch_cluster`
-    1. Run `RAILS_ROOT/bin/launch_cluster`
+    1. Run `$ RAILS_ROOT/bin/launch_cluster`
 
-    Building the containers may take about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Errors are expected for removing containers the first time as they don't yet exist. Here's an example of what you will see while it runs:
+    Building the containers takes about 15 minutes the first time because the process must build the Rails application image and update and install `apt-get` packages. Expect an error for removing containers the first time, because they don't yet exist. Here's an example of what you will see while it runs:
 
         ```
         interlock
@@ -317,15 +317,15 @@ This tutorial assumes this software and knowledge exists:
         **********************************************
         ```
 
-5. Source the `amphora/docker.env` locally from within the `RAILS_ROOT/amphora/` directory so that you can inspect your RCS containers: `./amphora/docker.env`
+5. Source the `amphora/docker.env` locally from within the `RAILS_ROOT/amphora/` directory so that you can inspect your Carina containers: `./amphora/docker.env`
 
 6. Add the cluster IP address to the host file on the computer where you're browsing to the cluster IP address.
     1. To find your cluster IP address, run the following command: `docker inspect interlock | egrep -e ".*HostIp.*[0-9]" | cut -d \" -f 4`
-    1. Edit the `/etc/hosts` file to add the cluster IP address. Interlock uses the hostname to determine routing. Following is an example of the line to add:
+    1. Edit the `/etc/hosts` file and add the cluster IP address. Interlock uses the hostname to determine routing. Following is an example of the line to add:
     `104.130.0.17 test.com`
 
 7. Launch the Rails application.
-    After updating your `/etc/hosts` file, simply navigate to `test.com` in your browser. The Rails application should be displayed.
+    After updating your `/etc/hosts` file, navigate to `test.com` in your browser. The Rails application should be displayed.
 
 8. Monitor the cluster's performance.
     Interlock provides a web UI for monitoring. Visit `test.com/haproxy?stats`; the username is `stats` and the password is `interlock`.
