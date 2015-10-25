@@ -27,60 +27,50 @@ A [Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 ### Set up Drupal in Carina
 
 1. Download and source the environment file that Carina provides:
-
     `source docker.env`
 
-2. Create a MySQL container in which to store data for the Drupal container to store data.
-
-    MySQL installation will takes about 10 seconds after the Docker script returns.
-
-    In this step you set the following container environment variables:
+1. Create a MySQL container in which to store data for the Drupal container. MySQL installation will takes about 10 seconds after the Docker script returns. You need to set the following container environment variables:
     * `MYSQL_USER` is the username to use for the Drupal installation.
     * `MYSQL_PASSWORD` is the password to use with the username for the Drupal installation.
     * `MYSQL_DATABASE` is the database name to use for the Drupal installation.
     * `MYSQL_ROOT_PASSWORD` is the MySQL root username used to install the MySQL database.
-
-   ```
-   docker run --name mysql \
+  
+   ```docker run --name mysql \
     -e MYSQL_USER=drupal \
     -e MYSQL_PASSWORD=<password> \
     -e MYSQL_DATABASE=drupal \
     -e MYSQL_ROOT_PASSWORD=<rootPassword> \
-    -d mysql
-  ```
-3. To check the installation status, run `docker logs mysql`. The following output below shows the finished installed state:
+    -d mysql```
 
-    ```
-    2015-10-05 17:47:47 1 [Note] mysqld: ready for connections.
-    Version: '5.6.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
-    ```
+1. To check the installation status, run `docker logs mysql`. The following output shows the finished installed state:
 
-4. After MySQL is confirmed as installed, create the Drupal container. The second line of the command tells the Drupal container to create a network connection to (link to) the resulting `mysql` container.
+    ```2015-10-05 17:47:47 1 [Note] mysqld: ready for connections.
+    Version: '5.6.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)```
 
-   ```
-   docker run --name drupal \
+1. After MySQL is confirmed as installed, create the Drupal container. The second line of the command tells the Drupal container to create a network connection to (link to) the resulting `mysql` container.
+
+   ```docker run --name drupal \
     --link mysql:mysql \
     -p 80:80 \
-    -d drupal
-   ```
+    -d drupal```
 
-5. Find the Carina IP address:
+1. Find the Carina IP address:
     `echo $DOCKER_HOST`
 
     In this example the following string is returned: `tcp://104.130.0.164:2376`
 
-6. Go to the Drupal installation wizard via the IP address: `http://104.130.0.164`
-7. Choose an installation method (Standard or Minimal) depending on your use case.
-8. Enter the MySQL values that you used for the MySQL container, as shown in the following image:
+1. Go to the Drupal installation wizard via the IP address: `http://104.130.0.164`
+1. Choose an installation method (Standard or Minimal) depending on your use case.
+1. Enter the MySQL values that you used for the MySQL container, as shown in the following image:
 
   ![Configure MySQL Settings]({% asset_path drupal-and-swarm/config.png %})
 
-    * For **Database name**, enter **drupal**.
-    * For **Database username**, enter **drupal**.
-    * For **Database password**, enter the password for the database user
-    * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
+  * For **Database name**, enter **drupal**.
+  * For **Database username**, enter **drupal**.
+  * For **Database password**, enter the password for the database user
+  * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
 
-9. Follow the remaining steps in the installation wizard.
+1. Follow the remaining steps in the installation wizard.
 
 Drupal is installed and you are given a link to the new Drupal site.
 
