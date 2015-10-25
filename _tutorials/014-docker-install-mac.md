@@ -1,9 +1,9 @@
 ---
-title: Install Docker with Mac OS X
+title: Install Docker on Mac OS X
 author: Nathaniel Archer
-date: 2015-10-03
+date: 2015-10-26
 permalink: docs/tutorials/docker-install-mac
-description: Instructions on how to install Docker on a Mac Operating System.
+description: Learn how to install Docker on Mac OS X
 docker-versions:
   -1.8.1
   -1.8.2
@@ -13,13 +13,11 @@ topics:
   -tutorial
 ---
 
-###Install Docker with Mac OS X
-
 This tutorial describes how to install and set up Docker on Mac OS X.
 
 ###Prerequisites
 * A working Terminal application.
-* A Mac running OS X version 10.8 (Mountain Lion) or later. Display the version by clicking the Apple icon the top-left of your screen, then selecting **About this Mac**.
+* A Mac running OS X version 10.8 (Mountain Lion) or later. Display the version by clicking the Apple icon the top-left of your screen, and then selecting **About this Mac**.
 
 ###Install Docker
 
@@ -40,17 +38,17 @@ Follow these steps to install Docker:
 
 4. On the welcome page, click **Continue**, and follow the instructions until you get to the Installation Type page.
 
-   The installer gives you the option to customize your installation. However, we recommend keeping the defaults.
+    The installer gives you the option to customize your installation. However, we recommend keeping the defaults.
 
 5. Ensure that every component is selected and then click **Install**.
 
-   ![Make sure all boxes are selected]({% asset_path 002-docker-101/mac-toolbox-install-type.png %})
+    ![Make sure all boxes are selected]({% asset_path 002-docker-101/mac-toolbox-install-type.png %})
 
-   By default, the binaries are installed to `/usr/local/bin`.
+    By default, the binaries are installed to `/usr/local/bin`.
 
-   After the installation is completed, the installer provides you with shortcuts, which you can ignore.
+    After the installation is completed, the installer provides you with shortcuts, which you can ignore.
 
-   ![The installer will provide you with shortcuts. Ignore these and click continue.]({% asset_path 002-docker-101/mac-toolbox-install-apps.png %})
+    ![The installer will provide you with shortcuts. Ignore these and click continue.]({% asset_path 002-docker-101/mac-toolbox-install-apps.png %})
 
 6. Click **Continue**
 
@@ -62,26 +60,26 @@ To run a Docker container, you must create a new Docker virtual machine (VM) and
 
 1. Open Launchpad and click the Docker Quickstart Terminal icon.
 
-   A terminal window opens and sets up Docker for you. Successful output should look as follows:
+    A terminal window opens and sets up Docker for you. Successful output should look as follows:
 
-   ```
-   Last login: Sat Sep 25 15:15:45 on ttys002
-   bash '/Applications/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
-   Get http:///var/run/docker.sock/v1.19/images/json?all=1&filters=%7B%22dangling%22%3A%5B%22true%22%5D%7D: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS?
-   Get http:///var/run/docker.sock/v1.19/images/json?all=1: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS?
-   -bash: lolcat: command not found
+    ```
+    Last login: Sat Sep 25 15:15:45 on ttys002
+    bash '/Applications/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+    Get http:///var/run/docker.sock/v1.19/images/json?all=1&filters=%7B%22dangling%22%3A%5B%22true%22%5D%7D: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS?
+    Get http:///var/run/docker.sock/v1.19/images/json?all=1: dial unix /var/run/docker.sock: no such file or directory. Are you trying to connect to a TLS-enabled daemon without TLS?
+    -bash: lolcat: command not found
 
 
-   mary at meepers in ~
-   $ bash '/Applications/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
-   Creating Machine dev...
-   Creating VirtualBox VM...
-   Creating SSH key...
-   Starting VirtualBox VM...
-   Starting VM...
-   To see how to connect Docker to this machine, run: docker-machine env dev
-   Starting machine dev...
-   Setting environment variables for machine dev...
+    mary at meepers in ~
+    $ bash '/Applications/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'
+    Creating Machine dev...
+    Creating VirtualBox VM...
+    Creating SSH key...
+    Starting VirtualBox VM...
+    Starting VM...
+    To see how to connect Docker to this machine, run: docker-machine env dev
+    Starting machine dev...
+    Setting environment variables for machine dev...
 
 
                         ##         .
@@ -94,34 +92,34 @@ To run a Docker container, you must create a new Docker virtual machine (VM) and
               \____\_______/
 
 
-   The Docker Quick Start Terminal is configured to use Docker with the “default” VM.
-   ```
+    The Docker Quick Start Terminal is configured to use Docker with the “default” VM.
+    ```
 
 2. In terminal, type the command `docker run hello-world`. You should receive the following output:
 
-   ```
-   bash-3.2$ docker run hello-world
+    ```
+    bash-3.2$ docker run hello-world
 
-   Hello from Docker.
-   This message shows that your installation appears to be working correctly.
+    Hello from Docker.
+    This message shows that your installation appears to be working correctly.
 
-   To generate this message, Docker took the following steps:
-   1. The Docker client contacted the Docker daemon.
-   2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
-   3. The Docker daemon created a new container from that image which runs the
+    To generate this message, Docker took the following steps:
+    1. The Docker client contacted the Docker daemon.
+    2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    3. The Docker daemon created a new container from that image which runs the
     executable that produces the output you are currently reading.
-   4. The Docker daemon streamed that output to the Docker client, which sent it
+    4. The Docker daemon streamed that output to the Docker client, which sent it
     to your terminal.
 
-   To try something more ambitious, you can run an Ubuntu container with:
-   $ docker run -it ubuntu bash
+    To try something more ambitious, you can run an Ubuntu container with:
+    $ docker run -it ubuntu bash
 
-   Share images, automate workflows, and more with a free Docker Hub account:
-   https://hub.docker.com
+    Share images, automate workflows, and more with a free Docker Hub account:
+    https://hub.docker.com
 
-   For more examples and ideas, visit:
-   https://docs.docker.com/userguide/`
-   ```
+    For more examples and ideas, visit:
+    https://docs.docker.com/userguide/`
+    ```
 
 If you received preceding output, Docker is up and running.
 
@@ -143,4 +141,4 @@ Status: Downloaded newer image for hello-world:latest
 
 ###Next step
 
-[Find and download a Docker image](run-docker-image)
+[Set up a virtual environment with a Docker host](/docs/tutorials/set-up-docker-machine/)
