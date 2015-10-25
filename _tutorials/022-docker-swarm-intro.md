@@ -92,3 +92,7 @@ If it cannot do this (because the dependent container doesn’t exist, or becaus
 #### Health
 
 The `health` filter simply instructs Docker Swarm to schedule container creation only on "healthy" segments.
+
+### Next steps
+* To find out more about Carina, see [Overview of Carina](/docs/overview-of-carina/).
+* To find out more about how Carina implements Docker Swarn, see [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/).
