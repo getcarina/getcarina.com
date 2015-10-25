@@ -52,8 +52,8 @@ Note: Instructions will be updated with Windows-specific commands.
 
 1. Gather the required information:
 
-      * Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](app.getcarina.com).
-      * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsite](#Prereq).
+   * Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](app.getcarina.com).
+   * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsite](#Prereq).
 
 2. Set your environment variables to contain these credentials. For example:
 
