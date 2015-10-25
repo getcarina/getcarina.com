@@ -13,19 +13,21 @@ topics:
 
 ### What is Carina?
 
-Carina is a container runtime environment (currently in Beta) that offers performance, container-native tools, and portability without sacrificing ease of use. You can get started in minutes using open source software on managed infrastructure to run your containerized applications.
+Carina is a container runtime environment (currently in Beta) that offers performance, container-native tools, and portability without sacrificing ease of use. You can get started in minutes by using open-source software on managed infrastructure to run your containerized applications.
 
-Your containers will run in a bare-metal environment avoiding the "hypervisor tax" on performance. Launch applications as much as 20% faster and run applications as much as 60% faster. That environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
+Your containers run in a bare-metal environment, which avoids the "hypervisor tax" on performance. Applications in this environment launch as much as 20 percent faster and run as much as 60 percent faster. This environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
 
-Carina is built on the open source Docker Swarm project.  It exposes Docker API so you get maximum portability to easily move applications from development to test and production environments, reducing errors, and saving time. In the future, other container orchestration environments will be available to you.
+Carina is built on the open-source Docker Swarm project.  It exposes the Docker API, which gives you maximum portability for easily moving applications from development to test and production environments, thus reducing errors and saving time. In the future, other container orchestration environments will be available to you.
 
-You'll also have access to an intuitive user interface (UI), a command line interface (CLI), and Carina specific developer tooling in addition to the entire ecosystem of tools already compatible with the Docker API. There is also a wealth of documentation, from getting started guides to detailed tutorials and best practices. If you need help, there's community support directly from other developers.
+You also have access to an intuitive user interface (UI), a command-line interface (CLI), and Carina specific developer tooling, in addition to the ecosystem of tools already compatible with the Docker API. You also have access to a wealth of documentation, from getting started guides to detailed tutorials and best practices. If you need help, you can access community support directly from other developers.
 
-Creating a free account (no credit card required) to running a containerized application on a cluster takes under 2 minutes. You'll be using open source software like Docker to compose your applications. Because the infrastructure is managed by Carina you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business and your applications.
+The path from creating a free account (no credit card required) to running a containerized application on a cluster takes under two minutes. You will use open-source software like Docker to compose your applications. And because the infrastructure is managed by Carina, you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business, and your applications.
 
 ### How does Carina work?
 
 Carina provisions Docker Swarm clusters for you to run your containerized applications on.
+
+The following diagram shows a high level overview of Carina's architecture and key components.
 
 ![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
 
@@ -35,48 +37,50 @@ Docker is an open source project that automates the deployment of applications i
 
 #### Clusters
 
-Clusters are created by Carina. You use the Carina UI or the Carina CLI to issue create commands to the control plane. The control plane creates and configures the cluster for you.
+Clusters are created by Carina. You use the Carina UI or the Carina CLI to issue create commands to the _control plane_. The control plane creates and configures the cluster for you.
 
-Clusters are composed of Segments. One Segment contains the cluster Swarm manager. The Swarm manager orchestrates and schedules containers across the entire Cluster. It assigns your containers to the Segments via the Swarm agent.
+Clusters are composed of segments. One segment contains the cluster's Swarm manager. The Swarm manager orchestrates and schedules containers across the entire cluster. It assigns your containers to the segments via the Swarm agent.
 
 #### Segments
 
 Segments are created by Carina. You use the Carina UI or the Carina CLI to issue grow commands to the control plane. The control plane creates and configures the segments for you and adds them to the cluster.
 
-Segments are composed of a Swarm agent, a Docker Engine, and your Docker containers. The Swarm agent accepts commands from the Swarm master to run containers on its Segment. It then communicates with the Docker Engine to actually run the containers. The Docker Engine is a container runtime that builds and runs your Docker containers.
+Segments are composed of a Swarm agent, a Docker Engine, and your Docker containers. The Swarm agent accepts commands from the Swarm manager to run containers on its segment. It then communicates with the Docker Engine to actually run the containers. The Docker Engine is a container runtime that builds and runs your Docker containers.
 
-#### Docker Containers
+#### Docker containers
 
-Containers are created by Docker. You can use the Docker CLI or other Docker ecosystem tools to issue any Docker commands to the Swarm master. The Swarm master passes those commands along to the appropriate Swarm agent which in turn passes them along to the Docker Engine to take action.
+Containers are created by Docker. You can use the Docker CLI or other Docker ecosystem tools to issue any Docker commands to the Swarm manager. The Swarm manager passes those commands to the appropriate Swarm agent which in turn passes them to the Docker Engine to take action.
 
-Containers are composed of your applications, configuration, and anything else you need to build into them. They are created from Docker images. A Docker image is a template containing the instructions that will run your application. It includes everything necessary to run your containerized applications.
+Containers are composed of your applications, their configuration, and anything else you need to build into them. They are created from Docker images. A Docker image is a template that contains the instructions that will run your application. It includes everything necessary to run your containerized applications.
 
 #### Autoscaling
 
-Because the infrastructure is managed by Carina you can choose to turn on autoscaling for your clusters. If you do, every cluster will be monitored on a five minute interval. If we find that a cluster needs resources, we automatically add additional Segments.
+Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a five-minute interval. If a cluster needs resources, additional segments are automatically added.
 
-If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. Our automated scaling action will trigger when either 80% of reserved memory or CPU is being consumed. To avoid data loss, we will never scale down or delete one of your nodes automatically.
+If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster in never scaled down and segments are never deleted automatically.
 
-Alternatively, you can manually scale a cluster through the control surfaces.
+Alternatively, you can manually scale a cluster through the control interfaces.
 
-### The control surfaces
+### The control interfaces
 
-#### The user interface
+You can interact with Carina through a UI or a CLI.
+
+#### The UI
 
 Carina has an intuitive UI that you can use to control clusters from your web browser or mobile device. Go to [app.getcarina.com](https://app.getcarina.com) to get started.
 
-#### The command line interface
+#### The CLI
 
-Carina has a CLI that you can use to control clusters from your terminal or scripts. Easily automate cluster creation and growth on the command line. It's available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI](/docs/tutorials/getting-started-carina-cli/) to learn more.
+Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI](/docs/tutorials/getting-started-carina-cli/) to learn more.
 
 ### Resources
 
 * [Docker 101](/docs/tutorials/docker-101/)
-* [Carina Documentation](/docs/)
-* [Carina Community Forums](https://getcarina.com/community/)
+* [Carina documentation](/docs/)
+* [Carina community forums](https://getcarina.com/community/)
 * [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/)
-* [How Autoscaling works in Carina](/docs/tutorials/autoscaling-carina/)
+* [How autoscaling works in Carina](/docs/tutorials/autoscaling-carina/)
 
 ### Next step
 
-Run your first containerized application by [Getting started on Carina](/docs/tutorials/getting-started-on-carina/)
+Run your first containerized application by [Getting started on Carina](/docs/tutorials/getting-started-on-carina/).
