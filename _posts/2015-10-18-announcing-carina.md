@@ -51,7 +51,7 @@ So some quick notes:
 
 1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
 
-2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See the [Glossary]
+2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See also [Docker Swarm and Carina].
 
 So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
@@ -116,7 +116,7 @@ Thanks - and welcome to Carina!
 
 
 
-
+[Docker Swarm and Carina]: https://getcarina.com/docs/tutorials/docker-swarm-carina/
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
 [command line interface]: https://github.com/getcarina/carina/releases
