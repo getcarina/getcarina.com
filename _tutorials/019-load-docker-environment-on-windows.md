@@ -1,7 +1,7 @@
 ---
 title: Load a Docker environment from the command line on Windows
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-30
+date: 2015-10-26
 permalink: docs/tutorials/load-docker-environment-on-windows/
 description: Learn how to load a Docker environment on Windows, so that you can work with Docker in the terminal and shell of your choice
 docker-versions:
@@ -32,7 +32,7 @@ text commands and _terminal_ is the graphical window that hosts a shell.
 
 ### <a name="prerequisites"></a> Prerequisite
 
-[Docker Toolbox](https://www.docker.com/toolbox)
+[Install Docker on Windows](/docs/tutorials/docker-install-windows/)
 
 ### <a name="shells"></a> Shells
 After installing Docker Toolbox on Windows, you have three shells available for
@@ -71,7 +71,7 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
-You may encounter the following error message when loading your Rackspace Container Service credentials:
+You might encounter the following error message when loading your Rackspace Container Service credentials:
 
 ```powershell
 docker.ps1 cannot be loaded because running scripts is disabled on this system.
@@ -152,8 +152,8 @@ Some alternative terminals provide useful features, such as improved copy and pa
 window resizing, and tabs. Overall they are more customizable than the standard
 Windows terminal used by CMD and PowerShell.
 
-* [ConsoleZ][consolez]
-* [ConEmu][conemu]
+* [ConsoleZ](#consolez)
+* [ConEmu](#conemu)
 
 ##### <a name="consolez"></a> ConsoleZ
 [ConsoleZ][consolez] is a terminal emulator that can be used with any shell.
@@ -165,6 +165,7 @@ Windows terminal used by CMD and PowerShell.
     set the default shell, configure tabs, appearance, and so on.
 
 In the following screenshot, ConsoleZ is configured with tabs for each shell (CMD, Bash and PowerShell).
+
 ![ConsoleZ Screenshot]({% asset_path load-docker-environment-on-windows/consolez.png %})
 
 [consolez]: https://github.com/cbucher/console/wiki
@@ -187,6 +188,7 @@ be automatically hosted in ConEmu.
     See [ConEmu Settings][conemu-settings] for an explanation of the available settings.
 
 In the following screenshot, ConEmu is configured with tabs for each shell (CMD, Bash and PowerShell).
+
 ![ConEmu Screenshot]({% asset_path load-docker-environment-on-windows/conemu.png %})
 
 [conemu]: https://conemu.github.io/
