@@ -105,3 +105,6 @@ To exit out of the container, run `exit`. Your prompt returns to the previous pr
 
 ###Resources
 [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
+
+###Next step
+Now that you've learned some container basics, go to one of the Tutorials to learn how to run your applications, such as [WordPress](/docs/tutorials/wordpress-apache-mysql/), [Magento](/docs/tutorials/magento-in-docker/), or [Drupal](/docs/tutorials/drupal-and-swarm/), in Carina.
