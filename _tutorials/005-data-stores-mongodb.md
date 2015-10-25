@@ -60,7 +60,7 @@ $ docker port $(docker ps --quiet --latest) 27017
 104.130.0.124:32768
 ```
 
-For the containerized MongoDB service, note that you don't need to care what it's named, what IP address it runs on, or what port it uses. Instead, you discover this information dynamically with the preceding command and use it later in the tutorial to connect to MongoDB.
+For the containerized MongoDB service, you don't need to keep track of what it's named, what IP address it runs on, or what port it uses. Instead, you discover this information dynamically with the preceding command, and use it later in the tutorial to connect to MongoDB.
 
 ### Create the database and user
 
@@ -132,7 +132,7 @@ The output of this `docker ps` command is your running application container.
 
 The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
 
-1. View the logs of the application. The logs contain some information based on the environment variables.
+1. View the application logs as they contain some information based on the environment variables.
 
 ```bash
 $ docker logs $(docker ps --quiet --latest)
@@ -142,7 +142,7 @@ DEBUG: mongodb://guestbook-user:guestbook-user-password@104.130.0.124:32768/gues
 INFO:  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 
-The output of this `docker logs` command is the log messages being logged to stdout and stderr from the application in the container.
+The output of this `docker logs` command are the log messages being logged to stdout and stderr from the application in the container.
 
 1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
@@ -187,4 +187,4 @@ $ docker exec -it $(docker ps -q -l) /bin/bash
 
 ### Next
 
-If MongoDB isn't the data store for you, read [Use MySQL on Carina](data-stores-mysql).
+If MongoDB isn't the data store for you, read [Use MySQL on Carina]({{ site.baseurl }}docs/tutorials/data-stores-mysql/).
