@@ -1,5 +1,4 @@
 ---
-
 title: Create and connect to a cluster
 author: Kelly Holcomb <kelly.holcomb@rackspace.com>
 date: 2015-10-26
@@ -13,7 +12,7 @@ topics:
 
 ---
 
-This tutorial shows you how to create a cluster in Carina and then download its credentials so that you can securely connect to the cluster. 
+This tutorial shows you how to create a cluster in Carina and then download its credentials so that you can securely connect to the cluster.
 
 A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which you can download in a zip file from the Carina Control Panel. The credentials zip file contains the following files:
 
@@ -25,11 +24,11 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 * docker.ps1 - PowerShell environment configuration script
 * docker.cmd - CMD shell environment configuration script
 
-**Note:** The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
+**Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
 ### Prerequisite
 
-A Carina account. If you do not already have one, follow the [sign up process](https://app.getcarina.com/signup).
+A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/signup).
 
 ### Create a cluster
 
@@ -49,7 +48,7 @@ Connect to your cluster by loading the cluster credentials and downloading the D
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download Credentials**.
+1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download File**.
 
 1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
@@ -76,7 +75,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     ```bash
     $ cd Downloads/mycluster
-    $ mkdir $HOME/bin
+    $ mkdir -p $HOME/bin
     $ mv docker-1.8.3 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
     $ export PATH=$HOME/bin:$PATH
@@ -116,31 +115,21 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
-    **Note:** A newly created cluster contains three containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/introduction-docker-swarm/).  
+    **Note**: A newly created cluster contains three containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/introduction-docker-swarm/).  
 
 ### Troubleshooting
 
 * If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
 
-    `Cannot connect to the Docker daemon. Is "docker - d" running on this host?` 
+    `Cannot connect to the Docker daemon. Is "docker -d" running on this host?`
 
     To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
-    
-* You might encounter the following error message when loading your credentials in PowerShell:
 
-    ```powershell
-    docker.ps1 cannot be loaded because running scripts is disabled on this system.
-    ```
-
-    Run the following command to enable running PowerShell scripts. Then, run `docker.ps1` again.
-
-    ```powershell
-    > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-    ```
+* For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-If you're new to Carina, Docker, and containers, see the following articles to learn more: 
+If you're new to Carina, Docker, and containers, see the following articles to learn more:
 
 * [Overview of Carina](/docs/overview-of-carina/)
 * [Docker 101](/docs/tutorials/docker-101/)
@@ -148,6 +137,4 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 
 ### Next steps
 
-On Linux, Mac OS X, or Windows, put the Docker client somewhere on your system's path.
-
-Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the Dcoumentation page on the Carina website. 
+Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the Documentation page on the Carina website.

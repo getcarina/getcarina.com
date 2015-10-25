@@ -17,7 +17,7 @@ No prior knowledge of containers or Docker is necessary. This tutorial works on 
 
 ### Sign up for Carina
 
-To run applications on Carina, get an account by following the [sign up process](https://mycluster.rackspacecloud.com/managed/).
+To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/signup).
 
 ### Create your cluster
 
@@ -25,48 +25,50 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 To create your cluster, perform the following steps:
 
-1. Sign in to [mycluster.rackspacecloud.com/managed/](https://mycluster.rackspacecloud.com/managed/).
-1. Enter a cluster name in the **Create New** field. For example: `mycluster`
+1. Log in to [the Carina Control Panel](https://app.getcarina.com).
+
+1. On the Clusters page, click **Add Cluster**.
+
+1. On the Create Cluster page, enter a name for the cluster. For example, `mycluster`.
+
 1. Click **Create Cluster**.
-1. Click the **Refresh** button until your cluster reaches a status of **active**.
+
+    After a few moments, your cluster reaches a status of **active**.
 
 ### Connect to your cluster
 
-Connect to your cluster by sourcing the cluster credentials and configuration. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
+Connect to your cluster by loading the cluster credentials and downloading the Docker client. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
 
-If you have any problems, consult the [Troubleshooting](#troubleshooting) section.
+If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. Click **Download credentials** [insert-download-icon-here].
+1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download File**.
 
-1. Unzip the file to a location on your computer. For example:
+1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
-    ```bash
-    Downloads/mycluster
-    ```
+    The name of the zip file is the same as the name of your cluster.
+
+1. Unzip the file.
+
+    The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
 1. Download the Docker 1.8.3 client into the unzipped directory.
+    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
+    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
+    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
 
-    On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
-
-    On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
-
-    On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
-
-1. Open an application to run commands.
-
-    On Linux and Mac OS X, open a terminal.
-
-    On Windows, open a PowerShell.
+1. Open an application in which to run commands.
+    - On Linux and Mac OS X, open a terminal.
+    - On Windows, open a PowerShell.
 
 1. Configure the client.
 
-    Note: If you already have the Docker client in your home bin directory, make a backup of it first.
+    **Note**: If you already have the Docker client in your home bin directory, make a backup of it first.
 
-    On Linux and Mac OS X terminal, run the commands.
+    On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ cd Downloads/mycluster
-    $ mkdir $HOME/bin
+    $ mkdir -p $HOME/bin
     $ mv docker-1.8.3 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
     $ export PATH=$HOME/bin:$PATH
@@ -74,7 +76,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     $ source docker.env
     ```
 
-    On Windows PowerShell, run the commands.
+    On Windows PowerShell, run the following commands:
 
     ```
     $ cd Downloads\mycluster
@@ -86,7 +88,7 @@ If you have any problems, consult the [Troubleshooting](#troubleshooting) sectio
     $ .\docker.ps1
     ```
 
-    On Windows PowerShell, use `docker.exe` instead of `docker` in all of the commands below.
+    **Note**:On Windows PowerShell, use `docker.exe` instead of `docker` in all of the commands below.
 
 1. Connect to your cluster and display information about it.
 
@@ -170,18 +172,21 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 ### Resources
 
-* If you're new to Docker, learn more at [Docker 101](/docs/tutorials/002-docker-102).
+* [Docker 101](/docs/tutorials/docker-101/)
+* [Carina documentation](/docs/)
 
 ### Next step
-
-On Linux, Mac OS X, or Windows, put the Docker client somewhere on your system's path.
 
 Learn about all of the features available to you in the [Overview of Carina](/docs/tutorials/overview-of-carina)
 
 ### Troubleshooting
 
-* If you get the error message `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` then read the [Version Conflict](/docs/references/version-conflict) guide.
+* If you get the error message `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` then run `docker version` to be sure you have the correct version from the [Connect to your cluster](#connect-to-your-cluster) section.
 
-* If you had trouble downloading your credentials, see [Download Carina credentials](/docs/references/carina-credentials/) guide.
+* If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
 
-* If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the error message `Cannot connect to the Docker daemon. Is "docker - d" running on this host?`. To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
+    `Cannot connect to the Docker daemon. Is "docker -d" running on this host?`
+
+    To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
+
+* For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
