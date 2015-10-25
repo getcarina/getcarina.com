@@ -49,7 +49,7 @@ Connect to your cluster by loading the cluster credentials and downloading the D
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Get access**.
+1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download Credentials**.
 
 1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
@@ -120,7 +120,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Troubleshooting
 
-* If you are behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
+* If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
 
     `Cannot connect to the Docker daemon. Is "docker - d" running on this host?` 
 
@@ -140,7 +140,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Resources
 
-If you are new to Carina, Docker, and containers, see the following articles to learn more: 
+If you're new to Carina, Docker, and containers, see the following articles to learn more: 
 
 * [Overview of Carina](/docs/overview-of-carina/)
 * [Docker 101](/docs/tutorials/docker-101/)
