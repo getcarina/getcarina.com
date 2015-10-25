@@ -37,15 +37,15 @@ Here's a diagram!
 
 Ok, let's start with the control panel:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-control-panel.png %}
+![control panel]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-control-panel.png %})
 
 When you click on Add Cluster, you immediately jump into cluster creation:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-create-cluster.png %}
+![create cluster]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-create-cluster.png %})
 
 And creation jumps straight into the building phase:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-building.png %}
+![cluster building]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-building.png %})
 
 So some quick notes:
 
@@ -55,27 +55,27 @@ So some quick notes:
 
 So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-creds.png %}
+![cluster credentials]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-creds.png %})
 
 Now, let me switch to the Carina [command line interface]. You’ll want to grab your API key, as shown here:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-api-key.png %}
+![API key]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-api-key.png %})
 
 Assuming you've downloaded the CLI; time to configure the CLI and run the most basic command - "list", which as it's named, just lists your clusters:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-env-list.png %}
+![CLI env list]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-env-list.png %})
 
 Remember the credentials download I showed from the UI before? The Carina CLI makes this easier, you call "credentials <clustername>" and it will grab the zipfile, unpack it and tell you what docker.env file to source:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-credentials.png %}
+![CLI credentials]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-credentials.png %})
 
 We source the docker.env file and, well:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-docker-info.png %}
+![CLI docker info]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-docker-info.png %})
 
 You have a Docker Swarm! Let's test it out:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-whoa.png %}
+![CLI whoa]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-whoa.png %})
 
 That's pretty easy.
 
@@ -83,20 +83,20 @@ That's pretty easy.
 
 Another cool thing is the idea of segments / nodes that you add (Docker hosts in the same cluster). This is also really easy (using the UI or CLI), for example click on the cog in the UI and "edit cluster":
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-edit-cluster.png %}
+![edit cluster]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-edit-cluster.png %})
 
 Click on add segments (remember, max 3 for now) and you'll see the cluster go into a "growing" state:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-add-segments.png %}
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-state-growing.png %}
+![add segments]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-add-segments.png %})
+![state growing]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-state-growing.png %})
 
 But what did that do? Let's check back on the command line:
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-lotsofsegments.png %}
+![CLI lots of segments]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-lotsofsegments.png %})
 
 Yeah, that's 3 independent docker hosts. You get a host, you get a host, and you and you!
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
+![clusters clusters clusters]({% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %})
 
 And if you want to go crazy, check out the [Running interlock, the event driven Docker Swarm plugin system, on Carina](https://getcarina.com/docs/tutorials/interlock-on-carina/)
 
@@ -105,8 +105,6 @@ And if you want to go crazy, check out the [Running interlock, the event driven 
 I really hope you sign up and try Carina out - the entire team was focused on making something developers would love and experiment with. It's a Beta; and we acknowledge there's going to bugs. Thats ok! Talk with us, share - and share with your friends. Honest and candid feedback is always welcome.
 
 Thanks - and welcome to Carina!
-
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
 
 ## More Reading, community, GitHub!:
 * [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/tutorials/docker-swarm-carina/)
