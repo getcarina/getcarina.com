@@ -426,7 +426,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
  </tbody>
 </table>
 
-
+<p> </p>
 
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
@@ -518,7 +518,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
  </tbody>
 </table>
 
-
+<p> </p>
 
 **Current Recommendation:** Kubernetes
 
