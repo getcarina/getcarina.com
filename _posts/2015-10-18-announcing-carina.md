@@ -49,9 +49,9 @@ And creation jumps straight into the building phase:
 
 So some quick notes:
 
-1. 1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
+1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
 
-2. 1.	The Docker Swarm clusters house segments. A Carina segment is an LXC container provisioned by libvirt, and is a Docker host. For the Beta, you are limited to 3 total segments/Docker hosts in a cluster.
+2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See the [Glossary]
 
 So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
@@ -81,7 +81,7 @@ That's pretty easy.
 
 ## Growing up
 
-Another cool thing is the idea of segments / nodes that you add (Docker hosts in the same cluster). This is also really easy (using the UI or CLI), for example click on the cog in the UI and "edit cluster":
+Another cool thing is the ability to scale up the cluster via segments to expand available resources for your containers (segments are Docker Swarm hosts in the same cluster). This is also really easy (using the UI or CLI), for example click on the cog in the UI and "edit cluster":
 
 ![edit cluster]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-edit-cluster.png %})
 
@@ -120,4 +120,5 @@ Thanks - and welcome to Carina!
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
 [command line interface]: https://github.com/getcarina/carina/releases
-[get started]:https://getcarina.com/docs/tutorials/getting-started-carina-cli/
+[get started]: https://getcarina.com/docs/tutorials/getting-started-carina-cli/
+[glossary]: https://getcarina.com/docs/references/glossary/
