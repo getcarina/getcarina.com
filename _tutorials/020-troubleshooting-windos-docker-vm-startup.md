@@ -1,7 +1,16 @@
 ---
 title: Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10
-seo:
-  description: Docker Toolbox, Windows troubleshooting
+author: Zack Shoylev <zack.shoylev@rackspace.com>
+date: 2015-10-26
+permalink: docs/tutorials/troubleshooting-windos-docker-vm-startup/
+description: Solve issues that can occur when you download and set up Docker Toolbox on Windows versions 7, 8.1, and 10
+docker-versions:
+  -1.8.1
+  -1.8.2
+topics:
+  -docker
+  -troubleshooting
+  -tutorial
 ---
 
 This article provides solutions for some of the issues that can occur when you download and set up Docker Toolbox on Windows versions 7, 8.1, and 10.
@@ -10,7 +19,7 @@ This article provides solutions for some of the issues that can occur when you d
 
 The toolbox comes with its own VirtualBox and Git Bash versions. As such, existing installations of Git for Windows, other Bash versions, or VirtualBox (especially if the system PATH was modified for them) can potentially cause issues.
 
-Solution: 
+To resolve these issues, perform the following steps: 
 
 1. Remove your own Bash versions (such as Cygwin, MinGW, GitHub for Windows, or babun) from the system PATH. 
 2. Uninstall VirtualBox. 
@@ -41,6 +50,7 @@ Error creating machine: Maximum number of retries (6) exceeded
 You will want to check the provider to make sure the machine and associated resources were properly removed.
 Looks like something went wrong... Press any key to continue...
 ```
+
 To troubleshoot this error, open the VirtualBox Manager. The left navigation pane displays the name of the VM and its state. Verify that the VM state is **Running**. You can right-click the VM name and select **Show** to see the VM output and ensure that there are no errors. If the VM is running properly, the Bash command prompt is displayed, as shown in the following screenshot:
 
 ![Docker VM Output]({% asset_path 002-troubleshooting-windos-docker-vm-startup/DockerVMSuccessfullyStarted.png %})
@@ -68,7 +78,7 @@ Post http://127.0.0.1:2375/v1.20/containers/create: dial tcp 127.0.0.1:2375: Con
 
 This message indicates that your Docker VM was not able to start properly. It might also indicate  an issue with the environment not being set properly (see the next section). 
 
-You can open the VirtualBox Manager and check the VM status. Even if it displays as Running, you can open the VM (right-click the name and select **Show**) to see if there are any error messages. In this case, you would see that the virtualization extensions have not been passed by VirtualBox to the Docker VM.
+You can open the VirtualBox Manager and check the VM status. Even if it displays as **Running**, you can open the VM (right-click the name and select **Show**) to see if there are any error messages. In this case, you would see that the virtualization extensions have not been passed by VirtualBox to the Docker VM.
 
 ![Docker VM Output]({% asset_path 002-troubleshooting-windos-docker-vm-startup/MissingVTX.png %})
 
@@ -78,7 +88,7 @@ When you open a fresh command prompt different from the Docker Quickstart Termin
 
 Run the following command:
 
-`docker-machine env <environment> --shell <shellName>`
+`$ docker-machine env <environment> --shell <shellName>`
 
 Then, execute the output. 
 
