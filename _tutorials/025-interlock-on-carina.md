@@ -1,9 +1,9 @@
 ---
-title: Running interlock, the event driven Docker Swarm plugin system, on Carina
+title: Run interlock on Carina
 author: Kyle Kelley <kyle.kelley@rackspace.com>
-date: 2015-10-18
+date: 2015-10-26
 permalink: docs/tutorials/interlock-on-carina/
-description: Using interlock to load balance containers or emit statistics across your swarm cluster.
+description: Use interlock to load balance containers or emit statistics across your swarm cluster
 topics:
   - docker
   - interlock
@@ -11,28 +11,25 @@ topics:
   - intermediate
 ---
 
-This tutorial shows you how to use [interlock](https://github.com/ehazlett/interlock)
-to load balance your containers across a swarm cluster, send on statistics to
-carbon, or other swarm event driven operations. Interlock listens for new Docker events,
-such as a new container being started and, according to your configuration, notifies plugins.
+This tutorial shows you how to use [interlock](https://github.com/ehazlett/interlock), the event-driven Docker Swarm plug-in system, to load balance your containers across a Swarm cluster, send statistics to Carbon, and perform other Swarm event-driven operations. Interlock listens for new Docker events, such as a new container being started, and, according to your configuration, notifies plug-ins.
 
-Interlock has plugins for
+Interlock has plug-ins for:
 
-* load balancing via HAProxy
-* load balancing via Nginx
-* stat forwarding to Carbon
+* Load balancing via HAProxy
+* Load balancing via NGINX
+* Statistics forwarding to Carbon
 
 Normally for interlock you need to mount a volume with certificates, set TLS options, and optionally set
 environment variables. Using [libcarina, the go bindings for carina](https://github.com/rackerlabs/libcarina),
-we've modified interlock to require only your username, API key, and the name of the cluster you want to run on.
+interlock in Carina has been modified to require only your username, API key, and the name of the cluster you want to run on.
 
-Assuming you have a cluster named `boatie`, this is how you would run the `example` plugin (swapping in your own username and API key):
+Assuming that you have a cluster named `boatie`, following is how you would run the `example` plug-in (substituting your own username and API key):
 
 ```bash
 docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
 ```
 
-which results in output like so:
+The resulting output looks as follows:
 
 ```
 $ docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
@@ -41,6 +38,3 @@ time="2015-10-19T01:22:59Z" level=info msg="loading plugin name=example version=
 time="2015-10-19T01:22:59Z" level=info msg="[interlock] dispatching event to plugin: name=example version=0.1"
 time="2015-10-19T01:22:59Z" level=info msg="[example] action=received event= time=1445217779076879776"
 ```
-
-Try it out and let us know what you think!
-
