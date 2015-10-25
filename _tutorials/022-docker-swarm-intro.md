@@ -44,8 +44,10 @@ When you create a container, you can select a subset of segments that should be 
 
 To use scheduling filters, you must label the segment as you add it to the cluster:
 
-`$ docker -d --label storage=ssd`
-`swarm join --advertise=192.168.0.1:2375 token://<swarmMasterContainerId>`
+```
+$ docker -d --label storage=ssd
+swarm join --advertise=192.168.0.1:2375 token://<swarmMasterContainerId>
+```
 
 #### Scheduling constraints
 
@@ -95,4 +97,4 @@ The `health` filter simply instructs Docker Swarm to schedule container creation
 
 ### Next steps
 * To find out more about Carina, see [Overview of Carina](/docs/overview-of-carina/).
-* To find out more about how Carina implements Docker Swarn, see [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/).
+* To find out more about how Carina implements Docker Swarm, see [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/).
