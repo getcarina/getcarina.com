@@ -1,9 +1,9 @@
 ---
 title: Docker on Windows
 author: Constanze Kratel <constanze.kratel@rackspace.com>
-date: 2015-10-03
+date: 2015-10-26
 permalink: docs/tutorials/docker-on-windows/
-description: How to get started with Docker on Windows
+description: Learn how to get started with Docker on Windows
 docker-versions:
   - 1.8.2
 topics:
@@ -22,13 +22,16 @@ Ensure that your Windows system supports Hardware Virtualization Technology and 
 ####For Windows 8 or Windows 8.1
 
 1. Select **Start** > **Task Manager** and click the **Performance** tab.
-2. Under **CPU**, verify that the value for **Virtualization** is **Enabled**.   
-![Windows Control Panel screenshot]({% asset_path 003-docker-on-windows/window-8-virtualization-enabled_360.png %})
-3. If virtualization is *not* enabled, follow the manufacturer’s instructions for enabling it.
+
+1. Under **CPU**, verify that the value for **Virtualization** is **Enabled**.   
+
+    ![Windows Control Panel screenshot]({% asset_path 003-docker-on-windows/window-8-virtualization-enabled_360.png %})
+
+1. If virtualization is *not* enabled, follow the manufacturer’s instructions for enabling it.
 
 ####For Windows 7
 
-Download the [Microsoft® Hardware-Assisted Virtualization Detection Tool] (http://www.microsoft.com/en-us/download/details.aspx?id=592) and follow the instructions.
+Download the [Microsoft Hardware-Assisted Virtualization Detection Tool] (http://www.microsoft.com/en-us/download/details.aspx?id=592) and follow the instructions.
 
 ###Getting started
 To get started with Docker on Windows, you perform the following tasks:
