@@ -17,7 +17,7 @@ This tutorial describes using MongoDB on Carina so that you can store data in a 
 
 ### Prerequisites
 
-A [Carina cluster](/docs/tutorials/create-connect-cluster/)
+A Carina cluster, using the instructions in [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Run a MongoDB instance
 
