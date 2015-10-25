@@ -61,17 +61,17 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 1. Download the Docker 1.8.3 client into the credentials directory.
 
-    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
+  - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
 
-    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
+  - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
 
-    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
+  - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
 
-    - On Linux and Mac OS X, open a terminal.
+  - On Linux and Mac OS X, open a terminal.
 
-    - On Windows, open a PowerShell.
+  - On Windows, open a PowerShell.
 
 1. Configure the client.
 
@@ -125,10 +125,6 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Troubleshooting
 
-* If you get the following error message, read the [version conflict](/docs/references/version-conflict) guide: 
-
-    `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` 
-
 * If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
 
     `Cannot connect to the Docker daemon. Is "docker - d" running on this host?` 
@@ -151,9 +147,9 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 If you're new to Carina, Docker, and containers, see the following articles to learn more: 
 
-* [Overview of Carina](/docs/tutorials/overview-of-carina)
-* [Docker 101](/docs/tutorials/002-docker-101)
-* [Container 101](/docs/tutorials/001-containers-101)
+* [Overview of Carina](docs/overview-of-carina/)
+* [Docker 101](docs/tutorials/docker-101/)
+* [Container 101](docs/tutorials/containers-101/)
 
 ### Next steps
 
