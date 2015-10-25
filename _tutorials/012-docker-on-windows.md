@@ -23,7 +23,7 @@ Ensure that your Windows system supports Hardware Virtualization Technology and 
 
 1. Select **Start** > **Task Manager** and click the **Performance** tab. 
 2. Under **CPU**, verify that the value for **Virtualization** is **Enabled**. 
-![Windows Control Panel screenshot](/_assets/img/003-docker-on-windows/window-8-virtualization-enabled-highlighted-360.png)
+![Windows Control Panel screenshot]({% asset_path 003-docker-on-windows/window-8-virtualization-enabled-highlighted-360.png %})
 
 3.	If virtualization is *not* enabled, follow the manufacturer’s instructions for enabling it.
 
@@ -34,17 +34,16 @@ Download the [Microsoft® Hardware-Assisted Virtualization Detection Tool] (http
 ###Getting started
 To get started with Docker on Windows, you perform the following tasks:
 
-1. [Install Docker Toolbox on Windows](docs/tutorials/docker-install-windows/)
-2.	[Set up a virtual environment with a Docker host](docs/tutorials/set-up-docker-machine/)
-3. [Load a Docker environment on Windows](docs/tutorials/load-docker-environment-on-windows/)
+1. [Install Docker Toolbox on Windows](/docs/tutorials/docker-install-windows/)
+2.	[Set up a virtual environment with a Docker host](/docs/tutorials/set-up-docker-machine/)
+3. [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
 
 
 ###Troubleshooting Docker on Windows
 To troubleshoot Docker on Windows, read the follwoing articles:
 
-* [Error running interactive Docker shell on Windows](docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
-
-* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](docs/references/troubleshooting-windos-docker-vm-startup)
+* [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](/docs/tutorials/troubleshooting-the-docker-toolbox-setup-on-windows-7-8-1-and-10/)
 
 
 
