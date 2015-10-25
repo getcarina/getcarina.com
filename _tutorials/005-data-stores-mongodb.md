@@ -17,7 +17,7 @@ This tutorial describes using MongoDB on Carina so that you can store data in a 
 
 ### Prerequisites
 
-1. [Carina cluster and credentials](cluster-and-credentials)
+A [Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Run a MongoDB instance
 
