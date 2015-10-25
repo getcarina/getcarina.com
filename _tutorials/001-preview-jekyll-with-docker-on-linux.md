@@ -131,4 +131,4 @@ Refresh the page in your web browser to see your changes.
 
 ### Next
 
-For further information on how to get up and running with Carina, read [Getting Started on Carina](/docs/_getting-started/002-getting-started-on-carina.md).
+For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina.md).
