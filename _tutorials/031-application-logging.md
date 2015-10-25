@@ -13,9 +13,10 @@ topics:
 
 When you use Carina to containerize your applications, Docker enables you to log your applications in a variety of ways. This tutorial describes each in turn.
 
-### Prerequisite
+### Prerequisites
 
-A working Carina cluster and a container to log its output.
+1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+1. A container to log its output.
 
 ### Types of logging
 

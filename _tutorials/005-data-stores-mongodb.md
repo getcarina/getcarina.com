@@ -15,7 +15,7 @@ topics:
 
 This tutorial describes using MongoDB on Carina so that you can store data in a container.
 
-### Prerequisites
+### Prerequisite
 
 [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 

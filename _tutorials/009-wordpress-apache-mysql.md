@@ -14,19 +14,12 @@ series of tutorials covers how to migrate your content management system (CMS)
 application to more of a microservices model.
 
 This tutorial uses the following scenario: set up WordPress in a single
-Docker container, which runs in a Docker Swarm cluster on the Carina. Host the MySQL database 
+Docker container, which runs in a Docker Swarm cluster on the Carina. Host the MySQL database
 in a Docker container. Finally, use Apache to deliver traffic to your application.
 
-### Prerequisites
+### Prerequisite
 
-If you're not sure what a Docker container is, read the
-[Docker 101](/docs/tutorials/docker-101/) tutorial to learn some basics.
-
-### Create a Swarm cluster
-
-Now you need to set up the Docker Swarm cluster. If you need instructions, read
-the getting started guide. After you've followed the steps and have a fully
-operational cluster, you can resume this tutorial.
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Create MySQL container
 

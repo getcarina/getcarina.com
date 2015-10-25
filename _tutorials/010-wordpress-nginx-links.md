@@ -25,11 +25,9 @@ relationships.
 
 ### Prerequisite
 
-A Carina cluster, with at least two nodes, running Docker Swarm.
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) that at least two segments.
 
-**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you
-can reuse the same cluster, so long as all previous Docker containers have been
-removed. You can delete all of them with this command:
+**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 
 ```
 $ docker rm -fv $(docker ps -q)
@@ -196,4 +194,3 @@ $ open http://$(docker port nginx 80)
 ```
 
 You should now see the standard WordPress installation guide.
-
