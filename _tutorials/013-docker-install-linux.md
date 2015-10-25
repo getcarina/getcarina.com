@@ -1,7 +1,7 @@
 ---
 title: Install Docker on Linux
 author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-10-06
+date: 2015-10-26
 permalink: docs/tutorials/docker-install-linux/
 description: Learn how to install Docker on Linux (Ubuntu, Debian)
 topics:
@@ -98,7 +98,7 @@ instructions for your Linux distribution on [the Docker website](https://docs.do
 
 ### <a name="sudo"></a> Configure Docker to run without sudo
 If you want to use the `docker` command without always prefixing it with `sudo`, follow
-these instructions. For more information on the security impacts of adding a user
+these instructions. For more information about the security impacts of adding a user
 to the docker group, see [Docker daemon attack surface][daemon-security].
 
 1. Create a group named `docker` and add your user to it.
@@ -113,13 +113,13 @@ to the docker group, see [Docker daemon attack surface][daemon-security].
     sudo service docker restart
     ```
 
-3. Log out of your current shell or desktop session, then log in again so that your
+3. Log out of your current shell or desktop session, and then log in again so that your
     user is recognized as a member of the docker group.
 
 4. Verify that you are able to execute `docker` commands without `sudo`.
 
     ```bash
-    docker version
+    $ docker version
     ```
 
 [daemon-security]: https://docs.docker.com/articles/security/#docker-daemon-attack-surface
@@ -136,4 +136,4 @@ This command starts Docker and enables you to run any `docker` commands.
 
 ### Next step
 
-[Set up your virtual environment with Docker host](docs/tutorials/set-up-docker-machine)
+[Load a Docker environment from the command line on Linux](/docs/tutorials/load-docker-environment-on-linux/)
