@@ -72,11 +72,10 @@ A [Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 1. Enter the MySQL values that you used for the MySQL container, as shown in the following image:
 
     ![Configure MySQL Settings]({% asset_path drupal-and-swarm/config.png %})
-
-    * For **Database name**, enter **drupal**.
-    * For **Database username**, enter **drupal**.
-    * For **Database password**, enter the password for the database user
-    * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
+  * For **Database name**, enter **drupal**.
+  * For **Database username**, enter **drupal**.
+  * For **Database password**, enter the password for the database user
+  * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
 
 1. Follow the remaining steps in the installation wizard.
 
