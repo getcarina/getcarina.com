@@ -13,20 +13,20 @@ categories:
 authorIsRacker: true
 ---
 
-Today on behalf of the entire Carina & Rackspace team, I'm proud to introduce you to [Carina] by Rackspace. This is an open, free beta designed for developers. Signup is fast, takes no credit card and you can get started using containers via Docker & Docker Swarm in under a minute.
+Today on behalf of the entire Carina and Rackspace teams, I'm proud to introduce you to Carina by Rackspace. This is an open, free Beta designed for developers. Signup is fast, no credit card is required, and you can get started using containers via Docker and Docker Swarm in under a minute.
 
-[Carina] is designed with you - developers & operators first in mind. We've focused on the developer experience from our comprehensive [tutorials], a [command line interface] that is super easy to [get started] with to a streamlined user interface.
+[Carina] is designed with you—developers and operators—in mind. We've focused on the developer experience, from our comprehensive tutorials, to a [command line interface] that is easy to [get started] with, to a streamlined user interface.
 
 You're going to want to take a look at three key tutorials:
 
 * [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
 * [Getting started with Carina]({{site.baseurl}}/docs/tutorials/getting-started-on-carina/)
-* [Getting started with the CLI]({{site.baseurl}}/docs/tutorials/getting-started-carina-cli/)
+* [Getting started with the Carina CLI]({{site.baseurl}}/docs/tutorials/getting-started-carina-cli/)
 
 ## Details
-Your containers run in a bare-metal libvirt/lxc environment avoiding the "hypervisor tax" on performance and running the containers you deploy 60% faster than the same deployment on a full Virtual Machine. The Carina environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
+Your containers run in a bare-metal libvirt/LXC environment, which avoids the "hypervisor tax" on performance. You can run the containers that you deploy 60% faster than the same deployment on a full virtual machine. The Carina environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
 
-Quite simply Carina is a light weight provisioning system for securely deploying container orchestration environments. When you "get" a cluster, you get direct access to Docker Swarm. Later, other COEs such as Kubernetes, other "surfaces" (virtual machines vs. libvirt/lxc) will be supported.
+Quite simply Carina is a lightweight provisioning system for securely deploying container orchestration environments (COEs). When you "get" a cluster, you get direct access to Docker Swarm. Later, other COEs such as Kubernetes, and other "surfaces" (virtual machines vs. libvirt/lxc) will be supported.
 
 Here's a diagram!
 ![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
@@ -39,25 +39,25 @@ Ok, let's start with the control panel:
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-control-panel.png %}
 
-Clicking on the big "+" box, you immediately jump into creation:
+When you click on Add Cluster, you immediately jump into cluster creation:
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-create-cluster.png %}
 
-It jumps straight into the building phase:
+And creation jumps straight into the building phase:
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-building.png %}
 
 So some quick notes:
 
-1. We just created a Docker Swarm cluster - for the Beta, you are limited to a total of 3 clusters. Let us know if you need/want more though, we're happy to oblige!
+1. 1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
 
-2. You see something called "segments" in the screenshot - the Docker Swarm clusters are housed in. A Carina segment is an LXC container provisioned by libvirt. TL;DR: a segment is a Docker host. For the Beta, you are limited to 3 total segements in a cluster.
+2. 1.	The Docker Swarm clusters house segments. A Carina segment is an LXC container provisioned by libvirt, and is a Docker host. For the Beta, you are limited to 3 total segments/Docker hosts in a cluster.
 
-So, ok. you have a thing - now what do you do? Click on the "Get Access" button and you will get a zip file containing all TLS certificates and a fully functional docker.env file:
+So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-creds.png %}
 
-Now, let me switch to the carina [command line interface] - you're going to want to snag your API key as shown here:
+Now, let me switch to the Carina [command line interface]. You’ll want to grab your API key, as shown here:
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-api-key.png %}
 
