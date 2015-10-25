@@ -17,7 +17,7 @@ This tutorial describes using MySQL on Carina so that you can store data in a co
 
 ### Prerequisites
 
-1. A [Carina cluster](/docs/tutorials/create-connect-cluster/)
+1. A Carina cluster, using the instructions in [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Run a MySQL instance
 
