@@ -17,6 +17,8 @@ exclude:
   - Gemfile.lock
   - package.json
 
+permalink: /blog/:title/
+
 collections:
   best-practices:
     output: true
@@ -30,6 +32,8 @@ collections:
     output: true
     permalink: /docs/tutorials/:title/
     label: tutorials
+
+
 
 defaults:
   -

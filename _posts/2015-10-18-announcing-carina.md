@@ -1,6 +1,6 @@
 ---
 title: "Announcing Carina by Rackspace"
-date: 2015-10-18 00:01
+date: 2015-10-26 00:01
 comments: true
 author: Jesse Noller
 bio: >
