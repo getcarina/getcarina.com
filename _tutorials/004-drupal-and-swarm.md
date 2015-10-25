@@ -1,7 +1,7 @@
 ---
 title: Set up Drupal on Carina
 author: Matt Darby <matt.darby@rackspace.com>
-date: 2015-10-05
+date: 2015-10-26
 permalink: docs/tutorials/drupal-and-swarm/
 description: Learn how to run a Drupal instance and a MySQL database in containers with Carina
 docker-versions:
@@ -14,15 +14,15 @@ topics:
 
 This tutorial provides steps for running a Drupal instance and a MySQL database in containers with Carina.
 
-[Drupal](drupal.org) is an open source content management application. It’s built, used, and supported by an active and diverse community of people around the world and is easily customizable.
+[Drupal](https://drupal.org) is an open source content management application. It’s built, used, and supported by an active and diverse community of people around the world and is easily customizable.
 
-[MySQL](mysql.com) is a popular open source database system that powers millions of web applications.
+[MySQL](https://mysql.com) is a popular open source database system that powers millions of web applications.
 
 **Note:** Storing persistent data in containers is a hotly contested issue. Many prefer to instead use an external database service. This tutorial sets up a MySQL container just to demonstrate container relationships.
 
 ### Prerequisites
 
-A [Carina cluster](app.getcarina.com.rackspace.com)
+A [Carina cluster]]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Set up Drupal in Carina
 
@@ -48,14 +48,12 @@ A [Carina cluster](app.getcarina.com.rackspace.com)
     -e MYSQL_ROOT_PASSWORD=<rootPassword> \
     -d mysql
   ```
-
 1. To check the installation status, run `docker logs mysql`. The following output below shows the finished installed state:
 
   ```
   2015-10-05 17:47:47 1 [Note] mysqld: ready for connections.
   Version: '5.6.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
   ```
-
 1. After MySQL is confirmed as installed, create the Drupal container. The second line of the command tells the Drupal container to create a network connection to (link to) the resulting `mysql` container.
 
   ```
@@ -64,12 +62,11 @@ A [Carina cluster](app.getcarina.com.rackspace.com)
     -p 80:80 \
     -d drupal
   ```
-
 1. Find the Carina IP address:
 
   `echo $DOCKER_HOST`
 
-  In this example the following string is returned: `tcp://104.130.0.164:2376`
+In this example the following string is returned: `tcp://104.130.0.164:2376`
 
 1. Go to the Drupal installation wizard via the IP address: `http://104.130.0.164`
 1. Choose an installation method (Standard or Minimal) depending on your use case.
@@ -82,7 +79,6 @@ A [Carina cluster](app.getcarina.com.rackspace.com)
   * For **Database password**, enter the password for the database user
   * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
 
-
 1. Follow the remaining steps in the installation wizard.
 
 Drupal is installed and you are given a link to the new Drupal site.
@@ -92,3 +88,8 @@ Drupal is installed and you are given a link to the new Drupal site.
 * [Carina](app.getcarina.com.rackspace.com)
 * [Drupal](drupal.org)
 * [MySQL](mysql.com)
+
+### Next 
+
+For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+
