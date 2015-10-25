@@ -23,10 +23,10 @@ Normally for interlock you need to mount a volume with certificates, set TLS opt
 environment variables. Using [libcarina, the go bindings for carina](https://github.com/rackerlabs/libcarina),
 interlock in Carina has been modified to require only your username, API key, and the name of the cluster you want to run on.
 
-Assuming that you have a cluster named `boatie`, following is how you would run the `example` plug-in (substituting your own username and API key):
+Assuming that you have a cluster named `boatie`, you would run the `example` plug-in as follows (substituting your own username and API key):
 
 ```bash
-docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
+$ docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
 ```
 
 The resulting output looks as follows:
