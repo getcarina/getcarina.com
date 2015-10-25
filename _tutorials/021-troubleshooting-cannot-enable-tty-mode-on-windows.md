@@ -1,7 +1,7 @@
 ---
 title: Error running interactive Docker shell on Windows
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-29
+date: 2015-10-26
 permalink: docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
 description: Learn how to workaround the "cannot enable tty mode on non tty input" error when running an interactive Docker shell on Windows
 docker-versions:
@@ -56,7 +56,7 @@ and then start an interactive shell:
 ### <a name="cmd-with-bash"></a> Use the CMD terminal with the Bash shell
 Switch to the CMD terminal with the Bash shell, which is similar to using Git Bash.
 
-1. Run the following commands, which start a Bash shell and then loads the Docker environment named `default`.
+1. Run the following commands, which start a Bash shell and then load the Docker environment named `default`.
   If you are working with a different Docker environment, replace `default` with the appropriate name.
 
     ```bash
