@@ -87,53 +87,53 @@ In a limited search, public projects or companies using Consul were not found.
 
 Service Discovery is rated as "basic" or "advanced" based on whether the technology has more service monitoring and health-checking capabilities. In this sense, Consul has some advanced features when compared to Zookeeper and etcd.
 
-<table border="1">
+<table>
  <thead>
   <tr>
-   <th align="left">Org</th>
-   <th align="left">Tool</th>
-   <th align="left">Client/Server Architecture</th>
-   <th align="left">Primitive Key-Value Store</th>
-   <th align="left">Basic Service Discovery</th>
-   <th align="left">Advanced Service Discovery</th>
-   <th align="left">Consistency</th>
-   <th align="left">Language</th>
+   <th>Org</th>
+   <th>Tool</th>
+   <th>Client/Server Architecture</th>
+   <th>Primitive Key-Value Store</th>
+   <th>Basic Service Discovery</th>
+   <th>Advanced Service Discovery</th>
+   <th>Consistency</th>
+   <th>Language</th>
   </tr>
  </thead>
- <tbody>
+ <tbody style="text-align: center;">
   <tr>
-   <td align="left">Apache</td>
-   <td align="left">Zookeeper</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left">Java</td>
+   <td>Apache</td>
+   <td>Zookeeper</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td>Java</td>
   </tr>
   <tr>
-   <td align="left">Hashicorp</td>
-   <td align="left">Consul</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">Go</td>
+   <td>Hashicorp</td>
+   <td>Consul</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td>Go</td>
   </tr>
   <tr>
-   <td align="left">CoreOS</td>
-   <td align="left">Etcd</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left">✓</td>
-   <td align="left"></td>
-   <td align="left">✓</td>
-   <td align="left">Go</td>
+   <td>CoreOS</td>
+   <td>Etcd</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td>Go</td>
   </tr>
  </tbody>
 </table>
- 
+
 In terms of which technology to use:
 
 - Zookeeper has been around longer and thus is considered to be mature,
