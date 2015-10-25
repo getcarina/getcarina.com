@@ -47,9 +47,9 @@ that works on a developer’s system will work the same way on any system.
 
 Before you can create and start working with containers, you need to set up the environment for them. You can do this by using the Carina by Rackspace hosted environment or by setting up a local Docker environment.
 
-- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster](docs/tutorials/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
+- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster]({{site.baseurl}}/docs/getting-started/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
 
-- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101](docs/getting-started/006-docker-101.md). Then, proceed with the remainder of this article.
+- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101]({{site.baseurl}}/docs/getting-started/006-docker-101/). Then, proceed with the remainder of this article.
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
@@ -83,23 +83,20 @@ After you run this command, your prompt changes and you are in your new containe
 ####Work in a container
 When you are inside the container, you can perform the following actions to become familiar with running commands inside a containerized environment:
 
- * `uname -a` returns certain system information. The appended `-a` prints all information.
-   Example output:
+* `uname -a` returns certain system information. The appended `-a` prints all information. Example output:
 
-   `Linux b6734565b373 4.0.9-boot2docker #1 SMP Thu Aug 13 03:05:44 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux`
+    `Linux b6734565b373 4.0.9-boot2docker #1 SMP Thu Aug 13 03:05:44 UTC 2015 x86_64 x86_64 x86_64 GNU/Linux`
 
- * `hostname` displays the host name.
-   Example output:
+* `hostname` displays the host name. Example output:
 
-   `b6734565b373`
+    `b6734565b373`
 
- * `ps` displays the currently running processes associated with the current user and terminal session.
-   Example output:
+* `ps` displays the currently running processes associated with the current user and terminal session. Example output:
 
-   ```
-      PID TTY          TIME CMD
-        1 ?        00:00:00 bash
-       19 ?        00:00:00 ps
+    ```
+    PID TTY          TIME CMD
+      1 ?        00:00:00 bash
+     19 ?        00:00:00 ps
    ```
 
 **Note**: This is not an exhaustive list of actions that you can perform while inside a container.
@@ -107,4 +104,4 @@ When you are inside the container, you can perform the following actions to beco
 To exit out of the container, run `exit`. Your prompt returns to the previous prompt.
 
 ###Resources
-[Overview of Carina](docs/getting-started/overview-of-carina)
+[Overview of Carina]({{site.baseurl}}/docs/getting-started/overview-of-carina/)
