@@ -98,6 +98,8 @@ Yeah, that's 3 independent docker hosts. You get a host, you get a host, and you
 
 {% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
 
+And if you want to go crazy, check out the [Running interlock, the event driven Docker Swarm plugin system, on Carina](https://getcarina.com/docs/tutorials/interlock-on-carina/)
+
 ## Wrap it up, Jesse
 
 I really hope you sign up and try Carina out - the entire team was focused on making something developers would love and experiment with. It's a Beta; and we acknowledge there's going to bugs. Thats ok! Talk with us, share - and share with your friends. Honest and candid feedback is always welcome.
