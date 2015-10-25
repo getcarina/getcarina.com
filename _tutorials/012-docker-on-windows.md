@@ -42,7 +42,6 @@ To get started with Docker on Windows, you perform the following tasks:
 To troubleshoot Docker on Windows, read the follwoing articles:
 
 * [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
-
 * [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](/docs/tutorials/troubleshooting-the-docker-toolbox-setup-on-windows-7-8-1-and-10/)
 
 
