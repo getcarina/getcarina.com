@@ -141,4 +141,4 @@ Status: Downloaded newer image for hello-world:latest
 
 ###Next step
 
-[Set up a virtual environment with a Docker host](/docs/tutorials/set-up-docker-machine/)
+[Load a Docker environment from the command line on Mac OS X](/docs/tutorials/load-docker-environment-on-mac/)
