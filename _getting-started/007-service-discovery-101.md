@@ -1,7 +1,7 @@
 ---
 title: Service discovery 101
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
-date: 2015-09-30
+date: 2015-10-26
 permalink: docs/tutorials/service-discovery-101/
 description: Learn how service discovery tracks deployed services to facilitate communication and avoid service disruption.
 docker-verions:
