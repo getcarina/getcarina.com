@@ -34,51 +34,56 @@ A [Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
   * `MYSQL_PASSWORD` is the password to use with the username for the Drupal installation.
   * `MYSQL_DATABASE` is the database name to use for the Drupal installation.
   * `MYSQL_ROOT_PASSWORD` is the MySQL root username used to install the MySQL database.
-  
-       ```
-        $docker run --name mysql \
-        -e MYSQL_USER=drupal \
-        -e MYSQL_PASSWORD=<password> \
-        -e MYSQL_DATABASE=drupal \
-        -e MYSQL_ROOT_PASSWORD=<rootPassword> \
-        -d mysql
-        ```
+
+    ```
+    $docker run --name mysql \
+    -e MYSQL_USER=drupal \
+    -e MYSQL_PASSWORD=<password> \
+    -e MYSQL_DATABASE=drupal \
+    -e MYSQL_ROOT_PASSWORD=<rootPassword> \
+    -d mysql
+    ```
 
 1. To check the installation status, run `docker logs mysql`. The following output shows the finished installed state:
 
-       ```
-        2015-10-05 17:47:47 1 [Note] mysqld: ready for connections.
-        Version: '5.6.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
-        ```
+    ```
+    2015-10-05 17:47:47 1 [Note] mysqld: ready for connections.
+    Version: '5.6.27'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
+    ```
 
 1. After MySQL is confirmed as installed, create the Drupal container. The second line of the command tells the Drupal container to create a network connection to (link to) the resulting `mysql` container.
 
-      ```
-       $ docker run --name drupal \
-        --link mysql:mysql \
-        -p 80:80 \
-        -d drupal
-        ```
+    ```
+    $ docker run --name drupal \
+    --link mysql:mysql \
+    -p 80:80 \
+    -d drupal
+    ```
 
 1. Find the Carina IP address:
-       `echo $DOCKER_HOST`
+
+    `echo $DOCKER_HOST`
 
     In this example the following string is returned: `tcp://104.130.0.164:2376`
 
-1. Go to the Drupal installation wizard via the IP address: `http://104.130.0.164`
-1. Choose an installation method (Standard or Minimal) depending on your use case.
-1. Enter the MySQL values that you used for the MySQL container, as shown in the following image:
+    1. Go to the Drupal installation wizard via the IP address: `http://104.130.0.164`
+    1. Choose an installation method (Standard or Minimal) depending on your use case.
+    1. Enter the MySQL values that you used for the MySQL container, as shown in the following image:
 
-  ![Configure MySQL Settings]({% asset_path drupal-and-swarm/config.png %})
+    ![Configure MySQL Settings]({% asset_path drupal-and-swarm/config.png %})
 
-  * For **Database name**, enter **drupal**.
-  * For **Database username**, enter **drupal**.
-  * For **Database password**, enter the password for the database user
-  * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
+    * For **Database name**, enter **drupal**.
+    * For **Database username**, enter **drupal**.
+    * For **Database password**, enter the password for the database user
+    * Under Advanced Options, enter the name of the MySQL container, **mysql**, in the **Database host** field.
 
 1. Follow the remaining steps in the installation wizard.
 
 Drupal is installed and you are given a link to the new Drupal site.
+
+### Troubleshooting
+
+For assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
@@ -86,7 +91,6 @@ Drupal is installed and you are given a link to the new Drupal site.
 * [Drupal](https://drupal.org)
 * [MySQL](https://mysql.com)
 
-### Next 
+### Next step
 
 For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
-
