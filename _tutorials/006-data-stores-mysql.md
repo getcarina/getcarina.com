@@ -17,7 +17,7 @@ This tutorial describes using MySQL on Carina so that you can store data in a co
 
 ### Prerequisites
 
-1. [Carina cluster and credentials](cluster-and-credentials)
+1. A Carina cluster, using the instructions in [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Run a MySQL instance
 
@@ -74,7 +74,7 @@ $ docker port $(docker ps --quiet --latest) 3306
 104.130.0.111:32771
 ```
 
-For the containerized MySQL service, note that you don't need to care what it's named, what IP address it runs on, or what port it uses. Instead, you discover this information dynamically with the preceding command and use it later in the tutorial to connect to MySQL.
+For the containerized MySQL service, you don't need to keep track of what it's named, what IP address it runs on, or what port it uses. Instead, you discover this information dynamically with the preceding command, and use it later in the tutorial to connect to MySQL.
 
 ### Create the database tables
 
@@ -161,7 +161,7 @@ The output of this `docker ps` command is your running application container.
 
 The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
 
-1. View the logs of the application. The logs contain some information based on the environment variables.
+1. View the application logs as they contain some information based on the environment variables.
 
 ```bash
 $ docker logs $(docker ps --quiet --latest)
@@ -171,7 +171,7 @@ DEBUG: mysql+pymysql://guestbook-user:guestbook-user-password@104.130.0.111:3277
 INFO:  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ```
 
-The output of this `docker logs` command is the log messages being logged to stdout and stderr from the application in the container.
+The output of this `docker logs` command are the log messages being logged to stdout and stderr from the application in the container.
 
 1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
@@ -216,4 +216,4 @@ $ docker exec -it $(docker ps -q -l) /bin/bash
 
 ### Next
 
-If MySQL isn't the data store for you, read [Use MongoDB on Carina](data-stores-mongodb).
+If MySQL isn't the data store for you, read [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/).
