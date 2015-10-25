@@ -175,5 +175,5 @@ See the [Prerequisites](#prerequisites) section for additional information.
 
 ### Next 
 
-For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina.md).
+For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
