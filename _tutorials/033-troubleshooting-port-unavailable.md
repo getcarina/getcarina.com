@@ -1,7 +1,7 @@
 ---
-title: Error publishing container to a specific port
+title: Error publishing a container to a specific port
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-29
+date: 2015-10-26
 permalink: docs/references/troubleshooting-port-unavailable/
 description: Troubleshoot "port is already allocated" or "unable to find a node with port available" errors when running a container
 docker-versions:
@@ -24,8 +24,7 @@ This error message indicates that the Docker host already has a container publis
 to the specified port. To resolve this error, you must either
 [remove the container that is using the port](#remove-container) or [use another port](#alternate-port).
 
-Alternatively, if you are using Rackspace Container Service or Docker Swarm, the following error
-message is displayed:
+Alternatively, if you are using Carina or Docker Swarm, the following error message is displayed:
 
 ```
 $ docker run --detach --publish 80:80 nginx
@@ -34,7 +33,7 @@ Error response from daemon: unable to find a node with port 80 available
 
 This error message indicates that every node in the cluster already has a container published
 to the specified port. To resolve this error, you must either
-[remove the container(s) that are using the port](#remove-container),
+[remove the containers that are using the port](#remove-container),
 [use another port](#alternate-port), or [add capacity to the cluster](#grow-cluster).
 
 ### <a name="remove-container"></a> Remove the containers already using the port
@@ -66,13 +65,12 @@ $ docker run --detach --publish 8081:80 nginx
 ```
 
 ### <a name="grow-cluster"></a> Add capacity to the cluster
-If you are using Rackspace Container Service, execute the **Grow Cluster** action
-on the cluster to add capacity.
+If you are using Carina, add segments to add capacity.
 
-1. Log in to the control panel at [https://mycluster.rackspacecloud.com](https://mycluster.rackspacecloud.com).
-2. Click the gear icon next to the cluster and select **Grow Cluster**.
-
-    ![Cluster Action Menu > Grow Cluster]({% asset_path troubleshooting-port-unavailable/grow-cluster.png %})
+1. Log in to the [Carina control panel](https://app.getcarina.com).
+2. Click the gear icon associated with the cluster and select **Edit Cluster**.
+3. On the Cluster Details page, click **Add segments**.
+4. Specify the new cluster size and click **Add Segments**.
 
 Otherwise, you can use Docker Machine to add a node to the Docker Swarm cluster.
 See the Docker Machine documentation for additional information about [how to manage
