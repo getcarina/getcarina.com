@@ -355,73 +355,73 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-sizes"></a>
 **Table 1 -‐ Size comparison of container orchestrators and managers**
 
-<table border="1">
+<table>
  <thead>
    <tr>
-    <th align="left">Organization</th>
-    <th align="left">Tool</th>
-    <th align="left">One host (nano)</th>
-    <th align="left">Up to 10s of hosts (micro)</th>
-    <th align="left">Up to 100s of hosts (medium)</th>
-    <th align="left">Up to 1000s of hosts (large)</th>
+    <th>Organization</th>
+    <th>Tool</th>
+    <th>One host (nano)</th>
+    <th>Up to 10s of hosts (micro)</th>
+    <th>Up to 100s of hosts (medium)</th>
+    <th>Up to 1000s of hosts (large)</th>
   </tr>
  </thead>
- <tbody>
+ <tbody style="text-align: center;">
   <tr>
-   <td align="left">Docker</td>
-   <td align="left">Compose</td>
-   <td align="center">✓</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center"></td>
+   <td>Docker</td>
+   <td>Compose</td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
-   <td align="left">Prime Directive</td>
-   <td align="left">Flynn</td>
-   <td align="center"></td>
-   <td align="center">✓</td>
-   <td align="center"></td>
-   <td align="center"></td>
+   <td>Prime Directive</td>
+   <td>Flynn</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
-   <td align="left">OpDemand</td>
-   <td align="left">Deis</td>
-   <td align="center"></td>
-   <td align="center">✓</td>
-   <td align="center"></td>
-   <td align="center"></td>
+   <td>OpDemand</td>
+   <td>Deis</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
-   <td align="left">ClusterHQ</td>
-   <td align="left">Flocker</td>
-   <td align="center"></td>
-   <td align="center">✓</td>
-   <td align="center"></td>
-   <td align="center"></td>
+   <td>ClusterHQ</td>
+   <td>Flocker</td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
-   <td align="left">CloudSoft</td>
-   <td align="left">Clocker</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">✓</td>
-   <td align="center"></td>
+   <td>CloudSoft</td>
+   <td>Clocker</td>
+   <td></td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
   </tr>
   <tr>
-   <td align="left">Mesosphere</td>
-   <td align="left">Marathon</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">✓</td>
+   <td>Mesosphere</td>
+   <td>Marathon</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
   </tr>
   <tr>
-   <td align="left">Google</td>
-   <td align="left">Kubernetes</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">✓</td>
+   <td>Google</td>
+   <td>Kubernetes</td>
+   <td></td>
+   <td></td>
+   <td></td>
+   <td class="table-cell-green">yes</td>
   </tr>
  </tbody>
 </table>
@@ -431,89 +431,89 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
 
-<table border="1">
+<table class="condensed">
  <thead>
   <tr>
-   <th align="left">Organization</th>
-   <th align="left">Tool</th>
-   <th align="left">Cluster state management</th>
-   <th align="left">Monitoring &amp; healing</th>
-   <th align="left">Deploy spec</th>
-   <th align="left">Allows Docker dependency &amp; architectural mapping</th>
-   <th align="left">Deployment method</th>
-   <th align="left">Language</th>
+   <th>Organization</th>
+   <th>Tool</th>
+   <th>Cluster state management</th>
+   <th>Monitoring &amp; healing</th>
+   <th>Deploy spec</th>
+   <th>Allows Docker dependency &amp; architectural mapping</th>
+   <th>Deployment method</th>
+   <th>Language</th>
   </tr>
  </thead>
- <tbody>
+ <tbody style="text-align: center;">
   <tr>
-   <td align="left">Docker</td>
-   <td align="left">Compose</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">Dockerfile + YAML manifest</td>
-   <td align="center">✓</td>
-   <td align="center">CLI</td>
-   <td align="center">Python</td>
+   <td>Docker</td>
+   <td>Compose</td>
+   <td></td>
+   <td></td>
+   <td>Dockerfile + YAML manifest</td>
+   <td class="table-cell-green">yes</td>
+   <td>CLI</td>
+   <td>Python</td>
   </tr>
   <tr>
-   <td align="left">Prime Directive</td>
-   <td align="left">Flynn</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">Procfile, Heroku Buildpack</td>
-   <td align="center"></td>
-   <td align="center">Git push</td>
-   <td align="center">Go</td>
+   <td>Prime Directive</td>
+   <td>Flynn</td>
+   <td></td>
+   <td></td>
+   <td>Procfile, Heroku Buildpack</td>
+   <td></td>
+   <td>Git push</td>
+   <td>Go</td>
   </tr>
   <tr>
-   <td align="left">OpDemand</td>
-   <td align="left">Deis</td>
-   <td align="center"></td>
-   <td align="center"></td>
-   <td align="center">Dockerfile, Heroku Buildpack</td>
-   <td align="center"></td>
-   <td align="center">Git push</td>
-   <td align="center">Go</td>
+   <td>OpDemand</td>
+   <td>Deis</td>
+   <td></td>
+   <td></td>
+   <td>Dockerfile, Heroku Buildpack</td>
+   <td></td>
+   <td>Git push</td>
+   <td>Go</td>
   </tr>
   <tr>
-   <td align="left">ClusterHQ</td>
-   <td align="left">Flocker</td>
-   <td align="center">✓</td>
-   <td align="center"></td>
-   <td align="center">Dockerfile + YAML manifest</td>
-   <td align="center">✓</td>
-   <td align="center">CLI</td>
-   <td align="center">Python</td>
+   <td>ClusterHQ</td>
+   <td>Flocker</td>
+   <td class="table-cell-green">yes</td>
+   <td></td>
+   <td>Dockerfile + YAML manifest</td>
+   <td class="table-cell-green">yes</td>
+   <td>CLI</td>
+   <td>Python</td>
   </tr>
   <tr>
-   <td align="left">CloudSoft</td>
-   <td align="left">Clocker</td>
-   <td align="center">✓</td>
-   <td align="center">✓</td>
-   <td align="center">Apache Brooklyn YAML blueprint + Dockerfile</td>
-   <td align="center">✓</td>
-   <td align="center">API / Web</td>
-   <td align="center">Java</td>
+   <td>CloudSoft</td>
+   <td>Clocker</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td>Apache Brooklyn YAML blueprint + Dockerfile</td>
+   <td class="table-cell-green">yes</td>
+   <td>API / Web</td>
+   <td>Java</td>
   </tr>
   <tr>
-   <td align="left">Mesosphere</td>
-   <td align="left">Marathon</td>
-   <td align="center">✓</td>
-   <td align="center">✓</td>
-   <td align="center">JSON</td>
-   <td align="center">✓</td>
-   <td align="center">API / CLI</td>
-   <td align="center">C++</td>
+   <td>Mesosphere</td>
+   <td>Marathon</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td>JSON</td>
+   <td class="table-cell-green">yes</td>
+   <td>API / CLI</td>
+   <td>C++</td>
   </tr>
   <tr>
-   <td align="left">Google</td>
-   <td align="left">Kubernetes</td>
-   <td align="center">✓</td>
-   <td align="center">✓</td>
-   <td align="center">YAML / JSON</td>
-   <td align="center">✓</td>
-   <td align="center">API / CLI</td>
-   <td align="center"></td>
+   <td>Google</td>
+   <td>Kubernetes</td>
+   <td class="table-cell-green">yes</td>
+   <td class="table-cell-green">yes</td>
+   <td>YAML / JSON</td>
+   <td class="table-cell-green">yes</td>
+   <td>API / CLI</td>
+   <td></td>
   </tr>
  </tbody>
 </table>

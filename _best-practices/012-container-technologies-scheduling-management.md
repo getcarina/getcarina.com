@@ -74,80 +74,80 @@ The following tables compare the design and functionality of fleet and Mesos [(3
 
 **Table 1: Design Comparison**
 
-<table border="1">
-<thead>
-<tr>
-<th align="left">Organization</th>
-<th align="left">Tool</th>
-<th align="left">Basic task orchestration</th>
-<th align="left">Advanced task orchestration</th>
-<th align="left">Up to 100s of hosts</th>
-<th align="left">Up to 1000s of hosts</th>
-<th align="left">Language</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">CoreOS</td>
-<td align="left">fleet</td>
-<td align="center">✓</td>
-<td align="center"></td>
-<td align="center">✓</td>
-<td align="center"></td>
-<td align="center">Go</td>
-</tr>
-<tr>
-<td align="left">Apache</td>
-<td align="left">Mesos</td>
-<td align="center">✓</td>
-<td align="center">✓</td>
-<td align="center"></td>
-<td align="center">✓</td>
-<td align="center">C++</td>
-</tr>
-</tbody>
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th>Tool</th>
+      <th>Basic task orchestration</th>
+      <th>Advanced task orchestration</th>
+      <th>Up to 100s of hosts</th>
+      <th>Up to 1000s of hosts</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;">
+  <tr>
+    <td>CoreOS</td>
+    <td>fleet</td>
+    <td class="table-cell-green">yes</td>
+    <td></td>
+    <td class="table-cell-green">yes</td>
+    <td></td>
+    <td>Go</td>
+  </tr>
+  <tr>
+    <td>Apache</td>
+    <td>Mesos</td>
+    <td class="table-cell-green">yes</td>
+    <td class="table-cell-green">yes</td>
+    <td></td>
+    <td class="table-cell-green">yes</td>
+    <td>C++</td>
+  </tr>
+  </tbody>
 </table>
 
 **Table 2: Functionality Comparison**
 
-<table border="1">
-<thead>
-<tr>
-<th align="left">Organization</th>
-<th align="left">Tool</th>
-<th align="left">Architecture</th>
-<th align="left">Resource aware</th>
-<th align="left">Host constraints</th>
-<th align="left">Host balancing</th>
-<th align="left">Group affinity</th>
-<th align="left">Anti-affinity</th>
-<th align="left">Global scheduling</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">CoreOS</td>
-<td align="left">fleet</td>
-<td align="center">Monolithic</td>
-<td align="center"></td>
-<td align="center">✓</td>
-<td align="center"></td>
-<td align="center">✓</td>
-<td align="center">✓</td>
-<td align="center">✓</td>
-</tr>
-<tr>
-<td align="left">Apache</td>
-<td align="left">Mesos</td>
-<td align="center">Two-level</td>
-<td align="center">✓</td>
-<td align="center">✓</td>
-<td align="center">✓</td>
-<td align="center"></td>
-<td align="center">✓</td>
-<td align="center"></td>
-</tr>
-</tbody>
+<table>
+  <thead>
+    <tr>
+      <th>Organization</th>
+      <th>Tool</th>
+      <th>Architecture</th>
+      <th>Resource aware</th>
+      <th>Host constraints</th>
+      <th>Host balancing</th>
+      <th>Group affinity</th>
+      <th>Anti-affinity</th>
+      <th>Global scheduling</th>
+    </tr>
+  </thead>
+  <tbody style="text-align: center;">
+    <tr>
+      <td>CoreOS</td>
+      <td>fleet</td>
+      <td>Monolithic</td>
+      <td></td>
+      <td class="table-cell-green">yes</td>
+      <td></td>
+      <td class="table-cell-green">yes</td>
+      <td class="table-cell-green">yes</td>
+      <td class="table-cell-green">yes</td>
+    </tr>
+    <tr>
+      <td>Apache</td>
+      <td>Mesos</td>
+      <td>Two-level</td>
+      <td class="table-cell-green">yes</td>
+      <td class="table-cell-green">yes</td>
+      <td class="table-cell-green">yes</td>
+      <td></td>
+      <td class="table-cell-green">yes</td>
+      <td></td>
+    </tr>
+  </tbody>
 </table>
 
 In terms of which technology to use:
