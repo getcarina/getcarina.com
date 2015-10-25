@@ -106,6 +106,8 @@ I really hope you sign up and try Carina out - the entire team was focused on ma
 
 Thanks - and welcome to Carina!
 
+{% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
+
 ## More Reading, community, GitHub!:
 * [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/tutorials/docker-swarm-carina/)
 * [Documentation](https://getcarina.com/docs/)
@@ -113,7 +115,7 @@ Thanks - and welcome to Carina!
 * IRC: **irc.freenode.net - #carina**
 * GitHub: [https://github.com/getcarina](https://github.com/getcarina)
 
-{% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %}
+
 
 
 
