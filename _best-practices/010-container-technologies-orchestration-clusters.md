@@ -21,12 +21,19 @@ One way to make a useful choice is to focus your investigation on tools that are
 ![Strata of the container ecosystem]({% asset_path best-practices/orchestration-clusters/container-ecosystem.svg %})
 
 As shown in the figure above, the following are the ecosystem layers:
+
 - Layer 7 = Workflow
+
 - Layer 6 = Orchestration
+
 - Layer 5 = Scheduling
+
 - Layer 4 = Container engine
+
 - Layer 3 = Operating system
+
 - Layer 2 = Virtual infrastructure
+
 - Layer 1 = Physical infrastructure
 
 Kubernetes and Marathon are leaders in the container orchestration layer.
@@ -34,8 +41,11 @@ For other container management activities such as workflow and scheduling, leade
 OpenStack also offers features that are especially relevant at scheduling and virtual infrastructure layers.
 
 Another basis for comparison is a tool's ability to offer features beyond simple orchestration as shown in the following figure:
+
 - Docker Compose is in the intersection between traditional platform as a service (PaaS) and container orchestration.
+
 - Flynn is in the intersection between traditional PaaS and specialized offerings such as stateful  applications.
+
 - Flocker is in the intersection between specialized offerings and container orchestration.
 
 ![Intersections between PaaS, container orchestration, and specialized offerings]({% asset_path best-practices/orchestration-clusters/containers-orchestration.svg %})
@@ -416,6 +426,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
  </tbody>
 </table>
 
+<p>  </p>
 
 <a name="compare-features"></a>
 **Table 2 -‐ Functionality comparison of container orchestrators and managers**
@@ -507,6 +518,7 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
  </tbody>
 </table>
 
+<p>  </p>
 
 **Current Recommendation:** Kubernetes
 
