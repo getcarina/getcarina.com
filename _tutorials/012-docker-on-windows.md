@@ -37,9 +37,7 @@ Download the [Microsoft Hardware-Assisted Virtualization Detection Tool] (http:/
 To get started with Docker on Windows, you perform the following tasks:
 
 1. [Install Docker Toolbox on Windows](/docs/tutorials/docker-install-windows/)
-2.	[Set up a virtual environment with a Docker host](/docs/tutorials/set-up-docker-machine/)
-3. [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
-
+2. [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
 
 ###Troubleshooting Docker on Windows
 To troubleshoot Docker on Windows, read the follwoing articles:
