@@ -19,11 +19,8 @@ Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.c
 
 Note: Instructions will be updated with Windows-specific commands.
 
-1. Download and save the CLI binary that matches your operating system:
-
-   * [Mac OSX, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-darwin-amd64)
-   * [Linux, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina-linux-amd64)
-   * [Windows, 64-bit](https://github.com/rackerlabs/carina/releases/download/0.4.0/carina.exe)
+1. Download the latest version of the CLI library that matches your operating system from the 
+   [Carina github repository](https://github.com/getcarina/carina/releases/).
 
 2. Rename the binary to `carina`. For example, on Mac OS X, enter the following:
 
