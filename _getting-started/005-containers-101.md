@@ -47,9 +47,9 @@ that works on a developer’s system will work the same way on any system.
 
 Before you can create and start working with containers, you need to set up the environment for them. You can do this by using the Carina by Rackspace hosted environment or by setting up a local Docker environment.
 
-- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster]({{site.baseurl}}/docs/getting-started/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
+- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster]({{site.baseurl}}/docs/tutorials/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
 
-- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101]({{site.baseurl}}/docs/getting-started/006-docker-101/). Then, proceed with the remainder of this article.
+- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101]({{site.baseurl}}/docs/tutorials/006-docker-101/). Then, proceed with the remainder of this article.
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
@@ -104,4 +104,4 @@ When you are inside the container, you can perform the following actions to beco
 To exit out of the container, run `exit`. Your prompt returns to the previous prompt.
 
 ###Resources
-[Overview of Carina]({{site.baseurl}}/docs/getting-started/overview-of-carina/)
+[Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
