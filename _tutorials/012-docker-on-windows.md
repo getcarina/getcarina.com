@@ -23,7 +23,7 @@ Ensure that your Windows system supports Hardware Virtualization Technology and 
 
 1. Select **Start** > **Task Manager** and click the **Performance** tab. 
 2. Under **CPU**, verify that the value for **Virtualization** is **Enabled**.   
-![Windows Control Panel screenshot]({% asset_path 003-docker-on-windows/window-8-virtualization-enabled-highlighted-360.png %})
+![Windows Control Panel screenshot]({% asset_path 003-docker-on-windows/window-8-virtualization-enabled_360.png %})
 3.	If virtualization is *not* enabled, follow the manufacturer’s instructions for enabling it.
 
 ####For Windows 7
