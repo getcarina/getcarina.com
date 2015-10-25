@@ -73,11 +73,10 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
     You can now run `docker` commands on this host.
 
-    You also can load your Carina credentials into your Docker environment. For instructions, click the following link for your operating system:
-
-    * [Load a Docker environment on Linux](/docs/tutorials/load-docker-environment-on-linux/)
-    * [Load a Docker environment on Mac](/docs/tutorials/load-docker-environment-on-mac/)
-    * [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
+You also can load your Carina credentials into your Docker environment. For instructions, click the following link for your operating system:
+* [Load a Docker environment on Linux](/docs/tutorials/load-docker-environment-on-linux/)
+* [Load a Docker environment on Mac](/docs/tutorials/load-docker-environment-on-mac/)
+* [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
 
 ### Next step
 
