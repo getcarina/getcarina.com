@@ -17,11 +17,11 @@ topics:
 
 This tutorial describes how to load a Docker environment on Linux.
 
-### <a name="prerequisites"></a> Prerequisite
+###<a name="prerequisites"></a>Prerequisite
 
-[Docker](https://docs.docker.com/installation/ubuntulinux/)
+[Install Docker on Linux](/docs/tutorials/docker-install-linux/)
 
-#### <a name="load"></a> Load the Docker environment
+###<a name="load"></a>Load the Docker environment
 
 1. Open a command terminal.
 2. If you are using Carina, [download your credentials][get-cluster-creds].
@@ -30,6 +30,5 @@ This tutorial describes how to load a Docker environment on Linux.
 
 [get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
-### <a name="references"></a> References
-* [Install Docker on Linux]({{ site.baseurl }}/docs/tutorials/docker-install-linux/)
-* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+###<a name="references"></a>References
+[Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
