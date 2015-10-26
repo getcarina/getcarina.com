@@ -24,12 +24,12 @@ of a virtual network switch, regardless of where they are running. Services can
 be selectively exposed across the network to the outside world through
 firewalls and by using encryption for wide-area connections [(1)](#resources).
 
-When using Weave, applications use the network just as if the containers 
-were all plugged into the same network switch, with no need to configure 
-port mappings, links, and so on. Services provided by application containers 
-on the Weave network can be made accessible to the outside world, 
-regardless of where those containers are running. Similarly, existing 
-internal systems can be exposed to application containers irrespective of 
+When using Weave, applications use the network just as if the containers
+were all plugged into the same network switch, with no need to configure
+port mappings, links, and so on. Services provided by application containers
+on the Weave network can be made accessible to the outside world,
+regardless of where those containers are running. Similarly, existing
+internal systems can be exposed to application containers irrespective of
 their location [(2)](#resources).
 
 Richardson also stated that "Weave establishes per application
@@ -64,11 +64,11 @@ the container space.
 
 ### Calico from Metaswitch
 
-Project Calico integrates seamlessly with the cloud orchestration 
-system (such as OpenStack) to enable secure IP communication between 
-virtual machines. As VMs are created or destroyed, their IP addresses are 
-advertised to the rest of the network, and they are able to send and receive data 
-over IP just as they would with the native networking implementation – but with 
+Project Calico integrates seamlessly with the cloud orchestration
+system (such as OpenStack) to enable secure IP communication between
+virtual machines. As VMs are created or destroyed, their IP addresses are
+advertised to the rest of the network, and they are able to send and receive data
+over IP just as they would with the native networking implementation – but with
 higher security, scalability, and performance" [(5)](#resources).
 
 In late 2014, the Calico team created a prototype of the Calico stack
@@ -92,7 +92,7 @@ also manage either overlays or underlays" [(8)](#resources).
 However, few details have been published as SocketPlane is
 in a semi-stealth mode. Its relevance and consideration as an option stems from the fact that its founders
 are three very well known networking experts.
-Madhu Venugopal, Brent Salisbury, and Dave Tucker left RedHat to start SocketPlane. 
+Madhu Venugopal, Brent Salisbury, and Dave Tucker left RedHat to start SocketPlane.
 They also contribute to the OpenDaylight project,
 developing an open source platform for building programmable, software-defined networks [(9)](#resources).
 
@@ -153,11 +153,11 @@ Other recommended reading:
 - <https://github.com/socketplane/socketplane/blob/master/README.md>
 
 In addition to *best-practices* articles such as this one,
-Carina documentation includes *tutorials* and *references*:
+Carina documentation includes *getting started* guidance and *tutorials*:
 
+* For information about Carina by Rackspace and getting started
+  with clusters and containers, explore the *​getting started​* collection.
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
-* For detailed information about how to solve specific issues or work with specific architectures,
-  explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 

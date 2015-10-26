@@ -206,11 +206,11 @@ Other recommended reading:
 - [Docker best practices: image repository](/docs/best-practices/docker-best-practices-image-repository/)
 
 In addition to *best-practices* articles such as this one,
-Carina documentation includes *tutorials* and *references*:
+Carina documentation includes *getting started* guidance and *tutorials*:
 
+* For information about Carina by Rackspace and getting started
+  with clusters and containers, explore the *​getting started​* collection.
 * For step-by-step demonstrations and instructions, explore the *tutorials* collection.
-* For detailed information about how to solve specific issues or work with specific architectures,
-  explore the *references* collection.
 * For discussions of key ideas, recommendations of useful methods and tools, and
   general good advice, explore the *best-practices* collection.
 

@@ -1,10 +1,10 @@
-# Rackspace Container Service - for content contributors
+# Carina by Rackspace - for content contributors
 
-This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Rackspace Container Service.
+This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Carina by Rackspace.
 
 ## Writing
 
-The content is split into three separate collections: **tutorials**, **best practices**, and **references**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_references`. The `_assets` directory contains images for the content.
+The content is split into three separate collections: **tutorials**, **best practices**, and **getting started**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_getting-started`. The `_assets` directory contains images for the content.
 
 Right now, file names are being prefixed with a number like `001-` to control their display order. This is not really maintainable and will probably change.
 
@@ -13,7 +13,7 @@ Templates for content are available in each of the directories:
 - Create new tutorials for tasks: `/_tutorials/_000-tutorial-task-template.md`
 - Create new tutorials for concepts: `/_tutorials/_000-tutorial-concept-template.md`
 - Create 101-style articles: `/_tutorials/_000-tutorial-101-template.md`
-- Create reference topics: `/_references/_000-reference-template.md`
+- Create getting started topics: `/_references/_000-getting-started-template.md`
 - Create best practices topics: `/_best-practices/_000-best-practices-template.md`
 
 Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
