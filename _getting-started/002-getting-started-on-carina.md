@@ -1,7 +1,7 @@
 ---
 title: Getting started on Carina
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-28
+date: 2015-10-26
 permalink: docs/getting-started/getting-started-on-carina/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
@@ -88,7 +88,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     $ .\docker.ps1
     ```
 
-    **Note**:On Windows PowerShell, use `docker.exe` instead of `docker` in all of the commands below.
+    **Note**: On Windows PowerShell, use `docker.exe` instead of `docker` in all of the following commands.
 
 1. Connect to your cluster and display information about it.
 
@@ -151,7 +151,7 @@ Run a WordPress blog with a MySQL database.
 
     The output of this `docker port` command is the IP address and port that WordPress is using.
 
-1. (Optional) Remove your WordPress site
+1. *(Optional)* Remove your WordPress site.
 
     If you aren't going to use your WordPress site, we recommend that you remove it. Doing so removes both your WordPress and MySQL containers. This will delete any data and any posts you've made in the WordPress site.
 
@@ -183,4 +183,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Learn about all of the features available to you in the [Overview of Carina](/docs/tutorials/overview-of-carina)
+Learn about all of the features available to you in the [Overview of Carina](/docs/overview-of-carina/).
