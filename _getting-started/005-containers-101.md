@@ -47,9 +47,9 @@ that works on a developer’s system will work the same way on any system.
 
 Before you can create and start working with containers, you need to set up the environment for them. You can do this by using the Carina by Rackspace hosted environment or by setting up a local Docker environment.
 
-- If you are using Carina, you simply create a cluster and connect to it. For instructions, see [Create and connect to a cluster]({{site.baseurl}}/docs/tutorials/create-connect-cluster/). Then you can skip to the “Download an image” section of this article.
+- To use Carina, you create a cluster, connect to it, and then create containers for running specific applicatons. To get started, skip to the [Getting started on Carina tutorial](/docs/getting-started/getting-started-on-carina/).
 
-- To create containers on your local system, you need to set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101]({{site.baseurl}}/docs/tutorials/docker-101/). Then, proceed with the remainder of this article.
+- To create containers on your local system, you set up Docker. Docker is an open platform for building, shipping, and running distributed applications. Learn how to download, install, and set up the Docker client in [Docker 101]({{site.baseurl}}/docs/tutorials/docker-101/). Then, proceed with the remainder of this article.
 
 ####Build a Docker host
 Docker Machine enables you to create Docker hosts on your computer. It automatically creates the host, installs Docker on it, and configures the Docker client to talk to it.
@@ -107,4 +107,4 @@ To exit out of the container, run `exit`. Your prompt returns to the previous pr
 [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
 
 ###Next step
-Now that you've learned some container basics, go to one of the Tutorials to learn how to run your applications, such as [WordPress](/docs/tutorials/wordpress-apache-mysql/), [Magento](/docs/tutorials/magento-in-docker/), or [Drupal](/docs/tutorials/drupal-and-swarm/), in Carina.
+Now that you've learned some container basics, go to one of the Tutorials to learn how to run your applications, such as [WordPress](/docs/tutorials/wordpress-apache-mysql/) or [Drupal](/docs/tutorials/drupal-and-swarm/), in Carina.
