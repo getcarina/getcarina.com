@@ -28,7 +28,7 @@ This article provides instructions for downloading the credentials zip file and 
 
 1. Log in to the [Carina Control Panel](https://app.getcarina.com/app/login).
 
-2. click the **Get Access** button associated with your cluster and then click **Download File**.
+2. Click the **Get Access** button associated with your cluster and then click **Download File**.
 
     Your cluster credentials are now saved to **clusterName.zip**, where _clusterName_ is the name of your cluster.
 
@@ -39,5 +39,5 @@ This article provides instructions for downloading the credentials zip file and 
 5. Open a command terminal and change to the credentials directory.
 
 6. Load your credentials and use them to interact with your cluster:
-  * (_Linux and Mac OSX users_) Run `source docker.env`.
-  * (_Windows users_) See [Load Docker environment from the command line on Windows]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/).
+  * _(Linux and Mac OS X users)_ Run `source docker.env`.
+  * _(Windows users)_ See [Load Docker environment from the command line on Windows]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/).
