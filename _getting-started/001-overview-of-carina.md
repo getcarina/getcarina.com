@@ -79,9 +79,9 @@ Carina has a CLI that you can use to control clusters from a terminal or scripts
 * [Carina documentation](/docs/)
 * [Carina community forums](https://community.getcarina.com)
 * [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/)
-* [How autoscaling works in Carina](/docs/tutorials/autoscaling-carina/)
+* [Autoscaling resources in Carina](/docs/tutorials/autoscaling-carina/)
 * [Glossary](/docs/references/glossary/)
 
 ### Next step
 
-Run your first containerized application by [Getting started on Carina](/docs/tutorials/getting-started-on-carina/).
+Run your first containerized application by [getting started on Carina](/docs/getting-started/getting-started-on-carina/).
