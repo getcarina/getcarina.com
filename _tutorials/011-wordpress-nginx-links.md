@@ -20,8 +20,7 @@ WordPress, and a MySQL container handling persistent state.
 
 **Note:** Storing persistent data in containers is a hotly contested issue. Many
 prefer to instead use an external service such as Rackspace Cloud Databases.
-This tutorial sets up a MySQL container just to demonstrate container
-relationships.
+This tutorial sets up a MySQL container to demonstrate container relationships.
 
 ### Prerequisite
 
@@ -203,7 +202,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Run your first containerized application by [Getting started on Carina](/docs/tutorials/getting-started-on-carina/).
+Learn more about storing persistent data in containers at [Use data volume containers](/docs/tutorials/data-volume-containers/).
 
 <!--
 TODO: Use the text below when that tutorial is back in for M2.
