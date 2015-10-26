@@ -1,9 +1,9 @@
-# Rackspace Container Service
+# Carina by Rackspace
 
 [![Build Status](https://travis-ci.org/rackerlabs/docs-container-service.svg?branch=master)](https://travis-ci.org/rackerlabs/docs-container-service)
 
 
-This [Jekyll](http://jekyllrb.com/) repository houses documentation and tutorials for Rackspace Container Service.
+This [Jekyll](http://jekyllrb.com/) repository houses documentation and tutorials for Carina by Rackspace.
 
 ## Installation
 You can install Jekyll either by using the following instructions or, if you have Docker Toolbox installed, by running `script/preview`.
