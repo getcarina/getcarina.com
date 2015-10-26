@@ -9,7 +9,6 @@ docker-versions:
 topics:
   - docker
   - beginner
-
 ---
 
 This tutorial shows you how to create a cluster in Carina and then download its credentials so that you can securely connect to the cluster.
@@ -37,6 +36,10 @@ A Carina account. If you do not already have one, create a free account (no cred
 1. On the Clusters page, click **Add Cluster**.
 
 1. On the Create Cluster page, enter a name for the cluster. For example, `mycluster`.
+
+1. To scale your cluster, select **Enable Autoscale**.
+
+    For more information, see [Autoscaling resources in Carina](/docs/tutorials/autoscaling-carina/). 
 
 1. Click **Create Cluster**.
 
@@ -96,6 +99,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```
 
 1. Connect to your cluster and display information about it. If you are using Windows PowerShell, use `docker.exe` instead of `docker`.
+    If you autoscaled your cluster, you see more containers, images, nodes, and CPUs than are shown in the following example.
 
     ```bash
     $ docker info
@@ -115,7 +119,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
-    **Note**: A newly created cluster contains three containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/introduction-docker-swarm/).  
+    **Note**: A newly created cluster contains containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/introduction-docker-swarm/).  
 
 ### Troubleshooting
 
