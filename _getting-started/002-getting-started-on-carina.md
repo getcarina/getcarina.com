@@ -1,7 +1,7 @@
 ---
 title: Getting started on Carina
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-28
+date: 2015-10-26
 permalink: docs/getting-started/getting-started-on-carina/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
