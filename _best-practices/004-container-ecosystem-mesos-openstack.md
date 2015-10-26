@@ -78,7 +78,6 @@ most to those most focused on application development:
 > to the forefront, and this naturally begs the question of which kind of controller will 
 > ultimately be in charge of the application clusters of the future.[(2)](#resources)
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article

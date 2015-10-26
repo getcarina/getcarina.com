@@ -180,7 +180,6 @@ map a data volume container to a block storage device and share that container w
 to introduce an additional management layer,
 just as you can [map a data volume](#mapping) so that the host knows it by one name and the container knows it by another name.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

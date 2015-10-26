@@ -115,7 +115,6 @@ seriously evaluate and test.
 **Current Recommendation**: Weave (based on project attention, evolution,
 and funding)
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

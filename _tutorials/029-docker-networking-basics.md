@@ -16,7 +16,7 @@ Docker encourages an application architecture with multiple interdependent conta
 rather than a single container providing many services&mdash;for example, a web application
 container that relies upon a caching container. Multiple solutions facilitate
 the networking of containers, but this tutorial covers two basic
-options: [Docker links](#links) and the [ambassador pattern](#ambassador).
+options: [Docker links](#docker-links) and the [ambassador pattern](#ambassador-pattern).
 
 **Note:** Weave is a commonly recommended solution, but because it requires
 privileged access to the Docker host, it is not an option with container as a service
@@ -25,7 +25,7 @@ providers, such as Carina.
 This tutorial describes how to network Docker containers so that they can communicate
 among themselves.
 
-### <a name="links"></a> Docker links
+### Docker links
 Docker links enable containers that are *on the same host* to communicate.
 
 When you run a container, the `--link` flag connects the new container, the _target_,
@@ -40,7 +40,7 @@ limits your topology and hinders scalability and availability.
 
 ![Docker links topology]({% asset_path connect-docker-containers-with-links/docker-links-topology.svg %})
 
-### <a name="ambassador"></a> Ambassador pattern
+### Ambassador pattern
 The ambassador pattern uses Docker links with specialized _ambassador_ containers to
 enable communication across Docker hosts. Rather than the target container communicating
 directly with the source container, the target container communicates with the _target ambassador_

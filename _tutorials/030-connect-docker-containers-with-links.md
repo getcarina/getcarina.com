@@ -25,7 +25,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 [docker-toolbox]: https://www.docker.com/toolbox
 [carina]: http://app.getcarina.com/
 
-### <a name="connect"></a> Connect two containers with a Docker link
+### Connect two containers with a Docker link
 
 1. [Load your Docker host environment](/docs/tutorials/load-docker-environment-on-mac/).
 
@@ -76,7 +76,7 @@ You now have two containers that can communicate via a Docker link.
 
 ![Docker Link Topology]({% asset_path connect-docker-containers-with-links/docker-links-topology.svg %})
 
-### <a name="inspect"></a> Inspect the linked containers
+### Inspect the linked containers
 
 Follow these instructions to learn more about the information provided by the Docker link
 and how the containers use it to communicate.

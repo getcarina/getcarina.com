@@ -175,7 +175,6 @@ creation and utilization of Dockerfiles to build your container images.
 Expressing exactly what you want is key
 to ensuring that users of your image have the right experience.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

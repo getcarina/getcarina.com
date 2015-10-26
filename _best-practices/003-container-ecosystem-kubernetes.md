@@ -184,7 +184,6 @@ In addition to the positive publicity in blog posts, the community is showing it
 interest by participating in Kubernetes' development: as of April 2015, Kubernetes averaged 
 around 400-500 commits per week and a very substantial following of almost 300 contributors.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

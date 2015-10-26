@@ -178,7 +178,6 @@ being addressed by several technologies and should be in a much better
 state at a future date. For more on this, read
 [Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications).
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

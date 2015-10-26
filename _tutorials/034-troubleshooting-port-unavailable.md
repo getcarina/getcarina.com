@@ -22,7 +22,7 @@ Error response from daemon: Cannot start container 1b48146:  Bind for 0.0.0.0:80
 
 This error message indicates that the Docker host already has a container published
 to the specified port. To resolve this error, you must either
-[remove the container that is using the port](#remove-container) or [use another port](#alternate-port).
+[remove the container that is using the port](#remove-the-containers-already-using-the-port) or [use another port](#publish-to-an-alternative-port).
 
 Alternatively, if you are using Carina or Docker Swarm, the following error message is displayed:
 
@@ -33,10 +33,10 @@ Error response from daemon: unable to find a node with port 80 available
 
 This error message indicates that every node in the cluster already has a container published
 to the specified port. To resolve this error, you must either
-[remove the containers that are using the port](#remove-container),
-[use another port](#alternate-port), or [add capacity to the cluster](#grow-cluster).
+[remove the containers that are using the port](#remove-the-containers-already-using-the-port),
+[use another port](#publish-to-an-alternative-port), or [add capacity to the cluster](#add-capacity-to-the-cluster).
 
-### <a name="remove-container"></a> Remove the containers already using the port
+### Remove the containers already using the port
 1. To identify the containers that are using the port, run the following command,
     changing `<port>` to the port number that you want to use.
 
@@ -55,7 +55,7 @@ to the specified port. To resolve this error, you must either
 
 You can now run your container using the port number.
 
-### <a name="alternate-port"></a> Publish to an alternative port
+### Publish to an alternative port
 Use the `--publish` flag to publish the container to an alternative port on the Docker host. For example,
 if the container exposes port 80 and you have selected port 8081 as the alternative port,
 you would use `--publish 8081:80` when running your Docker container. For example:
@@ -64,7 +64,7 @@ you would use `--publish 8081:80` when running your Docker container. For exampl
 $ docker run --detach --publish 8081:80 nginx
 ```
 
-### <a name="grow-cluster"></a> Add capacity to the cluster
+### Add capacity to the cluster
 If you are using Carina, add segments to add capacity.
 
 1. Log in to the [Carina control panel](https://app.getcarina.com).

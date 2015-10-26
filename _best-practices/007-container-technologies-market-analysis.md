@@ -168,7 +168,6 @@ and presents them as a single entity.
 
 > OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:
