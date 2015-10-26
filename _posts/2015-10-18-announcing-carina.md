@@ -21,7 +21,7 @@ You're going to want to take a look at three key tutorials:
 
 * [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
 * [Getting started with Carina]({{site.baseurl}}/docs/tutorials/getting-started-on-carina/)
-* [Getting started with the Carina CLI]({{site.baseurl}}/docs/tutorials/getting-started-carina-cli/)
+* [Getting started with the Carina CLI]({{site.baseurl}}/docs/getting-started/getting-started-carina-cli/)
 
 ## Details
 Your containers run in a bare-metal libvirt/LXC environment, which avoids the "hypervisor tax" on performance. You can run the containers that you deploy 60% faster than the same deployment on a full virtual machine. The Carina environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
@@ -120,5 +120,5 @@ Thanks - and welcome to Carina!
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
 [command line interface]: https://github.com/getcarina/carina/releases
-[get started]: https://getcarina.com/docs/tutorials/getting-started-carina-cli/
+[get started]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
 [glossary]: https://getcarina.com/docs/references/glossary/
