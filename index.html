@@ -26,7 +26,7 @@ layout: default
             </div>
             <div class="control" data-ng-class="{'error': signup.errorMessage}">
               <button type="submit" data-ng-disabled="signup.status == 'submitting'">
-                <span data-ng-show="signup.status != 'submitting'">Sign up for the Beta!</span>
+                <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
                 <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
               </button>
               <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
@@ -165,7 +165,7 @@ layout: default
           </div>
           <div class="control submit" data-ng-class="{'error': signup.errorMessage}">
             <button type="submit" data-ng-disabled="signup.status == 'submitting'">
-              <span data-ng-show="signup.status != 'submitting'">Sign up for the Beta!</span>
+              <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
               <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
             </button>
             <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
