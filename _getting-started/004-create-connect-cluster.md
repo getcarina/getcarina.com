@@ -137,4 +137,4 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 
 ### Next steps
 
-Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the Documentation page on the Carina website.
+Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the [Documentation](/docs/) page on the Carina website.
