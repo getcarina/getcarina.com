@@ -123,6 +123,12 @@ points it to the IP address:
 $ open http://$(docker port wordpress 80)
 ```
 
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Next step
 
 The [next tutorial](../linking-wordpress-containers) describes how to set up

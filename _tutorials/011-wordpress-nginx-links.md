@@ -194,3 +194,9 @@ $ open http://$(docker port nginx 80)
 ```
 
 You should now see the standard WordPress installation guide.
+
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).

@@ -204,14 +204,9 @@ If the status of the container does not begin with Up, run a new MySQL container
 $ docker run --interactive --tty --rm mysql:5.6 /bin/bash
 ```
 
-You can also enter a running container, and open a shell to investigate the container.
-
-```bash
-$ docker exec -it $(docker ps -q -l) /bin/bash
-```
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
-
 
 ### Resources
 
