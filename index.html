@@ -171,6 +171,10 @@ layout: default
             <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
           </div>
         </form>
+        <div class="form-submitted" data-ng-cloak data-ng-show="signup.status == 'submitted'">
+          <h3>Thanks for signing up for Carina<sup>&trade;</sup>!</h3>
+          <p><strong>Check your email</strong> to verify your account and start using Carina<sup>&trade;</sup> right away.</p>
+        </div>
       </div>
       <div class="more-info">
         <p>Need more info?<br>Get all the details about our <a href="/docs/overview-of-carina/">free beta offering</a>.</p>
