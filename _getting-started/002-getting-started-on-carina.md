@@ -41,7 +41,7 @@ Connect to your cluster by loading the cluster credentials and downloading the D
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. On the Carina Control Panel, click the gear icon associated with your cluster and click **Download File**.
+1. On the Carina Control Panel, click the **Get Access** button associated with your cluster and click **Download File**.
 
 1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
 
