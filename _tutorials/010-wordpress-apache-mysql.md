@@ -30,37 +30,37 @@ root password and a password for the `wordpress` user.
 
 2. Store these passwords temporarily in environment variables:
 
-  ```
-  $ export ROOT_PASSWORD=<rootPassword>
-  $ export WORDPRESS_PASSWORD=<wordpressPassword>
-  ```
+    ```
+    $ export ROOT_PASSWORD=<rootPassword>
+    $ export WORDPRESS_PASSWORD=<wordpressPassword>
+    ```
 
-  Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
-  generated passwords.
+    Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
+    generated passwords.
 
 3. Create the container by running the following terminal command. Name the
    container `mysql`, and use the password variables that you just created:
 
-  ```
-  $ docker run --detach \
-    --name mysql \
-    --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
-    --env MYSQL_USER=wordpress \
-    --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
-    --env MYSQL_DATABASE=wordpress \
-    mysql
-  ```
+    ```
+    $ docker run --detach \
+      --name mysql \
+      --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+      --env MYSQL_USER=wordpress \
+      --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+      --env MYSQL_DATABASE=wordpress \
+      mysql
+    ```
 
-  The output should show the container ID.
+    The output should show the container ID.
 
 4. To verify that the container is running, execute the following command:
 
-  ```
-  $ docker ps
-  ```
+    ```
+    $ docker ps
+    ```
 
-  The output shows the full details of the `mysql` container, listening on port
-  `3306/tcp`.
+    The output shows the full details of the `mysql` container, listening on port
+    `3306/tcp`.
 
 ### Deploy the WordPress container
 

@@ -66,37 +66,37 @@ root password and a password for the `wordpress` user.
 
 2. Store these passwords temporarily in environment variables:
 
-  ```
-  $ export ROOT_PASSWORD=<rootPassword>
-  $ export WORDPRESS_PASSWORD=<wordpressPassword>
-  ```
+    ```
+    $ export ROOT_PASSWORD=<rootPassword>
+    $ export WORDPRESS_PASSWORD=<wordpressPassword>
+    ```
 
-  Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
-  generated passwords.
+    Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
+    generated passwords.
 
 3. Create the container by running the following terminal command. Name the
    container `mysql` and use the password variables that you just created:
 
-  ```
-  $ docker run --detach \
-    --name mysql \
-    --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
-    --env MYSQL_USER=wordpress \
-    --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
-    --env MYSQL_DATABASE=wordpress \
-    mysql
-  ```
+    ```
+    $ docker run --detach \
+      --name mysql \
+      --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+      --env MYSQL_USER=wordpress \
+      --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+      --env MYSQL_DATABASE=wordpress \
+      mysql
+    ```
 
-  The output should show the container ID.
+    The output should show the container ID.
 
 4. To verify that the container is running, execute the following command:
 
-  ```
-  $ docker ps
-  ```
+    ```
+    $ docker ps
+    ```
 
-  The output shows the full details of the `mysql` container, listening on port
-  `3306/tcp`.
+    The output shows the full details of the `mysql` container, listening on port
+    `3306/tcp`.
 
 ### Deploy WordPress container running PHP-FPM pool
 
@@ -136,21 +136,21 @@ such as Docker Hub.
 1. Clone the Rackspace [Examples repo](https://github.com/getcarina/examples),
 which contains the `nginx` Dockerfile and the `nginx` configuration file:
 
-  ```
-  $ git clone https://github.com/getcarina/examples.git
-  ```
+    ```
+    $ git clone https://github.com/getcarina/examples.git
+    ```
 
 2. Build your image as follows, where `<userNamespace>` is your Docker Hub username:
 
-  ```
-  $ docker build -t <userNamespace>/nginx-fpm nginx-fpm
-  ```
+    ```
+    $ docker build -t <userNamespace>/nginx-fpm nginx-fpm
+    ```
 
 3. Push your local image to Docker Hub, just like you would with Git:
 
-  ```
-  $ docker push <userNamespace>/nginx-fpm
-  ```
+    ```
+    $ docker push <userNamespace>/nginx-fpm
+    ```
 
 ### Run the NGINX container
 
