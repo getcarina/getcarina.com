@@ -43,7 +43,7 @@ tutorial.
 
 **Note**: _Never_ check this file into version control or expose it publicly.
 
-### Modify the configuration
+### Modify the configuration
 
 Open the **env** file in the **magento** directory that you just cloned. You
 should see all of the configuration values for your Magento installation. Edit
