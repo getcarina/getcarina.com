@@ -13,22 +13,17 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers by using the ambassador pattern
-so that they can communicate over the network and across Docker hosts. For information about
-the ambassador pattern, see [Docker networking basics][networking-basics].
+so that they can communicate over the network and across Docker hosts.
 
 ### Prerequisite
 
-Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Carina][carina]
-
-[docker-linux]: http://docs.docker.com/linux/step_one/
-[docker-toolbox]: https://www.docker.com/toolbox
-[carina]: http://app.getcarina.com/
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named clustera and a cluster named clusterb
 
 ### Connect containers
 
-1. [Load your first Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
+1. [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clustera.
 
-2. Run a container named `app`.
+1. Run a container named `app`.
 
     ```bash
     $ docker run --detach --name app carinamarina/hello-world-app
@@ -37,7 +32,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     This is the _source container_. No ports are published for this container,
     so it will only communicate privately with other containers by using links.
 
-3. Inspect the app container and note its exposed port. In the following example, the
+1. Inspect the app container and note its exposed port. In the following example, the
     port is `5000`. This is the port number over which the ambassador will
     communicate with the source container.
 
@@ -48,7 +43,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     ```
     {% endraw %}
 
-4. Run an ambassador container named `app-ambassador`.
+1. Run an ambassador container named `app-ambassador`.
 
     ```bash
     $ docker run --detach --name app-ambassador \
@@ -63,7 +58,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     **Note**: Although it is not required for the ambassador containers to communicate over the same port
     number that is exposed by the source container, it does simplify configuration.
 
-5. Identify the connection information to the source ambassador container; it will be required
+1. Identify the connection information to the source ambassador container; it will be required
     when configuring the other ambassador container. In the example output,
     the connection information to the source ambassador is `104.130.0.192:5000`.
 
@@ -72,9 +67,10 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     5000/tcp -> 104.130.0.192:5000
     ```
 
-6. [Load your second Docker host environment]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/).
+1. 1. [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clusterb.
 
-7. In the second host environment, run an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
+
+1. In the second cluster environment, run an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
     the connection information from step 5.
 
     ```bash
@@ -90,7 +86,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
 
     **Note**: You do not have to use the same name for the source and target ambassadors.
 
-8. Run a container named `web`.
+1. Run a container named `web`.
 
     ```bash
     $ docker run --detach --name web \
@@ -105,7 +101,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     container. When a Docker container is designed to link to another, the expected
     link alias is usually documented on [its Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
 
-9. Identify the port on which the web container is published by running the following command.
+1. Identify the port on which the web container is published by running the following command.
     In the example output, the port is `32770`.
 
     ```bash
@@ -113,7 +109,7 @@ Two Docker hosts using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], 
     5000/tcp -> 104.130.0.177:32770
     ```
 
-10. Open http://_dockerHost_:_webPort_, where _dockerHost_ is the IP address or host name of the second Docker host,
+1. Open http://_dockerHost_:_webPort_, where _dockerHost_ is the IP address or host name of the second Docker host,
     for example **http://104.130.0.177:32770**. You should see the following output:
 
     ```bash
@@ -124,12 +120,22 @@ You now have two containers that can communicate across Docker hosts.
 
 ![Docker ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %})
 
+### Troubleshooting
+
+See [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Resources
 
+* [Docker networking basics](/docs/tutorials/networking-basics/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
-* [Docker networking basics][networking-basics]
 * [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101](/docs/tutorials/service-discovery-101/)
 * [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
-[networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/
+### Next step
+
+[Connect containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
