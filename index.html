@@ -10,7 +10,7 @@ layout: default
         <div data-ng-controller="SignupFormCtrl as signup">
           <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
             <div class="control" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
-              <input type="email" name="email" required placeholder="Enter Your E-mail Address..." data-ng-model="signup.formData.username">
+              <input type="email" name="email" required placeholder="Enter your e-mail address..." data-ng-model="signup.formData.username">
               <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
                 A valid email address is required.
               </div>
@@ -149,7 +149,7 @@ layout: default
       <div class="signup-form inline">
         <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
           <div class="control email" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
-            <input type="email" name="email" required placeholder="Enter Your E-mail Address..." data-ng-model="signup.formData.username">
+            <input type="email" name="email" required placeholder="Enter your e-mail address..." data-ng-model="signup.formData.username">
             <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
               A valid email address is required.
             </div>
