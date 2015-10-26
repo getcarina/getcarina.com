@@ -60,7 +60,6 @@ mission-critical IT shop will require a full top-to-bottom
 adoption of RedHat’s container and virtualization products, if both
 types of workloads will be co-located.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

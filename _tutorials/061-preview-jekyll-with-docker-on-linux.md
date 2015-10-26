@@ -24,14 +24,14 @@ you do not need to install Ruby or Jekyll on your local machine.
 
 [jekyll]: https://jekyllrb.com/
 
-## <a name="prerequisites"></a> Prerequisites
+## Prerequisites
 * [Docker](http://docs.docker.com/linux/step_one/)
 * An existing Jekyll site on your local file system. If you do not have
   an existing site, a good way to get started quickly is to download a [Jekyll theme][jekyll-themes].
 
 [jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
 
-## <a name="steps"></a> Steps
+## Steps
 
 1. Open a command terminal and change to your Jekyll site directory.
 
@@ -130,7 +130,7 @@ See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
-### <a name="resources"></a>Resources
+### Resources
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)

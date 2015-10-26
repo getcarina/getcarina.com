@@ -66,12 +66,9 @@ End the section by directly recommending one option, if that's possible:
 **Current Recommendation:** Kubernetes
 -->
 
-<a name="resources"></a>
 ### Resources
 
 <!--
-Set the <a name="resources"></a> anchor above the Resources section heading so links come to the top of the section.
-
 If a reference is cited by a number in the text such as [(1)](#resources), include it in a numbered list here.
 
 If the text links to or hints at another source beneficial to readers, include it in a bulleted list here.

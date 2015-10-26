@@ -121,7 +121,6 @@ An alternative to container linking that is becoming an industry standard is to 
 service registration and discovery tool. If all the services that are available to your containers are known (registered) and can easily be located (discovered), there is no need to define specific links between services in multiple containers. You can read more about this at
 [Introduction to container technologies: registration and discovery of container services](../container-technologies-registration-discover/).
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

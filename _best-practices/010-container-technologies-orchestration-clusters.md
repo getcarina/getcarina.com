@@ -522,7 +522,6 @@ and comparing key elements of their functionality [(Table 2)](#compare-features)
 
 **Current Recommendation:** Kubernetes
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

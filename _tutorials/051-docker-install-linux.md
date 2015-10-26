@@ -12,7 +12,7 @@ topics:
 
 This tutorial describes how to install and set up Docker on Linux distributions, such as Ubuntu or Debian.
 
-### <a name="install"></a> Install Docker
+### Install Docker
 The following steps use Ubuntu. If you are not using Ubuntu, you can find installation
 instructions for your Linux distribution on [the Docker website](https://docs.docker.com/installation/).
 
@@ -96,7 +96,7 @@ instructions for your Linux distribution on [the Docker website](https://docs.do
        https://docs.docker.com/userguide/
      ````
 
-### <a name="sudo"></a> Configure Docker to run without sudo
+### Configure Docker to run without sudo
 If you want to use the `docker` command without always prefixing it with `sudo`, follow
 these instructions. For more information about the security impacts of adding a user
 to the docker group, see [Docker daemon attack surface][daemon-security].

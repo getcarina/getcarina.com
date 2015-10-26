@@ -46,7 +46,6 @@ design their stacks for their orchestrator of choice directly. What
 the future holds for Swarm is still to be determined, but the gist of
 Docker Swarm's added benefits are currently unclear.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

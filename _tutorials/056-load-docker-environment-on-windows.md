@@ -26,15 +26,15 @@ text commands and _terminal_ is the graphical window that hosts a shell.
   * [PowerShell](#powershell)
   * [Bash](#bash)
 * [Terminals](#terminals)
-  * [Windows Command Prompt](#cmd-prompt)
+  * [Windows Command Prompt](#windows-command-prompt)
   * [Mintty](#mintty)
   * [Alternatives](#alternatives)
 
-### <a name="prerequisites"></a> Prerequisite
+### Prerequisite
 
 [Install Docker on Windows](/docs/tutorials/docker-install-windows/)
 
-### <a name="shells"></a> Shells
+### Shells
 After installing Docker Toolbox on Windows, you have three shells available for
 interacting with Docker: CMD, PowerShell, and Bash. Although each shell provides
 different commands and syntax, all are capable of interacting with Docker.
@@ -43,7 +43,7 @@ different commands and syntax, all are capable of interacting with Docker.
 * [PowerShell](#powershell)
 * [Bash](#bash)
 
-#### <a name="cmd"></a> CMD
+#### CMD
 [CMD][cmd-doc] is the standard Windows shell. To load a Docker environment in
 CMD, perform the following steps:
 
@@ -58,7 +58,7 @@ CMD, perform the following steps:
 [cmd-doc]: http://ss64.com/nt/syntax.html
 [get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
-#### <a name="powershell"></a> PowerShell
+#### PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
 work with .NET objects instead of raw text. It is distributed with all versions of
 Windows supported by Docker. To load a Docker environment in PowerShell, perform the following steps:
@@ -85,7 +85,7 @@ Run the following command to enable running PowerShell scripts. Then, run `docke
 
 [powershell-doc]: https://technet.microsoft.com/en-us/library/ms714469.aspx
 
-#### <a name="bash"></a> Bash
+#### Bash
 [Bash][bash-doc] is a UNIX shell installed with [Git for Windows][git-for-windows],
 which is included with Docker Toolbox. If you are using Bash from another source, such as Cygwin or MinGW,
 the Docker environment setup remains the same.
@@ -109,22 +109,22 @@ To load a Docker environment in Bash, perform the following steps:
 [git-for-windows]: https://git-for-windows.github.io
 [bash-doc]: http://www.gnu.org/software/bash/manual/bash.html
 
-### <a name="terminals"></a> Terminals
+### Terminals
 After installing Docker Toolbox on Windows, you have two terminals available:
 Windows Command Prompt and mintty. If you do not want to use either of those terminals,
 some alternatives are available to you.
 
-* [Windows Command Prompt](#cmd-prompt)
+* [Windows Command Prompt](#windows-command-prompt)
 * [Mintty](#mintty)
 * [Alternatives](#alternatives)
 
-#### <a name="cmd-prompt"></a> Windows Command Prompt
+#### Windows Command Prompt
 The Command Prompt is the standard Windows terminal. By default all console applications, including cmd.exe,
 are hosted in the Windows Command Prompt.
 
 ![Windows Command Prompt Screenshot]({% asset_path load-docker-environment-on-windows/cmd.png %})
 
-#### <a name="mintty"></a> Mintty
+#### Mintty
 [Mintty][mintty] is the terminal used by the Git Bash application installed with [Git for Windows][git-for-windows],
 which is included with Docker Toolbox. With mintty, you can perform the following actions:
 
@@ -145,9 +145,9 @@ in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to set 
 ![Git Bash Screenshot]({% asset_path load-docker-environment-on-windows/gitbash.png %})
 
 [mintty]: https://mintty.github.io
-[troubleshooting-tty]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#ssh
+[troubleshooting-tty]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#use-ssh-to-connect-to-the-docker-host
 
-#### <a name="alternatives"></a>Alternatives
+#### Alternatives
 Some alternative terminals provide useful features, such as improved copy and paste,
 window resizing, and tabs. Overall they are more customizable than the standard
 Windows terminal used by CMD and PowerShell.
@@ -155,7 +155,7 @@ Windows terminal used by CMD and PowerShell.
 * [ConsoleZ](#consolez)
 * [ConEmu](#conemu)
 
-##### <a name="consolez"></a> ConsoleZ
+##### ConsoleZ
 [ConsoleZ][consolez] is a terminal emulator that can be used with any shell.
 
 1. [Download ConsoleZ from GitHub][consolez-downloads].
@@ -171,7 +171,7 @@ In the following screenshot, ConsoleZ is configured with tabs for each shell (CM
 [consolez]: https://github.com/cbucher/console/wiki
 [consolez-downloads]: https://github.com/cbucher/console/wiki/Downloads
 
-##### <a name="conemu"></a> ConEmu
+##### ConEmu
 [ConEmu][conemu], short for Console Emulator, is a terminal emulator that can be used with any shell.
 A unique feature of ConEmu is that it can be configured to replace the [default terminal
 in Windows][conemu-default-terminal], such that cmd.exe or any console application will
@@ -196,7 +196,7 @@ In the following screenshot, ConEmu is configured with tabs for each shell (CMD,
 [conemu-settings]: https://conemu.github.io/en/Settings.html
 [conemu-default-terminal]: https://conemu.github.io/en/DefaultTerminal.html
 
-### <a name="references"></a> References
+### References
 * [CMD syntax][cmd-doc]
 * [PowerShell syntax](http://ss64.com/ps/syntax.html)
 * [Bash syntax](http://ss64.com/bash/syntax.html)

@@ -65,7 +65,6 @@ architecture for your application’s stack.
 In general, authoritative recommendations about container design and development come directly from Docker, Inc., primarily from Docker CTO Solomon Hykes. Though there are several voices in the container industry, Hykes' opinions and suggestions tend to be well received. The relationship between Solomon Hykes and the Docker community is similar to that of Linus Torvalds with the Linux kernel community: Hykes is respected as a visionary and a technical leader. However, because Docker, Inc., is in fact a business, one can expect that Hykes has a responsibility to his investors and himself to position all of Docker’s offerings as the preferred methodology. As one can imagine in any scenario in which advice comes from a
 profit-motivated entity, you should take Docker's advice as a starting point and then do your own investigation to find the approach that works best for you.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

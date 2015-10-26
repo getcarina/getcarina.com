@@ -17,11 +17,11 @@ topics:
 
 This tutorial describes how to load a Docker environment on Mac OS X.
 
-###<a name="prerequisites"></a>Prerequisite
+### Prerequisite
 
 [Install Docker on Mac OS X](/docs/tutorials/docker-install-mac/)
 
-####<a name="load"></a>Load the Docker environment
+#### Load the Docker environment
 1. Open a command terminal.
 2. Load your Docker host environment variables by using one of the following methods:
   * If you are using Carina, [download your credentials][get-cluster-creds].
@@ -32,5 +32,5 @@ This tutorial describes how to load a Docker environment on Mac OS X.
 
 [get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
-###<a name="references"></a>References
+### References
 [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)

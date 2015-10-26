@@ -162,7 +162,6 @@ In terms of which technology to use:
 
 **Current Recommendation:** Mesos
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

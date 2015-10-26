@@ -25,7 +25,7 @@ you do not need to install Ruby or Jekyll on your local machine.
 
 [jekyll]: https://jekyllrb.com/
 
-## <a name="prerequisites"></a> Prerequisites
+## Prerequisites
 * [Docker Toolbox][docker-toolbox]
 * An existing Jekyll site on your local file system. If you do not have
   an existing site, a good way to get started quickly is to download a [Jekyll theme][jekyll-themes].
@@ -39,7 +39,7 @@ you do not need to install Ruby or Jekyll on your local machine.
 [docker-toolbox]: https://www.docker.com/toolbox
 [jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
 
-## <a name="steps"></a> Steps
+## Steps
 
 1. Open a command terminal and change to your Jekyll site directory.
 
@@ -224,7 +224,7 @@ Refresh the page in your web browser to see your changes.
 
 [jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
 
-## <a name="troubleshooting"></a>Troubleshooting
+## Troubleshooting
 You might encounter the following issues when running the preview script.
 
 * <a name="troubleshooting-stop-jekyll"></a>Ctrl + C does not stop Jekyll
@@ -256,7 +256,7 @@ See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
-### <a name="resources"></a>Resources
+### Resources
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)

@@ -59,7 +59,6 @@ container dependency management and fault recovery.
 - **journald**: A system logging methodthat provides secure aggregation and attribution of container
 logs.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:

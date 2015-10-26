@@ -27,7 +27,7 @@ The credentials zip file contains the following files:
 This article provides instructions for downloading the credentials zip file and
 using the credentials to authenticate to your cluster.
 
-### <a name="download"></a> Download credentials
+### Download credentials
 
 1. Log in to the control panel at [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
 

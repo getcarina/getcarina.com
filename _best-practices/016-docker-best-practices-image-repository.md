@@ -71,7 +71,6 @@ The default behavior for `docker push` is to push to the central
 Docker Hub Registry; alternatively, you can push your image to your own private
 Docker registry. After your image is running, log in to your private registry rather than the central registry with `docker login http(s)://<YOUR_DOMAIN>:<PORT>`.
 
-<a name="resources"></a>
 ### Resources
 
 Numbered citations in this article:
