@@ -21,9 +21,9 @@ The benefit of Docker images is that anyone can create and share their images th
 
 [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
-### Find and download a Docker Image
+### Find and download a Docker image
 
-This section shows you how to find and run a Docker Image.
+This section shows you how to find and run a Docker image.
 
 1. List all the images that exist on your Docker host:
 
@@ -49,7 +49,7 @@ This section shows you how to find and run a Docker Image.
 
 3. When you find the image that you want to use, download it by running the following command. Specify the name of the image and the version number.
 
-   **Note:** If you run this command without indicating the version that you want to download, Docker downloads the latest version of that image.
+    **Note:** If you run this command without indicating the version that you want to download, Docker downloads the latest version of that image.
 
     `$ docker pull ubuntu:12.04`
 
