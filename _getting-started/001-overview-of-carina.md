@@ -71,7 +71,7 @@ Carina has an intuitive UI that you can use to control clusters from your web br
 
 #### The CLI
 
-Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI](/docs/tutorials/getting-started-carina-cli/) to learn more.
+Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/) to learn more.
 
 ### Resources
 
