@@ -146,7 +146,7 @@ layout: default
       <div class="heading">
         <h2>Start developing with containers, for free, right now!</h2>
       </div>
-      <div class="signup-form inline">
+      <div class="signup-form inline" data-ng-controller="SignupFormCtrl as signup">
         <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
           <div class="control email" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
             <input type="email" name="email" required placeholder="Enter Your E-mail Address..." data-ng-model="signup.formData.username">
