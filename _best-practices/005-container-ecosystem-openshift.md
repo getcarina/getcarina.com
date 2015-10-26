@@ -42,7 +42,7 @@ Project Atomic, their preferred hosting platform for
 Docker containers that competes with CoreOS.
 
 To learn more about Kubernetes and other tools for container orchestration, read
-[Container ecosystem: Kubernetes]((/docs/best-practices/container-ecosystem-kubernetes/)) and
+[Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/) and
 [Introduction to container technologies: orchestration and management of container clusters](/docs/best-practices/container-technologies-orchestration-clusters/).
 
 ### OpenShift, OpenStack, and Project Atomic
