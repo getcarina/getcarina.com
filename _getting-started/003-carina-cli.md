@@ -14,7 +14,7 @@ This tutorial demonstrates how to install and configure the Carina client so tha
 
 ### Prerequisites <a name="Prereq"></a>
 
-A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/signup).
+A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
 
 Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
