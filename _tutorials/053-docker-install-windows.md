@@ -45,7 +45,7 @@ To install the Docker Toolbox, perform the following steps:
 
 7. If you have a previous version of VirtualBox installed, clear the VirtualBox check box (do not reinstall it). Otherwise, accept all the defaults and click **Next**.
 
-8. Click **Install**. 
+8. Click **Install**.
     The installer takes a few minutes to install all the components.
 
 9. When notified by Windows Security, allow the installer to make the necessary changes.
@@ -74,7 +74,7 @@ The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox 
 
     ```
     $ docker run hello-world
-    
+
     Unable to find image 'hello-world:latest' locally
     Pulling repository hello-world
     91c95931e552: Download complete
@@ -82,7 +82,7 @@ The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox 
     Status: Downloaded newer image for hello-world:latest
     Hello from Docker.
     This message shows that your installation appears to be working correctly.
-    
+
     To generate this message, Docker took the following steps:
      1. The Docker client contacted the Docker daemon.
      2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
@@ -91,28 +91,21 @@ The installer places shortcuts to the Docker Quickstart Terminal and VirtualBox 
      executable that produces the output you are currently reading.
      4. The Docker daemon streamed that output to the Docker client, which sent it
      to your terminal.
-    
+
     To try something more ambitious, you can run an Ubuntu container with:
      $ docker run -it ubuntu bash
-    
+
     For more examples and ideas, visit:
     https://docs.docker.com/userguide/
     ```
 
 ### Troubleshooting
 
-Sometimes, when you use a `docker` command such as `docker run hello-world`, you receive the following output:
+Docker Toolbox may have have conflicts with some of your existing applications such as VirtualBox and Git Bash. For solutions on how to handle these conflicts, go to [Troubleshooting the Docker Toolbox setup on Windows](/docs/tutorials/troubleshooting-windos-docker-vm-startup/).
 
-```
-$ docker run hello-world
-Post http:///var/run/docker.sock/v1.20/containers/create: dial unix /var/run/docker.sock: no such file or directory.
-* Are you trying to connect to a TLS-enabled daemon without TLS?
-* Is your docker daemon up and running?
-```
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
-If you receive this output, your VM is not running on a Docker host. For instructions on how to fix this issue, perform the steps in [Set up a virtual environment with a Docker host](/docs/tutorials/set-up-docker-machine).
-
-Lastly, Docker Toolbox may have have conflicts with some of your existing applications such as VirtualBox and Git Bash. For solutions on how to handle these conflicts, go to [Troubleshooting the Docker Toolbox setup on Windows](/docs/tutorials/troubleshooting-windos-docker-vm-startup/).
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 

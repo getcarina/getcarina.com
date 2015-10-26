@@ -124,7 +124,13 @@ Refresh the page in your web browser to see your changes.
 
 [jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
 
-## <a name="resources"></a>Resources
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
+### <a name="resources"></a>Resources
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)

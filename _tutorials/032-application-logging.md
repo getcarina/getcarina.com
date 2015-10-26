@@ -72,7 +72,7 @@ The following log from the `redis1` container is displayed:
 
 The `json-file` logging method has a helpful option available named `max-size` that automatically rolls over the log file when it reaches a specified size:
 
-`--log-opt max-size=[0-9+][k|m|g]` 
+`--log-opt max-size=[0-9+][k|m|g]`
 
 `k`, `m`, and `g` stand for kilobyte, megabyte, and gigabyte. If this option is not set, the logs will not roll over.
 
@@ -124,6 +124,12 @@ The following example shows the options that Docker might use to log to a Fluent
 `$ docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 --log-opt fluentd-tag=docker.{{.Name}}`
 
 **Note:** A container using this logging method will immediately stop if it cannot connect to the Fluentd server.
+
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 

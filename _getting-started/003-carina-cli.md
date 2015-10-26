@@ -9,9 +9,12 @@ topics:
   - cli
   - intermediate
 ---
+
 This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
 
 ### Prerequisites <a name="Prereq"></a>
+
+A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/signup).
 
 Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
@@ -19,7 +22,7 @@ Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.c
 
 Note: Instructions will be updated with Windows-specific commands.
 
-1. Download the latest version of the CLI library that matches your operating system from the 
+1. Download the latest version of the CLI library that matches your operating system from the
    [Carina github repository](https://github.com/getcarina/carina/releases/).
 
 2. Rename the binary to `carina`. For example, on Mac OS X, enter the following:
@@ -34,7 +37,7 @@ Note: Instructions will be updated with Windows-specific commands.
       ```bash
          $chmod u+x ~/bin/carina
       ```
-   
+
 4. Link the binary to /usr/local/bin/ with the following commands:
 
       ```bash
@@ -66,15 +69,15 @@ Note: Instructions will be updated with Windows-specific commands.
       ```bash
          $ carina list
       ```
-      
+
       If you have some clusters already running, you see output similiar to the following:
-   
+
       ```
       ClusterName       Flavor           Nodes    AutoScale    Status
       websocketsrock    container1-2G    2        true         active
       railsanne         container1-4G    4        true         active
       ```
-   
+
 ### Manage Carina clusters
 
 1. Create a Carina cluster by using the `carina create...` command. For example:
@@ -89,13 +92,13 @@ Note: Instructions will be updated with Windows-specific commands.
          * --nodes=1    number of nodes for the initial cluster
          * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds segments as they are needed.
       ```
-   
+
 2. After the cluster is created, download the credentials for the cluster:
 
       ```bash
          $ carina credentials --path=/tmp/ mycluster
       ```
-      
+
       `--path=PATH` indicates the local directory path to write the credentials files to.
 
 3. Source the `docker.env` environment variables for use with `docker info`:
@@ -124,7 +127,7 @@ Note: Instructions will be updated with Windows-specific commands.
          Total Memory: 8.4 GiB
          Name: a1bc2d3456e7
       ```
-   
+
 4. View the Swarm management containers:
 
       ```bash
@@ -139,6 +142,12 @@ Note: Instructions will be updated with Windows-specific commands.
          62a5e84fa358        cirros              "/sbin/init"             13 minutes ago                                                                  4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n1/swarm-data
       ```
 
-### Next steps
+### Troubleshooting
 
-Learn about all of the features available to you in the [Carina Overview]({{ site.baseurl }}/docs/tutorials/overview-of-carina)
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
+### Next step
+
+Learn about all of the features available to you in the [Carina Overview](/docs/overview-of-carina/)

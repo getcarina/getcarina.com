@@ -119,13 +119,9 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Troubleshooting
 
-* If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
-    `Cannot connect to the Docker daemon. Is "docker -d" running on this host?`
-
-    To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
-
-* For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 

@@ -143,6 +143,12 @@ The output of these `docker rm` commands is the names of the containers that you
 
 **Note**: The Docker client will not warn you when removing a container without providing the `--volumes` flag to delete its volumes. If you remove a container without providing the `--volumes` flag to delete its volumes, you might end up with "dangling" volumes, which are volumes that are no longer referenced by a container. Dangling volumes are difficult to delete and can take up a large amount of disk space.
 
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Resources
 
 Learn more about volumes in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/#volumes).

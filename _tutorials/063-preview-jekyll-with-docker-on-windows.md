@@ -250,12 +250,17 @@ See the [Prerequisites](#prerequisites) section for additional information.
 
 [docker-volume]: https://docs.docker.com/userguide/dockervolumes/
 
-## <a name="resources"></a>Resources
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
+### <a name="resources"></a>Resources
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)
 
-### Next 
+### Next
 
 For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
-
