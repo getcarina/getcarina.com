@@ -200,3 +200,15 @@ You should now see the standard WordPress installation guide.
 See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
+### Next step
+
+Run your first containerized application by [Getting started on Carina](/docs/tutorials/getting-started-on-carina/).
+
+<!--
+TODO: Use the text below when that tutorial is back in for M2.
+
+The [next tutorial](../load-balance-wordpress-docker-containers/) explores how
+to set up a fully load balanced and more distributed WordPress cluster on
+Docker Swarm.
+-->
