@@ -6,7 +6,7 @@ layout: default
     <div class="section-grid">
       <div class="hero-message">
         <img src="{% asset_path carina-logo.svg %}" alt="Carina&trade; by Rackspace">
-        <p class="tagline">A high performance, instant-on &amp; portable container environment.</p>
+        <p class="tagline">An easy-to-use, instant-on native container environment.</p>
         <div data-ng-controller="SignupFormCtrl as signup">
           <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
             <div class="control" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
@@ -26,7 +26,7 @@ layout: default
             </div>
             <div class="control" data-ng-class="{'error': signup.errorMessage}">
               <button type="submit" data-ng-disabled="signup.status == 'submitting'">
-                <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
+                <span data-ng-show="signup.status != 'submitting'">Sign up for the Beta!</span>
                 <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
               </button>
               <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
@@ -51,17 +51,17 @@ layout: default
         <h2>
           <span class="accent red">Features</span>
         </h2>
-        <p>Carina by Rackspace provides a “zero infrastructure” hosted container environment, where users no longer worry about building, managing, and updating your container environments.</p>
+        <p>Carina by Rackspace provides a “zero infrastructure” hosted container environment, where users no longer worry about building, managing, and updating their container environment.</p>
       </div>
       <div class="feature">
         <img src="{% asset_path feature-1.svg %}" alt="">
         <h3>Performance</h3>
-        <p>Built for speed - no hypervisor overhead or additional complexity. You get "bare-metal" performance where applications deploy and run up to 20% faster.</p>
+        <p>Built for speed - no hypervisor overhead or additional complexity. You get "bare-metal" performance where applications deploy and run up to 60% faster.</p>
       </div>
       <div class="feature">
         <img src="{% asset_path feature-2.svg %}" alt="">
         <h3>Container-Native Tools</h3>
-        <p>Instant access to the Docker&trade; toolchain that offers portability across providers, form-factors and container orchestration environments.</p>
+        <p>Instant access to the Docker&trade; toolchain which offers portability across providers, form-factors and container orchestration environments.</p>
       </div>
       <div class="feature">
         <img src="{% asset_path feature-3.svg %}" alt="">
@@ -144,7 +144,7 @@ layout: default
   <div class="section-container">
     <div class="section-grid">
       <div class="heading">
-        <h2>Start developing with containers, for free, right now!</h2>
+        <h2>Join the free Carina Beta!</h2>
       </div>
       <div class="signup-form inline">
         <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
@@ -165,7 +165,7 @@ layout: default
           </div>
           <div class="control submit" data-ng-class="{'error': signup.errorMessage}">
             <button type="submit" data-ng-disabled="signup.status == 'submitting'">
-              <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
+              <span data-ng-show="signup.status != 'submitting'">Sign up for the Beta!</span>
               <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
             </button>
             <div class="control-validation" data-ng-cloak data-ng-bind="signup.errorMessage"></div>
