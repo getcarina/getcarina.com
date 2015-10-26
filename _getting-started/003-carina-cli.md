@@ -16,7 +16,7 @@ This tutorial demonstrates how to install and configure the Carina client so tha
 
 A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
 
-Your Carina API key. To get it, go to the [Carina control panel](app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
+Your Carina API key. To get it, go to the [Carina control panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
 ### Download and install the Carina CLI
 
@@ -54,7 +54,7 @@ Note: Instructions will be updated with Windows-specific commands.
 ### Configure with Carina credentials
 
 1. Gather the required information:
-  * Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](app.getcarina.com).
+  * Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](https://app.getcarina.com).
   * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsite](#Prereq).
 
 2. Set your environment variables to contain these credentials. For example:
