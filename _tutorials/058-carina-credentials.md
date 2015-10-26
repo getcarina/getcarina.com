@@ -1,18 +1,16 @@
 ---
 title: Download Carina credentials
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-09-28
+date: 2015-10-26
 permalink: docs/references/carina-credentials/
-description: Learn how to use your Carina credentials to get started with containers today
+description: Learn how to use your Carina credentials to get started with containers
 featured: true
 topics:
   - carina
   - beginner
 ---
 
-Carina clusters are secured with TLS certificates. Each cluster
-has its own set of credentials, which are provided as a zip file that you can download from the control panel.
-The credentials zip file contains the following files:
+Carina clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which are provided as a zip file that you can download from the Carina Control Panel. The credentials zip file contains the following files:
 
 * ca.pem - Certificate Authority, used by clients to validate servers
 * cert.pem - Client Certificate, used by clients to identify themselves to servers
@@ -24,20 +22,13 @@ The credentials zip file contains the following files:
 
 **Note:** The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
-This article provides instructions for downloading the credentials zip file and
-using the credentials to authenticate to your cluster.
+This article provides instructions for downloading the credentials zip file and using the credentials to authenticate to your cluster.
 
 ### Download credentials
 
-1. Log in to the control panel at [http://mycluster.rackspacecloud.com](http://mycluster.rackspacecloud.com).
+1. Log in to the [Carina Control Panel](https://app.getcarina.com/app/login).
 
-2. Click the gear icon next to your cluster name and select **Download Credentials**.
-
-    ![Cluster Context Menu > Download Credentials]({% asset_path carina-credentials/download-credentials.png %})
-
-3. When prompted, click **Download File**.
-
-    ![Confirm Download File]({% asset_path carina-credentials/confirm-download-file.png %})
+2. click the **Get Access** button associated with your cluster and then click **Download File**.
 
     Your cluster credentials are now saved to **clusterName.zip**, where _clusterName_ is the name of your cluster.
 
