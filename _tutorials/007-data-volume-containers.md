@@ -20,7 +20,7 @@ This tutorial describes using data volume containers so that you can share data 
 
 ### Data volumes
 
-A data volume is a directory within a container that is meant to persist beyond the life cycle of the container. For this reason they are not automatically deleted when a container is removed. All volumes are stored on the Docker host in a system path, meaning that volumes can be shared and reused among containers. Changes to a volume are made directly and are not reflected in the Docker image, because they bypass the Union File System.
+A data volume is a directory within a container that is meant to persist beyond the life cycle of the container. For this reason, volumes are not automatically deleted when a container is removed. All volumes are stored on the Docker host in a system path, meaning that volumes can be shared and reused among containers. Changes to a volume are made directly and are not reflected in the Docker image, because they bypass the Union File System.
 
 ### Data volume containers
 
@@ -149,4 +149,4 @@ Learn more about volumes in [Understanding how Carina uses Docker Swarm](/docs/t
 
 ### Next
 
-Use a data volume container in the [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina](/docs/tutorials/data-stores-mongo/) tutorials.
+Use a data volume container in the [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/) tutorials.
