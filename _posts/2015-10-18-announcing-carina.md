@@ -21,7 +21,7 @@ You're going to want to take a look at three key tutorials:
 
 * [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
 * [Getting started with Carina]({{site.baseurl}}/docs/tutorials/getting-started-on-carina/)
-* [Getting started with the Carina CLI]({{site.baseurl}}/docs/tutorials/getting-started-carina-cli/)
+* [Getting started with the Carina CLI]({{site.baseurl}}/docs/getting-started/getting-started-carina-cli/)
 
 ## Details
 Your containers run in a bare-metal libvirt/LXC environment, which avoids the "hypervisor tax" on performance. You can run the containers that you deploy 60% faster than the same deployment on a full virtual machine. The Carina environment builds on the standard restrictions set out by libcontainer by using an AppArmor profile as an additional security layer to keep your resources isolated.
@@ -51,7 +51,7 @@ So some quick notes:
 
 1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
 
-2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See the [Glossary]
+2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See also [Docker Swarm and Carina].
 
 So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
@@ -116,9 +116,9 @@ Thanks - and welcome to Carina!
 
 
 
-
+[Docker Swarm and Carina]: https://getcarina.com/docs/tutorials/docker-swarm-carina/
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
 [command line interface]: https://github.com/getcarina/carina/releases
-[get started]: https://getcarina.com/docs/tutorials/getting-started-carina-cli/
+[get started]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
 [glossary]: https://getcarina.com/docs/references/glossary/
