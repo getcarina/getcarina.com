@@ -3,7 +3,7 @@ title: Run interlock on Carina
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 date: 2015-10-26
 permalink: docs/tutorials/interlock-on-carina/
-description: Use interlock to load balance containers or emit statistics across your swarm cluster
+description: Use interlock to load balance containers or emit statistics across your Swarm cluster
 topics:
   - docker
   - interlock
@@ -11,12 +11,12 @@ topics:
   - intermediate
 ---
 
-This tutorial describes [interlock](https://github.com/ehazlett/interlock) so that you can load balance your containers across a Carina cluster, send on statistics to carbon, or other Carina event driven operations.
+This tutorial describes [interlock](https://github.com/ehazlett/interlock), which you can use to load balance your containers across a Carina cluster, send statistics to Carbon, or perform other Carina event-driven operations.
 
 ### Prerequisites
 
 * [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named `boatie`
-* Your API Key. Go to [Carina control panel](app.getcarina.com), click your username in the top right corner, then click API Key.
+* Your API Key. Go to the [Carina control panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
 ### Interlock
 
@@ -32,7 +32,7 @@ Normally for interlock you need to mount a volume with certificates, set TLS opt
 
 ### Run an interlock container
 
-Run an interlock container that uses the `example` plugin to simply echo that an event has been received.
+Run an interlock container that uses the `example` plug-in to simply echo that an event has been received.
 
 ```bash
 $ docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
