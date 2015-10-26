@@ -43,7 +43,7 @@ resources and is truly all about facilitating different types of
 workloads and frameworks to run top of it.
 
 Some of the biggest technology companies such as HubSpot and Twitter
-are active users and advocates of Mesos.Mesophere's Datacenter Operating System (DCOS) is built on top of Mesos.
+are active users and advocates of Mesos. Mesosphere's Datacenter Operating System (DCOS) is built on top of Mesos.
 
 ### CoreOS’ fleet
 

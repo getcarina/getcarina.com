@@ -1,9 +1,9 @@
 ---
-title: Preview a Jekyll site with Docker on Linux
+title: Preview a Jekyll site with Docker on Mac OS X
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-26
-permalink: docs/tutorials/preview-jekyll-with-docker-on-linux/
-description: Learn how to preview a Jekyll site in a Docker container, so that there is no need to install Ruby or Jekyll on your local machine
+permalink: docs/tutorials/preview-jekyll-with-docker-on-mac/
+description: Learn how to preview a Jekyll site in a Docker container, so that you do not need to install Ruby or Jekyll on your local machine
 docker-versions:
   - 1.8.2
 topics:
@@ -11,8 +11,8 @@ topics:
   - intermediate
 ---
 
-**Note:** This tutorial is for Linux users. If you are using another operating system, follow
-[the tutorial for Mac OS X]({{ site.baseurl }}/docs/tutorials/preview-jekyll-with-docker-on-mac/) or
+**Note:** This tutorial is for Mac OS X users. If you are using another operating system, follow
+[the tutorial for Linux]({{ site.baseurl }}/docs/tutorials/preview-jekyll-with-docker-on-linux/) or
 [the tutorial for Windows]({{ site.baseurl }}/docs/tutorials/preview-jekyll-with-docker-on-windows/) instead.
 
 [Jekyll][jekyll] is a popular static site generator, most commonly used for blogging on GitHub Pages.
@@ -25,10 +25,17 @@ you do not need to install Ruby or Jekyll on your local machine.
 [jekyll]: https://jekyllrb.com/
 
 ## <a name="prerequisites"></a> Prerequisites
-* [Docker](http://docs.docker.com/linux/step_one/)
+* [Docker Toolbox][docker-toolbox]
 * An existing Jekyll site on your local file system. If you do not have
   an existing site, a good way to get started quickly is to download a [Jekyll theme][jekyll-themes].
 
+    You must place your site in a sub-directory of **/Users**,
+    though it can be more deeply nested, for example, **/Users/myuser/repos/my-site**.
+    The **Users** directory is the only directory exposed by default from your local machine
+    to the Docker host via VirtualBox. If you want to use a different directory,
+    you must manually share it with the Docker host by using VirtualBox
+
+[docker-toolbox]: https://www.docker.com/toolbox
 [jekyll-themes]: https://github.com/jekyll/jekyll/wiki/Themes
 
 ## <a name="steps"></a> Steps
@@ -54,16 +61,33 @@ you do not need to install Ruby or Jekyll on your local machine.
     ```
 
 3. Create a script named **preview**. You might want to customize the
-    `DOCKER_IMAGE_NAME` variable defined at the top of the file.
+    `DOCKER_MACHINE_NAME` and `DOCKER_IMAGE_NAME` variables defined at the top
+    of the file.
 
     ```bash
     #!/usr/bin/env bash
+
+    # Set to the name of the Docker machine you want to use
+    DOCKER_MACHINE_NAME=default
 
     # Set to the name of the Docker image you want to use
     DOCKER_IMAGE_NAME=my-site
 
     # Stop on first error
     set -e
+
+    # Create a Docker host
+    if !(docker-machine ls | grep "^$DOCKER_MACHINE_NAME "); then
+      docker-machine create --driver virtualbox $DOCKER_MACHINE_NAME
+    fi
+
+    # Start the host
+    if (docker-machine ls | grep "^$DOCKER_MACHINE_NAME .* Stopped"); then
+      docker-machine start $DOCKER_MACHINE_NAME
+    fi
+
+    # Load your Docker host's environment variables
+    eval $(docker-machine env $DOCKER_MACHINE_NAME)
 
     if [ -e Dockerfile ]; then
       # Build a custom Docker image that has custom Jekyll plug-ins installed
@@ -77,7 +101,7 @@ you do not need to install Ruby or Jekyll on your local machine.
     fi
 
     echo "***********************************************************"
-    echo "  Your site will be available at http://localhost:4000"
+    echo "  Your site will be available at http://$(docker-machine ip $DOCKER_MACHINE_NAME):4000"
     echo "***********************************************************"
 
     # Start Jekyll and watch for changes
@@ -100,11 +124,11 @@ you do not need to install Ruby or Jekyll on your local machine.
     ```
 
 6. In a web browser, navigate to the URL specified in the output.
-    Following is an example of the output:
+    The following is an example of the output:
 
     ```bash
     ***********************************************************
-      Your site will be available at http://localhost:4000
+      Your site will be available at http://192.168.99.100:4000
     ***********************************************************
     Configuration file: /src/_config.yml
                 Source: /src
@@ -124,7 +148,34 @@ Refresh the page in your web browser to see your changes.
 
 [jekyll-image]: https://hub.docker.com/r/grahamc/jekyll/
 
-## <a name="resources"></a>Resources
+## <a name="troubleshooting"></a>Troubleshooting
+You might encounter the following issue when running the preview script:
+
+* <a name="troubleshooting-missing-config"></a> The \_config.yml file is not picked up by Jekyll
+
+If you see the following output where the configuration file is listed as `none`,
+the most likely cause is that the [Docker data volume][docker-volume], which exposes the Jekyll site on your local file
+system to the Docker container, is configured incorrectly.
+
+```text
+Configuration file: none
+            Source: /src
+       Destination: /src/_site
+      Generating...
+```
+
+Verify that the Jekyll site is located in a directory that is exposed via VirtualBox shared folders, for example, **/Users**.
+See the [Prerequisites](#prerequisites) section for additional information.
+
+[docker-volume]: https://docs.docker.com/userguide/dockervolumes/
+
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
+### <a name="resources"></a>Resources
 
 * [Jekyll documentation](https://jekyllrb.com/docs/home/)
 * [Using Jekyll with GitHub Pages](https://jekyllrb.com/docs/github-pages/)

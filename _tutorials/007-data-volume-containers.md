@@ -1,7 +1,7 @@
 ---
 title: Use data volume containers
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-28
+date: 2015-10-26
 permalink: docs/tutorials/data-volume-containers/
 description: Use data volume containers to share data
 docker-versions:
@@ -20,7 +20,7 @@ This tutorial describes using data volume containers so that you can share data 
 
 ### Data volumes
 
-A data volume is a directory within a container that is meant to persist beyond the life cycle of the container. For this reason they are not automatically deleted when a container is removed. All volumes are stored on the Docker host in a system path, meaning that volumes can be shared and reused among containers. Changes to a volume are made directly and are not reflected in the Docker image, because they bypass the Union File System.
+A data volume is a directory within a container that is meant to persist beyond the life cycle of the container. For this reason, volumes are not automatically deleted when a container is removed. All volumes are stored on the Docker host in a system path, meaning that volumes can be shared and reused among containers. Changes to a volume are made directly and are not reflected in the Docker image, because they bypass the Union File System.
 
 ### Data volume containers
 
@@ -143,10 +143,16 @@ The output of these `docker rm` commands is the names of the containers that you
 
 **Note**: The Docker client will not warn you when removing a container without providing the `--volumes` flag to delete its volumes. If you remove a container without providing the `--volumes` flag to delete its volumes, you might end up with "dangling" volumes, which are volumes that are no longer referenced by a container. Dangling volumes are difficult to delete and can take up a large amount of disk space.
 
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Resources
 
 Learn more about volumes in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/#volumes).
 
 ### Next
 
-Use a data volume container in the [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina](/docs/tutorials/data-stores-mongo/) tutorials.
+Use a data volume container in the [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/) tutorials.

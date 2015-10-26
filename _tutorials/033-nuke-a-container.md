@@ -12,8 +12,8 @@ topics:
   - Docker
   - tutorial
   - troubleshooting
-
 ---
+
 If you launch a container without the `--detach` (`-d`) flag, that container runs in the foreground of the terminal. Usually, you can stop the running container by using `Ctrl-C` or `Ctrl-D`. Sometimes, however, the process doesn't respond to `Ctrl-C` or `Ctrl-D`, and the container continues running without responding to any input.
 
 ![Runaway Container]({% asset_path runaway-container.gif %})
@@ -46,7 +46,7 @@ Docker container running.
     rgbkrk        22434   0.0  0.0 145169880   5664 s002  S+   10:44AM   0:00.16 docker run whoa/tiny
     $ kill -9 22434
     ```
-    If the `kill` command doesn't work the first time you run it, you can use a signal to send a more specific `kill` command. 
+    If the `kill` command doesn't work the first time you run it, you can use a signal to send a more specific `kill` command.
     Appending the `-9` signal sends a non-catchable, non-ignorable `kill` instruction.
 
 3. After ending the `docker run` command, find the non-responsive container using `docker ps`.

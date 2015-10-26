@@ -21,13 +21,9 @@ it.
 In this tutorial, you will set up a Docker container running Magento, a Redis
 container (for caching), and an external MySQL database (for persistent storage).
 
-### Prerequisites
+### Prerequisite
 
-A Carina cluster running Docker Swarm. Read our
-[Introduction to Carina](/docs/tutorials/overview-of-carina/), if you need help with this.
-
-If you're not sure what a Docker container is, read the
-[Docker 101](/docs/tutorials/docker-101/) tutorial to learn some basics.
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Download an environment file
 
@@ -47,7 +43,7 @@ tutorial.
 
 **Note**: _Never_ check this file into version control or expose it publicly.
 
-### Modify the configuration
+### Modify the configuration
 
 Open the **env** file in the **magento** directory that you just cloned. You
 should see all of the configuration values for your Magento installation. Edit

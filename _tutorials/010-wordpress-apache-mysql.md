@@ -14,19 +14,12 @@ series of tutorials covers how to migrate your content management system (CMS)
 application to more of a microservices model.
 
 This tutorial uses the following scenario: set up WordPress in a single
-Docker container, which runs in a Docker Swarm cluster on the Carina. Host the MySQL database 
+Docker container, which runs in a Docker Swarm cluster on the Carina. Host the MySQL database
 in a Docker container. Finally, use Apache to deliver traffic to your application.
 
-### Prerequisites
+### Prerequisite
 
-If you're not sure what a Docker container is, read the
-[Docker 101](/docs/tutorials/docker-101/) tutorial to learn some basics.
-
-### Create a Swarm cluster
-
-Now you need to set up the Docker Swarm cluster. If you need instructions, read
-the getting started guide. After you've followed the steps and have a fully
-operational cluster, you can resume this tutorial.
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
 
 ### Create MySQL container
 
@@ -37,37 +30,37 @@ root password and a password for the `wordpress` user.
 
 2. Store these passwords temporarily in environment variables:
 
-  ```
-  $ export ROOT_PASSWORD=<rootPassword>
-  $ export WORDPRESS_PASSWORD=<wordpressPassword>
-  ```
+    ```
+    $ export ROOT_PASSWORD=<rootPassword>
+    $ export WORDPRESS_PASSWORD=<wordpressPassword>
+    ```
 
-  Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
-  generated passwords.
+    Be sure to replace `<rootPassword>` and `<wordpressPassword>` with your
+    generated passwords.
 
 3. Create the container by running the following terminal command. Name the
    container `mysql`, and use the password variables that you just created:
 
-  ```
-  $ docker run --detach \
-    --name mysql \
-    --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
-    --env MYSQL_USER=wordpress \
-    --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
-    --env MYSQL_DATABASE=wordpress \
-    mysql
-  ```
+    ```
+    $ docker run --detach \
+      --name mysql \
+      --env MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
+      --env MYSQL_USER=wordpress \
+      --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
+      --env MYSQL_DATABASE=wordpress \
+      mysql
+    ```
 
-  The output should show the container ID.
+    The output should show the container ID.
 
 4. To verify that the container is running, execute the following command:
 
-  ```
-  $ docker ps
-  ```
+    ```
+    $ docker ps
+    ```
 
-  The output shows the full details of the `mysql` container, listening on port
-  `3306/tcp`.
+    The output shows the full details of the `mysql` container, listening on port
+    `3306/tcp`.
 
 ### Deploy the WordPress container
 
@@ -129,6 +122,12 @@ points it to the IP address:
 ```
 $ open http://$(docker port wordpress 80)
 ```
+
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 

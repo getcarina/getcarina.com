@@ -170,6 +170,12 @@ You've successfully run your first containerized application.
 
 Carina has many more features and there is more to learn. Review the [Resources](#resources) and [Next step](#next-step) sections for more information.
 
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Resources
 
 * [Docker 101](/docs/tutorials/docker-101/)
@@ -178,15 +184,3 @@ Carina has many more features and there is more to learn. Review the [Resources]
 ### Next step
 
 Learn about all of the features available to you in the [Overview of Carina](/docs/tutorials/overview-of-carina)
-
-### Troubleshooting
-
-* If you get the error message `Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)` then run `docker version` to be sure you have the correct version from the [Connect to your cluster](#connect-to-your-cluster) section.
-
-* If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you will get the following error message:
-
-    `Cannot connect to the Docker daemon. Is "docker -d" running on this host?`
-
-    To resolve this error, request your network administrator to open that port or try this tutorial from a location where port 2376 isn't blocked.
-
-* For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).

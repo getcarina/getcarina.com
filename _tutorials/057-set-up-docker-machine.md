@@ -79,6 +79,12 @@ You also can load your Carina credentials into your Docker environment. For inst
 * [Load a Docker environment on Mac](/docs/tutorials/load-docker-environment-on-mac/)
 * [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
 
+### Troubleshooting
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+
 ### Next step
 
 After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image](/docs/tutorials/run-docker-image/).
