@@ -25,7 +25,7 @@ relationships.
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) that at least two segments.
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) that has at least two segments.
 
 **Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 
