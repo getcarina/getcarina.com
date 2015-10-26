@@ -1,7 +1,7 @@
 ---
 title: Application logging
 author: Matt Darby <matt.darby@rackspace.com>
-date: 2015-10-09
+date: 2015-10-26
 permalink: docs/references/application-logging/
 description: Learn how to log applications with Carina
 docker-versions:
@@ -15,8 +15,8 @@ When you use Carina to containerize your applications, Docker enables you to log
 
 ### Prerequisites
 
-1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
-1. A container to log its output.
+* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* A container to log its output
 
 ### Types of logging
 
@@ -38,8 +38,8 @@ This section describes how you can use the different log types to log your appli
 #### json-file log driver
 By default the Docker daemon uses the `json-file` logging driver. You can access the logs for the applications running in the containers on the daemon by using the `docker logs <containerNameOrId>` command.
 
-1. Start a container. For example, run: `$ docker run --name redis1 -d redis`
-1. View the log for the container by running `$ docker logs redis1`
+1. Start a container. For example, run `$ docker run --name redis1 -d redis`.
+1. View the log for the container by running `$ docker logs redis1`.
 
 The following log from the `redis1` container is displayed:
 
@@ -71,7 +71,10 @@ The following log from the `redis1` container is displayed:
 ```
 
 The `json-file` logging method has a helpful option available named `max-size` that automatically rolls over the log file when it reaches a specified size:
-`--log-opt max-size=[0-9+][k|m|g]`. `k`, `m`, and `g` standing for kilobyte, megabyte and gigabyte. If this option is not set, the logs will not roll over.
+
+`--log-opt max-size=[0-9+][k|m|g]` 
+
+`k`, `m`, and `g` stand for kilobyte, megabyte, and gigabyte. If this option is not set, the logs will not roll over.
 
 #### syslog log driver
 
@@ -85,6 +88,7 @@ Docker also supports streaming its log to a remote `rsyslog` server via the foll
 ```
 
 Following is an example command for sending the log for the `redis2` container to a `rsyslog` server:
+
 `$ docker run --log-driver=syslog --log-opt syslog-address=tcp://192.168.0.42:514 --name redis2 -d redis`
 
 Be sure to provide the correct `syslog-address` IP address for your environment.
@@ -116,11 +120,12 @@ Currently, only `UDP` connections are allowed via the specified `port` value.
 [Fluentd](http://www.fluentd.org) is an open-source, data-collection application designed to unify your logging layer.
 
 The following example shows the options that Docker might use to log to a Fluentd server:
+
 `$ docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 --log-opt fluentd-tag=docker.{{.Name}}`
 
 **Note:** A container using this logging method will immediately stop if it cannot connect to the Fluentd server.
 
 ### Resources
 
-[rsyslogd](https://vexxhost.com/resources/tutorials/how-to-setup-remote-system-logging-with-rsyslog-on-ubuntu-14-04-lts/)
-[systemd](http://www.freedesktop.org/software/systemd/man/systemd-journald.service.html)
+* [rsyslogd](https://vexxhost.com/resources/tutorials/how-to-setup-remote-system-logging-with-rsyslog-on-ubuntu-14-04-lts/)
+* [systemd](http://www.freedesktop.org/software/systemd/man/systemd-journald.service.html)
