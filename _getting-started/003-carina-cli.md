@@ -1,7 +1,7 @@
 ---
 title: Getting started with the Carina CLI
 author: Anne Gentle <anne.gentle@rackspace.com>
-date: 2015-10-20
+date: 2015-10-26
 permalink: docs/getting-started/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
 topics:
@@ -16,12 +16,12 @@ This tutorial demonstrates how to install and configure the Carina client so tha
 
 A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
 
-Your Carina API key. To get it, go to the [Carina control panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
+Your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
 ### Download and install the Carina CLI
 
 1. Download the latest version of the CLI library that matches your operating system from the
-   [Carina github repository](https://github.com/getcarina/carina/releases/).
+   [Carina repository](https://github.com/getcarina/carina/releases/).
 
 2. Move the binary to a permanent location:
 
@@ -63,8 +63,8 @@ Your Carina API key. To get it, go to the [Carina control panel](https://app.get
 ### Configure with Carina credentials
 
 1. Gather the required information:
-  * Username (CARINA_USERNAME): Your Carina username from the [Carina control panel](https://app.getcarina.com).
-  * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsite](#Prereq).
+  * Username (CARINA_USERNAME): Your Carina username from the [Carina Control Panel](https://app.getcarina.com).
+  * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsites](#prerequisites).
 
 2. Set your environment variables to contain these credentials. For example:
 
@@ -82,13 +82,13 @@ Your Carina API key. To get it, go to the [Carina control panel](https://app.get
     > $env:CARINA_APIKEY="ddd1233abcdef4a0bc5da6789123ab45c"
     ```
 
-3. Verify you can issue `carina` commands:
+3. Verify that you can issue `carina` commands:
 
       ```bash
       $ carina list
       ```
 
-      If you have some clusters already running, you see output similiar to the following:
+      If you have some clusters already running, you see output similar to the following output:
 
       ```
       ClusterName       Flavor           Nodes    AutoScale    Status
