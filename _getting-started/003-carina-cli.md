@@ -43,7 +43,7 @@ Note: Instructions will be updated with Windows-specific commands.
       ```bash
          $mkdir -p /usr/local/bin/
          $ln -s ~/bin/carina /usr/local/bin/carina
-      ```   
+      ```
 
 5. Add the binary to your path with the following command:
 
@@ -150,4 +150,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Learn about all of the features available to you in the [Carina Overview](/docs/overview-of-carina/)
+Learn about all of the features available to you in the [Overview of Carina.](/docs/overview-of-carina/)
