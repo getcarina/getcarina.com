@@ -23,7 +23,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
 
 [docker-linux]: http://docs.docker.com/linux/step_one/
 [docker-toolbox]: https://www.docker.com/toolbox
-[carina]: http://app.getcarina.com/app/signup
+[carina]: http://app.getcarina.com/
 
 ### <a name="connect"></a> Connect two containers with a Docker link
 

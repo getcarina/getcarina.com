@@ -17,7 +17,7 @@ No prior knowledge of containers or Docker is necessary. This tutorial works on 
 
 ### Sign up for Carina
 
-To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signupsignup).
+To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/signup).
 
 ### Create your cluster
 
