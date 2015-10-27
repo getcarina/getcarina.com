@@ -27,6 +27,8 @@ Use the following guidelines when creating titles for your articles:
 
 - Begin troubleshooting topics with a noun or gerund, usually. Example: **Error running interactive Docker shell on Windows** or **Troubleshooting the Docker Toolbox set up on Windows**
 
+- If a title contains a special character, such as a colon, enclose the title with single quotation marks. For example: `title: 'Container ecosystem: Mesos versus OpenStack'`
+
 ## Author
 Enter the first name and last name of the main person responsible for the creation of the content, followed by the author's Rackspace email address enclosed in angle brackets. 
 
