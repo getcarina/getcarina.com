@@ -10,13 +10,13 @@ layout: default
         <div data-ng-controller="SignupFormCtrl as signup">
           <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
             <div class="control" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
-              <input type="email" name="email" required placeholder="Enter your email address..." data-ng-model="signup.formData.username">
+              <input type="email" name="email" required placeholder="Enter your email address..." data-ng-model="signup.formData.username" data-ga-focus="event" data-category="signup-interaction" data-label="hero-form-username" data-action="focus">
               <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
                 A valid email address is required.
               </div>
             </div>
             <div class="control" data-ng-class="{'error': form.$submitted && form.password.$invalid}">
-              <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'">
+              <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'" data-ga-focus="event" data-category="signup-interaction" data-label="hero-form-password" data-action="focus">
               <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.required">
                 A password is required.
               </div>
@@ -25,7 +25,7 @@ layout: default
               </div>
             </div>
             <div class="control" data-ng-class="{'error': signup.errorMessage}">
-              <button type="submit" data-ng-disabled="signup.status == 'submitting'">
+              <button type="submit" data-ng-disabled="signup.status == 'submitting'" data-ga-click="event" data-category="signup-interaction" data-label="hero-form-submit" data-action="click">
                 <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
                 <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
               </button>
@@ -78,7 +78,9 @@ layout: default
         <h2>
           <span class="accent yellow">At Your Fingertips</span>
         </h2>
-        <p>Carina streamlines the entire experience to allow you to get started with containers <strong></strong><a href="/docs/getting-started/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="/docs/getting-started/getting-started-carina-cli/"><code>carina</code></a>, the command line tool.</strong></p>
+        <p>
+          Carina streamlines the entire experience to allow you to get started with containers <strong><a href="/docs/getting-started/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="/docs/getting-started/getting-started-carina-cli/"><code>carina</code></a>, the command line tool.</strong>
+        </p>
         <p>
           {% for post in site.tutorials %}{% if post.url == '/docs/tutorials/getting-started-on-carina/' %}
             <a href="{{ post.url }}" class="carina-link">Get Started with Carina</a>
@@ -149,13 +151,13 @@ layout: default
       <div class="signup-form inline" data-ng-controller="SignupFormCtrl as signup">
         <form name="form" novalidate data-ng-submit="form.$valid && signup.submitForm()" data-ng-show="signup.status != 'submitted'">
           <div class="control email" data-ng-class="{'error': form.$submitted && form.email.$invalid}">
-            <input type="email" name="email" required placeholder="Enter your email address..." data-ng-model="signup.formData.username">
+            <input type="email" name="email" required placeholder="Enter your email address..." data-ng-model="signup.formData.username" data-ga-focus="event" data-category="signup-interaction" data-label="inline-form-username" data-action="focus">
             <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && (form.email.$error.required || form.email.$error.email)">
               A valid email address is required.
             </div>
           </div>
           <div class="control password" data-ng-class="{'error': form.$submitted && form.password.$invalid}">
-            <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'">
+            <input type="password" name="password" required placeholder="Create a password..." data-ng-model="signup.formData.password" minlength="8" maxlength="100" data-ng-pattern="'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,100}'" data-ga-focus="event" data-category="signup-interaction" data-label="inline-form-password" data-action="focus">
             <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.password.$error.required">
               A password is required.
             </div>
@@ -164,7 +166,7 @@ layout: default
             </div>
           </div>
           <div class="control submit" data-ng-class="{'error': signup.errorMessage}">
-            <button type="submit" data-ng-disabled="signup.status == 'submitting'">
+            <button type="submit" data-ng-disabled="signup.status == 'submitting'" data-ga-click="event" data-category="signup-interaction" data-label="inline-form-submit" data-action="click">
               <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
               <span data-ng-cloak data-ng-show="signup.status == 'submitting'">Submitting&hellip;</span>
             </button>
