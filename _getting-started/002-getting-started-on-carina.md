@@ -172,6 +172,8 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 ### Troubleshooting
 
+1. If running on Windows and experience problems with $PSScriptRoot when running docker.ps1, you need to update Powershell to version 3 or higher.
+
 See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
