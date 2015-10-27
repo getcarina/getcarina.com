@@ -35,20 +35,20 @@ Note: Instructions will be updated with Windows-specific commands.
 3. On Mac OSX and Linux, make the binary executable:
 
       ```bash
-         $chmod u+x ~/bin/carina
+         $ chmod u+x ~/bin/carina
       ```
 
 4. Link the binary to /usr/local/bin/ with the following commands:
 
       ```bash
-         $mkdir -p /usr/local/bin/
-         $ln -s ~/bin/carina /usr/local/bin/carina
+         $ mkdir -p /usr/local/bin/
+         $ ln -s ~/bin/carina /usr/local/bin/carina
       ```
 
 5. Add the binary to your path with the following command:
 
       ```bash
-         $export PATH=$PATH:$HOME/bin
+         $ export PATH=$PATH:$HOME/bin
       ```
 
 ### Configure with Carina credentials
@@ -60,8 +60,8 @@ Note: Instructions will be updated with Windows-specific commands.
 2. Set your environment variables to contain these credentials. For example:
 
       ```bash
-         $export CARINA_USERNAME=fnamelname
-         $export CARINA_APIKEY=ddd1233abcdef4a0bc5da6789123ab45c
+         $ export CARINA_USERNAME=fnamelname
+         $ export CARINA_APIKEY=ddd1233abcdef4a0bc5da6789123ab45c
       ```
 
 3. Verify you can issue `carina` commands:
