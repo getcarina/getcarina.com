@@ -4,7 +4,7 @@ date: 2015-10-26 00:01
 comments: true
 author: Jesse Noller
 bio: Jesse Noller <jesse.noller@rackspace.com>
-published: false
+published: true
 categories:
  - Docker
  - Swarm
@@ -38,11 +38,9 @@ Ok, let's start with the control panel:
 
 ![control panel]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-control-panel.png %})
 
-When you click on Add Cluster, you immediately jump into cluster creation:
+When you click on Add Cluster, you immediately jump into cluster creation and creation jumps straight into the building phase::
 
 ![create cluster]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-create-cluster.png %})
-
-And creation jumps straight into the building phase:
 
 ![cluster building]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cluster-building.png %})
 
