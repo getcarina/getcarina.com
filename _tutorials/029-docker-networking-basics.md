@@ -64,7 +64,7 @@ with any application.
 * [Service discovery 101](/docs/tutorials/service-discovery-101/)
 * [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
-### Next step
+### Next steps
 
 * [Connect Docker containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
 * [Connect Docker containers using the ambassador pattern](/docs/tutorials/connect-docker-containers-ambassador-pattern/)

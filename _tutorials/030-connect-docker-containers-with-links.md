@@ -13,23 +13,17 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers with links so that they
-can communicate over the network. For information about Docker links, see [Docker networking basics][networking-basics].
+can communicate over the network.
 
 **Note:** Only containers that are on the same Docker host can be linked.
 
 ### Prerequisite
 
-A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or [Carina][carina]
-
-[docker-linux]: http://docs.docker.com/linux/step_one/
-[docker-toolbox]: https://www.docker.com/toolbox
-[carina]: http://app.getcarina.com/
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
 
 ### Connect two containers with a Docker link
 
-1. [Load your Docker host environment](/docs/tutorials/load-docker-environment-on-mac/).
-
-2. Create a container named `app`. This is the _source_ container for your Docker link. No ports
+1. Create a container named `app`. This is the _source_ container for your Docker link. No ports
     are published for this container, so it will only communicate privately with other
     containers by using links.
 
@@ -37,7 +31,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     $ docker run --detach --name app carinamarina/hello-world-app
     ```
 
-3. Inspect the app container and note its exposed port. In the following example, the
+1. Inspect the app container and note its exposed port. In the following example, the
     port is `5000`. This is the port number over which the containers will communicate.
 
     ```bash
@@ -45,7 +39,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     map[5000/tcp:{}]
     ```
 
-4. Create a container named `web`. This is the _target_ container for your link.
+1. Create a container named `web`. This is the _target_ container for your link.
     The `--link` flag connects the target container, `web`,
     to the source container, `app`, and names the link `helloapp`.
 
@@ -57,7 +51,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     container. When a Docker container is designed to link to another, the expected
     link alias is usually documented on its [Docker Hub page](https://hub.docker.com/r/carinamarina/hello-world-web/).
 
-5. Identify the port on which the web container is published by running the following command.
+1. Identify the port on which the web container is published by running the following command.
     In the example output, the port is `32770`.
 
     ```bash
@@ -65,7 +59,7 @@ A Docker host using [Linux][docker-linux], [Docker Toolbox][docker-toolbox], or 
     5000/tcp -> 0.0.0.0:32770
     ```
 
-6. Open http://_dockerHost_:_webPort_, for example **http://localhost:32770**.
+1. Open http://_dockerHost_:_webPort_, for example **http://localhost:32770**.
     You should see the following output:
 
       ```bash
@@ -81,14 +75,15 @@ You now have two containers that can communicate via a Docker link.
 Follow these instructions to learn more about the information provided by the Docker link
 and how the containers use it to communicate.
 
-1. Log in to the web container by running the following command. Depending on your local configuration
-    you might need to use a workaround from [Error running interactive Docker shell on Windows][tty-workaround].
+1. Log in to the web container by running the following command.
 
     ```bash
     $ docker exec --interactive --tty web /bin/bash
     ```
 
-2. Run the following command to view the environment variables created by the Docker link.
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
+
+1. Run the following command to view the environment variables created by the Docker link.
     Docker creates variables that describe the link, such as `HELLOAPP_PORT`.
     In addition, variables from the source container, `app`, are also exposed with the prefix _linkName_\_ENV.
     For example, Docker created a variable named `HELLOAPP_ENV_PYTHON_VERSION`,
@@ -107,7 +102,7 @@ and how the containers use it to communicate.
     HELLOAPP_ENV_LANG=C.UTF-8
     ```
 
-3. Ping the app container by using an environment variable.
+1. Ping the app container by using an environment variable.
 
     ```bash
     $ ping $HELLOAPP_PORT_5000_TCP_ADDR
@@ -118,7 +113,7 @@ and how the containers use it to communicate.
     the variables on the target container are not refreshed. In the next steps,
     you will use the host file entries instead, which Docker automatically keeps up to date.
 
-4. View the host entries created by the Docker link by using the following command. The
+1. View the host entries created by the Docker link by using the following command. The
     host entry that contains the link name enables the web container to
     use **http://helloapp:5000** to connect to the app container.
 
@@ -127,7 +122,7 @@ and how the containers use it to communicate.
     172.17.0.12	helloapp 3432593d47de app
     ```
 
-5. Ping the app container by using both the link alias, `helloapp`, and the container name, `app`.
+1. Ping the app container by using both the link alias, `helloapp`, and the container name, `app`.
 
     ```bash
     $ ping -c 1 helloapp
@@ -139,27 +134,28 @@ and how the containers use it to communicate.
     64 bytes from 172.17.0.12: icmp_seq=0 ttl=64 time=0.060 ms
     ```
 
-6. Access the app container's service at **http://helloapp:5000**.
+1. Access the app container's service at **http://helloapp:5000**.
 
     ```bash
     $ curl http://helloapp:5000
     Hello World!
     ```
 
-7. Log out of the web container.
+1. Log out of the web container.
 
     ```bash
     $ exit
     ```
 
-8. Log in to the app container by running the following command. Depending on your local configuration
-    you might need to use a workarounds from [Error running interactive Docker shell on Windows][tty-workaround].
+1. Log in to the app container by running the following command.
 
     ```bash
     $ docker exec --interactive --tty app /bin/bash
     ```
 
-9. Run the following command to view the environment variables. Note that Docker does _not_
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
+
+1. Run the following command to view the environment variables. Note that Docker does _not_
     create environment variables for the link on the source container.
 
     ```bash
@@ -169,7 +165,7 @@ and how the containers use it to communicate.
     PYTHON_PIP_VERSION=7.1.2
     ```
 
-10. View the host entries created by the Docker link by using the following command. Note that
+1. View the host entries created by the Docker link by using the following command. Note that
     an entry is created only for the target container name, and not the link alias.
 
     ```bash
@@ -179,7 +175,7 @@ and how the containers use it to communicate.
     172.17.0.13	web
     ```
 
-11. Ping the web container.
+1. Ping the web container.
 
     ```bash
     $ ping -c 1 web
@@ -187,20 +183,28 @@ and how the containers use it to communicate.
     64 bytes from 172.17.0.13: icmp_seq=0 ttl=64 time=0.064 ms
     ```
 
-12. Log out of the app container.
+1. Log out of the app container.
 
     ```bash
     $ exit
     ```
 
-[tty-workaround]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/
+### Troubleshooting
+
+See [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
+
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
+* [Docker networking basics](/docs/tutorials/networking-basics/)
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
-* [Docker networking basics][networking-basics]
 * [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101](/docs/tutorials/service-discovery-101/)
 * [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
 
-[networking-basics]: {{ site.baseurl }}/docs/tutorials/docker-networking-basics/
+### Next step
+
+[Connect containers by using the ambassador pattern](/docs/tutorials/connect-docker-containers-ambassador-pattern/)
