@@ -116,13 +116,13 @@ Your Carina API key. To get it, go to the [Carina Control Panel](https://app.get
     **Bash**
 
     ```bash
-    $ carina credentials --path=/tmp/ mycluster
+    $ carina credentials --path=/tmp/mycluster mycluster
     ```
 
     **PowerShell**
 
     ```powershell
-    > carina credentials --path="$env:TMP" mycluster
+    > carina credentials --path="$env:TMP\mycluster" mycluster
     ```
 
     `--path=PATH` indicates the local directory path to write the credentials files to.
@@ -139,7 +139,7 @@ Your Carina API key. To get it, go to the [Carina Control Panel](https://app.get
 
     ```powershell
     > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-    > . "$(Join-Path $env:TMP mycluster\docker.ps1)"
+    > . "$env:TMP\mycluster\docker.ps1"
     ```
 
     See [Load a Docker environment from the command line on Windows]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-windows/).
