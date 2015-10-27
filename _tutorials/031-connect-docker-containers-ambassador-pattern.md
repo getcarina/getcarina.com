@@ -13,11 +13,11 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers by using the ambassador pattern
-so that they can communicate over the network and across Docker hosts.
+so that they can communicate over the network and across Docker hosts. For information about the ambassador pattern, see [Docker networking basics](/docs/tutorials/docker-networking-basics/).
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named clustera and a cluster named clusterb
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named clustera and a cluster named clusterb.
 
 ### Connect containers
 
@@ -121,8 +121,6 @@ You now have two containers that can communicate across Docker hosts.
 ![Docker ambassador pattern topology]({% asset_path connect-docker-containers-ambassador-pattern/ambassador-pattern-topology.svg %})
 
 ### Troubleshooting
-
-See [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
 
 See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 

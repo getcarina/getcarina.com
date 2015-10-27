@@ -19,7 +19,7 @@ can communicate over the network.
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
 
 ### <a name="connect"></a> Connect two containers with a Docker link
 
@@ -80,6 +80,8 @@ and how the containers use it to communicate.
     ```bash
     $ docker exec --interactive --tty web /bin/bash
     ```
+
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
 
 1. Run the following command to view the environment variables created by the Docker link.
     Docker creates variables that describe the link, such as `HELLOAPP_PORT`.
@@ -150,6 +152,8 @@ and how the containers use it to communicate.
     ```bash
     $ docker exec --interactive --tty app /bin/bash
     ```
+
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
 
 1. Run the following command to view the environment variables. Note that Docker does _not_
     create environment variables for the link on the source container.
