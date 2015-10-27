@@ -3,9 +3,8 @@ title: "Announcing Carina by Rackspace"
 date: 2015-10-26 00:01
 comments: true
 author: Jesse Noller
-bio: >
-  Boat
-published: true
+bio: Jesse Noller <jesse.noller@rackspace.com>
+published: false
 categories:
  - Docker
  - Swarm
@@ -20,7 +19,7 @@ Today on behalf of the entire Carina and Rackspace teams, I'm proud to introduce
 You're going to want to take a look at three key tutorials:
 
 * [Overview of Carina]({{site.baseurl}}/docs/overview-of-carina/)
-* [Getting started with Carina]({{site.baseurl}}/docs/tutorials/getting-started-on-carina/)
+* [Getting started with Carina]({{site.baseurl}}/docs/getting-started/getting-started-on-carina/)
 * [Getting started with the Carina CLI]({{site.baseurl}}/docs/getting-started/getting-started-carina-cli/)
 
 ## Details
