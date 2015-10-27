@@ -4,7 +4,7 @@ date: 2015-10-26 00:01
 comments: true
 author: Jesse Noller
 bio: Jesse Noller <jesse.noller@rackspace.com>
-published: false
+published: true
 categories:
  - Docker
  - Swarm
