@@ -80,15 +80,14 @@ Yay! :)
 
 ### Old PowerShell version on Windows
 
-If you experience this issue, you will see:
+If you are running PowerShell version 2 or less, the $PSScriptRoot variable in docker.ps1 is not supported and you get the following error message:
 
 ```
 PS C:\Users\username\Desktop\mycluster> docker info
 Could not read CA certificate "C:\\Users\\username\\.docker\\ca.pem": open C:\Users\username\.docker\ca.pem: The system cannot find the file specified.
 ```
 
-If you do not have PowerShell version 3 or above, the $PSScriptRoot variable in docker.ps1 is not supported, and the environment is not set up properly.
-Upgrade PowerShell to version 3 or above to fix this issue.
+To resolve this error, upgrade PowerShell to version 3 or above.
 
 ### Troubleshooting other problems
 
