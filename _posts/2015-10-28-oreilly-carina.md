@@ -14,7 +14,7 @@ categories:
 authorIsRacker: false
 ---
 
-[O'Reilly Media](http://www.oreilly.com) has been incredibly lucky to be an early beta user for [Carina](https://getcarina.com/), and were honored to share our story at Carina's official launch at the [Openstack Summit 2015](https://www.openstack.org/summit/) in Tokyo:
+[O'Reilly Media](http://www.oreilly.com) has been incredibly lucky to be an early beta user for [Carina](https://getcarina.com/), and we're honored to share our story at Carina's official launch at the [Openstack Summit 2015](https://www.openstack.org/summit/) in Tokyo:
 
 <pre style="margin: 0 auto; width: 730px;">
   <video width="720" height="480" controls="controls">
