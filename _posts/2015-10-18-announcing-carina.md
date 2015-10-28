@@ -101,11 +101,9 @@ I really hope you sign up and try Carina out - the entire team was focused on ma
 
 As an early adopter of Carina - [Andrew Odewahn](https://twitter.com/odewahn), CTO of O'Reilly Media (also, a [great developer](https://github.com/odewahn)) has been key in helping shape the platform. Hear it from him first hand:
 
-<pre>
-  <video width="480" height="320" controls="controls">
-    <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
-  </video>
-</pre>
+<video width="480" height="320" controls="controls">
+  <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
+</video>
 
 Thanks - and welcome to Carina!
 
