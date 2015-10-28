@@ -31,7 +31,7 @@ action will never reduce the size of a cluster.
 You can reserve memory or CPU for a container by using runtime constraint flags
 when you execute the `docker run` command. These flags explicitly reserve the
 specified resource on the Docker host. If the automated scaling action, which runs
-every five minutes, detects that the total reserved CPUs or the memory exceeds
+every ten minutes, detects that the total reserved CPUs or the memory exceeds
 80 percent of total capacity, a new segment is provisioned.
 
 For example, to reserve 1 GB of memory for your container, run the following command:
