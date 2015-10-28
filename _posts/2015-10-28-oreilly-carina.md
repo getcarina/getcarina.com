@@ -16,11 +16,9 @@ authorIsRacker: false
 
 [O'Reilly Media](http://www.oreilly.com) has been incredibly lucky to be an early beta user for [Carina](https://getcarina.com/), and we're honored to share our story at Carina's official launch at the [Openstack Summit 2015](https://www.openstack.org/summit/) in Tokyo:
 
-<pre style="margin: 0 auto; width: 730px;">
-  <video width="720" height="480" controls="controls">
-    <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
-  </video>
-</pre>
+<video width="720" height="480" controls="controls">
+  <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
+</video>
 
 We became involved with the project through our efforts to [offer Jupyter Notebooks as a first class authoring environment](https://www.oreilly.com/ideas/jupyter-at-oreilly).  Since that time, we've worked with a wide range of talented authors to expand this vision, which of course has lead to a growing requirement for a stable and flexible environment to run the underlying containers.
 
