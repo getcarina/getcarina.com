@@ -139,7 +139,7 @@ these overrides.
 
 One of the features of Docker containers is the ability to mount directories
 from the host machine, but, with Carina, this feature is disabled for security.
-As a result, you cannot you cannot use the `--volume` flag when referring to
+As a result, you cannot use the `--volume` flag when referring to
 host paths.
 
 What you can use instead is a data volume container. For more information, see
