@@ -1,6 +1,6 @@
 # Carina by Rackspace
 
-[![Build Status](https://travis-ci.org/rackerlabs/docs-container-service.svg?branch=master)](https://travis-ci.org/rackerlabs/docs-container-service)
+[![Build Status](https://travis-ci.org/getcarina/getcarina.com.svg?branch=master)](https://travis-ci.org/getcarina/getcarina.com)
 
 
 This [Jekyll](http://jekyllrb.com/) repository houses documentation and tutorials for Carina by Rackspace.
