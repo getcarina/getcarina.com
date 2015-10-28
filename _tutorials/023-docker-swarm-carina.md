@@ -148,7 +148,7 @@ bind mount should take the following form
 `--volume /var/lib/docker:/container-dir-of-your-choosing`.
 
 Data volume containers are another alternative. For more information, see
-the [Introduction to Data Volume containers]() article.
+the [Introduction to Data Volume containers](/docs/tutorials/data-volume-containers/) article.
 
 ### TLS certificates
 
