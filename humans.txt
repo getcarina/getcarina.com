@@ -6,9 +6,9 @@
   Site: https://azurefire.net/
   Location: Gambrills, MD
 
-  Out of Bounds Error: Kyle Kelley
+  Developer: Kyle Kelley
   Site: https://lambdaops.com/
-  Location: Probably a coffee shop, likely San Antonio, TX
+  Location: San Antonio, TX
 
   UI Developer: Keith Bartholomew
   Site: http://keithbartholomew.com/
