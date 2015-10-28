@@ -121,7 +121,12 @@ Currently, only `UDP` connections are allowed via the specified `port` value.
 
 The following example shows the options that Docker might use to log to a Fluentd server:
 
-`$ docker run --log-driver=fluentd --log-opt fluentd-address=localhost:24224 --log-opt fluentd-tag=docker.{{.Name}}`
+```
+$ docker run \
+  --log-driver=fluentd \
+  --log-opt fluentd-address=localhost:24224 \
+  --log-opt fluentd-tag=docker.{% raw %}{{.Name}}{% endraw %}
+```
 
 **Note:** A container using this logging method will immediately stop if it cannot connect to the Fluentd server.
 

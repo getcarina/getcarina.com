@@ -81,7 +81,7 @@ for service discovery.
 To retrieve the discovery token for a cluster, run the following command:
 
 ```
-$ docker inspect -f "{{index .Config.Cmd 6}}" $(docker ps -aq -f name=swarm-manager -n 1)
+$ docker inspect -f "{% raw %}{{index .Config.Cmd 6}}{% endraw %}" $(docker ps -aq -f name=swarm-manager -n 1)
 token://<cluster_id>
 ```
 
