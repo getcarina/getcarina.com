@@ -183,4 +183,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Lean about creating clusters and accessing credientials by [getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/).
+Learn how to [install the Carina CLI and use it to manage your clusters](/docs/getting-started/getting-started-carina-cli/).
