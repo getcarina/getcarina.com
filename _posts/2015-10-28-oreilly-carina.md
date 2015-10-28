@@ -1,5 +1,5 @@
 ---
-title: "Rethinking Content at O'Reilly with Carina by Rackspace"
+title: "Rethinking Content at O'Reilly with Carina"
 date: 2015-10-28 00:01
 comments: true
 author: Andrew Odewhan
@@ -8,14 +8,16 @@ published: true
 categories:
  - Docker
  - Swarm
- - Announcements
+ - Carina
+ - O'Reilly Media
+ - Jupyter
 authorIsRacker: false
 ---
 
 [O'Reilly Media](http://www.oreilly.com) has been incredibly lucky to be an early beta user for [Carina](https://getcarina.com/), and were honored to share our story at Carina's official launch at the [Openstack Summit 2015](https://www.openstack.org/summit/) in Tokyo:
 
-<pre>
-  <video width="480" height="320" controls="controls">
+<pre style="margin: 0 auto; width: 480px;">
+  <video width="720" height="480" controls="controls">
     <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
   </video>
 </pre>
