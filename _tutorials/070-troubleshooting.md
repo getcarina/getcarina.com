@@ -78,6 +78,17 @@ $ docker exec test echo "Yay! :)" || echo "Aw Man :("
 Yay! :)
 ```
 
+### Old PowerShell version on Windows
+
+If you are running PowerShell version 2 or less, the $PSScriptRoot variable in docker.ps1 is not supported and you get the following error message:
+
+```
+PS C:\Users\username\Desktop\mycluster> docker info
+Could not read CA certificate "C:\\Users\\username\\.docker\\ca.pem": open C:\Users\username\.docker\ca.pem: The system cannot find the file specified.
+```
+
+To resolve this error, upgrade PowerShell to version 3 or above.
+
 ### Troubleshooting other problems
 
 * [How to stop a non-responsive running container](/docs/tutorials/stop-nonresponsive-running-container/)
