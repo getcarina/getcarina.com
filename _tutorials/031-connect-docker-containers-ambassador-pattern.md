@@ -36,12 +36,10 @@ so that they can communicate over the network and across Docker hosts. For infor
     port is `5000`. This is the port number over which the ambassador will
     communicate with the source container.
 
-    {% raw %}
     ```bash
     $ docker inspect --format "{% raw %}{{ .Config.ExposedPorts }}{% endraw %}" app
     map[5000/tcp:{}]
     ```
-    {% endraw %}
 
 1. Run an ambassador container named `app-ambassador`.
 
