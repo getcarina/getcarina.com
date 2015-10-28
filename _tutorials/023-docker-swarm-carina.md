@@ -41,9 +41,10 @@ provided in the
 [Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
 section.
 
-Each segment has 2 GB of memory and roughly the equivalent of 2 vCPUs. The
+Each segment has 4 GB of memory and roughly the equivalent of 2 vCPUs. The
 maximum number of segments that you can provision per cluster is 3. The maximum
-number of clusters that you are allowed per account is 3.
+number of clusters that you are allowed per account is 3. If you have a use case
+requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22).
 
 ### Cluster creation
 
@@ -137,13 +138,17 @@ these overrides.
 
 ### Volumes
 
-One of the features of Docker containers is the ability to mount directories
-from the host machine, but, with Carina, this feature is disabled for security.
-As a result, you cannot use the `--volume` flag when referring to
-host paths.
+One of the features of Docker containers is the ability to mount directories 
+from the host machine (bind mounting), but, with Carina, this feature is heavily 
+restricted for security. 
 
-What you can use instead is a data volume container. For more information, see
-the [Use data volume containers](/docs/tutorials/data-volume-containers/) article.
+As a result, you can only use the `--volume` 
+flag when referring to segment paths under `/var/lib/docker`. This means that any 
+bind mount should take the following form: 
+`--volume /var/lib/docker:/container-dir-of-your-choosing`.
+
+Data volume containers are another alternative. For more information, see
+the [Use data volume containers article](/docs/tutorials/data-volume-containers/) article.
 
 ### TLS certificates
 

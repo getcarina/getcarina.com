@@ -183,4 +183,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Learn about all of the features available to you in the [Overview of Carina](/docs/overview-of-carina/).
+Learn how to [install the Carina CLI and use it to manage your clusters](/docs/getting-started/getting-started-carina-cli/).
