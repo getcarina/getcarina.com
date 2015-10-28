@@ -32,8 +32,6 @@ Quite simply Carina is a lightweight provisioning system for securely deploying 
 Here's a diagram!
 ![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
 
-
-
 ## End to End experience
 
 Ok, let's start with the control panel:
@@ -95,13 +93,19 @@ But what did that do? Let's check back on the command line:
 
 Yeah, that's 3 independent docker hosts. You get a host, you get a host, and you and you!
 
-![clusters clusters clusters]({% asset_path 2015-10-26-announcing-carina-by-rackspace/clustersclustersclusters.png %})
-
 And if you want to go crazy, check out the [Running interlock, the event driven Docker Swarm plugin system, on Carina](https://getcarina.com/docs/tutorials/interlock-on-carina/)
 
 ## Wrap it up, Jesse
 
 I really hope you sign up and try Carina out - the entire team was focused on making something developers would love and experiment with. It's a Beta; and we acknowledge there's going to bugs. Thats ok! Talk with us, share - and share with your friends. Honest and candid feedback is always welcome.
+
+As an early adopter of Carina - [Andrew Odewahn](https://twitter.com/odewahn), CTO of O'Reilly Media (also, a [great developer](https://github.com/odewahn)) has been key in helping shape the platform. Hear it from him first hand:
+
+<pre>
+  <video width="480" height="320" controls="controls">
+    <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
+  </video>
+</pre>
 
 Thanks - and welcome to Carina!
 
