@@ -57,7 +57,7 @@ Containers are composed of your applications, their configuration, and anything 
 
 Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a five-minute interval. If a cluster needs resources, additional segments are automatically added.
 
-If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster in never scaled down and segments are never deleted automatically.
+If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster is never scaled down and segments are never deleted automatically.
 
 Alternatively, you can manually scale a cluster through the control interfaces.
 
