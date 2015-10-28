@@ -35,7 +35,7 @@ can communicate over the network.
     port is `5000`. This is the port number over which the containers will communicate.
 
     ```bash
-    $ docker inspect --format "{{ .Config.ExposedPorts }}" app
+    $ docker inspect --format "{% raw %}{{ .Config.ExposedPorts }}{% endraw %}" app
     map[5000/tcp:{}]
     ```
 

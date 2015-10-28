@@ -38,7 +38,7 @@ so that they can communicate over the network and across Docker hosts. For infor
 
     {% raw %}
     ```bash
-    $ docker inspect --format "{{ .Config.ExposedPorts }}" app
+    $ docker inspect --format "{% raw %}{{ .Config.ExposedPorts }}{% endraw %}" app
     map[5000/tcp:{}]
     ```
     {% endraw %}

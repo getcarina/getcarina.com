@@ -75,7 +75,7 @@ The output of this `docker run` command is the container ID.
 Discover the volume mount information of your DVC.
 
 ```bash
-$ docker inspect --format '{{ .Mounts }}' data
+$ docker inspect --format '{% raw %}{{ .Mounts }}{% endraw %}' data
 [{
   9e22f6557f43c57ddb14e28f0fd54cdda1f6ab7e60a2380523f7bfd6390d0556
   /var/lib/docker/volumes/9e22f6557f43c57ddb14e28f0fd54cdda1f6ab7e60a2380523f7bfd6390d0556/_data
