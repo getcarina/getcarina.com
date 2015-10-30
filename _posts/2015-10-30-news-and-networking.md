@@ -28,8 +28,8 @@ First up, let's cover a few things we uncovered during the launch:
 
 * **SMS Account verification**: For a significant set of international numbers our SMS verification system was not functioning properly. We resolved an initial set of countries, but did not have full resolution until mid-day (CDT) on Wednesday. We followed up directly with every user who was affected by this issue, apologized and got them set up! We were posting live updates in the [community]
 * **500 Errors on Community**: During launch night, we had a handful of errors with the [community] OAuth & back-end system. This caused users to get 500 errors or be unable to log in. All known issues using your [Carina] username (email address) and password have been resolved. If you continue to have issues please let us know via [GitHub]
-* **Broken Control Panel Links**: Apparently I missed the memo that renaming files in GitHub can trigger the perma url in a jekyll system to change. The links to the tutorials in [https://app.getcarina.com] have been fixed.
-* **FAQ, other documentation fixes**: We had some missing or incorrect information on some of the [tutorials] and [FAQ] that have been resolved. You can see the full pile of commits here but here are some highlights:
+* **Broken Control Panel Links**: Apparently I missed the memo that renaming files in GitHub can trigger the perma url in a jekyll system to change. The links to the tutorials in [https://app.getcarina.com](https://app.getcarina.com) have been fixed.
+* **FAQ, other documentation fixes**: We had some missing or incorrect information on some of the [tutorials] and [FAQ](https://getcarina.com/docs/faq/) that have been resolved. You can see the full pile of commits here but here are some highlights:
   * Updated: [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/tutorials/docker-swarm-carina/)
   * Updated: [Getting Started on Carina](https://getcarina.com/docs/getting-started/getting-started-on-carina/)
   * Updated: [Frequently Asked Questions](https://getcarina.com/docs/faq/)
