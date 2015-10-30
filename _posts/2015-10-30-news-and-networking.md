@@ -37,7 +37,7 @@ First up, let's cover a few things we uncovered during the launch:
 
 ### Where do I file bugs or provide feedback?
 
-Ah! Glad you asked - it's really important for us to here from users on bugs, feature requests, feedback positive & negative, etc.
+Ah! Glad you asked - it's really important for us to hear from users on bugs, feature requests, feedback positive & negative, etc.
 
 * You can file bugs or feature requests for Carina on [GitHub]
 * You can file doc issues or website requests on [GitHub as well](https://github.com/getcarina/getcarina.com/issues)
