@@ -46,7 +46,7 @@ Ah! Glad you asked - it's really important for us to hear from users on bugs, fe
 
 # Now, for networking!
 
-We're working on an official tutorial - but one of the most repeated pieces of feedback is "how do I do private networking". We missed documenting this for launch time, but let's step through how you can get your stuff talking on a private network.
+We're working on an official tutorial - but one of the most repeated pieces of feedback is "how do I do internal networking". We missed documenting this for launch time, but let's step through how you can get your stuff talking on the internal network.
 
 First, understand that each segment on Carina gets a public facing IP4 & IPv6 address:
 
@@ -89,7 +89,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 $>
 ```
 
-And I have a redis container running on that IPv4 public address, port mapped to port 6379. This is cool, as it takes about 30 seconds, but really it's bad news bears to be running that on a public port / IP address when it really shouldn't be. The ```-p``` flag is what exposes it and from the official [Docker docs](https://docs.docker.com/reference/run#expose-incoming-ports) you can see that you could put this on a private network:
+And I have a redis container running on that IPv4 public address, port mapped to port 6379. This is cool, as it takes about 30 seconds, but really it's bad news bears to be running that on a public port / IP address when it really shouldn't be. The ```-p``` flag is what exposes it and from the official [Docker docs](https://docs.docker.com/reference/run#expose-incoming-ports) you can see that you could put this on the internal network:
 
 ```
 -P=false   : Publish all exposed ports to the host interfaces
@@ -99,7 +99,7 @@ And I have a redis container running on that IPv4 public address, port mapped to
                When specifying ranges for both, the number of container ports in the range must match the number of host ports in the range. (e.g., `-p 1234-1236:1234-1236/tcp`)
 ```
 
-With Carina, we gain the power of the Rackspace public cloud - existing users of our cloud are familiar with the concept of "servicenet" - this is a private network you can use between individual cloud products, servers, etc. In the case of Carina we "inherit" the same servicenet construct which means your segments (Swarm Hosts) get two IP address - the public IPv4 and a private ServiceNet address. This allows you to have private networking amongst containers / swarm hosts without exposing them publicly.
+With Carina, we gain the power of the Rackspace public cloud - existing users of our cloud are familiar with the concept of ServiceNet - this is an internal, multi-tenant network you can use between individual cloud products, servers, etc. In the case of Carina we "inherit" the same ServiceNet construct which means your segments (Swarm Hosts) get two IP address - the public IPv4 and an internal ServiceNet address. This allows you to have internal networking amongst containers / swarm hosts without exposing them publicly.
 
 Since the information isn't readily apparent (we'll work on exposing it in the UI and CLI as we go) we have a small docker image / tool called "racknet/ip" (for now) that allows dumping the networking information for your swarm host:
 
@@ -122,17 +122,17 @@ Examples when run with Docker:
           104.130.0.127
 ```
 
-So to get the servicenet ip address:
+So to get the ServiceNet ip address:
 
 ```
 $> docker run --net=host racknet/ip service
 10.176.226.219
 ```
 
-And now, revisiting the revisiting the original bad (insecure) Redis setup I had earlier:
+And now, revisiting the original Redis setup I had earlier:
 
 ```
-$> docker run --name secret_redis -d -p 10.176.226.219:6378:6379 redis
+$> docker run --name redis -d -p 10.176.226.219:6378:6379 redis
 af7e2c8cd6a1f1bc74ffb9d6d79c554eda6a2499b81f0e4388726196817595be
 ```
 That told docker "run Redis; exposing HOSTIP:PORT:CONTAINERPORT" - I have to change the host port as 6379 is taken by the public Redis I had earlier:
@@ -145,7 +145,7 @@ af7e2c8cd6a1        redis               "/entrypoint.sh redis"   24 seconds ago 
 $>
 ```
 
-So I ```docker kill 0ab6d34ec3ef``` which removes the insecure Redis container, and do a simple telnet to confirm it's no longer exposed on the swarm host:
+So I ```docker kill 0ab6d34ec3ef``` which removes the Redis container, and do a simple telnet to confirm it's no longer exposed on the swarm host:
 
 ```
 $> telnet 104.130.22.185 6379
@@ -172,16 +172,18 @@ Console escape. Commands are:
 #
 ```
 
-There ya go; this means as you add segments / containers / etc you can communicate privately via servicenet or use normal inter-container networking patterns:
+There ya go; this means as you add segments / containers / etc you can communicate via ServiceNet or use normal inter-container networking patterns:
 
-* [Docker networking basics](https://getcarina.com/docs/tutorials/docker-networking-basics/)
-* [Connect containers with Docker links](https://getcarina.com/docs/tutorials/connect-docker-containers-with-links/)
+* [Docker networking basics](/docs/tutorials/docker-networking-basics/)
+* [Connect containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
 
-We're going to fix up / move the "ip" Docker image into the Carina repo, and add full documentation for servicenet usage first thing next week!
+We're going to fix up / move the "ip" Docker image into the Carina repo, and add full documentation for ServiceNet usage first thing next week!
+
+**Update:** Full documentation on [Communication between containers over the internal network ServiceNet](/docs/tutorials/servicenet/)
 
 Have a good weekend.
 
-**Note:** Yes - to existing Rackspace Cloud customers, this means you can use servicenet to connect to other cloud products in our portfolio.
+**Note:** Yes - to existing Rackspace Cloud customers, this means you can use ServiceNet to connect to other cloud products in our portfolio.
 
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
