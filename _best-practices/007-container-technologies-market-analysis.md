@@ -160,10 +160,6 @@ splits a cluster across several virtual machines. Mesos runs on bare metal or on
 combines all resources, whether virtual machines or bare metal,
 and presents them as a single entity.
 
-* [Container ecosystem: Docker Swarm](/docs/best-practices/container-ecosystem-docker-swarm/)
-
-> Swarm's usefulness is unclear. Wait for it to develop.
-
 * [Container ecosystem: OpenShift](/docs/best-practices/container-ecosystem-openshift/)
 
 > OpenShift can integrate with both OpenStack and Project Atomic, but OpenShift Enterprise may require top-to-bottom adoption of RedHat’s container and virtualization products.
