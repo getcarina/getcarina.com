@@ -8,21 +8,21 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 
 ## Workflow
 
-1. Fork from https://github.com/rackerlabs/docs-container-service
+1. Fork from https://github.com/getcarina/getcarina.com
 
 2. Clone your fork of the repo using the SSH clone URL
     ```bash
-    git clone git@github.com:my-github-username/docs-container-service.git
+    git clone git@github.com:my-github-username/getcarina.com.git
     ```
 
 3. Track the upstream repo
     ```bash
-    cd docs-container-service
-    git remote add --track master upstream git@github.com:rackerlabs/docs-container-service.git
+    cd getcarina.com
+    git remote add --track master upstream git@github.com:getcarina/getcarina.com.git
     ```
 
 4. :sunrise: Start new changes here.
-    
+
     Bring your branch up-to-date with upstream
     ```bash
     git checkout master
@@ -51,9 +51,9 @@ This is the GitHub workflow we use to contribute content to this repo. To follow
 
 9. Create a pull request (PR) to the upstream repo for your branch
 
-    1. Go to https://github.com/my-github-username/docs-container-service
+    1. Go to https://github.com/my-github-username/getcarina.com
     2. Click on the Create pull request button
-    3. If this PR is related to an [issue](https://github.com/rackerlabs/docs-container-service/issues), include a link to that GitHub issue in the comment
+    3. If this PR is related to an [issue](https://github.com/getcarina/getcarina.com/issues), include a link to that GitHub issue in the comment
 
 10. Notify rcs-tech a PR is ready for [Tech Review](CONTRIBUTING.md#technical-review)
 
