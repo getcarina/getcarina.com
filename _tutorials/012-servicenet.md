@@ -116,7 +116,49 @@ If you don't want your container to be exposed to the public Internet, you need 
 
 ### Communicate with a Redis container exposed only on ServiceNet
 
-TODO
+1. Export the necessary environment variables for your application.
+
+    ```bash
+    $ export REDIS_HOST=$(docker port $(docker ps --quiet --filter name=redis) 6379 | cut -f 1 -d ':')
+    $ export REDIS_PORT=6379
+    ```
+
+1. Run a Guestbook web application and connect it to your Redis instance.
+
+    ```bash
+    $ docker run --detach \
+      --env REDIS_HOST=$REDIS_HOST \
+      --env REDIS_PORT=$REDIS_PORT \
+      --publish 5000:5000 \
+      carinamarina/guestbook-redis
+    ebae15446fe4e1e24b7978d77c19015109c125ccbe9cc47db7497e61f01834f7
+    ```
+
+    The output of this `docker run` command is your running application container ID.
+
+1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
+
+    ```bash
+    $ echo http://$(docker port $(docker ps --quiet --latest) 5000)
+    http://104.130.0.88:5000
+    ```
+
+    The output of this `docker port` command is the IP address and port that the application is using.
+
+    Have `\o/` and `¯\_(ツ)_/¯` sign your Redis Guestbook.
+
+
+1. (Optional) Remove the containers
+
+    ```bash
+    $ docker rm --force $(docker ps --quiet -n=-2)
+    a84ed5c6a123
+    ebae15446fe4
+    ```
+
+    The output of this `docker rm` command are the shortened IDs of the Redis and application containers that you removed.
+
+    When the Redis container is gone, so is your data.
 
 ### Discover PublicNet and ServiceNet IP addresses
 
@@ -125,7 +167,7 @@ The `racknet/ip` Docker utility image is an image you can use to discover the Pu
 1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint (see [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)) that this container should scheduled to a specific segment (node).
 
     ```bash
-    $ docker run --net=host \
+    $ docker run --rm --net=host \
       --env constraint:node==3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2 \
       racknet/ip \
       public ipv4
@@ -137,7 +179,7 @@ The `racknet/ip` Docker utility image is an image you can use to discover the Pu
 1. View the internal IP address of a segment (node). You use the `--env` flag to specify a constraint (see [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)) that this container should scheduled to a specific segment (node).
 
     ```bash
-    $ docker run --net=host \
+    $ docker run --rm --net=host \
       --env constraint:node==3947b48f-7b6b-409b-8a49-a9d71672a0d4-n1 \
       racknet/ip \
       service ipv4
@@ -148,22 +190,22 @@ The `racknet/ip` Docker utility image is an image you can use to discover the Pu
 
 1. View the help information for the `racknet/ip` Docker utility image.
 
-```bash
-$ docker run --net=host racknet/ip --help
-racknet public [ipv4|ipv6]
-racknet service [ipv4|ipv6]
+    ```bash
+    $ docker run --rm --net=host racknet/ip --help
+    racknet public [ipv4|ipv6]
+    racknet service [ipv4|ipv6]
 
-Examples:
-          $ racknet public
-          104.130.0.127
+    Examples:
+              $ racknet public
+              104.130.0.127
 
-          $ racknet service ipv6
-          fe80::be76:4eff:fe20:b452
+              $ racknet service ipv6
+              fe80::be76:4eff:fe20:b452
 
-Examples when run with Docker:
-          $ docker run --net=host racknet/ip public
-          104.130.0.127
-```
+    Examples when run with Docker:
+              $ docker run --net=host racknet/ip public
+              104.130.0.127
+    ```
 
 ### Troubleshooting
 
