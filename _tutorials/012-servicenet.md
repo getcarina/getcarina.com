@@ -30,7 +30,9 @@ When containers are run with default flags, they will be exposed on both PublicN
 
 ### Run a Redis container exposed on both PublicNet and ServiceNet
 
-Run a Redis container to see how it's accessible by default.
+Run a Redis container to see how containers are accessible by default.
+
+**Note**: Redis is only used as an example service here. Redis is designed to be accessed by trusted clients inside trusted environments. This means that usually it is not a good idea to expose the Redis instance directly to the internet or, in general, to an environment where untrusted clients can directly access the Redis TCP port or UNIX socket. Do not run Redis anywhere (Carina or elsewhere) without adhering to all proper [Redis Security](http://redis.io/topics/security) procedures.
 
 1. Run a Redis instance in a container from an official image.
 
@@ -215,6 +217,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Resources
 
+* [Redis Security](http://redis.io/topics/security)
+* [A few things about Redis security](http://antirez.com/news/96)
 * [racknet/ip Docker image](https://hub.docker.com/r/racknet/ip/)
 * [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)
 
