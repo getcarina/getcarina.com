@@ -1,9 +1,9 @@
 ---
-title: Communication between containers over the internal network ServiceNet
+title: Communicate between containers over the ServiceNet internal network
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2015-11-03
 permalink: docs/tutorials/servicenet/
-description: Learn how containers can communicate over the internal network ServiceNet.
+description: Learn how containers can communicate over the ServiceNet internal network
 docker-versions:
   - 1.8.3
 topics:
@@ -12,7 +12,7 @@ topics:
   - networking
 ---
 
-This tutorial describes using the internal network ServiceNet on Carina so that containers will only communicate using the internal network.
+This tutorial describes using the internal network ServiceNet with Carina so that containers will only communicate only by using the internal network.
 
 ### Prerequisite
 
@@ -20,19 +20,21 @@ This tutorial describes using the internal network ServiceNet on Carina so that 
 
 ### PublicNet and ServiceNet
 
-Carina network traffic runs over PublicNet and ServiceNet.
+Carina network traffic runs over two networks, PublicNet and ServiceNet.
 
 PublicNet connects segments to the public Internet. When you create a segment, it gets an IPv4 and IPv6 address from PublicNet by default. This is the address that the segment uses to communicate with the public Internet.
 
-ServiceNet connects segments to the internal, multi-tenant network within Carina. When you create a segment, it only gets an IPv4 address from ServiceNet by default. This is the address that the segment can use to communicate with other segments in Carina.
+ServiceNet connects segments to the internal, multi-tenant network within Carina. When you create a segment, it gets only an IPv4 address from ServiceNet by default. This is the address that the segment can use to communicate with other segments in Carina.
 
-When containers are run with default flags, they will be exposed on both PublicNet and ServiceNet. That means your containers are accessible from the public Internet and the internal, multi-tenant network within Carina by default.
+When containers are run with default flags, they are exposed on both PublicNet and ServiceNet. That means your containers are accessible from the public Internet and the internal, multi-tenant network within Carina by default.
+
+The following sections demonstrate this default behavior and how to expose containers only through ServiceNet.
 
 ### Run a Redis container exposed on both PublicNet and ServiceNet
 
 Run a Redis container to see how containers are accessible by default.
 
-**Note**: Redis is only used as an example service here. Redis is designed to be accessed by trusted clients inside trusted environments. This means that usually it is not a good idea to expose the Redis instance directly to the internet or, in general, to an environment where untrusted clients can directly access the Redis TCP port or UNIX socket. Do not run Redis anywhere (Carina or elsewhere) without adhering to all proper [Redis Security](http://redis.io/topics/security) procedures.
+**Note**: Redis is used only as an example service here. Redis is designed to be accessed by trusted clients inside trusted environments. This means that normally you don’t want to expose the Redis instance directly to the Internet or, in general, to an environment where untrusted clients can directly access the Redis TCP port or UNIX socket. Do not run Redis anywhere (Carina or elsewhere) without adhering to all proper [Redis Security](http://redis.io/topics/security) procedures.
 
 1. Run a Redis instance in a container from an official image.
 
@@ -45,9 +47,9 @@ Run a Redis container to see how containers are accessible by default.
     e2760c095744        redis               "/entrypoint.sh redis"   4 minutes ago       Up 4 minutes        104.130.22.225:6379->6379/tcp   3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2/redis
     ```
 
-    In the output of the `docker ps` command under the PORTS column, we can see that the container is listening on the public IP address 104.130.22.225 on port 6379 of PublicNet. This means that your containerized Redis instance is exposed to the public Internet which may not be what you want.
+    In the output of the `docker ps` command, the PORTS column shows that the container is listening on the public IP address 104.130.22.225 on port 6379 of PublicNet. This means that your containerized Redis instance is exposed to the public Internet which might not be what you want.
 
-    The output of the `docker ps` command doesn't report the internal IP address of ServiceNet but you'll see how to do that in a later step.
+    The output of the `docker ps` command doesn't report the internal IP address of ServiceNet, but you'll see how to find that in a later section.
 
 1. Remove the Redis instance
 
@@ -58,9 +60,9 @@ Run a Redis container to see how containers are accessible by default.
 
 ### Run a Redis container exposed only on ServiceNet
 
-If you don't want your container to be exposed to the public Internet, you need to specify the internal IP address of a segment when doing a `docker run` using the `--publish ip:hostPort:containerPort` flag. But because that flag requires a specific IP address, you first have to choose which segment you want the container to run on, and then discover the internal IP address of that segment.
+If you don't want your container to be exposed to the public Internet, you need to specify the internal IP address of a segment by using the `--publish ip:hostPort:containerPort` flag when you execute a `docker run` command. Because that flag requires a specific IP address, you first have to choose which segment you want the container to run on, and then discover the internal IP address of that segment.
 
-1. View your cluster info
+1. View your cluster information.
 
     ```bash
     $ docker info
@@ -85,7 +87,7 @@ If you don't want your container to be exposed to the public Internet, you need 
     Name: f11f822500bb
     ```
 
-    Choose a segment (one of the nodes) from the output of `docker info`. Any segment (node) will do. Perhaps choose the one with the least running containers. For example, `3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2`.
+1. Choose a segment (one of the nodes) from the output of `docker info`. Although any segment (node) will work, you could choose the one with the fewest running containers. In the preceding output, that would be `3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2`.
 
 1. Get the internal IP address of the segment using the `racknet/ip` Docker utility image.
 
@@ -97,9 +99,9 @@ If you don't want your container to be exposed to the public Internet, you need 
     10.176.225.205
     ```
 
-    The output of this command is the internal IP address of the segment where you want to run a Redis container exposed only on ServiceNet. For example, `10.176.225.205`.There's more information on the `racknet/ip` Docker utility image in the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
+    The output of this command is the internal IP address of the segment on which you want to run a Redis container exposed only on ServiceNet. For example, `10.176.225.205`. For more information about the `racknet/ip` Docker utility image, see the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
 
-1. Run a Redis container exposed only on ServiceNet
+1. Run a Redis container that is exposed only on ServiceNet
 
     ```bash
     $ docker run --detach \
@@ -114,7 +116,7 @@ If you don't want your container to be exposed to the public Internet, you need 
     a84ed5c6a123        redis               "/entrypoint.sh redis"   5 seconds ago       Up 5 seconds        10.176.225.205:6379->6379/tcp   3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2/redis
     ```
 
-    In the output of the `docker ps` command under the PORTS column, we can see that the container is listening on the internal IP address 10.176.225.205 on port 6379 of ServiceNet. This means that your containerized Redis instance is only exposed to the the internal, multi-tenant network within Carina. Your other containers will be able to communicate with this Redis instance at this internal IP address and port.
+    In the output of the `docker ps` command, the PORTS column shows that the container is listening on the internal IP address 10.176.225.205 on port 6379 of ServiceNet. You know it's an internal IP address because it's in the 10.0.0.0/8 address range. This means that your containerized Redis instance is exposed only to the internal, multi-tenant network within Carina. Your other containers can communicate with this Redis instance at this internal IP address and port.
 
 ### Communicate with a Redis container exposed only on ServiceNet
 
@@ -147,10 +149,10 @@ If you don't want your container to be exposed to the public Internet, you need 
 
     The output of this `docker port` command is the IP address and port that the application is using.
 
-    Have `\o/` and `¯\_(ツ)_/¯` sign your Redis Guestbook.
+1. Have `\o/` and `¯\_(ツ)_/¯` sign your Redis Guestbook.
 
 
-1. (Optional) Remove the containers
+1. _(Optional)_ Remove the containers
 
     ```bash
     $ docker rm --force $(docker ps --quiet -n=-2)
@@ -158,7 +160,7 @@ If you don't want your container to be exposed to the public Internet, you need 
     ebae15446fe4
     ```
 
-    The output of this `docker rm` command are the shortened IDs of the Redis and application containers that you removed.
+    The output of this `docker rm` command shows the shortened IDs of the Redis and application containers that you removed.
 
     When the Redis container is gone, so is your data.
 
@@ -166,7 +168,9 @@ If you don't want your container to be exposed to the public Internet, you need 
 
 The `racknet/ip` Docker utility image is an image you can use to discover the PublicNet and ServiceNet IP addresses of your segments.
 
-1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint (see [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)) that this container should scheduled to a specific segment (node).
+For more information about specifying a constraint, see [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints).
+
+1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
 
     ```bash
     $ docker run --rm --net=host \
@@ -176,9 +180,9 @@ The `racknet/ip` Docker utility image is an image you can use to discover the Pu
     104.130.22.225
     ```
 
-    The output of this command is the public IP address of a segment where you want to communicate with a container exposed on PublicNet.
+    The output of this command is the public IP address of the segment on which you want to communicate with a container exposed on PublicNet.
 
-1. View the internal IP address of a segment (node). You use the `--env` flag to specify a constraint (see [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)) that this container should scheduled to a specific segment (node).
+1. View the internal IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
 
     ```bash
     $ docker run --rm --net=host \
@@ -188,7 +192,7 @@ The `racknet/ip` Docker utility image is an image you can use to discover the Pu
     10.176.224.86
     ```
 
-    The output of this command is the internal IP address of a segment where you want to communicate with a container exposed on ServiceNet.
+    The output of this command is the internal IP address of a segment on which you want to communicate with a container exposed on ServiceNet.
 
 1. View the help information for the `racknet/ip` Docker utility image.
 
@@ -222,6 +226,6 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [racknet/ip Docker image](https://hub.docker.com/r/racknet/ip/)
 * [Scheduling constraints](/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)
 
-### Next
+### Next step
 
 [Docker networking basics](/docs/tutorials/docker-networking-basics/)
