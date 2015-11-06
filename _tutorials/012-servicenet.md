@@ -97,7 +97,7 @@ If you don't want your container to be exposed to the public Internet, you need 
     10.176.225.205
     ```
 
-    The output of this command is the internal IP address of the segment where you want to run a Redis container exposed only on ServiceNet. There's more information on the `racknet/ip` Docker utility image in the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
+    The output of this command is the internal IP address of the segment where you want to run a Redis container exposed only on ServiceNet. For example, `10.176.225.205`.There's more information on the `racknet/ip` Docker utility image in the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
 
 1. Run a Redis container exposed only on ServiceNet
 
