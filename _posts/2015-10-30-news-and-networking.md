@@ -189,4 +189,4 @@ Have a good weekend.
 [tutorials]: https://getcarina.com/docs
 [CLI]: https://github.com/getcarina/carina/releases
 [community]: https://community.getcarina.com
-[GitHub]: https://github.com/getcarina/carina-bugs/issues
+[GitHub]: https://github.com/getcarina/feedback/issues
