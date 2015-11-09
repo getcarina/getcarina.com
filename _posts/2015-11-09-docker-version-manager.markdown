@@ -97,7 +97,12 @@ Now using Docker 1.8.3
 ```powershell
 > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
 > carina credentials mycluster
-> C:\Users\carolynvs\carina\clusters\carolynvs\mycluster
+#
+# Credentials written to C:\Users\carolynvs\carina\clusters\carolynvs\mycluster\
+#
+"C:\Users\carolynvs\carina\clusters\carolynvs\mycluster\docker.cmd"
+
+> C:\Users\carolynvs\carina\clusters\carolynvs\mycluster\docker.ps1
 > dvm use
 Now using Docker 1.8.3
 ```
