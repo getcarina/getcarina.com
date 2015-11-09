@@ -119,7 +119,7 @@ File: docker.go@19
 Package: runtimeError response from daemon: Cannot start container 1784f91f2f2cbd88c0eab24d24f7cfa7b7bf9cc882b28d02509e23238648c786: [8] System error: permission denied
 ```
 
-This error occurs because of security restrictions on Carina, see the section on [Volumes](/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/). To resolve this error, you must not attempt to bind mount a volume from the host.
+This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes](/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/).
 
 ### Old PowerShell version on Windows
 
