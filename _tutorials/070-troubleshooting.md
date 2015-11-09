@@ -10,7 +10,7 @@ topics:
   - troubleshooting
 ---
 
-This article provides some solutions for common problems that you might encounter while using Carina. It also provides links to help for other issues. 
+This article provides some solutions for common problems that you might encounter while using Carina. It also provides links to help for other issues.
 
 ### Is your Docker daemon up and running?
 
@@ -46,7 +46,7 @@ To resolve this error, request your network administrator to open that port or r
 
 ### Debug a running container
 
-You can enter a running container to investigate and debug what's happening inside the container. The following command starts an interactive shell in the latest container run: 
+You can enter a running container to investigate and debug what's happening inside the container. The following command starts an interactive shell in the latest container run:
 
 ```bash
 $ docker exec -it $(docker ps -q -l) /bin/bash
@@ -54,7 +54,7 @@ $ docker exec -it $(docker ps -q -l) /bin/bash
 
 ### nsenter: Failed to open ns file /proc/xxxxxx/ns for ns ipc: Permission denied
 
-If you run `docker exec` on a container that runs a process that exits, you an error message. For example:
+If you run `docker exec` on a container that runs a process that exits, you get an error message. For example:
 
 ```bash
 $ docker run --name test -e MYSQL_ROOT_PASSWORD=password -d mysql
@@ -77,6 +77,49 @@ $ docker run --name test -e MYSQL_ROOT_PASSWORD=password -d --entrypoint /bin/ba
 $ docker exec test echo "Yay! :)" || echo "Aw Man :("
 Yay! :)
 ```
+
+### Cannot start container xxxxxx: [8] System error: permission denied
+
+If you attempt to bind mount a volume from the host using a volume flag of the form `--volume host-dir:container-dir`, you get an error message. For example,
+
+```bash
+$ docker run --rm --volume $HOME/src/config:/src/config cirros echo "Hello"
+Timestamp: 2015-11-09 19:46:32.746407404 +0000 UTC
+Code: System error
+
+Message: permission denied
+
+Frames:
+---
+0: setupRootfs
+Package: github.com/opencontainers/runc/libcontainer
+File: rootfs_linux.go@37
+---
+1: Init
+Package: github.com/opencontainers/runc/libcontainer.(*linuxStandardInit)
+File: standard_init_linux.go@52
+---
+2: StartInitialization
+Package: github.com/opencontainers/runc/libcontainer.(*LinuxFactory)
+File: factory_linux.go@242
+---
+3: initializer
+Package: github.com/docker/docker/daemon/execdriver/native
+File: init.go@35
+---
+4: Init
+Package: github.com/docker/docker/pkg/reexec
+File: reexec.go@26
+---
+5: main
+Package: main
+File: docker.go@19
+---
+6: main
+Package: runtimeError response from daemon: Cannot start container 1784f91f2f2cbd88c0eab24d24f7cfa7b7bf9cc882b28d02509e23238648c786: [8] System error: permission denied
+```
+
+This error occurs because of security restrictions on Carina, see the section on [Volumes](/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/). To resolve this error, you must not attempt to bind mount a volume from the host.
 
 ### Old PowerShell version on Windows
 
