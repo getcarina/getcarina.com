@@ -31,7 +31,7 @@ The team is hard at work getting Docker 1.9 support into the system; as soon as 
 
 As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Want a pony? Please get in touch:
 
-* [Product bugs](https://github.com/getcarina/carina-bugs)
+* [Product bugs](https://github.com/getcarina/feedback)
 * [Website bugs](https://github.com/getcarina/getcarina.com/issues) (Also, request new tutorials here!)
 * [Community (any and all feedback)](https://community.getcarina.com/)
 * [#carina on irc.freenode.net](https://botbot.me/freenode/carina/)
@@ -40,7 +40,7 @@ As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Wan
 
 [Get it!](https://github.com/getcarina/carina/releases)
 
-Introducing a brand new `carina env` command! No more downloading credentials *when you already have them*. This cuts your time to hero down quite a bit. (https://github.com/getcarina/carina/pull/52 and https://github.com/getcarina/carina/pull/53) This also fixes the network sensitivity (note the poor Wi-Fi connection):
+Introducing a brand new `carina env` command! No more downloading credentials *when you already have them*. This cuts your time to hero down quite a bit. ([carina#52](https://github.com/getcarina/carina/pull/52) and [carina#53](https://github.com/getcarina/carina/pull/53)) This also helps with the network sensitivity (note poor Wi-Fi connection below):
 
 ```bash
 $ time eval "$( carina env mycluster )"
@@ -63,9 +63,9 @@ $ # instead of
 $ eval "$( carina credentials mycluster )"
 ```
 
-* If you have `GITHUB_TOKEN` set, `carina` will rely on that when checking for updates (https://github.com/getcarina/carina/pull/50)
-* `carina ls` is a hidden command that does `carina list` (https://github.com/getcarina/carina/pull/48)
-* Tokens for Carina are now cached in your `carina` config folder (OS X uses `~/.carina/cache.json`). Turn this off using `--no-cache`. This ends up saving about a second on our machines. Your results may vary. (https://github.com/getcarina/carina/pull/56)
+* If you have `GITHUB_TOKEN` set, `carina` will rely on that when checking for updates ([carina#50](https://github.com/getcarina/carina/pull/50))
+* `carina ls` is a hidden command that does `carina list` ([carina#48](https://github.com/getcarina/carina/pull/48))
+* Tokens for Carina are now cached in your `carina` config folder (OS X uses `~/.carina/cache.json`). Turn this off using `--no-cache`. This ends up saving about a second on our machines. Your results may vary. ([carina#56](https://github.com/getcarina/carina/pull/56))
 
 # Carina Changes
 
