@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Juggling Docker clients with the Docker Version Manager"
+title: "Manage Docker clients with the Docker Version Manager"
 date: 2015-11-09 23:59
 comments: true
 author: Carolyn Van Slyck
@@ -14,43 +14,41 @@ categories:
     - Tools
 ---
 
-New services exposing hosted Docker and other container systems are coming online all the time. Our recent Carina launch is a prime example.
-Combine that with existing tools like Docker Machine, and it is easier than ever to spin up Docker hosts.
-This is great but can introduce a new problem when each may be using a
-different version of Docker. Keeping track and switching between them can become juggling act.
-But not anymore!
+New services that expose hosted Docker and other container systems are coming online all the time.
+Our recent Carina launch is a prime example. Such new services, combined with existing tools like Docker Machine,
+make it easier than ever to spin up Docker hosts. This flexibility is great but
+it can introduce a new problem when different Docker hosts are using different versions of Docker.
+Keeping track of these versions and switching between them can be a juggling act—but not anymore!
 
 Docker Version Manager (dvm) is a cross-platform command-line tool that helps you install and
-switch between Docker clients.
+switch between Docker clients. Let's install dvm and see what it can do.
 
-<!-- more -->
+Run the following installation commands for your OS, and then copy, paste and
+run the commands from the output to finalize the installation.
 
-Let's install dvm and take it for a spin. Copy, paste, and run the commands from your
-installation output to finalize the installation.
-
-** Mac OS X and Linux **
+**Mac OS X and Linux**
 
 ```bash
 $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
 ```
 
-** Windows **
+**Windows**
 
-PowerShell performs the initial installation; you can use `dvm` with PowerShell or CMD once installed.
-Open a PowerShell command prompt and execute the following:
+PowerShell performs the initial installation; you can use `dvm` with PowerShell
+or CMD after it is installed. Open a PowerShell command prompt and execute the following:
 
 ```powershell
 > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
 ```
 
-Once installed, we can list all installed versions of the Docker client.
+After dvm is installed, list all installed versions of the Docker client:
 
 ```bash
 $ dvm ls
 ->  system (1.8.1)
 ```
 
-Hmm, that's a bit old, so let's install a newer version of Docker.
+That version is a bit old, so let's install a newer version of Docker:
 
 ```bash
 $ dvm install 1.9.0
@@ -61,7 +59,7 @@ $ docker --version
 Docker version 1.9.0, build 76d6bc9
 ```
 
-Switching between versions is simple. In fact, if the requested version is not already
+Switching between versions is just a short command: `dvm use <version>`. If the requested version is not already
 installed, dvm installs it for you.
 
 ```bash
@@ -74,8 +72,8 @@ $ docker --version
 Docker version 1.8.3, build f4bf5c7
 ```
 
-At any time, I can undo the changes that dvm has made to my current session. After
-deactivating, I am back to using the system installation of the Docker client.
+At any time, you can undo the changes that dvm has made to your current session. After
+deactivating, you are back to using the system installation of the Docker client.
 
 ```bash
 $ dvm deactivate
@@ -83,10 +81,10 @@ $ docker --version
 Docker version 1.8.1, build d12ea79
 ```
 
-Now, let's use dvm with Carina! First, I will load my cluster credentials.
-Then dvm will use them to automatically detect the right version for my cluster.
+Now, let's use dvm with Carina! First, load your cluster credentials.
+Then dvm will use them to automatically detect the right Docker version for your cluster.
 
-** Mac OS X and Linux **
+**Mac OS X and Linux**
 
 ```bash
 $ eval "$( carina env mycluster )"
@@ -94,7 +92,7 @@ $ dvm use
 Now using Docker 1.8.3
 ```
 
-** Windows PowerShell **
+**Windows PowerShell**
 
 ```powershell
 > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
@@ -104,9 +102,9 @@ Now using Docker 1.8.3
 Now using Docker 1.8.3
 ```
 
-You can also define an alias for a version, or use one of the built-in aliases
+You can also define an alias for a version, or use one of the built-in aliases,
 `system` and `experimental`. The `system` alias is used to switch to the system
-installation of Docker and `experimental` is an alias for the latest, nightly Docker build.
+installation of Docker, and `experimental` is an alias for the latest, nightly Docker build.
 
 ```bash
 $ dvm ls
@@ -123,4 +121,4 @@ Now using Docker experimental
 ```
 
 So what are you waiting for? Stop juggling, and start using dvm today!
-For more information on dvm, the project is available at https://github.com/getcarina/dvm.
+For more information about dvm, see the project at https://github.com/getcarina/dvm.
