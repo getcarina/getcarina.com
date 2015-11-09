@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Manage Docker clients with the Docker Version Manager"
 date: 2015-11-09 23:59
 comments: true
