@@ -13,12 +13,15 @@ categories:
     - Tools
 ---
 
-New services that expose hosted Docker and other container systems are coming online all the time.
-Our recent Carina launch is a prime example. Such new services, combined with existing tools like Docker Machine,
-make it easier than ever to spin up Docker hosts. This flexibility is great but
-it can introduce a new problem when different Docker hosts are using different versions of Docker.
-Keeping track of these versions and switching between them can be a juggling act—but not anymore!
+All it takes is an old Docker Machine instance, installing the latest version
+of the Docker client, or creating a new cluster to trigger the dreaded
+Docker client/server API mismatch error message:
 
+```bash
+Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
+```
+
+With the Docker Version Manager and Carina*, you can banish that error message entirely.
 Docker Version Manager (dvm) is a cross-platform command-line tool that helps you install and
 switch between Docker clients. Let's install dvm and see what it can do.
 
@@ -126,3 +129,7 @@ Now using Docker experimental
 
 So what are you waiting for? Stop juggling, and start using dvm today!
 For more information about dvm, see the project at https://github.com/getcarina/dvm.
+
+\* **Note:** If you are not using Carina, you may still encounter the Docker
+client/server API mismatch error. If that happens, you need to figure out the appropriate
+Docker client version and run `dvm use <version>`.
