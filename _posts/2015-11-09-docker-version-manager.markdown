@@ -21,7 +21,7 @@ Docker client/server API mismatch error message:
 Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
 ```
 
-With the Docker Version Manager and Carina*, you can banish that error message entirely.
+With the Docker Version Manager, you can banish that error message entirely*.
 Docker Version Manager (dvm) is a cross-platform command-line tool that helps you install and
 switch between Docker clients. Let's install dvm and see what it can do.
 
@@ -127,7 +127,7 @@ $ dvm use experimental
 Now using Docker experimental
 ```
 
-So what are you waiting for? Stop juggling, and start using dvm today!
+So what are you waiting for? Stop juggling Docker clients, and start using dvm today!
 For more information about dvm, see the project at https://github.com/getcarina/dvm.
 
 \* **Note:** If you are not using Carina, you may still encounter the Docker
