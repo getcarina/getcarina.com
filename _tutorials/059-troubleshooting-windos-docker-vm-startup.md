@@ -92,4 +92,4 @@ Run the following command:
 
 Then, execute the output. 
 
-For more information, see [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows).
+For more information, see [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
