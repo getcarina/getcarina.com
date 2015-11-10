@@ -37,9 +37,10 @@ or CMD after it is installed. Open a PowerShell command prompt and execute the f
 
 ## Carina and dvm
 Carina's credentials are designed to work with dvm. After [loading your cluster credentials][carina-credentials],
-run `dvm use` and dvm will switch to the version of Docker used by your cluster.
-If you are just working with Carina, then you are done, `dvm use` is all you need
-to know.
+run `dvm use` (omitting the version number) and dvm will switch to the version of Docker used by your cluster.
+Dvm automatically knows the Docker version for your cluster because the Carina
+credentials set the `DOCKER_VERSION` environment variable. If you are just working with Carina,
+then you are done, `dvm use` is all you need to know.
 
 The following are examples of how to use dvm with the [Carina CLI][carina-cli]:
 
@@ -89,6 +90,7 @@ $ dvm install <version>
 ```
 
 If `<version>` is omitted, dvm uses the value of the `DOCKER_VERSION` environment variable, if present.
+The Carina credentials set the `DOCKER_VERSION` environment variable.
 Run `dvm install experimental` to install the latest, nightly build.
 
 ### Use
@@ -100,6 +102,7 @@ $ dvm use <version>
 ```
 
 If `<version>` is omitted, dvm uses the value of the `DOCKER_VERSION` environment variable, if present.
+The Carina credentials set the `DOCKER_VERSION` environment variable.
 You can also use an alias in place of the version, either a built-in alias such as `system` or `experimental`,
 or a [user-defined alias](#alias).
 
