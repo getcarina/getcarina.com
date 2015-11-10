@@ -49,7 +49,7 @@ layout: default
       </div>
       <div class="articles">
         {% for collection in site.collections %}
-          <ul data-ng-show="docs.showCollection == '{{ collection[0] }}'">
+          <ul data-ng-show="docs.showCollection == '{{ collection[0] }}'" id="{{ collection[0] }}">
           {% for doc in collection[1].docs %}
             <li data-collection="{{ collection[0] }}">
               <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
