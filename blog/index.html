@@ -1,0 +1,22 @@
+---
+layout: plain
+---
+
+<div class="blog-section posts">
+{% for post in site.posts %}
+  <div class="blog-post preview">
+    <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+    <div class="post-info">
+      <div class="post-avatar{% if post.authorIsRacker %} racker{% endif %}">
+        <img src="{{ post.author | rfc822email | gravatar }}" alt="{{ post.author | rfc822name }} Gravatar">
+      </div>
+      <span class="author">{{ post.author | rfc822name }}</span> <time datetime="{{ post.date | iso8601 }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+    </div>
+    <div class="post-excerpt">
+      {{ post.excerpt }}
+    </div>
+    <a href="{{ post.url }}" class="read-more">Keep reading</a>
+  </div>
+
+{% endfor %}
+</div>

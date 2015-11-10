@@ -5,6 +5,9 @@ description: >
   testing, and deployment of Docker-powered applications hassle-free.
 
 baseurl: "" # the subpath of your site, e.g. /blog/
+
+# Things like RSS feeds need absolute URLs, not root-relative
+absolute_base_url: https://getcarina.com
 # Build settings
 markdown: redcarpet
 
@@ -17,7 +20,15 @@ exclude:
   - Gemfile.lock
   - package.json
 
+paginate: 10
+paginate_path: /blog/page/:num
+excerpt_separator: "<!-- more -->"
 permalink: /blog/:title/
+
+gravatar:
+  default: mm
+  secure: true
+  size: 80
 
 collections:
   best-practices:

@@ -1,0 +1,22 @@
+---
+content_type: text/xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Carina by Rackspace - Blog]]></title>
+  <link href="{{ site.absolute_base_url }}/blog/atom.xml" rel="self"/>
+  <link href="{{ site.absolute_base_url }}/blog/"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>{{ site.absolute_base_url }}/blog</id>
+
+  {% for post in site.posts limit: 20 %}
+  <entry>
+    <title type="html"><![CDATA[{{ post.title | cdata_escape }}]]></title>
+    <link href="{{ site.absolute_base_url }}{{ post.url }}"/>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <id>{{ site.absolute_base_url }}{{ post.id }}</id>
+    <content type="html"><![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]></content>
+  </entry>
+  {% endfor %}
+</feed>

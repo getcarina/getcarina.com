@@ -2,8 +2,7 @@
 title: "Rethinking Content at O'Reilly with Carina"
 date: 2015-10-28 00:01
 comments: true
-author: Andrew Odewhan
-bio: Andrew Odewahn <odewahn@oreilly.com>
+author: Andrew Odewahn <odewahn@oreilly.com>
 published: true
 categories:
  - Docker
@@ -19,6 +18,8 @@ authorIsRacker: false
 <video width="720" height="480" controls="controls">
   <source src="http://brightcove04.brightcove.com/23/2660431281001/201510/178/2660431281001_4566909632001_4566880863001.mp4" type="video/mp4">
 </video>
+
+<!-- more -->
 
 We became involved with the project through our efforts to [offer Jupyter Notebooks as a first class authoring environment](https://www.oreilly.com/ideas/jupyter-at-oreilly).  Since that time, we've worked with a wide range of talented authors to expand this vision, which of course has lead to a growing requirement for a stable and flexible environment to run the underlying containers.
 
