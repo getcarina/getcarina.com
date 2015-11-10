@@ -41,3 +41,8 @@ This article provides instructions for downloading the credentials zip file and 
 6. Load your credentials and use them to interact with your cluster:
   * _(Linux and Mac OS X users)_ Run `source docker.env`.
   * _(Windows users)_ See [Load Docker environment from the command line on Windows]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/).
+
+7. If you have the [Docker Version Manager (dvm)][dvm] installed, run `dvm use` to switch your
+  Docker client to the appropriate version for your cluster.
+
+[dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
