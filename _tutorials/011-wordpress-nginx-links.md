@@ -9,7 +9,7 @@ topics:
   - beginner
 ---
 
-In the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you set up a Docker
+In the [previous tutorial](/docs/tutorials/wordpress-apache-mysql/), you set up a Docker
 container running Apache 2 and WordPress. For your database, you ran MySQL in a
 Docker container.
 
@@ -26,7 +26,7 @@ This tutorial sets up a MySQL container to demonstrate container relationships.
 
 [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) that has at least two segments.
 
-**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
+**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql/), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 
 ```
 $ docker rm -fv $(docker ps -q)

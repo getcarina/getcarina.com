@@ -19,7 +19,7 @@ docker login {registry address, such as index.docker.io}
 ```
 
 
-After you invoke `docker login`, all of your `docker push` and `docker pull` commands are associated with that registry. For more information about how to use Docker images, read the [Find and download a Docker image](/docs/tutorials/run-docker-image) tutorial.
+After you invoke `docker login`, all of your `docker push` and `docker pull` commands are associated with that registry. For more information about how to use Docker images, read the [Find and download a Docker image](/docs/tutorials/run-docker-image/) tutorial.
 
 Registries
 --- 
