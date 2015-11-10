@@ -2,8 +2,7 @@
 title: "Announcing Carina by Rackspace"
 date: 2015-10-26 00:01
 comments: true
-author: Jesse Noller
-bio: Jesse Noller <jesse.noller@rackspace.com>
+author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
 categories:
  - Docker
@@ -12,9 +11,11 @@ categories:
 authorIsRacker: true
 ---
 
-Today on behalf of the entire Carina and Rackspace teams, I'm proud to introduce you to Carina by Rackspace. An easy to use, instant-on, native container environment (instant Docker Swarm, literally).
+Today on behalf of the entire Carina and Rackspace teams, I'm proud to introduce you to Carina by Rackspace. An easy to use, instant-on, native container environment (instant Docker Swarm, literally).
 
 This is an open, free Beta designed for developers. Signup is fast, no credit card is required, and you can get started using containers via Docker and Docker Swarm in under a minute.
+
+<!-- more -->
 
 [Carina] is designed with you—developers and operators—in mind. We've focused on the developer experience, from our comprehensive tutorials, to a [command line interface] that is easy to [get started] with, to a streamlined user interface.
 

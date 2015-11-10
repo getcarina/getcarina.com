@@ -190,10 +190,10 @@ layout: default
       <div class="blog">
         <h2>Carina Blog</h2>
         <ul class="news-list">
-          {% for post in site.posts limit: 3 %}
+          {% for post in site.posts limit: 4 %}
             <li class="news-item">
               <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-              <div class="detail">{{ post.author }} &ndash; {{ post.date | date: "%B %-d, %Y" }}</div>
+              <div class="detail">{{ post.author | rfc822name }} &ndash; {{ post.date | date: "%B %-d, %Y" }}</div>
             </li>
           {% endfor %}
         </ul>

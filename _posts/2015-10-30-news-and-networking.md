@@ -2,9 +2,10 @@
 title: "Weekly News, and Carina Networks"
 date: 2015-10-30 11:30
 comments: true
-author: Jesse Noller
-bio: Jesse Noller <jesse.noller@rackspace.com>
+author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
+excerpt: >
+  Product launches are always fun! Especially when you're working on a launch timed across several timezones. I wanted to wrap up the week with some news, pointers and a note about how networking works with <a href="https://getcarina.com/">Carina</a>.
 categories:
  - Docker
  - Swarm
@@ -14,7 +15,7 @@ categories:
 authorIsRacker: true
 ---
 
-# What a week
+### What a week
 
 Product launches are always fun! Especially when you're working on a launch timed across several timezones. I wanted to wrap up the week with some news, pointers and a note about how networking works with [Carina].
 
@@ -44,7 +45,7 @@ Ah! Glad you asked - it's really important for us to hear from users on bugs, fe
 * Want to chat or give general feedback? Check our the [community] or join us in ```#carina``` on irc.freednode.net.
 * You can see old IRC logs thanks to the amazing [BotBotMe](https://botbot.me/) team [here](https://botbot.me/freenode/carina/)  
 
-# Now, for networking!
+### Now, for networking!
 
 We're working on an official tutorial - but one of the most repeated pieces of feedback is "how do I do internal networking". We missed documenting this for launch time, but let's step through how you can get your stuff talking on the internal network.
 

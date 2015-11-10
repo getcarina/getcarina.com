@@ -2,8 +2,7 @@
 title: "Manage Docker clients with the Docker Version Manager"
 date: 2015-11-09 23:59
 comments: true
-author: Carolyn Van Slyck
-bio: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 authorIsRacker: true
 authorAvatar: https://secure.gravatar.com/avatar/8b96f8872eb3f398809daf017ee3a8ab
 published: true
@@ -24,6 +23,8 @@ Error response from daemon: client is newer than server (client API version: 1.2
 With the Docker Version Manager, you can banish that error message entirely*.
 Docker Version Manager (dvm) is a cross-platform command-line tool that helps you install and
 switch between Docker clients. Let's install dvm and see what it can do.
+
+<!-- more -->
 
 Run the following installation commands for your OS, and then copy, paste and
 run the commands from the output to finalize the installation.
