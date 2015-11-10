@@ -11,22 +11,30 @@ topics:
 ---
 
 The Docker Version Manager (dvm) is a cross-platform command-line tool that helps you install and
-switch between Docker clients.
+switch between Docker clients. It also helps both avoid and address the dreaded
+Docker client/server API mismatch error message:
+
+```bash
+Error response from daemon: client is newer than server (client API version: 1.21, server API version: 1.20)
+```
 
 **Note:** dvm manipulates the PATH variable of the current shell
 session and so the changes made by dvm are temporary.
 
-## Installation
+### Installation
 Run the following installation commands for your operating system, and then copy, paste and
 run the commands from the output to finalize the installation.
 
-**Mac OS X and Linux**
+<a id="install-nix"/>
+#### Mac OS X and Linux
+Open a terminal and execute the following:
 
 ```bash
 $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
 ```
 
-**Windows**
+<a id="install-windows"/>
+#### Windows
 
 PowerShell performs the initial installation; you can use dvm with PowerShell
 or CMD after it is installed. Open a PowerShell command prompt and execute the following:
@@ -35,16 +43,18 @@ or CMD after it is installed. Open a PowerShell command prompt and execute the f
 > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
 ```
 
-## Carina and dvm
+Now that dvm is installed, you can use it with [Carina](#carina-and-dvm) or [standalone](#usage).
+
+### Carina and dvm
 Carina's credentials are designed to work with dvm. After [loading your cluster credentials][carina-credentials],
-run `dvm use` (omitting the version number) and dvm will switch to the version of Docker used by your cluster.
-Dvm automatically knows the Docker version for your cluster because the Carina
+run `dvm use` and dvm will switch to the version of Docker used by your cluster.
+It automatically knows the Docker version for your cluster because the Carina
 credentials set the `DOCKER_VERSION` environment variable. If you are just working with Carina,
 then you are done, `dvm use` is all you need to know.
 
 The following are examples of how to use dvm with the [Carina CLI][carina-cli]:
 
-**Mac OS X and Linux**
+#### Mac OS X and Linux
 
 ```bash
 $ eval "$( carina env mycluster )"
@@ -52,7 +62,7 @@ $ dvm use
 Now using Docker 1.8.3
 ```
 
-**Windows PowerShell**
+#### Windows PowerShell
 
 ```powershell
 > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
@@ -70,7 +80,7 @@ Now using Docker 1.8.3
 [carina-credentials]: {{site.baseurl}}/docs/references/carina-credentials/
 [carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
 
-## Usage
+### Usage
 If you are just using Carina, then `dvm use` is all you need to know. However if
 you are working with other Docker hosts, then read on to learn about all the functionality
 that dvm provides.
@@ -82,7 +92,7 @@ for example: `dvm --silent install 1.9.0`.
 * `--silent` suppresses the commands normal output. Errors are still displayed.
 * `--debug` prints additional debug information.
 
-### Install
+#### Install
 Install the specified version of the Docker client.
 
 ```bash
@@ -93,7 +103,7 @@ If `<version>` is omitted, dvm uses the value of the `DOCKER_VERSION` environmen
 The Carina credentials set the `DOCKER_VERSION` environment variable.
 Run `dvm install experimental` to install the latest, nightly build.
 
-### Use
+#### Use
 Switch to the specified version of the Docker client. If the version is not installed,
 dvm will install it automatically.
 
@@ -103,10 +113,10 @@ $ dvm use <version>
 
 If `<version>` is omitted, dvm uses the value of the `DOCKER_VERSION` environment variable, if present.
 The Carina credentials set the `DOCKER_VERSION` environment variable.
-You can also use an alias in place of the version, either a built-in alias such as `system` or `experimental`,
+You can also use an alias in place of the version, either a built-in alias such as `system`, `experimental`,
 or a [user-defined alias](#alias).
 
-### List
+#### List
 List all installed versions of the Docker client. This includes both those versions
 installed by dvm and the system installation.
 
@@ -119,64 +129,64 @@ The output will be colored and indicate the currently selected version. In the f
 
 ![Sample dvm ls output]({% asset_path 049-docker-version-manager/dvm-ls.png %})
 
-### List Remote
+#### List Remote
 List all available versions of the Docker client, excluding pre-releases.
 
 ```bash
 $ dvm ls-remote
 ```
 
-### Alias
+#### Alias
 Create an alias for a version of the Docker client. You can then use this alias
-in the `dvm use` command to switch the Docker version represented by the alias.
+in the `dvm use` command.
 
 ```bash
 $ dvm alias <alias> <version>
 ```
 
-### List Alias
+#### List Alias
 List all user-defined aliases.
 
 ```bash
 $ dvm ls-alias
 ```
 
-### Current
+#### Current
 Print the version of the currently selected Docker client.
 
 ```bash
 $ dvm current
 ```
 
-### Which
+#### Which
 Print the path to the currently selected Docker client.
 
 ```bash
 $ dvm which
 ```
 
-### Version
+#### Version
 Print the currently installed version of dvm.
 
 ```bash
 $ dvm --version
 ```
 
-### Uninstall
+#### Uninstall
 Remove the specified version of the Docker client.
 
 ```bash
 $ dvm uninstall <version>
 ```
 
-### Unalias
+#### Unalias
 Remove a user-defined alias.
 
 ```bash
 $ dvm unalias <alias>
 ```
 
-### Deactivate
+#### Deactivate
 Undo the effect of dvm on the current shell, restoring the PATH environment
 variable to its original value.
 
