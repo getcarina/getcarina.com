@@ -45,7 +45,7 @@ session, and so the changes that dvm makes are temporary.
 
 After dvm is installed, you can use it with [Carina](#carina) or [stand-alone](#stand-alone).
 
-<a id="carina"/>
+<a id="carina"></a>
 ### Use dvm with Carina
 Carina's credentials are designed to work with dvm. After [you load your cluster credentials][carina-credentials],
 run `dvm use` and dvm will switch to the version of Docker used by your cluster.
@@ -81,7 +81,7 @@ Now using Docker 1.8.3
 [carina-credentials]: {{site.baseurl}}/docs/references/carina-credentials/
 [carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
 
-<a id="stand-alone"/>
+<a id="stand-alone"></a>
 ### Use dvm stand-alone
 If you are just using Carina, then `dvm use` is all you need to know. However, if
 you are working with other Docker hosts, then read this section to learn about the functionality
