@@ -32,7 +32,14 @@ If there is a version mismatch between your Docker client and your Carina cluste
 Error response from daemon: client and server don't have same version (client : x.xx, server: x.xx)`
 ```
 
-To resolve this error, ensure that you have gone through each step of [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster) and have downloaded the correct version of the Docker client.
+To resolve this error:
+
+1. Install the [Docker Version Manager (dvm)][dvm].
+2. [Load your cluster credentials][carina-creds].
+3. Run `dvm use`. This switches your Docker client to the same version used by your cluster.
+
+[dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
+[carina-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
 ### Cannot connect to the Docker daemon
 
