@@ -26,7 +26,7 @@ session, and so the changes that dvm makes are temporary.
 
     **Mac OS X and Linux**
 
-    Open a terminal and execute the following:
+    Open a terminal and execute the following command:
 
     ```bash
     $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
@@ -41,9 +41,9 @@ session, and so the changes that dvm makes are temporary.
     > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
     ```
 
-2. Copy the commands from the output, then paste, and run them to finalize the installation.
+2. Copy the commands from the output, then paste and run them to finalize the installation.
 
-After dvm is installed, you can use it with [Carina](#carina) or [standalone](#stand-alone).
+After dvm is installed, you can use it with [Carina](#carina) or [stand-alone](#stand-alone).
 
 <a id="carina"/>
 ### Use dvm with Carina
