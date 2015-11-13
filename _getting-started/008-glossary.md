@@ -103,9 +103,17 @@ Installs and sets up a Docker environment on a computer. Toolbox is available fo
 
 A text document that contains all of the commands that a user would call on the command line to assemble an *image*.	
 
+##### dvm
+
+Docker Version Manager. A cross-platform command-line tool that you can use to install and switch between Docker clients. Using dvm avoids and addresses the Docker client/server API mismatch error. Carina's credentials are designed to work with dvm. After you load your cluster credentials, run `dvm use`, and dvm will switch to the version of Docker used by your cluster.   
+
 ##### microservices
 
 A software architecture style in which complex applications comprise small, independent processes that communicate with each other through APIs. 
+
+##### PublicNet
+
+A public network interface that connects Carina segments to the public Internet. When you create a segment, it gets an IPv4 and IPv6 address from PublicNet by default. This is the address that the segment uses to communicate with the public Internet.
 
 ##### registry	
 
@@ -118,6 +126,10 @@ A portion of the resources available in a cluster. Containers are housed in segm
 ##### service discovery
 
 The process of discovering what services are available for an application. Service discovery is a two-part process. *Registration* is the process of a service registering its location with a central directory. *Discovery* occurs when a client application asks the directory for the location of a service. 
+
+##### ServiceNet
+
+An internal, multi-tenant network interface that connects segments within Carina. When you create a segment, it gets only an IPv4 address from ServiceNet by default. This is the address that the segment can use to communicate with other segments in Carina.
 
 ##### scheduler
 
