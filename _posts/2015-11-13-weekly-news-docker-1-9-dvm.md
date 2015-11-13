@@ -14,9 +14,15 @@ categories:
 authorIsRacker: true
 ---
 
+```
+carina create --wait blog && carina credentials blog && eval `carina env blog` && docker-compose up production
+```
+
+with that, we're off to the races with the weekly update!
+
 ## Docker 1.9 and Swarm 1.0 available on all new clusters
 
-Launch a cluster, get Docker 1.9 with Swarm 1.0. The biggest feature here is the new `docker network` command. Right now you can use isolated networks per swarm host; overlay networking is not available yet.
+Launch a cluster, get Docker 1.9 with Swarm 1.0. We don't support overlay networking yet and we're still feeling out all of the nuances. Since swarm relies on overlay networks, you won't be able to use the local isolated networks either. In addition, the new volume drivers are not supported at this time. Stay tuned!
 
 Check out [Docker 1.9's release notes](https://github.com/docker/docker/releases/tag/v1.9.0) for more details on new `docker` options and [Swarm 1.0's release notes](https://github.com/docker/swarm/releases/tag/v1.0.0) for even more.
 
