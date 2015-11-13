@@ -1,7 +1,7 @@
 ---
 title: Tutorial name
 author: First Last <first.last@rackspace.com>
-date: 2015-09-28
+date: yyyy-mm-dd
 permalink: docs/tutorials/tutorial-name/
 description: Do a thing on RCS
 docker-versions:
@@ -17,6 +17,8 @@ Limit 101-level tutorials to a single coherent concept. For example:
 
 ### Docker 101
 ### Container networking basics
+
+Begin the title with a noun.
 -->
 
 This tutorial describes *x* so that you can *y*.
@@ -26,12 +28,14 @@ Give a brief summary of what this tutorial introduces and why it matters. For ex
 
 "This tutorial describes what Docker is and how to start using it."
 "These resources will help you get started with containers and networking."
+
+You are not limited to this phrasing, but ensure that the introduction adequately describes what the article is about.
 -->
 
 ### Prerequisites
 
 <!--
-List any prerequisites. What must users have or do in order to get started?
+List any prerequisites. What must users have or do in order to get started? Limit this section to only what the user absolutely needs to know or do to get started.
 
 * Software installed
 * State dependencies
@@ -50,34 +54,30 @@ Use a single numbered list for detailed steps when possible.
 
 A single numbered list might be impractical for topics with a good amount of supporting information at each step. If a single numbered list of steps is not useful:
 
-* Identify the main steps with H2-level headings.
+* Identify the main steps with H3-level headings.
 
     Omit numbering from headings. For example: "Install the latest version of Docker" is OK. "Step One: Install ..." is not OK.
 
     Include as many sections as needed to logically explain the idea.
 
-* Limit subheadings to H3.
+* Limit subheadings to H4.
 
     Headings requiring further depth deserve their own tutorial. Create a separate tutorial, then link to it.
 
 * In each section, provide a numbered list of substeps.
 
-    Also provide paragraphs for explanations, bullet lists, code samples, and examples.
+    Also provide paragraphs for explanations, bullet lists, code samples, and examples. If a numbered list includes sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists. 
 -->
 
 ### Troubleshooting
 
 <!--
-* List troubleshooting steps here.
-
-    Cover the most common mistakes and error states first.
-
-    Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
-
-* Link to support articles and generic troubleshooting information.
-
-    Create a separate article for generic troubleshooting information.
+Provide the following boilerplate. If you have a troubleshooting information that pertains only to this topic, you can include it in this section, before the boilerplate. However, if it might apply to more than one article, add a new section for it in the [Troubleshooting common problems](/docs/tutorials/troubleshooting/) article or create a new article for it and link to that article from here as well.
 -->
+
+See [Troubleshooting common problems]({{site.baseurl}}/docs/tutorials/troubleshooting/).
+
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
@@ -85,7 +85,7 @@ A single numbered list might be impractical for topics with a good amount of sup
 * Links to related content
 -->
 
-### Next
+### Next step
 
 <!--
 * What should your audience read next?
