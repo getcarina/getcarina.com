@@ -14,8 +14,11 @@ categories:
 authorIsRacker: true
 ---
 
-```
-carina create --wait blog && carina credentials blog && eval `carina env blog` && docker-compose up production
+```bash
+carina create --wait blog && \
+  carina credentials blog && \
+  eval "$( carina env blog )" && \
+  docker-compose up production
 ```
 
 with that, we're off to the races with the weekly update!
