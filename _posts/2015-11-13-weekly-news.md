@@ -1,5 +1,5 @@
 ---
-title: "Weekly News, DVM, Carina Updates"
+title: "Weekly news: Docker 1.9 and Swarm 1.0 on Carina, Docker Version Manager, Carina Updates"
 date: 2015-11-13 13:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
