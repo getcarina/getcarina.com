@@ -1,9 +1,9 @@
 ---
 title: Tutorial name
 author: First Last <first.last@rackspace.com>
-date: 2015-09-28
+date: yyyy-mm-dd
 permalink: docs/tutorials/tutorial-name/
-description: Do a thing on RCS
+description: Learn to accomplish some task in Carina
 docker-versions:
   - 1.8.2
 topics:
@@ -15,7 +15,7 @@ topics:
 <!--
 Limit tutorials to a single task.
 
-Choose a name that accurately describes the task. For example:
+Choose a title that accurately describes the task. For example:
 
 ### Create a new container
 ### Remove containers without deleting Swarm
@@ -28,12 +28,14 @@ Give a brief summary of what this tutorial describes and why it matters. For exa
 
 "This tutorial describes Docker basics: what Docker is and how to start using it."
 "This tutorial demonstrates how to remove containers without deleting system-critical containers."
+
+You are not limited to this phrasing, but ensure that the introduction adequately describes what the article is about.
 -->
 
 ### Prerequisites
 
 <!--
-List any prerequisites for the tutorial:
+List necessary prerequisites for the tutorial. Limit this section to only what the user needs to know or do to accomplish the task.
 
 * Software installed
 * State dependencies
@@ -44,13 +46,15 @@ List any prerequisites for the tutorial:
 ### Steps
 
 <!--
-Include a more descriptive heading if possible.
+Provide a descriptive heading for this section. Begin with the an imperative verb. 
 
 List steps in numbered order. Limit steps to a single action.
 
+Include as many "steps" sections as needed to provide a complete topic to the user. 
+
 1. Do this.
 
-    Indent any descriptions or information needed between steps.
+    Indent any descriptions or information needed between steps. If your task includes sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists. 
 
 2. Do that.
 
@@ -58,7 +62,19 @@ List steps in numbered order. Limit steps to a single action.
 
 4. Clean up.
 
-    Provide instructions on how to remove the containers and images created in this tutorial. After multiple tutorials, cruft will build up in their cluster(s) and may cause problems in other tutorials.
+    If a tutorial isn't part of a series of tutorials and the user might not need the containers that they created anymore, include an optional step at the end of the tutorial to remove only the containers created in the tutorial. Use the following text, adjusting the example as needed for your tutorial:
+
+    *(Optional)* Remove the containers.
+
+    ```bash
+    $ docker rm --force $(docker ps --quiet -n=-2)
+    47c6d35c63ec
+    08d0383a775f
+    ```
+
+    The output of this `docker rm` command are the shortened IDs of the containers that you removed.
+
+    When the container is gone, so is your data.
 
 Conclude with a brief description of the end state.
 -->
@@ -66,15 +82,13 @@ Conclude with a brief description of the end state.
 ### Troubleshooting
 
 <!--
-* List troubleshooting steps here.
 
-    Cover the most common mistakes and error states first.
+Provide the following boilerplate. If you have a troubleshooting information that pertains only to this tutorial, you can include it in this section, before the boilerplate. However, if it might apply to more than one article, add a new section for it in the [Troubleshooting common problems](/docs/tutorials/troubleshooting/) article or create a new article for it and link to that article from here as well.
 
-    Link or create a separate article for troubleshooting steps that aren't specific to the tutorial.
+See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
 
-* Link to support articles and generic troubleshooting information.
+For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
-    Create a separate article for generic troubleshooting information.
 -->
 
 ### Resources
@@ -83,7 +97,7 @@ Conclude with a brief description of the end state.
 * Links to related content
 -->
 
-### Next
+### Next step
 
 <!--
 * What should your audience read next?
