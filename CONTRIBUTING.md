@@ -46,7 +46,7 @@ Following are some specific guidelines for Carina content:
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
 
-- To link to another article, use the permalink for that article. The permalink is defined in the frontmatter metadata of the article. Format the link as follows: `(/docs/<directoryName>/<articleName>/)`. For example, `(/docs/tutorials/introduction-docker-swarm/)`. Note the use of both leading and trailing slashes.
+- To link to another article, use the permalink for that article, preceded by `{{site.baseurl}}`. The permalink is defined in the frontmatter metadata of the article. Format the link as follows: `({{site.baseurl}}/docs/<directoryName>/<articleName>/)`. For example, `({{site.baseurl}}/docs/tutorials/introduction-docker-swarm/)`. Note the use of both leading and trailing slashes.
 
 - To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`. 
 
