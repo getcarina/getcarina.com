@@ -58,7 +58,7 @@ Be sure to check out the [DVM announcement](https://getcarina.com/blog/docker-ve
 
 For Rackspace users on app.getcarina.com, you can now use 2FA for login.
 
-[2fa is the way]({% asset_path img/2015-11-13-weekly-news/carina-2fa.gif %})
+[2fa is the way]({% asset_path 2015-11-13-weekly-news/carina-2fa.gif %})
 
 ## Carina CLI update
 
