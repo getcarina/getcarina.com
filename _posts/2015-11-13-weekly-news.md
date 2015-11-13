@@ -1,5 +1,5 @@
 ---
-title: "Weekly News, DVM, carina updates"
+title: "Weekly News, DVM, Carina Updates"
 date: 2015-11-13 13:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
