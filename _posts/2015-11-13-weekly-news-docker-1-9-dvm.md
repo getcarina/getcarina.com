@@ -67,7 +67,7 @@ See the [DVM announcement](https://getcarina.com/blog/docker-version-manager/) a
 
 Existing Rackspace users can now log in to app.getcarina.com using multi-factor authentication. Multi-factor settings can be edited from the Rackspace Control Panel. Multi-factor authentication is not yet available for users who signed up for Carina without an existing Rackspace cloud account.
 
-[2fa is the way]({% asset_path 2015-11-13-weekly-news/carina-2fa.gif %})
+![2fa is the way]({% asset_path 2015-11-13-weekly-news/carina-2fa.gif %})
 
 ## Carina CLI update
 
