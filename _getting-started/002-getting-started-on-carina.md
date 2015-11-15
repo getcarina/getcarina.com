@@ -5,7 +5,7 @@ date: 2015-10-26
 permalink: docs/getting-started/getting-started-on-carina/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
-  - 1.8.3
+  - 1.9.0
 topics:
   - docker
   - beginner
@@ -14,6 +14,8 @@ topics:
 This tutorial shows you how to get your first containerized application up and running on Carina in a minimal amount of time.
 
 No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+
+**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/).
 
 ### Sign up for Carina
 
@@ -51,10 +53,10 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.8.3 client into the unzipped directory.
-    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.8.3) to `Downloads/mycluster`.
-    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.8.3) to `Downloads/mycluster`.
-    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.8.3.exe) to `Downloads/mycluster`.
+1. Download the Docker 1.9.0 client into the unzipped directory.
+    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.9.0) to `Downloads/mycluster`.
+    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.9.0) to `Downloads/mycluster`.
+    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.9.0.exe) to `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
     - On Linux and Mac OS X, open a terminal.
@@ -69,7 +71,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```bash
     $ cd Downloads/mycluster
     $ mkdir -p $HOME/bin
-    $ mv docker-1.8.3 $HOME/bin/docker
+    $ mv docker-1.9.0 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
     $ export PATH=$HOME/bin:$PATH
     $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
@@ -81,7 +83,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```
     $ cd Downloads\mycluster
     $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.8.3.exe "$env:USERPROFILE\bin\docker.exe"
+    $ mv docker-1.9.0.exe "$env:USERPROFILE\bin\docker.exe"
     $ $env:PATH += ";$env:USERPROFILE\bin"
     $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
     $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
