@@ -20,6 +20,7 @@ topics:
 
 * [Docker Engine 1.9.0](https://github.com/docker/docker/releases/tag/v1.9.0)
 * [Docker Swarm 1.0.0](https://github.com/docker/swarm/releases/tag/v1.0.0)
+* 2 Factor Authentication
 
 #### Known issues
 
