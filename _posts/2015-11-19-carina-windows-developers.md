@@ -40,7 +40,7 @@ There are only four steps to get rolling:
 4. Start one or more containers in your cluster.
 
 ### Create a Carina cluster
-To create a cluster, simply log in to GetCarina.com (if you don't have an account, creating one is a cinch -- an email address and password and you're in), click the 'Add Cluster...'' link, give the cluster name, and click the 'Create Cluster' button. It is literally that easy.
+To create a cluster, simply log in to GetCarina.com (if you don't have an account, creating one is a cinch -- an email address and password and you're in), click the 'Add Cluster...'' link, give the cluster a name, and click the 'Create Cluster' button. It is literally that easy.
 
 ![Create Cluster]({% asset_path 2015-11-19-carina-windows-developers/create_cluster_loop.gif %})
 
