@@ -68,7 +68,7 @@ For example:
 
 ![Install dvm on Windows]({% asset_path 2015-11-19-carina-windows-developers/windows_dvm_install.png %})
 
-The following PowerShell will check to see if you have a profile and will create one if you don't have one:
+The following PowerShell script will check to see if you have a profile and will create one if you don't have one:
 
 ```
 If (!(Test-Path $profile)) {
@@ -96,7 +96,7 @@ Get something running ... now. Right now. The Carina documentation has instructi
 
 ### ASP.NET in a container
 
-Microsoft will soon be delivery the final version of the ASP.NET Docker container, allowing you to run your ASP.NET web sites inside a Docker container, running on top of the Linux kernel. It's a brave new world. If you're anxious to get started (remember, it's a beta and may change), consider the ramifications of the following:
+Microsoft will soon be delivering the final version of the ASP.NET Docker container, allowing you to run your ASP.NET web sites inside a Docker container, running on top of the Linux kernel. It's a brave new world. If you're anxious to get started (remember, it's a beta and may change), consider the ramifications of the following:
 
 ```
 docker run -d -t microsoft/aspnet
