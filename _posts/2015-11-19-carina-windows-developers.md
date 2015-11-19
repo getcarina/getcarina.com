@@ -29,7 +29,7 @@ Carina by Rackspace is the master key that allows you to quickly get up to speed
 
 Containers need a place to run. If you're running Docker -- a specific implementation of the containers concept -- on your local machine, you use VirtualBox as your Docker host.
 
-But with Carina, you don't need to run Virtual Box on your local machine. Instead of using your CPU cycles, Carina runs on Rackspace bare metal servers, meaning it's fast to start and run. You can use your Carina clusters (your Docker hosts in Carina) from any client: Mac, Linux, or Windows. Let's look at a Windows setup.
+But with Carina, you don't need to run VirtualBox on your local machine. Instead of using your CPU cycles, Carina runs on Rackspace bare metal servers, meaning it's fast to start and run. You can use your Carina clusters (your Docker hosts in Carina) from any client: Mac, Linux, or Windows. Let's look at a Windows setup.
 
 ## Carina in four steps
 There are only four steps to get started:  
