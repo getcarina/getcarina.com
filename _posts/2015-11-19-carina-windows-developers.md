@@ -1,6 +1,6 @@
 ---
 title: "Carina for .NET developers"
-date: 2015-11-18 23:59
+date: 2015-11-19 11:00
 comments: true
 author: Don Schenck <don.schenck@rackspace.com>
 authorIsRacker: true
