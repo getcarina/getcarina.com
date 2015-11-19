@@ -11,6 +11,8 @@ absolute_base_url: https://getcarina.com
 # Build settings
 markdown: redcarpet
 
+encoding: UTF-8
+
 redcarpet:
   extensions: ["with_toc_data"]
 
@@ -19,6 +21,9 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - package.json
+
+gems:
+  - jekyll-paginate
 
 paginate: 10
 paginate_path: /blog/page/:num
