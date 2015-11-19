@@ -112,7 +112,7 @@ To find out more information about Swarm scheduling strategies, read the
 [Strategies for distributing containers to segments](/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
 section of the "Introduction to Docker Swarm" article.
 
-### AppArmor profiles
+### AppArmor profiles
 
 Carina builds on the standard restrictions set out by
 [libcontainer](https://github.com/opencontainers/runc/blob/master/libcontainer/SPEC.md#security)
