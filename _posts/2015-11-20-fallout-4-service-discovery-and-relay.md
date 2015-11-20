@@ -5,8 +5,8 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  Take apart the pip boy, discover running Fallout 4 games, and relay traffic with
-  a bit of nodejs, TCP, and UDP.
+  Take apart the pip boy app, discover running Fallout 4 games, and relay traffic with
+  a bit of Node.js, TCP, and UDP.
 categories:
  - nodejs
  - TCP
@@ -17,22 +17,23 @@ categories:
 authorIsRacker: true
 ---
 
-This week's post is fairly off topic, only slightly dealing with some old school
-service discovery on a new game that was released. We'll touch on investigating
+This week's post is fairly off-topic, dealing only slightly dealing with some old school
+service discovery on a new game that was released. I'll touch on investigating
 ports and protocols from an unknown server, using UDP broadcast to find services,
 running TCP and UDP relays, and digging into some binary streams.
 
 Like many people this past week, I purchased a game I've been waiting a long
-time for. Fallout 4. Like its predecessors, Fallout 4 has you leaving a Fallout
+time for Fallout 4. Like its predecessors, Fallout 4 has you leaving a Fallout
 shelter called a vault with only your vault suit and a device on your arm called
 a pip boy.
 
 ![put a pip in your step]({% asset_path 2015-11-20-fallout-4/pipboy-arm.jpg %})
 
-This time around the developers, Bethesda, gave us a wonderful companion app
-that gives you remote access to your pip boy.
+This time the developers, Bethesda, gave us a wonderful companion app
+that gives you remote access to your pip boy. You can navigate the map, view
+your inventory, change weapons, and fast travel. It's slick!
 
-You can navigate the map, view your inventory, change weapons, fast travel. It's slick! After discovering my running PS4, I immediately thought:
+After discovering my running PS4, I immediately thought:
 
 > "Hey, how are they discovering the game on my network?"
 
@@ -51,7 +52,7 @@ PORT      STATE SERVICE
 ...
 ```
 
-Armed with that, we can tell there's a TCP server running on 27000.
+Armed with that, I could tell there's a TCP server running on 27000.
 
 ```
 $ curl 192.168.1.71:27000
@@ -61,7 +62,7 @@ $ curl 192.168.1.71:27000
 Whoa. HTTP worked. Sadly, without knowing about any REST endpoints, we have **no**
 idea what else can be reached.
 
-The pip boy app can't possibly know the IP for my PS4 though, so it must be running another service to allow others to discover itself. Excited by the prospect of getting data out of this app, my fellow Jupyter developer [Jon Frederic](https://github.com/jdfreder) rolled with the first two and got some great captures that showed what the discovery protocol looks like as well as some of the TCP dump.
+The pip boy app can't possibly know the IP address for my PS4 though, so it must be running another service to allow others to discover itself. Excited by the prospect of getting data out of this app, my fellow Jupyter developer [Jon Frederic](https://github.com/jdfreder) got some great packet captures that showed what the discovery protocol looks like as well as some of the TCP dump.
 
 Running the scan for consoles from the mobile app while sniffing traffic was enough to see a UDP payload sent from the mobile phone to the broadcast address (255.255.255.255) on port 28000:
 
@@ -89,26 +90,26 @@ echo '{"cmd":"autodiscover"}' | \
   socat - UDP-DATAGRAM:255.255.255.255:28000,broadcast
 ```
 
-Perfect, we now know the Fallout 4 server has at least two servers listening - UDP on port 28000 and TCP on port 27000. We don't know the protocol though, so we're going to need to see more legitimate traffic from the pip boy to the console. We can continue on doing more sniffing of traffic, poisoning ARP to do MITM, or we can write a relay. I opted for the last one which I'll explain here.
+Perfect, we now know the Fallout 4 server has at least two servers listening: UDP on port 28000 and TCP on port 27000. We don't know the protocol though, so we're going to need to see more legitimate traffic from the pip boy to the console. We can continue on doing more sniffing of traffic, poisoning ARP to do MITM, or we can write a relay. I opted for the last one which I'll explain here.
 
 ## Ripping data with a relay
 
-The relay will function by establishing itself as another Fallout 4 server for
+The relay functions by establishing itself as another Fallout 4 server for
 mobile apps to connect to, while actually sending packets on to the legitimate one.
 
 ![Close to Metal]({% asset_path 2015-11-20-fallout-4/close-to-metal.png %})
 
-You can also do this with tools like socat; I opted to do this in nodejs for
-reasons which will become clear later. If you want to skip down to using the
-relay, go down to [the pipboy relay](#the-pip-boy-relay).
+You can do this with tools like socat, but I opted to do this in Node.js for
+reasons that will become clear later. If you want to skip down to using the
+relay, go to [the pipboy relay](#the-pip-boy-relay).
 
-### UDP Relay
+### UDP relay
 
 The relay we're going to write functions by acting as an intermediary between
 a real client (the pip boy app) and the Fallout server. To do this, every time a
-client connects to our relay, we'll create our own fake client to connect to the
+client connects to the relay, we'll create our own fake client to connect to the
 real Fallout server. As the client and server communicate, we'll pass messages to
-each while making a copy of the messages they sent.
+each while making a copy of the messages they send.
 
 The first thing we'll do is open up our server side socket:
 
@@ -123,7 +124,7 @@ server.bind(upstreamInfo.port, '0.0.0.0')
 ```
 
 For every message that comes in, we're going to set up another socket to act as
-our fake client. We'll then forward messages between the *actual server* and the pip
+the fake client. We'll then forward messages between the *actual server* and the pip
 boy client.
 
 ```javascript
@@ -134,7 +135,7 @@ server.on('message', function (message, clientInfo) {
 })
 ```
 
-The two parts commented out above are written out here with more detail. Each
+The two parts commented out above are written out below with more detail. Each
 time we get a message, we're going to copy it, note the telemetry data, send the
 message on to the actual client, and provide the copied buffer and telemetry to
 a callback.
@@ -172,10 +173,10 @@ fakeClient.bind(undefined, undefined, function () {
 })
 ```
 
-### TCP Relay
+### TCP relay
 
-The set up will be similar for the TCP Relay. Here we'll create a `TCPRelay`
-that has a `net.Server` underneath. The strongest difference here will be that
+The setup for the TCP relay is similar. Here we'll create a `TCPRelay`
+that has a `net.Server` underneath. The strongest difference here is that
 we'll have to actually maintain all the fake clients that are being used
 
 ```javascript
@@ -212,7 +213,7 @@ TCPRelay.prototype.listen = function listen (upstreamInfo, cb) {
     actualClientInfo.port = client.remotePort
     actualClientInfo.family = client.remoteFamily  
 
-    // Register handlers for our fakeClient
+    // Register handlers for the fakeClient
     // These each get explained below but should be inserted here
 
     // fakeClient.on('connect', function() { ... })
@@ -224,7 +225,7 @@ TCPRelay.prototype.listen = function listen (upstreamInfo, cb) {
 }
 ```
 
-Once our `fakeClient` is connected, we're ready to register the handler for data
+After the `fakeClient` is connected, we're ready to register the handler for data
 from the `client`. We'll send data on from `client` to the `fakeClient`, which
 sends it on to the Fallout 4 server.
 
@@ -277,8 +278,8 @@ fakeClient.on('data', function (message) {
 ```
 
 We should also handle closing the `fakeClient` as well as the `client` on the
-other side. Remember that you need to mirror operations directly, so we'll do
-the same for ending the clients too.
+other side. Remembering that we need to be mirrored operations directly, so we'll do
+the same for ending the clients, too.
 
 ```javascript
 fakeClient.on('close', function (hadError) {
@@ -293,9 +294,9 @@ fakeClient.on('end', function () {
 })
 ```
 
-## Piecing these together
+## Putting the pieces together
 
-We now have a `TCPRelay` and a `UDPRelay`. Taking these and autodiscovering a
+Now we have a `TCPRelay` and a `UDPRelay`. Taking these and autodiscovering a
 running server, we can make a nice little tool.
 
 ### Libraries
@@ -305,25 +306,25 @@ I've wrapped the relays and autodiscovery into a couple packages:
 * [pipboylib](https://github.com/rgbkrk/pipboylib)
 * [pipboyrelay](https://github.com/rgbkrk/pipboyrelay)
 
-The second one, `pipboyrelay`, is a cli tool you can use to dump data yourself
-that relies on `pipboylib`.
+The second one, `pipboyrelay`, is a CLI tool that you can use to dump data
+yourself that relies on `pipboylib`.
 
 ### The pip boy relay
 
-You're able to run the relay directly yourself if you have a few things:
+You can run the relay directly yourself if you have a few things:
 
 * Fallout 4 for the PC or PS4. (XBONE has not been diagnosed)
-* pip boy app for Android or iOS
-* pip boy app enabled in-game on Fallout 4
-* nodejs, npm
+* The pip boy app for Android or iOS
+* The pip boy app enabled in-game on Fallout 4
+* Node.js and npm
 
-With node and `npm` setup you can install pipboyrelay as a CLI tool:
+With Node.js and `npm` set up you can install `pipboyrelay` as a CLI tool:
 
 ```
 npm install -g pipboyrelay
 ```
 
-Now run the pipboy relay at the command line:
+Now run the `pipboyrelay` at the command line:
 
 ```
 $ pipboyrelay
@@ -332,11 +333,14 @@ Discovered:  { IsBusy: false,
   info: { address: '192.168.1.71', family: 'IPv4', port: 28000, size: 50 } }
 ```
 
-It will autodiscover any games running with an active server on your local network and create its own endpoints that the Android/iOS app will recognize. Open up the mobile app, navigate to the connection settings screen.
+It will autodiscover any games running with an active server on your local
+network and create its own endpoints that the Android or iOS app will recognize.
+Open up the mobile app and navigate to the connection settings screen.
 
 ![One of these things is not like the other]({% asset_path 2015-11-20-fallout-4/two-ps4s.png %})
 
-One of these things is not like the other! Connect to the *other* address listed than you saw discovered above. You should start seeing data fly by.
+One of these things is not like the other! Connect to the address that was not
+shown in the discovery. You should start seeing data fly by.
 
 ```
 UDP and TCP Relay created for:  { address: '192.168.1.71', family: 'IPv4', port: 28000, size: 50 }
@@ -369,18 +373,19 @@ Interesting bit above - look at byte 0x18 (0x1e), occurring right before
 00000020: 004c 6f63 6174 696f 6e73 2044 6973 636f  .Locations.Disco
 ```
 
-That's the current number of locations discovered with the character I used for this. `0x1e` = 30.
+That `0x1e` is the current number of locations discovered with the character I
+used for this, 30.
 
-Seems like the Fallout 4 format is a binary format and it's in plaintext. This
-is good news for us, because we'll be able to figure out the format and build new
-things.
+It seems like the Fallout 4 format is a binary format and that's in plain text.
+This is good news, because it will be easier to figure out the format and build
+new things.
 
 Run this relay while you explore the wasteland and you'll see your coordinates
-scroll on by in the relay output. Can you imagine mapping you and your friends
+scroll by in the relay output. Can you imagine mapping you and your friends
 all together on one map?
 
 
-## Vanilla Stat Dump
+## Vanilla stat dump
 
 You don't really need all this code to get your current stats though. On OS X
 and Linux, you can use `nc` (netcat) directly to get all your stats from your
@@ -411,16 +416,16 @@ $ nc 192.168.1.71 27000 | xxd | head -n 16
 
 We've done several things here.
 
-* found our running servers from Fallout 4
-* spoofed a Fallout 4 server, complete with being discoverable
-* dumped traffic from our relay
+* Found our running servers from Fallout 4
+* Spoofed a Fallout 4 server, complete with being discoverable
+* Dumped traffic from our relay
 
-In a follow on post, we'll show you how to send your stats on to a remote server
-for others to view; share your level, your wasteland location, number of caps,
-and anything else we can decode. 
+In a follow on post, I'll show you how to send your stats on to a remote server
+for others to view. We can share our levels, our wasteland locations,
+number of caps, and anything else we can decode.
 
-Install pipboyrelay yourself or just use `nc` to explore. I'm really excited to
+Install `pipboyrelay` yourself or just use `nc` to explore. I'm really excited to
 create mashups with this. Feel free to discuss your findings on the repository
 for the [pip boy library](https://github.com/rgbkrk/pipboylib),
-the [pipboyrelay](https://github.com/rgbkrk/pipboyrelay) or even on
+the [pipboyrelay](https://github.com/rgbkrk/pipboyrelay), or even on
 [this blog](https://github.com/getcarina/getcarina.com).
