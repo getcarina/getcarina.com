@@ -23,7 +23,7 @@ ports and protocols from an unknown server, using UDP broadcast to find services
 running TCP and UDP relays, and digging into some binary streams.
 
 Like many people this past week, I purchased a game I've been waiting a long
-time for Fallout 4. Like its predecessors, Fallout 4 has you leaving a Fallout
+time for: Fallout 4. Like its predecessors, Fallout 4 has you leaving a Fallout
 shelter called a vault with only your vault suit and a device on your arm called
 a pip boy.
 
