@@ -1,6 +1,6 @@
 ---
 title: "Fallout 4 Service Discovery and Relay"
-date: 2015-11-19 10:00
+date: 2015-11-20 18:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
