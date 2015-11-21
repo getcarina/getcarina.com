@@ -17,7 +17,7 @@ categories:
 authorIsRacker: true
 ---
 
-This week's post is fairly off-topic, dealing only slightly dealing with some old school
+This week's post is fairly off-topic, dealing only slightly with some old school
 service discovery on a new game that was released. I'll touch on investigating
 ports and protocols from an unknown server, using UDP broadcast to find services,
 running TCP and UDP relays, and digging into some binary streams.
