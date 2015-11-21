@@ -362,7 +362,7 @@ listening
 ...
 ```
 
-Interesting bit above - look at byte 0x18 (0x1e), occurring right before
+Interesting! Look at byte 0x18 (0x1e), occurring right before
 "Locations Discovered".
 
 ```
