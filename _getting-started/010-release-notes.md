@@ -12,7 +12,11 @@ topics:
 
 #### What’s new
 
-* Enable bind mounting `/var/run/docker.sock` from host to container. e.g. `docker run -v /var/run/docker.sock:/var/run/docker.sock docker:1.9.0 docker ps`
+* Enable bind mounting `/var/run/docker.sock` from host to container. e.g.
+
+```
+docker run -v /var/run/docker.sock:/var/run/docker.sock docker:1.9.0 docker ps
+```
 
 ### November 13, 2015
 
