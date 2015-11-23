@@ -1,18 +1,18 @@
 ---
 title: Release notes
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-11-18
+date: 2015-11-23
 permalink: docs/release-notes/
 description: Notes on Carina releases
 topics:
   - docker
 ---
 
-### November XX, 2015
+### November 23, 2015
 
 #### What’s new
 
-* Enable bind mounting `/var/run/docker.sock` from host to container. e.g. `docker run -v /var/run/docker.sock:/tmp/docker.sock`
+* Enable bind mounting `/var/run/docker.sock` from host to container. e.g. `docker run -v /var/run/docker.sock:/var/run/docker.sock docker:1.9.0 docker ps`
 
 ### November 13, 2015
 
