@@ -118,25 +118,36 @@ Run a Redis instance to store your application data.
     172.99.78.231:32769
     ```
 
-	Now let us test our connection.
+	Now let us test our connection. To do this we will run redis-cli in it's own container as well. 
+	For this we will still use the official Redis Docker image, we will simply be passing a 
+	different command to it.
 
     ```bash
-	$ redis-cli -h $REDIS_HOST -p $REDIS_PORT -a mysecretpassword
+	$ run --interactive --tty  redis redis-cli  -h $REDIS_HOST -p $REDIS_PORT -a mysecretpassword 
 	172.99.78.231:32769> 
 	```
 
 	Now type in `PING` and you should see `PONG` come back. You should
 	now have a functional Redis server requiring authentication. Now
-	we'll set and get a key.
-
+	we'll set and get a key. This we'll do using the the container call 
+	directly. First, exit the existing redis-cli session by running the 
+	`quit` command. You should no be back to your regular command line.
+	
+	Next up, let us set the key `redis:on:carina` to a value of "true".
 	```bash
-	$ redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword set
-	redis:on:carina true
+	$ run --interactive --tty  redis redis-cli  -h $REDIS_HOST \
+	  -p $REDIS_PORT -a mysecretpassword  set redis:on:carina true
 	OK
-	$ redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword get
-	redis:on:carina
+	```
+	
+	Now, `get` the key's value to see it was set.
+	```bash
+	$ run --interactive --tty  redis redis-cli  -h $REDIS_HOST \
+	  -p $REDIS_PORT -a mysecretpassword  get redis:on:carina
 	"true"
 	```
+	With this we have now connected to our password protected Redis container from a different 
+	container and are able to execute commands against it.
 
 ### Troubleshooting
 
