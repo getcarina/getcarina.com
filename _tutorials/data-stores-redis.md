@@ -57,7 +57,7 @@ Run a Redis instance to store your application data.
 	  --maxmemory 800M
     ```
 
-	The output of this `docker run` command is your running Redis container ID.
+	This `docker run` command will output the ID of your running Redis container.
 	The `-m 1G` option specifies a reserved memory of 1GB. With Redis all data
 	is in memory so you'll want to reserve some meory for the contaier and
 	folow it up with a `maxmemory` setting to limit Redis' data memory
@@ -77,9 +77,7 @@ Run a Redis instance to store your application data.
 	CONTAINER ID        IMAGE               COMMAND CREATED             STATUS              PORTS NAMES
 	559d211c4cb1        redis               "/entrypoint.sh redis"   16 seconds ago      Up 6 seconds        172.99.78.231:32768->6379/tcp 7ffed4c5-fdcb-473d-8740-f133804b39a4-n1/amazing_mayer
     ```
-
-    The output of this `docker ps` command is your running Redis container.
-
+    
 	The status of the container should begin with Up. If it doesn't, see
 	the [Troubleshooting](#troubleshooting) section at the end of the
 	tutorial.
@@ -94,7 +92,7 @@ Run a Redis instance to store your application data.
     ```
 
 	The output of this `docker ps` command is the shortened ID of the
-	Redis container, we stored it in $REDCON, and echoed it out.
+	Redis container, we stored it in $REDCON for later use and echoed it out.
 
 1. Discover what IP address and port Redis is running on by combining the `docker port` command, the ID of the container, and the default Redis port of 6379.
 
@@ -116,7 +114,8 @@ Run a Redis instance to store your application data.
     ```bash
     $ REDIS_HOST=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp }}' $REDCON)
     $ REDIS_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort }}' $REDCON)
-	$ echo $REDIS_HOST:$REDIS_PORT
+    $ echo $REDIS_HOST:$REDIS_PORT
+    172.99.78.231:32769
     ```
 
 	Now let us test our connection.
