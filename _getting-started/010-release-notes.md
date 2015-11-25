@@ -8,6 +8,12 @@ topics:
   - docker
 ---
 
+### November 25, 2015
+
+#### What’s new
+
+* [Docker Engine 1.9.1](https://github.com/docker/docker/releases/tag/v1.9.1)
+
 ### November 23, 2015
 
 #### What’s new
