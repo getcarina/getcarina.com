@@ -20,7 +20,7 @@ A Carina account. If you do not already have one, create a free account (no cred
 
 Your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
-The Docker client. Use the [Docker Version Manager (dvm)](docs/tutorials/docker-version-manager/).
+The Docker client. Use the [Docker Version Manager (dvm)](/docs/tutorials/docker-version-manager/).
 
 ### Download and install the Carina CLI
 
