@@ -182,6 +182,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 * [Docker 101](/docs/tutorials/docker-101/)
 * [Carina documentation](/docs/)
+* If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)](/docs/tutorials/docker-version-manager/).
 
 ### Next step
 
