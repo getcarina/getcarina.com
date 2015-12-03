@@ -278,7 +278,7 @@ fakeClient.on('data', function (message) {
 ```
 
 We should also handle closing the `fakeClient` as well as the `client` on the
-other side. Remembering that we need to be mirrored operations directly, so we'll do
+other side. Remembering that we need to mirror operations directly, we'll do
 the same for ending the clients, too.
 
 ```javascript
@@ -303,7 +303,7 @@ running server, we can make a nice little tool.
 
 I've wrapped the relays and autodiscovery into a couple packages:
 
-* [pipboylib](https://github.com/rgbkrk/pipboylib)
+* [pipboylib](https://github.com/RobCoIndustries/pipboylib)
 * [pipboyrelay](https://github.com/rgbkrk/pipboyrelay)
 
 The second one, `pipboyrelay`, is a CLI tool that you can use to dump data
@@ -426,6 +426,8 @@ number of caps, and anything else we can decode.
 
 Install `pipboyrelay` yourself or just use `nc` to explore. I'm really excited to
 create mashups with this. Feel free to discuss your findings on the repository
-for the [pip boy library](https://github.com/rgbkrk/pipboylib),
+for the [pip boy library](https://github.com/RobCoIndustries/pipboylib),
 the [pipboyrelay](https://github.com/rgbkrk/pipboyrelay), or even on
 [this blog](https://github.com/getcarina/getcarina.com).
+
+Follow me on Twitter [@rgbkrk](https://twitter.com/rgbkrk) to get more updates!
