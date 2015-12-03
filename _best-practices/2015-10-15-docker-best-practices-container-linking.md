@@ -1,7 +1,7 @@
 ---
 title: 'Docker best practices: container linking'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-15
 permalink: docs/best-practices/docker-best-practices-container-linking/
 description: Explore container linking
 docker-versions:

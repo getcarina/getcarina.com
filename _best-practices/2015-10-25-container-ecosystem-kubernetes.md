@@ -1,7 +1,7 @@
 ---
 title: 'Container ecosystem: Kubernetes'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-26
+date: 2015-10-25
 permalink: docs/best-practices/container-ecosystem-kubernetes/
 description: Explore the place of Google Kubernetes in the container ecosystem
 topics:

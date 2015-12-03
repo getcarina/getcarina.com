@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to container technologies: scheduling and management of services and resources'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-16
 permalink: docs/best-practices/container-technologies-scheduling-management/
 description: Compare options for scheduling and management
 topics:

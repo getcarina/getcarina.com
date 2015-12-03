@@ -1,7 +1,7 @@
 ---
 title: Docker Compose with Carina
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-19
+date: 2015-10-16
 permalink: docs/tutorials/docker-compose-with-carina/
 description: Learn how to use Docker Compose with Carina
 docker-versions:

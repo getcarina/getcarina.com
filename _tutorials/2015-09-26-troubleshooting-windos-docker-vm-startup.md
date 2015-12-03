@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10
 author: Zack Shoylev <zack.shoylev@rackspace.com>
-date: 2015-10-26
+date: 2015-09-26
 permalink: docs/tutorials/troubleshooting-windos-docker-vm-startup/
 description: Solve issues that can occur when you download and set up Docker Toolbox on Windows versions 7, 8.1, and 10
 docker-versions:

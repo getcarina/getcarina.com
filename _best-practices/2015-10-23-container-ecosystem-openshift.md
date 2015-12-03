@@ -1,7 +1,7 @@
 ---
 title: 'Container ecosystem: OpenShift'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-26
+date: 2015-10-23
 permalink: docs/best-practices/container-ecosystem-openshift/
 description: Explore the place of RedHat OpenShift in the container ecosystem
 topics:

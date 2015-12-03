@@ -1,7 +1,7 @@
 ---
 title: Use MySQL on Carina
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-28
+date: 2015-10-24
 permalink: docs/tutorials/data-stores-mysql/
 description: Learn how to use MySQL on Carina
 docker-versions:

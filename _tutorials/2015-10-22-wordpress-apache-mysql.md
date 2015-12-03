@@ -1,7 +1,7 @@
 ---
 title: Run WordPress, Apache, and MySQL in Docker
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-26
+date: 2015-10-22
 permalink: docs/tutorials/wordpress-apache-mysql/
 description: Learn how to spin up a single WordPress application running Apache and MySQL on Carina
 topics:

@@ -1,7 +1,7 @@
 ---
 title: Install Docker on Linux
 author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-10-26
+date: 2015-10-04
 permalink: docs/tutorials/docker-install-linux/
 description: Learn how to install Docker on Linux (Ubuntu, Debian)
 topics:

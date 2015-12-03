@@ -1,7 +1,7 @@
 ---
 title: Run interlock on Carina
 author: Kyle Kelley <kyle.kelley@rackspace.com>
-date: 2015-10-26
+date: 2015-10-15
 permalink: docs/tutorials/interlock-on-carina/
 description: Use interlock to load balance containers or emit statistics across your Swarm cluster
 topics:

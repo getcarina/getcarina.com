@@ -1,7 +1,7 @@
 ---
 title: 'Container design philosophy'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-26
 permalink: docs/best-practices/container-design-philosophy/
 description: Explore container design philosophy
 featured: true

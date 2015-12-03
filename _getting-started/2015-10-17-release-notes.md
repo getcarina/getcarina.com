@@ -1,7 +1,7 @@
 ---
 title: Release notes
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-11-23
+date: 2015-10-17
 permalink: docs/release-notes/
 description: Notes on Carina releases
 topics:

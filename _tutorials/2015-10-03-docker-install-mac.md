@@ -1,7 +1,7 @@
 ---
 title: Install Docker on Mac OS X
 author: Nathaniel Archer
-date: 2015-10-26
+date: 2015-10-03
 permalink: docs/tutorials/docker-install-mac/
 description: Learn how to install Docker on Mac OS X
 docker-versions:

@@ -1,7 +1,7 @@
 ---
 title: Understanding how Carina uses Docker Swarm
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-26
+date: 2015-10-18
 permalink: docs/tutorials/docker-swarm-carina/
 description: Learn how Carina uses Docker Swarm
 docker-versions:

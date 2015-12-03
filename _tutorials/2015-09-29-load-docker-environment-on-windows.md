@@ -1,7 +1,7 @@
 ---
 title: Load a Docker environment from the command line on Windows
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-10-26
+date: 2015-09-29
 permalink: docs/tutorials/load-docker-environment-on-windows/
 description: Learn how to load a Docker environment on Windows, so that you can work with Docker in the terminal and shell of your choice
 docker-versions:

@@ -1,7 +1,7 @@
 ---
 title: Install Docker on Windows
 author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-10-26
+date: 2015-10-02
 permalink: docs/tutorials/docker-install-windows/
 description: Learn how to install Docker on Windows
 docker-version:

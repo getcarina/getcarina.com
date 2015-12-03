@@ -1,7 +1,7 @@
 ---
 title: Troubleshooting common problems
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-10-26
+date: 2015-09-21
 permalink: docs/tutorials/troubleshooting/
 description: Troubleshooting common problems on Carina
 docker-versions:

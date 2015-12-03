@@ -1,7 +1,7 @@
 ---
 title: Run WordPress across linked front end and back end containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-26
+date: 2015-10-21
 permalink: docs/tutorials/linking-wordpress-containers/
 description: Learn how to spin up a multi-container WordPress application split across linked containers, using NGINX as the front end and PHP-FPM as the back end.
 topics:

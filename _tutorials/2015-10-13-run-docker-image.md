@@ -1,7 +1,7 @@
 ---
 title: Find and download a Docker image
 author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-10-26
+date: 2015-10-13
 permalink: docs/tutorials/run-docker-image/
 description: Learn how to find and download a Docker image from Docker hub, and the function of Docker images.
 docker-versions: 1.8.2

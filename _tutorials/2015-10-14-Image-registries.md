@@ -1,7 +1,7 @@
 ---
 title: Image registries
 author: Zack Shoylev <zack.shoylev@rackspace.com>
-date: 2015-10-16
+date: 2015-10-14
 permalink: docs/references/image-registries/
 description: Learn about Docker Hub and other public registries that house Docker images
 topics:

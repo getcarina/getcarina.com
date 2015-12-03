@@ -1,7 +1,7 @@
 ---
 title: Application logging
 author: Matt Darby <matt.darby@rackspace.com>
-date: 2015-10-26
+date: 2015-10-09
 permalink: docs/references/application-logging/
 description: Learn how to log applications with Carina
 docker-versions:

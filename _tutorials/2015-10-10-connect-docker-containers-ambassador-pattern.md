@@ -1,7 +1,7 @@
 ---
 title: Connect containers by using the ambassador pattern
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-10-01
+date: 2015-10-10
 permalink: docs/tutorials/connect-docker-containers-ambassador-pattern/
 description: Learn how to connect Docker containers by using the ambassador pattern so that they can communicate with each other over the network and across Docker hosts
 docker-versions:

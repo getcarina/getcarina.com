@@ -1,7 +1,7 @@
 ---
 title: Docker on Windows
 author: Constanze Kratel <constanze.kratel@rackspace.com>
-date: 2015-10-26
+date: 2015-10-05
 permalink: docs/tutorials/docker-on-windows/
 description: Learn how to get started with Docker on Windows
 docker-versions:

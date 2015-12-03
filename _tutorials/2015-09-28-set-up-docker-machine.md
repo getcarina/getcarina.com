@@ -1,7 +1,7 @@
 ---
 title: Set up a virtual environment with a Docker host
 author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-10-26
+date: 2015-09-28
 permalink: docs/tutorials/set-up-docker-machine/
 description: Learn how to set up your virtual environment with a Docker host using a Docker Machine
 docker-versions:

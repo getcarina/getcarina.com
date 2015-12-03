@@ -1,7 +1,7 @@
 ---
 title: How to stop a non-responsive running container
 author: Stephanie Fillmon <stephanie.fillmon@rackspace.com>
-date: 2015-10-26
+date: 2015-10-08
 permalink: docs/tutorials/stop-nonresponsive-running-container/
 description: Learn how to stop a running container that doesn't respond to standard kill commands.
 docker-versions:

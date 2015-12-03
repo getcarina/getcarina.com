@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to container technologies: container networking'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-26
+date: 2015-10-20
 permalink: docs/best-practices/container-technologies-networking/
 description: Compare tools for container networking
 docker-versions:

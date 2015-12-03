@@ -1,7 +1,7 @@
 ---
 title: Docker networking basics
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-10-08
+date: 2015-10-12
 permalink: docs/tutorials/docker-networking-basics/
 description: Learn how to connect Docker containers over a network
 docker-versions:

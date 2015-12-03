@@ -1,7 +1,7 @@
 ---
 title: 'Docker best practices: Dockerfile'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-01
+date: 2015-10-13
 permalink: docs/best-practices/docker-best-practices-dockerfile/
 description: Explore methods of creating and customizing container images
 docker-versions:

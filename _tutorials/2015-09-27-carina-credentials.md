@@ -1,7 +1,7 @@
 ---
 title: Download Carina credentials
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2015-10-26
+date: 2015-09-27
 permalink: docs/references/carina-credentials/
 description: Learn how to use your Carina credentials to get started with containers
 featured: true

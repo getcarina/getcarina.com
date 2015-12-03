@@ -1,7 +1,7 @@
 ---
 title: Communicate between containers over the ServiceNet internal network
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-11-03
+date: 2015-10-20
 permalink: docs/tutorials/servicenet/
 description: Learn how containers can communicate over the ServiceNet internal network
 docker-versions:

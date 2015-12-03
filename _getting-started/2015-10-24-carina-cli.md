@@ -1,7 +1,7 @@
 ---
 title: Getting started with the Carina CLI
 author: Anne Gentle <anne.gentle@rackspace.com>
-date: 2015-10-26
+date: 2015-10-24
 permalink: docs/getting-started/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
 topics:

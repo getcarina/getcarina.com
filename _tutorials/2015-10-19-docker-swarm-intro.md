@@ -1,7 +1,7 @@
 ---
 title: Introduction to Docker Swarm
 author: Matt Darby <matt.darby@rackspace.com>
-date: 2015-10-26
+date: 2015-10-19
 permalink: docs/tutorials/introduction-docker-swarm/
 description: Learn how Docker Swarm enables easy cluster management
 docker-versions:

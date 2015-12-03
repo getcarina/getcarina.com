@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to container technologies: container operating systems'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-26
+date: 2015-10-19
 permalink: docs/best-practices/container-technologies-operating-systems/
 description: Compare container-oriented operating systems
 topics:

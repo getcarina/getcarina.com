@@ -1,7 +1,7 @@
 ---
 title: 'Introduction to container technologies: Docker'
 author: Mike Metral <mike.metral@rackspace.com>
-date: 2015-10-26
+date: 2015-10-22
 permalink: docs/best-practices/container-technologies-docker/
 description: Explore Docker
 topics:
