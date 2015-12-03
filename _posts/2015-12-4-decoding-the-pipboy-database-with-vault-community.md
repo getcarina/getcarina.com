@@ -9,10 +9,10 @@ excerpt: >
   a community of hackers has come together to decode the pipboy data and database.
   There are now libraries for several languages
 categories:
- - nodejs
  - Fallout 4
  - decoding
  - community
+ - libraries
 authorIsRacker: true
 ---
 
@@ -21,8 +21,9 @@ packages for interacting with the Fallout 4 server have been posted:
 
 * Node.js - [pipboylib](https://github.com/robcoindustries/pipboylib)
 * Go - [pipboygo](https://github.com/nkatsaros/pipboygo)
-* Ruby - []()
-* Python - [pypipboy](https://github.com/matzman666/PyPipboy)
+* Ruby - [pippipe, pipparse](https://github.com/mattbaker/pipboy-explorations)
+* Python - [pypipboy](https://github.com/matzman666/PyPipboy), [pipulator](https://github.com/Gavitron/pipulator)
+* Java - [PipBoyClient](https://github.com/cpopp/PipBoyClient)
 * .NET - [Fallout4-PipBoy](https://github.com/weberph/Fallout4-PipBoy)
 
 Beyond bindings there are a also quite a few documentation efforts to bring
@@ -30,6 +31,12 @@ together information about the overall protocol:
 
 * [nimvek/pipboy](https://github.com/NimVek/pipboy)
 * [mattbaker/pipboyspec](https://github.com/mattbaker/pipboyspec)
+
+There are also several UI efforts:
+
+* Electron App - [pipboy](https://github.com/robcoindustries/pipboy)
+* Nodejs Server - [pipboyclient](https://github.com/AlexanderDzhoganov/pipboyclient)
+* Go server - [pipboygo](https://github.com/nkatsaros/pipboygo)
 
 The [pipboylib](https://github.com/robcoindustries/pipboylib) bindings culminated
 in the beginnings of an [Electron app](https://github.com/robcoindustries/pipboy):
@@ -42,4 +49,8 @@ in the beginnings of an [Electron app](https://github.com/robcoindustries/pipboy
 to lay down some foundations for people to build upon.
 
 The intention with pipboy is to create a cross platform pipboy UI for Fallout 4
-that you can run on a separate screen.
+that you can run on a separate screen which is approachable for others to hack
+on together. [Electron](http://electron.atom.io/) forms the foundation for all
+this using standard web tech: HTML, CSS, and JavaScript with Chromium and Node.js.
+If you're familiar with the Docker suite, [Kitematic](https://kitematic.com/) is
+also an electron app.
