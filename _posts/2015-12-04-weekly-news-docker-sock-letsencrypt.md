@@ -15,6 +15,26 @@ categories:
 authorIsRacker: true
 ---
 
+# Status page
+
+We now have a status page up at https://carinabyrackspace.statuspage.io/
+
+There have been issues with the public swarm discovery service and we'd like
+to keep you all apprised of issues anywhere on our platform.
+
+# docker.sock is now available
+
+You can now mount `docker.sock` directly and use it:
+
+```
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED                  STATUS                  PORTS                                      NAMES
+a0581acf56c4        docker              "docker-entrypoint.sh"   Less than a second ago   Up Less than a second                                              kickass_perlman
+b8afd1744cb3        nginxcellent        "nginx -g 'daemon off"   18 minutes ago           Up 18 minutes           0.0.0.0:80->80/tcp, 0.0.0.0:443->443/tcp   nginx
+423c16bf838d        swarm:1.0.0         "/swarm manage -H=tcp"   27 hours ago             Up 27 hours             2375/tcp, 0.0.0.0:2376->2376/tcp           swarm-manager
+e7a9df39621d        swarm:1.0.0         "/swarm join --addr=1"   27 hours ago             Up 27 hours             2375/tcp                                   swarm-agent
+```
+
 # Let's Encrypt with Free Certificates
 
 Yesterday [Let's Encrypt](https://letsencrypt.org/) went public, providing
@@ -176,7 +196,8 @@ $ curl https://lets.ephem.it
 We're Let's Encrypted!
 ```
 
-That's it! You now have encryption set up for a site!
+That's it! You now have encryption set up for a site! You'll need to renew the
+certificates every 90 days, which is worth another post.
 
 ## Clean up
 
