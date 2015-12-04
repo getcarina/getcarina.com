@@ -15,6 +15,8 @@ categories:
 authorIsRacker: true
 ---
 
+# Let's Encrypt with Free Certificates
+
 Yesterday [Let's Encrypt](https://letsencrypt.org/) went public, providing
 TLS certificates to all, for *free*.
 
