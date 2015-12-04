@@ -111,46 +111,7 @@ need is an `nginx.conf`. The one I used comes from the [Mozilla SSL Configuratio
 Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/).
 
 ```nginx
-server {
-    # Always redirect to the HTTPS endpoint
-    listen         80;
-    server_name    lets.ephem.it;
-    return         301 https://$server_name$request_uri;
-}
-
-server {
-    listen 443 ssl;
-
-    # certs sent to the client in SERVER HELLO are concatenated in ssl_certificate
-    ssl_certificate /etc/letsencrypt/live/lets.ephem.it/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/lets.ephem.it/privkey.pem;
-    ssl_session_timeout 1d;
-    ssl_session_cache shared:SSL:50m;
-    ssl_session_tickets off;
-
-    # modern configuration. tweak to your needs.
-    ssl_protocols TLSv1.1 TLSv1.2;
-    ssl_ciphers 'ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-DSS-AES128-GCM-SHA256:kEDH+AESGCM:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA:ECDHE-ECDSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-DSS-AES128-SHA256:DHE-RSA-AES256-SHA256:DHE-DSS-AES256-SHA:DHE-RSA-AES256-SHA:!aNULL:!eNULL:!EXPORT:!DES:!RC4:!3DES:!MD5:!PSK';
-    ssl_prefer_server_ciphers on;
-
-    # HSTS (ngx_http_headers_module is required) (15768000 seconds = 6 months)
-    add_header Strict-Transport-Security max-age=15768000;
-
-    # OCSP Stapling ---
-    # fetch OCSP records from URL in ssl_certificate and cache them
-    ssl_stapling on;
-    ssl_stapling_verify on;
-
-    ## verify chain of trust of OCSP response using Root CA and Intermediate certs
-    ssl_trusted_certificate /etc/letsencrypt/live/lets.ephem.it/chain.pem;
-
-    resolver 8.8.8.8 8.8.4.4 valid=86400;
-
-    # Simple static site
-    location / {
-      root /data/www;
-    }
-}
+{% include_relative 2015-12-04-weekly-news-docker-sock-letsencrypt/lets.conf %}
 ```
 
 The most important parts to modify are:
@@ -167,9 +128,7 @@ Now that you have your own default.conf, we'll need a Docker image to run. Here'
 the Dockerfile:
 
 ```Dockerfile
-FROM nginx
-COPY lets.conf /etc/nginx/conf.d/default.conf
-COPY index.html /data/www/index.html
+{% include_relative 2015-12-04-weekly-news-docker-sock-letsencrypt/Dockerfile %}
 ```
 
 index.html is just the text "We're Let's Encrypted!"
