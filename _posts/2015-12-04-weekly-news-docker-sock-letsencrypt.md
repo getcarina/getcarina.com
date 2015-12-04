@@ -1,14 +1,18 @@
 ---
-title: "Weekly news: docker.sock access, service discovery and letsencrypt!"
+title: "Weekly news: docker.sock access and letsencrypt!"
 date: 2015-12-04 13:00
 comments: true
-author: Jesse Noller <jesse.noller@rackspace.com>
+author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup: We give you docker.sock, free SSL certs, and more!
+  In this week's roundup: We give you docker.sock, configure free letsencrypt
+  TLS/SSL certs, and more!
 categories:
- - Consul
- - Swarm
+ - Encryption
+ - TLS
+ - SSL
+ - Docker
+ - letsencrypt
  - Carina
  - News
  - Security
@@ -207,3 +211,7 @@ now that you have the certs:
 ```
 docker rmi quay.io/letsencrypt/letsencrypt:latest
 ```
+
+# Wrap up
+
+That's all folks! See you next time.
