@@ -1,12 +1,12 @@
 # Carina by Rackspace&mdash;Guidelines for content contributors
 
-This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Carina by Rackspace. This file provides guidelines for the documentation process, from creating an article, to getting it reviewed, to publishing it. 
+This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Carina by Rackspace. This file provides guidelines for the documentation process, from creating an article, to getting it reviewed, to publishing it.
 
 ### Writing
 
 The content is split into three separate collections: **tutorials**, **best practices**, and **getting started**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_getting-started`. The `_assets` directory contains images for the content.
 
-Right now, file names are being prefixed with a number like `001-` to control their display order. This method will probably change.
+File names are prefixed with an ISO8601 date (YYYY-MM-DD) in order to reasonably sort them when listing source files. This prefix does not affect the sorting of files when they are displayed on the website.
 
 #### Templates
 
@@ -48,15 +48,15 @@ Following are some specific guidelines for Carina content:
 
 - To link to another article, use the permalink for that article, preceded by `{{site.baseurl}}`. The permalink is defined in the frontmatter metadata of the article. Format the link as follows: `({{site.baseurl}}/docs/<directoryName>/<articleName>/)`. For example, `({{site.baseurl}}/docs/tutorials/introduction-docker-swarm/)`. Note the use of both leading and trailing slashes.
 
-- To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`. 
+- To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`.
 
-    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)`. 
-    
+    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)`.
+
     If the heading is long or contains special characters, you can create a custom anchor.
-    
-- When creating complex lists, such as procedures with sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists. 
 
-- In articles, you can refer to the service simply as Carina. You do not need to include the TM symbol or the phrase "by Rackspace." 
+- When creating complex lists, such as procedures with sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists.
+
+- In articles, you can refer to the service simply as Carina. You do not need to include the TM symbol or the phrase "by Rackspace."
 
 - Use the following capitalization when referring to the control panel: Carina Control Panel
 
