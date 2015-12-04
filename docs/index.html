@@ -50,12 +50,28 @@ layout: default
       <div class="articles">
         {% for collection in site.collections %}
           <ul data-ng-show="docs.showCollection == '{{ collection[0] }}'" id="{{ collection[0] }}">
-          {% for doc in collection[1].docs %}
+            {% assign collection_docs = collection[1].docs | sort: 'date' | reverse %}
+
+            {% comment %} first we have to show the "featured" docs for each collection {% endcomment %}
+            {% for doc in collection_docs %}
+            {% if doc.featured %}
             <li data-collection="{{ collection[0] }}">
               <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
               <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
               <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
             </li>
+            {% endif %}
+            {% endfor %}
+
+            {% comment %} then, we can show all non-featured docs for a collection {% endcomment %}
+            {% for doc in collection_docs %}
+            {% if doc.featured == nil or doc.featured == false %}
+            <li data-collection="{{ collection[0] }}">
+              <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
+              <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
+              <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
+            </li>
+            {% endif %}
             {% endfor %}
           </ul>
         {% endfor %}
