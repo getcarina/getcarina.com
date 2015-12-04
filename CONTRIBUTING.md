@@ -21,28 +21,28 @@ Templates for content are available in each of the directories:
 
 #### General style guidelines
 
-Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
+Use the following guidelines, which are described in detail in [style-guidelines.md](style-guidelines.md):
 
-- Use [sentence-style capitalization for titles and headings](https://one.rackspace.com/display/devdoc/Titles+and+headings#Titlesandheadings-Capitalizationoftitlesandheadings)
-- Use [consistent text formatting](https://one.rackspace.com/display/devdoc/Text+formatting)
-- Write [clear and consistent code examples](https://one.rackspace.com/display/devdoc/Code+examples)
-- Use [active voice](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Useactivevoice)
-- Use [present tense](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Usepresenttense)
-- Write to the user by using [second person and imperative mood](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Writetoyou(thecustomer))
-- Write [clear and consistent step text](https://one.rackspace.com/display/devdoc/Tasks+and+procedures)
-- Clarify [pronouns such as *it*, *this*, *there*, and *that*](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Clarifypronouns)
-- Clarify [gerunds and participles](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Clarifygerundsandparticiples(verbsendingin-ingand-ed))
-- Use [consistent terminology](https://one.rackspace.com/display/devdoc/Terminology)
+- Use sentence-style capitalization for titles and headings
+- Use consistent text formatting
+- Write clear and consistent code examples
+- Use active voice
+- Use present tense
+- Write to the user by using second person and imperative mood
+- Write clear and consistent step text
+- Clarify pronouns such as *it*, *this*, *there*, and *that*
+- Clarify gerunds and participles
+- Use consistent terminology
 
 #### Carina specific style guidelines
 
 Following are some specific guidelines for Carina content:
 
-- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles.
+- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5). If you need more than three levels, you should consider breaking your article into two or more articles.
 
 - If a title contains a special character, such as a colon, enclose the title with single quotation marks.
 
-- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`. For more information, see [Placeholder text](https://one.rackspace.com/display/devdoc/Placeholder+%28variable%29+text).
+- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`.
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
 
