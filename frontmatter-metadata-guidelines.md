@@ -3,8 +3,9 @@
 Article templates have the following frontmatter metadata:
 
 - title: Title of article
-- author: First Last &lt;first.last@rackspace.com> 
+- author: First Last &lt;first.last@rackspace.com>
 - date: yyyy-mm-dd
+- featured: true
 - permalink: docs/article-type/slug-of-article/
 - description: Article description with keywords
 - docker-versions:
@@ -30,12 +31,16 @@ Use the following guidelines when creating titles for your articles:
 - If a title contains a special character, such as a colon, enclose the title with single quotation marks. For example: `title: 'Container ecosystem: Mesos versus OpenStack'`
 
 ## Author
-Enter the first name and last name of the main person responsible for the creation of the content, followed by the author's Rackspace email address enclosed in angle brackets. 
+Enter the first name and last name of the main person responsible for the creation of the content, followed by the author's Rackspace email address enclosed in angle brackets.
 
 Currently, only one author can be listed.
 
 ## Date
 Use the format shown in the template, which is the ISO 8601 format and should be acceptable for international audiences: ***yyyy-mm-dd***. For example, for October 1, 2015, use **2015-10-01**.
+
+## Featured
+
+Optional. Set this value to `true` to mark the document as featured. This will typically result in the file being displayed before any documents that are not featured. If the document should _not_ be featured, set this value to `false` or omit it altogether.
 
 ## Permalink
 Create the permalink for your article by using the following format:
@@ -48,7 +53,7 @@ docs/*article-type*/*slug-of-article*/
 
 - Always include a trailing slash, and never include a slash preceding **docs**.
 
-**Examples:** 
+**Examples:**
 
 - **docs/tutorials/containers-101/**
 - **docs/references/error-running-interactive-docker-shell-windows/**
@@ -59,15 +64,15 @@ The description should provide a succinct and clear overview of the article, usi
 
 - Ensure that the description makes sense when displayed as stand-alone text.
 
-- Limit the description to one or two brief sentences. The length restriction is about 160 characters. 
+- Limit the description to one or two brief sentences. The length restriction is about 160 characters.
 
-- Do not just repeat the title of the article! You can, however, draw content from your introduction or other key parts of the article. 
+- Do not just repeat the title of the article! You can, however, draw content from your introduction or other key parts of the article.
 
 - Use as many keywords as possible. Use words that you anticipate might be associated with a user’s query.
- 
+
 - Be persuasive. Use action words to draw the user in and pique their interest. For example, start the description with an action phrase like “Learn how to” or “Learn about” or “Get the information you need.”
 
-- For tutorials and tasks, explain what the user accomplishes by completing the task or tutorial (the purpose of the task or tutorial). You might include who performs the task, why it is necessary, when to perform it, or where to perform it. For example: 
+- For tutorials and tasks, explain what the user accomplishes by completing the task or tutorial (the purpose of the task or tutorial). You might include who performs the task, why it is necessary, when to perform it, or where to perform it. For example:
 
   - Learn how Docker deploys your applications to containers and interacts with the Rackspace Container Service to help you build, ship, and run your applications anywhere
 
@@ -83,16 +88,16 @@ List the version of Docker that you used when creating the article. This should 
 
 Currently, Docker versions include up to three digits: *x*.*x*.*x*
 
-Example: 
+Example:
 
 - 1.8.2
 
-**Note:** Some best practice, conceptual, or other articles might not be asscoiated with a version of Docker. If this field does not apply to your content, omit the field entirely from your article's metadata. 
+**Note:** Some best practice, conceptual, or other articles might not be asscoiated with a version of Docker. If this field does not apply to your content, omit the field entirely from your article's metadata.
 
 ## Topics
 
 *Topics* are used to categorize and filter the content for users, and might eventually be used as a mechanism to suggest articles to users as they perform a task in the control panel.  
 
-Using standard topics is a key to successful categorization and filtering of information for users. 
+Using standard topics is a key to successful categorization and filtering of information for users.
 
 [Standard list of terms and further guidelines TBD]
