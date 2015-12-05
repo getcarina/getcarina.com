@@ -111,7 +111,7 @@ need is an `nginx.conf`. The one I used comes from the [Mozilla SSL Configuratio
 Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/).
 
 ```nginx
-{% include_relative 2015-12-04-weekly-news-docker-sock-letsencrypt/lets.conf %}
+{% include_relative _2015-12-04-weekly-news-docker-sock-letsencrypt/lets.conf %}
 ```
 
 The most important parts to modify are:
@@ -128,7 +128,7 @@ Now that you have your own default.conf, we'll need a Docker image to run. Here'
 the Dockerfile:
 
 ```Dockerfile
-{% include_relative 2015-12-04-weekly-news-docker-sock-letsencrypt/Dockerfile %}
+{% include_relative _2015-12-04-weekly-news-docker-sock-letsencrypt/Dockerfile %}
 ```
 
 index.html is just the text "We're Let's Encrypted!"
