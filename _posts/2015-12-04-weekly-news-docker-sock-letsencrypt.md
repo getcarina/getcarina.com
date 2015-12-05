@@ -19,6 +19,9 @@ categories:
 authorIsRacker: true
 ---
 
+In this week's roundup we announce our status page, give you `docker.sock`, and
+configure free letsencrypt TLS/SSL certs.
+
 ## Status page
 
 We now have a status page up at https://carinabyrackspace.statuspage.io/
@@ -44,13 +47,13 @@ e7a9df39621d        swarm:1.0.0         "/swarm join --addr=1"   27 hours ago   
 Yesterday [Let's Encrypt](https://letsencrypt.org/) went public, providing
 TLS certificates to all, for *free*.
 
-On Carina, you can set this up pretty quickly.
+On Carina or any Docker host, you can set this up pretty quickly.
 
 Prerequisites:
 
-* [Carina cluster with only one segment](https://getcarina.com/docs/tutorials/create-connect-cluster/) and Docker environment set up
-* DNS "A" record set to the IP of your node
-* `docker` at your fingertips
+* A public facing Docker host or a [Carina cluster with only one segment](https://getcarina.com/docs/tutorials/create-connect-cluster/)
+* Your Docker environment set up
+* DNS "A" record set to the IP of your host
 
 ### Setup the volume for lets-encrypt data
 
@@ -71,8 +74,8 @@ of service (recommended reading) as well as generate certs for a domain. You'll
 want to set both the domain you want to use as well as the email address to be
 the point of contact.
 
-:warning: You *must* have an A record set to this host (`$DOCKER_HOST`) in order
-for letsencrypt to be able to verify you own the domain. :warning:
+⚠️ You *must* have an A record set to this host (`$DOCKER_HOST`) in order
+for letsencrypt to be able to verify you own the domain. ⚠️
 
 ```bash
 $ docker run -it --rm -p 443:443 -p 80:80 \
