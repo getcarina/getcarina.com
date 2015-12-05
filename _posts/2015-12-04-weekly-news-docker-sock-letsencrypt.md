@@ -19,14 +19,14 @@ categories:
 authorIsRacker: true
 ---
 
-# Status page
+## Status page
 
 We now have a status page up at https://carinabyrackspace.statuspage.io/
 
 There have been issues with the public swarm discovery service and we'd like
 to keep you all apprised of issues anywhere on our platform.
 
-# docker.sock is now available
+## docker.sock is now available
 
 You can now mount `docker.sock` directly and use it:
 
@@ -39,7 +39,7 @@ b8afd1744cb3        nginxcellent        "nginx -g 'daemon off"   18 minutes ago 
 e7a9df39621d        swarm:1.0.0         "/swarm join --addr=1"   27 hours ago             Up 27 hours             2375/tcp                                   swarm-agent
 ```
 
-# Let's Encrypt with Free Certificates
+## Let's Encrypt with Free Certificates
 
 Yesterday [Let's Encrypt](https://letsencrypt.org/) went public, providing
 TLS certificates to all, for *free*.
@@ -52,19 +52,19 @@ Prerequisites:
 * DNS "A" record set to the IP of your node
 * `docker` at your fingertips
 
-## Setup the volume for lets-encrypt data
+### Setup the volume for lets-encrypt data
 
 ```
 docker volume create --name letsencrypt
 ```
 
-## Setup the volume for lets-encrypt backups (optional, recommended)
+### Setup the volume for lets-encrypt backups (optional, recommended)
 
 ```
 docker volume create --name letsencrypt-backups
 ```
 
-## Let's Encrypt!
+### Let's Encrypt!
 
 Now we'll use Let's Encrypt's Docker image to automate acceptance of the terms
 of service (recommended reading) as well as generate certs for a domain. You'll
@@ -96,7 +96,7 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 ```
 
-## Accessing the certificates
+### Accessing the certificates
 
 The certs are available on the `letsencrypt` volume at `{mountpoint}/live/{domain}/`.
 
@@ -162,7 +162,7 @@ We're Let's Encrypted!
 That's it! You now have encryption set up for a site! You'll need to renew the
 certificates every 90 days, which is worth another post.
 
-## Clean up
+### Clean up
 
 While not necessary, you can do ahead and delete the docker image for letsencrypt
 now that you have the certs:
@@ -171,6 +171,6 @@ now that you have the certs:
 docker rmi quay.io/letsencrypt/letsencrypt:latest
 ```
 
-# Wrap up
+## Wrap up
 
 That's all folks! See you next time.
