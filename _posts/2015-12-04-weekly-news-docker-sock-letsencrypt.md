@@ -74,7 +74,7 @@ of service (recommended reading) as well as generate certs for a domain. You'll
 want to set both the domain you want to use as well as the email address to be
 the point of contact.
 
-⚠️ You *must* have an A record set to this host (`$DOCKER_HOST`) in order
+⚠️  You *must* have an A record set to this host (`$DOCKER_HOST`) in order
 for letsencrypt to be able to verify you own the domain. ⚠️
 
 ```bash
