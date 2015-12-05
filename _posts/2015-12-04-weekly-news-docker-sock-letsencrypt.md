@@ -167,7 +167,7 @@ certificates every 90 days, which is worth another post.
 
 ### Clean up
 
-While not necessary, you can do ahead and delete the docker image for letsencrypt
+While not necessary, you can go ahead and delete the docker image for letsencrypt
 now that you have the certs:
 
 ```bash
