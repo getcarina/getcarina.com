@@ -30,7 +30,7 @@ to keep you all apprised of issues anywhere on our platform.
 
 You can now mount `docker.sock` directly and use it:
 
-```
+```bash
 $ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED                  STATUS                  PORTS                                      NAMES
 a0581acf56c4        docker              "docker-entrypoint.sh"   Less than a second ago   Up Less than a second                                              kickass_perlman
@@ -54,14 +54,14 @@ Prerequisites:
 
 ### Setup the volume for lets-encrypt data
 
-```
-docker volume create --name letsencrypt
+```bash
+$ docker volume create --name letsencrypt
 ```
 
 ### Setup the volume for lets-encrypt backups (optional, recommended)
 
-```
-docker volume create --name letsencrypt-backups
+```bash
+$ docker volume create --name letsencrypt-backups
 ```
 
 ### Let's Encrypt!
@@ -74,12 +74,12 @@ the point of contact.
 :warning: You *must* have an A record set to this host (`$DOCKER_HOST`) in order
 for letsencrypt to be able to verify you own the domain. :warning:
 
-```
-docker run -it --rm -p 443:443 -p 80:80 \
-  -v letsencrypt:/etc/letsencrypt \
-  -v letsencrypt-backups:/var/lib/letsencrypt \
-  --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
-  auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
+```bash
+$ docker run -it --rm -p 443:443 -p 80:80 \
+    -v letsencrypt:/etc/letsencrypt \
+    -v letsencrypt-backups:/var/lib/letsencrypt \
+    --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
+    auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
 ```
 
 After that, you should see output like the following:
@@ -167,8 +167,8 @@ certificates every 90 days, which is worth another post.
 While not necessary, you can do ahead and delete the docker image for letsencrypt
 now that you have the certs:
 
-```
-docker rmi quay.io/letsencrypt/letsencrypt:latest
+```bash
+$ docker rmi quay.io/letsencrypt/letsencrypt:latest
 ```
 
 ## Wrap up
