@@ -40,9 +40,7 @@ From here you could follow the [manual deployment instructions](https://shipyard
 
 So I made you a bash script:
 
-```bash
-
-```
+<script src="https://gist.github.com/jnoller/d643ce38ced8548a7dcc.js"></script>
 
 If you load your Carina credentials into the environment (as I did above) and then run  `./script.sh install`; you'll see something like:
 
