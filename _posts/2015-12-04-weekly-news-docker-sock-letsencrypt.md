@@ -5,7 +5,7 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup: We give you docker.sock, configure free letsencrypt
+  In this week's roundup we give you docker.sock, configure free letsencrypt
   TLS/SSL certs, and more!
 categories:
  - Encryption
@@ -24,10 +24,12 @@ configure free letsencrypt TLS/SSL certs.
 
 ## Status page
 
-We now have a status page up at https://carinabyrackspace.statuspage.io/
+We now have a [status page](https://carinabyrackspace.statuspage.io/)
 
 There have been issues with the public swarm discovery service and we'd like
-to keep you all apprised of issues anywhere on our platform.
+to keep you all apprised of issues anywhere on our platform. We'll be migrating
+off of the public swarm discovery service as soon as we can. HugOps to the Swarm team
+at Docker.
 
 ## docker.sock is now available
 
@@ -54,6 +56,8 @@ Prerequisites:
 * A public facing Docker host or a [Carina cluster with only one segment](https://getcarina.com/docs/tutorials/create-connect-cluster/)
 * Your Docker environment set up
 * DNS "A" record set to the IP of your host
+
+Note: if you're on Docker < 1.9, your commands will [differ just a little bit](#note-for-previous-docker-versions).
 
 ### Setup the volume for lets-encrypt data
 
@@ -97,6 +101,19 @@ IMPORTANT NOTES:
 
    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
    Donating to EFF:                    https://eff.org/donate-le
+```
+
+#### Note for previous Docker versions
+
+Docker 1.9 introduced both volumes and volume drivers, which made the above a bit simpler. For previous versions of Docker
+you'll have to change the commands a bit:
+
+```bash
+$ docker create -v '/etc/letsencrypt' -v '/var/lib/letsencrypt' --name certs cirros
+$ docker run -it --rm -p 443:443 -p 80:80 \
+  --volumes-from certs \
+  --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
+  auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
 ```
 
 ### Accessing the certificates
@@ -152,7 +169,7 @@ Removing intermediate container 922f6c7890e8
 Successfully built 41e0e1ef05b8
 ```
 
-Now run it and `curl` against it:
+Now run it and `curl` against [lets.ephem.it](https://lets.ephem.it):
 
 ```bash
 $ docker run -d -p 80:80 -p 443:443 \
