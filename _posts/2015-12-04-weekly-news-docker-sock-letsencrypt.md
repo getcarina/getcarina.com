@@ -5,8 +5,8 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup we give you docker.sock, configure free letsencrypt
-  TLS/SSL certs, and more!
+  In this week's roundup, we give you docker.sock, configure free Let's Encrypt
+  TLS/SSL certificates, and announce our status page.
 categories:
  - Encryption
  - TLS
@@ -24,11 +24,11 @@ configure free letsencrypt TLS/SSL certs.
 
 ## Status page
 
-We now have a [status page](https://carinabyrackspace.statuspage.io/)
+We now have a [status page](https://carinabyrackspace.statuspage.io/). We'd like to keep
+you apprised of issues anywhere on our platform. 
 
-There have been issues with the public swarm discovery service and we'd like
-to keep you all apprised of issues anywhere on our platform. We'll be migrating
-off of the public swarm discovery service as soon as we can. HugOps to the Swarm team
+Recently there have been issues with the public Swarm discovery service. We'll be migrating 
+off of the public Swarm discovery service as soon as we can. HugOps to the Swarm team
 at Docker.
 
 ## docker.sock is now available
@@ -44,9 +44,9 @@ b8afd1744cb3        nginxcellent        "nginx -g 'daemon off"   18 minutes ago 
 e7a9df39621d        swarm:1.0.0         "/swarm join --addr=1"   27 hours ago             Up 27 hours             2375/tcp                                   swarm-agent
 ```
 
-## Let's Encrypt with Free Certificates
+## Let's Encrypt with free certificates
 
-Yesterday [Let's Encrypt](https://letsencrypt.org/) went public, providing
+Yesterday, [Let's Encrypt](https://letsencrypt.org/) went public, providing
 TLS certificates to all, for *free*.
 
 On Carina or any Docker host, you can set this up pretty quickly.
@@ -57,15 +57,15 @@ Prerequisites:
 * Your Docker environment set up
 * DNS "A" record set to the IP of your host
 
-Note: if you're on Docker < 1.9, your commands will [differ just a little bit](#note-for-previous-docker-versions).
+Note: If you're on Docker < 1.9, your commands will [differ just a little bit](#note-for-previous-docker-versions).
 
-### Setup the volume for lets-encrypt data
+### Set up the volume for letsencrypt data
 
 ```bash
 $ docker volume create --name letsencrypt
 ```
 
-### Setup the volume for lets-encrypt backups (optional, recommended)
+### Set up the volume for letsencrypt backups (optional, recommended)
 
 ```bash
 $ docker volume create --name letsencrypt-backups
@@ -73,13 +73,13 @@ $ docker volume create --name letsencrypt-backups
 
 ### Let's Encrypt!
 
-Now we'll use Let's Encrypt's Docker image to automate acceptance of the terms
-of service (recommended reading) as well as generate certs for a domain. You'll
-want to set both the domain you want to use as well as the email address to be
+Now you can use Let's Encrypt's Docker image to automate acceptance of the terms
+of service (recommended reading) as well as generate certificates for a domain. You'll
+want to set both the domain that you want to use and the email address to be
 the point of contact.
 
 ⚠️  You *must* have an A record set to this host (`$DOCKER_HOST`) in order
-for letsencrypt to be able to verify you own the domain. ⚠️
+for Let's Encrypt to be able to verify you own the domain. ⚠️
 
 ```bash
 $ docker run -it --rm -p 443:443 -p 80:80 \
@@ -105,8 +105,8 @@ IMPORTANT NOTES:
 
 #### Note for previous Docker versions
 
-Docker 1.9 introduced both volumes and volume drivers, which made the above a bit simpler. For previous versions of Docker
-you'll have to change the commands a bit:
+Docker 1.9 introduced both volumes and volume drivers, which made the above a bit simpler. For previous versions of Docker,
+you have to change the commands a bit:
 
 ```bash
 $ docker create -v '/etc/letsencrypt' -v '/var/lib/letsencrypt' --name certs cirros
@@ -118,7 +118,7 @@ $ docker run -it --rm -p 443:443 -p 80:80 \
 
 ### Accessing the certificates
 
-The certs are available on the `letsencrypt` volume at `{mountpoint}/live/{domain}/`.
+The certificates are available on the `letsencrypt` volume at `{mountpoint}/live/{domain}/`.
 
 ```bash
 $ docker run -it -v letsencrypt:/etc/letsencrypt \
@@ -126,8 +126,8 @@ $ docker run -it -v letsencrypt:/etc/letsencrypt \
 cert.pem       chain.pem      fullchain.pem  privkey.pem
 ```
 
-Let's launch an nginx container to verify this is all set up. First thing we'll
-need is an `nginx.conf`. The one I used comes from the [Mozilla SSL Configuration
+Let's launch an NGINX container to verify this is all set up. The first thing
+needed is an `nginx.conf`. The one I used comes from the [Mozilla SSL Configuration
 Generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/).
 
 ```nginx
@@ -144,7 +144,7 @@ ssl_certificate_key /etc/letsencrypt/live/lets.ephem.it/privkey.pem;
 ssl_trusted_certificate /etc/letsencrypt/live/lets.ephem.it/chain.pem;
 ```
 
-Now that you have your own default.conf, we'll need a Docker image to run. Here's
+Now that you have your own `lets.conf` file, you need a Docker image to run. Here's
 the Dockerfile:
 
 ```Dockerfile
@@ -179,13 +179,13 @@ $ curl https://lets.ephem.it
 We're Let's Encrypted!
 ```
 
-That's it! You now have encryption set up for a site! You'll need to renew the
+That's it! You now have encryption set up for a site! You will need to renew the
 certificates every 90 days, which is worth another post.
 
 ### Clean up
 
-While not necessary, you can go ahead and delete the docker image for letsencrypt
-now that you have the certs:
+Although not necessary, you can delete the docker image for Let's Encrypt
+now that you have the certificates:
 
 ```bash
 $ docker rmi quay.io/letsencrypt/letsencrypt:latest
