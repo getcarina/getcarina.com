@@ -430,4 +430,7 @@ for the [pip boy library](https://github.com/RobCoIndustries/pipboylib),
 the [pipboyrelay](https://github.com/rgbkrk/pipboyrelay), or even on
 [this blog](https://github.com/getcarina/getcarina.com).
 
+If you're looking for libraries for your favorite language, check out the [follow
+up post about the libraries that are available as well as some work in progresses](https://getcarina.com/blog/decoding-the-pipboy-database-with-vault-community/).
+
 Follow me on Twitter [@rgbkrk](https://twitter.com/rgbkrk) to get more updates!

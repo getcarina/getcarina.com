@@ -17,7 +17,8 @@ categories:
 authorIsRacker: true
 ---
 
-In only a few days, the full protocol from Fallout 4 was decoded, and several
+After making a post about [discovering running Fallout 4 servers and relaying them],
+in only a few days, the full protocol from Fallout 4 was decoded. Several
 packages for interacting with the Fallout 4 server have been posted:
 
 * Node.js - [pipboylib](https://github.com/robcoindustries/pipboylib)
