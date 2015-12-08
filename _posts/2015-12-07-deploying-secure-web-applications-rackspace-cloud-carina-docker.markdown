@@ -5,7 +5,6 @@ date: 2015-12-07 23:59
 comments: true
 author: Lars Butler <lars.butler@rackspace.com>
 authorIsRacker: true
-authorAvatar: https://secure.gravatar.com/avatar/d7ed4dc5ad80ffecb3aed70fc7190e52
 published: true
 categories:
     - DevOps
