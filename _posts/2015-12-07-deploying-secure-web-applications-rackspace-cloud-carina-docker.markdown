@@ -243,7 +243,7 @@ Now, create a simple web application and run it on Carina.
 
         unzip secure-mydomain-com.zip
 
-9.  Change to the `secure-mydomain-com` directory. If this directory, create two
+9.  Change to the `secure-mydomain-com` directory. In this directory, create two
     files: a `main.go` file for the web application itself and a `Dockerfile`,
     from which the container for the web application will be built. The example
     web application is written in [Go](https://golang.org), which has a good
@@ -323,7 +323,7 @@ Now, create a simple web application and run it on Carina.
 
     <li>
     <code>EXPOSE 8080</code> The <code>main</code> web application will
-    bind to and listen on port 8080, so that port needs to be expose to the
+    bind to and listen on port 8080, so that port needs to be exposed to the
     outside world.
     </li>
 
@@ -449,7 +449,7 @@ Test the connectivity on the second container:
 
 5.  In the **Add Nodes** section, add your docker containers by clicking
     **Add External** node and pasting in the IP address and port combinations of
-    your containers (as you saw when runing `docker ps`).
+    your containers (as you saw when running `docker ps`).
 
     ![Load Balancer - Add Nodes]({% asset_path 2015-12-07-deploying-secure-web-applications-rackspace-cloud-carina-docker/4-create-load-balancer-add-nodes.png %})
 
@@ -654,7 +654,7 @@ load balancer.
         $ curl https://secure.mydomain.com
         hello, world!
 
-3.  Test it in a browser, too, and should get a "green light" on your secure
+3.  Test it in a browser, too, and you should get a "green light" on your secure
     connection!
 
 ![Browser - Secure HTTP]({% asset_path 2015-12-07-deploying-secure-web-applications-rackspace-cloud-carina-docker/8-https-secure.png %})
