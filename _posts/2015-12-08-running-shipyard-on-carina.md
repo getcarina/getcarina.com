@@ -24,6 +24,8 @@ A large restriction is that many Docker tools assume or requireÂ `--priviliged`Â
 
 If you have a UI or tool that you'd like to work with Carina, [definitely reach out to us](https://github.com/getcarina/feedback)!
 
+**Caveat Raptor**: I'm showing you the raw installation of shipyard - by default this starts a set of publicly accessible services, and containers. For the purposes of a demo this is ok, but if you plan on running this for any length of time, **please** set proper firewall rules, listening on [servicenet](https://getcarina.com/docs/tutorials/servicenet/) vs. public internet, lock down port/host access on the etcd container, etc. When we make an official tutorial these instructions will be added. 
+
 On to the fun.
 
 ### Follow your dreams.
