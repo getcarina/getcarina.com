@@ -1,6 +1,6 @@
 ---
 title: "Decoding Fallout 4's Pip-Boy database with a community of vault dwellers"
-date: 2015-12-04 18:00
+date: 2015-12-08 13:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
@@ -58,8 +58,6 @@ Having this basis makes it really easy to build things like a Pip-Boy database v
 
 ![Deathclaw Search]({% asset_path 2015-12-04-decoding-the-pipboy-database/deathclaw-search.png %})
 
-It would be great to pool efforts together to build an overall Electron app that
-people can add their own plugins and views to, off one common base. Just a dream
-for now though. We'd welcome your contributions in pull requests, patches, and
-issues over at [RobCoIndustries/pipboy](https://RobCoIndustries/pipboy). Head on
-over and check it out as we develop further.
+
+We'd welcome your contributions in pull requests, patches, and issues over at
+[RobCoIndustries/pipboy](https://RobCoIndustries/pipboy).
