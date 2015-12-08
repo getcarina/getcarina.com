@@ -33,7 +33,7 @@ I'm going to start with a completely fresh cluster. So, assuming you have the Ca
 ```bash
 carina create --wait shipyard \
   && carina credentials shipyard \
-  && eval `carina env shipyard`
+  && eval "$(carina env shipyard)"
 ```
 
 This creates a new cluster for you and loads it into your environment.
@@ -76,7 +76,7 @@ Now that it's running, browse to `http://SWARM-IP:8080` to see the Shipyard GUI;
 **Protip**: On OS X you can this to pop open the UI:
 
 ```
-open http://`docker run --net=host --rm racknet/ip public`:8080
+open http://"$(docker run --net=host --rm racknet/ip public)":8080
 ```
 
 ### Screenshots or it didn't happen!
