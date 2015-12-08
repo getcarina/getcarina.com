@@ -54,9 +54,9 @@ also an Electron app.
 
 Having this basis makes it really easy to build things like a Pip-Boy database viewer:
 
-![Database View]({% asset_path 2015-12-04-decoding-the-pipboy-database/db-viewer.png %})
+![Database View]({% asset_path 2015-12-08-decoding-the-pipboy-database/db-viewer.png %})
 
-![Deathclaw Search]({% asset_path 2015-12-04-decoding-the-pipboy-database/deathclaw-search.png %})
+![Deathclaw Search]({% asset_path 2015-12-08-decoding-the-pipboy-database/deathclaw-search.png %})
 
 
 We'd welcome your contributions in pull requests, patches, and issues over at
