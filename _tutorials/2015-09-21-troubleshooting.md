@@ -43,13 +43,14 @@ To resolve this error:
 
 ### Cannot connect to the Docker daemon
 
-If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you get the following error message:
+The following error indicates one of two possible issues:
 
 ```
 Cannot connect to the Docker daemon. Is "docker -d" running on this host?
-```
+```  
+1. You're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker). To resolve this error, request your network administrator to open that port or retry your actions from a location where port 2376 isn't blocked.
 
-To resolve this error, request your network administrator to open that port or retry your actions from a location where port 2376 isn't blocked.
+2. Your docker swarm has been stopped. To resolve this error, rebuild your cluster by following the "Edit Cluster" link in the control panel, or by using the carina CLI and the `carina rebuild <cluster-name>` command.
 
 ### Debug a running container
 
