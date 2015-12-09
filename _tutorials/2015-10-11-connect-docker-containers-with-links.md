@@ -19,7 +19,7 @@ can communicate over the network.
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/).
 
 ### Connect two containers with a Docker link
 
@@ -191,20 +191,20 @@ and how the containers use it to communicate.
 
 ### Troubleshooting
 
-See [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
+See [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-* [Docker networking basics](/docs/tutorials/networking-basics/)
+* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/networking-basics/)
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
-* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101](/docs/tutorials/service-discovery-101/)
-* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
+* [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
+* [Service discovery 101]({{ site.baseurl }}/docs/tutorials/service-discovery-101/)
+* [Introduction to container technologies: container networking]({{ site.baseurl }}/docs/best-practices/container-technologies-networking/)
 
 ### Next step
 
-[Connect containers by using the ambassador pattern](/docs/tutorials/connect-docker-containers-ambassador-pattern/)
+[Connect containers by using the ambassador pattern]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-ambassador-pattern/)

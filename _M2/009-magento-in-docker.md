@@ -23,7 +23,7 @@ container (for caching), and an external MySQL database (for persistent storage)
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Download an environment file
 

@@ -126,7 +126,7 @@ Refresh the page in your web browser to see your changes.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 

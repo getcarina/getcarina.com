@@ -141,10 +141,10 @@ Status: Downloaded newer image for hello-world:latest
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ###Next step
 
-[Load a Docker environment from the command line on Mac OS X](/docs/tutorials/load-docker-environment-on-mac/)
+[Load a Docker environment from the command line on Mac OS X]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/)

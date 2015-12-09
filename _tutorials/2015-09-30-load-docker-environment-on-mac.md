@@ -19,7 +19,7 @@ This tutorial describes how to load a Docker environment on Mac OS X.
 
 ### Prerequisite
 
-[Install Docker on Mac OS X](/docs/tutorials/docker-install-mac/)
+[Install Docker on Mac OS X]({{ site.baseurl }}/docs/tutorials/docker-install-mac/)
 
 #### Load the Docker environment
 1. Open a command terminal.

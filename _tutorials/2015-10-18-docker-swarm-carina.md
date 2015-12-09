@@ -109,7 +109,7 @@ With Carina you do not get this option. Instead, the `spread` strategy, which is
 Swarm default, is used.
 
 To find out more information about Swarm scheduling strategies, read the
-[Strategies for distributing containers to segments](/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
+[Strategies for distributing containers to segments]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
 section of the "Introduction to Docker Swarm" article.
 
 ### AppArmor profiles
@@ -145,7 +145,7 @@ As a result, you can only use the `--volume` flag when referring to segment path
 <!-- TODO: remove this caveat when Carina releases Docker 1.11 -->
 **Note**: [Auto-creating missing host paths for bind mounts](http://docs.docker.com/engine/misc/deprecated/#auto-creating-missing-host-paths-for-bind-mounts) has been deprecated by Docker. In the future, if your bind mounts take the following form `--volume /var/lib/docker/dir-that-does-not-exist-yet:/container-dir-of-your-choosing`, Docker will error out.
 
-Data volume containers are the preferred alternative to bind mounting from `/var/lib/docker`. For more information, see the [Use data volume containers](/docs/tutorials/data-volume-containers/) article.
+Data volume containers are the preferred alternative to bind mounting from `/var/lib/docker`. For more information, see the [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/) article.
 
 ### TLS certificates
 

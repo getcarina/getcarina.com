@@ -17,7 +17,7 @@ This tutorial describes using MySQL on Carina so that you can store data in a co
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Run a MySQL instance
 
@@ -204,7 +204,7 @@ If the status of the container does not begin with Up, run a new MySQL container
 $ docker run --interactive --tty --rm mysql:5.6 /bin/bash
 ```
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -214,4 +214,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next
 
-If MySQL isn't the data store for you, read [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/).
+If MySQL isn't the data store for you, read [Use MongoDB on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb/).

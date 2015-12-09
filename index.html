@@ -79,7 +79,7 @@ layout: default
           <span class="accent yellow">At Your Fingertips</span>
         </h2>
         <p>
-          Carina streamlines the entire experience to allow you to get started with containers <strong><a href="/docs/getting-started/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="/docs/getting-started/getting-started-carina-cli/"><code>carina</code></a>, the command line tool.</strong>
+          Carina streamlines the entire experience to allow you to get started with containers <strong><a href="{{ site.baseurl }}/docs/getting-started/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="{{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/"><code>carina</code></a>, the command line tool.</strong>
         </p>
         <p>
           {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-carina-cli/' %}
@@ -108,7 +108,7 @@ layout: default
       </div>
       <div class="resource">
         <div class="image">
-          <a href="/docs/overview-of-carina/"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
+          <a href="{{ site.baseurl }}/docs/overview-of-carina/"><img src="{% asset_path resource-1.svg %}" alt="chairs"></a>
         </div>
         {% for post in site.getting-started %}{% if post.url == '/docs/overview-of-carina/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
@@ -118,7 +118,7 @@ layout: default
       </div>
       <div class="resource">
         <div class="image">
-          <a href="/docs/getting-started/getting-started-on-carina/"><img src="{% asset_path resource-2.svg %}" alt=""></a>
+          <a href="{{ site.baseurl }}/docs/getting-started/getting-started-on-carina/"><img src="{% asset_path resource-2.svg %}" alt=""></a>
         </div>
         {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-on-carina/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
@@ -128,7 +128,7 @@ layout: default
       </div>
       <div class="resource">
         <div class="image">
-          <a href="/docs/getting-started/getting-started-carina-cli/"><img src="{% asset_path resource-3.svg %}" alt=""></a>
+          <a href="{{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/"><img src="{% asset_path resource-3.svg %}" alt=""></a>
         </div>
         {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-carina-cli/' %}
           <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
@@ -137,7 +137,7 @@ layout: default
         {% endif %}{% endfor %}
       </div>
       <div class="resources-button">
-        <a href="/docs#articles">View All Resources</a>
+        <a href="{{ site.baseurl }}/docs#articles">View All Resources</a>
       </div>
     </div>
   </div>
@@ -179,7 +179,7 @@ layout: default
         </div>
       </div>
       <div class="more-info">
-        <p>Need more info?<br>Get all the details about our <a href="/docs/overview-of-carina/">free beta offering</a>.</p>
+        <p>Need more info?<br>Get all the details about our <a href="{{ site.baseurl }}/docs/overview-of-carina/">free beta offering</a>.</p>
       </div>
     </div>
   </div>
@@ -204,7 +204,7 @@ layout: default
         <p><a href="https://github.com/getcarina">Visit the getcarina GitHub organization</a>.</p>
         <h2>Tools &amp; Resources</h2>
         <h3>Carina CLI</h3>
-        <p>The <a href="/docs/getting-started/getting-started-carina-cli/">command line client for Carina</a> makes using Carina from the command line or integrating Carina actions with other shell scripts fast and easy. <a href="https://github.com/getcarina/carina">Download the Carina CLI</a>.</p>
+        <p>The <a href="{{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/">command line client for Carina</a> makes using Carina from the command line or integrating Carina actions with other shell scripts fast and easy. <a href="https://github.com/getcarina/carina">Download the Carina CLI</a>.</p>
         <h3>libcarina</h3>
         <p>If you’re developing in Go, <a href="https://github.com/getcarina/libcarina">libcarina</a> provides Go bindings for the Beta release of Carina.</p>
         <h3>#carina on IRC</h3>

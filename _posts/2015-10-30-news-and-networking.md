@@ -175,12 +175,12 @@ Console escape. Commands are:
 
 There ya go; this means as you add segments / containers / etc you can communicate via ServiceNet or use normal inter-container networking patterns:
 
-* [Docker networking basics](/docs/tutorials/docker-networking-basics/)
-* [Connect containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
+* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
+* [Connect containers with Docker links]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-with-links/)
 
 We're going to fix up / move the "ip" Docker image into the Carina repo, and add full documentation for ServiceNet usage first thing next week!
 
-**Update:** Full documentation on [Communication between containers over the internal network ServiceNet](/docs/tutorials/servicenet/)
+**Update:** Full documentation on [Communication between containers over the internal network ServiceNet]({{ site.baseurl }}/docs/tutorials/servicenet/)
 
 Have a good weekend.
 

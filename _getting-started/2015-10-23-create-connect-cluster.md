@@ -25,7 +25,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 **Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/).
+**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ### Prerequisite
 
@@ -41,7 +41,7 @@ A Carina account. If you do not already have one, create a free account (no cred
 
 1. To scale your cluster, select **Enable Autoscale**.
 
-    For more information, see [Autoscaling resources in Carina](/docs/tutorials/autoscaling-carina/).
+    For more information, see [Autoscaling resources in Carina]({{ site.baseurl }}/docs/tutorials/autoscaling-carina/).
 
 1. Click **Create Cluster**.
 
@@ -121,11 +121,11 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
-    **Note**: A newly created cluster contains containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm](/docs/tutorials/introduction-docker-swarm/).  
+    **Note**: A newly created cluster contains containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm/).  
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -133,10 +133,10 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 If you're new to Carina, Docker, and containers, see the following articles to learn more:
 
-* [Overview of Carina](/docs/overview-of-carina/)
-* [Docker 101](/docs/tutorials/docker-101/)
-* [Container 101](/docs/tutorials/containers-101/)
+* [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/)
+* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+* [Container 101]({{ site.baseurl }}/docs/tutorials/containers-101/)
 
 ### Next steps
 
-Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the [Documentation](/docs/) page on the Carina website.
+Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the [Documentation]({{ site.baseurl }}/docs/) page on the Carina website.
