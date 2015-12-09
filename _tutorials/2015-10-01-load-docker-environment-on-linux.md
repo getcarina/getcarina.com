@@ -19,7 +19,7 @@ This tutorial describes how to load a Docker environment on Linux.
 
 ### Prerequisite
 
-[Install Docker on Linux](/docs/tutorials/docker-install-linux/)
+[Install Docker on Linux]({{ site.baseurl }}/docs/tutorials/docker-install-linux/)
 
 ### Load the Docker environment
 

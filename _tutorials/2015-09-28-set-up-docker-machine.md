@@ -22,7 +22,7 @@ To use the Docker client on Mac OS X and Windows computers, you must set up a Li
 
 Before you begin this tutorial, be sure that you have fulfilled these prerequisites:
 
-* You have installed Docker Machine through the Docker Toolbox. For Docker Toolbox installation instructions for Windows and Mac OS X, go to the installation section of [Docker 101](/docs/tutorials/docker-101/) and click the link for your operating system.
+* You have installed Docker Machine through the Docker Toolbox. For Docker Toolbox installation instructions for Windows and Mac OS X, go to the installation section of [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/) and click the link for your operating system.
 
     Docker Machine is not required to run virtual environments on Linux. However, if you are a Linux user, you can find instructions for installing Docker Machine [the Docker website](https://docs.docker.com/machine/install-machine/).
 
@@ -75,18 +75,18 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
 You also can load your Carina credentials into your Docker environment. For instructions, click the following link for your operating system:
 
-* [Load a Docker environment on Linux](/docs/tutorials/load-docker-environment-on-linux/)
-* [Load a Docker environment on Mac](/docs/tutorials/load-docker-environment-on-mac/)
-* [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
+* [Load a Docker environment on Linux]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-linux/)
+* [Load a Docker environment on Mac]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-mac/)
+* [Load a Docker environment on Windows]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-windows/)
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 
-After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image](/docs/tutorials/run-docker-image/).
+After you have a working Docker host, you can continue to the tutorial [Find and download a Docker image]({{ site.baseurl }}/docs/tutorials/run-docker-image/).
 
-To learn how to create a container, go to [Containers 101](/docs/tutorials/containers-101/).
+To learn how to create a container, go to [Containers 101]({{ site.baseurl }}/docs/tutorials/containers-101/).

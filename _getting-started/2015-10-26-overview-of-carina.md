@@ -72,17 +72,17 @@ Carina has an intuitive UI that you can use to control clusters from your web br
 
 #### The CLI
 
-Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/) to learn more.
+Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/) to learn more.
 
 ### Resources
 
-* [Docker 101](/docs/tutorials/docker-101/)
-* [Carina documentation](/docs/)
+* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+* [Carina documentation]({{ site.baseurl }}/docs/)
 * [Carina community forums](https://community.getcarina.com)
-* [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/)
-* [Autoscaling resources in Carina](/docs/tutorials/autoscaling-carina/)
-* [Glossary](/docs/references/glossary/)
+* [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/)
+* [Autoscaling resources in Carina]({{ site.baseurl }}/docs/tutorials/autoscaling-carina/)
+* [Glossary]({{ site.baseurl }}/docs/references/glossary/)
 
 ### Next step
 
-Run your first containerized application by [getting started on Carina](/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).

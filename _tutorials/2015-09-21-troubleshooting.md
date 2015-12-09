@@ -22,7 +22,7 @@ Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no s
 * Is your docker daemon up and running?
 ```
 
-To resolve this error, ensure that you have gone through each step of [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster).
+To resolve this error, ensure that you have gone through each step of [Connect to your cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster#connect-to-your-cluster).
 
 ### Error response from daemon: client and server don't have same version
 
@@ -138,7 +138,7 @@ File: docker.go@19
 Package: runtimeError response from daemon: Cannot start container 1784f91f2f2cbd88c0eab24d24f7cfa7b7bf9cc882b28d02509e23238648c786: [8] System error: permission denied
 ```
 
-This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes](/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/).
+This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/).
 
 ### Old PowerShell version on Windows
 
@@ -153,7 +153,7 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 
 ### Troubleshooting other problems
 
-* [How to stop a non-responsive running container](/docs/tutorials/stop-nonresponsive-running-container/)
-* [Error publishing a container to a specific port](/docs/references/troubleshooting-port-unavailable/)
-* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
-* [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [How to stop a non-responsive running container]({{ site.baseurl }}/docs/tutorials/stop-nonresponsive-running-container/)
+* [Error publishing a container to a specific port]({{ site.baseurl }}/docs/references/troubleshooting-port-unavailable/)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
+* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)

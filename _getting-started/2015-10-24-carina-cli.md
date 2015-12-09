@@ -12,7 +12,7 @@ topics:
 
 This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
 
-**Note**: This guide uses the command line interface to create a cluster. To use the graphical user  interface see [Getting started on Carina](/docs/getting-started/getting-started-on-carina/).
+**Note**: This guide uses the command line interface to create a cluster. To use the graphical user  interface see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
 ### Prerequisites
 
@@ -20,7 +20,7 @@ A Carina account. If you do not already have one, create a free account (no cred
 
 Your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
-The Docker client. Use the [Docker Version Manager (dvm)](/docs/tutorials/docker-version-manager/).
+The Docker client. Use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 
 ### Download and install the Carina CLI
 
@@ -190,10 +190,10 @@ The Docker client. Use the [Docker Version Manager (dvm)](/docs/tutorials/docker
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 
-Learn about all of the features available to you in the [Overview of Carina.](/docs/overview-of-carina/)
+Learn about all of the features available to you in the [Overview of Carina.]({{ site.baseurl }}/docs/overview-of-carina/)

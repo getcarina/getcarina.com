@@ -9,7 +9,7 @@ topics:
   - beginner
 ---
 
-In the [previous tutorial](/docs/tutorials/wordpress-apache-mysql/), you set up a Docker
+In the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-mysql/), you set up a Docker
 container running Apache 2 and WordPress. For your database, you ran MySQL in a
 Docker container.
 
@@ -24,9 +24,9 @@ This tutorial sets up a MySQL container to demonstrate container relationships.
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) that has at least two segments.
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) that has at least two segments.
 
-**Note:** If you completed the [previous tutorial](/docs/tutorials/wordpress-apache-mysql/), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
+**Note:** If you completed the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-mysql/), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 
 ```
 $ docker rm -fv $(docker ps -q)
@@ -196,13 +196,13 @@ You should now see the standard WordPress installation guide.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 
-Learn more about storing persistent data in containers at [Use data volume containers](/docs/tutorials/data-volume-containers/).
+Learn more about storing persistent data in containers at [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
 <!--
 TODO: Use the text below when that tutorial is back in for M2.

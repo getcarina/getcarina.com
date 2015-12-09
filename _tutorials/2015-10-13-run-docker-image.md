@@ -19,7 +19,7 @@ The benefit of Docker images is that anyone can create and share their images th
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Find and download a Docker image
 
@@ -83,10 +83,10 @@ This section shows you how to find and run a Docker image.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next steps
 
-Run your first containerized application by [getting started on Carina](/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).

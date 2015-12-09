@@ -17,7 +17,7 @@ This tutorial describes using MongoDB on Carina so that you can store data in a 
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Run a MongoDB instance
 
@@ -175,7 +175,7 @@ If the status of the container does not begin with Up, run a new MongoDB contain
 $ docker run --interactive --tty --rm mongo:3.0.6 /bin/bash
 ```
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -185,4 +185,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next
 
-If MongoDB isn't the data store for you, read [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/).
+If MongoDB isn't the data store for you, read [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/).

@@ -50,7 +50,7 @@ configuration management issues such as port mapping, which can be complex in a 
 In an overlay network, a virtual network runs in a layer above the physical network.
 flannel creates an overlay mesh network that provisions a subnet to each server [(4)](#resources).
 This is the main operating model that Kubernetes prescribes for all
-minions and nodes that host containers. For more about networking and Kubernetes, read [Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/). Though flannel was originally intended for Kubernetes, it has
+minions and nodes that host containers. For more about networking and Kubernetes, read [Container ecosystem: Kubernetes]({{ site.baseurl }}/docs/best-practices/container-ecosystem-kubernetes/). Though flannel was originally intended for Kubernetes, it has
 evolved into a generic overlay.
 
 flannel is backed by and based on CoreOS’
@@ -141,7 +141,7 @@ Numbered citations in this article:
 
 Other recommended reading:
 
-- [Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/)
+- [Container ecosystem: Kubernetes]({{ site.baseurl }}/docs/best-practices/container-ecosystem-kubernetes/)
 
 - <http://www.projectcalico.org/getting-started/openstack/>
 

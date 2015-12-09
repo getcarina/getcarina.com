@@ -83,7 +83,7 @@ Conclude with a brief description of the end state.
 
 <!--
 
-Provide the following boilerplate. If you have a troubleshooting information that pertains only to this tutorial, you can include it in this section, before the boilerplate. However, if it might apply to more than one article, add a new section for it in the [Troubleshooting common problems](/docs/tutorials/troubleshooting/) article or create a new article for it and link to that article from here as well.
+Provide the following boilerplate. If you have a troubleshooting information that pertains only to this tutorial, you can include it in this section, before the boilerplate. However, if it might apply to more than one article, add a new section for it in the [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/) article or create a new article for it and link to that article from here as well.
 
 -->
 

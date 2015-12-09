@@ -22,7 +22,7 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Set up Drupal in Carina
 
@@ -83,7 +83,7 @@ Drupal is installed and you are given a link to the new Drupal site.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 

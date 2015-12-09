@@ -32,7 +32,7 @@ text commands and _terminal_ is the graphical window that hosts a shell.
 
 ### Prerequisite
 
-[Install Docker on Windows](/docs/tutorials/docker-install-windows/)
+[Install Docker on Windows]({{ site.baseurl }}/docs/tutorials/docker-install-windows/)
 
 ### Shells
 After installing Docker Toolbox on Windows, you have three shells available for

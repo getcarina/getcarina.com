@@ -81,7 +81,7 @@ provides the key services and dependencies one would expect in
 those toolsets.
 
 You can read more about how Mesos relates to Docker in
-[Container ecosystem: Mesos versus OpenStack](/docs/best-practices/container-ecosystem-mesos-openstack/).
+[Container ecosystem: Mesos versus OpenStack]({{ site.baseurl }}/docs/best-practices/container-ecosystem-mesos-openstack/).
 
 Major companies using Marathon include Airbnb, eBay,
 Groupon, OpenTable, PayPal, and Yelp.
@@ -111,7 +111,7 @@ Specifically, Kubernetes provides the following features:
   using a scheduler that is policy rich, topology aware, and workload specific.
 
 You can read more about how Kubernetes relates to Docker and Mesos at
-[Container ecosystem: Kubernetes](/docs/best-practices/container-ecosystem-kubernetes/).
+[Container ecosystem: Kubernetes]({{ site.baseurl }}/docs/best-practices/container-ecosystem-kubernetes/).
 
 Kubernetes builds upon a decade and a half of experience at Google running
 production workloads at scale, combined with best-of-breed ideas and
@@ -237,7 +237,7 @@ to solve the state problems, which is pretty unique" [(8)](#resources).
 With regard to stateful management,
 particularly in databases, Flynn supports Postgres. Offering automated backup, automated failover, zero downtime, and no configuration effort, Flynn's goal
 is to manage your database service for you.
-To learn more about working with data and stateful applications in containers, read [Docker best practices: data and stateful applications](/docs/best-practices/docker-best-practices-data-stateful-applications/).
+To learn more about working with data and stateful applications in containers, read [Docker best practices: data and stateful applications]({{ site.baseurl }}/docs/best-practices/docker-best-practices-data-stateful-applications/).
 
 Sponsors and users of Flynn include but are not limited to Coinbase,
 Shopify, and CenturyLink.
@@ -248,7 +248,7 @@ Deis is an open-source PaaS that facilitates the deployment and
 management of applications. It is built on Docker and CoreOS, including etcd,
 fleet, and the operating system itself, to "provide lightweight PaaS with
 Heroku-inspired workflow" [(9)](#resources).
-To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems](/docs/best-practices/container-technologies-operating-systems/).
+To learn more about the need for container-focused operating systems such as CoreOS, read [Introduction to container technologies: container operating systems]({{ site.baseurl }}/docs/best-practices/container-technologies-operating-systems/).
 
 Deis can deploy an application or service that works in a Docker container, and its
 structure mimics Heroku’s 12-factor stateless methodology for how applications

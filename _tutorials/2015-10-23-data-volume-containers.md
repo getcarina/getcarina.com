@@ -16,7 +16,7 @@ This tutorial describes using data volume containers so that you can share data 
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
 ### Data volumes
 
@@ -145,14 +145,14 @@ The output of these `docker rm` commands is the names of the containers that you
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-Learn more about volumes in [Understanding how Carina uses Docker Swarm](/docs/tutorials/docker-swarm-carina/#volumes).
+Learn more about volumes in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/#volumes).
 
 ### Next
 
-Use a data volume container in the [Use MySQL on Carina](/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/) tutorials.
+Use a data volume container in the [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/) or [Use MongoDB on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb/) tutorials.

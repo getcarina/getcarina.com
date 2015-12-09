@@ -15,7 +15,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI](/docs/getting-started/getting-started-carina-cli/).
+**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ### Sign up for Carina
 
@@ -174,16 +174,16 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-* [Docker 101](/docs/tutorials/docker-101/)
-* [Carina documentation](/docs/)
-* If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)](/docs/tutorials/docker-version-manager/).
+* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+* [Carina documentation]({{ site.baseurl }}/docs/)
+* If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 
 ### Next step
 
-Learn how to [install the Carina CLI and use it to manage your clusters](/docs/getting-started/getting-started-carina-cli/).
+Learn how to [install the Carina CLI and use it to manage your clusters]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).

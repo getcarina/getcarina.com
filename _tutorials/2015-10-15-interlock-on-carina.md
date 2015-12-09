@@ -15,7 +15,7 @@ This tutorial describes [interlock](https://github.com/ehazlett/interlock), whic
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named `boatie`
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) named `boatie`
 * Your API Key. Go to the [Carina control panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
 ### Interlock
@@ -44,7 +44,7 @@ time="2015-10-19T01:22:59Z" level=info msg="[example] action=received event= tim
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -55,10 +55,10 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Run your first containerized application by [getting started on Carina](/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
 <!--
 TODO: Use the text below when that tutorial is back in for M2.
 
-See Interlock in action in the [Load balance WordPress in Docker containers](/docs/tutorials/load-balance-wordpress-docker-containers/) tutorial
+See Interlock in action in the [Load balance WordPress in Docker containers]({{ site.baseurl }}/docs/tutorials/load-balance-wordpress-docker-containers/) tutorial
 -->

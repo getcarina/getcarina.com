@@ -36,15 +36,15 @@ Download the [Microsoft Hardware-Assisted Virtualization Detection Tool] (http:/
 ###Getting started
 To get started with Docker on Windows, you perform the following tasks:
 
-1. [Install Docker Toolbox on Windows](/docs/tutorials/docker-install-windows/)
-2. [Load a Docker environment on Windows](/docs/tutorials/load-docker-environment-on-windows/)
+1. [Install Docker Toolbox on Windows]({{ site.baseurl }}/docs/tutorials/docker-install-windows/)
+2. [Load a Docker environment on Windows]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-windows/)
 
 ###Troubleshooting Docker on Windows
 To troubleshoot Docker on Windows, read the following articles:
 
-* [Error running interactive Docker shell on Windows](/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
-* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10](/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
+* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).

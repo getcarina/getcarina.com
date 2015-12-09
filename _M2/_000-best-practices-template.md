@@ -49,7 +49,7 @@ If understanding how to choose well among options requires some in-depth explana
 
 Link to a numbered reference like [(1)](#resources) if that helps you incorporate an authoritative statement or some other external evidence.
 
-Link to another article in this collection like [Introduction to container technologies: orchestration and management of container clusters](/container-technologies-orchestration-clusters/) if that helps you suggest that we have a related, deeper explanation (learn by reading) or a relevant tutorial (learn by doing) nearby.
+Link to another article in this collection like [Introduction to container technologies: orchestration and management of container clusters]({{ site.baseurl }}/container-technologies-orchestration-clusters/) if that helps you suggest that we have a related, deeper explanation (learn by reading) or a relevant tutorial (learn by doing) nearby.
 
 Link to a named source like [RFC1918 Address Allocation for Private Internets](https://tools.ietf.org/html/rfc1918) if that helps you use industry-standard concepts without stopping to explain them.
 

@@ -13,15 +13,15 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers by using the ambassador pattern
-so that they can communicate over the network and across Docker hosts. For information about the ambassador pattern, see [Docker networking basics](/docs/tutorials/docker-networking-basics/).
+so that they can communicate over the network and across Docker hosts. For information about the ambassador pattern, see [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/).
 
 ### Prerequisite
 
-[Create and connect to a cluster](/docs/tutorials/create-connect-cluster/) named clustera and a cluster named clusterb.
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) named clustera and a cluster named clusterb.
 
 ### Connect containers
 
-1. [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clustera.
+1. [Connect to your cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clustera.
 
 1. Run a container named `app`.
 
@@ -65,7 +65,7 @@ so that they can communicate over the network and across Docker hosts. For infor
     5000/tcp -> 104.130.0.192:5000
     ```
 
-1. 1. [Connect to your cluster](/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clusterb.
+1. 1. [Connect to your cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster#connect-to-your-cluster) named clusterb.
 
 
 1. In the second cluster environment, run an ambassador container named `app-ambassador`. Replace `<connectionInformation>` with
@@ -120,18 +120,18 @@ You now have two containers that can communicate across Docker hosts.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-* [Docker networking basics](/docs/tutorials/networking-basics/)
+* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/networking-basics/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
-* [Docker best practices: container linking](/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101](/docs/tutorials/service-discovery-101/)
-* [Introduction to container technologies: container networking](/docs/best-practices/container-technologies-networking/)
+* [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
+* [Service discovery 101]({{ site.baseurl }}/docs/tutorials/service-discovery-101/)
+* [Introduction to container technologies: container networking]({{ site.baseurl }}/docs/best-practices/container-technologies-networking/)
 
 ### Next step
 
-[Connect containers with Docker links](/docs/tutorials/connect-docker-containers-with-links/)
+[Connect containers with Docker links]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-with-links/)

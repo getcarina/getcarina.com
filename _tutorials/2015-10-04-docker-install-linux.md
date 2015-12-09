@@ -134,10 +134,10 @@ sudo service docker start
 
 This command starts Docker and enables you to run any `docker` commands.
 
-See [Troubleshooting common problems](/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Next step
 
-[Load a Docker environment from the command line on Linux](/docs/tutorials/load-docker-environment-on-linux/)
+[Load a Docker environment from the command line on Linux]({{ site.baseurl }}/docs/tutorials/load-docker-environment-on-linux/)
