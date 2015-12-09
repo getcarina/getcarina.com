@@ -43,13 +43,25 @@ To resolve this error:
 
 ### Cannot connect to the Docker daemon
 
-If you're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker), you get the following error message:
+The following error indicates one of two possible issues:
 
 ```
 Cannot connect to the Docker daemon. Is "docker -d" running on this host?
-```
+```  
+1. You're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker). To resolve this error, request your network administrator to open that port or retry your actions from a location where port 2376 isn't blocked.
 
-To resolve this error, request your network administrator to open that port or retry your actions from a location where port 2376 isn't blocked.
+2. You've accidentally removed the Docker Swarm management containers. To resolve this error:
+
+Via the GUI:
+  1. Login to the [control panel](https://app.getcarina.com)
+  1. Under the gear icon for the affected cluster, click "Edit Cluster"
+  1. Under the Actions button, click "Rebuild Cluster"  
+
+Via the CLI:
+1. [Download and install the Carina CLI](https://getcarina.com/docs/getting-started/getting-started-carina-cli/#download-and-install-the-carina-cli)
+1. Run then `carina rebuild <cluster-name>` command
+
+For more information, see [What does the cluster rebuild action do?](https://getcarina.com/docs/faq/#what-does-the-cluster-rebuild-action-do).
 
 ### Debug a running container
 
