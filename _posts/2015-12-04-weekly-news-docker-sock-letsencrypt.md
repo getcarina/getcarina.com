@@ -25,9 +25,9 @@ configure free letsencrypt TLS/SSL certs.
 ## Status page
 
 We now have a [status page](https://carinabyrackspace.statuspage.io/). We'd like to keep
-you apprised of issues anywhere on our platform. 
+you apprised of issues anywhere on our platform.
 
-Recently there have been issues with the public Swarm discovery service. We'll be migrating 
+Recently there have been issues with the public Swarm discovery service. We'll be migrating
 off of the public Swarm discovery service as soon as we can. HugOps to the Swarm team
 at Docker.
 
@@ -85,7 +85,7 @@ for Let's Encrypt to be able to verify you own the domain. ⚠️
 $ docker run -it --rm -p 443:443 -p 80:80 \
     -v letsencrypt:/etc/letsencrypt \
     -v letsencrypt-backups:/var/lib/letsencrypt \
-    --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
+    quay.io/letsencrypt/letsencrypt:latest \
     auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
 ```
 
@@ -103,6 +103,24 @@ IMPORTANT NOTES:
    Donating to EFF:                    https://eff.org/donate-le
 ```
 
+### Create the Diffie Hellman parameters
+
+In order to get the best rating from Qualys SSL Labs, you'll want to generate
+Diffie Hellman parameters for the host.
+
+```bash
+$ docker run -it --rm \
+    -v letsencrypt:/etc/letsencrypt \
+    nginx openssl \
+    dhparam -out /etc/letsencrypt/live/lets.ephem.it/dhparams.pem 2048
+```
+
+This will take a good while to generate. While optional, this is a security
+related post, so I'll pretend that you're going to copy paste everything from
+here which means I better leave sensible defaults.
+
+For bonus points crank 2048 to 4096.
+
 #### Note for previous Docker versions
 
 Docker 1.9 introduced both volumes and volume drivers, which made the above a bit simpler. For previous versions of Docker,
@@ -111,9 +129,13 @@ you have to change the commands a bit:
 ```bash
 $ docker create -v '/etc/letsencrypt' -v '/var/lib/letsencrypt' --name certs cirros
 $ docker run -it --rm -p 443:443 -p 80:80 \
-  --volumes-from certs \
-  --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
-  auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
+    --volumes-from certs \
+    --name letsencrypt quay.io/letsencrypt/letsencrypt:latest \
+    auth -d lets.ephem.it --email rgbkrk@gmail.com --agree-tos
+$ docker run -it --rm \
+    --volumes-from certs \
+    nginx openssl \
+    dhparam -out /etc/letsencrypt/live/lets.ephem.it/dhparams.pem 2048
 ```
 
 ### Accessing the certificates
@@ -139,6 +161,7 @@ The most important parts to modify are:
 ```
 ssl_certificate /etc/letsencrypt/live/lets.ephem.it/fullchain.pem;
 ssl_certificate_key /etc/letsencrypt/live/lets.ephem.it/privkey.pem;
+ssl_dhparam /etc/letsencrypt/live/lets.ephem.it/dhparams.pem;
 ...
 ## verify chain of trust of OCSP response using Root CA and Intermediate certs
 ssl_trusted_certificate /etc/letsencrypt/live/lets.ephem.it/chain.pem;
@@ -151,7 +174,7 @@ the Dockerfile:
 {% include_relative _2015-12-04-weekly-news-docker-sock-letsencrypt/Dockerfile %}
 ```
 
-index.html is just the text "We're Let's Encrypted!"
+`index.html` is just the text "We're Let's Encrypted!" with a link to this blog post.
 
 Go ahead and build it:
 
