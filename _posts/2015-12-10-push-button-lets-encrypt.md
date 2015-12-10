@@ -39,6 +39,12 @@ This container will invoke the [letsencrypt client](https://github.com/letsencry
 
 Some caveats before we begin: some encryption is a great improvement on no encryption, and TLS certificates signed by a trusted CA are more secure than self-signed ones, but trusting crypto in a container you download from strangers on the Internet does carry risks. I'm no security expert, but offhand I'd give this approach one and a half tin-foil hats out of five.
 
+<img src="{% asset_path tinfoil.png %}" alt="one hat" style="display: inline;">
+<img src="{% asset_path tinfoil-half.png %}" alt="half hat" style="display: inline;">
+<img src="{% asset_path tinfoil-empty.png %}" alt="empty hat" style="display: inline;">
+<img src="{% asset_path tinfoil-empty.png %}" alt="empty hat" style="display: inline;">
+<img src="{% asset_path tinfoil-empty.png %}" alt="empty hat" style="display: inline;">
+
 Furthermore, because this approach is automated, it uses the `--agree-tos` flag to accept the Let's Encrypt terms of service on your behalf. Be sure that you're okay with [the terms](https://letsencrypt.org/repository/) before you run the container.
 
 ## Get Encrypted
