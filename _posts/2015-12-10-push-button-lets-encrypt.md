@@ -201,4 +201,6 @@ This is an experiment I cobbled together in a few days out of my own curiosity, 
 
 **It doesn't provide an easy way to back up your issued certificates and credentials.** A better approach is to [store your credentials on a volume]({{ site.baseurl }}/blog/weekly-news-docker-sock-letsencrypt/#let-39-s-encrypt-with-free-certificates) that you can manage separately, back up, and mount to multiple containers as you wish.
 
+**The nginx configuration doesn't handle websockets or server-sent events.** These special cases would require custom `nginx.conf` wrangling, so you'd have to build your own image.
+
 If you have suggestions to improve it, or better nginx-fu than I do, [pull requests are welcome!](https://github.com/smashwilson/lets-nginx)
