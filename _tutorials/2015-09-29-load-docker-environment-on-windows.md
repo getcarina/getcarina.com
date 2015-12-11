@@ -55,7 +55,7 @@ CMD, perform the following steps:
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-[create-connect-cluster]: {{site.baseurl}}/docs/tutorials/create-connect-cluster/#connect-to-your-cluster/
+[create-connect-cluster]: {{site.baseurl}}/docs/tutorials/create-connect-cluster#connect-to-your-cluster/
 
 #### PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
