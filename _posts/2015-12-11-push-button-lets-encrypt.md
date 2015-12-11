@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Push Button, Let's Encrypt"
-date: 2015-12-10
+date: 2015-12-11 00:00
 comments: true
 author: Ash Wilson <ash.wilson@rackspace.com>
 authorIsRacker: true
@@ -35,7 +35,7 @@ docker run --detach \
 
 This container invokes the [letsencrypt client](https://github.com/letsencrypt/letsencrypt) to issue a browser-trusted certificate valid for your domain. Then, it creates a basic NGINX configuration, creates a cron job to reissue the certificates monthly, and launches the `crond` and `nginx` daemons. Your service will have a green lock in browsers and an A+ score from [SSL Labs](https://www.ssllabs.com/ssltest/).
 
-![only the finest locally-source artisanal TLS]({% asset_path 2015-12-10-push-button-lets-encrypt/ssllabs.jpeg %})
+![only the finest locally-source artisanal TLS]({% asset_path 2015-12-11-push-button-lets-encrypt/ssllabs.jpeg %})
 
 Some caveats before we begin:
 
@@ -73,7 +73,7 @@ Additionally, you might want to specify a few extra flags:
 
 Give the container a minute to start. You can watch its progress with `docker logs -f <name>`. When you see NGINX launch, your HTTPS service is live. Try visiting it with your browser!
 
-![just look at that sweet green lock]({% asset_path 2015-12-10-push-button-lets-encrypt//greenlock.jpeg %})
+![just look at that sweet green lock]({% asset_path 2015-12-11-push-button-lets-encrypt//greenlock.jpeg %})
 
 ## How it works
 
