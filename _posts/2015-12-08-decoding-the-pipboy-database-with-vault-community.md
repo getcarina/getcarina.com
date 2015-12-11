@@ -17,7 +17,7 @@ categories:
 authorIsRacker: true
 ---
 
-After making a post about [discovering running Fallout 4 servers and relaying them],
+After making a post about [discovering running Fallout 4 servers and relaying them]({{site.baseurl}}/blog/fallout-4-service-discovery-and-relay/),
 in only a few days, the full protocol from Fallout 4 was decoded. Several
 packages for interacting with the Fallout 4 server have been posted:
 
