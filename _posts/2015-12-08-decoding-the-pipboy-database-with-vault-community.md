@@ -61,4 +61,4 @@ Having this basis makes it really easy to build things like a Pip-Boy database v
 
 
 We'd welcome your contributions in pull requests, patches, and issues over at
-[RobCoIndustries/pipboy](https://RobCoIndustries/pipboy).
+[RobCoIndustries/pipboy](https://github.com/RobCoIndustries/pipboy).
