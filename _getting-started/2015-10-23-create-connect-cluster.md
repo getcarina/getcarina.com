@@ -137,6 +137,8 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
 * [Container 101]({{ site.baseurl }}/docs/concepts/containers-101/)
 
+If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+
 ### Next steps
 
 Run your application in a container. Use the right tutorial for your application from the **Tutorials** section of the [Documentation]({{ site.baseurl }}/docs/) page on the Carina website.

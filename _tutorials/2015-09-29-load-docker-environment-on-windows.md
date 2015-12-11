@@ -49,14 +49,13 @@ CMD, perform the following steps:
 
 1. Run `cmd.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using Carina, [download your credentials][get-cluster-creds].
-    Then, run `docker.cmd`.
+  * If you are using Carina, [download your credentials and connect to your cluster][create-connect-cluster].
   * Otherwise, run `docker-machine env default --shell cmd`, replacing `default`
     with the name of your Docker host. Copy the command output, and then paste it into the command line.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
 [cmd-doc]: http://ss64.com/nt/syntax.html
-[get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
+[create-connect-cluster]: {{site.baseurl}}/docs/tutorials/create-connect-cluster#connect-to-your-cluster/
 
 #### PowerShell
 [PowerShell][powershell-doc] is built on Microsoft .NET and is designed to
@@ -65,8 +64,7 @@ Windows supported by Docker. To load a Docker environment in PowerShell, perform
 
 1. Run `powershell.exe`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using Carina, [download your credentials][get-cluster-creds].
-    Then, run `docker.ps1`.
+  * If you are using Carina, [download your credentials and connect to your cluster][create-connect-cluster].
   * Otherwise, run `docker-machine env default --shell powershell | Invoke-Expression`,
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.
@@ -100,8 +98,7 @@ To load a Docker environment in Bash, perform the following steps:
     * In Windows Explorer, right-click a directory and select **Git Bash Here**.
     * From a terminal, run `"C:\Program Files\Git\bin\bash.exe" --login -i`.
 2. Load your Docker host environment variables by using one of the following methods:
-  * If you are using Carina, [download your credentials][get-cluster-creds].
-    Then, run `source docker.env`.
+  * If you are using Carina, [download your credentials and connect to your cluster][create-connect-cluster].
   * Otherwise, run `eval $(docker-machine env default --shell bash)`,
     replacing `default` with the name of your Docker host.
 3. Verify that your Docker environment was initialized properly by running `docker version`.

@@ -24,11 +24,10 @@ This tutorial describes how to load a Docker environment on Linux.
 ### Load the Docker environment
 
 1. Open a command terminal.
-2. If you are using Carina, [download your credentials][get-cluster-creds].
-    Then, run `source docker.env`.
+2. If you are using Carina, [download your credentials and connect to your cluster][create-connect-cluster].
 3. Verify that your Docker environment was initialized properly by running `docker version`.
 
-[get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
+[create-connect-cluster]: {{site.baseurl}}/docs/tutorials/create-connect-cluster#connect-to-your-cluster/
 
 ### References
 [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
