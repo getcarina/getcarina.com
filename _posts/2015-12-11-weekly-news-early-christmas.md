@@ -18,7 +18,7 @@ Christmas arrived early this week with plenty of goodies under the 🎄 from the
 
 ## Carina CLI shipped 1.0.0!
 
-<img class="right" src="{% asset_path 2015-12-11-weekly-news/carina-constellation.png %}" alt="Carina Constellation"/>The Carina CLI shipped 1.0.0 this week with its Carinate Carina release. There's a lot of great stuff in the [release notes](https://github.com/getcarina/carina/releases/tag/v1.0.0). Go ahead and [install the latest and greatest](https://github.com/getcarina/carina#installation) on your preferred platform.
+<img class="right" src="{% asset_path 2015-12-11-weekly-news/carina-constellation.png %}" alt="Carina Constellation"/>The Carina CLI shipped 1.0.0 this week with its Carinate Carina release. There's a lot of great stuff in the [release notes](https://github.com/getcarina/carina/releases/tag/v1.0.0). Go ahead and [install the latest and greatest](https://github.com/getcarina/carina#installation) on your preferred platform and then [get started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ## Explore Minecraft on Carina
 
