@@ -81,7 +81,7 @@ and how the containers use it to communicate.
     $ docker exec --interactive --tty web /bin/bash
     ```
 
-    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/].
 
 1. Run the following command to view the environment variables created by the Docker link.
     Docker creates variables that describe the link, such as `HELLOAPP_PORT`.
@@ -153,7 +153,7 @@ and how the containers use it to communicate.
     $ docker exec --interactive --tty app /bin/bash
     ```
 
-    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/].
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/].
 
 1. Run the following command to view the environment variables. Note that Docker does _not_
     create environment variables for the link on the source container.
@@ -191,9 +191,9 @@ and how the containers use it to communicate.
 
 ### Troubleshooting
 
-See [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
+See [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/).
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -202,7 +202,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Docker networking basics]({{ site.baseurl }}/docs/tutorials/networking-basics/)
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/docs/tutorials/service-discovery-101/)
+* [Service discovery 101]({{ site.baseurl }}/docs/concepts/service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/docs/best-practices/container-technologies-networking/)
 
 ### Next step

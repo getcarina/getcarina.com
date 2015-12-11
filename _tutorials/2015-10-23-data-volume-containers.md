@@ -145,13 +145,13 @@ The output of these `docker rm` commands is the names of the containers that you
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-Learn more about volumes in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/#volumes).
+Learn more about volumes in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#volumes).
 
 ### Next
 

@@ -33,4 +33,4 @@ This tutorial describes how to load a Docker environment on Mac OS X.
 [get-cluster-creds]: {{site.baseurl}}/docs/references/carina-credentials/
 
 ### References
-[Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+[Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)

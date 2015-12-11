@@ -2,7 +2,7 @@
 title: Error publishing a container to a specific port
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-07
-permalink: docs/references/troubleshooting-port-unavailable/
+permalink: docs/troubleshooting/troubleshooting-port-unavailable/
 description: Troubleshoot "port is already allocated" or "unable to find a node with port available" errors when running a container
 docker-versions:
   - 1.8.2

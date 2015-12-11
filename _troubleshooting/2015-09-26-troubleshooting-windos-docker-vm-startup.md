@@ -2,7 +2,7 @@
 title: Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10
 author: Zack Shoylev <zack.shoylev@rackspace.com>
 date: 2015-09-26
-permalink: docs/tutorials/troubleshooting-windos-docker-vm-startup/
+permalink: docs/troubleshooting/troubleshooting-windows-docker-vm-startup/
 description: Solve issues that can occur when you download and set up Docker Toolbox on Windows versions 7, 8.1, and 10
 docker-versions:
   -1.8.1
@@ -14,16 +14,16 @@ topics:
 ---
 
 This article provides solutions for some of the issues that can occur when you download and set up Docker Toolbox on Windows versions 7, 8.1, and 10.
- 
+
 ### Conflicts with existing applications
 
 The toolbox comes with its own VirtualBox and Git Bash versions. As such, existing installations of Git for Windows, other Bash versions, or VirtualBox (especially if the system PATH was modified for them) can potentially cause issues.
 
-To resolve these issues, perform the following steps: 
+To resolve these issues, perform the following steps:
 
-1. Remove your own Bash versions (such as Cygwin, MinGW, GitHub for Windows, or babun) from the system PATH. 
-2. Uninstall VirtualBox. 
-3. Restart Windows. 
+1. Remove your own Bash versions (such as Cygwin, MinGW, GitHub for Windows, or babun) from the system PATH.
+2. Uninstall VirtualBox.
+3. Restart Windows.
 4. Reinstall Docker Toolbox, which reinstalls VirtualBox and Git for Windows with Git Bash.
 5. Before starting the Docker Quickstart Terminal, ensure that files with **.sh** extensions are associated with the newly installed Git for Windows.
 
@@ -57,16 +57,16 @@ To troubleshoot this error, open the VirtualBox Manager. The left navigation pan
 
 If the machine is running properly, then there was a problem with the Docker Toolbox setup. To resolve that problem, follow these steps:
 
-1. In VirtualBox, stop and delete the Docker default VM. 
+1. In VirtualBox, stop and delete the Docker default VM.
 2. Delete the **.docker** folder in your user folder (at **c:\\Users\\*username*\\.docker**).
-3. Restart your computer. 
+3. Restart your computer.
 4. Open the Docker Quickstart Terminal.
- 
+
 Everything should be downloaded and set up properly.
 
 ### Issue with nested virtualization
 
-The Docker Toolbox is running a virtual machine (VM). You cannot install and run the Docker Toolbox on a VM that does not pass the VT-X extensions. 
+The Docker Toolbox is running a virtual machine (VM). You cannot install and run the Docker Toolbox on a VM that does not pass the VT-X extensions.
 
 If the VM does not pass the VT-X extensions, when you run `docker-machine` commands, you will see a message similar to the following one:
 
@@ -76,7 +76,7 @@ Post http://127.0.0.1:2375/v1.20/containers/create: dial tcp 127.0.0.1:2375: Con
 * Is your docker daemon up and running?
 ```
 
-This message indicates that your Docker VM was not able to start properly. It might also indicate  an issue with the environment not being set properly (see the next section). 
+This message indicates that your Docker VM was not able to start properly. It might also indicate  an issue with the environment not being set properly (see the next section).
 
 You can open the VirtualBox Manager and check the VM status. Even if it displays as **Running**, you can open the VM (right-click the name and select **Show**) to see if there are any error messages. In this case, you would see that the virtualization extensions have not been passed by VirtualBox to the Docker VM.
 
@@ -84,12 +84,12 @@ You can open the VirtualBox Manager and check the VM status. Even if it displays
 
 ### Environment not set up properly
 
-When you open a fresh command prompt different from the Docker Quickstart Terminal, it might not initialize properly. 
+When you open a fresh command prompt different from the Docker Quickstart Terminal, it might not initialize properly.
 
 Run the following command:
 
 `$ docker-machine env <environment> --shell <shellName>`
 
-Then, execute the output. 
+Then, execute the output.
 
-For more information, see [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/).
+For more information, see [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/).

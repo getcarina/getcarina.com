@@ -2,7 +2,7 @@
 title: Troubleshooting common problems
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2015-09-21
-permalink: docs/tutorials/troubleshooting/
+permalink: docs/troubleshooting/common-problems/
 description: Troubleshooting common problems on Carina
 docker-versions:
   - 1.8.3
@@ -61,7 +61,7 @@ Via the CLI:
 1. [Download and install the Carina CLI](https://getcarina.com/docs/getting-started/getting-started-carina-cli/#download-and-install-the-carina-cli)
 1. Run then `carina rebuild <cluster-name>` command
 
-For more information, see [What does the cluster rebuild action do?](https://getcarina.com/docs/faq/#what-does-the-cluster-rebuild-action-do).
+For more information, see [What does the cluster rebuild action do?](https://getcarina.com/docs/reference/faq/#what-does-the-cluster-rebuild-action-do).
 
 ### Debug a running container
 
@@ -138,7 +138,7 @@ File: docker.go@19
 Package: runtimeError response from daemon: Cannot start container 1784f91f2f2cbd88c0eab24d24f7cfa7b7bf9cc882b28d02509e23238648c786: [8] System error: permission denied
 ```
 
-This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/).
+This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/).
 
 ### Old PowerShell version on Windows
 
@@ -153,7 +153,7 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 
 ### Troubleshooting other problems
 
-* [How to stop a non-responsive running container]({{ site.baseurl }}/docs/tutorials/stop-nonresponsive-running-container/)
-* [Error publishing a container to a specific port]({{ site.baseurl }}/docs/references/troubleshooting-port-unavailable/)
-* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
-* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [How to stop a non-responsive running container]({{ site.baseurl }}/docs/troubleshooting/stop-nonresponsive-running-container/)
+* [Error publishing a container to a specific port]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-port-unavailable/)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-windows-docker-vm-startup/)
+* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)

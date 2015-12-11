@@ -2,7 +2,7 @@
 title: Application logging
 author: Matt Darby <matt.darby@rackspace.com>
 date: 2015-10-09
-permalink: docs/references/application-logging/
+permalink: docs/reference/application-logging/
 description: Learn how to log applications with Carina
 docker-versions:
   - 1.8
@@ -132,7 +132,7 @@ $ docker run \
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 

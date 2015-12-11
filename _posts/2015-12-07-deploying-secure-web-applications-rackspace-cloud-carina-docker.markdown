@@ -221,7 +221,7 @@ Now, create a simple web application and run it on Carina.
     underscores, and hyphens.)
 4.  Select **Enable Autoscale** if you like; it's optional for this example. (You
     can read more about
-    [Carina's autoscaling feature](https://getcarina.com/docs/tutorials/autoscaling-carina/).)
+    [Carina's autoscaling feature](https://getcarina.com/docs/reference/autoscaling-carina/).)
 
     ![Carina - Creating a cluster]({% asset_path 2015-12-07-deploying-secure-web-applications-rackspace-cloud-carina-docker/1-carina-create-cluster.png %})
 

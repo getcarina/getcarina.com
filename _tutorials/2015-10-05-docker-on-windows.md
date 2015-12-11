@@ -42,9 +42,9 @@ To get started with Docker on Windows, you perform the following tasks:
 ###Troubleshooting Docker on Windows
 To troubleshoot Docker on Windows, read the following articles:
 
-* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/)
-* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/tutorials/troubleshooting-windos-docker-vm-startup/)
+* [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)
+* [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-windows-docker-vm-startup/)
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).

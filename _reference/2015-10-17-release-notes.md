@@ -2,7 +2,7 @@
 title: Release notes
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2015-10-17
-permalink: docs/release-notes/
+permalink: docs/reference/release-notes/
 description: Notes on Carina releases
 topics:
   - docker

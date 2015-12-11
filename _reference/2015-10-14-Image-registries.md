@@ -2,7 +2,7 @@
 title: Image registries
 author: Zack Shoylev <zack.shoylev@rackspace.com>
 date: 2015-10-14
-permalink: docs/references/image-registries/
+permalink: docs/reference/image-registries/
 description: Learn about Docker Hub and other public registries that house Docker images
 topics:
  - docker
@@ -22,7 +22,7 @@ docker login {registry address, such as index.docker.io}
 After you invoke `docker login`, all of your `docker push` and `docker pull` commands are associated with that registry. For more information about how to use Docker images, read the [Find and download a Docker image]({{ site.baseurl }}/docs/tutorials/run-docker-image/) tutorial.
 
 Registries
---- 
+---
 
 Multiple Docker registries are available online. Following are some of the more popular ones.
 
