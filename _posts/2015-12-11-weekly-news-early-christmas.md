@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: An Early Christmas"
+title: "Weekly news: An early Christmas"
 date: 2015-12-11 13:00
 comments: true
 author: Everett Toews <everett.toews@rackspace.com>
@@ -18,37 +18,37 @@ Christmas arrived early this week with plenty of goodies under the 🎄 from the
 
 ## Carina CLI shipped 1.0.0!
 
-<img class="right" src="{% asset_path 2015-12-11-weekly-news/carina-constellation.png %} alt="Carina Constellation"/>The Carina CLI shipped 1.0.0 this week with its Carinate Carina release. There's a lot of great stuff in the [release notes](https://github.com/getcarina/carina/releases/tag/v1.0.0). Go ahead and [install the latest and greatest](https://github.com/getcarina/carina#installation) on your preferred platform.
+<img class="right" src="{% asset_path 2015-12-11-weekly-news/carina-constellation.png %}" alt="Carina Constellation"/>The Carina CLI shipped 1.0.0 this week with its Carinate Carina release. There's a lot of great stuff in the [release notes](https://github.com/getcarina/carina/releases/tag/v1.0.0). Go ahead and [install the latest and greatest](https://github.com/getcarina/carina#installation) on your preferred platform.
 
 ## Explore Minecraft on Carina
 
 ![minecraft]({% asset_path minecraft/minecraft.png %})
 
-Minecraft is a multi-player game that let's you explore a vast 3D world, craft items from the world's bountiful resources, and survive nights filled with monstrous mobs. This tutorial describes running a Minecraft server on Carina so that you can explore the world of Minecraft with your friends and family.
+Minecraft is a multi-player game that lets you explore a vast 3D world, craft items from the world's bountiful resources, and survive nights filled with monstrous mobs. A new tutorial describes running a Minecraft server on Carina so that you can explore the world of Minecraft with your friends and family.
 
 [Explore Minecraft on Carina]({{ site.baseurl }}/docs/tutorials/minecraft/)
 
 ## Push Button, Let's Encrypt
 
-<img class="left" src="{% asset_path 2015-12-11-weekly-news/lock.png %} alt="The Green Lock of TLSdom"/>An experiment to employ Let's Encrypt to serve any existing HTTP service over HTTPS with one command.
+<img class="left" src="{% asset_path 2015-12-11-weekly-news/lock.png %}" alt="The Green Lock of TLSdom"/>Check out this experiment to employ Let's Encrypt to serve any existing HTTP service over HTTPS with one command.
 
 [Push Button, Let's Encrypt]({{ site.baseurl }}/blog/push-button-lets-encrypt/)
 
 ## Running Shipyard on Carina
 
-<img class="right" src="{% asset_path 2015-12-11-weekly-news/shipyard.png %} alt="Shipyard"/>With the addition and exposure of docker.sock on Carina, you can run interesting things, like the Shipyard GUI.
+<img class="right" src="{% asset_path 2015-12-11-weekly-news/shipyard.png %}" alt="Shipyard"/>With the addition and exposure of docker.sock on Carina, you can run interesting things, like the Shipyard GUI.
 
 [Running Shipyard on Carina]({{ site.baseurl }}/blog/running-shipyard-on-carina/)
 
 ## Decoding Fallout 4's Pip-Boy database
 
-<img class="left" src="{% asset_path 2015-12-11-weekly-news/close-to-metal.png %} alt="Pip Boy is close to the metal"/>Following the siphoning of traffic from the Pip-Boy mobile app and Fallout 4 game, a community of hackers has come together to decode the Pip-Boy data and database. There are now libraries for several languages and several alternative UIs to the mobile app.
+<img class="left" src="{% asset_path 2015-12-11-weekly-news/close-to-metal.png %}" alt="Pip Boy is close to the metal"/>Following the siphoning of traffic from the Pip-Boy mobile app and Fallout 4 game, a community of hackers has come together to decode the Pip-Boy data and database. There are now libraries for several languages and several alternative UIs to the mobile app.
 
 [Decoding Fallout 4's Pip-Boy database with a community of vault dwellers]({{ site.baseurl }}/blog/decoding-the-pipboy-database-with-vault-community/)
 
-## Deploying Secure Web Applications
+## Deploying secure web applications
 
-<img class="right" src="{% asset_path 2015-12-11-weekly-news/lock.png %} alt="The Green Lock of TLSdom"/>In this post, Lars Butler shows you what he's found to be the path of least resistance in getting a secure web application up and running on the Rackspace Cloud. First he takes you quickly through the process of creating an SSL certificate, and then he shows you how to deploy an application using Carina--Rackspace's new container service--and Docker. Whether you've deployed HTTPS applications dozens of times, or you've never done it once, this guide should have something useful for you.
+<img class="right" src="{% asset_path 2015-12-11-weekly-news/lock.png %}" alt="The Green Lock of TLSdom"/>In this post, Lars Butler shows you what he's found to be the path of least resistance in getting a secure web application up and running on the Rackspace Cloud. First he takes you quickly through the process of creating an SSL certificate, and then he shows you how to deploy an application using Carina and Docker. Whether you've deployed HTTPS applications dozens of times, or you've never done it once, this guide should have something useful for you.
 
 [Deploying Secure Web Applications on the Rackspace Cloud with Carina and Docker]({{ site.baseurl }}/blog/deploying-secure-web-applications-rackspace-cloud-carina-docker/)
 
