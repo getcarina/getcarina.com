@@ -12,7 +12,7 @@ topics:
   - minecraft
 ---
 
-Minecraft is a multi-player game that let's you explore a vast 3D world, craft items from world's bountiful resources, and survive nights filled with monstrous mobs. This tutorial describes running a Minecraft server on Carina so that you can explore the world of Minecraft with your friends and family.
+Minecraft is a multi-player game that lets you explore a vast 3D world, craft items from world's bountiful resources, and survive nights filled with monstrous mobs. This tutorial describes running a Minecraft server on Carina so that you can explore the world of Minecraft with your friends and family.
 
 ![minecraft]({% asset_path minecraft/minecraft.png %})
 
