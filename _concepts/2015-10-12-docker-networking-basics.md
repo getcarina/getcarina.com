@@ -2,7 +2,7 @@
 title: Docker networking basics
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-12
-permalink: docs/tutorials/docker-networking-basics/
+permalink: docs/concepts/docker-networking-basics/
 description: Learn how to connect Docker containers over a network
 docker-versions:
   - 1.8.2
@@ -61,7 +61,7 @@ with any application.
 * [Docker links documentation](https://docs.docker.com/userguide/dockerlinks/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/docs/tutorials/service-discovery-101/)
+* [Service discovery 101]({{ site.baseurl }}/docs/concepts/service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/docs/best-practices/container-technologies-networking/)
 
 ### Next steps

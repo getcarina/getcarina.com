@@ -179,7 +179,7 @@ When you are providing instructions to users, you should generally number the st
 
 4. To scale your cluster, select **Enable Autoscale**.
 
-    For more information, see [Autoscaling resources in Carina](https://getcarina.com/docs/tutorials/autoscaling-carina/).
+    For more information, see [Autoscaling resources in Carina](https://getcarina.com/docs/reference/autoscaling-carina/).
 
 5. Click **Create Cluster**.
 

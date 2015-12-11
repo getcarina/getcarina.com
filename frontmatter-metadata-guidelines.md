@@ -55,7 +55,7 @@ docs/*article-type*/*slug-of-article*/
 
 **Examples:**
 
-- **docs/tutorials/containers-101/**
+- **docs/concepts/containers-101/**
 - **docs/references/error-running-interactive-docker-shell-windows/**
 
 ## Description

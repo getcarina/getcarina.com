@@ -2,7 +2,7 @@
 title: Autoscaling resources in Carina
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-17
-permalink: docs/tutorials/autoscaling-carina/
+permalink: docs/reference/autoscaling-carina/
 description: Learn how autoscaling works in Carina
 docker-versions:
   - 1.8.2

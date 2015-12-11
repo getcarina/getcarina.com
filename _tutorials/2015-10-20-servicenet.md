@@ -168,7 +168,7 @@ If you don't want your container to be exposed to the public Internet, you need 
 
 The `racknet/ip` Docker utility image is an image you can use to discover the PublicNet and ServiceNet IP addresses of your segments.
 
-For more information about specifying a constraint, see [Scheduling constraints]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm/#scheduling-constraints).
+For more information about specifying a constraint, see [Scheduling constraints]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm/#scheduling-constraints).
 
 1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
 
@@ -215,7 +215,7 @@ For more information about specifying a constraint, see [Scheduling constraints]
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -224,8 +224,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Redis Security](http://redis.io/topics/security)
 * [A few things about Redis security](http://antirez.com/news/96)
 * [racknet/ip Docker image](https://hub.docker.com/r/racknet/ip/)
-* [Scheduling constraints]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm/#scheduling-constraints)
+* [Scheduling constraints]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm/#scheduling-constraints)
 
 ### Next step
 
-[Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/)
+[Docker networking basics]({{ site.baseurl }}/docs/concepts/docker-networking-basics/)

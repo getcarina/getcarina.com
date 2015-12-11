@@ -2,7 +2,7 @@
 title: Introduction to Docker Swarm
 author: Matt Darby <matt.darby@rackspace.com>
 date: 2015-10-19
-permalink: docs/tutorials/introduction-docker-swarm/
+permalink: docs/concepts/introduction-docker-swarm/
 description: Learn how Docker Swarm enables easy cluster management
 docker-versions:
   - 1.8
@@ -97,4 +97,4 @@ The `health` filter simply instructs Docker Swarm to schedule container creation
 
 ### Next steps
 * To find out more about Carina, see [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
-* To find out more about how Carina implements Docker Swarm, see [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/tutorials/docker-swarm-carina/).
+* To find out more about how Carina implements Docker Swarm, see [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/).

@@ -2,7 +2,7 @@
 title: Understanding how Carina uses Docker Swarm
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2015-10-18
-permalink: docs/tutorials/docker-swarm-carina/
+permalink: docs/concepts/docker-swarm-carina/
 description: Learn how Carina uses Docker Swarm
 docker-versions:
   - 1.8.3
@@ -109,7 +109,7 @@ With Carina you do not get this option. Instead, the `spread` strategy, which is
 Swarm default, is used.
 
 To find out more information about Swarm scheduling strategies, read the
-[Strategies for distributing containers to segments]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
+[Strategies for distributing containers to segments]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
 section of the "Introduction to Docker Swarm" article.
 
 ### AppArmor profiles

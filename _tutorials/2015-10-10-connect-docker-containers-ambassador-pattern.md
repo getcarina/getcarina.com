@@ -13,7 +13,7 @@ topics:
 ---
 
 This tutorial demonstrates how to connect Docker containers by using the ambassador pattern
-so that they can communicate over the network and across Docker hosts. For information about the ambassador pattern, see [Docker networking basics]({{ site.baseurl }}/docs/tutorials/docker-networking-basics/).
+so that they can communicate over the network and across Docker hosts. For information about the ambassador pattern, see [Docker networking basics]({{ site.baseurl }}/docs/concepts/docker-networking-basics/).
 
 ### Prerequisite
 
@@ -120,7 +120,7 @@ You now have two containers that can communicate across Docker hosts.
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -129,7 +129,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Docker networking basics]({{ site.baseurl }}/docs/tutorials/networking-basics/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
-* [Service discovery 101]({{ site.baseurl }}/docs/tutorials/service-discovery-101/)
+* [Service discovery 101]({{ site.baseurl }}/docs/concepts/service-discovery-101/)
 * [Introduction to container technologies: container networking]({{ site.baseurl }}/docs/best-practices/container-technologies-networking/)
 
 ### Next step

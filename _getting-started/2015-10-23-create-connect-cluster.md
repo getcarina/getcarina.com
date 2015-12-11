@@ -41,7 +41,7 @@ A Carina account. If you do not already have one, create a free account (no cred
 
 1. To scale your cluster, select **Enable Autoscale**.
 
-    For more information, see [Autoscaling resources in Carina]({{ site.baseurl }}/docs/tutorials/autoscaling-carina/).
+    For more information, see [Autoscaling resources in Carina]({{ site.baseurl }}/docs/reference/autoscaling-carina/).
 
 1. Click **Create Cluster**.
 
@@ -121,11 +121,11 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
-    **Note**: A newly created cluster contains containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm]({{ site.baseurl }}/docs/tutorials/introduction-docker-swarm/).  
+    **Note**: A newly created cluster contains containers that are necessary for cluster management. For more information about these containers, see [Introduction to Docker Swarm]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm/).  
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
@@ -134,8 +134,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 If you're new to Carina, Docker, and containers, see the following articles to learn more:
 
 * [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/)
-* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
-* [Container 101]({{ site.baseurl }}/docs/tutorials/containers-101/)
+* [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
+* [Container 101]({{ site.baseurl }}/docs/concepts/containers-101/)
 
 ### Next steps
 

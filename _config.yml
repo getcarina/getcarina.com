@@ -36,20 +36,26 @@ gravatar:
   size: 80
 
 collections:
-  best-practices:
+  concepts:
     output: true
-    permalink: /docs/best-practices/:title/
-    label: best-practices
+    permalink: /docs/concepts/:title/
+    label: concepts
+  ecosystem:
+    output: true
+    permalink: /docs/ecosystem/:title/
+    label: ecosystem
   getting-started:
     output: true
     permalink: /docs/getting-started/:title/
     label: getting-started
+  troubleshooting:
+    output: true
+    permalink: /docs/troubleshooting/:title/
+    label: troubleshooting
   tutorials:
     output: true
     permalink: /docs/tutorials/:title/
     label: tutorials
-
-
 
 defaults:
   -

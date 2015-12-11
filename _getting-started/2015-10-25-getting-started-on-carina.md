@@ -174,13 +174,13 @@ Carina has many more features and there is more to learn. Review the [Resources]
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/tutorials/troubleshooting/).
+See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
-* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+* [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
 * [Carina documentation]({{ site.baseurl }}/docs/)
 * If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 

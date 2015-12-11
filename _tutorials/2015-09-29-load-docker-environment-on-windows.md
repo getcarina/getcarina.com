@@ -145,7 +145,7 @@ in the [CMD](#cmd) or [PowerShell](#powershell) section of this tutorial to set 
 ![Git Bash Screenshot]({% asset_path load-docker-environment-on-windows/gitbash.png %})
 
 [mintty]: https://mintty.github.io
-[troubleshooting-tty]: {{site.baseurl}}/docs/references/troubleshooting-cannot-enable-tty-mode-on-windows/#use-ssh-to-connect-to-the-docker-host
+[troubleshooting-tty]: {{site.baseurl}}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/#use-ssh-to-connect-to-the-docker-host
 
 #### Alternatives
 Some alternative terminals provide useful features, such as improved copy and paste,
@@ -200,4 +200,4 @@ In the following screenshot, ConEmu is configured with tabs for each shell (CMD,
 * [CMD syntax][cmd-doc]
 * [PowerShell syntax](http://ss64.com/ps/syntax.html)
 * [Bash syntax](http://ss64.com/bash/syntax.html)
-* [Docker 101]({{ site.baseurl }}/docs/tutorials/docker-101/)
+* [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
