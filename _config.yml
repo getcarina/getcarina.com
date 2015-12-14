@@ -48,6 +48,10 @@ collections:
     output: true
     permalink: /docs/getting-started/:title/
     label: getting-started
+  reference:
+    output: true
+    permalink: /docs/reference/:title/
+    label: reference
   troubleshooting:
     output: true
     permalink: /docs/troubleshooting/:title/
