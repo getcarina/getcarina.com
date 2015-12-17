@@ -12,7 +12,7 @@ topics:
 
 This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
 
-**Note**: This guide uses the command line interface to create a cluster. To use the graphical user  interface see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+**Note**: This guide uses the command line interface to create a cluster. To use the graphical user interface see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
 ### Prerequisites
 
@@ -24,45 +24,33 @@ The Docker client. Use the [Docker Version Manager (dvm)]({{ site.baseurl }}/doc
 
 ### Download and install the Carina CLI
 
-1. Download the latest version of the CLI library that matches your operating system from the
-   [Carina repository](https://github.com/getcarina/carina/releases/).
+#### OS X with homebrew
 
-2. Move the binary to a permanent location:
+If you're using [brew](http://brew.sh/):
 
-    **Bash**
+```bash
+$ brew install carina
+```
 
-    ```bash
-    $ mkdir ~/bin
-    $ mv carina-darwin-amd64 ~/bin/carina
-    ```
+#### Linux and OS X (non-homebrew)
 
-    **PowerShell**
+Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest) for 64-bit Linux and OS X. You can `curl` the binary, move it somewhere on your `$PATH`, and make it executable:
 
-    ```powershell
-    > mkdir -f "$env:USERPROFILE\bin"
-    > mv -force carina.exe "$env:USERPROFILE\bin"
-    ```
+```bash
+$ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
+$ mv carina ~/bin/carina
+$ chmod u+x ~/bin/carina
+```
 
-3. On Mac OSX and Linux, make the binary executable:
+#### Windows
 
-    ```bash
-    $ chmod u+x ~/bin/carina
-    ```
+Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest). For a quick install, open up Powershell and run:
 
-4. Add the binary to your path with the following command:
+```
+> wget https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe -OutFile carina.exe
+```
 
-    **Bash**
-
-    ```bash
-    $ export PATH=$PATH:$HOME/bin
-    ```
-
-    **PowerShell**
-
-    ```powershell
-    > $env:PATH += ";$env:USERPROFILE\bin"
-    ```
-
+You'll want to move `carina.exe` to somewhere on your `%PATH%`.
 
 ### Configure with Carina credentials
 
