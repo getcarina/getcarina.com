@@ -10,65 +10,55 @@ topics:
   - intermediate
 ---
 
-This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
+This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface (CLI) is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
 
-**Note**: This guide uses the command line interface to create a cluster. To use the graphical user  interface see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+**Note**: This guide uses the command-line interface to create a cluster. To use the graphical user interface, see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
 ### Prerequisites
 
-A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
+* A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
 
-Your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
+* Your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
-The Docker client. Use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+* The Docker client. Use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 
-### Download and install the Carina CLI
+### Download and install the CLI
 
-1. Download the latest version of the CLI library that matches your operating system from the
-   [Carina repository](https://github.com/getcarina/carina/releases/).
+To download and install the `carina` CLI, use the appropriate instructions for your operating system.
 
-2. Move the binary to a permanent location:
+#### OS X with Homebrew
 
-    **Bash**
+If you're using [Homebrew](http://brew.sh/), run the following command:
 
-    ```bash
-    $ mkdir ~/bin
-    $ mv carina-darwin-amd64 ~/bin/carina
-    ```
+```bash
+$ brew install carina
+```
 
-    **PowerShell**
+#### Linux and OS X (not Homebrew)
 
-    ```powershell
-    > mkdir -f "$env:USERPROFILE\bin"
-    > mv -force carina.exe "$env:USERPROFILE\bin"
-    ```
+Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest) for 64-bit Linux and OS X. You can use `curl` to download the binary, move it to a directory on your `$PATH`, and make it executable:
 
-3. On Mac OSX and Linux, make the binary executable:
+```bash
+$ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
+$ mv carina ~/bin/carina
+$ chmod u+x ~/bin/carina
+```
 
-    ```bash
-    $ chmod u+x ~/bin/carina
-    ```
+#### Windows
 
-4. Add the binary to your path with the following command:
+Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest). For quick installation, open PowerShell and run the following command:
 
-    **Bash**
+```
+> wget https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe -OutFile carina.exe
+```
 
-    ```bash
-    $ export PATH=$PATH:$HOME/bin
-    ```
-
-    **PowerShell**
-
-    ```powershell
-    > $env:PATH += ";$env:USERPROFILE\bin"
-    ```
-
+Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
 ### Configure with Carina credentials
 
 1. Gather the required information:
   * Username (CARINA_USERNAME): Your Carina username from the [Carina Control Panel](https://app.getcarina.com).
-  * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequsites](#prerequisites).
+  * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Prerequisites](#prerequisites).
 
 2. Set your environment variables to contain these credentials. For example:
 
