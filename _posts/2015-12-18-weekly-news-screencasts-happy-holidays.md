@@ -1,11 +1,11 @@
 ---
-title: "Weekly news: An early Christmas"
+title: "Weekly news: New screencasts and happy holidays"
 date: 2015-12-18 13:00
 comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup: Happy Holidays and some excellent new screencasts from the Carina team.
+  In this week's roundup: Some excellent new screencasts and happy holidays from the Carina team.
 categories:
  - Docker
  - Swarm
