@@ -57,44 +57,44 @@ Run a Redis instance to store your application data.
 	  --maxmemory 800M
     ```
 
-	The output of this `docker run` command is your running Redis container ID.
-	The `-m 1G` option specifies a reserved memory of 1GB. With Redis all data
-	is in memory so you'll want to reserve some meory for the contaier and
-	folow it up with a `maxmemory` setting to limit Redis' data memory
-	allocation. In this case we selected 800Mb as the maxmemory value for Redis
-	to provide 800M of data+client buffer space and 200M for Redis persistence
-	requirements.
-
-	Note that while you can change the password via the API, restarting the
-	container will reset it to the password specified in the command line. If
-	you want to manage the password via the API you can choose to not set one
-	at the command line and then *immediately* set one via the API.
+    The output of this `docker run` command is your running Redis container ID.
+    The `-m 1G` option specifies a reserved memory of 1GB. With Redis all data
+    is in memory so you'll want to reserve some meory for the contaier and
+    folow it up with a `maxmemory` setting to limit Redis' data memory
+    allocation. In this case we selected 800Mb as the maxmemory value for Redis
+    to provide 800M of data+client buffer space and 200M for Redis persistence
+    requirements.
+    
+    Note that while you can change the password via the API, restarting the
+    container will reset it to the password specified in the command line. If
+    you want to manage the password via the API you can choose to not set one
+    at the command line and then *immediately* set one via the API.
 
 1. View the status of the container by using the `--latest` parameter.
 
     ```bash
     $ docker ps --latest
-	CONTAINER ID        IMAGE               COMMAND CREATED             STATUS              PORTS NAMES
-	559d211c4cb1        redis               "/entrypoint.sh redis"   16 seconds ago      Up 6 seconds        172.99.78.231:32768->6379/tcp 7ffed4c5-fdcb-473d-8740-f133804b39a4-n1/amazing_mayer
+    CONTAINER ID        IMAGE               COMMAND CREATED             STATUS              PORTS NAMES
+    559d211c4cb1        redis               "/entrypoint.sh redis"   16 seconds ago      Up 6 seconds        172.99.78.231:32768->6379/tcp 7ffed4c5-fdcb-473d-8740-f133804b39a4-n1/amazing_mayer
     ```
 
     The output of this `docker ps` command is your running Redis container.
 
-	The status of the container should begin with Up. If it doesn't, see
-	the [Troubleshooting](#troubleshooting) section at the end of the
-	tutorial.
+    The status of the container should begin with Up. If it doesn't, see
+    the [Troubleshooting](#troubleshooting) section at the end of the
+    tutorial.
 
 1. View the ID of the container by using the `--quiet` parameter, store
    it in an environment variable for later use.
 
     ```bash
     $ REDCON=$(docker ps --quiet --latest)
-	$ echo $REDCON
+    $ echo $REDCON
     54182185355c
     ```
 
-	The output of this `docker ps` command is the shortened ID of the
-	Redis container, we stored it in $REDCON, and echoed it out.
+    The output of this `docker ps` command is the shortened ID of the
+    Redis container, we stored it in $REDCON, and echoed it out.
 
 1. Discover what IP address and port Redis is running on by combining the `docker port` command, the ID of the container, and the default Redis port of 6379.
 
@@ -103,41 +103,43 @@ Run a Redis instance to store your application data.
     172.99.78.231:32769
     ```
 
-	For the containerized Redis service, you don't need to keep track of
-	what it's named, what IP address it runs on, or what port it uses.
-	Instead, you discover this information dynamically with the
-	preceding command, and use it later in the tutorial to connect to
-	Redis. 
-	
-	To make this easier to use with `redis-cli` let us create a
-	few more environment variables. We will user REDIS_HOST for the IP and
-	REDIS_PORT for the port.
+    For the containerized Redis service, you don't need to keep track of
+    what it's named, what IP address it runs on, or what port it uses.
+    Instead, you discover this information dynamically with the
+    preceding command, and use it later in the tutorial to connect to
+    Redis. 
+
+1. Set Useful Environment Variables
+
+    To make this easier to use with `redis-cli` let us create a
+    few more environment variables. We will user REDIS_HOST for the IP and
+    REDIS_PORT for the port.
 
     ```bash
     $ REDIS_HOST=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp }}' $REDCON)
     $ REDIS_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort }}' $REDCON)
-	$ echo $REDIS_HOST:$REDIS_PORT
+    $ echo $REDIS_HOST:$REDIS_PORT
     ```
 
-	Now let us test our connection.
+1. Testing the results 
+
+    Now let us test our connection.
 
     ```bash
-	$ redis-cli -h $REDIS_HOST -p $REDIS_PORT -a mysecretpassword
-	172.99.78.231:32769> 
-	```
+    $ docker run --rm redis redis-cli -h $REDIS_HOST -p $REDIS_PORT -a mysecretpassword
+    172.99.78.231:32769> 
+    ```
 
-	Now type in `PING` and you should see `PONG` come back. You should
-	now have a functional Redis server requiring authentication. Now
-	we'll set and get a key.
+    Now type in `PING` and you should see `PONG` come back. You should
+    now have a functional Redis server requiring authentication. Now
+    we'll set and get a key.
 
-	```bash
-	$ redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword set
-	redis:on:carina true
-	OK
-	$ redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword get
-	redis:on:carina
-	"true"
-	```
+    ```bash
+    $ docker run --rm redis redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword set redis:on:carina true
+    OK
+    $ docker run --rm redis-cli -h 172.99.78.231 -p 32769 -a mysecretpassword get redis:on:carina
+    "true"
+    ```
 
 ### Troubleshooting
 
@@ -161,6 +163,11 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [The Redis Quickstart](http://redis.io/topics/quickstart)
 * [The Redis Security Guide](http://redis.io/topics/security)
 
-### Next
+### Next Steps
 
-If Redis isn't the data store for you, read [Use MongoDB on Carina](/docs/tutorials/data-stores-mongodb/).
+If you want Redis to only listen on the internal, multi-tenant network within
+Carina, read [Communicate between containers over the ServiceNet internal
+network](/docs/tutorials/servicenet/).
+
+If Redis isn't the data store for you, read [Use MongoDB on
+Carina](/docs/tutorials/data-stores-mongodb/).
