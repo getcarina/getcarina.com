@@ -1,7 +1,7 @@
 ---
 title: Use Redis on Carina
 author: Bill Anderson <bill.anderson@rackspace.com>
-date: 2015-11-23
+date: 2016-01-04
 permalink: docs/tutorials/data-stores-redis/
 description: Learn how to use Redis on Carina
 docker-versions:
