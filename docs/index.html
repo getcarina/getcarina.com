@@ -43,19 +43,38 @@ layout: default
       <div class="tools">
         <ul>
           <li><a href="" data-ng-click="docs.showCollection = 'getting-started'" data-ng-class="{'active': docs.showCollection == 'getting-started'}" data-ga-click="pageview" data-page="/docs/getting-started/" data-follow-link="false">Getting Started</a></li>
+          <li><a href="" data-ng-click="docs.showCollection = 'concepts'" data-ng-class="{'active': docs.showCollection == 'concepts'}" data-ga-click="pageview" data-page="/docs/concepts/" data-follow-link="false">Concepts</a></li>
           <li><a href="" data-ng-click="docs.showCollection = 'tutorials'" data-ng-class="{'active': docs.showCollection == 'tutorials'}" data-ga-click="pageview" data-page="/docs/tutorials/" data-follow-link="false">Tutorials</a></li>
-          <li><a href="" data-ng-click="docs.showCollection = 'best-practices'" data-ng-class="{'active': docs.showCollection == 'best-practices'}" data-ga-click="pageview" data-page="/docs/best-practices/" data-follow-link="false">Best Practices</a></li>
+          <li><a href="" data-ng-click="docs.showCollection = 'troubleshooting'" data-ng-class="{'active': docs.showCollection == 'troubleshooting'}" data-ga-click="pageview" data-page="/docs/troubleshooting/" data-follow-link="false">Troubleshooting</a></li>
+          <li><a href="" data-ng-click="docs.showCollection = 'reference'" data-ng-class="{'active': docs.showCollection == 'reference'}" data-ga-click="pageview" data-page="/docs/reference/" data-follow-link="false">Reference</a></li>
+          <li><a href="" data-ng-click="docs.showCollection = 'ecosystem'" data-ng-class="{'active': docs.showCollection == 'ecosystem'}" data-ga-click="pageview" data-page="/docs/ecosystem/" data-follow-link="false">Container Ecosystem</a></li>
         </ul>
       </div>
       <div class="articles">
         {% for collection in site.collections %}
           <ul data-ng-show="docs.showCollection == '{{ collection[0] }}'" id="{{ collection[0] }}">
-          {% for doc in collection[1].docs %}
+            {% assign collection_docs = collection[1].docs | sort: 'date' | reverse %}
+
+            {% comment %} first we have to show the "featured" docs for each collection {% endcomment %}
+            {% for doc in collection_docs %}
+            {% if doc.featured %}
             <li data-collection="{{ collection[0] }}">
               <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
               <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
               <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
             </li>
+            {% endif %}
+            {% endfor %}
+
+            {% comment %} then, we can show all non-featured docs for a collection {% endcomment %}
+            {% for doc in collection_docs %}
+            {% if doc.featured == nil or doc.featured == false %}
+            <li data-collection="{{ collection[0] }}">
+              <h3><a href="{{ doc.url }}">{{ doc.title }}</a></h3>
+              <div class="excerpt">{{ doc.description or doc.excerpt }}</div>
+              <div class="details"><time dateime="{{ doc.date }}">{{ doc.date | date: '%B %d, %Y' }}</time></div>
+            </li>
+            {% endif %}
             {% endfor %}
           </ul>
         {% endfor %}

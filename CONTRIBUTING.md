@@ -1,12 +1,12 @@
 # Carina by Rackspace&mdash;Guidelines for content contributors
 
-This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Carina by Rackspace. This file provides guidelines for the documentation process, from creating an article, to getting it reviewed, to publishing it. 
+This [Jekyll](http://jekyllrb.com/) repo houses documentation and tutorials for Carina by Rackspace. This file provides guidelines for the documentation process, from creating an article, to getting it reviewed, to publishing it.
 
 ### Writing
 
 The content is split into three separate collections: **tutorials**, **best practices**, and **getting started**. The individual files for these collections are in `_tutorials`, `_best-practices`, and `_getting-started`. The `_assets` directory contains images for the content.
 
-Right now, file names are being prefixed with a number like `001-` to control their display order. This method will probably change.
+File names are prefixed with an ISO8601 date (YYYY-MM-DD) in order to reasonably sort them when listing source files. This prefix does not affect the sorting of files when they are displayed on the website.
 
 #### Templates
 
@@ -21,42 +21,42 @@ Templates for content are available in each of the directories:
 
 #### General style guidelines
 
-Follow the style guidelines defined at in the [Writing style guide](https://one.rackspace.com/display/devdoc/Writing+style+guide). Following are some specific guidelines you might review:
+Use the following guidelines, which are described in detail in [style-guidelines.md](style-guidelines.md):
 
-- Use [sentence-style capitalization for titles and headings](https://one.rackspace.com/display/devdoc/Titles+and+headings#Titlesandheadings-Capitalizationoftitlesandheadings)
-- Use [consistent text formatting](https://one.rackspace.com/display/devdoc/Text+formatting)
-- Write [clear and consistent code examples](https://one.rackspace.com/display/devdoc/Code+examples)
-- Use [active voice](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Useactivevoice)
-- Use [present tense](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Usepresenttense)
-- Write to the user by using [second person and imperative mood](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Writetoyou(thecustomer))
-- Write [clear and consistent step text](https://one.rackspace.com/display/devdoc/Tasks+and+procedures)
-- Clarify [pronouns such as *it*, *this*, *there*, and *that*](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Clarifypronouns)
-- Clarify [gerunds and participles](https://one.rackspace.com/display/devdoc/Basic+writing+guidelines#Basicwritingguidelines-Clarifygerundsandparticiples(verbsendingin-ingand-ed))
-- Use [consistent terminology](https://one.rackspace.com/display/devdoc/Terminology)
+- Use sentence-style capitalization for titles and headings
+- Use consistent text formatting
+- Write clear and consistent code examples
+- Use active voice
+- Use present tense
+- Write to the user by using second person and imperative mood
+- Write clear and consistent step text
+- Clarify pronouns such as *it*, *this*, *there*, and *that*
+- Clarify gerunds and participles
+- Use consistent terminology
 
 #### Carina specific style guidelines
 
 Following are some specific guidelines for Carina content:
 
-- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5) . If you need more than three levels, you should consider breaking your article into two or more articles.
+- For the first-level headings in an article, use the H3 level (designated by ###). Avoid using more than three levels of heading in an article (H3, H4, and H5). If you need more than three levels, you should consider breaking your article into two or more articles.
 
 - If a title contains a special character, such as a colon, enclose the title with single quotation marks.
 
-- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`. For more information, see [Placeholder text](https://one.rackspace.com/display/devdoc/Placeholder+%28variable%29+text).
+- When code includes placeholders, show them in camelCase and enclose them in angle brackets. For example, `<hostName>`.
 
 - Show the long forms of command flags on first use in tutorials intended for beginners. For example, `--interactive` and `--tty`. You can then introduce the short version (for example, `-i`, `-t`, or `-it`) and use it consistently throughout the article. Long versions are preceded by a double hyphen; short versions are preceded by a single hyphen.   
 
-- To link to another article, use the permalink for that article, preceded by `{{site.baseurl}}`. The permalink is defined in the frontmatter metadata of the article. Format the link as follows: `({{site.baseurl}}/docs/<directoryName>/<articleName>/)`. For example, `({{site.baseurl}}/docs/tutorials/introduction-docker-swarm/)`. Note the use of both leading and trailing slashes.
+- To link to another article, use the permalink for that article, preceded by `{{site.baseurl}}`. The permalink is defined in the frontmatter metadata of the article. Format the link as follows: `({{site.baseurl}}/docs/<directoryName>/<articleName>/)`. For example, `({{site.baseurl}}/docs/concepts/introduction-docker-swarm/)`. Note the use of both leading and trailing slashes.
 
-- To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`. 
+- To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`.
 
-    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/tutorials/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)`. 
-    
+    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)`.
+
     If the heading is long or contains special characters, you can create a custom anchor.
-    
-- When creating complex lists, such as procedures with sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists. 
 
-- In articles, you can refer to the service simply as Carina. You do not need to include the TM symbol or the phrase "by Rackspace." 
+- When creating complex lists, such as procedures with sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists.
+
+- In articles, you can refer to the service simply as Carina. You do not need to include the TM symbol or the phrase "by Rackspace."
 
 - Use the following capitalization when referring to the control panel: Carina Control Panel
 

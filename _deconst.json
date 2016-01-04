@@ -1,3 +1,5 @@
 {
-  "contentIDBase": "https://github.com/rackerlabs/docs-container-service/"
+  "contentIDBase": "https://github.com/rackerlabs/docs-container-service/",
+  "githubUrl": "https://github.com/getcarina/getcarina.com/",
+  "githubBranch": "master"
 }

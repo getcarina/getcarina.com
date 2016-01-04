@@ -109,7 +109,7 @@ As an early adopter of Carina - [Andrew Odewahn](https://twitter.com/odewahn), C
 Thanks - and welcome to Carina!
 
 ## More Reading, community, GitHub!:
-* [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/tutorials/docker-swarm-carina/)
+* [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/concepts/docker-swarm-carina/)
 * [Documentation](https://getcarina.com/docs/)
 * [Community Forums](https://community.getcarina.com/)
 * IRC: **irc.freenode.net - #carina**
@@ -118,9 +118,9 @@ Thanks - and welcome to Carina!
 
 
 
-[Docker Swarm and Carina]: https://getcarina.com/docs/tutorials/docker-swarm-carina/
+[Docker Swarm and Carina]: https://getcarina.com/docs/concepts/docker-swarm-carina/
 [carina]: https://getcarina.com
 [tutorials]: https://getcarina.com/docs
 [command line interface]: https://github.com/getcarina/carina/releases
 [get started]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
-[glossary]: https://getcarina.com/docs/references/glossary/
+[glossary]: https://getcarina.com/docs/reference/glossary/

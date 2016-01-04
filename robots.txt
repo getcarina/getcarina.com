@@ -1,3 +1,4 @@
 ---
+unsearchable: true
 ---
 User-agent: *

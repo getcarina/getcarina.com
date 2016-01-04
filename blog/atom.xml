@@ -1,4 +1,5 @@
 ---
+unsearchable: true
 content_type: text/xml
 ---
 <?xml version="1.0" encoding="utf-8"?>
