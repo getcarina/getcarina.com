@@ -59,7 +59,7 @@ Run a Redis instance to store your application data.
 
     The output of this `docker run` command is your running Redis container ID.
     The `-m 1G` option specifies a reserved memory of 1GB. With Redis all data
-    is in memory so you'll want to reserve some meory for the contaier and
+    is in memory so you'll want to reserve some memory for the contaier and
     folow it up with a `maxmemory` setting to limit Redis' data memory
     allocation. In this case we selected 800Mb as the maxmemory value for Redis
     to provide 800M of data+client buffer space and 200M for Redis persistence
