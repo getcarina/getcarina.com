@@ -41,7 +41,7 @@ provided in the
 [Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
 section.
 
-Each segment has 4 GB of memory and roughly the equivalent of 2 vCPUs. The
+Each segment has 20 GB of disk space, 4 GB of memory, and roughly the equivalent of 2 vCPUs. The
 maximum number of segments that you can provision per cluster is 3. The maximum
 number of clusters that you are allowed per account is 3. If you have a use case
 requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22).
