@@ -92,7 +92,8 @@ If you don't want your container to be exposed to the public Internet, you need 
 1. Get the internal IP address of the segment using the `racknet/ip` Docker utility image.
 
     ```bash
-    $ docker run --net=host \
+    $ docker run --rm \
+      --net=host \
       --env constraint:node==3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2 \
       racknet/ip \
       service ipv4
@@ -173,7 +174,8 @@ For more information about specifying a constraint, see [Scheduling constraints]
 1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
 
     ```bash
-    $ docker run --rm --net=host \
+    $ docker run --rm \
+      --net=host \
       --env constraint:node==3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2 \
       racknet/ip \
       public ipv4
@@ -185,7 +187,8 @@ For more information about specifying a constraint, see [Scheduling constraints]
 1. View the internal IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
 
     ```bash
-    $ docker run --rm --net=host \
+    $ docker run --rm \
+      --net=host \
       --env constraint:node==3947b48f-7b6b-409b-8a49-a9d71672a0d4-n1 \
       racknet/ip \
       service ipv4
