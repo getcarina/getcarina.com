@@ -19,7 +19,7 @@ You must use the [Deconst Client][deconst-client] to preview your changes.
 1. Click the Create button.
 1. Wait until the deconst process is complete, then click the displayed link to preview the site.
 
-    **Note:** If after 30 minutes you do not see a link and it is still in the preparing state, use [this workaround](https://github.com/deconst/client/issues/50) and add a comment that you have hit the bug as well.
+    **Note:** If after 5 minutes you do not see a link and it is still in the preparing state, use [this workaround](https://github.com/deconst/client/issues/50) and add a comment that you have hit the bug as well.
 
 Deconst is now serving this repo as a simple website, and will rebuild the site every time you save a file.
 
