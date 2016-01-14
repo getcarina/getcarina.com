@@ -46,21 +46,22 @@ List necessary prerequisites for the tutorial. Limit this section to only what t
 ### Steps
 
 <!--
-Provide a descriptive heading for this section. Begin with the an imperative verb. 
+Provide a descriptive heading for this section. Begin with the an imperative verb.
 
 List steps in numbered order. Limit steps to a single action.
 
-Include as many "steps" sections as needed to provide a complete topic to the user. 
+Include as many "steps" sections as needed to provide a complete topic to the user.
+To make it easier to shuffle steps around, number each with 1. and Jekyll will handle numbering it appropriately.
 
 1. Do this.
 
-    Indent any descriptions or information needed between steps. If your task includes sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists. 
+    Indent any descriptions or information needed between steps. If your task includes sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists.
 
-2. Do that.
+1. Do that.
 
-3. Do this other thing.
+1. Do this other thing.
 
-4. Clean up.
+1. Clean up.
 
     If a tutorial isn't part of a series of tutorials and the user might not need the containers that they created anymore, include an optional step at the end of the tutorial to remove only the containers created in the tutorial. Use the following text, adjusting the example as needed for your tutorial:
 
