@@ -79,7 +79,7 @@ Docker maintains an image for the image registry service. You need to run this s
     $ export RS_REGION=IAD
     ```
 
-1. Run the Docker registry service
+1. Run the Docker registry service.
 
     This whole code block loops over every segment in your cluster and issues a `docker run` command against each segment.
 
