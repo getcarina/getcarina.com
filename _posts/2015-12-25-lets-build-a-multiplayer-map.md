@@ -5,8 +5,7 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  Take apart the pip boy app, discover running Fallout 4 games, and relay traffic with
-  a bit of Node.js, TCP, and UDP.
+  Let's make a multi-player map for Fallout 4!
 categories:
  - nodejs
  - React
