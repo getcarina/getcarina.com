@@ -212,8 +212,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 * [The MySQL Command-Line Tool](http://dev.mysql.com/doc/refman/5.6/en/mysql.html)
 
-### Next Steps
+### Next steps
 
-If you want to run your application with a production grade database, read [Connect a Carina container to a Rackspace Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/)
+If you want to run your application with a production-grade database, read [Connect a Carina container to a Rackspace Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/)
 
 If MySQL isn't the data store for you, read [Use MongoDB on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb/).
