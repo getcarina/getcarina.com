@@ -1,7 +1,7 @@
 ---
 title: Connect a Carina container to a Rackspace Cloud Database
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2016-01-25
+date: 2016-01-15
 permalink: docs/tutorials/data-stores-mysql-prod/
 description: Learn how to connect a Carina container to a Rackspace Cloud Database and span your infrastructure across both Carina and Rackspace Cloud
 docker-versions:
