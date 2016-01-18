@@ -35,6 +35,8 @@ parent host using SSH, like you can with a traditional VM. There are also
 restrictions on mounting paths from the host file system, which is discussed in
 the [Volumes](#volumes) section.
 
+Also, because your Docker containers live on segments, if a segment is destroyed (or dies), your container will likewise disappear.
+
 Each segment is assigned a public IPv4 address, like a Docker host. You
 can see all of these addresses with `docker info` or by using the command
 provided in the
