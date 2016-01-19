@@ -36,8 +36,8 @@ tedious. But now the stars have aligned and I have been able to create and deplo
 ### Docker Swarm
 
 [Swarm](https://docs.docker.com/swarm/) is Docker's native clustering technology that allows you to run 
-containers across any number of physical nodes.  What impresses me the most is that all of those tools and 
-commands you use with Swarm are one in the same as a single Docker host. By just changing `$DOCKER_HOST` 
+containers across any number of physical nodes.  What impresses me the most is that you use all of the same Docker 
+tools and commands with a Swarm cluster as you do with a single Docker host. By just changing `$DOCKER_HOST` 
 and associated environment variables you can switch back and forth between a local Docker host and a Swarm cluster.
 
 ### Carina by Rackspace
@@ -58,14 +58,14 @@ in the hands of any Minecraft player.
 
 Docker's native client library is written in Go, but I'm a Java developer. Luckily for me, Spotify has 
 open sourced their [Docker client](https://github.com/spotify/docker-client). To use the Docker client 
-in your project, just add the dependency to your `pom.xml`:
+in a Java project managed by Maven, just add the dependency to your `pom.xml`:
 
 ```xml
-        <dependency>
-            <groupId>com.spotify</groupId>
-            <artifactId>docker-client</artifactId>
-            <version>3.3.5</version>
-        </dependency>
+<dependency>
+    <groupId>com.spotify</groupId>
+    <artifactId>docker-client</artifactId>
+    <version>3.3.5</version>
+</dependency>
 ```
 
 Their client supports not only the full REST API over http/https, but also UNIX sockets. Along with that 
@@ -80,43 +80,43 @@ access files for your cluster:
 Assuming you have `source`'ed your unzipped Docker settings, this code will pick up the location from the environment:
  
 ```java
-        Optional<DockerCertificates> certs = DockerCertificates.builder()
-                .dockerCertPath(Paths.get(System.getenv("DOCKER_CERT_PATH")))
-                .build();
+Optional<DockerCertificates> certs = DockerCertificates.builder()
+    .dockerCertPath(Paths.get(System.getenv("DOCKER_CERT_PATH")))
+    .build();
 ```
 
 Now instantiate the client
 
 ```java
-        final DefaultDockerClient dockerClient = DefaultDockerClient.builder()
-                .dockerCertificates(certs.get())
-                .uri(URI.create(System.getenv("DOCKER_HOST").replace("tcp://", "https://")))
-                .build();
+final DefaultDockerClient dockerClient = DefaultDockerClient.builder()
+    .dockerCertificates(certs.get())
+    .uri(URI.create(System.getenv("DOCKER_HOST").replace("tcp://", "https://")))
+    .build();
 ```
 
 At the client API level there is not a `run` equivalent, so you create the container
 
-```
-        final ContainerCreation container =  
-                dockerClient.createContainer(ContainerConfig.builder()
-                .portSpecs("25565")
-                .env("EULA=TRUE")
-                .openStdin(true).tty(true)
-                .image("itzg/minecraft-server")
-                .build());
+```java
+final ContainerCreation container =  
+    dockerClient.createContainer(ContainerConfig.builder()
+    .portSpecs("25565")
+    .env("EULA=TRUE")
+    .openStdin(true).tty(true)
+    .image("itzg/minecraft-server")
+    .build());
 ```
 
 and start it
 
 ```java
-        dockerClient.startContainer(container.id());
+dockerClient.startContainer(container.id());
 ```
 
 
 ### Build and Deploy
 
 Let's switch gears. Everything above was code that I needed to create containers on a Docker Swarm or 
-individual daemon. Now, let's build and deploy the thing that creates containers as a container itself. 
+individual Docker daemon. Now, let's build and deploy the thing that creates containers as a container itself. 
 
 To keep things flexible, the deployment allows for a *target* cluster that can be different than the 
 *deployed* cluster. I'm also going to put an Nginx proxy in front of my web application, so we'll 
@@ -128,7 +128,11 @@ The first step of the build is to ensure the
 [Carina CLI](https://getcarina.com/docs/getting-started/getting-started-carina-cli/) is available. 
 If it's not cached, then the build script downloads it:
 
-	curl -sL https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o bin/carina
+```bash
+mkdir -p ~/bin
+curl -sL https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o ~/bin/carina
+chmod u+x ~/bin/carina
+```
 
 With these environment variables set
 
@@ -137,7 +141,9 @@ With these environment variables set
 
 the credentials for the target and deploy clusters can be obtained, like:
 
-	bin/carina credentials --path=certs $CLUSTER
+```bash
+~/bin/carina credentials --path=certs $CLUSTER
+```
 
 Now we're finally ready to connect, build, and deploy. Since I also wanted to secure the proxy connection 
 with a Let's Encrypt SSL certificate there became several moving parts. I combined the volume usage that 
