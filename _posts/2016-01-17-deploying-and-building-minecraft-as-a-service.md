@@ -73,7 +73,7 @@ it supports all the aspects of Docker authentication including certificate based
 Java client works with Carina right out of the box. 
 
 Let's write a little bit of Java code that creates a Minecraft Server on Carina. Start by downloading the 
-access files for your cluster:
+access files for your cluster: from the [Carina Web UI](https://app.getcarina.com/):
 
 ![Cert download]({% asset_path 2016-01-17-deploying-and-building-minecraft-as-a-service/get-carina-access.png %})
 
@@ -215,3 +215,4 @@ docker-compose up -d
 
 So, in conclusion you've seen that I have poked and prodded Carina's Docker Swarm clusters from various 
 angles. It all went quite smoothly since it all works with the Docker clients and tools you're already using.
+To prove the point of all this, I have a deployment of MCCY running on Carina (of course) at [https://mccy.itzg.me](https://mccy.itzg.me).
