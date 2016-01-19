@@ -1,5 +1,5 @@
 ---
-title: "Deploying and Building Minecraft as a Service on Carina"
+title: "Deploying and building Minecraft as a Service on Carina"
 date: 2016-01-17 18:00
 comments: true
 author: Geoff Bourne <itzgeoff@gmail.com>
@@ -25,12 +25,12 @@ creatures, or entire virtual economies.
 
 With the [Docker image I created for running Minecraft servers](https://hub.docker.com/r/itzg/minecraft-server/) 
 I was able to rapidly satisfy most of their requests: "Forge server running mods X, Y, and Z that oh, by the way, 
-requires 1.7.8 of Minecraft specifically". Over the past year though I have dreamed of having a way for 
+requires 1.7.8 of Minecraft specifically." Over the past year though I have dreamed of having a way for 
 them (or any Minecrafters) to fire up a custom server with all kinds of specific nuances without having to 
 know anything about Docker.
 
 My first attempt at the idea fizzled out since managing multiple Docker daemons was complicated and 
-tedious. But now the stars have aligned and I have been able to create and deploy 
+tedious. But now the stars have aligned, and I have been able to create and deploy 
 [Minecraft Container Yard (MCCY)](https://github.com/itzg/minecraft-container-yard)...
 
 ### Docker Swarm
@@ -42,7 +42,7 @@ and associated environment variables you can switch back and forth between a loc
 
 ### Carina by Rackspace
 
-Docker has made it fairly easy to setup a Swarm cluster, but the less time spent locating a host, spinning 
+Docker has made it fairly easy to set up a Swarm cluster, but the less time spent locating a host, spinning 
 up nodes, and configuring Swarm is time you can use to focus on your application and deploy it. 
 [Carina](https://getcarina.com/) is Rackspace's hosted solution to create on-demand Swarm clusters and 
 it is just as easy to use as Swarm itself. Since they are providing standard Swarm clusters, there's 
@@ -57,7 +57,7 @@ in the hands of any Minecraft player.
 ### Spotify Docker API for Java
 
 Docker's native client library is written in Go, but I'm a Java developer. Luckily for me, Spotify has 
-open sourced their [Docker client](https://github.com/spotify/docker-client). To use the Docker client 
+open-sourced their [Docker client](https://github.com/spotify/docker-client). To use the Docker client 
 in a Java project managed by Maven, just add the dependency to your `pom.xml`:
 
 ```xml
@@ -69,15 +69,15 @@ in a Java project managed by Maven, just add the dependency to your `pom.xml`:
 ```
 
 Their client supports not only the full REST API over http/https, but also UNIX sockets. Along with that 
-it supports all the aspects of Docker authentication including certificate based authentication -- so their 
+it supports all the aspects of Docker authentication including certificate-based authentication -- so their 
 Java client works with Carina right out of the box. 
 
-Let's write a little bit of Java code that creates a Minecraft Server on Carina. Start by downloading the 
-access files for your cluster: from the [Carina Web UI](https://app.getcarina.com/):
+Let's write a little bit of Java code that creates a Minecraft server on Carina. Start by downloading the 
+access files for your cluster from the [Carina web UI](https://app.getcarina.com/):
 
 ![Cert download]({% asset_path 2016-01-17-deploying-and-building-minecraft-as-a-service/get-carina-access.png %})
 
-Assuming you have `source`'ed your unzipped Docker settings, this code will pick up the location from the environment:
+Assuming you have sourced your unzipped Docker settings, this code will pick up the location from the environment:
  
 ```java
 Optional<DockerCertificates> certs = DockerCertificates.builder()
@@ -85,7 +85,7 @@ Optional<DockerCertificates> certs = DockerCertificates.builder()
     .build();
 ```
 
-Now instantiate the client
+Now instantiate the client:
 
 ```java
 final DefaultDockerClient dockerClient = DefaultDockerClient.builder()
@@ -94,7 +94,7 @@ final DefaultDockerClient dockerClient = DefaultDockerClient.builder()
     .build();
 ```
 
-At the client API level there is not a `run` equivalent, so you create the container
+At the client API level there is not a `run` equivalent, so you create the container:
 
 ```java
 final ContainerCreation container =  
@@ -106,14 +106,14 @@ final ContainerCreation container =
     .build());
 ```
 
-and start it
+Then, start it:
 
 ```java
 dockerClient.startContainer(container.id());
 ```
 
 
-### Build and Deploy
+### Build and deploy
 
 Let's switch gears. Everything above was code that I needed to create containers on a Docker Swarm or 
 individual Docker daemon. Now, let's build and deploy the thing that creates containers as a container itself. 
@@ -134,19 +134,15 @@ curl -sL https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/ca
 chmod u+x ~/bin/carina
 ```
 
-With these environment variables set
-
-* CARINA_USERNAME
-* CARINA_APIKEY
-
-the credentials for the target and deploy clusters can be obtained, like:
+With the `CARINA_USERNAME` and `CARINA_APIKEY` environment variables set, the credentials for the target and deploy 
+clusters can be obtained:
 
 ```bash
 ~/bin/carina credentials --path=certs $CLUSTER
 ```
 
 Now we're finally ready to connect, build, and deploy. Since I also wanted to secure the proxy connection 
-with a Let's Encrypt SSL certificate there became several moving parts. I combined the volume usage that 
+with a Let's Encrypt SSL certificate, there were several moving parts. I combined the volume usage that 
 I learned from [this article](https://getcarina.com/blog/weekly-news-docker-sock-letsencrypt/) 
 with the [truly push button, Let's Encrypt image](https://getcarina.com/blog/push-button-lets-encrypt/).
 
@@ -161,9 +157,9 @@ Here are the (somewhat re-usable) ingredients that go into a MCCY build:
 * [Build Script](https://github.com/itzg/minecraft-container-yard/blob/master/build-deploy-carina.sh)
 * [CircleCI project config](https://github.com/itzg/minecraft-container-yard/blob/master/circle.yml)
 
-### Lessons Learned about the Build
+### Lessons learned about the build
 
-There were a few lessons I learned as I figured out how to get the build going smoothly and repeatedly. 
+I learned a few lessons as I figured out how to get the build going smoothly and repeatedly. 
 For one thing, the default version of Docker client on CircleCI is not `docker volume` aware, 
 so the client needed to be [explicitly upgraded](https://discuss.circleci.com/t/docker-1-9-1-is-available/1009) 
 in the `circle.yml`:
@@ -202,8 +198,8 @@ docker-compose pull
 
 Finally, since I am using Docker volumes to persist data and certificates across continuous 
 deployments, Docker Compose started to run itself in circles trying to preserve the volumes 
-from one container to the next. I counteracted that whole helpfulness (i.e. I might be doing it wrong) 
-by tearing down and recreating the service containers in my build script:
+from one container to the next. I counteracted that whole helpfulness (this is I might be doing it wrong) 
+by tearing down and re-creating the service containers in my build script:
 
 ```bash
 docker-compose stop
@@ -213,6 +209,6 @@ docker-compose up -d
 
 ### Conclusion
 
-So, in conclusion you've seen that I have poked and prodded Carina's Docker Swarm clusters from various 
+So, in conclusion you've seen that I poked and prodded Carina's Docker Swarm clusters from various 
 angles. It all went quite smoothly since it all works with the Docker clients and tools you're already using.
 To prove the point of all this, I have a deployment of MCCY running on Carina (of course) at [https://mccy.itzg.me](https://mccy.itzg.me).
