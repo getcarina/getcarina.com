@@ -42,7 +42,7 @@ Using Open Source software you get used to being on IRC freenode be exact, more 
 We also did releases of a couple of tools our user community depends on:
 
 * [Carina CLI v1.1.1](https://github.com/getcarina/carina/blob/master/README.md)
- * We're on [Choclatey](https://chocolatey.org/) now!
+ * We're on [Choclatey](https://chocolatey.org/) now! Run `choco install carina` to install and `choco upgrade carina` to upgrade to the latest release.
  * Rename: nodes --> segments
  * Autoscale can be enabled with `carina autoscale <clustername> [on|off]`
 * [Docker Version Manager v0.3.0](https://github.com/getcarina/dvm/blob/master/README.md)
