@@ -3,7 +3,7 @@ title: "Deploying and building Minecraft as a Service on Carina"
 date: 2016-01-17 18:00
 comments: true
 author: Geoff Bourne <itzgeoff@gmail.com>
-published: false
+published: true
 excerpt: >
   See how to develop a Java application that creates containers on Carina's Docker Swarm
   and build/deploy that application Carina.
