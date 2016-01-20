@@ -226,23 +226,26 @@ There's one more coming to a JavaScript near you: `Observable`
    </tr>
 </table>
 
-Observables are Asynchronous data streams, [*from the future*](https://zenparsing.github.io/es-observable/).
+Observables are asynchronous data streams, [*from the future*](https://zenparsing.github.io/es-observable/).
 
 One of my favorite additions to JavaScript was the Promise. It made a lot of
 asynchronous code really clean, especially when relying on Promise chains.
 
 ```javascript
-example
+fetch('/players.json')
+  .then((resp) => response.json())
+  .then(action)
+  .catch(whoa)
 ```
 
-What became a disconnect for me was when I wanted to emit what was to me a
-multi-valued promise. Do I wait for all the values to get computed, relying on
-`Promise.all()`? In many cases that would not work since I needed the intermediate
-values. In the end I'd have to fall back on `Event` in the browser and `EventEmitter`
-in node-land (and the crazy mish-mash of the two when I browserified my code).
+What about cases where I wanted a promise to yield multiple values? Do I wait
+for all the values to get computed, relying on `Promise.all()`? Not if I want
+the intermediate values. In the end I'd have to fall back on `createEvent`/`EventEmitter`.
 
-What I really wanted was something that would give me a stream of messages that
-I could operate on like an Array. We did that above when we created new players:
+On top of that, I usually wanted to perform filtering and routing based on those
+messages for separate consumers of the data. What I really wanted was a stream
+of messages that I could operate on like an Array. We did that above when we
+created new players:
 
 ```
 const players = codsworthNames.map(newPlayer)
