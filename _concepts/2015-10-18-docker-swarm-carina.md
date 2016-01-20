@@ -30,10 +30,12 @@ by you, or by a tool like Docker Machine, onto an operating system, often in a
 Virtual Machine (VM). Tests have shown a 60 percent performance boost when LXC
 containers are used instead of VM hosts.
 
-Because your Docker containers live on segments, you cannot connect to the
+Because your Docker containers run inside segments, you cannot connect to the
 parent host using SSH, like you can with a traditional VM. There are also
 restrictions on mounting paths from the host file system, which is discussed in
 the [Volumes](#volumes) section.
+
+Also, because your Docker containers run inside segments, if a segment dies your container will likewise disappear. This underscores the idea of a container being extremely ephemeral and typically not a good choice for permanent data storage.
 
 Each segment is assigned a public IPv4 address, like a Docker host. You
 can see all of these addresses with `docker info` or by using the command
