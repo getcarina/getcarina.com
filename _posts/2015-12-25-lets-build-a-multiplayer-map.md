@@ -27,6 +27,7 @@ Things we'll cover:
 * Drawing on canvas
 * React
 * Socket.io
+* Deployment
 
 ## Generating Random Players
 
