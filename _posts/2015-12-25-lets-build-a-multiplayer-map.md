@@ -210,7 +210,46 @@ you've gotten used to these core Objects:
    </tr>
 </table>
 
-There's one more coming to a JavaScript near you: `Observable`
+One of my favorite additions to JavaScript was the Promise. It made a lot of
+asynchronous code really clean, especially with Promise chains.
+
+```javascript
+fetch('/players.json')
+  .then((resp) => response.json())
+  .then(action)
+  .catch(whoa)
+```
+
+What about cases where I wanted a promise to yield multiple values? Do I wait
+for all the values to get computed, relying on `Promise.all()`? Not if I want
+the intermediate values. In the end I'd have to fall back on `createEvent`/`EventEmitter`.
+
+On top of that, I usually wanted to perform filtering and routing based on those
+messages for separate consumers of the data. What I really wanted was a stream
+of messages that I could operate on like an Array, similar to how we
+created new players:
+
+```
+const players = codsworthNames.map(newPlayer)
+```
+
+There just had to be something to fill that missing piece of the table:
+
+<table>
+   <th></th><th>Single return value</th><th>Mutiple return values</th>
+   <tr>
+      <td>Pull/Synchronous/Interactive</td>
+      <td>`Object`</td>
+      <td>Iterables (`Array` | `Set` | `Map` | `Object`)</td>
+   </tr>
+   <tr>
+      <td>Push/Asynchronous/Reactive</td>
+      <td>`Promise`</td>
+      <td>????</td>
+   </tr>
+</table>
+
+Turns out, there's one more hoping to come to a JavaScript near you: `Observable`
 
 <table>
    <th></th><th>Single return value</th><th>Mutiple return values</th>
@@ -228,43 +267,49 @@ There's one more coming to a JavaScript near you: `Observable`
 
 Observables are asynchronous data streams, [*from the future*](https://zenparsing.github.io/es-observable/).
 
-One of my favorite additions to JavaScript was the Promise. It made a lot of
-asynchronous code really clean, especially when relying on Promise chains.
-
-```javascript
-fetch('/players.json')
-  .then((resp) => response.json())
-  .then(action)
-  .catch(whoa)
-```
-
-What about cases where I wanted a promise to yield multiple values? Do I wait
-for all the values to get computed, relying on `Promise.all()`? Not if I want
-the intermediate values. In the end I'd have to fall back on `createEvent`/`EventEmitter`.
-
-On top of that, I usually wanted to perform filtering and routing based on those
-messages for separate consumers of the data. What I really wanted was a stream
-of messages that I could operate on like an Array. We did that above when we
-created new players:
-
-```
-const players = codsworthNames.map(newPlayer)
-```
+Technically, this pattern has been around for a while. People have been using Observables
+[in Ruby](http://ruby-doc.org/stdlib-1.9.3/libdoc/observer/rdoc/Observable.html), across
+languages through [Reactive Extensions](https://github.com/Reactive-Extensions),
+libraries like [Bacon](https://baconjs.github.io/), and many more. Where it
+*really* shines though is with RxJS.
 
 Both node's EventEmitter and RxJS's Observable are implementations of the
 Observer design pattern. The one big difference you'll see is how you can operate
-on Observables like core primitives
+on Observables like core primitives. While working on [pipboylib](https://github.com/RobCoIndustries/pipboylib),
+several contributors highlighted how wonderful it would be if our interface was
+based on RxJS.
 
-*Note: I'm gleefully omitting node's awesome streaming interface, which can be
-[coerced to do very similar things](https://github.com/dominictarr/event-stream).
-Ignoring side effects from downstream consumers, especially those that pause your stream on you.*
+Here's an example of what it looks like to get the player position continuously:
 
+```javascript
+pipboydb
+  .map(x => x.Map.World.Player)
+  .map(x => ({
+    x: x.X,
+    y: x.Y,
+    deg: x.Rotation
+  }))
+  .distinctUntilChanged()
+  .subscribe(x => {
+    console.log('Player Position:', x)
+  })
+```
 
+As the game updates, we see the change come into our subscription callback and
+display our position over time. You can even use this to write out your
+[localmap](https://github.com/RobCoIndustries/pipboylib/blob/master/examples/localmap.js).
 
-We're going to use RxJS, an implementation of Observables that works well across
-browsers, node.js, and [even Rhino](https://twitter.com/ReactiveX/status/350360077305253889).
+![](https://cloud.githubusercontent.com/assets/836375/11534784/277a8f3c-98d6-11e5-8d80-a1213dd3adf3.png)
 
-They fall under the vein of Reactive Programming.
+In [pipboy](https://github.com/RobCoIndustries/pipboy) we use this to display
+your local map continuously like some sort of crazy sonar.
+
+![localmap cray cray](https://cloud.githubusercontent.com/assets/2737108/11907104/8dd9d7da-a5d1-11e5-91de-400307f54a53.gif)
+
+Let's bring you over to grokking Observables so you can do realtime apps like
+this too.
+
+### Learn you some Rx
 
 We're going to go a little crazy in learning how to work with these. Pop open a
 node terminal and `require('rx')`:
