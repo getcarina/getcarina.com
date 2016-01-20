@@ -22,11 +22,11 @@ a copy of Fallout 4, since we'll start by simulating data.
 
 Things we'll cover:
 
-* RxJS
+* Simulating data
+* Observables and RxJS
 * Drawing on canvas
 * React
 * Socket.io
-* Turning many datapoints into a PNG
 
 ## Generating Random Players
 
