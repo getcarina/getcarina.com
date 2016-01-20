@@ -1,6 +1,8 @@
 ---
 title: Container security
-author: Major Hayden <major.hayden@rackspace.com>
+authors:
+  - Major Hayden <major.hayden@rackspace.com>
+  - Adrian Otto <adrian.otto@rackspace.com>
 date: 2016-01-20
 permalink: docs/concepts/container-security/
 description: Learn about security best practices for safely deploying Docker applications
