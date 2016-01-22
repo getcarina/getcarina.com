@@ -1,18 +1,18 @@
 ---
 title: "Reading your Health Data on Carina with Jawbone UP"
-date: 2016-01-22 09:00
+date: 2016-01-24 09:00
 comments: true
 author: Anne Gentle <anne.gentle@rackspace.com>
 published: false
 excerpt: >
-  Learn about health tracking data through a Jawbone UP example web application
-  and build/deploy that application Carina.
+  Learn about health tracking data through a Jawbone UP example web application,  then build and deploy that application to HTTPS on Carina using Let's Encrypt.
 categories:
  - Deployment
  - Carina
  - Docker
  - Swarm
  - IoT
+ - Encrypt
 authorIsRacker: true
 ---
 
@@ -29,7 +29,7 @@ To go through this example, clone my fork of their repo. To read your own data, 
 
 Register your app on the Jawbone developer portal. Mine is called sleepify with a silly Zzz icon.
 
-![BuildAndDeploy]({% asset_path 2016-01-22-carina-jawbone/justwriteclickapps.png %})
+![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/justwriteclickapps.png %})
 
 Register a domain name for the public IP you get from Carina.
 
@@ -92,19 +92,21 @@ docker build -t="annegentle/node-demo" .
 Run the image.
 
 ```
-$ docker run -it --name sleepifydemo
+$ docker run --interactive --tty \
+  --name sleepifydemo \
+  annegentle/node-demo
 ```
 
 
 Get the IP address for the node server. You need this for registering the domain name through your registrar. 
 
 ```
-$ 
+$ docker port sleepifydemo 8080 
 ```
 
 ### Create the certificates container for HTTPS
 
-Launch a second container so that the app has HTTPS access, a requirement from Jawbone. To get https through Let's Encrpyt, go through this tutorial, making your Jawbone app container the backend.
+Launch a second container so that the app has HTTPS access, a requirement from Jawbone. To get https through Let's Encrpyt, go through [this tutorial](https://getcarina.com/blog/push-button-lets-encrypt/), making your Jawbone app container named "sleepifydemo" the backend.
 
 Get the name of the container with `docker ps -a` to use in the `docker run` command. In the example below, it's "sleepifydemo".
 
@@ -123,4 +125,4 @@ docker run --detach \
 
 ### Go get your sleep data
 
-Now that the container running the node server can serve over https, you can go to https://sleepify.me and 
+Now that the container running the node server can serve over https, you can go to https://sleepify.me -- or the clever domain name you registered earlier -- and log in with your Jawbone credentials. I'm sleeping well, how about you?
