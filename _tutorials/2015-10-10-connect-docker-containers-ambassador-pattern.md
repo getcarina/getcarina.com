@@ -126,7 +126,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Resources
 
-* [Docker networking basics]({{ site.baseurl }}/docs/tutorials/networking-basics/)
+* [Docker networking basics]({{ site.baseurl }}/docs/concepts/docker-networking-basics/)
 * [Docker ambassador pattern documentation](https://docs.docker.com/articles/ambassador_pattern_linking/)
 * [Docker best practices: container linking]({{ site.baseurl }}/docs/best-practices/docker-best-practices-container-linking/)
 * [Service discovery 101]({{ site.baseurl }}/docs/concepts/service-discovery-101/)
