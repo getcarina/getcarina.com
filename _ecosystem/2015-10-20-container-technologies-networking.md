@@ -154,7 +154,7 @@ Other recommended reading:
 The purpose of this article is to help you understand Carina by introducing you
 to the ecosystem of container-related tools.
 To begin learning about Carina itself, see
-[Overview of Carina]({{ site.baseurl }}docs/overview-of-carina/).
+[Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
 To begin using Carina, see
 [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 

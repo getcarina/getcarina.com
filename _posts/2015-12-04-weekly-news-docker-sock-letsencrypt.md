@@ -192,7 +192,7 @@ Removing intermediate container 922f6c7890e8
 Successfully built 41e0e1ef05b8
 ```
 
-Now run it and `curl` against [lets.ephem.it](https://lets.ephem.it):
+Now run it and `curl` against lets.ephem.it:
 
 ```bash
 $ docker run -d -p 80:80 -p 443:443 \

@@ -43,7 +43,7 @@ And several UI efforts:
 The [pipboylib](https://github.com/robcoindustries/pipboylib) bindings culminated
 in the beginnings of the [Electron app, pipboy](https://github.com/robcoindustries/pipboy):
 
-<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Give <a href="https://twitter.com/PhilPlckthun">@PhilPlckthun</a> a minimal prototype and he&#39;ll turn it into something awesome. Localmap crazy good now. <a href="https://twitter.com/hashtag/Fallout4?src=hash">#Fallout4</a> <a href="https://t.co/7XZomcucTb">pic.twitter.com/7XZomcucTb</a></p>&mdash; Kyle Kelley (@rgbkrk) <a href="https://twitter.com/rgbkrk/status/670646978024448000">November 28, 2015</a></blockquote>
+<blockquote class="twitter-tweet" lang="en"><p lang="en" dir="ltr">Give <a href="https://twitter.com/_philpl">@_philpl</a> a minimal prototype and he&#39;ll turn it into something awesome. Localmap crazy good now. <a href="https://twitter.com/hashtag/Fallout4?src=hash">#Fallout4</a> <a href="https://t.co/7XZomcucTb">pic.twitter.com/7XZomcucTb</a></p>&mdash; Kyle Kelley (@rgbkrk) <a href="https://twitter.com/rgbkrk/status/670646978024448000">November 28, 2015</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 The intention with the `pipboy` Electron app is to create a cross-platform
