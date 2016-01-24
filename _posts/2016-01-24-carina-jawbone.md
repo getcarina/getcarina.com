@@ -1,11 +1,11 @@
 ---
-title: "Reading your Health Data on Carina with Jawbone UP"
+title: "Reading your Health Data from Jawbone UP on Carina"
 date: 2016-01-24 09:00
 comments: true
 author: Anne Gentle <anne.gentle@rackspace.com>
 published: false
 excerpt: >
-  Learn about health tracking data through a Jawbone UP example web application,  then build and deploy that application to HTTPS on Carina using Let's Encrypt.
+  Learn about health tracking data through a Jawbone UP example web application, then build and deploy that application to HTTPS on Carina using Let's Encrypt.
 categories:
  - Deployment
  - Carina
@@ -25,17 +25,17 @@ First, the code itself is in https://github.com/annegentle/JawboneUPNodeDemo. Th
 
 ###Get ready: prerequisites
 
-To go through this example, clone my fork of their repo. To read your own data, you'll need a Jawbone UP and an account on their site. To go through this demo, create a Jawbone Developer account on https://jawbone.com/up/developer by clicking Sign In.
+To go through this example, clone my fork of the JawboneUPNodeDemo repo. To read your own data, you'll need a Jawbone UP and an account on their site. To go through this demo, create a Jawbone Developer account on https://jawbone.com/up/developer by clicking Sign In.
 
 Register your app on the Jawbone developer portal. Mine is called sleepify with a silly Zzz icon.
 
 ![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/justwriteclickapps.png %})
 
-Register a domain name for the public IP you get from Carina.
+Register a domain name for the public IP you get from Carina. The tutorial shows you how to get the IP address below.
 
 ### Get your Carina cluster
 
-Create a Carina cluster for the node server container. Source your Carina credentials first.
+Create a Carina cluster for the node server container. Source your Carina credentials first. The cluster in this example is called `sleepify`; yours will have a different name.
 
 ```
 source ~/tools/carinaenv
@@ -49,11 +49,12 @@ $ carina env sleepify
 $ eval $(carina env sleepify)
 ```
 
-
 ### Create the app container
 
 Create the app container with a Dockerfile that has node as its base. On Carina, you want to understand bind mounting as described in [Volumes](https://getcarina.com/docs/concepts/docker-swarm-carina/#volumes) so
 that you know where to put the files we'll upload and run for the app.
+
+Save this Dockerfile in the JawboneUPNodeDemo directory.
 
 ```
 FROM node:4
