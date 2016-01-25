@@ -17,7 +17,7 @@ authorIsRacker: true
 ---
 
 
-It's the third week of January and all that health data you got over the holidays is simply waiting to be studied! Let's see how we can make our own health data dashboards using the Jawbone UP API on node.js. I know my intent is to sleep more in 2016. So, how about a chart of my sleeping habits? Thanks Jawbone!
+It's the fourth week of January and all that health data you got over the holidays is simply waiting to be studied! Let's see how we can make our own health data dashboards using the Jawbone UP API on node.js. I know my intent is to sleep more in 2016. So, how about a chart of my sleeping habits? Thanks Jawbone!
 
 This post offers a walk-through using Carina and Let's Encrypt along with a Jawbone UP example to make an app called Sleepify. Once you log in, the app displays a table with your daily sleep amounts.
 
@@ -48,31 +48,6 @@ Get the credentials for it with the `carina` CLI.
 $ carina env sleepify
 $ eval $(carina env sleepify)
 ```
-
-### Get the Let's Encrpyt certificate files
-
-We'll also make sure these match for the `Dockerfile` instructions to make sure the certs are copied correctly.
-
-### Create the certificates container for HTTPS
-
-Launch a container so that the app has HTTPS access, a requirement from Jawbone. To get https through Let's Encrpyt, go through [this tutorial](https://getcarina.com/blog/push-button-lets-encrypt/), first using the simple Sinatra app to create the certs. Later we’ll use those certs, by making another container with your Jawbone app container named "sleepifydemo" as the backend.
-
-Get the name of the container with `docker ps -a` to use in the `docker run` command. In the example below, it's "sleepifydemo".
-
-```
-docker run --detach \
-  --name lets-nginx \
-  --link sleepifydemo:sleepifydemo \
-  --env EMAIL=anne@example.com \
-  --env DOMAIN=sleepifydemo.me \
-  --env UPSTREAM=sleepifydemo:3000 \
-  --name sleepify \
-  --publish 80:80 \
-  --publish 443:443 \
-  smashwilson/lets-nginx
-```
-
-Copy those cert files locally to your JawboneUPDemo directory, as they’re used when creating the app container below.
 
 ### Create the app container
 
@@ -129,7 +104,35 @@ Get the IP address for the node server. You need this for registering the domain
 $ docker port sleepifydemo 8080 
 ```
 
+Go to your domain registrar and add the IP address from Carina as A Records for all subdomains. Here's an example screenshot:
 
-### Go get your sleep data
+![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/arecords.png %})
+
+### Create the certificates container for HTTPS
+
+Launch a second container so that the app has HTTPS access, a requirement from Jawbone. To get https through Let's Encrpyt, we'll go through [this tutorial](https://getcarina.com/blog/push-button-lets-encrypt/). 
+
+We’ll use those certs, by making another container with your Jawbone app container named "sleepifydemo" as the backend. The image `smashwilson/lets-nginx` is from the Carina Push Button Let's Encrypt tutorial.
+
+Get the name of the container with `docker ps -a` to use in the `docker run` command. In the example below, it's "sleepifydemo".
+
+```
+docker run --detach \
+  --name lets-nginx \
+  --link sleepifydemo:sleepifydemo \
+  --env EMAIL=anne@example.com \
+  --env DOMAIN=sleepifydemo.me \
+  --env UPSTREAM=sleepifydemo:3000 \
+  --name sleepify \
+  --publish 80:80 \
+  --publish 443:443 \
+  smashwilson/lets-nginx
+```
+
+Now, when you go to the domain name you made the A Records for, you should get a dashboard like so:
+
+![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonedashboard.png %})
 
 Now that the container running the node server can serve over https, you can go to https://sleepify.me -- or the clever domain name you registered earlier -- and log in with your Jawbone credentials. I'm sleeping well, how about you?
+
+![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
