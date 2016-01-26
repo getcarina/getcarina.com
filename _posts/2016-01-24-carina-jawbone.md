@@ -1,6 +1,6 @@
 ---
 title: "Reading your Health Data from Jawbone UP on Carina"
-date: 2016-01-24 09:00
+date: 2016-01-26 09:00
 comments: true
 author: Anne Gentle <anne.gentle@rackspace.com>
 published: false
@@ -35,14 +35,22 @@ Register a domain name for the public IP you get from Carina. The tutorial shows
 
 ### Get your Carina cluster
 
-Create a Carina cluster for the node server container. Source your Carina credentials first. The cluster in this example is called `sleepify`; yours will have a different name.
+Create a Carina cluster for the node server container. 
+
+1. Source your Carina credentials first. The cluster in this example is called `sleepify`; yours will have a different name.
 
 ```
 source ~/tools/carinaenv
 carina create sleepify
 ```
 
-Get the credentials for it with the `carina` CLI.
+1. Get the credentials for it with the `carina` CLI.
+
+```
+$ carina credentials sleepify
+```
+
+1. Set these variables for your environment.
 
 ```
 $ carina env sleepify
@@ -54,7 +62,7 @@ $ eval $(carina env sleepify)
 Create the app container with a Dockerfile that has node as its base. On Carina, you want to understand bind mounting as described in [Volumes](https://getcarina.com/docs/concepts/docker-swarm-carina/#volumes) so
 that you know where to put the files we'll upload and run for the app.
 
-You can see this Dockerfile in the JawboneUPNodeDemo directory.
+You can find this Dockerfile in the JawboneUPNodeDemo directory.
 
 ```
 FROM node:4
@@ -108,7 +116,7 @@ npm info start JawboneUpNodeDemo@0.0.1
 > JawboneUpNodeDemo@0.0.1 start /usr/src/app
 > node server.js
 
-UP server listening on 8080
+UP server listening on 5000
 ```
 
 Get the IP address for the node server. You need this for registering the domain name through your registrar. 
@@ -124,7 +132,7 @@ Go to your domain registrar and add the IP address from Carina as A Records for 
 
 ### Create the certificates container for HTTPS
 
-Launch a second container so that the app has HTTPS access, a requirement from Jawbone. To get https through Let's Encrpyt, we'll go through [this tutorial](https://getcarina.com/blog/push-button-lets-encrypt/).
+Launch a second container so that the app has HTTPS access, because HTTPS is a requirement from Jawbone. To get https through Let's Encrpyt, we'll go through [this tutorial](https://getcarina.com/blog/push-button-lets-encrypt/).
 
 We’ll use those certs, by making another container with your Jawbone app container named "sleepifyapp" as the backend. The image `smashwilson/lets-nginx` is from the [Carina Push Button Let's Encrypt tutorial](https://getcarina.com/blog/push-button-lets-encrypt/).
 
@@ -150,7 +158,7 @@ You get back a container ID, and you can see the progress of the creation by che
 $ docker logs 4cf
 ```
 
-Once you see this in the logs, you're good to go.
+Once you see this set of notes in the container logs, you're good to proceed.
 
 ```IMPORTANT NOTES:
  - If you lose your account credentials, you can recover through
