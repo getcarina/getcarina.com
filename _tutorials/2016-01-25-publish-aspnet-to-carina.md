@@ -102,6 +102,8 @@ Visual Studio when starting a new project.
     yo aspnet
     ```
 
+    **Note**: The generator creates a new directory within the current directory.
+
 1. The ASP.NET Generator prompts for the type of application and a name. Select
     `Web Application` and accept the default name.
 
@@ -132,7 +134,7 @@ Visual Studio when starting a new project.
     ? What's the name of your ASP.NET application? WebApplication
     ```
 
-1. The generator created a directory using the name provided, such as `WebApplicaiton`,
+1. The generator created a directory using the name provided, such as `WebApplication`,
     as a child of the current directory. Run the following commands to preview
     your website:
 
@@ -142,7 +144,7 @@ Visual Studio when starting a new project.
     dnx web
     ```
 
-    `dnu` is the .NET Utility tool and is used to  retrieve all the
+    `dnu` is the .NET Utility tool and is used to retrieve all the
     dependencies for website from NuGet. `dnx` is the .NET Execution Environment
     tool and is used to execute commands defined in **project.json**.
     By the time the upcoming version ASP.NET is released, these will
@@ -210,12 +212,12 @@ you can see that `web` is not a global command, and is specific to this project.
 
 ### Publish an ASP.NET website to Carina
 
-Now that we have verified that the website can be run locally, we will publish
+Now that we have verified that the website can be run locally, publish
 it to Carina.
 
 1. Edit **project.json** and append `server.urls=http://0.0.0.0:5000` to the web
     command. By default, the Kestrel web server only listens on `127.0.0.1`.
-    When this is overridden with `0.0.0.0`, the web server will handle all requests
+    When this is overridden with `0.0.0.0`, the web server handles all requests
     to the specified port, regardless of the host's IP address.
 
     ```text
@@ -253,7 +255,7 @@ it to Carina.
 
 The .NET platform has been completely reimagined and freed from
 many constraints that would have previously prevented you from exploring it further.
-With ASP.NET and Carina, you can skip the learning curve of a new  operating system
+With ASP.NET and Carina, you can skip the learning curve of a new operating system
 and instead jump straight to the fun part.
 
 ### Troubleshooting
@@ -277,6 +279,15 @@ You might encounter the following issues when publishing:
     Edit **project.json** and ensure that server.urls is configured with an unused port.
 
     `"web": "Microsoft.AspNet.Server.Kestrel server.urls=http://0.0.0.0:5001",`
+* **The Docker image is built successfully but warning messages from apt-get are displayed**
+
+    The following warning messages can be ignored:
+    
+    ```
+    W: Duplicate sources.list entry http://ftp.us.debian.org/debian/ jessie/main amd64 Packages (/var/lib/apt/lists/ftp.us.debian.org_debian_dists_jessie_main_binary-amd64_Packages.gz)
+    W: Duplicate sources.list entry http://ftp.us.debian.org/debian/ jessie/main amd64 Packages (/var/lib/apt/lists/ftp.us.debian.org_debian_dists_jessie_main_binary-amd64_Packages.gz)
+    W: You may want to run apt-get update to correct these problems
+    ```
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
