@@ -35,12 +35,9 @@ Register a domain name for the public IP you get from Carina. The tutorial shows
 
 ### Get your Carina cluster
 
-Create a Carina cluster for the node server container. 
-
-1. Source your Carina credentials first. The cluster in this example is called `sleepify`; yours will have a different name.
+1. Create a Carina cluster for the node server container. The cluster in this example is called `sleepify`; yours will have a different name.
 
 ```
-source ~/tools/carinaenv
 carina create sleepify
 ```
 
@@ -59,10 +56,7 @@ $ eval $(carina env sleepify)
 
 ### Create the app container
 
-Create the app container with a Dockerfile that has node as its base. On Carina, you want to understand bind mounting as described in [Volumes](https://getcarina.com/docs/concepts/docker-swarm-carina/#volumes) so
-that you know where to put the files we'll upload and run for the app.
-
-You can find this Dockerfile in the JawboneUPNodeDemo directory.
+Create the app container with a `Dockerfile` that has node as its base. You can find this Dockerfile in the JawboneUPNodeDemo directory.
 
 ```
 FROM node:4
@@ -80,13 +74,11 @@ WORKDIR /usr/src/app
 COPY package.json /usr/src/app
 RUN npm install
 
-COPY server.* /usr/src/app
+# Copy the rest of the app files
 
-COPY public/images/ /usr/src/app
+COPY . /usr/src/app
 
-COPY views/ /usr/src/app
-
-EXPOSE 8080
+EXPOSE 5000
 
 CMD ["npm", "start"]
 
@@ -98,11 +90,14 @@ Build the image. Make sure you are in the JawboneUPDemo directory containing the
 $ docker build -t="annegentle/jawbone-demo" .
 ```
 
-Run the image:
+Run the image, replacing the variables enclosed in `<>` with your domain and Jawbone developer credentials:
 
 ```
-$ docker run --interactive --tty -p 5000:5000 \
-  --name sleepifyapp \
+$ docker run --detach \
+  --name jawbone-demo \
+  --env DOMAIN=<domain> \
+  --env JAWBONE_ID=<id> \
+  --env JAWBONE_SECRET=<secret> \
   annegentle/jawbone-demo
 ```
 
@@ -126,7 +121,7 @@ $ echo $DOCKER_HOST
 tcp://172.99.73.34:2376
 ```
 
-Go to your domain registrar and add the IP address from Carina as A Records for all subdomains. Here's an example screenshot:
+Go to your domain registrar and add the IP address from Carina as A Records. Here's an example screenshot:
 
 ![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/arecords.png %})
 
@@ -136,15 +131,18 @@ Launch a second container so that the app has HTTPS access, because HTTPS is a r
 
 We’ll use those certs, by making another container with your Jawbone app container named "sleepifyapp" as the backend. The image `smashwilson/lets-nginx` is from the [Carina Push Button Let's Encrypt tutorial](https://getcarina.com/blog/push-button-lets-encrypt/).
 
-Get the name of the container with `docker ps -a` to use in the `docker run` command. In the example below, it's "sleepifyapp".
+Get the name of the container with `docker ps -a` to use in the `docker run` command. In the example for this tutorial, it's "sleepifyapp". 
+
+The example below uses `--env STAGING=1`, which is a recommendation from the Let's Encrypt tutorial. This setting lets you make many certificates without hitting their limit. The cert won't be trusted in the browser until you remove `STAGING=1` when running this docker command.
 
 ```
 $ docker run --detach \
-  --link sleepifyapp:sleepifyapp \
-  --env EMAIL=annegentle@gmail.com \
+  --name lets-nginx \
+  --link jawbone-demo \
+  --env EMAIL=annegentle@example.com \
   --env DOMAIN=sleepify.me \
-  --env UPSTREAM=sleepifyapp:8080 \
-  --name sleepify-nginx \
+  --env UPSTREAM=jawbone-demo:5000 \
+  --env STAGING=1 \
   --publish 80:80 \
   --publish 443:443 \
   smashwilson/lets-nginx
@@ -157,6 +155,15 @@ You get back a container ID, and you can see the progress of the creation by che
 ```
 $ docker logs 4cf
 ```
+
+At first, you'll see this note in the logs:
+
+```
+Generating DH parameters, 2048 bit long safe prime, generator 2
+This is going to take a long time
+```
+
+It really only takes a few minutes, but sit back and relax for your certs to be generated.
 
 Once you see this set of notes in the container logs, you're good to proceed.
 
@@ -181,10 +188,20 @@ Ready
 crond: crond (busybox 1.23.2) started, log level 8
 ```
 
-Now, when you go to the domain name you made the A Records for, you should get a dashboard like so:
+Now, when you go to the domain name you made the A Records for, if you used `STAGING=1`, you get an error, "NET::ERR_CERT_AUTHORITY_INVALID" because the Let's Encrypt staging server is issuing staging certs. In Chrome, click Advanced, and then click Proceed to <domainname> (unsafe) to try out your new site. Once you're ready to generate real certificates, remove the `STAGING=1` from the docker run command above and re-run.
+
+You should get a dashboard login page like so:
 
 ![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonedashboard.png %})
 
-Now that the container running the node server can serve over https, you can go to https://sleepify.me -- or the clever domain name you registered earlier -- and log in with your Jawbone credentials. I'm sleeping well, how about you?
+Click Login to enter your Jawbone credentials. 
+
+![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawboneauth.png %})
+
+The app retrieves your sleep data and displays it in a simple table.
 
 ![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
+
+### What's next?
+
+If you're interested in building more Jawbone data dashboards, explore their documented API to find some more resources you could display. I'll look into my [workout data](https://jawbone.com/up/developer/endpoints) next. To explore more endpoints, modify the `server.js` file to build additional tables for your dashboard. Have fun and let us know how Carina got you started quickly with health data.
