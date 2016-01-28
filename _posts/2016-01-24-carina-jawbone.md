@@ -3,7 +3,7 @@ title: "Reading your Health Data from Jawbone UP on Carina"
 date: 2016-01-26 09:00
 comments: true
 author: Anne Gentle <anne.gentle@rackspace.com>
-published: false
+published: true
 excerpt: >
   Learn about health tracking data through a Jawbone UP example web application, then build and deploy that application to HTTPS on Carina using Let's Encrypt.
 categories:
@@ -25,11 +25,11 @@ First, the code itself is in https://github.com/annegentle/JawboneUPNodeDemo. Th
 
 ### Get ready: prerequisites
 
-To go through this example, clone my fork of the JawboneUPNodeDemo repo. To read your own data, you'll need a Jawbone UP and an account on their site. To go through this demo, create a Jawbone Developer account on https://jawbone.com/up/developer by clicking Sign In.
+To go through this example, clone my fork of the JawboneUPNodeDemo repo. To read your own data, you'll need a Jawbone UP and an account on their site. To go through this demo, create a Jawbone Developer account on [https://jawbone.com/up/developer](https://jawbone.com/up/developer) by clicking Sign In.
 
 Register your app on the Jawbone developer portal. Mine is called sleepify with a silly Zzz icon.
 
-![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/justwriteclickapps.png %})
+![jawboneapp]({% asset_path 2016-01-24-carina-jawbone/justwriteclickapps.png %})
 
 Register a domain name for the public IP you get from Carina. The tutorial shows you how to get the IP address below.
 
@@ -123,7 +123,7 @@ tcp://172.99.73.34:2376
 
 Go to your domain registrar and add the IP address from Carina as A Records. Here's an example screenshot:
 
-![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/arecords.png %})
+![domainarecords]({% asset_path 2016-01-24-carina-jawbone/arecords.png %})
 
 ### Create the certificates container for HTTPS
 
@@ -167,7 +167,8 @@ It really only takes a few minutes, but sit back and relax for your certs to be 
 
 Once you see this set of notes in the container logs, you're good to proceed.
 
-```IMPORTANT NOTES:
+```
+IMPORTANT NOTES:
  - If you lose your account credentials, you can recover through
    e-mails sent to annegentle@gmail.com.
  - Congratulations! Your certificate and chain have been saved at
@@ -192,15 +193,15 @@ Now, when you go to the domain name you made the A Records for, if you used `STA
 
 You should get a dashboard login page like so:
 
-![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonedashboard.png %})
+![jawbonedash]({% asset_path 2016-01-24-carina-jawbone/jawbonedashboard.png %})
 
 Click Login to enter your Jawbone credentials. 
 
-![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawboneauth.png %})
+![jawboneauth]({% asset_path 2016-01-24-carina-jawbone/jawboneauth.png %})
 
 The app retrieves your sleep data and displays it in a simple table.
 
-![BuildAndDeploy]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
+![jawbonesleepdata]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
 
 ### What's next?
 
