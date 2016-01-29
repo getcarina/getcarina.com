@@ -29,13 +29,16 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. To learn more, read the [data volume container tutorial]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
+    Generally the command used for a data volume container is irrelevant, but here you'll use it to create a directory within the volume that you'll use from NGINX later.
+
     ```bash
-    $ docker create \
+    $ docker run \
       --name letsencrypt-data \
       --volume /etc/letsencrypt \
       --volume /var/lib/letsencrypt \
-      --entrypoint /bin/echo \
-      quay.io/letsencrypt/letsencrypt
+      --entrypoint /bin/mkdir \
+      quay.io/letsencrypt/letsencrypt \
+      -p /etc/letsencrypt/webrootauth/
     ```
 
 1. Generate [strong Diffie-Hellman parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters) and store them within your data volume container. These will prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that "A+" rating on SSL labs.
