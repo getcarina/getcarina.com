@@ -209,7 +209,7 @@ We’ll use those certs, by making another container with your Jawbone app conta
 
     The app retrieves your sleep data and displays it in a simple table.
 
-    ![jawbonesleepdata]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
+![jawbonesleepdata]({% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %})
 
 ### What's next?
 
