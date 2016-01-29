@@ -15,7 +15,7 @@ topics:
   - nginx
 ---
 
-This tutorial describes acquiring free TLS certificates from [Let's Encrypt](https://letsencrypt.org/) and using them to secure a web site served using [NGINX](http://nginx.org/en/docs/). This encrypts all traffic to and from your site with a certificate that's trusted by your browser and strong enough encryption to get an "A" rating from [SSL Labs](https://www.ssllabs.com/ssltest/).
+This tutorial describes acquiring free TLS certificates from [Let's Encrypt](https://letsencrypt.org/) and using them to secure a web site served using [NGINX](http://nginx.org/en/docs/). This encrypts all traffic to and from your site with a certificate that's trusted by your browser and strong enough encryption to get an "A+" rating from [SSL Labs](https://www.ssllabs.com/ssltest/).
 
 ### Prerequisites
 
