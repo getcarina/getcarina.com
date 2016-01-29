@@ -300,7 +300,7 @@ If you aren't able to reach your domain at all with your browser:
 
 * Verify that the NGINX container is running. It should appear in the output of `docker ps -a` with a "STATUS" of "Up". If you see a status of "Exited" instead, check its logs with `docker logs my-nginx` to see what caused it to stop.
 * Ensure that the running NGINX container is listening on public ports 80 and 443. Its line in `docker ps -a` should include a "PORTS" section like the following: `<myIP>:80->80/tcp, <myIP>:443->443/tcp`.
-* Double check that the IP your domain is pointed at is the IP of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ .Node.IP }}" letsencrypt-data` must match.
+* Double check that the IP your domain is pointed at is the IP of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ "{{ .Node.IP " }}}}" letsencrypt-data` must match.
 
 If you see an error message instead of your `index.html` file:
 
