@@ -327,9 +327,3 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 If you already have a site or a service that's listening for HTTP and you want to add Let's Encrypt-powered TLS as easily as possible, check out [the lets-nginx container]({{ site.baseurl }}/blog/push-button-lets-encrypt/).
-
-### Next step
-
-<!--
-* What should your audience read next?
--->
