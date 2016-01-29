@@ -87,7 +87,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --volumes-from letsencrypt-data \
       --publish 443:443 \
       --publish 80:80 \
-      quay.io/letsencrypt/letsencrypt auth \
+      quay.io/letsencrypt/letsencrypt certonly \
       --server https://acme-staging.api.letsencrypt.org/directory \
       --domain <myDomain> \
       --authenticator standalone \
