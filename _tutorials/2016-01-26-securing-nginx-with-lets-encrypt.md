@@ -238,6 +238,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --authenticator webroot \
       --webroot-path /etc/letsencrypt/webrootauth/ \
       --email <myEmail> \
+      --renew-by-default \
       --agree-tos
 
     # Send NGINX a SIGHUP to trigger it to reload its configuration without shutting down.
