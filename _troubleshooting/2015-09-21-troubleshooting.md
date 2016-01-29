@@ -99,7 +99,7 @@ Yay! :)
 
 ### Running out of disk space on a segment
 
-You get a certain amount of disk space on a segment, see [Carina segments]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#carina-segments) to find out how much you get. If you run out of disk space, the applications in your containers may fail to start and your containers will immediately go into the "Exited" status. For example, MongoDB will fail to start and "Insufficient free space for journal files" will be in the log messages.
+You get a certain amount of disk space per segment; see [Carina segments]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#carina-segments) to find out how much. If you run out of disk space, the applications in your containers might fail to start and your containers will immediately go into the "Exited" status. For example, MongoDB will fail to start and `Insufficient free space for journal files` will be in the log messages.
 
 Use the following commands to check the remaining disk space on your segments.
 
@@ -119,7 +119,7 @@ none                     19.4G      1.1G     17.3G   6% /
 
 The output of these commands is the output of the `df` command being run on every segment in your cluster. You can clearly see how much disk space is used and how much is available per segment.
 
-To resolve the error, reclaim disk space when you remove containers by using the `--volumes` flag (`-v` for short). However, take extreme care when you do because any data in the volumes associated with that container will be lost permanently.
+To help prevent this issue, reclaim disk space when you remove containers by using the `--volumes` flag (`-v` for short). However, take extreme care when you do because any data in the volumes associated with that container will be lost permanently.
 
 ```bash
 $ docker rm -v my-container-name-or-id
