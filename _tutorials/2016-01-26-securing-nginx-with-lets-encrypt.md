@@ -58,7 +58,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     Even if your cluster has multiple segments, all of your containers will be running on the same segment as the data volume container you just created. To find its public IP address, run:
 
     ```bash
-    $ docker inspect --format "{{ .Node.IP }}" letsencrypt-data
+    $ docker inspect --format "{{ "{{ .Node.IP "}}}}" letsencrypt-data
     ```
 
     Add an "A" record from your domain pointing to this address. If your domain had previously been pointing elsewhere, you may need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready be checking:
