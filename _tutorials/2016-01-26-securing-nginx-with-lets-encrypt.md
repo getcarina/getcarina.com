@@ -76,6 +76,8 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     Notice that running this container will automatically accept the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Be sure that you're okay with accepting them before you run this!
 
+    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, omit the `--server` parameter from this step to get a production certificate.
+
     ```bash
     $ docker run \
       --rm \
