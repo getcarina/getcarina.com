@@ -61,7 +61,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     $ docker inspect --format "{{ "{{ .Node.IP "}}}}" letsencrypt-data
     ```
 
-    Add an "A" record from your domain pointing to this address. If your domain had previously been pointing elsewhere, you may need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready be checking:
+    Add an "A" record from your domain pointing to this address. If your domain had previously been pointing elsewhere, you may need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready by checking:
 
     **Mac OS X and Linux**
 
