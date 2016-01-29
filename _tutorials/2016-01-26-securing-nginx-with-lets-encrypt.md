@@ -30,7 +30,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. To learn more, read the [data volume container tutorial]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
     ```bash
-    $ docker run \
+    $ docker create \
       --name letsencrypt-data \
       --volume /etc/letsencrypt \
       --volume /var/lib/letsencrypt \
