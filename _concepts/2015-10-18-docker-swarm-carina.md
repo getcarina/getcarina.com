@@ -46,7 +46,7 @@ section.
 Each segment has 20 GB of disk space, 4 GB of memory, and roughly the equivalent of 2 vCPUs. The
 maximum number of segments that you can provision per cluster is 3. The maximum
 number of clusters that you are allowed per account is 3. If you have a use case
-requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22).
+requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22). See [Running out of disk space on a segment]({{ site.baseurl }}/docs/troubleshooting/common-problems/#running-out-of-disk-space-on-a-segment) to find out how much disk space is used and how much is available per segment.
 
 ### Cluster creation
 
