@@ -31,42 +31,6 @@ Cloud Files is an object storage service that provides storage for any type of f
 * A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
  * If you don't have a Rackspace cloud account, you need to [sign up for one](https://www.rackspace.com/cloud).
 
-### Get your cluster token and number of segments
-
-1. To get started, run the docker info command to find the cluster token and the number of segments in your cluster.
-
-    ```
-    $ docker info
-    Containers: 8
-    Images: 12
-    Role: primary
-    Strategy: spread
-    Filters: health, port, dependency, affinity, constraint
-    Nodes: 2
-     3f8cc9fa-84bc-4bfd-a5bd-b3e38986ed9c-n1: 172.99.70.112:42376
-      └ Containers: 4
-      └ Reserved CPUs: 0 / 12
-      └ Reserved Memory: 0 B / 4.2 GiB
-      └ Labels: executiondriver=native-0.2, kernelversion=3.18.21-1-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
-     3f8cc9fa-84bc-4bfd-a5bd-b3e38986ed9c-n2: 172.99.65.146:42376
-      └ Containers: 4
-      └ Reserved CPUs: 0 / 12
-      └ Reserved Memory: 0 B / 4.2 GiB
-      └ Labels: executiondriver=native-0.2, kernelversion=3.18.21-1-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
-    CPUs: 24
-    Total Memory: 8.4 GiB
-    Name: dd67f53c3c57
-    ```
-
-    The output of this command contains the information that you need. The cluster token is the UUID before the segment (node) name, and the number of segments is the number of nodes.
-
-1. Export environment variables with this information.
-
-    ```
-    $ export CLUSTER_TOKEN=3f8cc9fa-84bc-4bfd-a5bd-b3e38986ed9c
-    $ export NUM_SEGMENTS=2
-    ```
-
 ### Run the Docker registry service
 
 Docker maintains an image for the image registry service. You need to run this service on every segment in your cluster and configure it to use Cloud Files as its storage. To use Cloud Files as storage for the images, the registry service needs to know your Rackspace username, password, and the region in which to store the images.
@@ -86,12 +50,13 @@ Docker maintains an image for the image registry service. You need to run this s
     This `docker run` command uses the `--publish` flag so that the registry service listens only on port 5000 of the localhost IP address of 127.0.0.1. As a result, only clients authenticated with your cluster credentials can access this  registry service. It also uses many `--env` flags prefixed by `REGISTRY_STORAGE` to configure access to Cloud Files.
 
     ```
-    $ for (( i=1; i<=$NUM_SEGMENTS; i++ )); do
+    $ SEGMENTS=$(docker info | grep Nodes | awk '{print $2}')
+    $ for (( i=1; i<=$SEGMENTS; i++ )); do
         docker run -d \
           --name registry-$i \
           --publish 127.0.0.1:5000:5000 \
           --restart=always \
-          --env constraint:node==${CLUSTER_TOKEN}-n$i \
+          --env constraint:node==*-n$i \
           --env REGISTRY_STORAGE=swift \
           --env REGISTRY_STORAGE_SWIFT_USERNAME=$RS_USERNAME \
           --env REGISTRY_STORAGE_SWIFT_PASSWORD=$RS_PASSWORD \
@@ -187,11 +152,12 @@ Build your image on a segment, store that image in the registry, and pull that i
     This run command uses `127.0.0.1:5000/$RS_USERNAME/web` as the image name to point Docker at the local private registry service.
 
     ```
-    $ for (( i=1; i<=$NUM_SEGMENTS; i++ )); do
+    $ SEGMENTS=$(docker info | grep Nodes | awk '{print $2}')
+    $ for (( i=1; i<=$SEGMENTS; i++ )); do
         docker run --detach \
           --name web-$i \
           --publish 80:80 \
-          --env constraint:node==${CLUSTER_TOKEN}-n$i \
+          --env constraint:node==*-n$i \
           127.0.0.1:5000/$RS_USERNAME/web
       done
     a81d2691aa56b96635939836c96a2569d20b5428d109e63679f139a652d6c812
