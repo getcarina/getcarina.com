@@ -282,7 +282,39 @@ You now have a site served over browser-valid HTTPS, with a certificate that wil
 
 ### Troubleshooting
 
-See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
+If you see a rate-limiting error from the letsencrypt container during certificate issuance:
+
+```
+letsencrypt Error: rateLimited :: There were too many requests of a given type :: Error creating new cert :: Too many certificates already issued for: <myDomain>
+```
+
+There isn't much you can do but wait; the rate-limiting will expire in a week. In the meantime, you can continue to iterate on your infrastructure by using the staging server.
+
+If you aren't able to reach your domain at all with your browser:
+
+* Verify that the NGINX container is running. It should appear in the output of `docker ps -a` with a "STATUS" of "Up". If you see a status of "Exited" instead, check its logs with `docker logs my-nginx` to see what caused it to stop.
+* Ensure that the running NGINX container is listening on public ports 80 and 443. Its line in `docker ps -a` should include a "PORTS" section like the following: `<myIP>:80->80/tcp, <myIP>:443->443/tcp`.
+* Double check that the IP your domain is pointed at is the IP of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ .Node.IP }}" letsencrypt-data` must match.
+
+If you see an error message instead of your `index.html` file:
+
+* Check the NGINX container's logs for error messages with `docker logs my-nginx`.
+* If necessary, increase the logging level of NGINX by adding the following line to your `default.conf`:
+
+    ```
+    error_log /var/log/nginx/error.log info;
+    ```
+
+If the cron job does not run correctly and your certificate expires:
+
+* Check the cron container's logs with `docker logs my-cron`.
+* If necessary, increase the logging level of cron by changing the `CMD` line in the Dockerfile to:
+
+    ```
+    CMD ["/usr/bin/crond", "-f", "-d", "0"]
+    ```
+
+For general Carina problems, see [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
