@@ -25,7 +25,7 @@ We've got a mix of things to share with you this week, from security to segments
 
 ## Reading your health data from Jawbone UP on Carina
 
-<img class="right" style="max-height: 200; width: auto;"  src="{% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %}" alt="MCCY"/>It's the fourth week of January and all that health data you got over the holidays is simply waiting to be studied! Let's see how we can make our own health data dashboards using the Jawbone UP API on node.js. I know my intent is to sleep more in 2016. So, how about a chart of my sleeping habits? Thanks Jawbone!
+<img class="right" style="max-height: 100; width: auto;"  src="{% asset_path 2016-01-24-carina-jawbone/jawbonesleepdata.png %}" alt="MCCY"/>It's the fourth week of January and all that health data you got over the holidays is simply waiting to be studied! Let's see how we can make our own health data dashboards using the Jawbone UP API on node.js. I know my intent is to sleep more in 2016. So, how about a chart of my sleeping habits? Thanks Jawbone!
 
 This post provides a walk-through using Carina and Let's Encrypt along with a Jawbone UP example to make an app called Sleepify. After you log in, the app displays a table with your daily sleep amounts.
 
