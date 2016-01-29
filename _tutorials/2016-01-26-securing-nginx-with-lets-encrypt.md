@@ -38,7 +38,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       quay.io/letsencrypt/letsencrypt
     ```
 
-1. Generate [strong Diffie-Helman parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters) and store them within your data volume container.
+1. Generate [strong Diffie-Hellman parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters) and store them within your data volume container. These will prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that "A+" rating on SSL labs.
 
     ```bash
     $ docker run \
