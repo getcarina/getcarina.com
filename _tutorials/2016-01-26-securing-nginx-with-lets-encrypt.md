@@ -246,6 +246,8 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     ```Dockerfile
     FROM alpine:3.3
 
+    RUN apk add --no-cache docker
+
     COPY reissue /etc/periodic/monthly/reissue
     RUN chmod a+x /etc/periodic/monthly/reissue
 
