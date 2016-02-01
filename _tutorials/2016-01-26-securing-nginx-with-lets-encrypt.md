@@ -87,7 +87,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     Notice that running this container will automatically accept the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Be sure that you're okay with accepting them before you run this!
 
-    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, consult the [production section](#reissue-production) to issue production certificates in their place.
+    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, consult the [production section](#getting-a-production-certificate) to issue production certificates in their place.
 
     ```bash
     $ docker run \
@@ -321,6 +321,103 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     ```
 
     The run command's output is the ID of the cron container.
+
+# ..
+
+### Getting a production certificate
+
+Once you're confident that your infrastructure is in place with staging certificates, it's time to issue production ones. The Let's Encrypt client won't let you reissue production certificates directly over the staging ones, so it will take a bit of finesse to replace the staging certificates without needing to redo the entire setup.
+
+1. Before you begin, get rid of the cron container. It would be awkward if the `reissue` script attempted to reissue staging certificates in the middle of the replacement process!
+
+    ```bash
+    $ docker stop my-cron
+    my-cron
+    $ docker rm my-cron
+    my-cron
+    ```
+
+1. Delete the existing staging certificates and credentials from the data volume container, then re-create the `/webrootauth/` subdirectory.
+
+    ```bash
+    $ docker run --rm \
+      --volumes-from letsencrypt-data \
+      alpine:3.3 \
+      sh -c 'rm -r /etc/letsencrypt/* /var/lib/letsencrypt/*'
+    $ docker run --rm \
+      --volumes-from letsencrypt-data \
+      alpine:3.3 \
+      mkdir -p /etc/letsencrypt/webrootauth/
+    ```
+
+    These commands will produce no output when successful.
+
+1. Run the Let's Encrypt client again, omitting the `--server` parameter, to acquire a production certificate. Because the NGINX container is still running, use the *webroot* authenticator this time.
+
+    ```bash
+    $ docker run \
+      --rm \
+      --volumes-from letsencrypt-data \
+      quay.io/letsencrypt/letsencrypt certonly \
+      --domain <myDomain> \
+      --authenticator webroot \
+      --webroot-path /etc/letsencrypt/webrootauth/ \
+      --email <myEmail> \
+      --agree-tos
+    IMPORTANT NOTES:
+    - If you lose your account credentials, you can recover through
+      e-mails sent to <myEmail>.
+    - Congratulations! Your certificate and chain have been saved at
+      /etc/letsencrypt/live/<myDomain>/fullchain.pem. Your cert will
+      expire on <someDate>. To obtain a new version of the certificate in
+      the future, simply run Let's Encrypt again.
+    - Your account credentials have been saved in your Let's Encrypt
+      configuration directory at /etc/letsencrypt. You should make a
+      secure backup of this folder now. This configuration directory will
+      also contain certificates and private keys obtained by Let's
+      Encrypt so making regular backups of this folder is ideal.
+    - If you like Let's Encrypt, please consider supporting our work by:
+
+     Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+     Donating to EFF:                    https://eff.org/donate-le
+    ```
+
+1. Restart NGINX within its container to pick up the new certificate.
+
+    ```bash
+    $ docker kill --signal=HUP my-nginx
+    my-nginx
+    ```
+
+1. Edit the `reissue` script to remove the `--server` parameter, then rebuild the cron container image.
+
+    ```bash
+    $ ${EDITOR} reissue
+    # Remove the "--server https://acme-staging.api.letsencrypt.org/directory" line.
+    $ docker build \
+      --build-arg affinity:container==letsencrypt-data \
+      --tag my-cron \
+      --file Dockerfile.cron \
+      .
+    Sending build context to Docker daemon 12.29 kB
+    Step 1 : FROM alpine:3.3
+     ---> 2314ad3eeb90
+    # ...
+    Removing intermediate container 6e8c95b21b4d
+    Successfully built 78eb8a598f73
+    ```
+
+1. Start the cron container with the new image.
+
+    ```bash
+    $ docker run \
+      --detach \
+      --name my-cron \
+      --volume /var/run/docker.sock:/var/run/docker.sock \
+      --env affinity:container==letsencrypt-data \
+      my-cron
+    0ff98c962d15ab4b51178d68f020f26ca82ff83b3602ab1a4524d225371e743d
+    ```
 
 You now have a site served over browser-valid HTTPS, with a certificate that will automatically remain valid! Check your handiwork at [SSL Labs](https://www.ssllabs.com/ssltest/) and make sure you have that green "A+" rating.
 
