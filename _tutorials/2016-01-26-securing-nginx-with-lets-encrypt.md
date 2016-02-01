@@ -39,7 +39,9 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       -p /etc/letsencrypt/webrootauth/
     ```
 
-1. Generate [strong Diffie-Hellman parameters](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters) and store them within your data volume container. These will prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that "A+" rating on SSL labs.
+    No output is expected here.
+
+1. Generate strong Diffie-Hellman parameters and store them within your data volume container. These will prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that "A+" rating on SSL labs.
 
     ```bash
     $ docker run \
@@ -47,6 +49,9 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --volumes-from letsencrypt-data \
       nginx \
       openssl dhparam -out /etc/letsencrypt/dhparams.pem 2048
+    Generating DH parameters, 2048 bit long safe prime, generator 2
+    This is going to take a long time
+    ............................
     ```
 
     This will take several minutes to complete.
@@ -57,6 +62,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     ```bash
     $ docker inspect --format "{{ "{{ .Node.IP "}}}}" letsencrypt-data
+    172.99.73.144
     ```
 
     Add an "A" record from your domain pointing to this address. If your domain had previously been pointing elsewhere, you may need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready by checking:
@@ -65,13 +71,17 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     ```bash
     $ dig +short <myDomain>
+    172.99.73.144
     ```
 
     **Windows**
 
     ```powershell
     > nslookup <myDomain>
+    172.99.73.144
     ```
+
+    When the output of these commands matches the address found by `docker inspect`, you're ready to proceed.
 
 1. Run a Let's Encrypt container to issue a new certificate. The Let's Encrypt client must be able to bind to ports 80 and 443 on the segment.
 
@@ -203,6 +213,16 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --tag my-nginx \
       --file Dockerfile.nginx \
       .
+    Sending build context to Docker daemon 10.24 kB
+    Step 1 : FROM nginx
+     ---> 9737f81306ee
+    Step 2 : COPY default.conf /etc/nginx/conf.d/default.conf
+     ---> 463bc1d0812f
+    Removing intermediate container 037f7a9e8ec5
+    Step 3 : COPY index.html /data/www/index.html
+     ---> d6e4979433db
+    Removing intermediate container a96d82bb5a4e
+    Successfully built d6e4979433db
     ```
 
 1. Launch an NGINX container using your image:
@@ -214,7 +234,10 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --publish 443:443 \
       --publish 80:80 \
       my-nginx
+    6a0d9d85508e0f6f7a555242da57e95e37279c19a676a66c73e608bd26475254
     ```
+
+    The output of the run command is the ID of your running NGINX container.
 
     Visit your domain in your browser. If it's still a staging certificate, you'll get a security warning, but your site is being served over TLS! If you're unable to connect or you see an error message, instead, check the [troubleshooting section](#troubleshooting) for ways to diagnose your problem.
 
@@ -269,6 +292,20 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --tag my-cron \
       --file Dockerfile.cron \
       .
+    Sending build context to Docker daemon 10.24 kB
+    Step 1 : FROM alpine:3.3
+     ---> 2314ad3eeb90
+    Step 2 : RUN apk add --no-cache docker
+     ---> Running in 060a4962d1ae
+    fetch http://dl-4.alpinelinux.org/alpine/v3.3/main/x86_64/APKINDEX.tar.gz
+    fetch http://dl-4.alpinelinux.org/alpine/v3.3/community/x86_64/APKINDEX.tar.gz
+    (1/11) Installing iptables (1.4.21-r4)
+    # ...
+    Step 5 : CMD /usr/sbin/crond -f -d 0
+     ---> Running in e85404657bd8
+     ---> 1d40ad924e88
+    Removing intermediate container e85404657bd8
+    Successfully built 1d40ad924e88
     ```
 
 1. Run your cron job in a dedicated cron container. Remember to mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment:
