@@ -140,7 +140,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     </html>
     ```
 
-    Now create the NGINX configuration itself. Use the [Mozilla SSL configuration generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/) as a starting point to create a `default.conf` that uses up-to-date, secure settings, and adapt it to meet your needs. If you use this example, remember to replace `<myDomain>` with your domain name.
+    Now create the NGINX configuration itself. Use the [Mozilla SSL configuration generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/) as a starting point to create a `default.conf` that uses up-to-date, secure settings, and adapt it to meet your needs. If you use this example, remember to replace `<myDomain>` **everywhere** with your domain name using a global find-and-replace.
 
     The `location /.well-known/acme-challenge` stanza near the end is important to remember: it will be used by the Let's Encrypt client during a certificate re-issue.
 
