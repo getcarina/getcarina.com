@@ -27,9 +27,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
 1. Create a data volume container to hold the Let's Encrypt certificates and account information.
 
-    A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. To learn more, read the [data volume container tutorial]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
-
-    Generally the command used for a data volume container is irrelevant, but here you'll use it to create a directory within the volume that you'll use from NGINX later.
+    A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. Generally the command used for a data volume container is irrelevant, but here you'll use it to create a directory within the volume that you'll use from NGINX later.
 
     ```bash
     $ docker run \
@@ -327,3 +325,5 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 If you already have a site or a service that's listening for HTTP and you want to add Let's Encrypt-powered TLS as easily as possible, check out [the lets-nginx container]({{ site.baseurl }}/blog/push-button-lets-encrypt/).
+
+For a deeper introduction to data volume containers, read [the data volume container tutorial]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
