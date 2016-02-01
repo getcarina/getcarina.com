@@ -308,7 +308,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     Successfully built 1d40ad924e88
     ```
 
-1. Run your cron job in a dedicated cron container. Remember to mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment:
+1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment:
 
     ```bash
     $ docker run \
