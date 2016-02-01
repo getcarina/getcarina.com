@@ -27,7 +27,7 @@ not have certain features you might expect, such as SSL or a User system. Redis
 uses a single password or token to provide minimal authenticated access. As
 there are no users there are no permissions other than you have access
 or you do not. Best practice is to always use a password, which you can
-set either in the config file or via the command line. 
+set either in the config file or via the command line.
 
 Running Redis over SSL requires running a proxy service such as Nginx or Stunnel. It
 also requires you to use a client library that has added SSL support.
@@ -64,7 +64,7 @@ Run a Redis instance to store your application data.
     allocation. In this case 800 MB was specified as the `maxmemory` value for Redis
     to provide 800 MB of data and client buffer space, and 200 MB for Redis persistence
     requirements.
-    
+
     Note: Although you can change the password via the API, restarting the
     container resets it to the password specified on the command line. If
     you want to manage the password via the API, you can choose to not set a password
@@ -107,28 +107,28 @@ Run a Redis instance to store your application data.
     For the containerized Redis service you don't need to keep track of
 	its name, IP address, or port.  Instead, you discover this information
 	dynamically with the preceding command and use it later in the tutorial to
-	connect to Redis. 
+	connect to Redis.
 
 
 1. To make using `redis-cli` easier, create a few more environment variables. Use `REDIS_HOST` for the IP address and `REDIS_PORT` for the TCP port.
 
     ```bash
-    $ REDIS_HOST=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp }}' $REDCON)
-    $ REDIS_PORT=$(docker inspect --format '{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort }}' $REDCON)
+    $ REDIS_HOST=$(docker inspect --format "{{ "{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp "}}}}" $REDCON)
+    $ REDIS_PORT=$(docker inspect --format "{{ "{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort "}}}}" $REDCON)
     $ echo $REDIS_HOST:$REDIS_PORT
     ```
 
-1. Testing the connection 
+1. Testing the connection
 
 
     ```bash
     $ docker run --rm redis redis-cli -h $REDIS_HOST -p $REDIS_PORT -a mysecretpassword
-    172.99.78.231:32769> 
+    172.99.78.231:32769>
     ```
 
     Type in `PING`. You should see `PONG` come back. You should
-    now have a functional Redis server requiring authentication. 
-	
+    now have a functional Redis server requiring authentication.
+
 1.  Set and get a key.
 
     ```bash
