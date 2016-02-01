@@ -268,7 +268,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     docker kill --signal=HUP my-nginx
     ```
 
-1. Write a `Dockerfile.cron` that uses `crond` to invoke this script once every month. This example uses [Alpine](https://hub.docker.com/_/alpine/) as a base image to keep the image small. Conveniently, Alpine includes an [`/etc/periodic` directory](http://wiki.alpinelinux.org/wiki/Alpine_Linux:FAQ#My_cron_jobs_don.27t_run.3F) that can be used to easily run scripts at a variety of intervals. All you need to do is copy the script to the correct directory, ensure that it has no file extension, and make it executable.
+1. Create a file named `Dockerfile.cron` using the contents below. This Docker container image uses `crond` to invoke the reissue script once every month. This example uses Alpine Linux as a base image to keep the image small. Conveniently, Alpine includes an `/etc/periodic` directory that can be used to easily run scripts at a variety of intervals. All you need to do is copy the script to the correct directory, ensure that it has no file extension, and make it executable.
 
     ```Dockerfile
     FROM alpine:3.3
