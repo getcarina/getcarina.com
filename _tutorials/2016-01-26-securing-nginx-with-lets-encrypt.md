@@ -367,3 +367,5 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 If you already have a site or a service that's listening for HTTP and you want to add Let's Encrypt-powered TLS as easily as possible, check out [the lets-nginx container]({{ site.baseurl }}/blog/push-button-lets-encrypt/).
 
 For a deeper introduction to data volume containers, read [the data volume container tutorial]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
+
+An explanation of perfect forward secrecy and the role of Diffie-Hellman parameters can be found [at raymii.org](https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html#Forward_Secrecy_&_Diffie_Hellman_Ephemeral_Parameters).
