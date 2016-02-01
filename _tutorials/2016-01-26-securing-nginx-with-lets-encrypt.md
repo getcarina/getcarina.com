@@ -87,7 +87,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     Notice that running this container will automatically accept the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Be sure that you're okay with accepting them before you run this!
 
-    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, omit the `--server` parameter from this step to get a production certificate.
+    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, consult the [production section](#reissue-production) to issue production certificates in their place.
 
     ```bash
     $ docker run \
@@ -245,7 +245,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
 1. Create a script that will reissue your certificates. Let's Encrypt issues certificates that expire in a relatively short 90-day period to mitigate the risk of compromised credentials and to encourage you to automate re-issuance.
 
-    Write `reissue`, substituting your domain and email address. Again, this example uses `--server` to target the Let's Encrypt staging environment; omit the `--server` argument and its parameter for your production infrastructure.
+    Create a file named `reissue` using the contents below and substitute your domain and email address. Again, this example uses `--server` to target the Let's Encrypt staging environment.
 
     ```bash
     #!/bin/sh
@@ -317,7 +317,10 @@ You'll also need to own a domain name and know how to create DNS records. Consul
       --volume /var/run/docker.sock:/var/run/docker.sock \
       --env affinity:container==letsencrypt-data \
       my-cron
+    620624696a29fd1f09b56266303ae40a77a60167e275ed75d3d5677cc7274030
     ```
+
+    The run command's output is the ID of the cron container.
 
 You now have a site served over browser-valid HTTPS, with a certificate that will automatically remain valid! Check your handiwork at [SSL Labs](https://www.ssllabs.com/ssltest/) and make sure you have that green "A+" rating.
 
