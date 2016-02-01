@@ -239,7 +239,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     The output of the run command is the ID of your running NGINX container.
 
-    Visit your domain in your browser. If it's still a staging certificate, you'll get a security warning, but your site is being served over TLS! If you're unable to connect or you see an error message, instead, check the [troubleshooting section](#troubleshooting) for ways to diagnose your problem.
+    Visit your domain in your browser. You'll get a security warning because you're still using a staging certificate, but your site is being served over TLS! If you're unable to connect or you see an error message, instead, check the [troubleshooting section](#troubleshooting) for ways to diagnose your problem.
 
     You aren't done quite yet, however.
 
@@ -322,11 +322,11 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     The run command's output is the ID of the cron container.
 
-# ..
+You now have all of your infrastructure in place. This is a good time to customize your NGINX configuration to integrate with the rest of your application.
 
 ### Getting a production certificate
 
-Once you're confident that your infrastructure is in place with staging certificates, it's time to issue production ones. The Let's Encrypt client won't let you reissue production certificates directly over the staging ones, so it will take a bit of finesse to replace the staging certificates without needing to redo the entire setup.
+Once you're confident that your infrastructure is in place with staging certificates, it's time to issue production ones. The Let's Encrypt client won't let you reissue production certificates directly over the staging ones, so it takes a bit of finesse to replace the staging certificates without needing to redo the entire setup.
 
 1. Before you begin, get rid of the cron container. It would be awkward if the `reissue` script attempted to reissue staging certificates in the middle of the replacement process!
 
@@ -419,7 +419,7 @@ Once you're confident that your infrastructure is in place with staging certific
     0ff98c962d15ab4b51178d68f020f26ca82ff83b3602ab1a4524d225371e743d
     ```
 
-You now have a site served over browser-valid HTTPS, with a certificate that will automatically remain valid! Check your handiwork at [SSL Labs](https://www.ssllabs.com/ssltest/) and make sure you have that green "A+" rating.
+You now have a site served over browser-accepted HTTPS, with a certificate that will automatically remain valid! Check your handiwork at [SSL Labs](https://www.ssllabs.com/ssltest/) and make sure you have that green "A+" rating.
 
 ### Troubleshooting
 
