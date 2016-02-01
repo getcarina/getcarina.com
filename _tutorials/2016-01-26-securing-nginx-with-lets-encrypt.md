@@ -78,7 +78,12 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     ```powershell
     > nslookup <myDomain>
-    172.99.73.144
+    Server:  FIOS_Quantum_Gateway.fios-router.home
+    Address:  192.168.1.1
+
+    Non-authoritative answer:
+    Name:    <myDomain>
+    Address:  172.99.73.144
     ```
 
     When the output of these commands matches the address found by `docker inspect`, you're ready to proceed.
