@@ -1,5 +1,5 @@
 ---
-title: Securing NGINX with Let's Encrypt
+title: NGINX with Let's Encrypt
 author: Ash Wilson <ash.wilson@rackspace.com>
 date: 2016-01-26
 permalink: docs/tutorials/securing-nginx-with-lets-encrypt/
@@ -15,19 +15,19 @@ topics:
   - nginx
 ---
 
-This tutorial describes acquiring free TLS certificates from [Let's Encrypt](https://letsencrypt.org/) and using them to secure a web site served using NGINX. This encrypts all traffic to and from your site with a certificate that's trusted by your browser and that provides strong enough encryption to get an "A+" rating from SSL Labs.
+This tutorial describes how to acquire free TLS certificates from [Let's Encrypt](https://letsencrypt.org/) and use them to secure a website that is served using NGINX. Following this process encrypts all traffic to and from your site with a certificate that's trusted by your browser and that provides strong enough encryption to get an A+ rating from SSL Labs.
 
 ### Prerequisites
 
-Before you begin, you'll need to be able to [create and connect to a Carina cluster.]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) You'll need at least one segment with ports 80 and 443 available.
+Before you begin, you need to be able to [create and connect to a Carina cluster.]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) You need at least one segment with ports 80 and 443 available.
 
-You'll also need to own a domain name and know how to create DNS records. Consult with your domain registrar for documentation on how to do this.
+You also need to own a domain name and know how to create DNS records. Consult with your domain registrar for documentation on how to do this.
 
-### Steps
+### Create a data volume container
 
-1. Create a data volume container to hold the Let's Encrypt certificates and account information.
+The first step is to create a data volume container to hold the Let's Encrypt certificates and account information. A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. Generally the command used for a data volume container is irrelevant, but here you use it to create a directory within the volume that you'll use from NGINX later.
 
-    A data volume container is a container that exists only to house a Docker volume. It's usually implemented as a container whose process terminates immediately. Generally the command used for a data volume container is irrelevant, but here you'll use it to create a directory within the volume that you'll use from NGINX later.
+1. Run the following command to create the container.
 
     ```bash
     $ docker run \
@@ -41,7 +41,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     No output is expected here.
 
-1. Generate strong Diffie-Hellman parameters and store them within your data volume container. These will prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that "A+" rating on SSL labs.
+1. Generate strong Diffie-Hellman parameters and store them within your data volume container. These parameters prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that A+ rating on SSL labs.
 
     ```bash
     $ docker run \
@@ -54,18 +54,20 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     ............................
     ```
 
-    This will take several minutes to complete.
+    This process takes several minutes to complete.
 
-1. Add a DNS "A" record to your domain pointing to the public IP address of your cluster's segment.
+### Add a DNS A record to your domain
 
-    Even if your cluster has multiple segments, all of your containers will be running on the same segment as the data volume container you just created. To find its public IP address, run:
+Add a DNS A record to your domain that points to the public IP address of your cluster's segment. Even if your cluster has multiple segments, all of your containers will be running on the same segment as the data volume container you just created.
+
+1. To find the segment's public IP address, run the following command:
 
     ```bash
     $ docker inspect --format "{{ "{{ .Node.IP "}}}}" letsencrypt-data
     172.99.73.144
     ```
 
-    Add an "A" record from your domain pointing to this address. If your domain had previously been pointing elsewhere, you may need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready by checking:
+1. Add an A record from your domain that points to this address. If your domain had previously been pointing elsewhere, you might need to wait for the new DNS entry to propagate before you can use it. You can determine when the entry is ready by checking, as follows:
 
     **Mac OS X and Linux**
 
@@ -88,50 +90,56 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     When the output of these commands matches the address found by `docker inspect`, you're ready to proceed.
 
-1. Run a Let's Encrypt container to issue a new certificate. The Let's Encrypt client must be able to bind to ports 80 and 443 on the segment.
+### Issue TLS certificates
 
-    Notice that running this container will automatically accept the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Be sure that you're okay with accepting them before you run this!
+Now you run a Let's Encrypt container to issue a new certificate. The Let's Encrypt client must be able to bind to ports 80 and 443 on the segment.
 
-    The `--server` parameter below will issue certificates from Let's Encrypt's *staging* server, which means that these certificates won't be browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, consult the [production section](#getting-a-production-certificate) to issue production certificates in their place.
+Note that running this container automatically accepts the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Review the terms of service before you run this container.
 
-    ```bash
-    $ docker run \
-      --rm \
-      --volumes-from letsencrypt-data \
-      --publish 443:443 \
-      --publish 80:80 \
-      quay.io/letsencrypt/letsencrypt certonly \
-      --server https://acme-staging.api.letsencrypt.org/directory \
-      --domain <myDomain> \
-      --authenticator standalone \
-      --email <myEmail> \
-      --agree-tos
-    ```
+The `--server` parameter issues certificates from Let's Encrypt's *staging* server, which means that these certificates aren't browser-valid yet. Let's Encrypt rate-limits certificate issuance to [five certificates per domain per seven days](https://community.letsencrypt.org/t/public-beta-rate-limits/4772/3), so it's a good idea to use staging certificates until you're confident that your infrastructure works the way you want it to. When you're ready to go live, consult the [production section](#get-a-production-certificate) of this article to issue production certificates in their place.
 
-    If all goes well, you'll see output like this:
+Run the following command:
 
-    ```
-    IMPORTANT NOTES:
-     - If you lose your account credentials, you can recover through
-       e-mails sent to <myEmail>.
-     - Congratulations! Your certificate and chain have been saved at
-       /etc/letsencrypt/live/<myDomain>/fullchain.pem. Your cert will
-       expire on <someDate>. To obtain a new version of the certificate in
-       the future, simply run Let's Encrypt again.
-     - Your account credentials have been saved in your Let's Encrypt
-       configuration directory at /etc/letsencrypt. You should make a
-       secure backup of this folder now. This configuration directory will
-       also contain certificates and private keys obtained by Let's
-       Encrypt so making regular backups of this folder is ideal.
-     - If you like Let's Encrypt, please consider supporting our work by:
+```bash
+$ docker run \
+  --rm \
+  --volumes-from letsencrypt-data \
+  --publish 443:443 \
+  --publish 80:80 \
+  quay.io/letsencrypt/letsencrypt certonly \
+  --server https://acme-staging.api.letsencrypt.org/directory \
+  --domain <myDomain> \
+  --authenticator standalone \
+  --email <myEmail> \
+  --agree-tos
+```
 
-       Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-       Donating to EFF:                    https://eff.org/donate-le
-    ```
+If all goes well, you'll see output like this:
 
-1. Generate an NGINX configuration that uses the issued TLS credentials and Diffie-Helman parameters. Your exact NGINX configuration will depend on your application's specific needs. Generally, you'll want NGINX to serve static assets and proxy requests to your application container. For now, let's start by serving a static page.
+```
+IMPORTANT NOTES:
+ - If you lose your account credentials, you can recover through
+   e-mails sent to <myEmail>.
+ - Congratulations! Your certificate and chain have been saved at
+   /etc/letsencrypt/live/<myDomain>/fullchain.pem. Your cert will
+   expire on <someDate>. To obtain a new version of the certificate in
+   the future, simply run Let's Encrypt again.
+ - Your account credentials have been saved in your Let's Encrypt
+   configuration directory at /etc/letsencrypt. You should make a
+   secure backup of this folder now. This configuration directory will
+   also contain certificates and private keys obtained by Let's
+   Encrypt so making regular backups of this folder is ideal.
+ - If you like Let's Encrypt, please consider supporting our work by:
 
-    First, create the page to serve, `index.html`:
+   Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+   Donating to EFF:                    https://eff.org/donate-le
+```
+
+### Create an NGINX container
+
+Construct an NGINX container that uses the issued TLS credentials and Diffie-Helman parameters. Your final NGINX configuration will depend on your application's specific needs. Generally, you want NGINX to serve static assets and proxy requests to your application container. For now, start by serving a static page.
+
+1. Create the page to serve, `index.html`:
 
     ```html
     <!doctype html>
@@ -145,9 +153,9 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     </html>
     ```
 
-    Now create the NGINX configuration itself. Use the [Mozilla SSL configuration generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/) as a starting point to create a `default.conf` that uses up-to-date, secure settings, and adapt it to meet your needs. If you use this example, remember to replace `<myDomain>` **everywhere** with your domain name using a global find-and-replace.
+1. Create the NGINX configuration itself. Use the [Mozilla SSL configuration generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/) as a starting point to create a `default.conf` that uses up-to-date, secure settings, and adapt it to meet your needs. If you use this example, remember to replace `<myDomain>` *everywhere* with your domain name by using a global find-and-replace.
 
-    The `location /.well-known/acme-challenge` stanza near the end is important to remember: it will be used by the Let's Encrypt client during a certificate re-issue.
+    The `location /.well-known/acme-challenge` stanza near the end is important to remember; it will be used by the Let's Encrypt client during a certificate re-issue.
 
     ```nginx
     server {
@@ -201,7 +209,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     }
     ```
 
-1. Put it all together with a `Dockerfile.nginx`:
+1. Create a file called `Dockerfile.nginx` with the following contents:
 
     ```Dockerfile
     FROM nginx
@@ -210,7 +218,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     COPY index.html /data/www/index.html
     ```
 
-1. Use these files to build the container image, specifying a [build affinity](https://docs.docker.com/swarm/scheduler/filter/#node-filters) to ensure that the image will be available on the same segment as the volume that's storing your certificates. On Swarm, `docker build` commands only build the container image on *one* node, which can cause problems if a `docker run` command later attempts to schedule a container on a different Carina segment. Specifying `--build-arg affinity:container==letsencrypt-data` ensures that the image is built on the same segment as your data volume container, which is where you'll be running your containers.
+1. Use the Dockerfile to build the container image, specifying a [build affinity](https://docs.docker.com/swarm/scheduler/filter/#use-an-affinity-filter) to ensure that the image is available on the same segment as the volume that's storing your certificates. On Swarm, `docker build` commands build the container image on only *one* node, which can cause problems if a `docker run` command later attempts to schedule a container on a different Carina segment. Specifying `--build-arg affinity:container==letsencrypt-data` ensures that the image is built on the same segment as your data volume container, which is where you'll be running your containers.
 
     ```bash
     $ docker build \
@@ -244,13 +252,15 @@ You'll also need to own a domain name and know how to create DNS records. Consul
 
     The output of the run command is the ID of your running NGINX container.
 
-    Visit your domain in your browser. You'll get a security warning because you're still using a staging certificate, but your site is being served over TLS! If you're unable to connect or you see an error message, instead, check the [troubleshooting section](#troubleshooting) for ways to diagnose your problem.
+    Visit your domain in your browser. You'll get a security warning because you're still using a staging certificate, but your site is being served over TLS. If you're unable to connect or you see an error message, instead, check the [troubleshooting section](#troubleshooting) for ways to diagnose your problem.
 
     You aren't done quite yet, however.
 
-1. Create a script that will reissue your certificates. Let's Encrypt issues certificates that expire in a relatively short 90-day period to mitigate the risk of compromised credentials and to encourage you to automate re-issuance.
+### Reissue certificates with a cron container
 
-    Create a file named `reissue` using the contents below and substitute your domain and email address. Again, this example uses `--server` to target the Let's Encrypt staging environment.
+Let's Encrypt issues certificates that expire in a relatively short 90-day period to mitigate the risk of compromised credentials and to encourage you to automate reissuance.
+
+1. Create a file named `reissue` by using the following contents and substituting your domain and email address. Again, this example uses `--server` to target the Let's Encrypt staging environment.
 
     ```bash
     #!/bin/sh
@@ -273,7 +283,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     docker kill --signal=HUP my-nginx
     ```
 
-1. Create a file named `Dockerfile.cron` using the contents below. This Docker container image uses `crond` to invoke the reissue script once every month. This example uses Alpine Linux as a base image to keep the image small. Conveniently, Alpine includes an `/etc/periodic` directory that can be used to easily run scripts at a variety of intervals. All you need to do is copy the script to the correct directory, ensure that it has no file extension, and make it executable.
+1. Create a file named `Dockerfile.cron` by using the following contents. This Docker container image uses `crond` to invoke the reissue script once every month. This example uses Alpine Linux as a base image to keep the image small. Conveniently, Alpine includes an `/etc/periodic` directory that can be used to easily run scripts at a variety of intervals. All you need to do is copy the script to the correct directory, ensure that it has no file extension, and make it executable.
 
     ```Dockerfile
     FROM alpine:3.3
@@ -289,7 +299,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     CMD ["/usr/sbin/crond", "-f", "-d", "8"]
     ```
 
-    Use this Dockerfile to build a `my-cron` container, again using `--build-args` to ensure that the image is built on the correct segment:
+1. Use this Dockerfile to build a `my-cron` container, again using `--build-args` to ensure that the image is built on the correct segment:
 
     ```bash
     $ docker build \
@@ -313,7 +323,7 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     Successfully built 1d40ad924e88
     ```
 
-1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment:
+1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment.
 
     ```bash
     $ docker run \
@@ -325,15 +335,15 @@ You'll also need to own a domain name and know how to create DNS records. Consul
     620624696a29fd1f09b56266303ae40a77a60167e275ed75d3d5677cc7274030
     ```
 
-    The run command's output is the ID of the cron container.
+    The command's output is the ID of the cron container.
 
 You now have all of your infrastructure in place. This is a good time to customize your NGINX configuration to integrate with the rest of your application.
 
-### Getting a production certificate
+### Get a production certificate
 
-Once you're confident that your infrastructure is in place with staging certificates, it's time to issue production ones. The Let's Encrypt client won't let you reissue production certificates directly over the staging ones, so it takes a bit of finesse to replace the staging certificates without needing to redo the entire setup.
+When you're confident that your infrastructure is in place with staging certificates, it's time to issue production ones. The Let's Encrypt client doesn't let you reissue production certificates directly over the staging ones, so you need to follow a few extra steps to replace the staging certificates.
 
-1. Before you begin, get rid of the cron container. It would be awkward if the `reissue` script attempted to reissue staging certificates in the middle of the replacement process!
+1. Stop and remove the cron container. You don't want the `reissue` script attempted to reissue staging certificates in the middle of the replacement process.
 
     ```bash
     $ docker stop my-cron
@@ -342,7 +352,7 @@ Once you're confident that your infrastructure is in place with staging certific
     my-cron
     ```
 
-1. Delete the existing staging certificates and credentials from the data volume container, then re-create the `/webrootauth/` subdirectory.
+1. Delete the existing staging certificates and credentials from the data volume container, and then re-create the `/webrootauth/` subdirectory.
 
     ```bash
     $ docker run --rm \
@@ -355,7 +365,7 @@ Once you're confident that your infrastructure is in place with staging certific
       mkdir -p /etc/letsencrypt/webrootauth/
     ```
 
-    These commands will produce no output when successful.
+    These commands produce no output when successful.
 
 1. Run the Let's Encrypt client again, omitting the `--server` parameter, to acquire a production certificate. Because the NGINX container is still running, use the *webroot* authenticator this time.
 
@@ -394,7 +404,7 @@ Once you're confident that your infrastructure is in place with staging certific
     my-nginx
     ```
 
-1. Edit the `reissue` script to remove the `--server` parameter, then rebuild the cron container image.
+1. Edit the `reissue` script to remove the `--server` parameter, and then rebuild the cron container image.
 
     ```bash
     $ ${EDITOR} reissue
@@ -424,37 +434,37 @@ Once you're confident that your infrastructure is in place with staging certific
     0ff98c962d15ab4b51178d68f020f26ca82ff83b3602ab1a4524d225371e743d
     ```
 
-You now have a site served over browser-accepted HTTPS, with a certificate that will automatically remain valid! Check your handiwork at [SSL Labs](https://www.ssllabs.com/ssltest/) and make sure you have that green "A+" rating.
+You now have a site served over browser-accepted HTTPS with a certificate that automatically remains valid. Check your work at [SSL Labs](https://www.ssllabs.com/ssltest/) and ensure that you receive a green A+ rating.
 
 ### Troubleshooting
 
-If you see a rate-limiting error from the letsencrypt container during certificate issuance:
+You might see the following rate-limiting error from the `letsencrypt` client container during certificate issuance:
 
 ```
 letsencrypt Error: rateLimited :: There were too many requests of a given type :: Error creating new cert :: Too many certificates already issued for: <myDomain>
 ```
 
-There isn't much you can do but wait; the rate-limiting will expire in a week. In the meantime, you can continue to iterate on your infrastructure by using the staging server.
+If you get this error, there isn't much you can do but wait; the rate-limiting will expire in a week. In the meantime, you can continue to iterate on your infrastructure by using the staging server.
 
-If you aren't able to reach your domain at all with your browser:
+If you aren't able to reach your domain at all with your browser, try the following steps:
 
-* Verify that the NGINX container is running. It should appear in the output of `docker ps -a` with a "STATUS" of "Up". If you see a status of "Exited" instead, check its logs with `docker logs my-nginx` to see what caused it to stop.
-* Ensure that the running NGINX container is listening on public ports 80 and 443. Its line in `docker ps -a` should include a "PORTS" section like the following: `<myIP>:80->80/tcp, <myIP>:443->443/tcp`.
-* Double check that the IP your domain is pointed at is the IP of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ "{{ .Node.IP " }}}}" letsencrypt-data` must match.
+* Verify that the NGINX container is running. It should appear in the output of `docker ps -a` with a `STATUS` of `Up`. If you see a status of `Exited` instead, check the container's logs by running `docker logs my-nginx` to see what caused it to stop.
+* Ensure that the running NGINX container is listening on public ports 80 and 443. Its line in `docker ps -a` should include a `PORTS` section like the following one: `<myIP>:80->80/tcp, <myIP>:443->443/tcp`.
+* Verify that the IP address to which your domain points is the IP address of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ "{{ .Node.IP " }}}}" letsencrypt-data` must match.
 
-If you see an error message instead of your `index.html` file:
+If you see an error message instead of your `index.html` file, try the following steps:
 
-* Check the NGINX container's logs for error messages with `docker logs my-nginx`.
-* If necessary, increase the logging level of NGINX by adding the following line to your `default.conf`:
+* Check the NGINX container's logs for error messages by running `docker logs my-nginx`.
+* If necessary, increase the logging level of NGINX by adding the following line to your `default.conf` file:
 
     ```
     error_log /var/log/nginx/error.log info;
     ```
 
-If the cron job does not run correctly and your certificate expires:
+If the cron job does not run correctly and your certificate expires, try the following steps:
 
-* Check the cron container's logs with `docker logs my-cron`.
-* If necessary, increase the logging level of cron by changing the `CMD` line in the Dockerfile to:
+* Check the cron container's logs by running `docker logs my-cron`.
+* If necessary, increase the logging level of cron by changing the `CMD` line in the Dockerfile as follows:
 
     ```
     CMD ["/usr/bin/crond", "-f", "-d", "0"]
