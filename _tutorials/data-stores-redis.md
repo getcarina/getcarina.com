@@ -113,8 +113,8 @@ Run a Redis instance to store your application data.
 1. To make using `redis-cli` easier, create a few more environment variables. Use `REDIS_HOST` for the IP address and `REDIS_PORT` for the TCP port.
 
     ```bash
-    $ REDIS_HOST=$(docker inspect --format "{{ "{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp "}}}}" $REDCON)
-    $ REDIS_PORT=$(docker inspect --format "{{ "{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort "}}}}" $REDCON)
+    $ REDIS_HOST=$(docker inspect --format {% raw %}'{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostIp }}'{% endraw %} $REDCON)
+    $ REDIS_PORT=$(docker inspect --format {% raw %}'{{ (index (index .NetworkSettings.Ports "6379/tcp") 0).HostPort }}'{% endraw %} $REDCON)
     $ echo $REDIS_HOST:$REDIS_PORT
     ```
 
