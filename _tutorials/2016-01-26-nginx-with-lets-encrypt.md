@@ -2,7 +2,7 @@
 title: NGINX with Let's Encrypt
 author: Ash Wilson <ash.wilson@rackspace.com>
 date: 2016-01-26
-permalink: docs/tutorials/securing-nginx-with-lets-encrypt/
+permalink: docs/tutorials/nginx-with-lets-encrypt/
 description: Learn to secure an NGINX server with free TLS certificates from Let's Encrypt
 docker-versions:
   - 1.9.1
@@ -78,7 +78,7 @@ Add a DNS A record to your domain that points to the public IP address of your c
 
     **Windows**
 
-    ```powershell
+    ```
     > nslookup <myDomain>
     Server:  FIOS_Quantum_Gateway.fios-router.home
     Address:  192.168.1.1
@@ -323,7 +323,7 @@ Let's Encrypt issues certificates that expire in a relatively short 90-day perio
     Successfully built 1d40ad924e88
     ```
 
-1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and to specify an affinity to your data container to run on the correct segment.
+1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and specify an affinity to your data container to run on the correct segment.
 
     ```bash
     $ docker run \
