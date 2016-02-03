@@ -83,7 +83,8 @@ publish functionality to deploy the website to a Docker container on Carina.
 
 1. Locate your credentials on the file system, then open **docker.cmd**. Copy the
     value of the `DOCKER_HOST` variable and save it for later. In the following example,
-    the value to save is `tcp://172.99.73.31:2376`.
+    the value to save is `tcp://172.99.73.31:2376`. The `DOCKER_HOST` value
+    is unique to each cluster.
 
     ```
     set DOCKER_HOST=tcp://172.99.73.31:2376
