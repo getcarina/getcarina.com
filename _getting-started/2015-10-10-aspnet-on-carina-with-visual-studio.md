@@ -1,8 +1,8 @@
 ---
-title: Publish an ASP.NET website to Carina with Visual Studio
+title: Getting Started with ASP.NET on Carina with Visual Studio
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2016-01-25
-permalink: docs/tutorials/publish-aspnet-to-carina-with-visual-studio/
+date: 2016-02-12
+permalink: docs/getting-started/aspnet-on-carina-with-visual-studio/
 description: Learn how to publish an ASP.NET website to Carina with Visual Studio
 docker-versions:
   - 1.9.1

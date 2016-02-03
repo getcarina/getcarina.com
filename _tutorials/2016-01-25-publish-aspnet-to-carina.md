@@ -1,7 +1,7 @@
 ---
 title: Publish an ASP.NET website to Carina from the command line
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2016-01-25
+date: 2016-02-12
 permalink: docs/tutorials/publish-aspnet-to-carina/
 description: Learn how to publish an ASP.NET website to Carina from the command line on Mac OS X, Linux or Windows
 docker-versions:
@@ -282,7 +282,7 @@ You might encounter the following issues when publishing:
 * **The Docker image is built successfully but warning messages from apt-get are displayed**
 
     The following warning messages can be ignored:
-    
+
     ```
     W: Duplicate sources.list entry http://ftp.us.debian.org/debian/ jessie/main amd64 Packages (/var/lib/apt/lists/ftp.us.debian.org_debian_dists_jessie_main_binary-amd64_Packages.gz)
     W: Duplicate sources.list entry http://ftp.us.debian.org/debian/ jessie/main amd64 Packages (/var/lib/apt/lists/ftp.us.debian.org_debian_dists_jessie_main_binary-amd64_Packages.gz)
@@ -294,6 +294,6 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Learn more about ASP.NET](https://get.asp.net/)
-* [Publish an ASP.NET website to Carina with Visual Studio]({{site.baseurl}}/docs/tutorials/publish-aspnet-to-carina-with-visual-studio/)
+* [Getting Started with ASP.NET on Carina with Visual Studio]({{site.baseurl}}/docs/getting-started/aspnet-on-carina-with-visual-studio/)
 
 [vscode]: https://code.visualstudio.com/
