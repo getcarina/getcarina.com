@@ -28,16 +28,17 @@ This tutorial describes how to publish an ASP.NET website to Carina from the com
 * [Carina CLI](docs/getting-started/getting-started-carina-cli/)
 * Package Manager
   * [Chocolatey](http://chocolatey.org) for Windows
-  * [Brew](http://brew.sh) for Mac OS X and Linux
+  * [Brew](http://brew.sh) for Mac OS X
+  * `apt-get` for Linux (Ubuntu)
 
 ### Install the ASP.NET prerelease
 ASP.NET will continue to be a moving target until it is officially released.
 These instructions rely upon the latest version of the ASP.NET prerelease and the ASP.NET Generator.
 Update to the latest version, if you already have these installed.
 
-1. Install the ASP.NET prerelease by running the following command:
+1. Install the ASP.NET prerelease by running the following commands:
 
-    **Mac OS X and Linux**
+    **Mac OS X**
 
     ```
     brew tap aspnet/dnx
@@ -50,19 +51,40 @@ Update to the latest version, if you already have these installed.
     choco install aspnet5
     ```
 
+    **Linux**
+
+    These instructions are for Ubuntu. See [Installing ASP.NET on Linux](https://docs.asp.net/en/latest/getting-started/installing-on-linux.html) for instructions for other distributions.
+
+    ```bash
+    bash -c '
+    sudo apt-get update
+    sudo apt-get install -y curl unzip libunwind8 gettext libssl-dev libcurl4-openssl-dev zlib1g libicu-dev uuid-dev make automake libtool
+    curl -sSL https://github.com/libuv/libuv/archive/v1.8.0.tar.gz | sudo tar zxfv - -C /usr/local/src
+    cd /usr/local/src/libuv-1.8.0
+    sudo sh autogen.sh
+    sudo ./configure
+    sudo make
+    sudo make install
+    sudo rm -rf /usr/local/src/libuv-1.8.0 && cd ~/
+    sudo ldconfig
+    curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh | DNX_BRANCH=dev sh
+    '
+    source ~/.dnx/dnvm/dnvm.sh
+    ```
+
 1. Ensure that the latest release candidate of the .NET runtime is
     installed and active by running the following command:
 
     ```
-    dnvm upgrade
+    dnvm upgrade -r coreclr
     ```
 
     `dnvm` is the .NET Version Manager and it allows you to install multiple
     versions of .NET and switch between them.
 
-1. Install NodeJS by running the following command:
+1. Install NodeJS by running the following commands:
 
-    **Mac OS X and Linux**
+    **Mac OS X**
 
     ```
     brew install node
@@ -74,13 +96,39 @@ Update to the latest version, if you already have these installed.
     choco install node
     ```
 
+    **Linux**
+
+    These instructions are for Ubuntu. See the
+    [NodeJS installation instructions](https://nodejs.org/en/download/package-manager/) for other distributions.
+
+    ```bash
+    curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+    ```
+
 1. Install Yeoman by running the following command:
+
+    **Mac OS X and Linux**
+
+    ```
+    sudo npm install -g yo
+    ```
+
+    **Windows**
 
     ```
     npm install -g yo
     ```
 
 1. Install ASP.NET Generator by running the following command:
+
+    **Mac OS X and Linux**
+
+    ```
+    sudo npm install -g generator-aspnet
+    ```
+
+    **Windows**
 
     ```
     npm install -g generator-aspnet
