@@ -2,6 +2,7 @@
 title: Create and connect to a cluster
 author: Kelly Holcomb <kelly.holcomb@rackspace.com>
 date: 2015-10-23
+featured: true
 permalink: docs/tutorials/create-connect-cluster/
 description: Learn how to create and connect to a cluster in Carina so that you can start running your applications in containers
 docker-versions:
