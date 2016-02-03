@@ -1,7 +1,7 @@
 ---
 title: NGINX with Let's Encrypt
 author: Ash Wilson <ash.wilson@rackspace.com>
-date: 2016-01-26
+date: 2016-02-03
 permalink: docs/tutorials/nginx-with-lets-encrypt/
 description: Learn to secure an NGINX server with free TLS certificates from Let's Encrypt
 docker-versions:
