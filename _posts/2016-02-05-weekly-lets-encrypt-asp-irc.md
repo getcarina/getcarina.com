@@ -1,6 +1,6 @@
 ---
 title: "Weekly news"
-date: 2016-01-29 13:00
+date: 2016-02-05 13:00
 comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
