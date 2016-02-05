@@ -20,25 +20,26 @@ message is displayed:
 $ docker build --tag <custom-image> .
 Successfully built abf38d5a0750
 
-$ docker run --publish 50000:5000 <custom-image>
+$ docker run --detach --publish 50000:5000 <custom-image>
 0588fe5b93707d54b023b7e31f15bd4baa793201427819794d1dea6cbc7f9f70
 
-$ docker run --publish 5000:5000 <custom-image>
+$ docker run --detach --publish 5000:5000 <custom-image>
 Error response from daemon: Error: image library/<custom-image> not found
 ```
 
 This error message indicates that the container was scheduled on a different segment
 than the segment that built the image, and therefore the image could not be found.
-To resolve this error, you must either
-[use Docker Swarm image affinity scheduling](#use-docker-swarm-image-affinity-scheduling),
-[use Docker Hub](#use-docker-hub), [use another public Docker registry](#use-a-public-docker-registry),
-or [use a private Docker registry](#use-a-private-docker-registry).
+To resolve this error, select one of the following options:
 
-**Note**: By default clusters contain only one segment, so you will only encounter
-this error when your cluster has two or more segments.
+* [Use Docker Swarm image affinity scheduling](#use-docker-swarm-image-affinity-scheduling)
+* [Use Docker Hub](#use-docker-hub)
+* [Use another public Docker registry](#use-a-public-docker-registry)
+* [Use a private Docker registry](#use-a-private-docker-registry)
+
+**Note**: This error will only occur after scaling your cluster to two or more segments.
 
 ### Use Docker Swarm image affinity scheduling
-Specify `--affinity:image==<custom-image>` when creating or running a container
+Specify `--env affinity:image==<custom-image>` when creating or running a container
 that uses `<custom-image>`. This instructs Docker Swarm to schedule the new
 container on a segment which has your custom image.
 
@@ -53,7 +54,7 @@ then a Docker registry is required.
 <!-- In future versions of Docker Swarm the image affinity hint won't be necessary, because of
 https://github.com/docker/swarm/issues/743. However this article is still
 useful because if you need to run on multiple segments
-(not just the one the image was built upon) then you will need to use a registry -->
+(not just the one the image was built upon) then you need to use a registry -->
 
 ### Use Docker Hub
 Docker Hub is the default, official Docker registry. Carina can discover images on
@@ -61,7 +62,7 @@ Docker Hub is the default, official Docker registry. Carina can discover images 
 changes or command-line flags.
 
 1. Create a Docker Hub account.
-1. Log in to Docker Hub from the command line. Your credentials will be saved to `~/.docker/config.json`.
+1. Log in to Docker Hub from the command line. Your credentials are saved to `~/.docker/config.json`.
 
     ```
     $ docker login
@@ -72,23 +73,34 @@ changes or command-line flags.
     Login Succeeded
     ```
 
-1. Build your custom image. Ensure that `<custom-image>` follows the required
-    Docker Hub format of `<user>/<repo-name>:<tag>`, such as `myuser/myimage`.
+1. Build your custom image.
 
     ```
-    docker build --tag <custom-image> .
+    docker build --tag <dockerhub-user>/<custom-image> .
     ```
 
 1. Push the custom image to Docker Hub.
 
     ```
-    docker push <custom-image>
+    docker push <dockerhub-user>/<custom-image>
     ```
+
+1. Optionally, pull the custom image down to every segment in your cluster.
+
+    ```
+    $ docker pull <dockerhub-user>/<custom-image>
+    c44a-47ff-8f95-3af379443ce4-n3: Pulling <dockerhub-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n2: Pulling <dockerhub-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n1: Pulling <dockerhub-user>/<custom-image>... : downloaded
+    ```
+
+    Each segment in the cluster downloads the image from Docker Hub, improving
+    the performance of subsequent `run` commands.
 
 1. Run a docker container using the custom image.
 
     ```
-    docker run <custom-image>
+    docker run <dockerhub-user>/<custom-image>
     ```
 
 ### Use a public Docker registry
@@ -97,9 +109,8 @@ to host your custom image.
 
 1. Create an account on a public Docker registry.
 
-1. Log in to the registry from the command line. Your credentials will be saved to `~/.docker/config.json`.
+1. Log in to the registry from the command line. Your credentials are saved to `~/.docker/config.json`.
     Replace `<registry>` with the the registry's domain name, such as `quay.io`.
-
 
     ```
     $ docker login <registry>
@@ -110,91 +121,76 @@ to host your custom image.
     Login Succeeded
     ```
 
-1. Build your custom image. Ensure that `<custom-image>` follows the required
-    external registry format of `/<registry>/<user>/<repo-name>:<tag>`, such as `quay.io/myuser/myimage`.
+1. Build your custom image.
 
     ```
-    docker build --tag <custom-image> .
+    docker build --tag <registry>/<registry-user>/<custom-image> .
     ```
 
 1. Push the custom image to the registry.
 
     ```
-    docker push <custom-image>
+    docker push <registry>/<registry-user>/<custom-image>
     ```
 
-    Docker uses the image name to determine
-    to which registry the image should be pushes. For example, if the image name
-    starts with `quay.io`, the image will be pushed to quay.io.
+    Docker uses the image name to determine to which registry the image should be pushed.
+    For example, if the image name is `quay.io/myuser/myimage`, the image is pushed to the quay.io registry.
 
 1. Pull the custom image down to every segment in your cluster.
 
     ```
-    docker pull <custom-image>
+    $ docker pull <registry>/<registry-user>/<custom-image>
+    c44a-47ff-8f95-3af379443ce4-n3: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n2: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n1: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
     ```
+
+    Docker uses the image name to determine from which registry the image should be pulled.
+    For example, if the image name is `quay.io/myuser/myrepo`, then each segment
+    in the cluster pulls the image from the quay.io registry.
 
 1. Run a docker container using the custom image.
 
     ```
-    docker run <custom-image>
+    docker run <registry>/<registry-user>/<custom-image>
     ```
 
 ### Use a private Docker registry
+In some cases, running your own private Docker registry directly on your cluster
+might be advantageous, especially when dealing with large images or images containing sensitive data.
 
 1. Follow the [Store private Docker registry images on Rackspace Cloud Files](https://getcarina.com/docs/tutorials/registry-on-cloud-files/)
-tutorial to set up a private Docker registry.
+    tutorial to set up a private Docker registry.
 
-1. Log in to the registry from the command line. Your credentials will be saved to `~/.docker/config.json`.
-    Replace `<registry-ip>:<registry-port>` with your private registry's IP address and port.
-
+1. Build your custom image.
 
     ```
-    $ docker login <registry-ip>:<registry-port>
-    Username: <registry-user>
-    Password: <registry-password>
-    Email: <registry-hub-email>
-    WARNING: login credentials saved in ~/.docker/config.json
-    Login Succeeded
+    docker build --tag 127.0.0.1:5000/<registry-user>/<custom-image> .
     ```
 
-    **Note**: You can configure a custom domain with your registry's IP address, and
-    run the registry service on port 80. Then you can simplify the login argument
-    `<regiery-ip>:<registry-port>` to `<custom-domain>`, such as `example.com`.
-
-1. Build your custom image. Ensure that `<custom-image>` follows the required
-    external registry format of `/<registry-ip>:<registry:port>/<repo-name>:<tag>`,
-    such as `172.99.73.114:5000/myimage`.
+1. Push the custom image to your private registry.
 
     ```
-    docker build --tag <custom-image> .
+    docker push 127.0.0.1:5000/<registry-user>/<custom-image>
     ```
-
-    **Note**: If you configured a custom domain for your registry,
-    then you can simplify `<custom-image>` to
-    `<custom-domain>/<repo-name>:<tag>`, such as `example.com/myimage`.
-
-1. Push the custom image to the registry.
-
-    ```
-    docker push <custom-image>
-    ```
-
-    Docker uses the image name to determine
-    to which registry the image should be pushes. For example, if the image name
-    starts with `172.99.73.114:5000`, the image will be pushed to the private registry
-    located at that IP address and port.
-
 
 1. Pull the custom image down to every segment in your cluster.
 
     ```
-    docker pull <custom-image>
+    $ docker pull 127.0.0.1:5000/<registry-user>/<custom-image>
+    c44a-47ff-8f95-3af379443ce4-n3: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n2: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
+    c44a-47ff-8f95-3af379443ce4-n1: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
     ```
+
+    Docker uses the image name to determine from which registry the image should be pulled.
+    For example, if the image name is `127.0.0.1:5000/myuser/myimage`,
+    then each segment in the cluster pulls the image from your private registry.
 
 1. Run a docker container using the custom image.
 
     ```
-    docker run <custom-image>
+    docker run 127.0.0.1:5000/<registry-user>/<custom-image>
     ```
 
 ### Resources
