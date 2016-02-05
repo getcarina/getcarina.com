@@ -5,7 +5,7 @@ comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup: Let's Encrypt ASP.NET and IRC.
+  In this week's roundup: Let's encrypt ASP.NET and IRC.
 categories:
  - Docker
  - Swarm
@@ -15,7 +15,7 @@ categories:
 authorIsRacker: true
 ---
 
-Let's Encrypt ASP.NET and IRC. Oops, that came out wrong. We've got some excellent new tutorials on using NGINX with Let's Encrypt, publishing an ASP.NET website from the command line, and using Quassel (distributed IRC client). Also news from the world of Docker.
+Let's encrypt ASP.NET and IRC. Oops, that came out wrong. We've got some excellent new tutorials on using NGINX with Let's Encrypt, getting started with ASP.NET with Visual Studio, publishing an ASP.NET website from the command line, and using Quassel (distributed IRC client). Also news from the world of Docker.
 
 ## NGINX with Let's Encrypt
 
@@ -23,9 +23,17 @@ Let's Encrypt ASP.NET and IRC. Oops, that came out wrong. We've got some excelle
 
 [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/)
 
+## Getting started with ASP.NET on Carina with Visual Studio
+
+<img style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina-with-visual-studio/carina-and-visual-studio.png %}" alt="ASP.NET"/>
+
+The upcoming version of ASP.NET is a major evolution of the .NET platform. The name churn alone hints at its complete redesign: first ASP.NET vNext, then ASP.NET 5, and now ASP.NET Core 1.0. One very welcome feature is official cross-platform support, enabling you to develop on Windows with Visual Studio and deploy to Linux. If you are most familiar with the Microsoft stack, a great way to get started is to develop your website just as you do today and publish directly to Carina with Visual Studio, where deploying to Docker containers is just a wizard away.
+
+[Getting started with ASP.NET on Carina with Visual Studio]({{ site.baseurl }}/docs/getting-started/aspnet-on-carina-with-visual-studio/)
+
 ## Publish an ASP.NET website to Carina from the command line
 
-<img class="right" style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %}" alt="ASP.NET"/>The upcoming version of ASP.NET is a major evolution of the .NET platform. The name churn alone hints at its complete redesign: first ASP.NET vNext, then ASP.NET 5, and now ASP.NET Core 1.0. One very welcome feature is official cross-platform support, no longer requiring Visual Studio, Windows, or even the Mono framework. Now that you can develop ASP.NET on any platform using free tools and deploy to Linux, hosting on Carina is a smart next step, whether you are new to ASP.NET or a veteran who wants to take it to the next level by deploying to containers.
+<img class="right" style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %}" alt="ASP.NET"/>One very welcome feature of ASP.NET is official cross-platform support, no longer requiring Visual Studio, Windows, or even the Mono framework. Now that you can develop ASP.NET on any platform using free tools and deploy to Linux, hosting on Carina is a smart next step, whether you are new to ASP.NET or a veteran who wants to take it to the next level by deploying to containers.
 
 [Publish an ASP.NET website to Carina from the command line]({{ site.baseurl }}/docs/tutorials/publish-aspnet-to-carina/)
 
