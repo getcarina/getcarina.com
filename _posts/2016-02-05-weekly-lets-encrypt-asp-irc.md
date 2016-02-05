@@ -33,7 +33,7 @@ The upcoming version of ASP.NET is a major evolution of the .NET platform. The n
 
 ## Publish an ASP.NET website to Carina from the command line
 
-<img class="right" style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %}" alt="ASP.NET"/>One very welcome feature of ASP.NET is official cross-platform support, no longer requiring Visual Studio, Windows, or even the Mono framework. Now that you can develop ASP.NET on any platform using free tools and deploy to Linux, hosting on Carina is a smart next step, whether you are new to ASP.NET or a veteran who wants to take it to the next level by deploying to containers.
+<img class="left" style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %}" alt="ASP.NET"/>One very welcome feature of ASP.NET is official cross-platform support, no longer requiring Visual Studio, Windows, or even the Mono framework. Now that you can develop ASP.NET on any platform using free tools and deploy to Linux, hosting on Carina is a smart next step, whether you are new to ASP.NET or a veteran who wants to take it to the next level by deploying to containers.
 
 [Publish an ASP.NET website to Carina from the command line]({{ site.baseurl }}/docs/tutorials/publish-aspnet-to-carina/)
 
