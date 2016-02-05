@@ -2,7 +2,7 @@
 title: Use Quassel on Carina
 author: Zack Shoylev <zack.shoylev@rackspace.com>
 date: 2016-01-20
-permalink: docs/tutorials/2016-01-20-quassel-on-carina/
+permalink: docs/tutorials/quassel-on-carina/
 description: Learn how to use Quassel on Carina
 docker-versions:
   - 1.9.0
@@ -40,15 +40,15 @@ data.
 
 Create a volume container to store data:
 
-    
-    docker create \ 
-    --name quassel-data \ 
+
+    docker create \
+    --name quassel-data \
     --volume /config \
     linuxserver/quassel-core    
 
 If you are using PowerShell to connect to Carina, you can replace the backslash with a backtick to use multiline commands.
 
-This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates automatically and is already configured to use Docker volume containers. 
+This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates automatically and is already configured to use Docker volume containers.
 
 ### Start a Quassel core container
 
@@ -57,7 +57,7 @@ This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates 
         docker run \  
         --name quassel-core \  
         --volumes-from quassel-data \  
-        --publish 4242:4242 \ 
+        --publish 4242:4242 \
         linuxserver/quassel-core
 
     This process might take a while, as the container will self-update. The expected output is as follows:
@@ -71,7 +71,7 @@ This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates 
         writing new private key to '/config/quasselCert.pem'
         -----
         *** Running /etc/my_init.d/10_add_user_abc.sh...
-        
+
         -----------------------------------
                   _     _ _
                  | |___| (_) ___
@@ -79,7 +79,7 @@ This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates 
                  | \__ \ | | (_) |
                  |_|___/ |_|\___/
                          |_|
-        
+
         Brought to you by linuxserver.io
         -----------------------------------
         GID/UID
@@ -87,7 +87,7 @@ This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates 
         User uid:    911
         User gid:    911
         -----------------------------------
-        
+
         *** Running /etc/my_init.d/20_apt_update.sh...
         We are now refreshing packages from apt repositorys, this *may* take a while
         Update: OK
@@ -101,7 +101,7 @@ This tutorial uses the `linuxserver/quassel-core` image for Quassel. It updates 
 
     When the following message is displayed, the container is ready: `Core is currently not configured! Please connect with a Quassel Client for basic setup.`
 
-1. Press Ctrl-C to go back to the terminal. 
+1. Press Ctrl-C to go back to the terminal.
 1. Run the following command to expose the port.
 
         docker port quassel-core 4242
@@ -153,7 +153,7 @@ The output shows that Quassel is storing data to the `/config` directory. This d
 
         docker run \
         --name backup \
-        --env RS_USERNAME='[redacted]' \ 
+        --env RS_USERNAME='[redacted]' \
         --env RS_API_KEY='[redacted]' \
         --env RS_REGION_NAME='DFW' \
         --env DIRECTORY='/config' \
@@ -163,7 +163,7 @@ The output shows that Quassel is storing data to the `/config` directory. This d
 
     The output displays a cronlog. Watch it for a bit until you see `Successfully uploaded object [backup.tar.gz] to container [quassel-backup]` to ensure that your data is being backed up.
 
-    Your data will be backed up every minute. This is not a rolling backup; only the last instance of your data is saved automatically, to reduce storage costs (data is overwritten on upload). 
+    Your data will be backed up every minute. This is not a rolling backup; only the last instance of your data is saved automatically, to reduce storage costs (data is overwritten on upload).
 
 1. Press Ctrl-C to get back to the terminal.
 
