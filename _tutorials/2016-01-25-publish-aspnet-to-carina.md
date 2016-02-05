@@ -13,28 +13,27 @@ topics:
 The upcoming version of ASP.NET is a major evolution of the .NET platform.
 The name churn alone hints at its complete redesign: first ASP.NET vNext, then ASP.NET 5,
 and now ASP.NET Core 1.0. One very welcome feature is official cross-platform
-support, no longer requiring Visual Studio, Windows or even the Mono framework.
+support, no longer requiring Visual Studio, Windows, or even the Mono framework.
 Now that you can develop ASP.NET on any platform using free tools and deploy to Linux,
-hosting on Carina is a smart next step, whether you are new to ASP.NET, or a
+hosting on Carina is a smart next step, whether you are new to ASP.NET or a
 veteran who wants to take it to the next level by deploying to containers.
 
-This tutorial describes how to publish an ASP.NET website to Carina from the command line on Mac OS X, Linux or Windows.
+This tutorial describes how to publish an ASP.NET website to Carina from the command line on Mac OS X, Linux, or Windows.
 
 ![ASP.NET Powered By Carina]({% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %})
 
 ### Prerequisites
 
 * [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
-* [Carina CLI](docs/getting-started/getting-started-carina-cli/)
-* Package Manager
+* [Install the Carina CLI](docs/getting-started/getting-started-carina-cli/)
+* Install package managers
   * [Chocolatey](http://chocolatey.org) for Windows
   * [Brew](http://brew.sh) for Mac OS X
   * `apt-get` for Linux (Ubuntu)
 
 ### Install the ASP.NET prerelease
-ASP.NET will continue to be a moving target until it is officially released.
-These instructions rely upon the latest version of the ASP.NET prerelease and the ASP.NET Generator.
-Update to the latest version, if you already have these installed.
+These instructions rely on the latest version of the ASP.NET prerelease and the ASP.NET Generator.
+If you already have these applications installed, update to the latest version.
 
 1. Install the ASP.NET prerelease by running the following commands:
 
@@ -79,10 +78,10 @@ Update to the latest version, if you already have these installed.
     dnvm upgrade -r coreclr
     ```
 
-    `dnvm` is the .NET Version Manager and it allows you to install multiple
+    `dnvm` is the .NET Version Manager, and it allows you to install multiple
     versions of .NET and switch between them.
 
-1. Install NodeJS by running the following commands:
+1. Install Node.js by running the following commands:
 
     **Mac OS X**
 
@@ -99,7 +98,7 @@ Update to the latest version, if you already have these installed.
     **Linux**
 
     These instructions are for Ubuntu. See the
-    [NodeJS installation instructions](https://nodejs.org/en/download/package-manager/) for other distributions.
+    [Node.js installation instructions](https://nodejs.org/en/download/package-manager/) for other distributions.
 
     ```bash
     curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
@@ -134,14 +133,14 @@ Update to the latest version, if you already have these installed.
     npm install -g generator-aspnet
     ```
 
-You are now all set and ready to begin developing ASP.NET applications. On Windows,
+You are now ready to begin developing ASP.NET applications. On Windows,
 the recommended editor is still Visual Studio, but is not necessary. You can develop
 using your preferred editor or try [Visual Studio Code][vscode], which is cross-platform
 and provides autocompletion.
 
 ### Create an ASP.NET website
-This tutorial uses Yeoman (`yo`) and the ASP.NET Generator plugin to bootstrap a
-new ASP.NET website. It does all the legwork that normally would be performed by
+This tutorial uses Yeoman (`yo`) and the ASP.NET Generator plug-in to bootstrap a
+new ASP.NET website. It does all the work that normally would be performed by
 Visual Studio when starting a new project.
 
 1. Create an ASP.NET website by running the following command:
@@ -150,10 +149,10 @@ Visual Studio when starting a new project.
     yo aspnet
     ```
 
-    **Note**: The generator creates a new directory within the current directory.
+    The ASP.NET Generator prompts for the type of application and a name, and then
+    creates a new directory within the current directory.
 
-1. The ASP.NET Generator prompts for the type of application and a name. Select
-    `Web Application` and accept the default name.
+1. Select `Web Application` and accept the default name.
 
     ```
     $ yo aspnet
@@ -182,9 +181,11 @@ Visual Studio when starting a new project.
     ? What's the name of your ASP.NET application? WebApplication
     ```
 
-1. The generator created a directory using the name provided, such as `WebApplication`,
-    as a child of the current directory. Run the following commands to preview
-    your website:
+    The generator created a directory using the name provided, such as `WebApplication`,
+    as a child of the current directory. 
+
+
+1. Run the following commands to preview your website:
 
     ```
     cd WebApplication
@@ -193,9 +194,9 @@ Visual Studio when starting a new project.
     ```
 
     `dnu` is the .NET Utility tool and is used to retrieve all the
-    dependencies for website from NuGet. `dnx` is the .NET Execution Environment
+    dependencies for the website from NuGet. `dnx` is the .NET Execution Environment
     tool and is used to execute commands defined in **project.json**.
-    By the time the upcoming version ASP.NET is released, these will
+    By the time the upcoming version of ASP.NET is released, these will
     be replaced by `dotnet`, but as of ASP.NET 5 RC1 these are the correct tools.
 
 1. Open [http://localhost:5000](http://localhost:5000) to view the website.
@@ -209,7 +210,7 @@ however a few files are notable:
 **Dockerfile**
 
 This file contains the instructions that Docker uses to build a container for
-the website. The following is an example Dockerfile with comments added to explain
+the website. Following is an example Dockerfile with comments added to explain
 the steps used to build the container:
 
 ```
@@ -237,7 +238,7 @@ ENTRYPOINT ["dnx", "-p", "project.json", "web"]
 **project.json**
 
 This is the project file for the website. It defines the required dependencies
-and exposes any supported commands, such as `dnx web`. From the example below,
+and exposes any supported commands, such as `dnx web`. From the following example,
 you can see that `web` is not a global command, and is specific to this project.
 
 ```
@@ -258,13 +259,13 @@ you can see that `web` is not a global command, and is specific to this project.
 }
 ```
 
-### Publish an ASP.NET website to Carina
+### Publish your ASP.NET website to Carina
 
-Now that we have verified that the website can be run locally, publish
+Now that you have verified that the website can be run locally, publish
 it to Carina.
 
-1. Edit **project.json** and append `server.urls=http://0.0.0.0:5000` to the web
-    command. By default, the Kestrel web server only listens on `127.0.0.1`.
+1. Edit the **project.json** file and append `server.urls=http://0.0.0.0:5000` to the web
+    command. By default, the Kestrel web server listens on the IP address `127.0.0.1`.
     When this is overridden with `0.0.0.0`, the web server handles all requests
     to the specified port, regardless of the host's IP address.
 
@@ -275,7 +276,7 @@ it to Carina.
         },
     ```
 
-1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
+1. If you have not already done so, [create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
 
 1. Build a Docker image of your website by running the following command:
 
@@ -314,22 +315,23 @@ You might encounter the following issues when publishing:
 
 * `Predefined type 'System.Object' is not defined or imported`
 
-    By default, generated projects target both the traditional .NET framework and .NET Core. `dnu build` compiles the application for every framework listed the frameworks
-    sections in the project.json. If you don't have the full .NET framework installed and configured,
-    then when it attempts to build dnx451, the build fails. To resolve this,
-    remove `"dnx451": { },` from the frameworks section of the **project.json** file.
+    By default, generated projects target both the traditional .NET framework and .NET Core.
+    `dnu build` compiles the application for every framework listed in the `frameworks`
+    section in the **project.json** file. If you don't have the full .NET framework installed and configured,
+    then when it attempts to build dnx451, the build fails. To resolve this issue,
+    remove `"dnx451": { },` from the `frameworks` section of the **project.json** file.
 
     **Note**: `dnu build` is not necessary for this tutorial.
 
 * `Microsoft.AspNet.Server.Kestrel.Networking.UvException: Error -13 EACCES permission denied`
 
     The Kestrel web server is configured to use a port that is already in use.
-    Edit **project.json** and ensure that server.urls is configured with an unused port.
+    Edit the **project.json** file and ensure that `server.urls` is configured with an unused port.
 
     `"web": "Microsoft.AspNet.Server.Kestrel server.urls=http://0.0.0.0:5001",`
-* **The Docker image is built successfully but warning messages from apt-get are displayed**
+* The Docker image is built successfully but warning messages from `apt-get` are displayed.
 
-    The following warning messages can be ignored:
+    You can ignore the following warning messages:
 
     ```
     W: Duplicate sources.list entry http://ftp.us.debian.org/debian/ jessie/main amd64 Packages (/var/lib/apt/lists/ftp.us.debian.org_debian_dists_jessie_main_binary-amd64_Packages.gz)
@@ -342,6 +344,6 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Learn more about ASP.NET](https://get.asp.net/)
-* [Getting Started with ASP.NET on Carina with Visual Studio]({{site.baseurl}}/docs/getting-started/aspnet-on-carina-with-visual-studio/)
+* [Getting started with ASP.NET on Carina with Visual Studio]({{site.baseurl}}/docs/getting-started/aspnet-on-carina-with-visual-studio/)
 
 [vscode]: https://code.visualstudio.com/
