@@ -31,25 +31,25 @@ This error message indicates that the container was scheduled on a different seg
 than the segment that built the image, and therefore the image could not be found.
 To resolve this error, select one of the following options:
 
-* [Use Docker Swarm image affinity scheduling](#use-docker-swarm-image-affinity-scheduling)
+* [Use image affinity scheduling with Docker Swarm](#use-image-affinity-scheduling-with-docker-swarm)
 * [Use Docker Hub](#use-docker-hub)
 * [Use another public Docker registry](#use-a-public-docker-registry)
 * [Use a private Docker registry](#use-a-private-docker-registry)
 
-**Note**: This error will only occur after scaling your cluster to two or more segments.
+**Note**: This error occurs only after you scale your cluster to two or more segments.
 
-### Use Docker Swarm image affinity scheduling
-Specify `--env affinity:image==<custom-image>` when creating or running a container
-that uses `<custom-image>`. This instructs Docker Swarm to schedule the new
-container on a segment which has your custom image.
+### Use image affinity scheduling with Docker Swarm
+When you create or run a container that uses `<custom-image>`,
+specify `--env affinity:image==<custom-image>`. This command instructs Docker Swarm
+to schedule the new container on a segment that has your custom image.
 
 ```
 $ docker build -t <custom-image> .
-$ docker run --env affinity:image==<custom-image>
+$ docker run --env affinity:image==<custom-image> <custom-image>
 ```
 
 **Note**: If you need to run the container on multiple segments,
-then a Docker registry is required.
+then a Docker registry is required. See the following sections for options.
 
 <!-- In future versions of Docker Swarm the image affinity hint won't be necessary, because of
 https://github.com/docker/swarm/issues/743. However this article is still
@@ -58,7 +58,7 @@ useful because if you need to run on multiple segments
 
 ### Use Docker Hub
 Docker Hub is the default, official Docker registry. Carina can discover images on
-[Docker Hub](https://hub.docker.com/), without requiring any configuration
+[Docker Hub](https://hub.docker.com/) without requiring any configuration
 changes or command-line flags.
 
 1. Create a Docker Hub account.
@@ -85,7 +85,8 @@ changes or command-line flags.
     docker push <dockerhub-user>/<custom-image>
     ```
 
-1. Optionally, pull the custom image down to every segment in your cluster.
+1. _(Optional)_ Pull the custom image down to every segment in your cluster.
+    This step is optional because Carina automatically discovers Docker Hub images.
 
     ```
     $ docker pull <dockerhub-user>/<custom-image>
@@ -97,7 +98,7 @@ changes or command-line flags.
     Each segment in the cluster downloads the image from Docker Hub, improving
     the performance of subsequent `run` commands.
 
-1. Run a docker container using the custom image.
+1. Run a container using the custom image.
 
     ```
     docker run <dockerhub-user>/<custom-image>
@@ -110,7 +111,7 @@ to host your custom image.
 1. Create an account on a public Docker registry.
 
 1. Log in to the registry from the command line. Your credentials are saved to `~/.docker/config.json`.
-    Replace `<registry>` with the the registry's domain name, such as `quay.io`.
+    Replace `<registry>` with the registry's domain name, such as `quay.io`.
 
     ```
     $ docker login <registry>
@@ -149,7 +150,7 @@ to host your custom image.
     For example, if the image name is `quay.io/myuser/myrepo`, then each segment
     in the cluster pulls the image from the quay.io registry.
 
-1. Run a docker container using the custom image.
+1. Run a container using the custom image.
 
     ```
     docker run <registry>/<registry-user>/<custom-image>
@@ -157,10 +158,11 @@ to host your custom image.
 
 ### Use a private Docker registry
 In some cases, running your own private Docker registry directly on your cluster
-might be advantageous, especially when dealing with large images or images containing sensitive data.
+might be advantageous, especially when dealing with large images or images that contain sensitive data.
 
-1. Follow the [Store private Docker registry images on Rackspace Cloud Files](https://getcarina.com/docs/tutorials/registry-on-cloud-files/)
-    tutorial to set up a private Docker registry.
+1. Set up a private Docker registry by following the
+    [Store private Docker registry images on Rackspace Cloud Files]({{site.baseurl}}/docs/tutorials/registry-on-cloud-files/)
+    tutorial.
 
 1. Build your custom image.
 
@@ -187,7 +189,7 @@ might be advantageous, especially when dealing with large images or images conta
     For example, if the image name is `127.0.0.1:5000/myuser/myimage`,
     then each segment in the cluster pulls the image from your private registry.
 
-1. Run a docker container using the custom image.
+1. Run a container using the custom image.
 
     ```
     docker run 127.0.0.1:5000/<registry-user>/<custom-image>
@@ -195,5 +197,5 @@ might be advantageous, especially when dealing with large images or images conta
 
 ### Resources
 
-* [Understanding how Carina uses Docker Swarm](https://getcarina.com/docs/concepts/docker-swarm-carina/)
-* [Docker best practices: image repository](https://getcarina.com/docs/best-practices/docker-best-practices-image-repository/)
+* [Understanding how Carina uses Docker Swarm]({{site.baseurl}}/docs/concepts/docker-swarm-carina/)
+* [Docker best practices: image repository]({{site.baseurl}}/docs/best-practices/docker-best-practices-image-repository/)
