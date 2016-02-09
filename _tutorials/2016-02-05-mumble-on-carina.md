@@ -30,17 +30,24 @@ For this tutorial, we have selected the easily configurable [extra/mumble](https
 
 ### Start a Murmur container
 
-Start a new container named `mumble` using the `extra/mumble` image, using custom ports `53453` for TCP and UDP, and a SuperUser password `6b53r54Iwmi0` (make sure to generate your own secure password!):
+Start a new container named `mumble` using the `extra/mumble` image, using a random port such as `53453` for TCP and UDP, and a SuperUser password `<password>` (make sure to generate your own secure password!):
 
 ```
-$ docker run \
---name mumble \ 
---env "MAX_USERS=50" \ 
---env "SERVER_TEXT=Welcome to My Mumble Server" \ 
---env "SUPW=6b53r54Iwmi0" \
+docker run \
+--name mumble \
+--detach \
+--env "MAX_USERS=50" \
+--env "SERVER_TEXT=Welcome to My Mumble Server" \
+--env "SUPW=<password>" \
 --publish 53453:64738 \
 --publish 53453:64738/udp \
 extra/mumble
+```
+
+Then check the logs to make sure the image worked properly:
+
+```
+docker logs mumble
 ```
 
 The command will display:
@@ -71,17 +78,22 @@ Initilization Completed
 <W>2016-02-04 14:38:29.824 Object::connect: No such slot MurmurDBus::userTextMessage(const User *, const TextMessage &)
 ```
 
-Press `Ctrl-C` to get back to the terminal. To get the IP address and port:
+To get the IP address and port, execute:
 
 ```
-$ docker port mumble 64738
+docker port mumble
+```
 
-172.99.65.46:53453
+This will output:
+
+```
+64738/tcp -> 172.99.65.46:53453
+64738/udp -> 172.99.65.46:53453
 ```
 
 Take a note of the IP address and port, you will need it when connecting to the mumble server.
 
-The image has additional configuration options available. It is possible to configure a password to limit regular users connecting to the server, for example.
+This image has additional configuration options available. It is possible to configure a password to limit regular users connecting to the server, for example.
 
 ### Connect as SuperUser
 
