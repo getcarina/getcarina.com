@@ -101,7 +101,7 @@ The following example illustrates many of these guidelines. For more examples, s
     test                      virtualbox   Running   tcp://192.168.99.101:237
     ```
 
-## Use active voice
+### Use active voice
 
 In general, write in *active* voice rather than *passive* voice. 
 
@@ -119,7 +119,7 @@ Following are examples of active voice:
 
 For more information about voice, see the [Use active voice](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#use-active-voice) section in the complete style guide.
 
-## Use present tense
+### Use present tense
 
 Users read documentation to perform tasks or gather information. For users, these activities take place in their present, so the present tense is appropriate in most cases. Additionally, present tense is easier to read than past or future tense.
 
@@ -132,7 +132,7 @@ Following are examples of present tense:
 - The product prompts you to verify the deletion.
 - To back up Cloud Sites to Cloud Files by using this example, you create two cron jobs. One job backs up the cloud site and database, and the second job uploads the backup to Cloud Files.
 
-## Write to the user by using second person and imperative mood
+### Write to the user by using second person and imperative mood
 
 Users are more engaged with documentation when you use second person (that is, you address the user as *you*). Second person promotes a friendly tone by addressing users directly. Using second person with the imperative mood (in which the subject *you* is understood) and active voice helps to eliminate wordiness and confusion about who or what initiates an action, especially in procedural steps. 
 
@@ -146,7 +146,7 @@ Avoid switching person (point of view) in the same document. Switching person is
 
 **Note:** This guidelines document is written in second person, and the headings and task examples use imperative mood. 
 
-## Write clear and consistent step text
+### Write clear and consistent step text
 
 When you are providing instructions to users, you should generally number the steps (unless you have just one step). For the steps, use the following guidelines. The guidelines are followed by an example. For more extensive examples, see the [Procedural steps](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/m-z-style-guidelines.md#tasks-steps) section of the complete style guide.
 
@@ -184,7 +184,7 @@ When you are providing instructions to users, you should generally number the st
 
     After a few moments, your cluster reaches a status of **active**.
 
-## <a name="clarify-pronouns"></a>Clarify pronouns such as it, this, there, and that
+### <a name="clarify-pronouns"></a>Clarify pronouns such as it, this, there, and that
 
 Pronouns are useful, but you must ensure that their antecedents (the words that they are used in place of) are clear, and that they (the pronouns) don’t contribute to vagueness and ambiguity. 
 
@@ -198,13 +198,13 @@ Pronouns are useful, but you must ensure that their antecedents (the words that 
 
 For more examples, see the [Clarify pronouns](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#clarify-pronouns) section of the complete style guide.
 
-## Clarify gerunds and participles
+### Clarify gerunds and participles
 
 Participles are verbs that end in *-ed* or *-ing* and act as modifiers. Gerunds are verbs that end in *-ing* and act as nouns. Both types of words are useful and acceptable, but confusion can arise if they are not placed precisely in a sentence. For example, the word *meeting* can be a gerund or a modifier (or even a noun) depending on its placement in a sentence. Clarify gerunds and participles as necessary.
 
 For more information and examples, see the [Clarify gerunds and participles](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#clarify-gerunds-and-participles) section of the complete style guide.
 
-## Use consistent terminology
+### Use consistent terminology
 
 Use words as they are defined in a general dictionary, in an accepted industry dictionary or style guide, or for your particular project. Each word or phrase should have only one meaning, and should be used consistently throughout the documentation. 
 
