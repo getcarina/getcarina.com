@@ -5,7 +5,7 @@ comments: true
 author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup:
+  In this week's roundup: Debugging swarm affinity, tinfoil hat approved mumbling and feedback.
 categories:
  - Docker
  - Affinity
@@ -14,7 +14,7 @@ categories:
 authorIsRacker: true
 ---
 
-Let's encrypt ASP.NET and IRC. Oops, that came out wrong. We've got some excellent new tutorials on using NGINX with Let's Encrypt, getting started with ASP.NET with Visual Studio, publishing an ASP.NET website from the command line, and using Quassel (distributed IRC client). Also news from the world of Docker.
+Woo! Almost the weekend - and of course that means some nice new bits of content - including how to debug swarm affinity / custom Docker images across separate Docker Swarm hosts in Carina, encrypted voice chat using Docker via mumble, and asking for your feedback. 
 
 ## Error running a container using a custom image
 
