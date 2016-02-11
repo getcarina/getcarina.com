@@ -167,7 +167,7 @@ function walk(pt) {
 }
 ```
 
-Try it out on one of the characters by appending this to the end of fake.js:
+Try it out on one of the characters by appending this to the end of fakes.js:
 
 ```javascript
 const player = players[0]
@@ -376,6 +376,31 @@ This is enough tooling for us to start generating simulated player data. We'll
 also use this to great effect when aggregating multiplayer data. For a more
 thorough introduction to Reactive Programming, check out the
 [Introduction to RP you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+
+## Generating Player Data with RxJS
+
+Let's start off by creating a single live player.
+
+```javascript
+function livePlayer(player, period) {
+  if(!player) {
+    throw new Error('need a player');
+  }
+  if(!period) {
+    period = 500;
+  }
+  return Rx.Observable.interval(period)
+            .scan((p) => {
+              return {
+                name: p.name,
+                id: p.id,
+                x: walk(p.x),
+                y: walk(p.y),
+              };
+            }, player);
+}
+```
+
 
 ## Build the map
 
