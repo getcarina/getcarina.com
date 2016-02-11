@@ -16,6 +16,8 @@ categories:
 authorIsRacker: true
 ---
 
+<!-- TODO: show the final multiplayer map -->
+
 We've done [Pip-Boy discovery and relay]({{site.baseurl}}/blog/fallout-4-service-discovery-and-relay/) and
 [created new libraries]({{site.baseurl}}/blog/decoding-the-pipboy-database-with-vault-community/). Now let's put them to good use. The first half of this tutorial does *not* require having
 a copy of Fallout 4, since we'll start by simulating data.
@@ -272,7 +274,7 @@ Technically, this pattern has been around for a while. People have been using Ob
 [in Ruby](http://ruby-doc.org/stdlib-1.9.3/libdoc/observer/rdoc/Observable.html), across
 languages through [Reactive Extensions](https://github.com/Reactive-Extensions),
 libraries like [Bacon](https://baconjs.github.io/), and many more. Where it
-*really* shines though is with RxJS.
+*really* shines in Javascript is with RxJS.
 
 Both node's EventEmitter and RxJS's Observable are implementations of the
 Observer design pattern. The one big difference you'll see is how you can operate
@@ -374,5 +376,20 @@ This is enough tooling for us to start generating simulated player data. We'll
 also use this to great effect when aggregating multiplayer data. For a more
 thorough introduction to Reactive Programming, check out the
 [Introduction to RP you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
+
+## Build the map
+
+Let's go ahead and build the map.
+
+* Create a canvas
+* Paint a background image
+* Display the image
+* Plot our points
+
+## Connect the backend
+
+
+
+---------------------------------------------------------------------
 
 Follow me on Twitter [@rgbkrk](https://twitter.com/rgbkrk) to get more updates!
