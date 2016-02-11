@@ -35,31 +35,13 @@ Check it out: [Running a container using a custom image]({{ site.baseurl }}/trou
 
 Next up; Mumble is a low-latency, multiplatform voice chat software. I remember using it mostly for... well World of Warcraft (don't ask) and Counter Strike but Zack Shoylev shows us how to use it in Docker making it easy to run Murmur in a portable way.
 
-If you like talking with people (it's a life-choice) then check it out - mumble is encrypted voice communications, and if you mesh it with magically renewing TLS certificates via [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) it should get you +10 points to house tinfoil! <img class="left" src="{% asset_path weekly-news/tinfoil.jp %}" alt="tinfoil"/>
+If you like talking with people (it's a life-choice) then check it out - mumble is encrypted voice communications, and if you mesh it with magically renewing TLS certificates via [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) it should get you +10 points to house tinfoil! <img class="left" src="{% asset_path weekly-news/tinfoil.jpg %}" alt="tinfoil"/>
 
 [Use Mumble on Carina]({{ site.baseurl }}/tutorials/2016-02-05-mumble-on-carina/)
 
-## Publish an ASP.NET website to Carina from the command line
+## We want your feedback!
 
-<img class="right" style="max-height: 200px; width: auto;" src="{% asset_path publish-aspnet-to-carina/aspnet-powered-by-carina.png %}" alt="ASP.NET"/>One very welcome feature of ASP.NET is official cross-platform support, no longer requiring Visual Studio, Windows, or even the Mono framework. Now that you can develop ASP.NET on any platform using free tools and deploy to Linux, hosting on Carina is a smart next step, whether you are new to ASP.NET or a veteran who wants to take it to the next level by deploying to containers.
-
-[Publish an ASP.NET website to Carina from the command line]({{ site.baseurl }}/docs/tutorials/publish-aspnet-to-carina/)
-
-## Use Quassel on Carina
-
-<img class="left" src="{% asset_path weekly-news/quassel.png %}" alt="Quassel"/>Quassel IRC is a multiplatform distributed IRC client. In some ways, it behaves like a very smart and advanced IRC bouncer.
-
-Quassel has two parts, core and client. The core is an always-on service that stays permanently connected to your IRC channels online and preserves your chat history and settings. You can connect to your core by using a Quassel client from multiple devices, thus keeping your history and settings in sync across all of them.
-
-In the past, you had to run Quassel core on an always-on machine you own, or rent one in the cloud. But now, Docker makes it possible to run Quassel in a container. And Carina enables you to run that container in the cloud, at no cost. This tutorial describes how to run a Quassel core instance on Carina.
-
-[Use Quassel on Carina]({{ site.baseurl }}/docs/tutorials/quassel-on-carina/)
-
-## Docker 1.10 released
-
-On February 4th, Docker released Engine 1.10, Compose 1.6, and Swarm 1.1. It was a release notable for security, networking, and improvements to the image format. You can read more about it at [Docker 1.10: New Compose file, improved security, networking and much more!](http://blog.docker.com/2016/02/docker-1-10/). The Carina team is currently hard at work on improved reliability and overlay networks for Carina. We'll be evaluating 1.10 in the future and will upgrade when ready.
-
-## User feedback
+Please! Please! Please! We design around your feedback and use-cases. We need to hear from you.
 
 As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Want a pony? Please get in touch:
 
