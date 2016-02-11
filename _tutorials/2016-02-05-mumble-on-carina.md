@@ -1,7 +1,7 @@
 ---
 title: Use Mumble on Carina
 author: Zack Shoylev <zack.shoylev@rackspace.com>
-date: 2016-02-05
+date: 2016-02-11
 permalink: docs/tutorials/2016-02-05-mumble-on-carina/
 description: Learn how to use Mumble on Carina
 docker-versions:
@@ -14,23 +14,23 @@ topics:
   - irc  
 ---
 
-[Mumble](http://wiki.mumble.info/wiki/Main_Page) is a low-latency, multiplatform voice chat software. It has two parts, server (called Murmur) and client. While primarily used for gaming, it has features that make it appealing for various commercial and business uses, such as open source, encryption, and support for multiple simultaneous users.
+[Mumble](http://wiki.mumble.info/wiki/Main_Page) is a low-latency, multiplatform voice chat software. It has two parts, a server, called Murmur, and a client. Although primarily used for gaming, Mumble has features that make it appealing for various commercial and business uses, such as open source, encryption, and support for multiple simultaneous users.
 
-In the past, you had to run Murmur on an always-on machine you own, or rent one in the cloud. But now, Docker makes it possible to run Murmur in a container. And Carina enables you to run that container in the cloud, at no cost.
+In the past, you had to run Murmur on an always-on machine that you own, or rent one in the cloud. Now, Docker makes it possible to run Murmur in a container, and Carina enables you to run that container in the cloud, at no cost.
 
-This tutorial describes how to run Murmur on Carina.
+This tutorial describes how to run Mumble on Carina.
 
 ### Prerequisites
 
 - [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
-## Select a Murmur image
+## Select a Mumble image
 
-For this tutorial, we have selected the easily configurable [extra/mumble](https://hub.docker.com/r/extra/mumble/) image. Multiple Murmur images are available on Docker Hub, and you should select one that best matches your needs and operational security requirements, or build your own.
+This tutorial uses the easily configurable [extra/mumble](https://hub.docker.com/r/extra/mumble/) image. Multiple Mumble images are available on Docker Hub, and you should select one that best matches your needs and operational security requirements, or build your own.
 
-### Start a Murmur container
+### Start a Mumble container
 
-Start a new container named `mumble` using the `extra/mumble` image, using a random port such as `53453` for TCP and UDP, and a SuperUser password `<password>` (make sure to generate your own secure password!):
+Start a new container named `mumble` by using the `extra/mumble` image, a random port such as `53453` for TCP and UDP, and a SuperUser password `<password>` (be sure to generate your own secure password!):
 
 ```
 docker run \
@@ -44,13 +44,13 @@ docker run \
 extra/mumble
 ```
 
-Then check the logs to make sure the image worked properly:
+Check the logs to verify that the image worked properly:
 
 ```
 docker logs mumble
 ```
 
-The command will display:
+The command displays the following output:
 
 ```
 Starting Initialization
@@ -78,30 +78,30 @@ Initilization Completed
 <W>2016-02-04 14:38:29.824 Object::connect: No such slot MurmurDBus::userTextMessage(const User *, const TextMessage &)
 ```
 
-To get the IP address and port, execute:
+To get the IP address and port, run the following command:
 
 ```
 docker port mumble
 ```
 
-This will output:
+This command displays the following output:
 
 ```
 64738/tcp -> 172.99.65.46:53453
 64738/udp -> 172.99.65.46:53453
 ```
 
-Take a note of the IP address and port, you will need it when connecting to the mumble server.
+Take a note of the IP address and port. You will need them when connecting to the Mumble server.
 
-This image has additional configuration options available. It is possible to configure a password to limit regular users connecting to the server, for example.
+This image has additional configuration options available. For example, you can configure a password to limit regular users connecting to the server.
 
 ### Connect as SuperUser
 
-Install mumble client and add a new connection. Use the special username `SuperUser` and provide the SuperUser password previously supplied to the docker container. The password field will appear automatically when you type `SuperUser` as the username.
+Install the Mumble client and add a new connection. Use the special username `SuperUser` and provide the SuperUser password that you previously supplied to the Docker container. The password field appears automatically when you type `SuperUser` as the username.
 
 ![Connect for Setup]({% asset_path 2016-02-05-mumble-on-carina/connect-as-admin.png %})
 
-Once connected, you have access to all Mumble SuperUser permissions, and you can edit the server as you see fit.
+After you are connected, you have access to all Mumble SuperUser permissions, and you can edit the server as needed.
 
 ![SuperUser]({% asset_path 2016-02-05-mumble-on-carina/admin-window.png %})
 
