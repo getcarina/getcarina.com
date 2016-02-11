@@ -366,6 +366,19 @@ When you're confident that your infrastructure is in place with staging certific
     ```
 
     These commands produce no output when successful.
+    
+1. The above command cleans out your pre-production letsencrypt certificates, but it also deletes the file containing the Diffie-Hellman parameters you generated earlier. NGINX will fail to reload if this file doesn't exist, so create the Diffie-Hellman parameters again.
+
+    ```bash
+    $ docker run \
+      --rm --interactive --tty \
+      --volumes-from letsencrypt-data \
+      nginx \
+      openssl dhparam -out /etc/letsencrypt/dhparams.pem 2048
+    Generating DH parameters, 2048 bit long safe prime, generator 2
+    This is going to take a long time
+    ............................
+    ```
 
 1. Run the Let's Encrypt client again, omitting the `--server` parameter, to acquire a production certificate. Because the NGINX container is still running, use the *webroot* authenticator this time.
 
