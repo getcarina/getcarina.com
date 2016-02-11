@@ -2,7 +2,7 @@
 title: Error running a container using a custom image
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-02-09
-permalink: docs/troubleshooting/troubleshooting-swarm-affinity/
+permalink: docs/troubleshooting/run-container-using-custom-image/
 description: Troubleshoot the "image is not found" error when running a container
 docker-versions:
   - 1.9.1
