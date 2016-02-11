@@ -1,6 +1,6 @@
-# Style guidelines for contributing content
+## Style guidelines for contributing content
 
-Follow these style guidelines when writing content:
+Follow these guidelines when writing content:
 
 - [Use sentence-style capitalization for titles and headings](#use-sentence-style-capitalization-for-titles-and-headings)
 - [Use consistent text formatting](#use-consistent-text-formatting)
@@ -13,41 +13,39 @@ Follow these style guidelines when writing content:
 - [Clarify gerunds and participles](#clarify-gerunds-and-participles)
 - [Use consistent terminology](#use-consistent-terminology)
 
-## Use sentence-style capitalization for titles and headings
+For comprehensive writing and style guidelines, see the [complete style guide for technical content](https://github.com/rackerlabs/docs-rackspace/tree/master/style-guide).
+
+### Use sentence-style capitalization for titles and headings
 
 Use sentence-style capitalization for all titles and headings. In sentence-style capitalization, you capitalize only the first word of the title or heading, plus any proper nouns, proper adjectives, and terms that are always capitalized, such as some acronyms and abbreviations. If the title includes a colon, capitalize the first word that follows the colon, regardless of its part of speech. 
 
 Following are some examples: 
 
-- Preparing a cloud server to be a mail server
 - Install or upgrade PHP 5.3 for CentOS 5.x
 - Ubuntu Hardy: Using mod_python to serve your application
 - PHP configuration limits for Cloud Sites
 - Troubleshooting a Vyatta site-to-site VPN connection
 - Differences between IMAP and POP
 
-## Use consistent text formatting
+For more information about titles and headings, see the [Titles and headings](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/m-z-style-guidelines.md#titles-headings) topic in the complete style guide.
+
+### Use consistent text formatting
 
 Certain text should be formatted differently from the surrounding text to designate a special meaning or to make the text stand out to the user. Usually this formatting is accomplished by applying a different font treatment (such as bold, italics, or monospace). 
 
-- For text you want to emphasize, use italics. Example: The offset _must_ be a multiple of the limit (or zero).
+The following table covers the most common items that should be formatted. For more detailed formatting information, see the [Text formatting](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/m-z-style-guidelines.md#text-formatting) section of the complete style guide.
 
-- For error messages, use monospace. Example: `The user does not have permission to perform this action.`
+Text item | Treatment | Example
+--- | --- | ---
+Text you want to emphasize | Italics | The offset *must* be a multiple of the limit (or zero).
+Error messages | Monospace | `The user does not have permission to perform this action.`
+Code examples | Monospace | `$ grep "ftp" /etc/xinetd.d/* `
+File, directory, and folder names | Bold <br /> <br /> However, if these items are shown as part of code, use monospace. | Copy the **index.php** file from your computer to the **content** folder. <br /> <br /> The following example shows a basic configuration for the FTP service, in a file in the `/etc/xinetd.d` directory.
+Keyboard key names and combinations | Bold | Press **Enter**.
+UI fields | Bold | Select **Start > Control Panel**, and then click the **Mail** icon.
+Placeholder text | Show in camelCase. <br /> <br /> If the authoring tool allows it, apply italics to placeholders; if not, enclose them in  angle brackets. | *hostName* <br /> <br />`<hostName>`
 
-- For code examples, use monospace. Example: `$ grep "ftp" /etc/xinetd.d/* `
-
-- For file, directory, and folder names, use bold. However, if these are shown as part of code, use monospace. Examples: Copy the **index.php** file from your computer to the **content** folder. The following example shows a basic configuration for the FTP service, in a file in the `/etc/xinetd.d` directory.
-
-- For keyboard key names and combinations, use bold. Example: Press **Enter**. 
-
-- For UI fields, use bold. Example: Select **Start > Control Panel**, and then click the **Mail** icon.
-
-Additionally, format placeholder text as follows:
-
-- Show placeholders in camelCase.
-- If the authoring tool allows it, apply italics to placeholders; if not, enclose them in  angle brackets. For example, `<hostName>`. 
-
-## Write clear and consistent code examples
+### Write clear and consistent code examples
 
 Observe the following guidelines when creating blocks of code as input or output examples:
 
@@ -67,7 +65,7 @@ Observe the following guidelines when creating blocks of code as input or output
  
 - If the input includes a list of arguments or parameters, show the important or relevant ones first, and group related ones. If no other order makes sense, use alphabetical order. If you explain the arguments or parameters in text, show them in the same order that they appear in the code block.
 
-The following examples illustrates many many of these guidelines:
+The following example illustrates many of these guidelines. For more examples, see the [Code examples](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/a-l-style-guidelines.md#code-examples) section of the complete style guide. 
 
 #### Example: Create a VM running a Docker host
 1. Show all the available virtual machines (VMs) that are running Docker.
@@ -119,6 +117,8 @@ Following are examples of active voice:
 - Create a server.                                              
 - Rackspace products and services solve your business problems. 
 
+For more information about voice, see the [Use active voice](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#use-active-voice) section in the complete style guide.
+
 ## Use present tense
 
 Users read documentation to perform tasks or gather information. For users, these activities take place in their present, so the present tense is appropriate in most cases. Additionally, present tense is easier to read than past or future tense.
@@ -131,7 +131,6 @@ Following are examples of present tense:
 - Any user with a Cloud account can provision multiple ServiceNet database instances.
 - The product prompts you to verify the deletion.
 - To back up Cloud Sites to Cloud Files by using this example, you create two cron jobs. One job backs up the cloud site and database, and the second job uploads the backup to Cloud Files.
-- When the contract changes, Rackspace will notify users in release notes.
 
 ## Write to the user by using second person and imperative mood
 
@@ -149,7 +148,7 @@ Avoid switching person (point of view) in the same document. Switching person is
 
 ## Write clear and consistent step text
 
-When you are providing instructions to users, you should generally number the steps (unless you have just one step). For the steps, use the following guidelines. The guidelines are followed by an example:
+When you are providing instructions to users, you should generally number the steps (unless you have just one step). For the steps, use the following guidelines. The guidelines are followed by an example. For more extensive examples, see the [Procedural steps](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/m-z-style-guidelines.md#tasks-steps) section of the complete style guide.
 
 - Write each step as a complete imperative sentence (that is, a sentence that starts with an imperative verb) and use ending punctuation. In steps, the focus is on the user, and the voice is active.
 
@@ -185,21 +184,25 @@ When you are providing instructions to users, you should generally number the st
 
     After a few moments, your cluster reaches a status of **active**.
 
-## <a name="clarify-pronouns"></a>Clarify pronouns such as *it*, *this*, *there*, and *that*
+## <a name="clarify-pronouns"></a>Clarify pronouns such as it, this, there, and that
 
 Pronouns are useful, but you must ensure that their antecedents (the words that they are used in place of) are clear, and that they (the pronouns) don’t contribute to vagueness and ambiguity. 
 
-- **It**: Ensure that the antecedent of *it* is clear. If multiple singular nouns precede *it*, any of them could be the antecedent. Also, avoid using *it is* to begin a sentence. Such a construction hides the real subject of the sentence. 
+- **It**&mdash;Ensure that the antecedent of *it* is clear. If multiple singular nouns precede *it*, any of them could be the antecedent. Also, avoid using *it is* to begin a sentence. Such a construction hides the real subject of the sentence. 
 
-- **This**: Avoid beginning a sentence with the pronoun *this*, unless you follow this with a noun to clarify its meaning. 
+- **This**&mdash;Avoid beginning a sentence with the pronoun *this*, unless you follow this with a noun to clarify its meaning. 
 
-- **There**: Avoid using *there is* and *there are* as the subject of a sentence or clause. Using *there* shifts the focus away from the real subject and often uses unnecessary words.
+- **There**&mdash;Avoid using *there is* and *there are* as the subject of a sentence or clause. Using *there* shifts the focus away from the real subject and often uses unnecessary words.
 
-- **That**: Avoid using *that* as a demonstrative pronoun (which stands in for or points to a noun). Instead, use it as an adjective and follow it with a noun. 
+- **That**&mdash;Avoid using *that* as a demonstrative pronoun (which stands in for or points to a noun). Instead, use it as an adjective and follow it with a noun. 
+
+For more examples, see the [Clarify pronouns](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#clarify-pronouns) section of the complete style guide.
 
 ## Clarify gerunds and participles
 
 Participles are verbs that end in *-ed* or *-ing* and act as modifiers. Gerunds are verbs that end in *-ing* and act as nouns. Both types of words are useful and acceptable, but confusion can arise if they are not placed precisely in a sentence. For example, the word *meeting* can be a gerund or a modifier (or even a noun) depending on its placement in a sentence. Clarify gerunds and participles as necessary.
+
+For more information and examples, see the [Clarify gerunds and participles](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#clarify-gerunds-and-participles) section of the complete style guide.
 
 ## Use consistent terminology
 
@@ -225,3 +228,40 @@ Use words as they are defined in a general dictionary, in an accepted industry d
   - version, release
   - panel, screen
   - window, dialog box
+
+Additionally, replace the following nonpreferred terms with the preferred terms.
+
+Avoid	| Preferred
+--- | ---
+allow	| enable or you can (unless referring to permissions)
+as |	because (describing a reason for)
+below |	following (when referring to the placement of information "on the page")
+box |	computer (or an more specific term, such as server)
+checkbox |	check box
+click on |	click
+config |	configuration
+deselect |	clear
+desire |	want
+desired |	wanted, correct, appropriate
+double click |	double-click
+e.g. |	for example
+enter in |	enter
+etc. |	and so on (or revise to omit)
+i.e. |	that is
+info |	information
+information on |	information about
+internet |	Internet
+log into |	log in to
+may	 |might (could happen) or can (is able to)
+machine |	computer (except when discussing a virtual machine, or VM)
+once |	after (to mean occurring subsequently in time or order)
+make | sure	ensure
+please |	Omit. It is not necessary.
+refer to |	see
+right click |	right-click
+since |	because (describing a reason for)
+using |	by using
+
+For more guidelines about terminology, see the following sections in the complete style guide:
+- [Write for a global audience](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/basic-writing-guidelines.md#write-for-a-global-audience)
+- [Terminology](https://github.com/rackerlabs/docs-rackspace/blob/master/style-guide/terminology-guidelines.md)
