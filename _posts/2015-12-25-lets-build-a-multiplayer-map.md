@@ -113,6 +113,7 @@ function newPlayer(name) {
 
   return {
     name: `${adj} ${name}`,
+    id: uuid.v4(),
     x: Math.round(Math.random() * (mapSize - 1)),
     y: Math.round(Math.random() * (mapSize - 1)),
   }
@@ -379,7 +380,8 @@ thorough introduction to Reactive Programming, check out the
 
 ## Generating Player Data with RxJS
 
-Let's start off by creating a single live player.
+Let's start off by creating a single live player who updates themselves on
+an interval. Add this to fakes.js:
 
 ```javascript
 function livePlayer(player, period) {
@@ -401,6 +403,51 @@ function livePlayer(player, period) {
 }
 ```
 
+To create this for all the players, we'll use the `merge` operator to bring
+lots of live players together. `merge` takes N many observables and combines
+them into one observable stream.
+
+```javascript
+function livePlayers(players, period) {
+  if(!players) {
+    throw new Error('need players');
+  }
+  if(!period) {
+    period = 500;
+  }
+
+  return Rx.Observable.merge(...players.map(p => livePlayer(p, period)))
+}
+```
+
+Try this out by appending this to the bottom of fakes.js
+
+```
+livePlayers(players).take(4).subscribe(x => console.log(x))
+```
+
+and run `fakes.js` to get output like:
+
+```
+{ name: 'Robust Aaliyah',
+  id: 'dbfb8fdc-6930-4c59-a849-144f47a5fd93',
+  x: 900,
+  y: 1198 }
+{ name: 'Alleged Aaron',
+  id: '8bb2734c-8699-493a-bf57-fecf1a135077',
+  x: 1648,
+  y: 484 }
+{ name: 'Tremendous Abigail',
+  id: '749744d2-5e8e-4737-bd57-2aef0c1dae23',
+  x: 829,
+  y: 450 }
+{ name: 'Womanly Abram',
+  id: '7e6b1614-efc9-4549-8673-4ddc0ea62531',
+  x: 920,
+  y: 131 }
+```
+
+We've now got our players being generated. It's time to put them on the map.
 
 ## Build the map
 
@@ -410,10 +457,6 @@ Let's go ahead and build the map.
 * Paint a background image
 * Display the image
 * Plot our points
-
-## Connect the backend
-
-
 
 ---------------------------------------------------------------------
 
