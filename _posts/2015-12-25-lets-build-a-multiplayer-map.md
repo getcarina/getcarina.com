@@ -189,7 +189,7 @@ To generate a continuous stream of player data, we're going to create and learn
 about Observables through RxJS.
 
 ```
-npm install --save rx
+npm install --save @reactivex/rxjs
 ```
 
 ### Down the observable rabbit hole
@@ -272,7 +272,7 @@ Observables are asynchronous data streams, [*from the future*](https://zenparsin
 
 Technically, this pattern has been around for a while. People have been using Observables
 [in Ruby](http://ruby-doc.org/stdlib-1.9.3/libdoc/observer/rdoc/Observable.html), across
-languages through [Reactive Extensions](https://github.com/Reactive-Extensions),
+languages through [Reactive Extensions](https://github.com/ReactiveX),
 libraries like [Bacon](https://baconjs.github.io/), and many more. Where it
 *really* shines in Javascript is with RxJS.
 
