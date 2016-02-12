@@ -31,7 +31,7 @@ Carolyn gives you plenty of options to fix / work around this in the tutorial in
 * Use another public Docker registry
 * Use a private Docker registry
 
-Check it out: [Running a container using a custom image]({{ site.baseurl }}/troubleshooting/run-container-using-custom-image/)
+Check it out: [Running a container using a custom image]({{ site.baseurl }}/docs/troubleshooting/run-container-using-custom-image/)
 
 <div class="clearfix"></div>
 
