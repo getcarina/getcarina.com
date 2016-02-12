@@ -1,6 +1,6 @@
 ---
 title: "Weekly news - Docker Affinity, Mumble and Feedback!"
-date: 2016-02-11 13:00
+date: 2016-02-12 10:00
 comments: true
 author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
