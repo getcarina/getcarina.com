@@ -14,11 +14,15 @@ categories:
 authorIsRacker: true
 ---
 
-Woo! Almost the weekend - and of course that means some nice new bits of content - including how to debug swarm affinity / custom Docker images across separate Docker Swarm hosts in Carina, encrypted voice chat using Docker via mumble, and asking for your feedback. 
+Woo! Almost the weekend - and of course that means some nice new bits of content - including how to debug swarm affinity / custom Docker images across separate Docker Swarm hosts in Carina, encrypted voice chat using Docker via mumble, and asking for your feedback.
 
 ## Error running a container using a custom image
 
-<img class="right" src="{% asset_path weekly-news/affinity.png %}" alt="affinity"/> This new troubleshooting guide by the excellent [Carolyn Van Slyck](https://twitter.com/carolynvs) covers something *everyone* gets confused by at once dealing with multiple independent Docker Swarm hosts/nodes (Carina Clusters & Segments). "Error response from daemon: Error: image library/<custom-image> not found" is a fairly cryptic error. <img class="left" src="{% asset_path weekly-news/confused.gif %}" alt="confused"/>
+<img src="{% asset_path weekly-news/affinity.png %}" alt="affinity"/>
+
+This new troubleshooting guide by the excellent [Carolyn Van Slyck](https://twitter.com/carolynvs) covers something *everyone* gets confused by at once dealing with multiple independent Docker Swarm hosts/nodes (Carina Clusters & Segments). "`Error response from daemon: Error: image library/<custom-image> not found`" is a fairly cryptic error.
+
+<img class="right" src="{% asset_path weekly-news/confused.gif %}" alt="confused"/>
 
 Carolyn gives you plenty of options to fix / work around this in the tutorial including:
 
@@ -29,15 +33,19 @@ Carolyn gives you plenty of options to fix / work around this in the tutorial in
 
 Check it out: [Running a container using a custom image]({{ site.baseurl }}/troubleshooting/run-container-using-custom-image/)
 
+<div class="clearfix"></div>
+
 ## Use Mumble on Carina
 
 <img class="right" src="{% asset_path weekly-news/mumble.png %}" alt="mumble"/>
 
 Next up; Mumble is a low-latency, multiplatform voice chat software. I remember using it mostly for... well World of Warcraft (don't ask) and Counter Strike but Zack Shoylev shows us how to use it in Docker making it easy to run Murmur in a portable way.
 
-If you like talking with people (it's a life-choice) then check it out - mumble is encrypted voice communications, and if you mesh it with magically renewing TLS certificates via [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) it should get you +10 points to house tinfoil! <img class="left" src="{% asset_path weekly-news/tinfoil.jpg %}" alt="tinfoil"/>
+If you like talking with people (it's a life-choice) then check it out - mumble is encrypted voice communications, and if you mesh it with magically renewing TLS certificates via [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) it should get you +10 points to house tinfoil!
 
 [Use Mumble on Carina]({{ site.baseurl }}/tutorials/2016-02-05-mumble-on-carina/)
+
+<div class="clearfix"></div>
 
 ## We want your feedback!
 
