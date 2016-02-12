@@ -43,7 +43,7 @@ Next up; Mumble is a low-latency, multiplatform voice chat software. I remember 
 
 If you like talking with people (it's a life-choice) then check it out - mumble is encrypted voice communications, and if you mesh it with magically renewing TLS certificates via [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) it should get you +10 points to house tinfoil!
 
-[Use Mumble on Carina]({{ site.baseurl }}/tutorials/2016-02-05-mumble-on-carina/)
+[Use Mumble on Carina]({{ site.baseurl }}/docs/tutorials/2016-02-05-mumble-on-carina/)
 
 <div class="clearfix"></div>
 
