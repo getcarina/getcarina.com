@@ -81,7 +81,7 @@ and how the containers use it to communicate.
     $ docker exec --interactive --tty web /bin/bash
     ```
 
-    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/].
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows]({{site.baseurl}}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/).
 
 1. Run the following command to view the environment variables created by the Docker link.
     Docker creates variables that describe the link, such as `HELLOAPP_PORT`.
@@ -153,7 +153,7 @@ and how the containers use it to communicate.
     $ docker exec --interactive --tty app /bin/bash
     ```
 
-    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows][/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/].
+    Depending on your local configuration you might need to use a workaround from [Error running interactive Docker shell on Windows]({{site.baseurl}}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/).
 
 1. Run the following command to view the environment variables. Note that Docker does _not_
     create environment variables for the link on the source container.
