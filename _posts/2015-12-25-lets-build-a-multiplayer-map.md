@@ -408,9 +408,12 @@ lots of live players together. `merge` takes N many observables and combines
 them into one observable stream.
 
 ```javascript
+// create a set of players with coordinates
+const defaultPlayers = codsworthNames.map(newPlayer)
+
 function livePlayers(players, period) {
   if(!players) {
-    throw new Error('need players');
+    players = defaultPlayers;
   }
   if(!period) {
     period = 500;
@@ -419,6 +422,8 @@ function livePlayers(players, period) {
   return Rx.Observable.merge(...players.map(p => livePlayer(p, period)))
 }
 ```
+
+Let's go ahead and export this function for use by node.
 
 Try this out by appending this to the bottom of fakes.js
 
@@ -447,7 +452,58 @@ and run `fakes.js` to get output like:
   y: 131 }
 ```
 
-We've now got our players being generated. It's time to put them on the map.
+We've now got our players being generated. It's time to put them on the screen.
+
+In order to convert our command line scripts to something we can put up on the web, we're going to use a bundler to package all the JS goodness into one file.
+
+```bash
+npm install --save-dev webpack webpack-dev-server
+```
+
+We'll be using webpack though if you want to use browserify and you know it well, feel free. In your `package.json`, add two more lines to your `scripts` section:
+
+```json
+"scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "webpack ./index.js bundle.js",
+  "build:watch": "webpack-dev-server ./index.js"
+},
+```
+
+Next up, write an `index.html`:
+
+```html
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
+    </body>
+</html>
+```
+
+This sets up loading our bundle within the main page. For our index.js, let's start off with something fairly simple:
+
+```javascript
+const fakes = require('./fakes');
+
+fakes.livePlayers()
+     .take(1)
+     .subscribe(player => {
+       console.log(player);
+       document.write(JSON.stringify(player));
+     });
+```
+
+Now run `npm run build`.
+
+That should build your sources. To host yourself a local copy that builds itself,
+run `npm run build:watch` then open `http://127.0.0.1:8080` in your browser. You should see some player data.
+
+<!-- include example output -->
+
+Great! Now let's build that map.
 
 ## Build the map
 
