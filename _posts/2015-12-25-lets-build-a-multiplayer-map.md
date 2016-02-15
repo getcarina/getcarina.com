@@ -507,7 +507,7 @@ Great! Now let's build that map.
 
 ## Build the map
 
-Let's go ahead and build the map.
+Our steps, roughly:
 
 * Create a canvas
 * Paint a background image
