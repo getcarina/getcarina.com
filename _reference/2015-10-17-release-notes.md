@@ -8,6 +8,15 @@ topics:
   - docker
 ---
 
+### February 15, 2016
+
+#### What's new
+
+* [Docker Engine 1.10.1](https://github.com/docker/docker/releases/tag/v1.10.1)
+* [Docker Swarm v1.1.0](https://github.com/docker/swarm/releases/tag/v1.1.0)
+* Docker's [overlay network driver](https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network) support.
+* Local Swarm discovery instead of public discovery
+
 ### November 25, 2015
 
 #### What’s new
