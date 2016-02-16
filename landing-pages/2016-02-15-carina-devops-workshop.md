@@ -49,12 +49,8 @@ bodyClass: lp-carina-devops-workshop
   <div class="section-container">
     <div class="section-grid">
       <div class="lp-more-info">
-        <h3>What can I expect from this workshop?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam error nam suscipit debitis, quis quaerat cumque doloribus temporibus doloremque, laboriosam minus est! Nesciunt, obcaecati, iste rem perspiciatis eos blanditiis tempore!</p>
-        <h3>How much will the workshop cost?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure ab error animi, aut voluptatibus quis provident, perferendis temporibus doloremque porro tempore, impedit iste id officiis voluptate quas rerum aliquam rem.</p>
-        <h3>Is this some kind of sales pitch?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime ad tenetur labore quae recusandae nihil natus, dolorum, eum itaque excepturi minus earum voluptatum sed nisi aspernatur fugiat iusto incidunt voluptatem.</p>
+        <h3>Privacy Policy</h3>
+        <p> Rackspace US, Inc. and its affiliates may use the information you provide on this form to send to you messages regarding products, services, and promotional offers. See Rackspace US Inc.'s <a href="http://www.rackspace.com/information/legal/privacystatement">Privacy Statement.</a></p>
       </div>
     </div>
   </div>
