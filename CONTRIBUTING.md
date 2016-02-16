@@ -68,9 +68,11 @@ When populating the frontmatter metadata of your article, use the guidelines in 
 
 ### Legal
 
+All documentation and blog posts in this repository are licensed Creative Commons Attribution-ShareAlike. The intent with this license is that you can redistribute the material any way you like as long as you give appropriate credit and link to the license at http://creativecommons.org/licenses/by-sa/4.0/. If you re-use the material, you must also re-use the same license.
+
 Do not use the name Docker in any public facing repositories. Docker is a trademark and should be used only when referring to the tools produced by Docker. Do *not* include the name Docker in the name of anything that you create.
 
-For an example how Docker responds when someone uses their name in an unauthorized way, see [Legal request - Change domain name to drop Docker](https://github.com/j-bennet/wharfee/issues/89).  
+For an example how Docker responds when someone uses their name in an unauthorized way, see [Legal request - Change domain name to drop Docker](https://github.com/j-bennet/wharfee/issues/89).
 
 ### Images
 
