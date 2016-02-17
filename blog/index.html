@@ -13,7 +13,7 @@ layout: plain
       <span class="author">{{ post.author | rfc822name }}</span> <time datetime="{{ post.date | iso8601 }}">{{ post.date | date: "%B %-d, %Y" }}</time>
     </div>
     <div class="post-excerpt">
-      {{ post.excerpt }}
+      {{ post.excerpt | markdownify }}
     </div>
     <a href="{{ post.url }}" class="read-more">Keep reading</a>
   </div>
