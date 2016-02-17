@@ -17,7 +17,14 @@ authorIsRacker: true
 
 ## Overlay networks
 
-<figure><img class="right" src="{% asset_path weekly-news/overlay-network.png %}" alt="Overlay network"/><figcaption><a href="https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network" target="_blank_">Image source: Docker Inc.</a></figcaption></figure>An overlay network provides isolation for containers to communicate across all of the segments in your Docker Swarm cluster on Carina. This adds a new layer of security to your application deployments and makes it much easier for your containers to communicate with one another.
+<figure class="right">
+  <img src="{% asset_path weekly-news/overlay-network.png %}" alt="Overlay network"/>
+  <figcaption>
+  <a href="https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network" target="_blank_">Image source: Docker Inc.</a>
+  </figcaption>
+</figure>
+
+An overlay network provides isolation for containers to communicate across all of the segments in your Docker Swarm cluster on Carina. This adds a new layer of security to your application deployments and makes it much easier for your containers to communicate with one another.
 
 Among the many benefits are a few key features:
 
