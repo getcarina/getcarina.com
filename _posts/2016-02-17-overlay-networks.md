@@ -17,13 +17,19 @@ authorIsRacker: true
 
 ## Overlay networks
 
-<figure><img class="right" src="{% asset_path weekly-news/overlay-network.png %}" alt="Overlay network"/><figcaption><a href="https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network" target="_blank_">Image source: Docker Inc.</a></figcaption></figure>An overlay network provides isolation for containers to communicate across all of the segments in your Docker Swarm cluster on Carina. This adds a new layer of security to your application deployments and makes it much easier for your containers to communicate with one another. Among the many benefits are a few key features:
+<figure><img class="right" src="{% asset_path weekly-news/overlay-network.png %}" alt="Overlay network"/><figcaption><a href="https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network" target="_blank_">Image source: Docker Inc.</a></figcaption></figure>An overlay network provides isolation for containers to communicate across all of the segments in your Docker Swarm cluster on Carina. This adds a new layer of security to your application deployments and makes it much easier for your containers to communicate with one another.
+
+Among the many benefits are a few key features:
 
 * a secured and isolated environment for the containers in a network
 * automatic name resolution for containers using DNS
 * dynamically connect and disconnect containers to multiple networks
 
-Let's get a feel for how you can work with overlay networks on Carina. `docker network create` will create an overlay network by default. For this you'll need to `create and connect to a cluster` with at least 2 segments.
+We strongly recommend using an overlay anytime you need two or more containers to communicate.
+
+Let's get a feel for how you can work with overlay networks on Carina. `docker network create` will create an overlay network by default. For the example below you'll need to [create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) with at least 2 segments. Overlay networks are only available on clusters created after February 15, 2016 and existing clusters cannot be upgraded to include overlay networks. If you find yourself juggling clusters with different Docker version, we recommend you [manage your Docker clients with the Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+
+TODO clusters and dvm.
 
 ```bash
 $ docker network create mynet
@@ -76,22 +82,33 @@ $ docker port wordpress 80
 146.20.68.14:80
 ```
 
-Our Wordpress instance is now connected to `mynet` and it's exposed publicly, which is exactly what we want. It was easy to connect it to our MySQL instance by simply referring to the container hostname `mysql` in the `--env WORDPRESS_DB_HOST=mysql` flag. The hostname `mysql` is resolved using an DNS server embedded in the Docker Engine to provide automatic service discovery for containers connected to the overlay network, see [Docker embedded DNS server](https://docs.docker.com/engine/userguide/networking/dockernetworks/#docker-embedded-dns-server).
+<img class="right" src="{% asset_path weekly-news/wordpress-esperanto.png %}" alt="Does anyone actually speak Esperanto?"/>Our Wordpress instance is now connected to `mynet` and it's exposed publicly, which is exactly what we want. It was easy to connect it to our MySQL instance by simply referring to the container hostname `mysql` in the `--env WORDPRESS_DB_HOST=mysql` flag. The hostname `mysql` is resolved using an DNS server embedded in the Docker Engine to provide automatic service discovery for containers connected to the overlay network, see [Docker embedded DNS server](https://docs.docker.com/engine/userguide/networking/dockernetworks/#docker-embedded-dns-server).
 
-**Note**: No need to use `--env="constraint:node==*n1"` in your deployments! I only use it here to ensure the containers are running on separate segments to illustrate overlay networking across segments in your cluster.
+**Note**: No need to use `--env="constraint:node==*nX"` in your deployments! I only use it here to ensure the containers are running on separate segments to illustrate overlay networking across segments in your cluster.
 
-Copy the IP address from the output of the last command into the location bar in your favourite browser. Now go ahead and start blogging in Esperanto like you've always wanted to.
+Copy the IP address from the output of the last command into the location bar in your favourite browser. Now go ahead and start blogging in Esperanto like you've always wanted to. If you'd like to secure your site with TLS and get a lovely green lock to appear in your browser location bar, run through how to use [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/).
 
-TODO:
+## Overlay networks implementation
 
-* links to Docker networking resources
-* mention let's nginx
-* consul
-* links are legacy
+The primary requirement to implement overlay networks on Docker Swarm is the use of a key/value store. The key/value store holds information about the network state which includes discovery, networks, endpoints, IP addresses, and more. For Carina we chose Consul to be that key/value store. An instance of Consul runs in a container on each segment in your clusters. You can see these containers in the output of a `docker ps`.
 
-## Docker upgrades
+```bash
+$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+2c226fad0713        carina/consul       "/bin/consul agent -b"   19 hours ago        Up 19 hours                             96afcb76-6483-443e-941d-df9f803a4628-n2/carina-svcd
+c715e66154c8        carina/consul       "/bin/consul agent -b"   43 hours ago        Up 43 hours                             96afcb76-6483-443e-941d-df9f803a4628-n1/carina-svcd
+```
 
-TODO
+These Consul containers are only for use by Carina and cannot be accessed by users. It's crucial that you **do no delete the Consul containers**. If you need to remove containers, it's best to do so by name (e.g. `docker rm container-name-1 container-name-2`) or by status (e.g. `docker rm $(docker ps -qf "status=exited")`).
+
+## Learn more about overlay networks
+
+To learn more about overlay networks read up on:
+
+* [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
+* [Work with network commands](https://docs.docker.com/engine/userguide/networking/work-with-networks/)
+* [Get started with overlay networking](https://docs.docker.com/engine/userguide/networking/get-started-overlay/)
+* [Embedded DNS server in user-defined networks](https://docs.docker.com/engine/userguide/networking/configure-dns/)
 
 ## User feedback
 
