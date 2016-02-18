@@ -21,7 +21,7 @@ categories:
 
 ![List of games]({% asset_path 2016-02-22-build-real-time-game-carina/choose-game.jpg %})
 
-While I could have set off to build the next Fallout 4 or tried to give [AlphaGo](http://deepmind.com/alpha-go.html) a run for its money, I decided to temper my excitement and build a game with simple rules that would still benefit from a real-time multiplayer experience. When it comes to games, what’s simpler than tic-tac-toe? That's it, the task is set: **We’re going to build a web-based tic-tac-toe game where people can play against each other in real-time.** For bonus points, players will also be able to see real-time stats about all the games currently being played.
+While I could have set off to build the next Fallout 4 or tried to give [AlphaGo](http://deepmind.com/alpha-go.html) a run for its money, I decided to temper my excitement and build a game with simple rules that would still benefit from a real-time multiplayer experience. When it comes to games, what’s simpler than tic-tac-toe? That's it, the task is set: **We’re going to build a [web-based tic-tac-toe game](https://tictac.io/) where people can play against each other in real-time.** For bonus points, players will also be able to see real-time stats about all the games currently being played.
 
 ### Planning the stack
 
@@ -152,3 +152,171 @@ r.table('stats').changes().run(conn)
 ```
 
 ### Deploy the game to Carina
+
+Finally, the part you’ve been waiting for! Let’s start building and running containers so you can run this full-stack, real-time game on your own Docker Swarm cluster. If you’ve been following along in the source code, you may have noticed the `script/` directory, which is [full of Bash scripts](https://github.com/ktbartholomew/tic-tac-toe/tree/master/script). All the commands we need to go from an empty Carina cluster to a running application are in this folder. We’ll be going through most of them here. All of these commands assume you’re running them from the root directory of the [GitHub repo](https://github.com/ktbartholomew/tic-tac-toe) and have [configured your terminal environment](https://github.com/ktbartholomew/tic-tac-toe#installation) correctly.
+
+**Before you start:** The application depends on [overlay networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network), a feature that was [recently added](/blog/overlay-networks/) to Carina. You’ll need to be using a Carina cluster that was created _after_ 2016-02-15 to have this feature and run this application.
+
+1. **Create the overlay network.** Several containers in our application will be connected to this network, which will allow them to communicate across a large Swarm cluster without explicit linking or convoluted `affinity` declarations.
+
+    ```bash
+    docker network create \
+    --driver overlay \
+    --subnet 192.168.0.0/24 \
+    tictactoe
+    ```
+
+1. **Create data volume containers.** We’ll be using [data volume containers](/docs/tutorials/data-volume-containers/) for quite a bit: storing RethinkDB data, storing Redis data, storing NGINX config files, storing Let’s Encrypt certificates, storing NGINX htpasswd files, and storing the front-end assets. Let’s create all of them in one go:
+
+    ```bash
+    docker run --name ttt_db_data --volume /data rethinkdb /bin/true
+
+    docker run --name ttt_redis_data --volume /data redis /bin/true
+
+    # This is the first container we build that the NGINX container will depend
+    # on. The node affinity here will ensure that all the other containers, as
+    # well as the running NGINX container, are always scheduled on the same node
+    # (and thus the same public IP).
+    docker run --name ttt_nginx_config_data --env    constraint:node==/n1/ \
+      --volume /etc/nginx/conf.d nginx /bin/true
+
+    # All the containers that NGINX will use need to be on the    same Swarm host
+    docker run --name ttt_htpasswd_data \
+      --env affinity:container==ttt_nginx_config_data \
+      --volume /etc/nginx/htpasswd nginx /bin/true
+
+    docker run --name ttt_frontend_data \
+      --env affinity:container==ttt_nginx_config_data \
+      --volume /usr/share/nginx/html nginx /bin/true
+    ```
+1. **Set the RethinkDB web password.** The environment variable `${NGINX_RETHINKDB_PASS}` will be written to an Apache-style password file and used by the NGINX container to restrict access to the RethinkDB web console. If the password is empty, the NGINX container will simply not proxy traffic to RethinkDB. This is the most secure option if you really don’t want anyone accessing the RethinkDB web console.
+
+    ```bash
+    docker run --rm \
+      --volumes-from ttt_htpasswd_data \
+      httpd \
+      htpasswd -bc /etc/nginx/htpasswd/rethinkdb rethinkdb ${NGINX_RETHINKDB_PASS}
+    ```
+
+1. **Start the RethinkDB server.** We use `--net tictactoe` to add the container to the overlay network we created earlier.
+
+    ```bash
+    docker run \
+      --detach \
+      --name ttt_db \
+      --env affinity:container==ttt_db_data \
+      --net tictactoe \
+      --restart always \
+      --volumes-from ttt_db_data \
+      rethinkdb
+    ```
+
+1. **Create tables and indexes in RethinkDB.** We need these to be created before the game servers spin up and start trying to use them.
+
+    ```bash
+    docker build -t ttt_db_schema ./db-schema
+
+    docker run --rm -it --net tictactoe --env DB_HOST=ttt_db ttt_db_schema
+    ```
+
+1. **Start the Redis server.** `--net tictactoe` connects the container to the overlay network.
+
+    ```bash
+    docker run \
+      --detach \
+      --name ttt_redis \
+      --env affinity:container==ttt_redis_data \
+      --net tictactoe \
+      --volumes-from ttt_redis_data \
+      redis
+    ```
+
+1. **Compile the front-end assets and copy them to their data volume container.**
+
+    ```bash
+    ./frontend/script/compile-assets
+
+    cd ./frontend/src
+
+    docker cp ./ ttt_frontend_data:/usr/share/nginx/html/
+    ```
+
+1. **Build the custom images for the game server and NGINX proxy.**
+
+    ```bash
+    docker build -t ttt_app ./app/
+
+    docker build \
+      --build-arg affinity:container==ttt_nginx_config_data \
+      -t ttt_nginx_proxy ./nginx/
+    ```
+
+1. **Start a few Node.js containers.** [`script/start-app`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/start-app) helps you start multiple containers in a blue/green deployment pattern. Each container is connected to the overlay network with `--net tictactoe` Here's what it’s doing:
+
+    ```bash
+    #!/bin/bash
+
+    # Usage example: script/start-app 3 blue
+    scale=${1:-1}
+    color=${2}
+
+    for i in $(seq 1 ${scale}); do
+      docker run \
+      -d \
+      --label color=${color} \
+      --name=ttt_app_${color}_${i} \
+      -e affinity:image==ttt_app \
+      -e REDIS_HOST=ttt_redis \
+      -e RETHINKDB_HOST=ttt_db \
+      --net tictactoe \
+      --restart=always \
+      ttt_app
+    done;
+    ```
+
+    Run `script/start-app 2 blue` to start 2 Node.js containers with the “blue” deployment label.
+
+1. **Add the Node.js containers to the NGINX config file.** [`script/update-nginx`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/update-nginx), invoked as `script/update-nginx [blue|green]` is a Node.js script that finds all the running game servers (filtering by the color argument if provided), adds them to an `upstream` load-balancing block in the NGINX config, then sends a SIGHUP signal to the NGINX container to have it reload the updated config.
+
+    Run `script/update-nginx blue` to add all of the “blue” Node.js containers you just created to the NGINX configuration file.
+
+1. **Start the NGINX container.** Again, we're adding it to the overlay network so it can access all the other running containers. That's especially important for this container, since it proxies traffic to several of the other running containers. It also needs `affinity:container` arguments to ensure it gets scheduled on the same node as all the data volume containers it needs to access. We’re also publishing its ports 80 and 443 (HTTP and HTTPS) on the Swarm host so it’s publicly accessible.
+
+    ```bash
+    docker run \
+      -d \
+      --name ttt_nginx_proxy_1 \
+      -p 443:443 \
+      -p 80:80 \
+      --env affinity:container==ttt_frontend_data \
+      --env affinity:container==ttt_nginx_config_data \
+      --env affinity:container==ttt_htpasswd_data \
+      --env affinity:container==ttt_letsencrypt_data \
+      --net tictactoe \
+      --restart always \
+      --volumes-from ttt_frontend_data \
+      --volumes-from ttt_nginx_config_data \
+      --volumes-from ttt_htpasswd_data \
+      --volumes-from ttt_letsencrypt_data \
+      ttt_nginx_proxy
+    ```
+
+1. **Get the public IP of the NGINX proxy container.**
+
+    ```bash
+    docker port ttt_nginx_proxy_1
+    ```
+
+    Once you have the public IP of that container, visit it in your browser (use two tabs to play against yourself) and [enjoy a game of tic-tac-toe](https://tictac.io/)!
+
+    ![Tic Tac Toe Web UI]({% asset_path 2016-02-22-build-real-time-game-carina/web-ui.png %})
+
+This is probably a bad time to tell you that you could have run `script/setup` from the GitHub repo and done all of the above in about 30 seconds. But if you had just run that one script, you wouldn’t know all the cool stuff happening behind the scenes. Hooray you, for being well-informed!
+
+### Next steps
+
+You’ve just created a fairly complex application on Carina, taking advantage of the new overlay networking feature to make communicating between containers easier than ever. The application as it stands should be able to handle quite a bit of traffic, thanks to the performance characteristic inherent in each of the components. So what’s next?
+
+* **Improve the bot.** The GitHub repo [includes a bot](https://github.com/ktbartholomew/tic-tac-toe/tree/master/bot) to facilitate load testing, or just to prevent you from having to play against yourself. The bot was hastily written and tends to get “stuck” from time to time and just stop playing. Improving this bot could help you test the application under heavy load, or maybe give you a chance to flex your machine-learning muscles.
+* **Scale the database.** The single RethinkDB container has its limitations, but RethinkDB clustering and data sharding are fairly easy to implement in a container environment. Try dynamically scaling the database and ensuring data availability as cluster members come and go.
+* **Build a more resilient messaging system.** The current messaging system is 100% ephemeral, meaning it’s very likely that a subscriber will not receive a published message, the client will never receive the message, and their game could potentially be stuck forever. Try building a messaging system that's more resistant to network hiccups and heavy load.
