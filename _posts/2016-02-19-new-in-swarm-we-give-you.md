@@ -20,19 +20,15 @@ weekly update from Carina-land! We now support overlay networks using Consul
 service discovery. This week's release includes upgrades to Docker Engine
 and Docker Swarm to give Carina even more punch. Let's get to it.
 
-<div class="clearfix"></div>
-
 ## Overlay Networks and Consul key-value store
 
-<img class="right" style="max-height: 140; width: auto;" src="{% asset_path weekly-news/upsidedownowl.jpg %}" alt="upsidedown"/>
+<img class="right" src="{% asset_path weekly-news/upsidedownowl.jpg %}" alt="upsidedown"/>
 
 Once you see the cloud upside down, you can't unsee it. It's like the arrow in the
 FedEx logo. In our [in-depth look at overlay networks]({{ site.baseurl }}/blog/overlay-networks/),
 the cloud diagram shows how a key-value store informs all the Docker hosts about the
 networks, endpoints, IP address, and DNS. Go read how you can network a couple of
 containers and be selective about which ports to expose publicly.
-
-<div class="clearfix"></div>
 
 ## New releases of Docker and Docker Swarm
 
@@ -56,8 +52,6 @@ take a look at the [Swarm API docs](https://docs.docker.com/swarm/swarm-api/#reg
 [Docker version manager](https://getcarina.com/docs/tutorials/docker-version-manager/)
 makes it so much easier to manage what versions you're running locally and switch between
 them as needed. This is a good week to install it!
-
-<div class="clearfix"></div>
 
 ## Work with us on containers
 
