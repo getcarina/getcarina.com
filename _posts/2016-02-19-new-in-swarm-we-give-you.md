@@ -5,8 +5,7 @@ comments: true
 author: Anne Gentle <anne.gentle@rackspace.com>
 published: true
 excerpt: >
-  All the news from this week: Overlay networks offered in a pair of new releases, more
-  what's new, and we want to work with you.
+  All the news from this week: New release, overlay networking, and we want to work with you.
 categories:
  - Docker
  - Affinity
@@ -17,7 +16,7 @@ authorIsRacker: true
 ---
 
 Turning clouds upside down, and connecting them ever so cleverly. It's another
-weekly update from Carina-land! We  now support overlay networks using Consul 
+weekly update from Carina-land! We now support overlay networks using Consul 
 service discovery. This week's release includes upgrades to Docker Engine
 and Docker Swarm to give Carina even more punch. Let's get to it.
 
