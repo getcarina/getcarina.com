@@ -23,6 +23,10 @@ and Docker Swarm to give Carina even more punch. Let's get to it.
 ## Overlay Networks and Consul key-value store
 
 <img class="right" src="{% asset_path weekly-news/upsidedownowl.jpg %}" alt="flickr:theknowlesgallery"/>
+<figcaption>
+    <a 
+    href="https://www.flickr.com/photos/theknowlesgallery/7483719462/in/photolist-qyfv1E-VrJfn-6D3TYJ-avX9ad-6uxyz7-3sTaFX-cpj24U-6v7UrJ-ctDPgq-CWNsNV-BJ9BP2-Do2VFZ-CxMW9b-6JK34g-c2rs3-8C6cWm-4WxMfj-a8hwQA-33mysT-95Lf7f-yXXWwi-Cz8boj-aKB9ZV-fqvkwx-bPHwiM-zZR9oh-zZVbPH-5hgDUw" target="_blank_">Image sourced on Flickr:theknowlesgallery</a>
+</figcaption>
 
 Once you see the cloud upside down, you can't unsee it. It's like the arrow in the
 FedEx logo. In our [in-depth look at overlay networks]({{ site.baseurl }}/blog/overlay-networks/),
