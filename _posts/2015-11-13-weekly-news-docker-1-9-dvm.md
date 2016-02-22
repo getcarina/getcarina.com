@@ -76,6 +76,7 @@ Existing Rackspace users can now log in to app.getcarina.com using multi-factor 
 You can now install `carina` through [Homebrew on OS X](http://brew.sh/):
 
 ```bash
+brew update
 brew install carina
 ```
 
