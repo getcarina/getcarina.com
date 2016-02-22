@@ -151,6 +151,10 @@ r.table('stats').changes().run(conn)
 });
 ```
 
+This is what a user sees as the `stats` table is updated and streamed in real-time:
+
+![Game statistics increasing]({% asset_path 2016-02-22-build-real-time-game-carina/tic-tac-toe-stats.gif %})
+
 ### Deploy the game to Carina
 
 Finally, the part you’ve been waiting for! Let’s build and run containers so you can run this full-stack, real-time game on your own Docker Swarm cluster. If you’ve been following along in the source code, you might have noticed the `script/` directory, which is [full of Bash scripts](https://github.com/ktbartholomew/tic-tac-toe/tree/master/script). This folder contains all the commands that you need to go from an empty Carina cluster to a running application. We’ll be going through most of them here. All of these commands assume that you’re running them from the root directory of the [GitHub repo](https://github.com/ktbartholomew/tic-tac-toe) and have [configured your terminal environment](https://github.com/ktbartholomew/tic-tac-toe#installation) correctly.
