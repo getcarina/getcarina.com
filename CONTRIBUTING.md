@@ -117,7 +117,7 @@ Work with your technical reviewers to get the content reviewed. Once everything 
 
 After your tech reviewers are happy, go into the #containers channel in Slack, type `@rcs-edit`, paste in the link, and hit enter. This will notify the RCS editorial reviewers that content is ready for editorial review.
 
-At least 1 editorial reviewer must claim the review. If nobody claims the review, ping people individually or use `@rcs-tech` again.
+At least 1 editorial reviewer must claim the review. If nobody claims the review, ping people individually or use `@rcs-edit` again.
 
 Work with your editorial reviewers to get the content reviewed. Once everything looks good, the reviewer will put their final comment on the review as a :+1:.
 
