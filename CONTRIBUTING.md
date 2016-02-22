@@ -34,7 +34,7 @@ Use the following guidelines, which are described in detail in [style-guidelines
 - Clarify gerunds and participles
 - Use consistent terminology
 
-#### Carina specific style guidelines
+#### Carina-specific style guidelines
 
 Following are some specific guidelines for Carina content:
 
@@ -68,7 +68,7 @@ When populating the frontmatter metadata of your article, use the guidelines in 
 
 ### Legal
 
-All documentation and blog posts in this repository are licensed Creative Commons Attribution-ShareAlike. The intent with this license is that you can redistribute the material any way you like as long as you give appropriate credit and link to the license at http://creativecommons.org/licenses/by-sa/4.0/. If you re-use the material, you must also re-use the same license.
+All documentation and blog posts in this repository are covered by the Creative Commons Attribution-ShareAlike license. The intent with this license is that you can redistribute the material any way you like as long as you give appropriate credit and link to the license at http://creativecommons.org/licenses/by-sa/4.0/. If you reuse the material, you must also reuse the same license.
 
 Do not use the name Docker in any public facing repositories. Docker is a trademark and should be used only when referring to the tools produced by Docker. Do *not* include the name Docker in the name of anything that you create.
 
