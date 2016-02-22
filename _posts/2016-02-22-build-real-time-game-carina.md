@@ -1,5 +1,5 @@
 ---
-title: Build a Real-time Game on Carina
+title: Build a real-time game on Carina
 description: Use Carina by Rackspace and Docker to build a scalable, real-time game server
 date: 2016-02-22
 comments: true
@@ -9,9 +9,9 @@ published: true
 excerpt: |
   **TL;DR:** [Play the game](https://tictac.io/)
 
-  Some would say that using Docker is all the fun a person needs in their life. OK, maybe they don’t say that. But as a web developer, building applications in container environments is about as much fun as you can have while still telling your boss that you’re “working”. We’ve seen existing game servers like [Minecraft](/blog/deploying-and-building-minecraft-as-a-service/) get ported to Carina, but I wanted to explore the process of building a game from scratch to run on a Docker Swarm cluster from Carina.
+  Some people might say that using Docker is all the fun you need in your life. OK, maybe no one says that. But for a web developer, building applications in container environments is about as much fun as you can have while still telling your boss that you’re “working”. Members of our community have ported existing game servers like [Minecraft](/blog/deploying-and-building-minecraft-as-a-service/) to Carina, but I wanted to explore the process of building a game from scratch to run on a Docker Swarm cluster from Carina.
 
-  First, the big question: **what game should we build?**
+  First, the big question: **What game should I build?**
 categories:
  - Docker
  - Carina
@@ -21,29 +21,29 @@ categories:
 
 ![List of games]({% asset_path 2016-02-22-build-real-time-game-carina/choose-game.jpg %})
 
-While I could have set off to build the next Fallout 4 or tried to give [AlphaGo](http://deepmind.com/alpha-go.html) a run for its money, I decided to temper my excitement and build a game with simple rules that would still benefit from a real-time multiplayer experience. When it comes to games, what’s simpler than tic-tac-toe? That's it, the task is set: **We’re going to build a [web-based tic-tac-toe game](https://tictac.io/) where people can play against each other in real-time.** For bonus points, players will also be able to see real-time stats about all the games currently being played.
+Although I could have tried to build the next Fallout 4 or tried to give [AlphaGo](http://deepmind.com/alpha-go.html) a run for its money, I decided to temper my excitement and build a game with simple rules that would still benefit from a real-time multiplayer experience. And when it comes to games, what’s simpler than tic-tac-toe? That’s it, the task is set: **Build a [web-based tic-tac-toe game](https://tictac.io/) where people can play against each other in real-time.** For bonus points, players will also be able to see real-time statistics about all the games currently being played.
 
 ### Planning the stack
 
-Let's start at the front. The technology choices are fairly obvious here: We’ll use the **Canvas API** to efficiently draw the game board. We’ll use **WebSockets** to facilitate two-way communications between the player’s web browser and the game server. For the simplicity of the demo, we’re not going to worry about creating a fallback for browsers that don’t support WebSockets, but if you want to support IE9 or IE8, you’ll definitely want a way to gracefully degrade the experience for those users.
+Let’s start at the front. The technology choices are fairly obvious here: use the **Canvas API** to efficiently draw the game board, and use **WebSockets** to facilitate two-way communications between the player’s web browser and the game server. For the simplicity of the demo, we won’t create a fallback for browsers that don’t support WebSockets, but if you want to support IE9 or IE8, you’ll definitely want a way to gracefully degrade the experience for those users.
 
-The WebSocket clients in the browser need something to talk to, of course. We’ll be using **Node.js** and the [`ws`](https://www.npmjs.com/package/ws) library to handle WebSocket communications with players. Now, WebSockets are sort of notorious for slowing down and taking up lots of memory when handling many concurrent connections. To address this potential bottleneck (for when our game inevitably goes viral), let’s plan on having several of these WebSocket handlers available, load-balanced behind **NGINX**. This same Node.js application will also be responsible for storing game data in our database.
+The WebSocket clients in the browser need something to talk to, of course. We’ll use **Node.js** and the [`ws`](https://www.npmjs.com/package/ws) library to handle WebSocket communications with players. Now, WebSockets are notorious for slowing down and taking up lots of memory when handling many concurrent connections. To address this potential bottleneck (for when the game inevitably goes viral), let’s plan on having several of these WebSocket handlers available, load-balanced behind **NGINX**. This same Node.js application will also be responsible for storing game data in a database.
 
-Load-balancing WebSockets gets a little tricky, because WebSockets can only be stored in memory on whichever server initially opened the connection. This would be problematic when _Server A_ needs to notify all the players in a game of an update. If one of the game’s players is connected to _Server B_, _Server A_ has no way to directly communicate with that player. To address this, we’ll have all the game servers connect to a shared **Redis** instance and use the [Pub/Sub pattern](http://redis.io/topics/pubsub) to ensure messages find their way to the player, regardless of which server they’re connected to.
+Load-balancing WebSockets gets a little tricky, because the connection itself is only stored on the server that initially accepted the connection. This would be problematic when Server A needs to notify all the players in a game of an update, but one of the game’s players is connected to Server B—Server A has no way to directly communicate with the players on other servers. To address this, all the Node.js containers will connect to a shared **Redis** instance and use the [publish-subscribe pattern](http://redis.io/topics/pubsub) to ensure that messages find their way to the right players, regardless of which server each player is connected to.
 
-Finally, we need somewhere to store all of our game data and statistics. Because we want to stream statistics to our players live, the [Changefeeds functionality](https://rethinkdb.com/docs/changefeeds/ruby/) of **RethinkDB** is particularly appealing. Decision made.
+Finally, we need somewhere to store all of our game data and statistics. Because we want to stream statistics to our players live, the [changefeeds feature](https://rethinkdb.com/docs/changefeeds/javascript/) of **RethinkDB** is particularly appealing.
 
-Whew, that was a lot of decisions to make! Here’s a visual recap of all the elements of our full-stack game and how they’ll be communicating with one another.
+Here’s a visual recap of all the elements of the full-stack game and how they’ll be communicating with one another.
 
 ![Tic-Tac-Toe game technical stack]({% asset_path 2016-02-22-build-real-time-game-carina/game-stack.png %})
 
 ### Implementation details
 
-The source code for the entire application is [available on GitHub](https://github.com/ktbartholomew/tic-tac-toe) if you’d like to read through it in more detail. Here are some of the highlights.
+The source code for the entire application is [available on GitHub](https://github.com/ktbartholomew/tic-tac-toe) if you’d like to read through it in more detail. Following are some of the highlights.
 
 #### Standardize WebSocket messages
 
-WebSockets are _super_-easy to use in the browser, and have a very small API. Creating and using a WebSocket connection is a simple as:
+WebSockets are very easy to use in the browser, and have a very small API. Creating and using a WebSocket connection is a simple as this:
 
 ```javascript
 var socket = new WebSocket(webSocketURL);
@@ -55,7 +55,7 @@ socket.addEventListener('message', function (message) {
 socket.send('hello');
 ```
 
-The only event that will ever be fired when receiving a message from the WebSocket server is the `onmessage` event. The contents of the message are completely arbitrary, so we need to create a protocol of some kind for our messages. We’re going to borrow an idea from the JavaScript library [Redux](http://redux.js.org/) and standardize all of our messages around a simple, flexible schema:
+The only event that will be fired when a message is received from the WebSocket server is the `onmessage` event. The contents of the message are completely arbitrary, so we need to create a protocol of some kind for our messages. I’ll borrow an idea from the JavaScript library [Redux](http://redux.js.org/) and standardize all of the messages around a simple, flexible schema:
 
 ```json
 {
@@ -64,13 +64,13 @@ The only event that will ever be fired when receiving a message from the WebSock
 }
 ```
 
-All messages between the client and server will be a JSON document like the above, with an `action` string property and a `data` object property. The WebSocket handler calls a specific function based on the value of `action`, and passes `data` as an argument to that function. We’re using this pattern in both the browser and server.
+All messages between the client and server will be a JSON document like this one, with an `action` string property and a `data` object property. The WebSocket handler calls a specific function based on the value of `action` and passes `data` as an argument to that function. We’re using this pattern in both the browser and server.
 
-#### WebSocket Pub/Sub
+#### WebSocket publish-subscribe
 
-Because our application will have several load-balanced WebSocket handlers, we can’t be certain which individual server is handling a given client’s WebSocket connection. However, we still need to be able to ensure that messages initiated by one server (such as a player’s move in a game) is sent to clients that may be connected to a different server. This situation is a good fit for the [Publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern), which relieves us of the burden of needing to know exactly which clients are connected to which servers.
+Because the application will have several load-balanced WebSocket handlers, we can’t be certain which individual server is handling a given client’s WebSocket connection. However, we still need to ensure that messages initiated by one server (such as a player’s move in a game) are sent to clients that might be connected to different servers. This situation is a good fit for the [publish–subscribe pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern), which distributes messages to the entire cluster, without knowing which clients are connected to which servers.
 
-When a browser opens a WebSocket connection to one of our game servers, the server assigns that connection a randomly-generated UUID. The server then _subscribes_ to a channel on the Redis server using the player's UUID and sends any messages it receives on that channel back to the player:
+When a browser opens a WebSocket connection to one of the game servers, the server assigns that connection a randomly generated UUID. The server then _subscribes_ to a channel on the Redis server by using the player’s UUID, and sends any messages it receives on that channel back to the player:
 
 ```javascript
 // `this` is an object representing an open WebSocket connection
@@ -84,7 +84,7 @@ this.redisClient.on('message', function (message) {
 });
 ```
 
-Whenever a game server needs to send a message to a player, it _publishes_ a message to Redis server using the UUID of the player it wants to reach:
+Whenever a game server needs to send a message to a player, it _publishes_ a message to the Redis server by using the UUID of the player it wants to reach:
 
 ```javascript
 // The server subscribing to sockets:{socketId} will see this message and relay
@@ -94,7 +94,7 @@ redisClient.publish('sockets:' + socketId, JSON.stringify(message));
 
 #### Database “schema”
 
-JSON document stores like [MongoDB](https://www.mongodb.org/) and [RethinkDB](http://rethinkdb.com/) don’t technically have schemas, but in our case we want all of our documents to be consistent so we can reason about the data. Each game that is played on the system is stored as a single JSON document. The document for an in-progress game with 2 moves looks something like this:
+JSON document stores like [MongoDB](https://www.mongodb.org/) and [RethinkDB](http://rethinkdb.com/) don’t technically have schemas, but we want all of our documents to be consistent so we can reason about the data. Each game that is played on the system is stored as a single JSON document. The document for an in-progress game with two moves looks something like this:
 
 ```json
 {
@@ -133,7 +133,7 @@ JSON document stores like [MongoDB](https://www.mongodb.org/) and [RethinkDB](ht
 }
 ```
 
-We also have a small table of stats, in which each document is essentially just a named counter:
+We also have a small table of statistics, in which each document is essentially just a named counter:
 
 ```json
 {
@@ -142,22 +142,22 @@ We also have a small table of stats, in which each document is essentially just 
 }
 ```
 
-As changes are written to this table, they are also streamed to each of the WebSocket servers and then to the connected players. This real-time “changefeed” is one of the key features of RethinkDB and is trivial to implement on the server (seriously, it worked the first time I tried it and I almost fell under my standing desk. [Did I mention I use a standing desk?](https://twitter.com/iamdevloper/status/597794173513834497))
+As changes are written to this table, they are also streamed to each of the WebSocket servers and then to the connected players. This real-time changefeed is one of the key features of RethinkDB and is trivial to implement on the server. (Seriously, it worked the first time I tried it and I almost fell under my standing desk. [Did I mention I use a standing desk?](https://twitter.com/iamdevloper/status/597794173513834497))
 
 ```javascript
 r.table('stats').changes().run(conn)
 .then(function (cursor) {
-  // Do whatever you want, I don't care, they're your oats.
+  // Do whatever you want, I don’t care, they’re your oats.
 });
 ```
 
 ### Deploy the game to Carina
 
-Finally, the part you’ve been waiting for! Let’s start building and running containers so you can run this full-stack, real-time game on your own Docker Swarm cluster. If you’ve been following along in the source code, you may have noticed the `script/` directory, which is [full of Bash scripts](https://github.com/ktbartholomew/tic-tac-toe/tree/master/script). All the commands we need to go from an empty Carina cluster to a running application are in this folder. We’ll be going through most of them here. All of these commands assume you’re running them from the root directory of the [GitHub repo](https://github.com/ktbartholomew/tic-tac-toe) and have [configured your terminal environment](https://github.com/ktbartholomew/tic-tac-toe#installation) correctly.
+Finally, the part you’ve been waiting for! Let’s build and run containers so you can run this full-stack, real-time game on your own Docker Swarm cluster. If you’ve been following along in the source code, you might have noticed the `script/` directory, which is [full of Bash scripts](https://github.com/ktbartholomew/tic-tac-toe/tree/master/script). This folder contains all the commands that you need to go from an empty Carina cluster to a running application. We’ll be going through most of them here. All of these commands assume that you’re running them from the root directory of the [GitHub repo](https://github.com/ktbartholomew/tic-tac-toe) and have [configured your terminal environment](https://github.com/ktbartholomew/tic-tac-toe#installation) correctly.
 
-**Before you start:** The application depends on [overlay networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network), a feature that was [recently added](/blog/overlay-networks/) to Carina. You’ll need to be using a Carina cluster that was created _after_ 2016-02-15 to have this feature and run this application.
+**Before you start:** The application depends on [overlay networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/#an-overlay-network), a feature that was [recently added](/blog/overlay-networks/) to Carina. You need to use a Carina cluster that was created _after_ February 15, 2016, to have this feature and run this application.
 
-1. **Create the overlay network.** Several containers in our application will be connected to this network, which will allow them to communicate across a large Swarm cluster without explicit linking or convoluted `affinity` declarations.
+1. **Create the overlay network.** Several containers in the application connect to this network, which allows them to communicate across a large Swarm cluster without explicit linking or convoluted `affinity` declarations.
 
     ```bash
     docker network create \
@@ -166,7 +166,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
     tictactoe
     ```
 
-1. **Create data volume containers.** We’ll be using [data volume containers](/docs/tutorials/data-volume-containers/) for quite a bit: storing RethinkDB data, storing Redis data, storing NGINX config files, storing Let’s Encrypt certificates, storing NGINX htpasswd files, and storing the front-end assets. Let’s create all of them in one go:
+1. **Create data volume containers.** [data volume containers](/docs/tutorials/data-volume-containers/) are used to store RethinkDB data, Redis data, NGINX config files, Let’s Encrypt certificates, NGINX htpasswd files, and the front-end assets. Create all of the containers at once:
 
     ```bash
     docker run --name ttt_db_data --volume /data rethinkdb /bin/true
@@ -180,7 +180,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
     docker run --name ttt_nginx_config_data --env    constraint:node==/n1/ \
       --volume /etc/nginx/conf.d nginx /bin/true
 
-    # All the containers that NGINX will use need to be on the    same Swarm host
+    # All the containers that NGINX will use need to be on the same Swarm host
     docker run --name ttt_htpasswd_data \
       --env affinity:container==ttt_nginx_config_data \
       --volume /etc/nginx/htpasswd nginx /bin/true
@@ -189,7 +189,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
       --env affinity:container==ttt_nginx_config_data \
       --volume /usr/share/nginx/html nginx /bin/true
     ```
-1. **Set the RethinkDB web password.** The environment variable `${NGINX_RETHINKDB_PASS}` will be written to an Apache-style password file and used by the NGINX container to restrict access to the RethinkDB web console. If the password is empty, the NGINX container will simply not proxy traffic to RethinkDB. This is the most secure option if you really don’t want anyone accessing the RethinkDB web console.
+1. **Set the RethinkDB web password.** The `${NGINX_RETHINKDB_PASS}` environment variable is written to an Apache-style password file and used by the NGINX container to restrict access to the RethinkDB web console. If the password is empty, the NGINX container doesn’t proxy any traffic to RethinkDB. This is the most secure option if you don’t want anyone to access the RethinkDB web console.
 
     ```bash
     docker run --rm \
@@ -198,7 +198,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
       htpasswd -bc /etc/nginx/htpasswd/rethinkdb rethinkdb ${NGINX_RETHINKDB_PASS}
     ```
 
-1. **Start the RethinkDB server.** We use `--net tictactoe` to add the container to the overlay network we created earlier.
+1. **Start the RethinkDB server.** Use `--net tictactoe` to add the container to the overlay network we created earlier.
 
     ```bash
     docker run \
@@ -211,7 +211,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
       rethinkdb
     ```
 
-1. **Create tables and indexes in RethinkDB.** We need these to be created before the game servers spin up and start trying to use them.
+1. **Create tables and indexes in RethinkDB.** Create these before the game servers spin up, so that the necessary tables and indexes are already in place.
 
     ```bash
     docker build -t ttt_db_schema ./db-schema
@@ -251,7 +251,7 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
       -t ttt_nginx_proxy ./nginx/
     ```
 
-1. **Start a few Node.js containers.** [`script/start-app`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/start-app) helps you start multiple containers in a blue/green deployment pattern. Each container is connected to the overlay network with `--net tictactoe` Here's what it’s doing:
+1. **Start a few Node.js containers.** [`script/start-app`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/start-app) helps you start multiple containers in a blue/green deployment pattern. Each container is connected to the overlay network with `--net tictactoe` Here’s what it’s doing:
 
     ```bash
     #!/bin/bash
@@ -274,13 +274,13 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
     done;
     ```
 
-    Run `script/start-app 2 blue` to start 2 Node.js containers with the “blue” deployment label.
+    Run `script/start-app 2 blue` to start two Node.js containers with the “blue” deployment label.
 
-1. **Add the Node.js containers to the NGINX config file.** [`script/update-nginx`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/update-nginx), invoked as `script/update-nginx [blue|green]` is a Node.js script that finds all the running game servers (filtering by the color argument if provided), adds them to an `upstream` load-balancing block in the NGINX config, then sends a SIGHUP signal to the NGINX container to have it reload the updated config.
+1. **Add the Node.js containers to the NGINX configuration file.** [`script/update-nginx`](https://github.com/ktbartholomew/tic-tac-toe/blob/master/script/update-nginx), invoked as `script/update-nginx [blue|green]` is a Node.js script that finds all the running game servers (filtering by the color argument if provided), adds them to an `upstream` load-balancing block in the NGINX configuration, and sends a SIGHUP signal to the NGINX container to have it reload the updated configuration.
 
     Run `script/update-nginx blue` to add all of the “blue” Node.js containers you just created to the NGINX configuration file.
 
-1. **Start the NGINX container.** Again, we're adding it to the overlay network so it can access all the other running containers. That's especially important for this container, since it proxies traffic to several of the other running containers. It also needs `affinity:container` arguments to ensure it gets scheduled on the same node as all the data volume containers it needs to access. We’re also publishing its ports 80 and 443 (HTTP and HTTPS) on the Swarm host so it’s publicly accessible.
+1. **Start the NGINX container.** Add it to the overlay network so it can access all the other running containers. That’s especially important for this container because it proxies traffic to several of the other running containers. It also needs `affinity:container` arguments to ensure that it is scheduled on the same node as all the data volume containers that it needs to access. Publish its ports 80 and 443 (HTTP and HTTPS) on the Swarm host so it’s publicly accessible.
 
     ```bash
     docker run \
@@ -301,22 +301,22 @@ Finally, the part you’ve been waiting for! Let’s start building and running 
       ttt_nginx_proxy
     ```
 
-1. **Get the public IP of the NGINX proxy container.**
+1. **Get the public IP address of the NGINX proxy container.**
 
     ```bash
     docker port ttt_nginx_proxy_1
     ```
 
-    Once you have the public IP of that container, visit it in your browser (use two tabs to play against yourself) and [enjoy a game of tic-tac-toe](https://tictac.io/)!
+    After you have the public IP address of that container, visit it in your browser (use two tabs to play against yourself) and [enjoy a game of tic-tac-toe](https://tictac.io/)!
 
     ![Tic Tac Toe Web UI]({% asset_path 2016-02-22-build-real-time-game-carina/web-ui.png %})
 
-This is probably a bad time to tell you that you could have run `script/setup` from the GitHub repo and done all of the above in about 30 seconds. But if you had just run that one script, you wouldn’t know all the cool stuff happening behind the scenes. Hooray you, for being well-informed!
+This is probably a bad time to tell you that you could have run `script/setup` from the GitHub repo and done all of that work in about 30 seconds. But if you had just run that one script, you wouldn’t know all the cool stuff happening behind the scenes. Hooray you, for being well-informed!
 
 ### Next steps
 
 You’ve just created a fairly complex application on Carina, taking advantage of the new overlay networking feature to make communicating between containers easier than ever. The application as it stands should be able to handle quite a bit of traffic, thanks to the performance characteristic inherent in each of the components. So what’s next?
 
-* **Improve the bot.** The GitHub repo [includes a bot](https://github.com/ktbartholomew/tic-tac-toe/tree/master/bot) to facilitate load testing, or just to prevent you from having to play against yourself. The bot was hastily written and tends to get “stuck” from time to time and just stop playing. Improving this bot could help you test the application under heavy load, or maybe give you a chance to flex your machine-learning muscles.
-* **Scale the database.** The single RethinkDB container has its limitations, but RethinkDB clustering and data sharding are fairly easy to implement in a container environment. Try dynamically scaling the database and ensuring data availability as cluster members come and go.
-* **Build a more resilient messaging system.** The current messaging system is 100% ephemeral, meaning it’s very likely that a subscriber will not receive a published message, the client will never receive the message, and their game could potentially be stuck forever. Try building a messaging system that's more resistant to network hiccups and heavy load.
+* [**Improve the bot.**](https://github.com/ktbartholomew/tic-tac-toe/issues/1) The GitHub repo [includes a bot](https://github.com/ktbartholomew/tic-tac-toe/tree/master/bot) to facilitate load testing, or just to prevent you from having to play against yourself. The bot was hastily written, occasionally it just stops playing. Improving this bot could help you test the application under heavy load, or give you a chance to flex your machine-learning muscles.
+* [**Scale the database.**](https://github.com/ktbartholomew/tic-tac-toe/issues/2) The single RethinkDB container has its limitations, but RethinkDB clustering and data sharding are fairly easy to implement in a container environment. Try dynamically scaling the database and ensuring data availability as cluster members come and go.
+* [**Build a more resilient messaging system.**](https://github.com/ktbartholomew/tic-tac-toe/issues/2) The current messaging system is 100% ephemeral, meaning it’s very likely that a subscriber will not receive a published message, the client will never receive the message, and their game could potentially be stuck forever. Try building a messaging system that’s more resistant to network hiccups and heavy load.
