@@ -30,7 +30,7 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
 
     `source docker.env`
 
-1. Create an [overlay network](https://docs.docker.com/engine/userguide/networking/get-started-overlay/#step-3-create-the-overlay-network). This virtual network will privately encapsulate your containers for security.
+1. Create an overlay network. This virtual network will privately encapsulate your containers for security.
 
     `docker network create --driver overlay --subnet=10.0.9.0/24 mynetwork`
 
@@ -44,9 +44,9 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
       $ docker run --name mysql \
       --net=mynetwork \
       -e MYSQL_USER=drupal \
-      -e MYSQL_PASSWORD='<password>' \
+      -e MYSQL_PASSWORD=<password> \
       -e MYSQL_DATABASE=drupal \
-      -e MYSQL_ROOT_PASSWORD='<rootPassword>' \
+      -e MYSQL_ROOT_PASSWORD=<rootPassword> \
       -d mysql
       ```
 
