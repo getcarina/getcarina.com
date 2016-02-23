@@ -87,7 +87,6 @@ The `dependency` filter instructs Docker Swarm to co-schedule container creation
 If it cannot do this (because the dependent container doesn’t exist, or because the segment doesn’t have enough resources), it prevents the container creation. The combination of multiple dependencies is honored if possible.
 
 * Shared volumes: `$ docker run -d -p 80:80 --volumes-from=<containerName>`
-* Links: `$ docker run -d -p 80:80 --link=<containerName>:<alias>`
 * Shared network stack: `--net=container:<containerName>`
 
 
