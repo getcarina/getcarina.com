@@ -6,7 +6,7 @@ featured: true
 permalink: docs/getting-started/getting-started-on-carina/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
-  - 1.9.0
+  - 1.10.1
 topics:
   - docker
   - beginner
@@ -54,10 +54,10 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.9.0 client into the unzipped directory.
-    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.9.0) to `Downloads/mycluster`.
-    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.9.0) to `Downloads/mycluster`.
-    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.9.0.exe) to `Downloads/mycluster`.
+1. Download the Docker 1.10.1 client into the unzipped directory.
+    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.10.1) to `Downloads/mycluster`.
+    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.1) to `Downloads/mycluster`.
+    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.10.1.exe) to `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
     - On Linux and Mac OS X, open a terminal.
@@ -72,7 +72,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```bash
     $ cd Downloads/mycluster
     $ mkdir -p $HOME/bin
-    $ mv docker-1.9.0 $HOME/bin/docker
+    $ mv docker-1.10.1 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
     $ export PATH=$HOME/bin:$PATH
     $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
@@ -84,7 +84,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```
     $ cd Downloads\mycluster
     $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.9.0.exe "$env:USERPROFILE\bin\docker.exe"
+    $ mv docker-1.10.1.exe "$env:USERPROFILE\bin\docker.exe"
     $ $env:PATH += ";$env:USERPROFILE\bin"
     $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
     $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
@@ -113,6 +113,17 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
+### Create a network
+
+1. Create a network to connect your containers.
+
+    ```bash
+    $ docker network create wordnet
+    ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
+    ```
+
+    The output of this `docker network create` command is your network ID.
+
 ### Run your first application
 
 Run a WordPress blog with a MySQL database.
@@ -120,7 +131,7 @@ Run a WordPress blog with a MySQL database.
 1. Run a MySQL instance in a container. Give it a name and use **my-root-pw** as a password.
 
     ```bash
-    $ docker run --detach --name mysql --env MYSQL_ROOT_PASSWORD=my-root-pw mysql:5.6
+    $ docker run --detach --name mysql --net wordnet --env MYSQL_ROOT_PASSWORD=my-root-pw mysql:5.6
     ab8ca480c46d10143217c0ee323f8420b6ab93737033c937c2f4dbf8578435bb
     ```
 
@@ -129,7 +140,7 @@ Run a WordPress blog with a MySQL database.
 1. Run a WordPress instance in a container. Give it a name, link it to the MySQL instance, and publish the internal port 80 to the external port 8080.
 
     ```bash
-    $ docker run --detach --name wordpress --link mysql --publish 8080:80 wordpress
+    $ docker run --detach --name wordpress --net wordnet --publish 80:80 --env WORDPRESS_DB_HOST=mysql --env WORDPRESS_DB_PASSWORD=my-root-pw wordpress:4.4
     6770c91929409196976f5ad30631b0f2836cd3d888c39bb3e322e0f60ca7eb18
     ```
 
@@ -138,9 +149,9 @@ Run a WordPress blog with a MySQL database.
 1. Verify that your run was successful by viewing your running containers.
 
     ```bash
-    $ docker ps
+    $ docker ps -n=2
     CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                        NAMES
-    6770c9192940        wordpress           "/entrypoint.sh apach"   About a minute ago   Up About a minute   104.130.0.124:8080->80/tcp   57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/wordpress
+    6770c9192940        wordpress:4.4       "/entrypoint.sh apach"   About a minute ago   Up About a minute   104.130.0.124:80->80/tcp   57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/wordpress
     ab8ca480c46d        mysql:5.6           "/entrypoint.sh mysql"   6 minutes ago        Up 6 minutes        3306/tcp                     57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/mysql,57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/wordpress/mysql
     ```
 
@@ -159,9 +170,8 @@ Run a WordPress blog with a MySQL database.
     If you aren't going to use your WordPress site, we recommend that you remove it. Doing so removes both your WordPress and MySQL containers. This will delete any data and any posts you've made in the WordPress site.
 
     ```bash
-    $ docker rm --force wordpress
+    $ docker rm --force wordpress mysql
     wordpress
-    $ docker rm --force mysql
     mysql
     ```
 
