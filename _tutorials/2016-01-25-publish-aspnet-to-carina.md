@@ -5,7 +5,7 @@ date: 2016-02-12
 permalink: docs/tutorials/publish-aspnet-to-carina/
 description: Learn how to publish an ASP.NET website to Carina from the command line on Mac OS X, Linux or Windows
 docker-versions:
-  - 1.9.1
+  - 1.10.1
 topics:
   - docker
 ---

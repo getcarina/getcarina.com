@@ -5,7 +5,7 @@ date: 2015-09-30
 permalink: docs/tutorials/load-docker-environment-on-mac/
 description: Learn how to load a Docker environment on Mac OS X, so that you can work with Docker from the command line
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - beginner

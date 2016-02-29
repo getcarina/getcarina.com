@@ -5,7 +5,7 @@ date: 2015-09-23
 permalink: docs/tutorials/preview-jekyll-with-docker-on-mac/
 description: Learn how to preview a Jekyll site in a Docker container, so that you do not need to install Ruby or Jekyll on your local machine
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - intermediate

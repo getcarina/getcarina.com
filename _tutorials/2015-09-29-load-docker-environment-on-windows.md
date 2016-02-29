@@ -5,7 +5,7 @@ date: 2015-09-29
 permalink: docs/tutorials/load-docker-environment-on-windows/
 description: Learn how to load a Docker environment on Windows, so that you can work with Docker in the terminal and shell of your choice
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - windows

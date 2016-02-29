@@ -5,7 +5,7 @@ date: 2015-10-01
 permalink: docs/tutorials/load-docker-environment-on-linux/
 description: Learn how to load a Carina Docker environment on Linux, so that you can work with your Docker cluster from the command line
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - beginner
