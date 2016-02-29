@@ -5,7 +5,7 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  Let's make a multi-player map for Fallout 4!
+  Let's make a multi-player map for Fallout 4! (Part I)
 categories:
  - nodejs
  - React
@@ -511,8 +511,122 @@ Our steps, roughly:
 
 * Create a canvas
 * Paint a background image
-* Display the image
 * Plot our points
+
+### Create a canvas
+
+We're going to start out small and simply put the canvas right in our `index.html`.
+
+```html
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <canvas id='map' width=2048 height=2048></canvas>
+        <script type="text/javascript" src="bundle.js" charset="utf-8"></script>
+    </body>
+</html>
+```
+
+### Painting an image onto the canvas
+
+Let's create a file called `mapping.js`. We'll start it off by drawing an image
+onto a provided canvas:
+
+```
+const MAP_SIZE = 2048;
+
+function paint(canvas, image, players) {
+  const context = canvas.getContext('2d');
+  context.save();
+
+  if(image) {
+    context.globalCompositeOperation = 'source-over';
+    context.drawImage(image, 0, 0);
+  }
+  else {
+    context.clearRect(0, 0, MAP_SIZE, MAP_SIZE);
+  }
+
+  // TODO: paint the players onto the image
+
+  context.restore();
+}
+
+module.exports = {
+  paint,
+};
+```
+
+Now to use `paint` to display our image:
+
+```
+const fakes = require('./fakes');
+const paint = require('./mapping').paint;
+
+const mapCanvas = document.getElementById('map');
+
+var image;
+
+const imageEl = new Image();
+imageEl.src = 'CompanionWorldMap.png';
+imageEl.onload = () => {
+  image = imageEl;
+  paint(mapCanvas, image);
+};
+```
+
+Download the companion world map to this directory. TODO: Provide a link.
+
+If you don't have `npm run build:watch` already running, go ahead and fire it off
+and open http://127.0.0.1:8080 in your browser (reloading as necessary). You'll
+see that friendly commonwealth.
+
+<!-- TODO: show the companion map here -->
+
+Next up is taking all that player data and showing it on screen. Within `index.js`,
+after the setup for the image let's start taking that fake player data.
+
+```
+fakes.livePlayers(fakes.defaultPlayers, 10)
+     .scan((players, player) => {
+       // collect the latest data for each player over time
+       return players.set(player.id, player);
+     }, new Map())
+     // To render at approximately 60fps, we need to throttle by 16.66667 ms
+     // 1 second = 1000 ms => 1000/60 = 16.6667 ms between frames
+     .throttleTime(17)
+     .subscribe(players => {
+       paint(mapCanvas, image, players);
+     });
+```
+
+Now, the only thing we have to add to our `mapping.js` is plotting those players
+
+```
+function paint(canvas, image, players) {
+  const context = canvas.getContext('2d');
+  context.save();
+
+  if(image) {
+    context.globalCompositeOperation = 'source-over';
+    context.drawImage(image, 0, 0);
+  }
+  else {
+    context.clearRect(0, 0, MAP_SIZE, MAP_SIZE);
+  }
+
+  // Each player gets plotted with a unique color
+  for(var player of players.values()) {
+    context.fillStyle = '#' + player.id.slice(0, 6);
+    context.fillRect(player.x, player.y, 2, 2);
+  }
+  context.restore();
+}
+```
+
+There you have it, a live updating map.
 
 ---------------------------------------------------------------------
 
