@@ -13,6 +13,8 @@ categories:
 authorIsRacker: true
 ---
 
+**Note**: The permanent tutorial on overlays networks can be found at [Overlay Networks](/docs/tutorials/overlay-networks/).
+
 {{ page.excerpt }}
 
 ## Overlay networks
