@@ -7,6 +7,8 @@ description: Solve issues that can occur when you download and set up Docker Too
 docker-versions:
   -1.8.1
   -1.8.2
+  -1.9.0
+  -1.10.2
 topics:
   -docker
   -troubleshooting

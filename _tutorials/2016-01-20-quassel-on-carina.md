@@ -6,6 +6,7 @@ permalink: docs/tutorials/quassel-on-carina/
 description: Learn how to use Quassel on Carina
 docker-versions:
   - 1.9.0
+  - 1.10.2
 topics:
   - docker
   - carina
@@ -44,7 +45,7 @@ Create a volume container to store data:
     docker create \
     --name quassel-data \
     --volume /config \
-    linuxserver/quassel-core    
+    linuxserver/quassel-core
 
 If you are using PowerShell to connect to Carina, you can replace the backslash with a backtick to use multiline commands.
 
