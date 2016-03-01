@@ -48,7 +48,7 @@ Build automation and team-level access permissions are supported, as well as mul
 
 ### Google Container Registry
 
-Google offers a hosted registry service. It has some uncommon features for a registry and is not fully compatible with Docker tools. It has its own client and custom key-based authentication.
+Google offers a hosted private registry service. It has some uncommon features for a registry and is not fully compatible with Docker tools. It has its own client and custom key-based authentication.
 
 Images
 ---
