@@ -566,7 +566,7 @@ module.exports = {
 };
 ```
 
-Now to use `paint` to display our image:
+Now call `paint` to display our image:
 
 ```
 const fakes = require('./fakes');
@@ -617,7 +617,6 @@ function paint(canvas, image, players) {
   context.save();
 
   if(image) {
-    context.globalCompositeOperation = 'source-over';
     context.drawImage(image, 0, 0);
   }
   else {
@@ -633,7 +632,7 @@ function paint(canvas, image, players) {
 }
 ```
 
-There you have it, a live updating map.
+There you have it, a live updating map!
 
 ## Summary
 
