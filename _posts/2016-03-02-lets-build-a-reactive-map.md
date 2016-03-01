@@ -1,6 +1,6 @@
 ---
 title: "Let's build a reactive map"
-date: 2015-11-20 18:00
+date: 2015-03-02 08:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
