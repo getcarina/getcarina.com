@@ -5,7 +5,10 @@ comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  Let's build a multiplayer Fallout 4 map using RxJS! (Part I)
+  We've done Pip-Boy discovery, relay, and created new libraries. Now it's time to
+  put them to good use by building a multiplayer map. To get us there, we will
+  learn how to use Observables to handle streams of player data and render them
+  onto a map.
 categories:
  - nodejs
  - RxJS
