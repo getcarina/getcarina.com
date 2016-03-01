@@ -1,5 +1,5 @@
 ---
-title: "Fallout 4 Service Discovery and Relay"
+title: "Let's build a reactive map"
 date: 2015-11-20 18:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
@@ -8,10 +8,8 @@ excerpt: >
   Let's make a multi-player map for Fallout 4! (Part I)
 categories:
  - nodejs
- - React
  - RxJS
  - Webpack
- - socket.io
  - Fallout 4
 authorIsRacker: true
 ---
@@ -27,9 +25,6 @@ Things we'll cover:
 * Simulating data
 * Observables and RxJS
 * Drawing on canvas
-* React
-* Socket.io
-* Deployment
 
 ## Generating Random Players
 
