@@ -21,9 +21,22 @@ in a Docker container. Finally, use Apache to deliver traffic to your applicatio
 
 [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 
+### Create an overlay network
+
+1. The first step is to create a user-defined network. This will allow every
+container we create to communicate with eachother, regardless of which Docker
+Swarm host they reside on. To create an overlay network, you run:
+
+    ```
+    docker network create --driver overlay main-net
+    ```
+
+For more information on networking in Docker, read the [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
+documentation guide.
+
 ### Create MySQL container
 
-The first step is to create the container that will be running MySQL.
+The next step is to create the container that will be running MySQL.
 
 1. Generate two [strong passwords](https://strongpasswordgenerator.com/): a
 root password and a password for the `wordpress` user.
@@ -48,6 +61,7 @@ root password and a password for the `wordpress` user.
       --env MYSQL_USER=wordpress \
       --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
       --env MYSQL_DATABASE=wordpress \
+      --net main-net \
       mysql
     ```
 
@@ -70,12 +84,13 @@ configuration with environment variables, including the database host and
 password by running the following command:
 
 ```
-$docker run --detach \
+$ docker run --detach \
   --publish 80:80 \
   --name wordpress \
-  --link mysql:mysql \
+  --env WORDPRESS_DB_HOST=mysql:3306 \
   --env WORDPRESS_DB_USER=wordpress \
   --env WORDPRESS_DB_PASSWORD=$WORDPRESS_PASSWORD \
+  --net main-net \
   wordpress
 ```
 
@@ -90,13 +105,13 @@ your Docker container (and therefore made available to our PHP app). You can
 set the following the variables:
 
   * `WORDPRESS_DB_HOST` is the hostname of your MySQL instance.
-  * `WORDPRESS_DB_USER` is the name of the MySQL user that WordPress will use.
+  * `WORDPRESS_DB_USER` is the name of the MySQL user that WordPress will use. If omitted,
+     it will default to `wordpress`.
   * `WORDPRESS_DB_PASSWORD` is the password used by the MySQL user.
   * `WORDPRESS_DB_NAME` is the name of the MySQL database that WordPress will use.
 
-You do not need to specify the WORDPRESS_DB_HOST variable because it defaults to
-the IP address and port of the linked `mysql` container. Nor do you need to
-specify the WORDPRESS_DB_NAME variable, because it defaults to `wordpress`.
+* `--net` runs the container inside the overlay network named `main-net` which
+you created earlier in this tutorial. This allows access to the MySQL container.
 
 The default `wordpress` Docker image includes the Apache 2 web server by default,
 meaning that traffic will be handled on port 80.
