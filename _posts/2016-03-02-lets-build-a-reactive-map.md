@@ -218,7 +218,7 @@ you've gotten used to these core Objects:
    </tr>
 </table>
 
-One of my favorite additions to JavaScript was the Promise. It made a lot of
+One of my favorite additions to JavaScript is the Promise. It makes a lot of
 asynchronous code really clean, especially with Promise chains.
 
 ```javascript
@@ -228,13 +228,13 @@ fetch('/players.json')
   .catch(whoa)
 ```
 
-What about cases where I wanted a promise to yield multiple values? Do I wait
-for all the values to get computed, relying on `Promise.all()`? Not if I want
-the intermediate values. In the end I'd have to fall back on `createEvent`/`EventEmitter`.
+What about cases where we want a promise to yield multiple values? Do we wait
+for all the values to get computed, relying on `Promise.all()`? Not if we want
+the intermediate values. In the end we'd have to fall back on `createEvent`/`EventEmitter`.
 
-On top of that, I usually wanted to perform filtering and routing based on those
-messages for separate consumers of the data. What I really wanted was a stream
-of messages that I could operate on like an Array, similar to how we
+On top of that, we usually want to perform filtering and routing based on those
+messages for separate consumers of the data. What we really need is a stream
+of messages that we can operate on like an Array, similar to how we
 created new players:
 
 ```
