@@ -1,11 +1,11 @@
 ---
-title: "Let's build a reactive map"
+title: "Let's build a multiplayer Fallout 4 map using RxJS!"
 date: 2015-03-02 08:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  Let's make a multi-player map for Fallout 4! (Part I)
+  Let's build a multiplayer Fallout 4 map using RxJS! (Part I)
 categories:
  - nodejs
  - RxJS
@@ -622,6 +622,12 @@ function paint(canvas, image, players) {
 ```
 
 There you have it, a live updating map.
+
+## Summary
+
+We've learned how to simulate data through the use of RxJS Observables, rely on
+webpack and npm to package our app, and draw points on a canvas. If you liked this,
+let me know if you want to learn how to build the full multiplayer map.
 
 ---------------------------------------------------------------------
 
