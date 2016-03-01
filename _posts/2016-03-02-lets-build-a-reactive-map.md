@@ -29,6 +29,12 @@ Things we'll cover:
 * Observables and RxJS
 * Drawing on canvas
 
+## Tools required
+
+You'll need [node 5+ and npm 3](https://nodejs.org/en/) to run through this
+tutorial. If you're gripping tightly to an older node version, use
+[nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n).
+
 ## Generating Random Players
 
 Go ahead and setup a new project for this, by creating a new directory, changing to that directory, and running `npm init`. You can accept the defaults if you like, or mix it up.
