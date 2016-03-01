@@ -458,13 +458,16 @@ and run `fakes.js` to get output like:
 
 We've now got our players being generated. It's time to put them on the screen.
 
-In order to convert our command line scripts to something we can put up on the web, we're going to use a bundler to package all the JS goodness into one file.
+In order to convert our command line scripts to something we can put up on the
+web, we're going to use a bundler to package all the JS goodness into one file.
 
 ```bash
 npm install --save-dev webpack webpack-dev-server
 ```
 
-We'll be using webpack though if you want to use browserify and you know it well, feel free. In your `package.json`, add two more lines to your `scripts` section:
+Webpack helps us turn all those lovely `require`s from `node` into a nice bundle
+to distribute for the browser. In your `package.json`, add two more lines to your
+`scripts` section:
 
 ```json
 "scripts": {
