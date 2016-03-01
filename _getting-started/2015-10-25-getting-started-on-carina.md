@@ -170,7 +170,7 @@ Run a WordPress blog with a MySQL database.
     If you aren't going to use your WordPress site, we recommend that you remove it. Doing so removes both your WordPress and MySQL containers. This will delete any data and any posts you've made in the WordPress site.
 
     ```bash
-    $ docker rm --force wordpress mysql
+    $ docker rm --force --volumes wordpress mysql
     wordpress
     mysql
     ```
