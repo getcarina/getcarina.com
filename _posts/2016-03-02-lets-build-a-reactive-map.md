@@ -662,8 +662,8 @@ fakes.livePlayers(fakes.defaultPlayers, 10)
 
 We've learned how to simulate data through the use of RxJS Observables, rely on
 `browserify`, `babel`, and `npm` to package our app, and draw points on a canvas.
-If you liked this, let me know if you want to learn how to build the full
-multiplayer map.
+If you liked this, let me know if you want to learn how to build [the full
+multiplayer map](https://github.com/rgbkrk/multipipboy).
 
 ---------------------------------------------------------------------
 
