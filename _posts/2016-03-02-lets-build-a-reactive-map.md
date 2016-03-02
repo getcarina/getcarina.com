@@ -12,7 +12,8 @@ excerpt: >
 categories:
  - nodejs
  - RxJS
- - Webpack
+ - browserify
+ - Observables
  - Fallout 4
 authorIsRacker: true
 ---
