@@ -459,10 +459,12 @@ and run `fakes.js` to get output like:
 We've now got our players being generated. It's time to put them on the screen.
 
 In order to convert our command line scripts to something we can put up on the
-web, we're going to use a bundler to package all the JS goodness into one file.
+web for everyone, we're going to use a bundler to package all the JS goodness
+into one file and make sure that all of our JS works on all the various browsers
+by using `babel`.
 
 ```bash
-npm install --save-dev webpack webpack-dev-server
+npm install --save-dev webpack webpack-dev-server babel-loader babel-core
 ```
 
 Webpack helps us turn all those lovely `require`s from `node` into a nice bundle
@@ -633,6 +635,26 @@ function paint(canvas, image, players) {
 ```
 
 There you have it, a live updating map!
+
+### Being friendly with the browser render cycle
+
+Browsers provide a global function called `requestAnimationFrame` that lets you
+call a function to update an animation before the next browser repaint. We need
+to rely on this to trigger the actual call to `paint`.
+
+```
+fakes.livePlayers(fakes.defaultPlayers, 10)
+     .scan((players, player) => {
+       // collect the latest data for each player over time
+       return players.set(player.id, player);
+     }, new Map())
+     .throttleTime(10) // We can lower our throttle since we're using rAF
+     .subscribe(players => {
+       window.requestAnimationFrame(paint.bind(null, mapCanvas, image, players));
+     });
+```
+
+
 
 ## Summary
 
