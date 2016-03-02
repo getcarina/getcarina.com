@@ -545,7 +545,7 @@ We're going to start out small and simply put the canvas right in our `index.htm
 Let's create a file called `mapping.js`. We'll start it off by drawing an image
 onto a provided canvas:
 
-```
+```javascript
 const MAP_SIZE = 2048;
 
 function paint(canvas, image, players) {
@@ -572,7 +572,7 @@ module.exports = {
 
 Now call `paint` to display our image:
 
-```
+```javascript
 const fakes = require('./fakes');
 const paint = require('./mapping').paint;
 
@@ -599,7 +599,7 @@ commonwealth.
 Next up is taking all that player data and showing it on screen. Within `index.js`,
 after the setup for the image let's start taking that fake player data.
 
-```
+```javascript
 fakes.livePlayers(fakes.defaultPlayers, 10)
      .scan((players, player) => {
        // collect the latest data for each player over time
@@ -615,7 +615,7 @@ fakes.livePlayers(fakes.defaultPlayers, 10)
 
 Now, the only thing we have to add to our `mapping.js` is plotting those players
 
-```
+```javascript
 function paint(canvas, image, players) {
   const context = canvas.getContext('2d');
   context.save();
@@ -646,7 +646,7 @@ Browsers provide a global function called `requestAnimationFrame` that lets you
 call a function to update an animation before the next browser repaint. We need
 to rely on this to trigger the actual call to `paint`.
 
-```
+```javascript
 fakes.livePlayers(fakes.defaultPlayers, 10)
      .scan((players, player) => {
        // collect the latest data for each player over time
