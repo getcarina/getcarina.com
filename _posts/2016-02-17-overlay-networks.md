@@ -13,7 +13,7 @@ categories:
 authorIsRacker: true
 ---
 
-**Note**: The permanent tutorial on overlays networks can be found at [Overlay Networks](/docs/tutorials/overlay-networks/).
+**Note**: For tutorial information, see [Use overlay networks in Carina](/docs/tutorials/overlay-networks/).
 
 {{ page.excerpt }}
 
