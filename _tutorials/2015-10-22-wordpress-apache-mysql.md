@@ -23,9 +23,11 @@ in a Docker container. Finally, use Apache to deliver traffic to your applicatio
 
 ### Create an overlay network
 
-1. The first step is to create a user-defined network. This will allow every
-container we create to communicate with eachother, regardless of which Docker
-Swarm host they reside on. To create an overlay network, you run:
+The first step is to create a user-defined network. This network allows every
+container that you create to communicate with all the other containers,
+regardless of which Docker Swarm host they reside on.
+
+To create an overlay network, run the following command:
 
     ```
     docker network create --driver overlay main-net
@@ -36,7 +38,7 @@ documentation guide.
 
 ### Create MySQL container
 
-The next step is to create the container that will be running MySQL.
+The next step is to create the container that will run MySQL.
 
 1. Generate two [strong passwords](https://strongpasswordgenerator.com/): a
 root password and a password for the `wordpress` user.
@@ -110,7 +112,7 @@ set the following the variables:
   * `WORDPRESS_DB_PASSWORD` is the password used by the MySQL user.
   * `WORDPRESS_DB_NAME` is the name of the MySQL database that WordPress will use.
 
-* `--net` runs the container inside the overlay network named `main-net` which
+* `--net` runs the container inside the overlay network named `main-net` that
 you created earlier in this tutorial. This allows access to the MySQL container.
 
 The default `wordpress` Docker image includes the Apache 2 web server by default,

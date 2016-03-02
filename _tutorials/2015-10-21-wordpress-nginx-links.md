@@ -13,7 +13,7 @@ In the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-my
 container running Apache 2 and WordPress. For your database, you ran MySQL in a
 Docker container.
 
-This tutorial describes how to set up container on overlay networks, according
+This tutorial describes how to set up containers on overlay networks, according
 to the best practices set out by the Docker community. By the end, you will have
 a single NGINX container accepting traffic, a back-end container running PHP-FPM
 and WordPress, and a MySQL container handling persistent state.
@@ -59,15 +59,17 @@ compute resources to individual parts of your application stack.
 
 ### Create an overlay network
 
-1. The first step is to create a user-defined network. This will allow every
-container we create to communicate with eachother, regardless of which Docker
-Swarm host they reside on. To create an overlay network, you run:
+The first step is to create a user-defined network. This network allows every
+container that you create to communicate with all the other containers,
+regardless of which Docker Swarm host they reside on.
+
+To create an overlay network, run the following command:
 
     ```
     docker network create --driver overlay main-net
     ```
 
-For more information on networking in Docker, read the [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
+For more information about networking in Docker, read the [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
 documentation guide.
 
 ### Create MySQL container
@@ -128,12 +130,12 @@ $ docker run -d \
 
 By placing this container in the `main-net` overlay network, you are providing
 it with access to other containers on the same network, namely the `mysql`
-container that you just started. This is done because the WordPress container
-will need access for persistent data storage.
+container that you just started. The WordPress container needs access to the
+`mysql` container for persistent data storage.
 
-Docker has an inbuilt DNS server which will resolve container names to their
-respective IP addresses allocated on the `main-net` subnet range. To preview
-this, attach your terminal to the WordPress container and view the hosts
+Docker has an built-in DNS server that resolves container names to their IP
+addresses allocated on the `main-net` subnet range. To preview this function,
+attach your terminal to the WordPress container and view the hosts
 configuration file:
 
 ```
@@ -150,7 +152,7 @@ ff02::2	ip6-allrouters
 ```
 
 You can see that `10.0.0.3` is the IP address for the container with an ID of
-`2ac3ee153533`. To test out Docker's DNS service discovery:
+`2ac3ee153533`. Test Docker's DNS service discovery as follows:
 
 ```
 $ cat /etc/resolv.conf

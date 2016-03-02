@@ -59,8 +59,8 @@ services:
 ```
 
 The first section of this example indicates that the `web` service uses the
-`rackerlabs/magento` Docker image hosted on Docker Hub, it binds to port 80, it
-links to the `redis` service, and its container's name is `web`.
+`rackerlabs/magento` Docker image hosted on Docker Hub, it binds to port 80,
+and its container's name is `web`.
 
 The `redis` service uses the base `redis` image hosted on Docker Hub, and its
 container name is `redis`.
@@ -68,9 +68,9 @@ container name is `redis`.
 ### Limitations
 
 Integration between Docker Swarm and Compose is still in the experimental phase,
-but if you'd like to understand more about how they work together, visit the
-[Integration Guide](https://docs.docker.com/compose/swarm/). You will also
-become aware of the limitations in networking, scheduling and dependencies.
+but if you want to understand more about how they work together, see the
+[Integration Guide](https://docs.docker.com/compose/swarm/). This guide also
+describes limitations in networking, scheduling, and dependencies.
 
 ### Resources
 
