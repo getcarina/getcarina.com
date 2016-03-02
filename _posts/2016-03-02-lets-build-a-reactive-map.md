@@ -304,10 +304,9 @@ your local map continuously like some sort of crazy sonar.
 
 ![localmap cray cray](https://cloud.githubusercontent.com/assets/2737108/11907104/8dd9d7da-a5d1-11e5-91de-400307f54a53.gif)
 
-Let's bring you over to grokking Observables so you can do realtime apps like
-this too.
+Let's learn more about Observables so you can do real-time apps like this too.
 
-### Learn you some Rx
+### Learn some Rx
 
 We're going to go a little crazy in learning how to work with these. Pop open a
 node terminal and `require('rx')`:
@@ -316,14 +315,13 @@ node terminal and `require('rx')`:
 > var Rx = require('rx')
 ```
 
-Let's start off with a simple `Observable` that emits a new value on each interval.
+Start with a simple `Observable` that emits a new value on each interval.
 
 ```javascript
 > var obs = Rx.Observable.interval(10)
 ```
 
-To subscribe to the event stream from this `Observable`, we
-
+To subscribe to the event stream from this `Observable`, we use `subscribe`.
 To make sure that we don't get overwhelmed with the stream, we'll chain with the
 `take` operator, making our resulting subscription only get a few values.
 
@@ -335,9 +333,9 @@ To make sure that we don't get overwhelmed with the stream, we'll chain with the
 3
 ```
 
-We can operate on this stream too, mapping the values. This interval observable
-is just giving us an incrementing counter over time. Let's map the values
-to something new then subscribe to that.
+We can operate on this stream, too, mapping the values. This interval `Observable`
+is giving us an incrementing counter over time. Let's map the values
+to something new that we'll subscribe to.
 
 ```javascript
 > o = obs.map(x => x*10).take(4).subscribe(console.log)
@@ -347,8 +345,8 @@ to something new then subscribe to that.
 30
 ```
 
-We can also `reduce` on a completed stream after the `take` operation since otherwise we're
-operating on an infinite stream.
+Since we use `take`, the stream completes after 4 elements are emitted, which
+allows us to perform a reduction:
 
 ```javascript
 > var o = obs.take(4).reduce((x,y) => x + y, 0).subscribe(console.log)
@@ -372,10 +370,10 @@ also use this to great effect when aggregating multiplayer data. For a more
 thorough introduction to Reactive Programming, check out the
 [Introduction to RP you've been missing](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754).
 
-## Generating Player Data with RxJS
+## Generate player data with RxJS
 
-Let's start off by creating a single live player who updates themselves on
-an interval. Add this to fakes.js:
+Let's start by creating a single live player who updates themselves on
+an interval. Add this to `fakes.js`:
 
 ```javascript
 function livePlayer(player, period) {
@@ -398,8 +396,8 @@ function livePlayer(player, period) {
 ```
 
 To create this for all the players, we'll use the `merge` operator to bring
-lots of live players together. `merge` takes N many observables and combines
-them into one observable stream.
+lots of live players together. `merge` takes N many Observables and combines
+them into one Observable stream.
 
 ```javascript
 // create a set of players with coordinates
@@ -417,15 +415,13 @@ function livePlayers(players, period) {
 }
 ```
 
-Let's go ahead and export this function for use by node.
-
-Try this out by appending this to the bottom of fakes.js
+Let's export this function for use by node. Try this out by appending this to the bottom of `fakes.js`:
 
 ```
 livePlayers(players).take(4).subscribe(x => console.log(x))
 ```
 
-and run `fakes.js` to get output like:
+Then, run `fakes.js` to get output like the following:
 
 ```
 { name: 'Robust Aaliyah',
@@ -446,22 +442,21 @@ and run `fakes.js` to get output like:
   y: 131 }
 ```
 
-We've now got our players being generated. It's time to put them on the screen.
+Now our players are being generated. It's time to put them on the screen.
 
 ![](https://camo.githubusercontent.com/e19e230a9371a44a2eeb484b83ff4fcf8c824cf7/687474703a2f2f737562737461636b2e6e65742f696d616765732f62726f777365726966795f6c6f676f2e706e67)
 
-In order to convert our command line scripts to something we can put up on the
+To convert our command line scripts to something we can put up on the
 web for everyone, we're going to use a bundler called `browserify` to package
-all the JS goodness into one file and make sure that all of our JS works on all
-the various browsers by using `babel` via `babelify`.
+all the JavaScript goodness into one file, and then ensure that all of the
+JavaScript works on all the various browsers by using `babel` via `babelify`.
 
 ```bash
 npm install --save-dev browserify babelify babel-preset-es2015
 ```
 
-Browserify helps us turn all those lovely `require`s from `node` into a nice bundle
-to distribute for the browser. In your `package.json`, add one more line to your
-`scripts` section and create a `babel` section:
+In your `package.json`, add one more line to your `scripts` section and create a
+`babel` section:
 
 ```json
 "scripts": {
@@ -471,7 +466,7 @@ to distribute for the browser. In your `package.json`, add one more line to your
 "babel": { "presets": ["es2015"] },
 ```
 
-Next up, write an `index.html`:
+Next, write an `index.html`:
 
 ```html
 <html>
@@ -484,7 +479,7 @@ Next up, write an `index.html`:
 </html>
 ```
 
-This sets up loading our bundle within the main page. For our index.js, let's start off with something fairly simple:
+This sets up loading the bundle within the main page. For the `index.js` file, start with something fairly simple:
 
 ```javascript
 const fakes = require('./fakes');
@@ -508,7 +503,7 @@ Great! Now let's build that map.
 
 ## Build the map
 
-Our steps, roughly:
+The steps, roughly:
 
 * Create a canvas
 * Paint a background image
@@ -516,7 +511,7 @@ Our steps, roughly:
 
 ### Create a canvas
 
-We're going to start out small and simply put the canvas right in our `index.html`.
+We're going to start small and simply put the canvas right in the `index.html` file.
 
 ```html
 <html>
@@ -530,7 +525,7 @@ We're going to start out small and simply put the canvas right in our `index.htm
 </html>
 ```
 
-### Painting an image onto the canvas
+### Paint an image onto the canvas
 
 Let's create a file called `mapping.js`. We'll start it off by drawing an image
 onto a provided canvas:
@@ -586,7 +581,7 @@ commonwealth.
 
 ![commonwealth](https://raw.githubusercontent.com/rgbkrk/lets-rxjs5/acebf65cb206258b0ec022c8287015eefb5728a6/CompanionWorldMap.png)
 
-Next up is taking all that player data and showing it on screen. Within `index.js`,
+Now take all that player data and show it on screen. Within `index.js`,
 after the setup for the image let's start taking that fake player data.
 
 ```javascript
@@ -630,7 +625,7 @@ There you have it, a live updating map!
 
 ![animated dots](https://cloud.githubusercontent.com/assets/836375/11960060/5b49ac9c-a896-11e5-8e50-da9ce4330e1d.gif)
 
-### Being friendly with the browser render cycle
+### Be friendly with the browser render cycle
 
 Browsers provide a global function called `requestAnimationFrame` that lets you
 call a function to update an animation before the next browser repaint. We need
