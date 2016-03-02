@@ -5,7 +5,7 @@ date: 2015-10-07
 permalink: docs/troubleshooting/troubleshooting-port-unavailable/
 description: Troubleshoot "port is already allocated" or "unable to find a node with port available" errors when running a container
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - troubleshooting
@@ -17,7 +17,7 @@ message is displayed:
 
 ```
 $ docker run --detach --publish 80:80 nginx
-Error response from daemon: Cannot start container 1b48146:  Bind for 0.0.0.0:80 failed: port is already allocated
+Error response from daemon: unable to find a node with port 80 available
 ```
 
 This error message indicates that the Docker host already has a container published

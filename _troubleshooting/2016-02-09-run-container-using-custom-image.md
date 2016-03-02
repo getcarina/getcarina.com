@@ -5,7 +5,7 @@ date: 2016-02-09
 permalink: docs/troubleshooting/run-container-using-custom-image/
 description: Troubleshoot the "image is not found" error when running a container
 docker-versions:
-  - 1.9.1
+  - 1.10.1
 topics:
   - docker
   - swarm
@@ -24,7 +24,7 @@ $ docker run --detach --publish 50000:5000 <custom-image>
 0588fe5b93707d54b023b7e31f15bd4baa793201427819794d1dea6cbc7f9f70
 
 $ docker run --detach --publish 5000:5000 <custom-image>
-Error response from daemon: Error: image library/<custom-image> not found
+Error response from daemon: Error: unable to find a node that satisfies image==<custom-image>
 ```
 
 This error message indicates that the container was scheduled on a different segment
@@ -39,6 +39,10 @@ To resolve this error, select one of the following options:
 **Note**: This error occurs only after you scale your cluster to two or more segments.
 
 ### Use image affinity scheduling with Docker Swarm
+**Note**: This is only applicable to older Carina clusters. New clusters implicitly apply
+the image affinity. If you need to run the container on multiple segments,
+then a Docker registry is required. See the following sections for options.
+
 When you create or run a container that uses `<custom-image>`,
 specify `--env affinity:image==<custom-image>`. This command instructs Docker Swarm
 to schedule the new container on a segment that has your custom image.
@@ -47,14 +51,6 @@ to schedule the new container on a segment that has your custom image.
 $ docker build -t <custom-image> .
 $ docker run --env affinity:image==<custom-image> <custom-image>
 ```
-
-**Note**: If you need to run the container on multiple segments,
-then a Docker registry is required. See the following sections for options.
-
-<!-- In future versions of Docker Swarm the image affinity hint won't be necessary, because of
-https://github.com/docker/swarm/issues/743. However this article is still
-useful because if you need to run on multiple segments
-(not just the one the image was built upon) then you need to use a registry -->
 
 ### Use Docker Hub
 Docker Hub is the default, official Docker registry. Carina can discover images on

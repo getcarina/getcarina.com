@@ -233,4 +233,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-[Docker networking basics]({{ site.baseurl }}/docs/concepts/docker-networking-basics/)
+[Overlay networks]({{ site.baseurl }}/docs/tutorials/overlay-networks)

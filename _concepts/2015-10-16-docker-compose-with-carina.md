@@ -81,7 +81,7 @@ you must ensure they are provisioned on the same Docker host, since container
 linking does not currently work for containers on different hosts. This will
 change in the future as Docker networking is revamped. To find out more
 information about networking in Docker, read the
-[Docker networking basics](../docker-networking-basics) article.
+[overlay network]({{site.baseurl}}/docs/tutorials/overlay-networks) tutorial.
 
 To ensure that reliant containers can contact eachother, you must use the
 `links` keyword in your **docker-compose.yml** file. This will ensure they are

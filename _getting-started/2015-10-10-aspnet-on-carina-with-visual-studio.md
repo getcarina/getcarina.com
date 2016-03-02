@@ -5,7 +5,7 @@ date: 2016-02-12
 permalink: docs/getting-started/aspnet-on-carina-with-visual-studio/
 description: Learn how to publish an ASP.NET website to Carina with Visual Studio
 docker-versions:
-  - 1.9.1
+  - 1.10.1
 topics:
   - docker
   - windows
@@ -93,7 +93,7 @@ publish functionality to deploy the website to a Docker container on Carina.
     set DOCKER_TLS_VERIFY=1
     set DOCKER_CERT_PATH=%~dp0
 
-    set DOCKER_VERSION=1.9.1
+    set DOCKER_VERSION=1.10.1
     ```
 
 1. From the Solution Explorer, right-click on the project and select **Publish**.

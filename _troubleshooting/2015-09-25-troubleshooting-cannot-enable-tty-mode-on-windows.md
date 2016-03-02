@@ -5,7 +5,7 @@ date: 2015-09-25
 permalink: docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/
 description: Learn how to workaround the "cannot enable tty mode on non tty input" error when running an interactive Docker shell on Windows
 docker-versions:
-  - 1.8.2
+  - 1.10.1
 topics:
   - docker
   - troubleshooting
@@ -25,46 +25,22 @@ Cygwin users might also encounter this problem.
 
 This article provides some possible workarounds.
 
-* [Use SSH to connect to the Docker host](#use-ssh-to-connect-to-the-docker-host)
 * [Use the CMD terminal with the Bash shell](#use-the-cmd-terminal-with-the-bash-shell)
 * [Use the CMD terminal with the Windows shell](#use-the-cmd-terminal-with-the-windows-shell)
 * [Use PowerShell](#use-powershell)
 * [Use an alternative terminal](#use-an-alternative-terminal)
 
-### Use SSH to connect to the Docker host
-Continuing in Git Bash, use the `docker-machine ssh` command to connect to the Docker host,
-and then start an interactive shell:
-
-1. Start the container with a name specified so that it is easy to connect to later:
-
-    ```bash
-    $ docker run --name test --detach --interactive --tty ubuntu
-    ```
-
-2. Use SSH to connect to the active Docker host:
-
-    ```bash
-    $ docker-machine ssh $(docker-machine active)
-    ```
-
-3. Connect to the container using its name from step 1:
-
-    ```bash
-    $ docker exec --interactive --tty test sh
-    ```
-
 ### Use the CMD terminal with the Bash shell
 Switch to the CMD terminal with the Bash shell, which is similar to using Git Bash.
 
-1. Run the following commands, which start a Bash shell and then load the Docker environment named `default`.
-  If you are working with a different Docker environment, replace `default` with the appropriate name.
+1. [Load your Docker environment in the Bash shell]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/#bash),
+    using the following command to launch the CMD terminal:
 
     ```bash
-    > "C:\Program Files\Git\bin\bash.exe" --login -i
-    $ eval $(docker-machine env default --shell bash)
+    "C:\Program Files\Git\bin\bash.exe" --login -i
     ```
 
-2. Connect to the container:
+1. Connect to the container:
 
     ```bash
     $ docker run --interactive --tty ubuntu sh
@@ -73,15 +49,9 @@ Switch to the CMD terminal with the Bash shell, which is similar to using Git Ba
 ### Use the CMD terminal with the Windows shell
 Switch to the CMD terminal with the standard Windows shell.
 
-1. Run the following command, copy the output, and then paste it into the command prompt.
-    This command loads the Docker environment named `default`. If you are working
-    with a different Docker environment, replace `default` with the appropriate name.
+1. [Load your Docker environment in the Windows shell]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/#cmd).
 
-    ```batch
-    $ docker-machine env default --shell cmd
-    ```
-
-2. Connect to the container:
+1. Connect to the container:
 
     ```batch
     $ docker run --interactive --tty ubuntu sh
@@ -89,14 +59,9 @@ Switch to the CMD terminal with the standard Windows shell.
 
 ### Use PowerShell
 
-1. Run the following command to load the Docker environment named `default`.
-  If you are working with a different Docker environment, replace `default` with the appropriate name.
+1. [Load your Docker environment in PowerShell]({{site.baseurl}}/docs/tutorials/load-docker-environment-on-windows/#cmd).
 
-    ```powershell
-    $ docker-machine env default --shell powershell | Invoke-Expression
-    ```
-
-2. Connect to the container:
+1. Connect to the container:
 
     ```powershell
     $ docker run --interactive --tty ubuntu sh

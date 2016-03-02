@@ -45,6 +45,13 @@ session, and so the changes that dvm makes are temporary.
 
 After dvm is installed, you can use it with [Carina](#carina) or [stand-alone](#stand-alone).
 
+### Upgrade dvm
+To upgrade dvm to the latest version, run the following command:
+
+```bash
+dvm upgrade
+```
+
 <a id="carina"></a>
 ### Use dvm with Carina
 Carina's credentials are designed to work with dvm. After [you load your cluster credentials][carina-credentials],
