@@ -458,25 +458,27 @@ and run `fakes.js` to get output like:
 
 We've now got our players being generated. It's time to put them on the screen.
 
+![](https://camo.githubusercontent.com/e19e230a9371a44a2eeb484b83ff4fcf8c824cf7/687474703a2f2f737562737461636b2e6e65742f696d616765732f62726f777365726966795f6c6f676f2e706e67)
+
 In order to convert our command line scripts to something we can put up on the
-web for everyone, we're going to use a bundler to package all the JS goodness
-into one file and make sure that all of our JS works on all the various browsers
-by using `babel`.
+web for everyone, we're going to use a bundler called `browserify` to package
+all the JS goodness into one file and make sure that all of our JS works on all
+the various browsers by using `babel` via `babelify`.
 
 ```bash
-npm install --save-dev webpack webpack-dev-server babel-loader babel-core
+npm install --save-dev browserify babelify babel-preset-es2015
 ```
 
-Webpack helps us turn all those lovely `require`s from `node` into a nice bundle
-to distribute for the browser. In your `package.json`, add two more lines to your
-`scripts` section:
+Browserify helps us turn all those lovely `require`s from `node` into a nice bundle
+to distribute for the browser. In your `package.json`, add one more line to your
+`scripts` section and create a `babel` section:
 
 ```json
 "scripts": {
   "test": "echo \"Error: no test specified\" && exit 1",
-  "build": "webpack ./index.js bundle.js",
-  "build:watch": "webpack-dev-server ./index.js"
+  "build": "browserify index.js -t babelify --outfile bundle.js"
 },
+"babel": { "presets": ["es2015"] },
 ```
 
 Next up, write an `index.html`:
@@ -505,12 +507,12 @@ fakes.livePlayers()
      });
 ```
 
-Now run `npm run build`.
+Now run `npm run build`. That should build your sources. To see your work in action,
+open up `index.html` in the browser. You should see a generated player.
 
-That should build your sources. To host yourself a local copy that builds itself,
-run `npm run build:watch` then open `http://127.0.0.1:8080` in your browser. You should see some player data.
-
-<!-- include example output -->
+```
+{"name":"Robust Aaliyah","id":"dbfb8fdc-6930-4c59-a849-144f47a5fd93","x":900,"y":1198}
+```
 
 Great! Now let's build that map.
 
@@ -558,7 +560,7 @@ function paint(canvas, image, players) {
     context.clearRect(0, 0, MAP_SIZE, MAP_SIZE);
   }
 
-  // TODO: paint the players onto the image
+  // Note: we're not painting players yet
 
   context.restore();
 }
@@ -586,13 +588,13 @@ imageEl.onload = () => {
 };
 ```
 
-Download the companion world map to this directory. TODO: Provide a link.
+We'll need the world map for loading, so [download the companion world map](https://raw.githubusercontent.com/rgbkrk/lets-rxjs5/acebf65cb206258b0ec022c8287015eefb5728a6/CompanionWorldMap.png)
+to your workspace.
 
-If you don't have `npm run build:watch` already running, go ahead and fire it off
-and open http://127.0.0.1:8080 in your browser (reloading as necessary). You'll
-see that friendly commonwealth.
+Run `npm run build` again and open `index.html` again. You'll see that friendly
+commonwealth.
 
-<!-- TODO: show the companion map here -->
+![commonwealth](https://raw.githubusercontent.com/rgbkrk/lets-rxjs5/acebf65cb206258b0ec022c8287015eefb5728a6/CompanionWorldMap.png)
 
 Next up is taking all that player data and showing it on screen. Within `index.js`,
 after the setup for the image let's start taking that fake player data.
@@ -636,6 +638,8 @@ function paint(canvas, image, players) {
 
 There you have it, a live updating map!
 
+![animated dots](https://cloud.githubusercontent.com/assets/836375/11960060/5b49ac9c-a896-11e5-8e50-da9ce4330e1d.gif)
+
 ### Being friendly with the browser render cycle
 
 Browsers provide a global function called `requestAnimationFrame` that lets you
@@ -654,13 +658,12 @@ fakes.livePlayers(fakes.defaultPlayers, 10)
      });
 ```
 
-
-
 ## Summary
 
 We've learned how to simulate data through the use of RxJS Observables, rely on
-webpack and npm to package our app, and draw points on a canvas. If you liked this,
-let me know if you want to learn how to build the full multiplayer map.
+`browserify`, `babel`, and `npm` to package our app, and draw points on a canvas.
+If you liked this, let me know if you want to learn how to build the full
+multiplayer map.
 
 ---------------------------------------------------------------------
 
