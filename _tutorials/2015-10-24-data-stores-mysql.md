@@ -5,7 +5,7 @@ date: 2015-10-24
 permalink: docs/tutorials/data-stores-mysql/
 description: Learn how to use MySQL on Carina
 docker-versions:
-  - 1.8.3
+  - 1.10.1
 topics:
   - docker
   - intermediate
@@ -18,6 +18,17 @@ This tutorial describes using MySQL on Carina so that you can store data in a co
 ### Prerequisite
 
 [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+
+### Create a network
+
+Use the `docker network create` command to create an overlay network.
+
+```bash
+$ docker network create mynetwork
+501e123b2904757fe9fe23cb60e64191f3764c6d42e188cb3ba7ad30d845f84b
+```
+
+The output of this command is the network ID.
 
 ### Run a MySQL instance
 
@@ -35,7 +46,9 @@ Run a MySQL instance to store your application data.
 1. Run a MySQL instance in a container from an official image.
 
     ```bash
-    $ docker run --detach --publish-all \
+    $ docker run --detach \
+      --name mysql \
+      --net mynetwork \
       --env MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD \
       --env MYSQL_DATABASE=$MYSQL_DATABASE \
       --env MYSQL_USER=$MYSQL_USER \
@@ -50,31 +63,13 @@ Run a MySQL instance to store your application data.
 
     ```bash
     $ docker ps --latest
-    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                           NAMES
-    0a45d95acc3c        mysql:5.6           "/entrypoint.sh mysql"   15 seconds ago      Up 14 seconds       104.130.0.111:32771->3306/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/loving_saha
+    CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+    1582cfff7129        mysql:5.6           "/entrypoint.sh mysql"   22 seconds ago      Up 22 seconds       3306/tcp            fc6b9aa0-87fc-41b8-a421-21d1bb8469f0-n3/mysql
     ```
 
     The output of this `docker ps` command is your running MySQL container.
 
     The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
-
-1. View the ID of the container by using the `--quiet` parameter.
-
-    ```bash
-    $ docker ps --quiet --latest
-    0a45d95acc3c
-    ```
-
-    The output of this `docker ps` command is the shortened ID of the MySQL container.
-
-1. Discover what IP address and port MySQL is running on by combining the `docker port` command, the ID of the container, and the default MySQL port of 3306.
-
-    ```bash
-    $ docker port $(docker ps --quiet --latest) 3306
-    104.130.0.111:32771
-    ```
-
-    For the containerized MySQL service, you don't need to keep track of what it's named, what IP address it runs on, or what port it uses. Instead, you discover this information dynamically with the preceding command, and use it later in the tutorial to connect to MySQL.
 
 ### Create the database tables
 
@@ -83,26 +78,15 @@ Create the database tables to store your application data.
 1. Export the necessary environment variables for your application.
 
     ```bash
-    $ export MYSQL_HOST=$(docker port $(docker ps --quiet --latest) 3306 | cut -f 1 -d ':')
-    $ export MYSQL_PORT=$(docker port $(docker ps --quiet --latest) 3306 | cut -f 2 -d ':')
-    ```
-
-1. Review the environment variables and ensure that `MYSQL_HOST` and `MYSQL_PORT` were filled in correctly, from the values you discovered in step 5 of [Run a MySQL instance](#run-a-mysql-instance).
-
-    ```bash
-    $ env | grep MYSQL_
-    MYSQL_HOST=104.130.0.111
-    MYSQL_PORT=32771
-    MYSQL_ROOT_PASSWORD=root-password
-    MYSQL_DATABASE=guestbook
-    MYSQL_USER=guestbook-user
-    MYSQL_PASSWORD=guestbook-user-password
+    $ export MYSQL_HOST=mysql
+    $ export MYSQL_PORT=3306
     ```
 
 1. Create the database tables.
 
     ```bash
     $ docker run --rm \
+      --net mynetwork \
       --env MYSQL_HOST=$MYSQL_HOST \
       --env MYSQL_PORT=$MYSQL_PORT \
       --env MYSQL_DATABASE=$MYSQL_DATABASE \
@@ -112,7 +96,7 @@ Create the database tables to store your application data.
       python app.py create_tables
     INFO: Welcome to Guestbook: MySQL Edition
     DEBUG: The log statement below is for educational purposes only. Do not log credentials.
-    DEBUG: mysql+pymysql://guestbook-user:guestbook-user-password@104.130.0.111:32771/guestbook
+    DEBUG: mysql+pymysql://guestbook-user:guestbook-user-password@mysql:3306/guestbook
     2015-10-16 20:01:52,337 INFO sqlalchemy.engine.base.Engine SHOW VARIABLES LIKE 'sql_mode'
     INFO: SHOW VARIABLES LIKE 'sql_mode'
     2015-10-16 20:01:52,337 INFO sqlalchemy.engine.base.Engine ()
@@ -137,6 +121,8 @@ Run the Guestbook web application and view it in your web browser.
 
     ```bash
     $ docker run --detach \
+      --name guestbook \
+      --net mynetwork \
       --env MYSQL_HOST=$MYSQL_HOST \
       --env MYSQL_PORT=$MYSQL_PORT \
       --env MYSQL_DATABASE=$MYSQL_DATABASE \
@@ -149,25 +135,13 @@ Run the Guestbook web application and view it in your web browser.
 
     The output of this `docker run` command is your running application container ID.
 
-1. View the status of the container by using the `--latest` parameter.
-
-    ```bash
-    $ docker ps --latest
-    CONTAINER ID        IMAGE                          COMMAND                  CREATED             STATUS              PORTS                          NAMES
-    3e731021acbe        carinamarina/guestbook-mysql   "/bin/sh -c 'python a"   51 seconds ago      Up 50 seconds       104.130.0.111:5000->5000/tcp   d850247d-ae6d-43bd-8b41-fd56f3530283-n1/backstabbing_stallman
-    ```
-
-    The output of this `docker ps` command is your running application container.
-
-    The status of the container should begin with Up. If it doesn't, see the [Troubleshooting](#troubleshooting) section at the end of the tutorial.
-
 1. View the application logs as they contain some information based on the environment variables.
 
     ```bash
-    $ docker logs $(docker ps --quiet --latest)
+    $ docker logs guestbook
     INFO: Welcome to Guestbook: MySQL Edition
     DEBUG: The log statement below is for educational purposes only. Do not log credentials.
-    DEBUG: mysql+pymysql://guestbook-user:guestbook-user-password@104.130.0.111:32771/guestbook
+    DEBUG: mysql+pymysql://guestbook-user:guestbook-user-password@mysql:3306/guestbook
     INFO:  * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
     ```
 
@@ -176,7 +150,7 @@ Run the Guestbook web application and view it in your web browser.
 1. Open a browser and visit your application by running the following command and pasting the result into your browser address bar.
 
     ```bash
-    $ echo http://$(docker port $(docker ps --quiet --latest) 5000)
+    $ echo http://$(docker port guestbook 5000)
     http://104.130.0.111:5000
     ```
 
@@ -187,9 +161,9 @@ Run the Guestbook web application and view it in your web browser.
 1. Remove the containers
 
     ```bash
-    $ docker rm --force $(docker ps --quiet -n=-2)
-    3e731021acbe
-    0a45d95acc3c
+    $ docker rm --force --volumes mysql guestbook
+    mysql
+    guestbook
     ```
 
     The output of this `docker rm` command are the shortened IDs of the MySQL and application containers that you removed.
@@ -210,10 +184,13 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Resources
 
-[The MySQL Command-Line Tool](http://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+* [The MySQL Command-Line Tool](http://dev.mysql.com/doc/refman/5.6/en/mysql.html)
+* [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
 ### Next steps
 
 If you want to run your application with a production-grade database, read [Connect a Carina container to a Rackspace Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/).
+
+If you want to store your data in a data volume container, read [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
 If MySQL isn't the data store for you, read [Use MongoDB on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb/).

@@ -54,6 +54,10 @@ Containers are created by Docker. You can use the Docker CLI or other Docker eco
 
 Containers are composed of your applications, their configuration, and anything else you need to build into them. They are created from Docker images. A Docker image is a template that contains the instructions that will run your application. It includes everything necessary to run your containerized applications.
 
+#### Overlay networks
+
+An overlay network provides isolation for containers to communicate across all of the segments in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another. An isolated network for containers that ensures only the services of your choice are exposed outside of your system reduces the attack surface for your applications.
+
 #### Autoscaling
 
 Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a ten-minute interval. If a cluster needs resources, additional segments are automatically added.
@@ -80,6 +84,7 @@ Carina has a CLI that you can use to control clusters from a terminal or scripts
 * [Carina documentation]({{ site.baseurl }}/docs/)
 * [Carina community forums](https://community.getcarina.com)
 * [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/)
+* [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 * [Autoscaling resources in Carina]({{ site.baseurl }}/docs/reference/autoscaling-carina/)
 * [Glossary]({{ site.baseurl }}/docs/reference/glossary/)
 
