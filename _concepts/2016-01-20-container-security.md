@@ -42,6 +42,10 @@ Securing the operating system is normally the responsibility of the operations t
 
 This is where frameworks with layered images, including Docker, can help. Operations teams can carefully maintain a base image with appropriate security controls, configurations, and package updates. As part of that configuration, they can specify where the package manager will receive trusted packages. Development teams can use that base image as the foundation for their containers and then add packages from those trusted repositories. If a serious vulnerability appears, the operations team would quickly update the base image and let the development team know that a container rebuild and redeployment is needed.
 
+### Use overlay networks
+
+At the application layer, users can employ overlay networks to provide isolation for containers to communicate across all of the segments in their clusters on Carina. An overlay network is an isolated network for containers that ensures only the services of their choice are exposed outside of their system. Isolating containers in a network can greatly decreased the attack surface of a system, which adds another layer of security. For tutorial information, see [Use overlay networks in Carina](/docs/tutorials/overlay-networks/).
+
 ### Use version control
 
 All of your Dockerfiles, configuration files, and deployment code should be kept in a version control repository of some sort. There are several benefits to making this a standard practice in your organization.
