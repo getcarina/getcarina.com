@@ -27,6 +27,7 @@ Things we'll cover:
 
 * Simulating data
 * Observables and RxJS
+* Bundling code for the browser via `browserify` and `babel`
 * Drawing on canvas
 
 ## Tools required
