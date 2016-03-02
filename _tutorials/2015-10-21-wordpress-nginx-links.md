@@ -1,9 +1,9 @@
 ---
-title: Run WordPress across linked front end and back end containers
+title: Run WordPress across front end and back end containers
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2015-10-21
-permalink: docs/tutorials/linking-wordpress-containers/
-description: Learn how to spin up a multi-container WordPress application split across linked containers, using NGINX as the front end and PHP-FPM as the back end.
+date: 2015-10-26
+permalink: docs/tutorials/multiple-wordpress-containers/
+description: Learn how to spin up a multi-container WordPress application split across multiple containers, using NGINX as the front end and PHP-FPM as the back end.
 topics:
   - docker
   - beginner
@@ -13,10 +13,10 @@ In the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-my
 container running Apache 2 and WordPress. For your database, you ran MySQL in a
 Docker container.
 
-This tutorial describes how to set up container links, according to the best
-practices set out by the Docker community. By the end, you will have a single
-NGINX container accepting traffic, a back-end container running PHP-FPM and
-WordPress, and a MySQL container handling persistent state.
+This tutorial describes how to set up containers on overlay networks, according
+to the best practices set out by the Docker community. By the end, you will have
+a single NGINX container accepting traffic, a back-end container running PHP-FPM
+and WordPress, and a MySQL container handling persistent state.
 
 **Note:** Storing persistent data in containers is a hotly contested issue. Many
 prefer to instead use an external service such as Rackspace Cloud Databases.
@@ -29,7 +29,8 @@ This tutorial sets up a MySQL container to demonstrate container relationships.
 **Note:** If you completed the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-mysql/), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 
 ```
-$ docker rm -fv $(docker ps -q)
+$ docker rm -fv mysql
+$ docker rm -fv wordpress
 ```
 
 ### One process per container
@@ -55,6 +56,21 @@ model which provides far greater scalability than one monolithic application.
 
 - Splitting applications into multiple containers allows you to better allocate
 compute resources to individual parts of your application stack.
+
+### Create an overlay network
+
+The first step is to create a user-defined network. This network allows every
+container that you create to communicate with all the other containers,
+regardless of which Docker Swarm host they reside on.
+
+To create an overlay network, run the following command:
+
+    ```
+    docker network create --driver overlay main-net
+    ```
+
+For more information about networking in Docker, read the [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
+documentation guide.
 
 ### Create MySQL container
 
@@ -83,6 +99,7 @@ root password and a password for the `wordpress` user.
       --env MYSQL_USER=wordpress \
       --env MYSQL_PASSWORD=$WORDPRESS_PASSWORD \
       --env MYSQL_DATABASE=wordpress \
+      --net main-net \
       mysql
     ```
 
@@ -103,20 +120,54 @@ Next, set up the back-end container that is running the WordPress installation:
 
 ```
 $ docker run -d \
-  --link mysql:mysql \
-  --name wordpress-fpm \
-  -e WORDPRESS_DB_USER=wordpress \
-  -e WORDPRESS_DB_PASSWORD=$WORDPRESS_PASSWORD \
+  --name fpm \
+  --env WORDPRESS_DB_HOST=mysql:3306 \
+  --env WORDPRESS_DB_USER=wordpress \
+  --env WORDPRESS_DB_PASSWORD=$WORDPRESS_PASSWORD \
+  --net main-net \
   wordpress:fpm
 ```
 
-You are linking this container with the `mysql` container that you just started,
-because the WordPress container will need access for persistent data storage.
-To see a full list of the environment variables that are required, see the
-[official WordPress image](https://hub.docker.com/_/wordpress/) on Docker Hub.
-You do not need to specify the WORDPRESS_DB_HOST variable because it defaults to
-the IP address and port of the linked `mysql` container. Nor do you need to
-specify the WORDPRESS_DB_NAME variable, because it defaults to `wordpress`.
+By placing this container in the `main-net` overlay network, you are providing
+it with access to other containers on the same network, namely the `mysql`
+container that you just started. The WordPress container needs access to the
+`mysql` container for persistent data storage.
+
+Docker has an built-in DNS server that resolves container names to their IP
+addresses allocated on the `main-net` subnet range. To preview this function,
+attach your terminal to the WordPress container and view the hosts
+configuration file:
+
+```
+$ docker exec -it wordpress bash
+$ cat /etc/hosts
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+10.0.0.3	2ac3ee153533
+172.18.0.3	2ac3ee153533
+```
+
+You can see that `10.0.0.3` is the IP address for the container with an ID of
+`2ac3ee153533`. Test Docker's DNS service discovery as follows:
+
+```
+$ cat /etc/resolv.conf
+nameserver 127.0.0.11
+options ndots:0
+
+$ ping -c3 mysql
+PING mysql (10.0.0.2): 56 data bytes
+64 bytes from 10.0.0.2: icmp_seq=0 ttl=64 time=0.060 ms
+64 bytes from 10.0.0.2: icmp_seq=1 ttl=64 time=0.059 ms
+64 bytes from 10.0.0.2: icmp_seq=2 ttl=64 time=0.061 ms
+--- mysql ping statistics ---
+3 packets transmitted, 3 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 0.059/0.060/0.061/0.000 ms
+```
 
 ### Prepare the NGINX Docker image
 
@@ -161,11 +212,10 @@ Docker image:
 
 ```
 $ docker run -d \
-  -p 80:80 \
+  --publish 80:80 \
   --name nginx \
-  --link wordpress-fpm:fpm \
-  --volumes-from wordpress-fpm \
-  -e "affinity:container==wordpress-fpm" \
+  --volumes-from fpm \
+  --net main-net \
   <namespace>/nginx-fpm
 ```
 

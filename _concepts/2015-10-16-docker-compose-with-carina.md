@@ -46,49 +46,34 @@ In each YAML section, you define the characteristics of your service and how it
 will operate:
 
 ```yaml
-web:
-  image: rackerlabs/magento
-  ports:
-    - "80:80"
-  links:
-    - redis
-  container_name: web
-redis:
-  image: redis
-  container_name: redis
+version: '2'
+services:
+  web:
+    image: rackerlabs/magento
+    ports:
+      - "80:80"
+    container_name: web
+  redis:
+    image: redis
+    container_name: redis
 ```
 
 The first section of this example indicates that the `web` service uses the
-`rackerlabs/magento` Docker image hosted on Docker Hub, it binds to port 80, it
-links to the `redis` service, and its container's name is `web`.
+`rackerlabs/magento` Docker image hosted on Docker Hub, it binds to port 80,
+and its container's name is `web`.
 
 The `redis` service uses the base `redis` image hosted on Docker Hub, and its
 container name is `redis`.
 
-### Limitations
+### Limitations
 
-**Note:** For more information about how Docker Swarm works in Carina, see the
-[Understanding how Carina uses Docker Swarm](../docker-swarm-carina) article.
-
-Docker has said that Compose is **not yet production-ready** because
-it does not fully integrate with Docker Swarm. Eventually, Docker aims to have
-full integration, meaning that you will be able to deploy multicontainer
-applications spread over multiple Docker hosts. However, this integration is not
-currently in place because of limitations in Docker networking.
-
-If services in your application rely on one another through the `--link` flag,
-you must ensure they are provisioned on the same Docker host, since container
-linking does not currently work for containers on different hosts. This will
-change in the future as Docker networking is revamped. To find out more
-information about networking in Docker, read the
-[overlay network]({{site.baseurl}}/docs/tutorials/overlay-networks) tutorial.
-
-To ensure that reliant containers can contact eachother, you must use the
-`links` keyword in your **docker-compose.yml** file. This will ensure they are
-deployed to the same Docker host.
+Integration between Docker Swarm and Compose is still in the experimental phase,
+but if you want to understand more about how they work together, see the
+[Integration Guide](https://docs.docker.com/compose/swarm/). This guide also
+describes limitations in networking, scheduling, and dependencies.
 
 ### Resources
 
 - [Overview of Docker Compose](https://docs.docker.com/compose/)
 - [docker-compose.yml reference](https://docs.docker.com/compose/yml/)
-- [Docker compose environment variable reference](https://docs.docker.com/compose/env/)
+- [Docker Compose and Swarm integration](https://docs.docker.com/compose/swarm/)
