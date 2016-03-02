@@ -1,14 +1,14 @@
 ---
 title: "Let's build a multiplayer Fallout 4 map using RxJS!"
-date: 2015-03-02 08:00
+date: 2016-03-02 14:30
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 published: true
 excerpt: >
-  We've done Pip-Boy discovery, relay, and created new libraries. Now it's time to
-  put them to good use by building a multiplayer map. To get us there, we will
-  learn how to use Observables to handle streams of player data and render them
-  onto a map.
+  We've done Pip-Boy discovery and relay, creating new libraries in the process.
+  Now it's time to put them to good use by building a multiplayer map. To get us
+  there, I will show you how to use Observables to handle streams of player data
+  and render them onto a map.
 categories:
  - nodejs
  - RxJS
@@ -21,8 +21,9 @@ authorIsRacker: true
 ![](https://cloud.githubusercontent.com/assets/836375/11960060/5b49ac9c-a896-11e5-8e50-da9ce4330e1d.gif)
 
 We've done [Pip-Boy discovery and relay]({{site.baseurl}}/blog/fallout-4-service-discovery-and-relay/) and
-[created new libraries]({{site.baseurl}}/blog/decoding-the-pipboy-database-with-vault-community/). Now let's put them to good use. The first half of this tutorial does *not* require having
-a copy of Fallout 4, since we'll start by simulating data.
+[created new libraries]({{site.baseurl}}/blog/decoding-the-pipboy-database-with-vault-community/).
+Now let's put them to good use. The first half of this tutorial does *not* require having
+a copy of Fallout 4 because we'll start by simulating data.
 
 Things we'll cover:
 
@@ -33,13 +34,16 @@ Things we'll cover:
 
 ## Tools required
 
-You'll need [node 5+ and npm 3](https://nodejs.org/en/) to run through this
-tutorial. If you're gripping tightly to an older node version, use
-[nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n).
+You need [node 5+ and npm 3](https://nodejs.org/en/) to follow this
+tutorial. If you're gripping tightly to an older node version, try out
+[nvm](https://github.com/creationix/nvm) or [n](https://github.com/tj/n) for all
+your node environment switching needs.
 
 ## Generating Random Players
 
-Go ahead and setup a new project for this, by creating a new directory, changing to that directory, and running `npm init`. You can accept the defaults if you like, or mix it up.
+Set up a new project for this, by creating a new directory, changing to that
+directory, and running `npm init`. You can accept the defaults if you like, or
+mix it up.
 
 ```bash
 mkdir multi-pip-fun
@@ -47,9 +51,9 @@ cd multi-pip-fun
 npm init
 ```
 
-We're here to make a map of players, so let's start off by generating some
-random players. We're going to get the list of player names that codsworth can
-speak from.
+We're making a map of players, so let's start by generating some
+random players. We're going to get the list of player names that [codsworth can
+speak](http://www.themarysue.com/fallout-4-names/) from.
 
 For this tutorial, I'll use the package `clean-codsworth-names`. You can install
 it too:
@@ -65,8 +69,7 @@ us giggle.
 npm install --save codsworth-names
 ```
 
-We can go ahead and create `fakes.js` now, setting up new players and where they
-are on the map.
+Now, create `fakes.js`, setting up new players and where they are on the map.
 
 ```javascript
 const codsworthNames = require('clean-codsworth-names')
@@ -96,14 +99,14 @@ $ node fakes.js
   { name: 'Abram', x: 210, y: 541 } ]
 ```
 
-While we're at it, let's give each of these players a unique ID and provide
-an adjective for their name (e.g. Crazy Dave):
+Give each of these players a unique ID and provide
+an adjective for their name (for example, Crazy Dave):
 
 ```bash
 npm install --save uuid adjectives
 ```
 
-Go ahead and `require` these libraries and modify `newPlayer`:
+No we'll `require` these libraries and modify `newPlayer`:
 
 ```javascript
 const uuid = require('uuid')
@@ -136,12 +139,12 @@ $ node fakes.js
   { name: 'Small Abram', x: 223, y: 1163 } ]
 ```
 
-## Going on a Random Walk
+## Go on a random walk
 
-How could we simulate players moving?
+How can we simulate players moving?
 
-By taking our players on a [random walk](https://en.wikipedia.org/wiki/Random_walk).
-On each iteration of our simulation, we'll add 1, 0, or -1 to the player's x
+By taking them on a [random walk](https://en.wikipedia.org/wiki/Random_walk).
+On each iteration of the simulation, we'll add 1, 0, or -1 to the player's x
 and y positions.
 
 ![let's go on a stroll](http://i.imgur.com/LeTMQV9.png)
@@ -150,7 +153,7 @@ There are a few ways to do this and we'll rely on some mathematical properties t
 make this fast.
 
 We can randomly acquire 0 and 1 by using `Math.round(Math.random())`. To get -1,
-we can use the mathematical property that `cos(π) = -1` and `cos(0) = 1`. Multiply
+use the mathematical property that `cos(π) = -1` and `cos(0) = 1`. Multiply
 that by `Math.round(Math.random())` and we have a nice little formula for generating
 -1, 0, and 1.
 
@@ -203,25 +206,25 @@ npm install --save @reactivex/rxjs
 
 ![Join the rabbit](http://i.imgur.com/dXkeqKA.png)
 
-If you've worked with JavaScript in the frontend (or the backend for that matter),
+If you've worked with JavaScript in the front end (or the back end for that matter),
 you've gotten used to these core Objects:
 
 <table>
-   <th></th><th>Single return value</th><th>Mutiple return values</th>
+   <th></th><th>Single return value</th><th>Multiple return values</th>
    <tr>
       <td>Pull/Synchronous/Interactive</td>
-      <td>`Object`</td>
-      <td>Iterables (`Array` | `Set` | `Map` | `Object`)</td>
+      <td>Object</td>
+      <td>Iterables (Array | Set | Map | Object)</td>
    </tr>
    <tr>
       <td>Push/Asynchronous/Reactive</td>
-      <td>`Promise`</td>
+      <td>Promise</td>
       <td>????</td>
    </tr>
 </table>
 
-One of my favorite additions to JavaScript is the Promise. It makes a lot of
-asynchronous code really clean, especially with Promise chains.
+One of my favorite additions to JavaScript is the `Promise`. It makes a lot of
+asynchronous code really clean, especially with `Promise` chains.
 
 ```javascript
 fetch('/players.json')
@@ -236,42 +239,27 @@ the intermediate values. In the end we'd have to fall back on `createEvent`/`Eve
 
 On top of that, we usually want to perform filtering and routing based on those
 messages for separate consumers of the data. What we really need is a stream
-of messages that we can operate on like an Array, similar to how we
+of messages that we can operate on like an `Array`, similar to how we
 created new players:
 
 ```
 const players = codsworthNames.map(newPlayer)
 ```
 
-There just had to be something to fill that missing piece of the table:
+There just *has* to be something to fill that missing piece of the table. Turns out,
+there's one more data type to come to a JavaScript near you: `Observable`
 
 <table>
-   <th></th><th>Single return value</th><th>Mutiple return values</th>
+   <th></th><th>Single return value</th><th>Multiple return values</th>
    <tr>
       <td>Pull/Synchronous/Interactive</td>
-      <td>`Object`</td>
-      <td>Iterables (`Array` | `Set` | `Map` | `Object`)</td>
+      <td>Object</td>
+      <td>Iterables (Array | Set | Map | Object)</td>
    </tr>
    <tr>
       <td>Push/Asynchronous/Reactive</td>
-      <td>`Promise`</td>
-      <td>????</td>
-   </tr>
-</table>
-
-Turns out, there's one more hoping to come to a JavaScript near you: `Observable`
-
-<table>
-   <th></th><th>Single return value</th><th>Mutiple return values</th>
-   <tr>
-      <td>Pull/Synchronous/Interactive</td>
-      <td>`Object`</td>
-      <td>Iterables (`Array` | `Set` | `Map` | `Object`)</td>
-   </tr>
-   <tr>
-      <td>Push/Asynchronous/Reactive</td>
-      <td>`Promise`</td>
-      <td>`Observable`</td>
+      <td>Promise</td>
+      <td>Observable</td>
    </tr>
 </table>
 
