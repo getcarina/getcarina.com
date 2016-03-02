@@ -194,6 +194,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
 * [Carina documentation]({{ site.baseurl }}/docs/)
 * If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+* [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
 ### Next step
 

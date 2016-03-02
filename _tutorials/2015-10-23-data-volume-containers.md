@@ -5,7 +5,7 @@ date: 2015-10-23
 permalink: docs/tutorials/data-volume-containers/
 description: Use data volume containers to share data
 docker-versions:
-  - 1.8.3
+  - 1.10.1
 topics:
   - docker
   - intermediate
@@ -133,7 +133,7 @@ There is no output from the `docker cp` (copy) command. The output of the `ls` c
 Delete the DVC and the MySQL containers. The `--volumes` flag removes the volumes associated with the DVC from the host.
 
 ```bash
-$ docker rm --force mysql56
+$ docker rm --force --volumes mysql56
 mysql56
 $ docker rm --force --volumes data
 data

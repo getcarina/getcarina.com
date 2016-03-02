@@ -103,9 +103,10 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 * [Redis Quick Start](http://redis.io/topics/quickstart)
 * [Redis Security](http://redis.io/topics/security)
+* [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
 ### Next steps
 
-If you want Redis to listen only on the internal, multi-tenant network within Carina, read [Communicate between containers over the ServiceNet internal network]({{ site.baseurl }}/docs/tutorials/servicenet/).
+If you want to store your data in a data volume container, read [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
 If Redis isn't the data store for you, read [Use MongoDB on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb/).

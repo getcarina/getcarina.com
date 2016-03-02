@@ -44,7 +44,7 @@ This is where frameworks with layered images, including Docker, can help. Operat
 
 ### Use overlay networks
 
-At the application layer, users can employ overlay networks to provide isolation for containers to communicate across all of the segments in their clusters on Carina. An overlay network is an isolated network for containers that ensures only the services of their choice are exposed outside of their system. Isolating containers in a network can greatly decreased the attack surface of a system, which adds another layer of security. For tutorial information, see [Use overlay networks in Carina](/docs/tutorials/overlay-networks/).
+At the application layer, users can employ overlay networks to provide isolation for containers to communicate across all of the segments in their clusters on Carina. An overlay network is an isolated network for containers that ensures only the services of their choice are exposed outside of their system. Isolating containers in a network can greatly decrease the attack surface of a system, which adds another layer of security. For tutorial information, see [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/).
 
 ### Use version control
 

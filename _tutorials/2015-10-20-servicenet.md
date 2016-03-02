@@ -5,7 +5,7 @@ date: 2015-10-20
 permalink: docs/tutorials/servicenet/
 description: Learn how containers can communicate over the ServiceNet internal network
 docker-versions:
-  - 1.8.3
+  - 1.10.1
 topics:
   - docker
   - intermediate
@@ -14,7 +14,7 @@ topics:
 
 This tutorial describes using the internal network ServiceNet with Carina so that containers will only communicate only by using the internal network.
 
-**Note**: We strongly recommend using an overlay network anytime you need two or more containers to communicate. For instructions, see [Use overlay networks in Carina](/docs/tutorials/overlay-networks/).
+**Note**: We strongly recommend using an overlay network instead of exposing containers on ServiceNet anytime you need two or more containers to communicate. For instructions, see [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/).
 
 ### Prerequisite
 
@@ -233,4 +233,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-[Overlay networks]({{ site.baseurl }}/docs/tutorials/overlay-networks)
+To isolate your services from PublicNet and ServiceNet and increase your security by reducing your attack surface, read [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks).
