@@ -14,6 +14,8 @@ topics:
 
 This tutorial describes using the internal network ServiceNet with Carina so that containers will only communicate only by using the internal network.
 
+**Note**: We strongly recommend using an overlay network anytime you need two or more containers to communicate. For instructions, see [Use overlay networks in Carina](/docs/tutorials/overlay-networks/).
+
 ### Prerequisite
 
 [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) with two or more segments.
