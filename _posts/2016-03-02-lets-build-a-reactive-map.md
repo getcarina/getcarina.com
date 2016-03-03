@@ -100,13 +100,14 @@ $ node fakes.js
 ```
 
 Give each of these players a unique ID and provide
-an adjective for their name (for example, Crazy Dave):
+an adjective for their name (for example, Crazy Dave) by relying on
+two more packages: `uuid` (for unique IDs) and `adjectives` (like it says on the tin)
 
 ```bash
 npm install --save uuid adjectives
 ```
 
-No we'll `require` these libraries and modify `newPlayer`:
+Now we'll `require` these libraries and modify `newPlayer`:
 
 ```javascript
 const uuid = require('uuid')
