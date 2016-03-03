@@ -26,7 +26,7 @@ Before you begin this tutorial, be sure that you have fulfilled these prerequisi
 
     Docker Machine is not required to run virtual environments on Linux. However, if you are a Linux user, you can find instructions for installing Docker Machine [the Docker website](https://docs.docker.com/machine/install-machine/).
 
-* You have installed [VirtualBox 4.3.28](https://www.virtualbox.org/wiki/Downloads) or later.
+* You have installed the latest version of [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or later.
 
 * You have a working terminal application.
 
