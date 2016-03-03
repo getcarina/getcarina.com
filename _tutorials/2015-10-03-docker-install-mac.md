@@ -5,8 +5,7 @@ date: 2015-10-03
 permalink: docs/tutorials/docker-install-mac/
 description: Learn how to install Docker on Mac OS X
 docker-versions:
-  -1.8.1
-  -1.8.2
+  -1.10.1
 topics:
   -docker
   -beginner
