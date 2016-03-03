@@ -5,7 +5,7 @@ date: 2015-10-02
 permalink: docs/tutorials/docker-install-windows/
 description: Learn how to install Docker on Windows
 docker-version:
-  -1.8.2
+  -1.10.1
 topics:
   -docker
   -beginner
