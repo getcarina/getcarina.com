@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: get glib, game github"
+title: "Weekly news: Get glib, game GitHub"
 date: 2016-03-04 13:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
@@ -16,25 +16,23 @@ categories:
 authorIsRacker: true
 ---
 
-Round things up, round things out, it's time to share what's happening in carina land.
+Round things up, round things out, it's time to share what's happening in Carina land.
 
 ## glibc and OpenSSL
 
-TL;DR - Re-roll every image you are running
-
 On February 16, Google [posted about a buffer overflow in glibc that can result in remote execution](https://googleonlinesecurity.blogspot.com/2016/02/cve-2015-7547-glibc-getaddrinfo-stack.html). The post itself is a great read, check it out. Additionally, OpenSSL has [released new versions that address several severe security issues](https://mta.openssl.org/pipermail/openssl-announce/2016-February/000063.html).
 
-For your own safety and sanity, it's worth pulling new versions of each image you use and starting new containers.
+For your own security, we recommend pulling new versions of each image that you use and starting new containers.
 
 ## Distributed tic-tac-toe
 
-Last week Keith put together how to [build a real time game on carina]({{ site.baseurl }}/blog/build-real-time-game-carina/).
+Last week, Keith taught you how to [build a real-time game on Carina using RethinkDB]({{ site.baseurl }}/blog/build-real-time-game-carina/). Have you played yet?
 
 <img class="right" src="{% asset_path 2016-02-22-build-real-time-game-carina/web-ui.png %}" alt="Tic Tac Toe UI"/>
 
 ## Edit on GitHub for blog posts and docs
 
-You can now click "Edit" on posts and docs to get straight to the GitHub page for editing this page! Our editor told me that it was completely fine to make typos all over this pge on purpose.
+You can now click **Edit on GitHub**, on posts and articles to go straight to the GitHub page for editing, even for this page! Our editor told me that it was completely fine to make typos all over this pge on purpose.
 
 loose fragment
 
@@ -42,7 +40,7 @@ pineapples
 
 ## Reactive map building
 
-Yesterday I put out another in a series of posts on RxJS and Fallout, this time on [simulating a multiplayer map]({{ site.baseurl }}/blog/lets-build-a-reactive-map/).
+Yesterday, I put out another post in a series of posts on RxJS and Fallout, this time on [simulating a multiplayer map]({{ site.baseurl }}/blog/lets-build-a-reactive-map/). If you enjoyed going through it, [let me know](https://twitter.com/rgbkrk) if you would like to see more.
 
 ## JupyterHub on Carina
 
