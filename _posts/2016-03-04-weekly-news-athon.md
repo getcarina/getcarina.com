@@ -1,5 +1,5 @@
 ---
-title: "Weekly news"
+title: "Weekly news: get glib, game github"
 date: 2016-03-04 13:00
 comments: true
 author: Kyle Kelley <kyle.kelley@rackspace.com>
@@ -15,11 +15,34 @@ categories:
 authorIsRacker: true
 ---
 
-We've got a mix of things to share with you this week, like... A BRAND NEW CAR!?!?!?!
+Round things up, round things out, it's time to share what's happening in carina land.
 
-## Section
+## glibc
 
-<img class="right" src="{% asset_path 2015-03-04-weekly-news/right.png %}" alt="right"/>Cool text
+TL;DR - Re-roll every image you are running
+
+## Distributed tic-tac-toe
+
+Last week Keith put together how to [build a real time game on carina]({{ site.baseurl }}/blog/build-real-time-game-carina/).
+
+<img class="right" src="{% asset_path 2016-02-22-build-real-time-game-carina/web-ui.png %}" alt="Tic Tac Toe UI"/>
+
+## Edit on GitHub for blog posts and docs
+
+You can now click "Edit" on posts and docs to get straight to the GitHub page for editing this page. Our editor tolded me that it was completely fine to make typos all over this pge on purpose.
+
+loose fragment
+
+pineapples
+
+
+
+## Reactive map building
+
+## JupyterHub on Carina
+
+In the last couple of weeks we've [put together a workshop on Docker, Swarm, Carina,
+and deploying JuypterHub to Carina](https://github.com/getcarina/jupyterhub-tutorial). Check it out when you get a chance!
 
 ## User feedback
 
