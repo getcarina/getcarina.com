@@ -6,7 +6,7 @@ featured: true
 permalink: docs/tutorials/create-connect-cluster/
 description: Learn how to create and connect to a cluster in Carina so that you can start running your applications in containers
 docker-versions:
-  - 1.9.0
+  - 1.10.1
 topics:
   - docker
   - beginner
@@ -26,7 +26,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 **Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This tutorial uses the graphical user interface to create a cluster. To use the command-line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ### Prerequisite
 
@@ -64,7 +64,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.9.0 client into the credentials directory.
+1. Download the Docker 1.10.1 client into the credentials directory.
   - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.9.0) to `Downloads/mycluster`.
   - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.9.0) to `Downloads/mycluster`.
   - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.9.0.exe) to `Downloads/mycluster`.
