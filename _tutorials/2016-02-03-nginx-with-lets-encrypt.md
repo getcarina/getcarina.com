@@ -5,7 +5,7 @@ date: 2016-02-03
 permalink: docs/tutorials/nginx-with-lets-encrypt/
 description: Learn to secure an NGINX server with free TLS certificates from Let's Encrypt
 docker-versions:
-  - 1.9.1
+  - 1.10.1
 topics:
   - docker
   - intermediate
@@ -366,7 +366,7 @@ When you're confident that your infrastructure is in place with staging certific
     ```
 
     These commands produce no output when successful.
-    
+
 1. The above command cleans out your pre-production letsencrypt certificates, but it also deletes the file containing the Diffie-Hellman parameters you generated earlier. NGINX will fail to reload if this file doesn't exist, so create the Diffie-Hellman parameters again.
 
     ```bash
