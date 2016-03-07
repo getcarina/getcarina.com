@@ -214,7 +214,7 @@ Construct an NGINX container that uses the issued TLS credentials and Diffie-Hel
     ```Dockerfile
     FROM nginx
 
-    COPY nginx.conf /etc/nginx/conf.d/default.conf
+    COPY default.conf /etc/nginx/conf.d/default.conf
     COPY index.html /data/www/index.html
     ```
 
