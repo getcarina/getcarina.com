@@ -214,7 +214,7 @@ Construct an NGINX container that uses the issued TLS credentials and Diffie-Hel
     ```Dockerfile
     FROM nginx
 
-    COPY default.conf /etc/nginx/conf.d/default.conf
+    COPY nginx.conf /etc/nginx/conf.d/default.conf
     COPY index.html /data/www/index.html
     ```
 
@@ -366,7 +366,7 @@ When you're confident that your infrastructure is in place with staging certific
     ```
 
     These commands produce no output when successful.
-    
+
 1. The above command cleans out your pre-production letsencrypt certificates, but it also deletes the file containing the Diffie-Hellman parameters you generated earlier. NGINX will fail to reload if this file doesn't exist, so create the Diffie-Hellman parameters again.
 
     ```bash
