@@ -5,7 +5,7 @@ date: 2016-02-03
 permalink: docs/tutorials/nginx-with-lets-encrypt/
 description: Learn to secure an NGINX server with free TLS certificates from Let's Encrypt
 docker-versions:
-  - 1.9.1
+  - 1.10.1
 topics:
   - docker
   - intermediate
