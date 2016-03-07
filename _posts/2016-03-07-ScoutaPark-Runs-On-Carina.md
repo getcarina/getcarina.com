@@ -3,7 +3,7 @@ title: "ScoutaPark Runs Production on Carina"
 date: 2016-03-07 09:00
 comments: true
 author: Dan Sheppard <dan@scoutapark.com>
-published: false
+published: true
 excerpt: >
   Hear from ScoutaPark on how they are leveraging Carina for their production application and what excites them most about the future of Carina.
 categories:
@@ -16,6 +16,8 @@ authorIsRacker: false
 ---
 
 [ScoutaPark] (http://scoutapark.com/?utm_source=Carina&utm_medium=Blog&utm_term=Carina&utm_content=Production%20Hosting&utm_campaign=Carina%20Production) is a new application to help connect park departments and park patrons. Municipalities are slow to adopt technology and with limited budgets are frequently left with more demands than funds. This leaves a gap between what park patrons come to expect in our connected life and what these municipalities can deliver. Insert ScoutaPark. Our goal is to fill this gap between municipalities and connected users through our web and mobile application.
+
+![ScoutaPark]({% asset_path 2016-03-07-ScoutaPark-Runs-On-Carina/scoutapark.png %})
 
 ## A single deployment method
 
