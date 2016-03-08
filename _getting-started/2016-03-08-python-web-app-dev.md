@@ -3,7 +3,7 @@ title: Develop a Python web application
 author: Everett Toews <everett.toews@rackspace.com>
 date: 2016-03-08
 permalink: docs/tutorials/develop-a-python-web-application/
-description: Develop a Python web applications locally in VirtualBox and deploy it to Carina
+description: Develop a Python web application locally on VirtualBox and deploy it on Carina
 docker-versions:
   - 1.10.1
 topics:
@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial describes how to develop a Python web applications locally in VirtualBox and deploy it to Carina.
+This tutorial describes how to develop a Python web application locally on VirtualBox and deploy it on Carina with Docker Compose.
 
 The application you're going to develop is a simple guestbook. It's enough to demonstrate a basic 3 tier app. To develop the application you'll be using the following technologies:
 
@@ -31,125 +31,244 @@ This is what the final result of moving your application from VirtualBox to Cari
 * [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
+* [Install Git](https://git-scm.com/downloads)
 
-### Create a network
+### Clone the repo
 
-Use the `docker network create` command to create an overlay network.
-
-```bash
-$ docker network create mynetwork
-501e123b2904757fe9fe23cb60e64191f3764c6d42e188cb3ba7ad30d845f84b
-```
-
-The output of this command is the network ID.
-
-### Inspect a network
-
-Use the `docker network inspect` command to inspect an overlay network.
+Use `git` to clone the repo that contains all of the Compose files and application code you need.
 
 ```bash
-$ docker network inspect mynetwork
-[
-    {
-        "Name": "mynetwork",
-        "Id": "501e123b2904757fe9fe23cb60e64191f3764c6d42e188cb3ba7ad30d845f84b",
-        "Scope": "global",
-        "Driver": "overlay",
-        "IPAM": {
-            "Driver": "default",
-            "Options": null,
-            "Config": [
-                {
-                    "Subnet": "10.0.0.0/24",
-                    "Gateway": "10.0.0.1/24"
-                }
-            ]
-        },
-        "Containers": {},
-        "Options": {}
-    }
-]
+$ git clone https://github.com/getcarina/examples.git carina-examples
+Cloning into 'carina-examples'...
+remote: Counting objects: 325, done.
+remote: Compressing objects: 100% (49/49), done.
+remote: Total 325 (delta 11), reused 0 (delta 0), pack-reused 273
+Receiving objects: 100% (325/325), 54.60 KiB | 0 bytes/s, done.
+Resolving deltas: 100% (114/114), done.
+Checking connectivity... done.
 ```
 
-The output of this command is all of the details of the specified network.
+### Development on VirtualBox
 
-By default, `docker network create` creates an overlay network that has a subnet with a CIDR block of `10.0.0.0/24` and a gateway of `10.0.0.1`.
+You'll be using Docker on VirtualBox as your local development environment. A Docker Engine will be running on a virtual machine (VM) that is running on VirtualBox.
 
-### Networks and subnets
+#### Initialize the environment
 
-A subnet is a subdivision of an IP network. It defines how containers that are connected to a network are addressed. The gateway associated with the network defines how containers communicate outside of their network when they need to. By default, networks are created with a suffix of `/24`, which means that 254 IP addresses are available per network.
-
-Every time you create a network, a subnet is created with a new CIDR block. By default, the CIDR blocks are assigned by incrementing the third octet (the third number in the CIDR). For example, the first network has a `10.0.0.0/24` CIDR block, the second network has a `10.0.1.0/24` CIDR block, the third network has a `10.0.2.0/24` CIDR block, and so on.
-
-The ServiceNet CIDR block is `10.176.224.0/19`. If a container is assigned an IP address that conflicts with an IP address in the ServiceNet CIDR block, the container would experience connectivity issues or failures. However, you would have to create tens of thousands of networks using the default CIDR block incrementing scheme to get an IP address that conflicts with an IP address of ServiceNet.
-
-We recommend using the defaults of the `docker network create` command unless you need a more complex networking configuration.
-
-### Run a container not exposed to the Internet or ServiceNet
-
-1. Run a MySQL instance and specify a network by using the `--net` flag. Do _not_ publish any ports by using the `--publish` or `--publish-all` flag.
+1. When you open the Docker Quickstart Terminal for the first time, it should create a default VM. You can confirm this with the `docker-machine` command.
 
     ```bash
-    $ docker run \
-      --detach \
-      --name mysql \
-      --net mynetwork \
-      --env MYSQL_ROOT_PASSWORD=my-root-pw \
-      mysql:5.6
-    3cca18511886131f54b6edc03f1a181015735ae0e1ba5654290f3d5ebacb3313
+    $ docker-machine create --driver virtualbox default
+    Host already exists: "default"
+
+    $ docker-machine ls
+    NAME             ACTIVE   DRIVER       STATE     URL                         SWARM                   DOCKER    ERRORS
+    default          -        virtualbox   Running   tcp://192.168.99.100:2376                           v1.10.2
     ```
 
-1. Confirm that the MySQL instance is not exposed publicly
+    If the default VM wasn't already created, the `docker-machine create` command will create it.
+
+1. Source the environment for the default VM.
 
     ```bash
-    $ docker port mysql 3306
-    Error: No public port '3306/tcp' published for mysql
+    $ eval "$(docker-machine env default)"
+
+    $ env | grep DOCKER
+    DOCKER_HOST=tcp://192.168.99.100:2376
+    DOCKER_MACHINE_NAME=default
+    DOCKER_TLS_VERIFY=1
+    DOCKER_CERT_PATH=/Users/everett/.docker/machine/machines/default
     ```
 
-The MySQL instance is connected to `mynetwork` but is not exposed to the Internet or ServiceNet, which gives you an additional layer of security for your database. However, the MySQL instance is listening on its `mynetwork` overlay network IP address on port 3306 (the default port for MySQL).
+    The environment variables that were sourced into your environment configure the `docker` command line interface (CLI) to communicate with the default VM running a Docker Engine.
 
-### Run a container exposed to the Internet and ServiceNet
+#### Run the application
 
-1. Run a WordPress instance and use the `--publish 80:80` flag to expose it publicly. For this particular image, you can use the `--env WORDPRESS_DB_HOST=mysql` flag to refer to the hostname of the MySQL instance that's listening on its `mynetwork` overlay network IP address on port 3306 (the default port for MySQL).
+1. Use the `docker-compose` command to run the application.
 
     ```bash
-    $ docker run --detach \
-      --name wordpress \
-      --net mynetwork \
-      --publish 80:80 \
-      --env WORDPRESS_DB_HOST=mysql \
-      --env WORDPRESS_DB_PASSWORD=my-root-pw \
-      wordpress:4.4
-    3fdf00eb8229ee208d55a211e6823a0bc2343a546ef03f082d1cb5af7afbf74f
+    $ cd carina-examples/python-web-app
+
+    $ docker-compose up
+    Creating network "pythonwebapp_default" with the default driver
+    Creating network "pythonwebapp_backend" with the default driver
+    Building app
+    Step 1 : FROM python:3.4
+    ...
+    app_1                | DEBUG: Welcome to Carina Guestbook
+    app_1                | DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
+    app_1                | DEBUG: mysql+pymysql://guestbook-admin:my-guestbook-admin-password@pythonwebapp_db/guestbook
+    pythonwebapp_db_data exited with code 0
+    db_1                 | Initializing database
+    ...
+    db_1                 | 2016-03-08 03:36:46 1 [Note] mysqld: ready for connections.
+    db_1                 | Version: '5.6.29'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
     ```
 
-1. Confirm that the WordPress instance is exposed publicly.
+    The output is interleaved blah
+
+1. Open another terminal
 
     ```bash
-    $ docker port wordpress 80
-    146.20.68.14:80
+    $ eval "$(docker-machine env default)"
     ```
 
-    You can view the WordPress site by copying and pasting the IP address into your web browser address bar.
+1. Little bobby tables
 
-The WordPress instance is connected to `mynetwork` and is exposed to the Internet and ServiceNet. The hostname `mysql` is resolved to an IP address by using a DNS server embedded in the Docker Engine, which provides automatic service discovery for containers connected to the overlay network.
+    ```bash
+    $ cd carina-examples/python-web-app
 
-### More actions on networks
+    $ docker-compose run --rm --no-deps app python app.py create_db
+    DEBUG: Welcome to Carina Guestbook
+    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
+    DEBUG: mysql+pymysql://guestbook-admin:my-guestbook-admin-password@pythonwebapp_db/guestbook
+    DEBUG: create_db
+    ...
+    INFO: COMMIT
+    ```
 
-You can perform more actions such as listing networks, removing networks, connecting containers, and disconnecting containers. For a full reference, see [Work with network commands](https://docs.docker.com/engine/userguide/networking/work-with-networks/).
+1. View the app
 
-### Overlay networks implementation in Carina
+    ```bash
+    $ docker-machine ip default
+    192.168.99.100
+    ```
 
-The primary requirement to implement overlay networks on Docker Swarm is the use of a key-value store. The key-value store holds information about the network state that includes discovery, networks, endpoints, IP addresses, and more. For Carina, Consul is the key-value store. An instance of Consul runs in a container on each segment in your clusters. You can see these containers in the output of a `docker ps` command.
+#### Change the application
+
+1. Open `app/templates/index.html` for editing. Change "Guest" to "Ghost" everywhere. Reload browser.
+
+1. When you're ready to shutdown the application, use Ctrl+C in the terminal where you ran `docker-compose`.
+
+### Deployment on Carina
+
+You'll be using Docker Swarm on Carina as your production deployment environment.
+
+#### Initialize the environment
+
+1. Open another terminal. From when you created a cluster, yada yada yada. Source the environment for the Carina cluster.
+
+    ```bash
+    $ cd Downloads/mycluster
+
+    $ source docker.env
+    ```
+
+    If you use the `carina` CLI
+
+    ```bash
+    $ eval $(carina env mycluster)
+    ```
+
+    ```bash
+    $ env | grep DOCKER
+    DOCKER_HOST=tcp://104.130.0.205:2376
+    DOCKER_TLS_VERIFY=1
+    DOCKER_CERT_PATH=/Users/everett/.carina/clusters/everett/mycluster
+    DOCKER_VERSION=1.10.1
+    ```
+
+    The environment variables that were sourced into your environment configure the `docker` CLI to communicate with your Carina cluster.
+
+#### Build the images
+
+To be able to pull your application images to every segment on your cluster, you first need to push them to Docker Hub.
+
+1. Login to Docker Hub
+
+    ```bash
+    $ docker login
+    Username: <docker-hub-username>
+    Password:
+    WARNING: login credentials saved in /Users/everett/.docker/config.json
+    Login Succeeded
+
+    $ export DOCKER_HUB_USERNAME=<docker-hub-username>
+    ```
+
+1. Build and push the images
+
+    ```bash
+    $ cd carina-examples/python-web-app
+
+    $ declare -a images=(app db lb)
+
+    $ for image in "${images[@]}" ; do
+        IMAGE_NAME=pythonwebapp_${image}
+        docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME} ${image}
+        docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
+      done
+    Sending build context to Docker daemon 13.31 kB
+    Step 1 : FROM python:3.4
+    ...
+    latest: digest: sha256:defc0818f08cfa04fada7bfdd917a93054c833fd6c9142dc3c941689c78967e7 size: 7850
+    ```
+
+#### Run the application
+
+1. Configure env vars
+
+    ```bash
+    echo "MYSQL_USER=guestbook-admin" > pythonwebapp-mysql-prod.env
+    echo "MYSQL_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" >> pythonwebapp-mysql-prod.env
+    echo "MYSQL_ROOT_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" > pythonwebapp-mysql-root-prod.env
+    ```
+
+1. Use the `docker-compose` command to run the application.
+
+    ```bash
+    $ docker-compose --file docker-compose-prod.yml up -d
+    Creating network "pythonwebapp_default" with the default driver
+    Creating network "pythonwebapp_backend" with the default driver
+    Creating pythonwebapp_app_1
+    Creating pythonwebapp_lb
+    Creating pythonwebapp_db_data
+    Creating pythonwebapp_db
+    ```
+
+    No output is interleaved blah because `-d`
+
+1. Little bobby tables
+
+    ```bash
+    $ docker-compose --file docker-compose-prod.yml run --rm --no-deps app python app.py create_db
+    DEBUG: Welcome to Carina Guestbook
+    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
+    DEBUG: mysql+pymysql://guestbook-admin:a51892b52d2df1670a395f6ef32178edbc2b7cf9a9a664ff53db7a4e1b684124@pythonwebapp_db/guestbook
+    DEBUG: create_db
+    ...
+    INFO: COMMIT
+    ```
+
+1. View the app
+
+    ```bash
+    $ docker port pythonwebapp_lb 80
+    104.130.0.205:80
+    ```
+
+#### Change the application
+
+Now if you change the application you need to rebuild and rerun........
+
+1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere.
+
+1. Rebuild
+
+1. Rerun
+
+1. Reload browser
+
+1. When you're ready to shutdown the application, `docker-compose stop`.
+
+### Removing resources
 
 ```bash
-$ docker ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-2c226fad0713        carina/consul       "/bin/consul agent -b"   19 hours ago        Up 19 hours                             96afcb76-6483-443e-941d-df9f803a4628-n2/carina-svcd
-c715e66154c8        carina/consul       "/bin/consul agent -b"   43 hours ago        Up 43 hours                             96afcb76-6483-443e-941d-df9f803a4628-n1/carina-svcd
-```
+docker-compose ps
+docker-compose down
 
-These Consul containers are for use only by Carina and cannot be accessed by users. It's crucial that you _do not delete the Consul containers_. If you need to remove containers, it's best to do so by name (for example, `docker rm container-name-1 container-name-2`) or by status (for example, `docker rm $(docker ps -qf "status=exited")`). However, if you do accidentally delete the containers, see [How do I rebuild a cluster?]({{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster) and [What does the cluster rebuild action do?]({{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do).
+docker images
+docker rmi pythonwebapp_lb pythonwebapp_app pythonwebapp_db
+```
 
 ### Troubleshooting
 
@@ -159,12 +278,13 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Resources
 
-* [Subnetwork](https://en.wikipedia.org/wiki/Subnetwork)
-* [Classless Inter-Domain Routing (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-* [Understand Docker container networks](https://docs.docker.com/engine/userguide/networking/dockernetworks/)
-* [Get started with overlay networking (also known as multi-host networking)](https://docs.docker.com/engine/userguide/networking/get-started-overlay/)
-* [Embedded DNS server in user-defined networks](https://docs.docker.com/engine/userguide/networking/configure-dns/)
+* Carina Overview
+* DVC
+* Overlay networks
+* Nginx
 
 ### Next
+
+Let's Nginx
 
 Learn more about how to [Communicate between containers over the ServiceNet internal network]({{ site.baseurl }}/docs/tutorials/servicenet/)
