@@ -52,6 +52,8 @@ Checking connectivity... done.
 
 You'll be using Docker on VirtualBox as your local development environment. This was installed as part of the Docker Toolbox, see the [Prerequisites](#prerequisites).
 
+![VirtualBox]({% asset_path python-web-app-dev/virtualbox.png %})
+
 #### Initialize the environment
 
 1. When you open the Docker Quickstart Terminal for the first time, it should create a default VM. You can confirm this with the `docker-machine` command.
@@ -150,6 +152,8 @@ You'll be using Docker on VirtualBox as your local development environment. This
 You'll be using Docker Swarm cluster on Carina as your production deployment environment. This was created as part of creating and connecting to a cluster, see the [Prerequisites](#prerequisites).
 
 When you are satisfied with your development and testing in your local development environment, you can run your application on Carina to share it with the world.
+
+![Carina]({% asset_path python-web-app-dev/carina.png %})
 
 #### Initialize the environment
 
