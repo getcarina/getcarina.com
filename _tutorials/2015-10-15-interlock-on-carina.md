@@ -35,7 +35,7 @@ Normally for interlock you need to mount a volume with certificates, set TLS opt
 Run an interlock container that uses the `example` plug-in to simply echo that an event has been received.
 
 ```bash
-$ docker run carina/interlock --username $USERNAME  --api-key $APIKEY --clustername boatie --plugin example start
+$ docker run carina/interlock --username $CARINA_USERNAME  --api-key $CARINA_APIKEY --clustername boatie --plugin example start
 time="2015-10-19T01:22:59Z" level=info msg="interlock running version=0.3.2 (2df2d23)"
 time="2015-10-19T01:22:59Z" level=info msg="loading plugin name=example version=0.1"
 time="2015-10-19T01:22:59Z" level=info msg="[interlock] dispatching event to plugin: name=example version=0.1"
