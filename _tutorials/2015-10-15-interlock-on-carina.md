@@ -13,6 +13,8 @@ topics:
 
 This tutorial describes [interlock](https://github.com/ehazlett/interlock), which you can use to load balance your containers across a Carina cluster, send statistics to Carbon, or perform other Carina event-driven operations.
 
+Note: This tutorial uses interlock version 0.3.2. It has been tested with `docker@1.9.0-1.10.2` and `swarm@1.0.0-1.1.0`.
+
 ### Prerequisites
 
 * [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) named `boatie`
