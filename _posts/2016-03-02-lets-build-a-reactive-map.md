@@ -18,7 +18,7 @@ categories:
 authorIsRacker: true
 ---
 
-![](https://cloud.githubusercontent.com/assets/836375/11960060/5b49ac9c-a896-11e5-8e50-da9ce4330e1d.gif)
+![reactive map](https://cloud.githubusercontent.com/assets/836375/11960060/5b49ac9c-a896-11e5-8e50-da9ce4330e1d.gif)
 
 We've done [Pip-Boy discovery and relay]({{site.baseurl}}/blog/fallout-4-service-discovery-and-relay/) and
 [created new libraries]({{site.baseurl}}/blog/decoding-the-pipboy-database-with-vault-community/).
