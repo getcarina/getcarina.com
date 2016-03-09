@@ -141,7 +141,7 @@ You'll be using Docker on VirtualBox as your local development environment. This
 
 #### Change the application
 
-1. Open `app/templates/index.html` for editing. Change "Guest" to "Ghost" everywhere.
+1. Open `app/templates/index.html` for editing. Change "Guest" to "Ghost" everywhere with a case-sensitive find and replace.
 
 1. Reload your web browser.
 
@@ -280,7 +280,7 @@ To be able to pull your application images to every segment on your cluster, you
 
 If you change the application in your development environment and you want to see those changes in your production environment, you need to rebuild your images and rerun your containers.
 
-1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere.
+1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere with a case-sensitive find and replace.
 
 1. [Build and push the images](#build-and-push-images).
 
