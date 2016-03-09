@@ -202,6 +202,7 @@ To be able to pull your application images to every segment on your cluster, you
     ```
 
 <a id="build-and-push-images"></a>
+
 1. Build and push the images
 
     ```bash
@@ -235,6 +236,7 @@ To be able to pull your application images to every segment on your cluster, you
     These environment variables are written to `env` files so they can be reused in the future.
 
 <a id="docker-compose-up"></a>
+
 1. Use the `docker-compose up` command to run the application. The `--file` flag is used to specify the production environment and the `-d` flag is used to detach from the run so closing your terminal does not kill the application.
 
     ```bash
