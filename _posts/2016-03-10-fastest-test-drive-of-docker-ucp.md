@@ -46,7 +46,7 @@ split-brain. When you work with Docker and Docker Swarm, a 'node' is a Swarm Hos
 (cluster). A swarm host can host multiple applications and many containers. In
 UCP this is both labeled as nodes and clusters / controllers:
 
-![Swarms]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-swarms.png%})
+![Swarms]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-clusters.png%})
 
 With Carina a cluster can host multiple Swarm nodes (segments) - the segments within
 a cluster each get their own Swarm controller, network, disk space, etc. For
