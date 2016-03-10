@@ -106,7 +106,15 @@ docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
 
 ![Boom]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/boom.gif%})
 
+This time to launch is not just the work of the tooling, or control plane, or
+the higher level portions of Carina. The data plane (see [Overview of Carina])
+work done under the covers to provide a lightning fast environment both in
+terms of provisioning times and overall performance.
 
+So thanks goes to them.
+
+
+[Overview of Carina]: https://getcarina.com/docs/overview-of-carina/
 [Grab the CLI, API key]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
 [Download Carina credentials]: https://getcarina.com/docs/references/carina-credentials/
 [Evaluation installation and quickstart]: https://docs.docker.com/ucp/evaluation-install/
