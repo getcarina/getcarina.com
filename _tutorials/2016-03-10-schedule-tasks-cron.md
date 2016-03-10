@@ -3,7 +3,7 @@ title: Schedule tasks with a cron container
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
 date: 2016-03-10
 permalink: docs/tutorials/schedule-tasks-cron/
-description: Create a small container
+description: Create a small container to run other containers or commands on a regular schedule
 docker-versions:
   - 1.10.1
 topics:
@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial explains how to configure a container that runs arbitrary tasks on a schedule. Scheduled tasks are commonly used to run backups, clean up temporary files, or perform other routine maintenance.
+This tutorial explains how to configure a container that runs the ubiquitous job scheduler [`cron`](https://en.wikipedia.org/wiki/Cron) to perform arbitrary tasks on a schedule. Scheduled tasks are commonly used to run backups, clean up temporary files, or perform other routine maintenance.
 
 ### Prerequisites
 
