@@ -109,7 +109,9 @@ Here's a better one:
 
 ## At the end of the day
 
-Ultimately, if you have a running Swarm - this is what you need to start UCP:
+Ultimately, if you have a running Swarm - this is what you need to start UCP on
+the swarm host (note: UCP also contains its own self-managed swarm host but that
+  happily coexists and links within the Carina Swarm hosts):
 
 ```
 docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
