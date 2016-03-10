@@ -1,11 +1,11 @@
 ---
 title: "Weekly news: Get glib, game GitHub"
-date: 2016-03-04 13:00
+date: 2016-03-11 13:00
 comments: true
-author: Kyle Kelley <kyle.kelley@rackspace.com>
+author: Kim Tryce <kim.tryce@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup we invite you to handle security issues with glibc and SSL (#hugops), build a distributed realtime tic-tac-toe game, edit this post, simulate
+  In this week's update we talk about Docker 1.10.2, provide information about our incidents we had last week, we invite you to handle security issues with glibc and SSL (#hugops), build a distributed realtime tic-tac-toe game, edit this post, simulate
   multiplayer users with Observables, and learn how to launch JupyterHub.
 categories:
  - Docker
@@ -16,7 +16,16 @@ categories:
 authorIsRacker: true
 ---
 
-Round things up, round things out, it's time to share what's happening in Carina land.
+The latest and greatest from the Carina team!
+
+## Docker 1.10.2
+
+## Incidents
+On March 3rd and March 4th we had a couple incidents which impacted our customers.  This would be a good time to mention our [status page] (https://carinabyrackspace.statuspage.io/) where customers can view our system status as well as past incidents.  
+
+March 3rd we identified a network infrastructure issue causing duplicate IP addresses being assigned and notified our customers via status page and [email](http://us1.campaign-archive2.com/?u=2fe5f69d348829ecc7964ead6&id=ca3c207609).  March 4th we encountered a cluster build failure related to instance maintenance which was quickly resolved.  
+
+A friendly reminder: If you do have any issues please help us help you and [create an issue.] (https://github.com/getcarina/feedback/issues)
 
 ## glibc and OpenSSL
 
