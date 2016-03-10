@@ -5,7 +5,7 @@ comments: true
 author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
 excerpt: >
-  Want to take Docker Universal Control plane for a test drive in under two
+  Want to take Docker Universal Control Plane (UCP) for a test drive in under two
   minutes? We have you covered. Carina could be the fastest way for you to
   experiment with the new management GUI from Docker.
 categories:
@@ -21,39 +21,38 @@ authorIsRacker: true
 {{ page.excerpt }}
 
 The Carina team is always experimenting with new technology - from management UIs such as
-[shipyard], [tutum], and others to service discovery tools like etcd and consul. So when
-Docker acquired Tutum we were pretty excited to see what came of it. The result
+[shipyard] and [tutum] to service discovery tools like etcd and consul. So when
+Docker acquired tutum we were pretty excited to see what came of it. The result
 was [Docker Universal Control Plane].
 
 ## What is UCP?
 
-You can take a look at the [Docker Universal Control Plane] and the demo - it's
-a great high level view and video. In a nutshell, UCP is a on-or-off premises
-management UI for Dockerized applications & infrastructure. It nits together
-multiple swarm hosts (nodes) into a single view with metrics tracking, deployment
-options, and more.
+[Docker Universal Control Plane] (UCP) is an on-or-off premises management UI for
+Dockerized applications and infrastructure. It knits together multiple swarm hosts
+(nodes) into a single view with metrics tracking, deployment options, and more.
 
-An interesting aspect of UCP is that it's very close to the original [tutum] UI
-and exposes a close to one-to-one mapping of the Docker command line options when
-managing containers, volumes and networks. Take a look:
+An interesting aspect of UCP is that it's very close to the original [tutum] UI and exposes
+an almost one-to-one mapping of the Docker command-line options when you are
+managing containers, volumes, and networks. Take a look:
 
 ![Landing]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-landing.png%})
 
 ![Containers]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-container.png%})
 
-**A Note about Terminology**: As an aside, there's a bit of terminology
-split-brain. When you work with Docker and Docker Swarm, a 'node' is a Swarm Host
-(cluster). A swarm host can host multiple applications and many containers. In
-UCP this is both labeled as nodes and clusters / controllers:
+**A Note about Terminology**: As an aside, there's a bit of terminology disconnect. When
+you work with Docker and Docker Swarm, a node is a Swarm host (cluster). A Swarm
+host can host multiple applications and many containers. In most cases nodes/hosts
+are on different physical or virtual machines. In UCP, this is labeled both as
+nodes and clusters or controllers.
 
 ![Swarms]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-clusters.png%})
 
-With Carina a cluster can host multiple Swarm nodes (segments) - the segments within
-a cluster each get their own Swarm controller, network, disk space, etc. For
-more see: [Understanding how Carina uses Docker Swarm].
+With Carina, a cluster can host multiple Swarm nodes (segments). Each segment within
+a cluster gets its own Swarm controller, network, disk space, and so on. For more
+information, see U[Understanding how Carina uses Docker Swarm].
 
 The short version is that UCP is a great start and offering from Docker especially
-as it maintains coherency with the command line Docker/Swarm/Machine tool set.
+because it maintains coherency with the command line Docker/Swarm/Machine tool set.
 
 ## Test drives in under two minutes.
 
@@ -62,28 +61,42 @@ take a peek at the [Evaluation installation and quickstart] document there's
 roughly 11 sections with a lot of sub-sections. Summarized these are:
 
 1. Overview
-2. Setting things up with Docker Machine
-3. the UCP tool
-4. Deploying UCP
-5. Adding swarm nodes
-6. UI walkthrough
+2. Get a license for UCP (Docker website)
+3. Setting things up with Docker Machine
+4. The UCP tool
+5. Deploying UCP
+6. Adding Swarm nodes
+7. UI walkthrough
 8. Download the credentials bundle (close to [Download Carina credentials]!)
 9. Deploying with the CLI
 
 There's a lot in there - mostly around setting up machine. Carina allows you
 to cut those instructions to:
 
-1. Sign up for Carina (free) (assuming you have docker installed)
-2. [Grab the CLI, API key] (assuming you have docker installed)
+1. Get a license for UCP (Docker website)
+1. Sign up for Carina (free)
+2. [Grab the CLI & API key] (assuming you have Docker installed)
 3. Run a 10 line Bash script.
 
 This gets you to the UI in under two minutes:
 
 <script src="https://gist.github.com/jnoller/2898492bd9f45d3d49ca.js"></script>
 
-Additionally, since **you've already loaded the environment** (as part of the
-shell script) via `eval "$(carina env ucp)"` your CLI tooling is already
+Additionally, because **you've already loaded the environment** (as part of the
+shell script) via `eval "$(carina env ucp)"`, your CLI tooling is already
 configured!
+
+Once you go to the url provided:
+
+```
+Login as "admin"/(your admin password) to UCP at https://172.99.79.193:443
+```
+
+Upload the UCP license as prompted you got for UCP from the Docker website.
+
+* *Do I need to setup the UCP stuff attached to my docker account?*: Yes!
+* *Do I care about the trusted registry suggest?*: Not for the demo/trial.
+
 
 Here's the dumb script:
 
@@ -96,7 +109,7 @@ Here's a better one:
 
 ## At the end of the day
 
-Ultimately, if you have a running Swarm - this is what you need:
+Ultimately, if you have a running Swarm - this is what you need to start UCP:
 
 ```
 docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
@@ -108,14 +121,14 @@ docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
 
 This time to launch is not just the work of the tooling, or control plane, or
 the higher level portions of Carina. The data plane (see [Overview of Carina])
-work done under the covers to provide a lightning fast environment both in
+work done under the covers provides a lightning fast environment both in
 terms of provisioning times and overall performance.
 
-So thanks goes to them.
+So thanks goes to the data plane team for many months of hard work.
 
 
 [Overview of Carina]: https://getcarina.com/docs/overview-of-carina/
-[Grab the CLI, API key]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
+[Grab the CLI & API key]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
 [Download Carina credentials]: https://getcarina.com/docs/references/carina-credentials/
 [Evaluation installation and quickstart]: https://docs.docker.com/ucp/evaluation-install/
 [Understanding how Carina uses Docker Swarm]: https://getcarina.com/docs/concepts/docker-swarm-carina/
