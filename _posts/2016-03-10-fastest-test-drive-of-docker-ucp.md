@@ -75,7 +75,7 @@ to cut those instructions to:
 
 1. Get a license for UCP (Docker website)
 1. Sign up for Carina (free)
-2. [Grab the CLI & API key] (assuming you have Docker installed)
+2. [Grab the CLI] & API key (assuming you have Docker installed)
 3. Run a 10 line Bash script.
 
 This gets you to the UI in under two minutes:
@@ -128,7 +128,7 @@ So thanks goes to the data plane team for many months of hard work.
 
 
 [Overview of Carina]: https://getcarina.com/docs/overview-of-carina/
-[Grab the CLI & API key]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
+[Grab the CLI]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
 [Download Carina credentials]: https://getcarina.com/docs/references/carina-credentials/
 [Evaluation installation and quickstart]: https://docs.docker.com/ucp/evaluation-install/
 [Understanding how Carina uses Docker Swarm]: https://getcarina.com/docs/concepts/docker-swarm-carina/
