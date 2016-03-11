@@ -75,31 +75,14 @@ back-ends are used in the the Docker ecosystem:
 - Consul
 
 You can even use a static list of IP addresses or IP address ranges. With
-Carina, however, the only supported option is Hosted Discovery with Docker Hub.
-Each cluster is assigned its own Discovery token ID, and hosts use Docker Hub
-for service discovery.
+Carina, we use Consul for service discovery. Each cluster gets a separate
+Consul cluster with each of its agents identified by a unique private key. When
+Carina creates a new segment for a cluster, the Swarm agent is given the local
+Consul agent in order for that segmet to become a part of the Swarm cluster.
 
-#### Retrieve your Swarm discovery token
+For information about Swarm discovery backends, see the
+[Docker Swarm discovery documentation](https://docs.docker.com/swarm/discovery/).
 
-To retrieve the discovery token for a cluster, run the following command:
-
-```
-$ docker inspect -f "{% raw %}{{index .Config.Cmd 6}}{% endraw %}" $(docker ps -aq -f name=swarm-manager -n 1)
-token://<cluster_id>
-```
-
-This command inspects the `Cmd` configuration of the first container that it
-finds named `swarm-manager`. All you are doing here is retrieving the original
-command used to provision the manager container, since it contains the cluster ID.
-
-To list the host IP addresses in your cluster, run the following command:
-
-```
-$ swarm list token://<cluster_id>
-```
-
-For information about how to install and use the `swarm` binary, see the
-[installation instructions on the Docker Swarm GitHub site](https://github.com/docker/swarm#installation-for-swarm-developers).
 
 ### Scheduling strategies
 
