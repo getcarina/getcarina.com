@@ -5,7 +5,7 @@ date: 2016-03-08
 permalink: docs/tutorials/develop-a-python-web-application/
 description: Develop a Python web application locally on VirtualBox and deploy it on Carina
 docker-versions:
-  - 1.10.1
+  - 1.10.2
 topics:
   - docker
   - intermediate
@@ -28,14 +28,14 @@ This is what the final result of moving your application from VirtualBox to Cari
 
 ### Prerequisites
 
-* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+ * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
-* [Install Git](https://git-scm.com/downloads)
 
 ### Clone the repo
 
-Use `git` to clone the repo that contains all of the Compose files and application code you need.
+Use `git` to clone the repo that contains all of the Compose files and application code you need to a location somewhere under your home directory.
 
 ```bash
 $ git clone https://github.com/getcarina/examples.git carina-examples
@@ -121,13 +121,8 @@ You'll be using Docker on VirtualBox as your local development environment. This
     ```bash
     $ cd carina-examples/python-web-app
 
-    $ docker-compose run --rm --no-deps app python app.py create_db
-    DEBUG: Welcome to Carina Guestbook
-    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
-    DEBUG: mysql+pymysql://guestbook-admin:my-guestbook-admin-password@pythonwebapp_db/guestbook
-    DEBUG: create_db
-    ...
-    INFO: COMMIT
+    $ docker-compose run -d --rm --no-deps app python app.py create_db
+    pythonwebapp_app_run_1
     ```
 
 1. View the application.
@@ -157,21 +152,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment
 
-1. Open a new terminal.
-
-    If you used the GUI to create your cluster, source the environment variables with these commands.
-
-    ```bash
-    $ cd Downloads/mycluster
-
-    $ source docker.env
-    ```
-
-    If you used the `carina` CLI to create your cluster, source the environment variables with this commands.
-
-    ```bash
-    $ eval $(carina env mycluster)
-    ```
+1. Open a new terminal and initialize as per the instructions for the [Quickstart Terminal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal)
 
 1. Check your environment
 
@@ -180,7 +161,7 @@ When you are satisfied with your development and testing in your local developme
     DOCKER_HOST=tcp://104.130.0.205:2376
     DOCKER_TLS_VERIFY=1
     DOCKER_CERT_PATH=/Users/everett/.carina/clusters/everett/mycluster
-    DOCKER_VERSION=1.10.1
+    DOCKER_VERSION=1.10.2
     ```
 
     The environment variables that were sourced into your environment configure the `docker` CLI to communicate with your Carina cluster.
@@ -229,8 +210,8 @@ To be able to pull your application images to every segment on your cluster, you
 
     ```bash
     echo "MYSQL_USER=guestbook-admin" > pythonwebapp-mysql-prod.env
-    echo "MYSQL_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" >> pythonwebapp-mysql-prod.env
-    echo "MYSQL_ROOT_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" > pythonwebapp-mysql-root-prod.env
+    echo "MYSQL_PASSWORD=my-random-password" >> pythonwebapp-mysql-prod.env
+    echo "MYSQL_ROOT_PASSWORD=my-random-root-password" > pythonwebapp-mysql-root-prod.env
     ```
 
     These environment variables are written to `env` files so they can be reused in the future.
@@ -258,13 +239,8 @@ To be able to pull your application images to every segment on your cluster, you
     Use `docker-compose` to run the `create_db` function from your app to initialize the database.
 
     ```bash
-    $ docker-compose --file docker-compose-prod.yml run --rm --no-deps app python app.py create_db
-    DEBUG: Welcome to Carina Guestbook
-    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
-    DEBUG: mysql+pymysql://guestbook-admin:a51892b52d2df1670a395f6ef32178edbc2b7cf9a9a664ff53db7a4e1b684124@pythonwebapp_db/guestbook
-    DEBUG: create_db
-    ...
-    INFO: COMMIT
+    $ docker-compose --file docker-compose-prod.yml run -d --rm --no-deps app python app.py create_db
+    pythonwebapp_app_run_1
     ```
 
 1. View the application.
@@ -282,7 +258,7 @@ If you change the application in your development environment and you want to se
 
 1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere with a case-sensitive find and replace.
 
-1. [Build and push the images](#build-and-push-images).
+1. [Build and push the images](#build-and-push-images). You only need to build and push the images you've changed.
 
 1. [Use the `docker-compose up` command to run the application](#docker-compose-up).
 
