@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial explains how to configure a container that runs the ubiquitous job scheduler [`cron`](https://en.wikipedia.org/wiki/Cron) to perform arbitrary tasks on a schedule. Scheduled tasks are commonly used to run backups, clean up temporary files, or perform other routine maintenance.
+This tutorial explains how to configure a container that runs the ubiquitous job scheduler [cron](https://en.wikipedia.org/wiki/Cron) to perform arbitrary tasks on a schedule. Scheduled tasks are commonly used to run backups, clean up temporary files, or perform other routine maintenance.
 
 ### Prerequisites
 
@@ -24,15 +24,17 @@ Before you begin, you need to be able to [create and connect to a Carina cluster
     ```bash
     mkdir -p tasks/{15min,hourly,daily,weekly,monthly}
     ```
-1. Create a file named `hello-world` in the `tasks/15min` folder, with the following contents:
+1. Create a file named `get-servicenet-ip` in the `tasks/15min` folder, with the following contents:
 
     ```bash
     #!/bin/sh
 
-    docker run --rm hello-world
+    echo "Public IP: $(docker run --rm --net=host racknet/ip service ipv4)"
     ```
 
-    This very simple shell script will run the official [`hello-world`](https://hub.docker.com/_/hello-world/) Docker image. Because you created the file in `tasks/15min/`, cron will run this script every 15 minutes. You can place files in the other directories you created to have them run every hour, day, week, or month as the names of each directory indicate.
+    This very simple shell script will run the [`racknet/ip`](https://hub.docker.com/r/racknet/ip/) Docker image and display the ServiceNet address of the node on which it runs. Because you created the file in `tasks/15min/`, cron will run this script every 15 minutes. You can place files in the other directories you created to have them run every hour, day, week, or month as the names of each directory indicate.
+
+    **Caution:** Later, When you add your own files to the directories in `tasks/`, be sure that they don't have filename extensions. This implementation of cron will not run files that have filename extensions.
 
 1. Create a file named `Dockerfile` with the following contents:
 
@@ -81,7 +83,7 @@ docker run \
 cron
 ```
 
-Docker will return the ID of the newly created container. The cron container will now run forever (hopefully) and run the `hello-world` image once every 15 minutes.
+Docker will return the ID of the newly created container. The cron container will now run forever (hopefully) and run the `racknet/ip` image once every 15 minutes.
 
 ### Troubleshooting
 
