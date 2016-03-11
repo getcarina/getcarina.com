@@ -52,7 +52,7 @@ The output of this `docker create` command is the container ID.
 
 ### Use a DVC
 
-Run a MySQL instance container that mounts the volume inside the DVC. The `--volumes-from <dataVolueContainerName>` flag mounts all of the volumes from the DVC. You can specify this flag multiple times to mount volumes from multiple DVCs. In the following example, you mount the volume located at `/var/lib/mysql` inside the `data` container. All of the data files used by MySQL in this container will be stored there.
+Run a MySQL instance container that mounts the volume inside the DVC. The `--volumes-from <dataVolumeContainerName>` flag mounts all of the volumes from the DVC. You can specify this flag multiple times to mount volumes from multiple DVCs. In the following example, you mount the volume located at `/var/lib/mysql` inside the `data` container. All of the data files used by MySQL in this container will be stored there.
 
 ```bash
 $ docker run --detach \
