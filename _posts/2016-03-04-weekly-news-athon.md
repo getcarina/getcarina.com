@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Get glib, game GitHub"
+title: "Weekly news: Docker UCP, 1.10.2, glibc, and games"
 date: 2016-03-11 13:00
 comments: true
 author: Kim Tryce <kim.tryce@rackspace.com>
