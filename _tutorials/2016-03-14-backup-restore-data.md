@@ -94,7 +94,7 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --zip > my-local-backup.tar.gz
     ```
 
-    This adds all the contents of `/backups/` from your data volume container to compressed tar archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
+    This adds all the contents of `/backups/` from your data volume container to a compressed <a href="https://en.wikipedia.org/wiki/Tar_(computing)"><code>tar</code></a> archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
 1. _(Optional)_ Back up the database dump to Rackspace Cloud Files. If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
 
