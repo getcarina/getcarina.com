@@ -30,8 +30,8 @@ This is what the final result of moving your application from VirtualBox to Cari
 
 * [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+ * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
-* [Install Git](https://git-scm.com/downloads)
 
 ### Clone the repo
 
@@ -121,13 +121,8 @@ You'll be using Docker on VirtualBox as your local development environment. This
     ```bash
     $ cd carina-examples/python-web-app
 
-    $ docker-compose run --rm --no-deps app python app.py create_db
-    DEBUG: Welcome to Carina Guestbook
-    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
-    DEBUG: mysql+pymysql://guestbook-admin:my-guestbook-admin-password@pythonwebapp_db/guestbook
-    DEBUG: create_db
-    ...
-    INFO: COMMIT
+    $ docker-compose run -d --rm --no-deps app python app.py create_db
+    pythonwebapp_app_run_1
     ```
 
 1. View the application.
@@ -167,6 +162,8 @@ When you are satisfied with your development and testing in your local developme
     $ source docker.env
     ```
 
+    **Note**: On Windows, adjust the `DOCKER_CERT_PATH` to use the proper file path separators. For example, `export DOCKER_CERT_PATH=C:\\Users\\everett\\Downloads\\mycluster`
+
     If you used the `carina` CLI to create your cluster, source the environment variables with this commands.
 
     ```bash
@@ -201,6 +198,8 @@ To be able to pull your application images to every segment on your cluster, you
     $ export DOCKER_HUB_USERNAME=<docker-hub-username>
     ```
 
+    **Note**: On Windows, specify all of the information immediately for the `docker login` command. For example, `docker login -u <docker-hub-username> -p <docker-hub-password> -e email@example.com`
+
 <a id="build-and-push-images"></a>
 
 1. Build and push the images
@@ -229,8 +228,8 @@ To be able to pull your application images to every segment on your cluster, you
 
     ```bash
     echo "MYSQL_USER=guestbook-admin" > pythonwebapp-mysql-prod.env
-    echo "MYSQL_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" >> pythonwebapp-mysql-prod.env
-    echo "MYSQL_ROOT_PASSWORD=$(hexdump -v -e '1/1 "%.2x"' -n 32 /dev/random)" > pythonwebapp-mysql-root-prod.env
+    echo "MYSQL_PASSWORD=my-random-password" >> pythonwebapp-mysql-prod.env
+    echo "MYSQL_ROOT_PASSWORD=my-random-root-password" > pythonwebapp-mysql-root-prod.env
     ```
 
     These environment variables are written to `env` files so they can be reused in the future.
@@ -258,13 +257,8 @@ To be able to pull your application images to every segment on your cluster, you
     Use `docker-compose` to run the `create_db` function from your app to initialize the database.
 
     ```bash
-    $ docker-compose --file docker-compose-prod.yml run --rm --no-deps app python app.py create_db
-    DEBUG: Welcome to Carina Guestbook
-    DEBUG: The log statement below is for educational purposes only. Do *not* log credentials.
-    DEBUG: mysql+pymysql://guestbook-admin:a51892b52d2df1670a395f6ef32178edbc2b7cf9a9a664ff53db7a4e1b684124@pythonwebapp_db/guestbook
-    DEBUG: create_db
-    ...
-    INFO: COMMIT
+    $ docker-compose --file docker-compose-prod.yml run -d --rm --no-deps app python app.py create_db
+    pythonwebapp_app_run_1
     ```
 
 1. View the application.
@@ -282,7 +276,7 @@ If you change the application in your development environment and you want to se
 
 1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere with a case-sensitive find and replace.
 
-1. [Build and push the images](#build-and-push-images).
+1. [Build and push the images](#build-and-push-images). You only need to build and push the images you've changed.
 
 1. [Use the `docker-compose up` command to run the application](#docker-compose-up).
 
