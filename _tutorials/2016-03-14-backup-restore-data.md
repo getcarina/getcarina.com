@@ -3,7 +3,7 @@ title: Back up and Restore Container Data
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
 date: 2016-03-14
 permalink: docs/tutorials/backup-restore-data/
-description:
+description: Back up and restore the contents of data volume containers
 docker-versions:
   - 1.10.1
 topics:
