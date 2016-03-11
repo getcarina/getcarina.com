@@ -101,6 +101,17 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     $ .\docker.ps1
     ```
 
+    <a id="quickstart-terminal"></a>
+
+    If you have installed the Docker Toolbox on Windows and are using the Quickstart Terminal, run the following commands:
+
+    ```bash
+    $ cd Downloads/mycluster
+    $ source docker.env
+    $ export DOCKER_CERT_PATH=$(echo $DOCKER_CERT_PATH | sed 's#\/##1' | sed 's#\/#:\/#1')
+    ```
+
+
 1. Connect to your cluster and display information about it. If you are using Windows PowerShell, use `docker.exe` instead of `docker`.
     If you autoscaled your cluster, you see more containers, images, nodes, and CPUs than are shown in the following example.
 

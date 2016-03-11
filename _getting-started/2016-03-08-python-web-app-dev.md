@@ -5,7 +5,7 @@ date: 2016-03-08
 permalink: docs/tutorials/develop-a-python-web-application/
 description: Develop a Python web application locally on VirtualBox and deploy it on Carina
 docker-versions:
-  - 1.10.1
+  - 1.10.2
 topics:
   - docker
   - intermediate
@@ -28,8 +28,8 @@ This is what the final result of moving your application from VirtualBox to Cari
 
 ### Prerequisites
 
-* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
  * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
 
@@ -152,23 +152,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment
 
-1. Open a new terminal.
-
-    If you used the GUI to create your cluster, source the environment variables with these commands.
-
-    ```bash
-    $ cd Downloads/mycluster
-
-    $ source docker.env
-    ```
-
-    **Note**: On Windows, adjust the `DOCKER_CERT_PATH` to use the proper file path separators. For example, `export DOCKER_CERT_PATH=C:\\Users\\everett\\Downloads\\mycluster`
-
-    If you used the `carina` CLI to create your cluster, source the environment variables with this commands.
-
-    ```bash
-    $ eval $(carina env mycluster)
-    ```
+1. Open a new terminal and initialize as per the instructions for the [Quickstart Termainal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal)
 
 1. Check your environment
 
@@ -177,7 +161,7 @@ When you are satisfied with your development and testing in your local developme
     DOCKER_HOST=tcp://104.130.0.205:2376
     DOCKER_TLS_VERIFY=1
     DOCKER_CERT_PATH=/Users/everett/.carina/clusters/everett/mycluster
-    DOCKER_VERSION=1.10.1
+    DOCKER_VERSION=1.10.2
     ```
 
     The environment variables that were sourced into your environment configure the `docker` CLI to communicate with your Carina cluster.
@@ -197,8 +181,6 @@ To be able to pull your application images to every segment on your cluster, you
 
     $ export DOCKER_HUB_USERNAME=<docker-hub-username>
     ```
-
-    **Note**: On Windows, specify all of the information immediately for the `docker login` command. For example, `docker login -u <docker-hub-username> -p <docker-hub-password> -e email@example.com`
 
 <a id="build-and-push-images"></a>
 
