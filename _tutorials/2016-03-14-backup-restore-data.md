@@ -17,7 +17,7 @@ This tutorial explains how to back up and restore data from your containers, so 
 
 Before you begin, you need to [create and connect to a Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/).
 
-Optionally, if you would like to store your backups in [Rackspace Cloud Files](https://www.rackspace.com/cloud/files), you will need a traditional Rackspace Cloud account (one _not_ created from the Carina website).
+Optionally, if you would like to store your backups in [Rackspace Cloud Files](https://www.rackspace.com/cloud/files), you need a traditional Rackspace Cloud account (one _not_ created from the Carina website).
 
 ### Create a MySQL instance
 
@@ -27,12 +27,6 @@ In order to effectively test a backup process, you’ll need something worth bac
 
     ```bash
     $ docker network create mysql
-    ```
-
-1. Pull the latest official MySQL image.
-
-    ```bash
-    $ docker pull mysql:latest
     ```
 
 1. Create a data volume container named `mysql-data`. The MySQL image stores its table data in `/var/lib/mysql`, so include `--volume /var/lib/mysql` to present that path as a volume that other containers can mount. Include `--volume /backups` to create a persistent folder for your database backups.
@@ -45,116 +39,135 @@ In order to effectively test a backup process, you’ll need something worth bac
       mysql:latest
     ```
 
-1. Start a MySQL container that uses the volumes from the `mysql-data` container to store its table data.
+1. Start a MySQL container with a database named `test`. Include `--volumes-from mysql-data` to mount the volumes provided by that container.
 
     ```bash
     $ docker run \
       --detach \
-      -e MYSQL_ROOT_PASSWORD=secret \
+      --env MYSQL_ROOT_PASSWORD=secret \
+      --env MYSQL_DATABASE=test \
       --name mysql-server \
       --net mysql \
       --volumes-from mysql-data \
       mysql:latest
     ```
 
-### Add data to the MySQL instance
-
-1. Start an interactive MySQL client in a Docker container.
+1. Populate the database with some empty tables for testing purposes (we’re borrowing the `carinamarina/guestbook-mysql` Docker image used in the tutorial [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/)).
 
     ```bash
-    $ docker run \
-      -it \
-      --net mysql
-      --rm \
-      mysql:latest \
-      mysql -psecret -h mysql-server
-    ```
-
-    The container displays the prompt for the interactive MySQL shell.
-
-1. Create and use a database named `test`.
-
-    ```sql
-    mysql> CREATE DATABASE test; USE test;
-    Query OK, 1 row affected (0.00 sec)
-
-    Database changed
-    ```
-
-1. Create a table named `messages` with columns for an ID and a plain-text message.
-
-    ```sql
-    mysql> CREATE TABLE messages(id SERIAL PRIMARY KEY, message TEXT);
-    Query OK, 0 rows affected (0.10 sec)
-    ```
-1. Add a message to the table and confirm the table's contents.
-
-    ```sql
-    mysql> INSERT INTO messages (message) VALUES('This is a very important message.');
-    Query OK, 1 row affected (0.01 sec)
-
-    mysql> SELECT * FROM messages;
-    +----+-----------------------------------+
-    | id | message                           |
-    +----+-----------------------------------+
-    |  1 | This is a very important message. |
-    +----+-----------------------------------+
-    1 row in set (0.00 sec)
+    $ docker run --rm \
+      --env MYSQL_HOST=mysql-server \
+      --env MYSQL_PORT=3306 \
+      --env MYSQL_USER=root \
+      --env MYSQL_PASSWORD=secret \
+      --env MYSQL_DATABASE=test \
+      --net mysql \
+      carinamarina/guestbook-mysql \
+      python app.py create_tables
     ```
 
 ### Back up the database
 
 Now that you’ve created a MySQL instance with some data, you can use our [`carinamarina/backup`](https://hub.docker.com/r/carinamarina/backup/) Docker image to store the data in a safe place.
 
-1. Pull the latest `carinamarina/backup` image.
+1. Dump the contents of your database to a single file in the `/backups` directory provided by your data volume container.
 
     ```bash
-    $ docker pull carinamarina/backup:latest
+    $ docker run \
+      --rm \
+      --net mysql \
+      --volumes-from mysql-data \
+      mysql \
+      bash -c "mysqldump -psecret -h mysql-server --databases test > /backups/test.sql"
     ```
 
-1. Dump the contents of your database...yada yada
-<!--
-Provide a descriptive heading for this section. Begin with the an imperative verb.
-
-List steps in numbered order. Limit steps to a single action.
-
-Include as many "steps" sections as needed to provide a complete topic to the user.
-To make it easier to shuffle steps around, number each with 1. and Jekyll will handle numbering it appropriately.
-
-1. Do this.
-
-    Indent any descriptions or information needed between steps. If your task includes sublists, graphics, and code examples, use the spacing guidelines at https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#lists.
-
-1. Do that.
-
-1. Do this other thing.
-
-1. Clean up.
-
-    If a tutorial isn't part of a series of tutorials and the user might not need the containers that they created anymore, include an optional step at the end of the tutorial to remove only the containers created in the tutorial. Use the following text, adjusting the example as needed for your tutorial:
-
-    *(Optional)* Remove the containers.
+1. Back up the database dump to your local filesystem.
 
     ```bash
-    $ docker rm --force $(docker ps --quiet -n=-2)
-    47c6d35c63ec
-    08d0383a775f
+    docker run \
+      --rm \
+      --volumes-from mysql-data \
+      carinamarina/backup \
+      backup \
+      --source /backups/ \
+      --stdout \
+      --zip > my-local-backup.tar.gz
     ```
 
-    The output of this `docker rm` command are the shortened IDs of the containers that you removed.
+    This adds all the contents of `/backups/` from your data volume container to compressed tar archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
-    When the container is gone, so is your data.
+1. _(Optional)_ Back up the database dump to Rackspace Cloud Files. If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
 
-Conclude with a brief description of the end state.
--->
+    ```bash
+    $ docker run \
+      --rm \
+      --env RS_USERNAME=<your-rackspace-username> \
+      --env RS_API_KEY=<your-rackspace-api-key> \
+      --env RS_REGION_NAME=IAD \
+      --volumes-from mysql-data \
+      carinamarina/backup \
+      backup \
+      --source /backups/ \
+      --container <name-of-cloud-files-container> \
+      --zip
+    Bundling archive...
+    Uploading archive to Cloud Files...
+    Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [carina-backup] in now
+    Done.
+    ```
+
+### Restore the database from your backup
+
+1. Unpack the backup archive to the `/backups/` volume by piping it from your local filesystem to a Docker command.
+
+    ```bash
+    $ docker run \
+      --rm \
+      --interactive \
+      --volumes-from mysql-data \
+      carinamarina/backup \
+      restore \
+      --destination /backups/ \
+      --stdin \
+      --zip \
+      < my-local-backup.tar.gz
+    Reading and unzipping archive...
+    Done.
+    ```
+
+1. _(Optional)_ Download the backup archive from Cloud Files and unpack it to the `/backups/` volume.
+
+    ```bash
+    $ docker run \
+      --rm \
+      --env RS_USERNAME=<your-rackspace-username> \
+      --env RS_API_KEY=<your-rackspace-api-key> \
+      --env RS_REGION_NAME=IAD \
+      --volumes-from mysql-data \
+      carinamarina/backup \
+      restore \
+      --container carina-backup \
+      --object 2016/03/11/21-30-backups.tar.gz \
+      --destination /backups/
+      --zip
+    Reading and unzipping archive...
+    Done.
+    ```
+
+1. Import the unpacked database dump into your MySQL server.
+
+    ```bash
+    $ docker run \
+      --rm \
+      --net mysql \
+      --volumes-from mysql-data \
+      mysql \
+      bash -c "mysql -psecret -h mysql-server < /backups/test.sql"
+    ```
+
+That's all! You’ve successfully created a MySQL server, backed up the contents of a database to a compressed archive, then restored data using your backup.
 
 ### Troubleshooting
-
-<!--
-
-Provide the following boilerplate. If you have a troubleshooting information that pertains only to this tutorial, you can include it in this section, before the boilerplate. However, if it might apply to more than one article, add a new section for it in the [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/) article or create a new article for it and link to that article from here as well.
-
--->
 
 See [Troubleshooting common problems]({{site.baseurl}}/docs/troubleshooting/common-problems/).
 
@@ -162,12 +175,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Resources
 
-<!--
-* Links to related content
--->
+* [`carinamarina/backup` README](https://hub.docker.com/r/carinamarina/backup/)
 
 ### Next step
 
-<!--
-* What should your audience read next?
--->
+* [Schedule regular backups using cron]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/)
