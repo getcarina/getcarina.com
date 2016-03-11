@@ -35,7 +35,7 @@ This is what the final result of moving your application from VirtualBox to Cari
 
 ### Clone the repo
 
-Use `git` to clone the repo that contains all of the Compose files and application code you need.
+Use `git` to clone the repo that contains all of the Compose files and application code you need to a location somewhere under your home directory.
 
 ```bash
 $ git clone https://github.com/getcarina/examples.git carina-examples
@@ -152,7 +152,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment
 
-1. Open a new terminal and initialize as per the instructions for the [Quickstart Termainal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal)
+1. Open a new terminal and initialize as per the instructions for the [Quickstart Terminal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal)
 
 1. Check your environment
 
