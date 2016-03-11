@@ -23,7 +23,6 @@ Yesterday, the Carina team rolled out the latest version of Docker, 1.10.2.  [Th
 
 ## Test drive Docker UCP in under two minutes!
 Docker recently acquired a management UI company, [tutum] (https://www.tutum.co/), and the combination of Docker + Tutum = Docker [Universal Control Plane (UPC)] (https://www.docker.com/products/docker-universal-control-plane).  The new Docker UCP exposes an almost one-to-one mapping of the Docker command-line options when you are managing containers, volumes, and networks.  Check out our [blog post] (https://getcarina.com/blog/fastest-test-drive-of-docker-ucp/) to get you up and running with UCP in a couple of minutes.
-![Docker UCP]({% asset_path 2016-03-11-weekly/ucp.png %})
 
 ## Develop a Python application with Carina
 Like Python?  Like Carina?  Well we have a treat for you.  Feed your inner nerd by developing a Python app using Carina! This [post](https://getcarina.com/docs/tutorials/develop-a-python-web-application/) by our own Everett Toews shows you how to develop a Python web application locally on VirtualBox and deploy it on Carina with Docker Compose.  You'll have your very own guestbook to show off to friends by completion.  
@@ -45,7 +44,7 @@ For your own security, we recommend pulling new versions of each image that you 
 
 On February 22, Keith taught you how to [build a real-time game on Carina using RethinkDB]({{ site.baseurl }}/blog/build-real-time-game-carina/). Have you played yet?
 
-![Tic Tac Toe]({% asset_path 2016-03-11-weekly/tictactoe.png %})
+![Tic Tac Toe]({% asset_path 2016-02-22-build-real-time-game-carina/web-ui.png %})
 
 ## Edit on GitHub for blog posts and docs
 
