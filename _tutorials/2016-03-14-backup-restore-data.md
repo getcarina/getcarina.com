@@ -157,7 +157,7 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
       restore \
       --container <name-of-cloud-files-container> \
       --object 2016/03/11/21-30-backups.tar.gz \
-      --destination /backups/
+      --destination /backups/ \
       --zip
     Reading and unzipping archive...
     Done.
