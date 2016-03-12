@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial explains how to back up and restore data from your containers, so you can quickly restore your application data in the event of a system failure.
+This tutorial explains how to back up and restore data from your a MySQL database, so you can quickly restore your application data in the event of a system failure. While several of the steps described here are specific to backing up a MySQL server, the general concepts (especially the use of the `carinamarina/backup` Docker image) are applicable to any backup scenario.
 
 ### Prerequisites
 
