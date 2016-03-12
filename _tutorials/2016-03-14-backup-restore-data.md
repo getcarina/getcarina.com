@@ -15,15 +15,18 @@ This tutorial explains how to back up and restore data from your containers, so 
 
 ### Prerequisites
 
-Before you begin, you need to [create and connect to a Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/).
+* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* _(Optional)_ A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
+  * If you don't have a Rackspace cloud account, you can [sign up](https://www.rackspace.com/cloud) for one.
 
-Optionally, if you would like to store your backups in [Rackspace Cloud Files](https://www.rackspace.com/cloud/files), you need a traditional Rackspace Cloud account (one _not_ created from the Carina website).
+
+Optionally, if you would like to store your backups in Rackspace Cloud Files, you need a traditional Rackspace Cloud account (one _not_ created from the Carina website).
 
 ### Create a MySQL instance
 
-In order to effectively test a backup process, you’ll need something worth backing up. In this section, you’ll create a MySQL instance with a separate [data volume container](/docs/tutorials/data-volume-containers/) for its data storage.
+In order to effectively test a backup process, you’ll need something worth backing up. In this section, you’ll create a MySQL instance with a separate data volume container for its data storage.
 
-1. Create an [overlay network]({{ site.baseurl }}/docs/tutorials/overlay-networks/) named `mysql` to allow multiple containers to communicate with one another.
+1. Create an overlay network named `mysql` to allow multiple containers to communicate with one another.
 
     ```bash
     $ docker network create mysql
@@ -44,7 +47,7 @@ In order to effectively test a backup process, you’ll need something worth bac
     ```bash
     $ docker run \
       --detach \
-      --env MYSQL_ROOT_PASSWORD=secret \
+      --env MYSQL_ROOT_PASSWORD=<your-mysql-password> \
       --env MYSQL_DATABASE=test \
       --name mysql-server \
       --net mysql \
@@ -52,14 +55,14 @@ In order to effectively test a backup process, you’ll need something worth bac
       mysql:latest
     ```
 
-1. Populate the database with some empty tables for testing purposes (we’re borrowing the `carinamarina/guestbook-mysql` Docker image used in the tutorial [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/)).
+1. Populate the database with some empty tables for testing purposes.
 
     ```bash
     $ docker run --rm \
       --env MYSQL_HOST=mysql-server \
       --env MYSQL_PORT=3306 \
       --env MYSQL_USER=root \
-      --env MYSQL_PASSWORD=secret \
+      --env MYSQL_PASSWORD=<your-mysql-password> \
       --env MYSQL_DATABASE=test \
       --net mysql \
       carinamarina/guestbook-mysql \
@@ -68,7 +71,7 @@ In order to effectively test a backup process, you’ll need something worth bac
 
 ### Back up the database
 
-Now that you’ve created a MySQL instance with some data, you can use our [`carinamarina/backup`](https://hub.docker.com/r/carinamarina/backup/) Docker image to store the data in a safe place.
+Now that you’ve created a MySQL instance with some data, you can use our `carinamarina/backup` Docker image to store the data in a safe place.
 
 1. Dump the contents of your database to a single file in the `/backups` directory provided by your data volume container.
 
@@ -78,10 +81,12 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --net mysql \
       --volumes-from mysql-data \
       mysql \
-      bash -c "mysqldump -psecret -h mysql-server --databases test > /backups/test.sql"
+      bash -c "mysqldump -p<your-mysql-password> -h mysql-server --databases test > /backups/test.sql"
     ```
 
-1. Back up the database dump to your local filesystem.
+#### Back up the database dump to your local filesystem.
+
+1. Run the `carinamarina/backup` image with the `--stdout` option. Pipe the container's output (the contents of the backup archive) to a file on your local filesystem.
 
     ```bash
     docker run \
@@ -94,9 +99,11 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --zip > my-local-backup.tar.gz
     ```
 
-    This adds all the contents of `/backups/` from your data volume container to a compressed <a href="https://en.wikipedia.org/wiki/Tar_(computing)"><code>tar</code></a> archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
+    This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
-1. _(Optional)_ Back up the database dump to Rackspace Cloud Files. If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
+#### _(Optional)_ Back up the database dump to Rackspace Cloud Files
+
+1. If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
 
     ```bash
     $ docker run \
@@ -112,9 +119,11 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --zip
     Bundling archive...
     Uploading archive to Cloud Files...
-    Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [carina-backup] in now
+    Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [<name-of-cloud-files-container>] in now
     Done.
     ```
+
+
 
 ### Restore the database from your backup
 
@@ -146,7 +155,7 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --volumes-from mysql-data \
       carinamarina/backup \
       restore \
-      --container carina-backup \
+      --container <name-of-cloud-files-container> \
       --object 2016/03/11/21-30-backups.tar.gz \
       --destination /backups/
       --zip
@@ -161,8 +170,8 @@ Now that you’ve created a MySQL instance with some data, you can use our [`car
       --rm \
       --net mysql \
       --volumes-from mysql-data \
-      mysql \
-      bash -c "mysql -psecret -h mysql-server < /backups/test.sql"
+      mysql:latest \
+      bash -c "mysql -p<your-mysql-password> -h mysql-server < /backups/test.sql"
     ```
 
 That's all! You’ve successfully created a MySQL server, backed up the contents of a database to a compressed archive, then restored data using your backup.
@@ -176,6 +185,9 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [`carinamarina/backup` README](https://hub.docker.com/r/carinamarina/backup/)
+* [data volume containers](/docs/tutorials/data-volume-containers/)
+* [overlay networks]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
+* <a href="https://en.wikipedia.org/wiki/Tar_(computing)"><code>Tar</code></a>
 
 ### Next step
 
