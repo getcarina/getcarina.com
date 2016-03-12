@@ -123,7 +123,11 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
     Done.
     ```
 
+    Note that the uploaded object is named according to the following format:
 
+    ```
+    {{ year }}/{{ month }}/{{ day }}/{{ hour }}-{{ minute }}-{{ pathToSource }}.tar.gz
+    ```
 
 ### Restore the database from your backup
 
