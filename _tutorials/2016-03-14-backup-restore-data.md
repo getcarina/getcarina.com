@@ -19,9 +19,6 @@ This tutorial explains how to back up and restore data from a MySQL database, so
 * _(Optional)_ A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
   * If you don't have a Rackspace cloud account, you can [sign up](https://www.rackspace.com/cloud) for one.
 
-
-Optionally, if you would like to store your backups in Rackspace Cloud Files, you need a traditional Rackspace Cloud account (one _not_ created from the Carina website).
-
 ### Create a MySQL instance
 
 In order to effectively test a backup process, you’ll need something worth backing up. In this section, you’ll create a MySQL instance with a separate data volume container for its data storage.
