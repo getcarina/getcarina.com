@@ -13,6 +13,8 @@ topics:
 
 This tutorial explains how to back up and restore data from a MySQL database, so you can quickly restore your application data in the event of a system failure. While several of the steps described here are specific to backing up a MySQL server, the general concepts (especially the use of the `carinamarina/backup` Docker image) are applicable to any backup scenario.
 
+![Backups stored in Rackspace Cloud Files]({% asset_path cloud-files-backups.jpg %})
+
 ### Prerequisites
 
 * [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
@@ -122,9 +124,13 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
 
     Note that the uploaded object is named according to the following format:
 
+    {% raw %}
+
     ```
     {{ year }}/{{ month }}/{{ day }}/{{ hour }}-{{ minute }}-{{ pathToSource }}.tar.gz
     ```
+
+    {% endraw %}
 
 ### Restore the database from your backup
 
