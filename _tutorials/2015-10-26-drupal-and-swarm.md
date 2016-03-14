@@ -5,7 +5,7 @@ date: 2015-10-26
 permalink: docs/tutorials/drupal-and-swarm/
 description: Learn how to run a Drupal instance and a MySQL database in containers with Carina
 docker-versions:
-  - 1.8.2
+  - 1.10.2
 topics:
   - docker
   - drupal
@@ -30,9 +30,9 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
 
     `source docker.env`
 
-1. Create an [overlay network](https://docs.docker.com/engine/userguide/networking/get-started-overlay/#step-3-create-the-overlay-network). This virtual network will privately encapsulate your containers for security.
+1. Create an overlay network. This virtual network will privately encapsulate your containers for security.
 
-    `docker network create --driver overlay --subnet=10.0.9.0/24 mynetwork`
+    `docker network create mynetwork`
 
 1. Create a MySQL container in which to store data for the Drupal container. MySQL installation will takes about 10 seconds after the Docker script returns. You need to set the following container environment variables:
   * `MYSQL_USER` is the username to use for the Drupal installation.
@@ -44,9 +44,9 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
       $ docker run --name mysql \
       --net=mynetwork \
       -e MYSQL_USER=drupal \
-      -e MYSQL_PASSWORD='<password>' \
+      -e MYSQL_PASSWORD=<password> \
       -e MYSQL_DATABASE=drupal \
-      -e MYSQL_ROOT_PASSWORD='<rootPassword>' \
+      -e MYSQL_ROOT_PASSWORD=<rootPassword> \
       -d mysql
       ```
 
