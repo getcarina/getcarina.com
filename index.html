@@ -24,6 +24,12 @@ layout: default
                 Your password isn’t strong enough. It should be at least 8 characters long and contain lowercase, uppercase and numeric characters.
               </div>
             </div>
+            <div class="control recaptcha" data-ng-class="{'error': form.$submitted && form.recaptchaResponse.$invalid}">
+              <div data-rs-recaptcha data-name="recaptchaResponse" data-ng-model="signup.formData.recaptchaResponse"></div>
+              <div class="control-validation" data-ng-cloak data-ng-show="form.$submitted && form.recaptchaResponse.$invalid">
+                Please complete the reCAPTCHA.
+              </div>
+            </div>
             <div class="control" data-ng-class="{'error': signup.errorMessage}">
               <button type="submit" data-ng-disabled="signup.status == 'submitting'" data-ga-click="event" data-category="signup-interaction" data-label="hero-form-submit" data-action="click">
                 <span data-ng-show="signup.status != 'submitting'">Sign up!</span>
@@ -89,9 +95,7 @@ layout: default
       </div>
       <div class="demo">
         <div class="demo-frame">
-          <!-- TODO: Lightbox like a boss instead -->
-            <img src="{% asset_path carina-demo-simple.gif %}" alt="demo">
-          <!-- <img src="//fpoimg.com/400x250" alt=""> -->
+          <img src="{% asset_path carina-demo-simple.gif %}" alt="demo">
         </div>
       </div>
     </div>
