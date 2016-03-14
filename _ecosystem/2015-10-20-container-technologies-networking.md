@@ -102,6 +102,16 @@ A "SocketPlane Technology Preview" is available at <https://github.com/socketpla
 The concepts and the team behind SocketPlane predict that it could evolve
 into a sound and promising technology.
 
+### Native, multi-host Docker Overlay Networking
+
+In late 2015, Docker [released the overlay networking feature](https://docs.docker.com/swarm/networking/) in Docker v1.9 and Swarm v1.0 to supply users with a native way to interconnect their Swarm containers with one another. The feature can create an overlay network using VXLAN tunneling, and is capable of standing up the tunnels automatically.
+
+This feature was released as a plugin that can have its driver swapped with the overlay networking appliance of your choice, if you choose to do so, giving the user the ultimate flexibility in how they want to manage their containers networks.
+
+If you want to hit the ground running, and want none of the setup hassle, this is a great staring point.
+
+For more information, check out the [tutorial on overlay networks](https://getcarina.com/docs/tutorials/overlay-networks/)
+
 ### Comparison
 
 It is very early in the Docker ecosystem to tell which
@@ -112,8 +122,7 @@ Docker, and SocketPlane all show signs that either not enough attention is
 being given to the project or there have not yet been enough concrete features released to
 seriously evaluate and test.
 
-**Current Recommendation**: Weave (based on project attention, evolution,
-and funding)
+**Current Recommendation**: Native, multi-host Docker Overlay Networking for Docker-centric environments
 
 ### Resources
 
