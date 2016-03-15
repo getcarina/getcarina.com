@@ -1,7 +1,7 @@
 ---
 title: Back up and restore container data
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
-date: 2016-03-14
+date: 2016-03-15
 permalink: docs/tutorials/backup-restore-data/
 description: Back up and restore the contents of data volume containers
 docker-versions:
@@ -98,7 +98,7 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
       --zip > my-local-backup.tar.gz
     ```
 
-    This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipe it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
+    This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipes it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
 #### _(Optional)_ Back up the database dump to Rackspace Cloud Files
 
@@ -151,7 +151,7 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
     Done.
     ```
 
-1. _(Optional)_ Download the backup archive from Cloud Files and unpack it to the `/backups/` volume.
+1. _(Optional)_ Download the backup archive from Cloud Files, and unpack it to the `/backups/` volume.
 
     ```bash
     $ docker run \
@@ -181,13 +181,13 @@ Now that you’ve created a MySQL instance with some data, you can use our `cari
       bash -c "mysql -p<your-mysql-password> -h mysql-server < /backups/test.sql"
     ```
 
-That's all! You’ve successfully created a MySQL server, backed up the contents of a database to a compressed archive, then restored data using your backup.
+That's all! You’ve successfully created a MySQL server, backed up the contents of a database to a compressed archive, and then restored data using your backup.
 
 ### Troubleshooting
 
 See [Troubleshooting common problems]({{site.baseurl}}/docs/troubleshooting/common-problems/).
 
-For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
+For additional assistance, ask the [community](https://community.getcarina.com/) for help, or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
