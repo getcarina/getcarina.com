@@ -11,8 +11,8 @@ topics:
   - intermediate
 ---
 
-One of the unique advantages of Docker containers is the ability it gives
-developers to tightly scope and lock down the dependencies of applications.
+One of the unique advantages of Docker containers is that it gives
+developers the ability to tightly scope and lock down application dependencies.
 The result being that whenever security vulnerabilities are detected and patches
 released, rolling those changes out is easier, since there is a smaller footprint
 of dependencies which need attention.
