@@ -27,18 +27,29 @@ $ docker run --detach --publish 5000:5000 <custom-image>
 Error response from daemon: Error: unable to find a node that satisfies image==<custom-image>
 ```
 
+**Note**: This error occurs only after you scale your cluster to two or more segments.
+
 This error message indicates that the container was scheduled on a different segment
 than the segment that built the image, and therefore the image could not be found.
 To resolve this error, select one of the following options:
 
-* [Use image affinity scheduling with Docker Swarm](#use-image-affinity-scheduling-with-docker-swarm)
+* [Use a constraint](#use-a-constraint)
+* [Use an affinity](#use-an-affinity)
 * [Use Docker Hub](#use-docker-hub)
 * [Use another public Docker registry](#use-a-public-docker-registry)
 * [Use a private Docker registry](#use-a-private-docker-registry)
 
-**Note**: This error occurs only after you scale your cluster to two or more segments.
+### Use a constraint
 
-### Use image affinity scheduling with Docker Swarm
+When you build an image, you can use a constraint to specify where to build and run the image.
+
+```
+$ docker build --build-arg constraint:node==*n1 --tag <custom-image> .
+$ docker run --env constraint:node==*n1 <custom-image>
+```
+
+### Use an affinity
+
 **Note**: This is only applicable to older Carina clusters. New clusters implicitly apply
 the image affinity. If you need to run the container on multiple segments,
 then a Docker registry is required. See the following sections for options.
@@ -53,6 +64,7 @@ $ docker run --env affinity:image==<custom-image> <custom-image>
 ```
 
 ### Use Docker Hub
+
 Docker Hub is the default, official Docker registry. Carina can discover images on
 [Docker Hub](https://hub.docker.com/) without requiring any configuration
 changes or command-line flags.
@@ -101,6 +113,7 @@ changes or command-line flags.
     ```
 
 ### Use a public Docker registry
+
 You can also use an alternative public Docker registry, such as [quay.io](http://quay.io),
 to host your custom image.
 
@@ -153,6 +166,7 @@ to host your custom image.
     ```
 
 ### Use a private Docker registry
+
 In some cases, running your own private Docker registry directly on your cluster
 might be advantageous, especially when dealing with large images or images that contain sensitive data.
 
