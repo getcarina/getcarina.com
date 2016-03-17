@@ -89,7 +89,7 @@ With the redis-brain migrated, we set out to build the hubot container for use i
 
 As was done with the `heroku config` function to retrieve the `REDISTOGO_URL` environment variable from the Heroku-based Hubot instance, we were able to retrieve all the other bootstrapped environment variables of varying use.  Examples here include GitHub, Jenkins, PagerDuty, and Slack related strings necessary for their respective integrations.
 
-With all those configuration valules, we were able to setup a simple `Dockerfile` which setup all that was necessary to run the Hubot instance in Carina.
+With all those configuration values, we were able to setup a simple `Dockerfile` which setup all that was necessary to run the Hubot instance in Carina.
 
 ```
 FROM node:4
@@ -303,7 +303,7 @@ node_modules
 
 ## Onward and Upward
 
-Some additional stuff we would like to do is fold the shell-prep steps into the Makefile as appropriate.  And also perhaps move the ENV setting as is done in the `Dockerfile` to something like service discovery via the `consul` container which every Carina swarm cluster has.  This `consul` instance is single-tenant for your application to use as necessary, albeit a dependency for the docker-swarm function within Carina.
+Some additional stuff we would like to do is fold the shell-prep steps into the Makefile as appropriate.  And also perhaps move the ENV setting as is done in the `Dockerfile` to something like service discovery with Consul.
 
 Another thing we are interested in pursuing is the idea of moving configuration management operations into ChatOps.  Our team uses a combination of [Chef](https://www.chef.io/) and [Ansible](https://www.ansible.com/) to achieve both persistent declarative state and imperative orchestration operations respectively.  Carina enables our team to bring tooling like the [chefdk](https://downloads.chef.io/chef-dk/) and the relevant [`knife.rb`](https://docs.chef.io/config_rb_knife.html) and related keys into the container and have [chat-based `knife`](https://github.com/hubot-scripts/hubot-chef) operations succeed.  Quick proof of concept attempts at making this work are promising (eg "@hubot knife role show rax_resolver")!
 
