@@ -1,7 +1,7 @@
 ---
 title: Patching security vulnerabilities with Watchtower
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
-date: 2016-03-01
+date: 2016-03-17
 permalink: docs/tutorials/patching-security-vulnerabilities/
 description: Patching Docker containers against security vulnerabilities and outdated versions
 docker-versions:
@@ -77,7 +77,7 @@ images. Due to the onerous nature of this task, as well as the multitude of
 ways it can be done, for the sake of this tutorial we will be using a container
 running Watchtower.
 
-Watchtower allows you to automate continuous deployment of containers. It runs
+Watchtower allows you to automate the continuous deployment of containers. It runs
 in a container and continually monitors all of the source images which are used
 by containers across Docker hosts. If it detects that a
 container is running an out-of-date image it will attempt to gracefully shut
