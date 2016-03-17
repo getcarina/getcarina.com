@@ -1,0 +1,37 @@
+---
+title: "Weekly news: Backups, patching security vulnerabilities, scheduling tasks and a testimonial"
+date: 2016-03-18 13:00
+comments: true
+author: Kim Tryce <kim.tryce@rackspace.com>
+published: true
+excerpt: >
+Some important updates including how to back up and restore container data, patching security vulnerabilities with Watchtower, and scheduling tasks with a cron container.  We also have a guest post by a Rackspace team who use Carina to run their ChatOps operation.
+categories:
+ - Docker
+ - Swarm
+ - Carina
+ - Rackspace
+ - News
+authorIsRacker: true
+---
+
+Follow the rainbow to the pot of gold and check out the St. Patrick's Day edition of Carina.
+
+## Back up and restore container data
+
+## Patching security vulnerabilities with Watchtower
+
+## Schedule tasks with a cron container
+
+## Moving ChatOps Into Carina
+
+
+## User feedback
+
+As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Want a pony? Please get in touch:
+
+* [Community (any and all feedback)](https://community.getcarina.com/)
+* [General feedback, bugs, etc.](https://github.com/getcarina/feedback)
+* [Website bugs](https://github.com/getcarina/getcarina.com/issues) (Also, request new tutorials here!)
+* [#carina on irc.freenode.net](https://botbot.me/freenode/carina/)
+* Are you doing something interesting with Carina that you’d like to tell the world about? Share it here! <a href="https://github.com/getcarina/getcarina.com/blob/master/CONTRIBUTING.md">Learn how</a>.
