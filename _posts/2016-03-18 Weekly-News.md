@@ -17,7 +17,7 @@ categories:
 authorIsRacker: true
 ---
 
-Follow the rainbow to the pot of gold and check out the St. Patrick's Day edition of Carina: Operational Maturity!  To start it off, one of the Rackspace product teams decided to use Carina to run a high dependency tool, ChatOps.   We also have a few tutorials that lead you down the path towards a backed up and secure system.
+Follow the rainbow to the pot of gold and check out the St. Patrick's Day edition of Carina: Operational Maturity!  To start it off, one of the Rackspace product teams decided to use Carina to run a high dependency tool, ChatOps.   We also have a few tutorials that lead you down the path toward a backed up and secure system.
 
 ### User story: Moving ChatOps into Carina
 
