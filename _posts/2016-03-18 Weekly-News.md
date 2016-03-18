@@ -11,6 +11,8 @@ categories:
  - Swarm
  - Carina
  - Rackspace
+ - Watchtower
+ - Cron
  - News
 authorIsRacker: true
 ---
@@ -18,16 +20,20 @@ authorIsRacker: true
 Follow the rainbow to the pot of gold and check out the St. Patrick's Day edition of Carina: Operational Maturity!  We have a few tutorials that lead you down the path towards a backedup and secure system.  To wrap it up, one of our product teams at the Rack decided to use Carina to run a high dependency tool, Chatops.
 
 ## Tutorial: Patching security vulnerabilities with Watchtower
-Who wants to get hacked?! Security + Vulnerabilities = Buzzwords, but important ones.  Yes, it's true folks. Security vulnerabilities exist and it's important to keep your systems up to date with the latest versions.  This protects your investment of time/energy/money.  Jamie provides a introduction tutorial on using Watchtower to detect, patch, and redeploy containers running out-of-date Docker images. 
+Who wants to get hacked?! Security + Vulnerabilities = Buzzwords, but important ones.  Yes, it's true folks. Security vulnerabilities exist and it's important to keep your systems up to date with the latest versions.  This protects your investment of time/energy/money.  [Jamie](https://twitter.com/jamiehannaford) provides an [introduction tutorial](https://getcarina.com/docs/tutorials/patching-security-vulnerabilities/) on using [Watchtower](https://github.com/getcarina/watchtower) to detect, patch, and redeploy containers running out-of-date [Docker](https://www.docker.com/) images.
+
+![Follow the rainbow]({% asset_path 2016-03-18-Weekly-News/security-rainbow.jpg %})
 
 ## Tutorial: Back up and restore container data
-One of the most important aspects of your data is backing it up!  As Carina is in beta, we want to make sure that our users don't have a bad day and find out there has been a data loss.  In order to prevent this from happening, Keith provides an example using MySQL and provides concepts that can be utlized for any backup.  Knowing you have your data backed up = a good night's sleep.
+One of the most important aspects of your data is backing it up!  As Carina is in beta, we want to make sure that our users don't have a bad day and find out there has been a data loss.  In order to prevent this from happening, [Keith](https://twitter.com/ktbartholomew) provides an [example](https://getcarina.com/docs/tutorials/backup-restore-data/) using MySQL and provides concepts that can be utlized for any backup.  Knowing you have your data backed up = a good night's sleep.
+
+![Backups!]({% asset_path 2016-03-18-Weekly-News/backup-all-the-things.jpg %})
 
 ## Tutorial: Schedule tasks with a cron container
-To follow up Keith's tutorial on backing up your data, he goes the extra mile to help with the next step: automation! In this tutorial Keith teaches you how to run cron job using containers to wrap up the operational aspects of protecting your backups.  But chron jobs are not just for backups! For the devops folks out there running systems and maintain environments, this tutorial is for you.    
+To follow up [Keith's tutorial](https://getcarina.com/docs/tutorials/backup-restore-data/) on backing up your data, he goes the extra mile to help with the next step: automation! In [this tutorial](https://getcarina.com/docs/tutorials/schedule-tasks-cron/) Keith teaches you how to run cron job using containers to wrap up the operational aspects of protecting your backups.  But chron jobs are not just for backups! For the devops folks out there running systems and maintain environments, this tutorial is for you.    
 
 ## User Story: Moving ChatOps Into Carina
-Our own Nick Silkey from the Cloud DNS product team weaves the tale of how the DNS ops team picked up their entire ChatOps operation running a Hubot instance on Heroku with a RedisToGo redis-based datastore and move the Hubot instance to Carina using Docker Compose and OjectRocket redis datastore. And it took one hour. He also touches on the `makefile` command and its usefullness. 
+Our own [Nick](https://twitter.com/filler) from the Cloud DNS product team weaves [the tale](https://getcarina.com/blog/moving-chatops-into-carina/) of how the DNS ops team picked up their entire ChatOps operation running a Hubot instance on Heroku with a RedisToGo redis-based datastore and move the Hubot instance to Carina using Docker Compose and OjectRocket redis datastore. And it took one hour. He also touches on the `makefile` command and its usefullness. 
 
 "The deployment story and workflows that teams can use to manage their containers in their swarm clusters is pretty powerful stuff."
 
