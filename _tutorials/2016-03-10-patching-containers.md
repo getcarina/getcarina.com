@@ -1,5 +1,5 @@
 ---
-title: Patching security vulnerabilities with Watchtower
+title: Patch security vulnerabilities with watchtower
 author: Jamie Hannaford <jamie.hannaford@rackspace.com>
 date: 2016-03-17
 permalink: docs/tutorials/patching-security-vulnerabilities/
@@ -11,15 +11,15 @@ topics:
   - intermediate
 ---
 
-One of the unique advantages of Docker containers is that it gives
+One of the unique advantages of Docker containers is that they give
 developers the ability to tightly scope and lock down application dependencies.
-The result being that whenever security vulnerabilities are detected and patches
-released, rolling those changes out is easier, since there is a smaller footprint
-of dependencies which need attention.
+As a result, whenever security vulnerabilities are detected and patches are
+released, rolling those changes out is easier because fewer dependencies need
+attention.
 
-In this tutorial we will cover the basics of how to detect, patch, and redeploy
-containers running out-of-date Docker images using a continuous deployment
-tool called [Watchtower](https://github.com/getcarina/watchtower).
+This tutorial explains how to rebuild Docker images and then redeploy containers
+that are running out-of-date images by using a continuous deployment
+tool called [watchtower](https://github.com/getcarina/watchtower).
 
 ![Watchtower]({% asset_path patching-security-vulnerabilities/watchtower.jpg %})
 
@@ -27,29 +27,29 @@ tool called [Watchtower](https://github.com/getcarina/watchtower).
 
 One or more running containers on a cluster
 
-### Rebuilding custom images
+### Rebuild custom images
 
-If you are using an official Docker image hosted on Docker Hub, you can go
-straight to the [Redeploy Containers](#redeploy-containers).
+If you are using an official Docker image hosted on Docker Hub, you can skip
+to the [Redeploy containers section](#redeploy-containers).
 
-The next step when using a custom image for your Docker containers is to rebuild
-it. Due to the nature of Docker's UnionFS, this can be achieved
-relatively quickly, since your application's filesystem will be re-layered on
-top of the updated base layer, rather than rebuilt from scratch.
+When a security vulnerability is detected in a custom image that you are using
+for your Docker containers, you need to rebuild the image. Because of the
+nature of Docker's UnionFS, you can rebuild images relatively quickly, because
+your application's file system is re-layered on top of the updated base layer,
+rather than rebuilt from scratch.
 
-To rebuild your image, you will need to run:
+To rebuild your image, run the following command:
 
 ```bash
 $ docker build --pull --tag <dockerhub-user>/<custom-image> .
 ```
 
-If you are using a private registry, please remember to substitute the
-`<dockerhub-user>` for your registry URL and port;
-for example: `localhost:5000/wordpress`.
+If you are using a private registry, substitute `<dockerhub-user>` for your
+registry URL and port; for example, `localhost:5000/wordpress`.
 
-### Push rebuilt image to a registry
+### Push the rebuilt image to a registry
 
-1. Before pushing, you will need to sign into Docker Hub:
+1. Log in to Docker Hub:
 
     ```bash
     $ docker login
@@ -60,32 +60,33 @@ for example: `localhost:5000/wordpress`.
     Login Succeeded
     ```
 
-1. Once this is done, you push your custom image to your registry of choice:
+1. Push your custom image to your registry of choice:
 
     ```bash
     $ docker push <dockerhub-user>/<custom-image>
     ```
 
-For more information about how to work with images on Docker Hub, please
-read our [Using Docker Hub]({{ site.baseurl }}/docs/troubleshooting/run-container-using-custom-image/#use-docker-hub)
+For more information about how to work with images on Docker Hub, read our
+[Use Docker Hub]({{ site.baseurl }}/docs/troubleshooting/run-container-using-custom-image/#use-docker-hub)
  guide.
 
 ### Redeploy containers
 
-The final step is to redeploy all the out-of-date containers using the patched
-images. Due to the onerous nature of this task, as well as the multitude of
-ways it can be done, for the sake of this tutorial we will be using a container
-running Watchtower.
+Whether you are using an official Docker image that has been updated or you
+have rebuilt a custom image, you need to redeploy all of the containers that
+are using the updated image. Because redeploying images can be an onerous task
+and can be performed in many ways, this tutorial describes how to accomplish
+this task by using watchtower.
 
-Watchtower allows you to automate the continuous deployment of containers. It runs
-in a container and continually monitors all of the source images which are used
-by containers across Docker hosts. If it detects that a
-container is running an out-of-date image it will attempt to gracefully shut
-it down by sending it a `SIGTERM` signal. This will allow it to handle remaining
-traffic and be retired. A new container is then started, using the same
-runtime configuration as its predecessor.
+Watchtower automates the continuous deployment of containers. It runs in a
+container and continually monitors all of the source images that are used by
+containers across Docker hosts. If watchtower detects that a container is
+running an out-of-date image, it attempts to gracefully shut it down by
+sending it a `SIGTERM` signal. This allows the container to handle remaining
+traffic and be retired. A new container is then started, using the same runtime
+configuration as its predecessor.
 
-To run watchtower:
+To run watchtower, use the following command:
 
 ```bash
 $ docker run --detach \
@@ -100,10 +101,10 @@ $ docker run --detach \
   --interval 30
 ```
 
-This will create a container named `watchtower` which will connect to the
-Swarm endpoint using the TLS certificates made available via the
-`swarm-data` container. It will poll Docker Hub every 30 seconds. If this is
-too often or infrequent, feel free to adjust this value.
+This command creates a container named `watchtower` that connects to the Swarm
+endpoint by using the TLS certificates made available via the `swarm-data`
+container. It polls Docker Hub every 30 seconds. If this is too often or
+infrequent, you can adjust this value.
 
 You can monitor updates by viewing the logs:
 
@@ -127,6 +128,6 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Error running a container using a custom image](https://getcarina.com/docs/troubleshooting/run-container-using-custom-image/)
 * [Store private Docker registry images on Rackspace Cloud Files]({{ site.baseurl }}/docs/tutorials/registry-on-cloud-files/)
 
-### Next
+### Next step
 
 [Back up and restore container data](https://getcarina.com/docs/tutorials/backup-restore-data/)
