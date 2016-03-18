@@ -5,15 +5,15 @@ comments: true
 author: Kim Tryce <kim.tryce@rackspace.com>
 published: true
 excerpt: >
-This week we have some important updates, including backing up and restoring container data, patching security vulnerabilities with watchtower, and scheduling tasks with a cron container.  We also have a guest post from a Rackspace team who uses Carina to run their ChatOps operation.
+  This week we have some important updates, including backing up and restoring container data, patching security vulnerabilities with watchtower, and scheduling tasks with a cron container.  We also have a guest post from a Rackspace team who uses Carina to run their ChatOps operation.
 categories:
- - Docker
- - Swarm
- - Carina
- - Rackspace
- - Watchtower
- - Cron
- - News
+  - Docker
+  - Swarm
+  - Carina
+  - Rackspace
+  - Watchtower
+  - Cron
+  - News
 authorIsRacker: true
 ---
 
@@ -21,7 +21,7 @@ Follow the rainbow to the pot of gold and check out the St. Patrick's Day editio
 
 ### User story: Moving ChatOps into Carina
 
-Our own [Nick](https://twitter.com/filler) from the Cloud DNS product team tells [the tale](https://getcarina.com/blog/moving-chatops-into-carina/) of how the team moved their entire ChatOps platform from Heroku to Carina in <i>one hour</i>. Nick also talks about the `makefile` command and its usefulness. 
+Our own [Nick](https://twitter.com/filler) from the Cloud DNS product team tells [the tale](https://getcarina.com/blog/moving-chatops-into-carina/) of how the team moved their entire ChatOps platform from Heroku to Carina in <i>one hour</i>. Nick also talks about the `makefile` command and its usefulness.
 
 "The deployment story and workflows that teams can use to manage their containers in their swarm clusters is pretty powerful stuff."
 
