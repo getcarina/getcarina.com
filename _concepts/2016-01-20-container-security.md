@@ -44,7 +44,7 @@ This is where frameworks with layered images, including Docker, can help. Operat
 
 ### Use overlay networks
 
-At the application layer, users can employ overlay networks to provide isolation for containers to communicate across all of the segments in their clusters on Carina. An overlay network is an isolated network for containers that ensures only the services of their choice are exposed outside of their system. Isolating containers in a network can greatly decrease the attack surface of a system, which adds another layer of security. For tutorial information, see [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/).
+At the application layer, users can employ overlay networks to provide isolation for containers to communicate across all of the nodes in their clusters on Carina. An overlay network is an isolated network for containers that ensures only the services of their choice are exposed outside of their system. Isolating containers in a network can greatly decrease the attack surface of a system, which adds another layer of security. For tutorial information, see [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/).
 
 ### Use version control
 
@@ -64,7 +64,7 @@ Security isolation between neighboring containers is different than security iso
 
 Carina uses a hardened host operating system that helps reduce the system attack surface, and leverages the mandatory access control (MAC) features within the Linux kernel. These features are what SELinux and AppArmor use to control how processes may interact with the system.
 
-Carina also employs a multiple-level encapsulation of capacity segments that is beyond the scope of what other container management systems offer. This arrangement is considerably more secure than approaches that are not designed for multi-tenant use. Carina has been extensively audited to this end.
+Carina also employs a multiple-level encapsulation of capacity nodes that is beyond the scope of what other container management systems offer. This arrangement is considerably more secure than approaches that are not designed for multi-tenant use. Carina has been extensively audited to this end.
 
 ### Next step
 

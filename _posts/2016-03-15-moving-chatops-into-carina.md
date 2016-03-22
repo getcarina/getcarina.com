@@ -165,7 +165,7 @@ setup:
 	brew install carina
 
 create: check-vars
-	@carina create --segments=1 --autoscale --wait $(CONTAINER)
+	@carina create --nodes=1 --autoscale --wait $(CONTAINER)
 
 delete: check-vars
 	@carina delete $(CONTAINER)

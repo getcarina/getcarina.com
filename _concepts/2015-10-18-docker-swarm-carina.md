@@ -16,37 +16,37 @@ Carina provisions Docker Swarm clusters for you to deploy your containers to.
 Although these clusters offer much of the native functionality of Docker Swarm,
 you should be aware of the specific ways in which Carina implements Docker Swarm.
 
-### Carina segments
+### Carina nodes
 
 Docker Swarm uses the concept of a _host_ to represent a machine that runs a
 Docker daemon and stores containers. In Carina, the concept is almost
-identical, but the term is _segment_.
+identical, but the term is _node_. A node is a logical slice of resources that may or may not be on the same physical host.
 
-A Carina segment is similar to a Docker host because both of them house a set of
+A Carina node is similar to a Docker host because both of them house a set of
 Docker containers given to them by the Swarm scheduler. One of the key differences,
-however, is their underlying virtualization technology. A segment is an LXC
+however, is their underlying virtualization technology. A node is an LXC
 container provisioned by libvirt, whereas a Docker host is typically installed
 by you, or by a tool like Docker Machine, onto an operating system, often in a
 Virtual Machine (VM). Tests have shown a 60 percent performance boost when LXC
 containers are used instead of VM hosts.
 
-Because your Docker containers run inside segments, you cannot connect to the
+Because your Docker containers run inside nodes, you cannot connect to the
 parent host using SSH, like you can with a traditional VM. There are also
 restrictions on mounting paths from the host file system, which is discussed in
 the [Volumes](#volumes) section.
 
-Also, because your Docker containers run inside segments, if a segment dies your container will likewise disappear. This underscores the idea of a container being extremely ephemeral and typically not a good choice for permanent data storage.
+Also, because your Docker containers run inside nodes, if a node dies your container will likewise disappear. This underscores the idea of a container being extremely ephemeral and typically not a good choice for permanent data storage.
 
-Each segment is assigned a public IPv4 address, like a Docker host. You
+Each node is assigned a public IPv4 address, like a Docker host. You
 can see all of these addresses with `docker info` or by using the command
 provided in the
 [Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
 section.
 
-Each segment has 20 GB of disk space, 4 GB of memory, and roughly the equivalent of 2 vCPUs. The
-maximum number of segments that you can provision per cluster is 3. The maximum
+Each node has 20 GB of disk space, 4 GB of memory, and roughly the equivalent of 2 vCPUs. The
+maximum number of nodes that you can provision per cluster is 3. The maximum
 number of clusters that you are allowed per account is 3. If you have a use case
-requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22). See [Running out of disk space on a segment]({{ site.baseurl }}/docs/troubleshooting/common-problems/#running-out-of-disk-space-on-a-segment) to find out how much disk space is used and how much is available per segment.
+requiring more, please contact us via the forum's [Capacity Thread](https://community.getcarina.com/t/capacity-requests/22). See [Running out of disk space on a node]({{ site.baseurl }}/docs/troubleshooting/common-problems/#running-out-of-disk-space-on-a-node) to find out how much disk space is used and how much is available per node.
 
 ### Cluster creation
 
@@ -65,7 +65,7 @@ deploy, manage, and visualize your clusters.
 ### Discovery back ends
 
 Swarm uses the concept of a discovery back-end to track all the hosts (or
-Carina segments) registered on the cluster. Many different kinds of discovery
+Carina nodes) registered on the cluster. Many different kinds of discovery
 back-ends are used in the the Docker ecosystem:
 
 - Hosted Discovery with Docker Hub
@@ -77,7 +77,7 @@ back-ends are used in the the Docker ecosystem:
 You can even use a static list of IP addresses or IP address ranges. With
 Carina, we use Consul for service discovery. Each cluster gets a separate
 Consul cluster with each of its agents identified by a unique private key. When
-Carina creates a new segment for a cluster, the Swarm agent is given the local
+Carina creates a new node for a cluster, the Swarm agent is given the local
 Consul agent in order for that segmet to become a part of the Swarm cluster.
 
 For information about Swarm discovery backends, see the
@@ -94,7 +94,7 @@ With Carina you do not get this option. Instead, the `spread` strategy, which is
 Swarm default, is used.
 
 To find out more information about Swarm scheduling strategies, read the
-[Strategies for distributing containers to segments]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)
+[Strategies for distributing containers to nodes]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-nodes)
 section of the "Introduction to Docker Swarm" article.
 
 ### AppArmor profiles
@@ -125,7 +125,7 @@ these overrides.
 
 One of the features of Docker containers is the ability to mount directories from the host machine (bind mounting), but, with Carina, this feature is heavily restricted for security.
 
-As a result, you can only use the `--volume` flag when referring to segment paths under `/var/lib/docker`. This means that any bind mount should take the following form: `--volume /var/lib/docker:/container-dir-of-your-choosing`.
+As a result, you can only use the `--volume` flag when referring to node paths under `/var/lib/docker`. This means that any bind mount should take the following form: `--volume /var/lib/docker:/container-dir-of-your-choosing`.
 
 <!-- TODO: remove this caveat when Carina releases Docker 1.11 -->
 **Note**: [Auto-creating missing host paths for bind mounts](http://docs.docker.com/engine/misc/deprecated/#auto-creating-missing-host-paths-for-bind-mounts) has been deprecated by Docker. In the future, if your bind mounts take the following form `--volume /var/lib/docker/dir-that-does-not-exist-yet:/container-dir-of-your-choosing`, Docker will error out.

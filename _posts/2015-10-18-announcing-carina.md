@@ -49,7 +49,7 @@ So some quick notes:
 
 1.	We just created a Docker Swarm cluster. For the Beta, you are limited to a total of 3 clusters. Let us know if you need or want more though; we're happy to oblige!
 
-2.	The clusters house segments. A Carina segment are the resources available in a cluster. A Carina segment is an LXC container provisioned by libvirt. Segments are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total segments. See also [Docker Swarm and Carina].
+2.	The clusters house nodes. A Carina node are the resources available in a cluster. A Carina node is an LXC container provisioned by libvirt. Nodes are composed of a Swarm agent and a Docker Engine. For the Beta, you are limited to 3 total nodes. See also [Docker Swarm and Carina].
 
 So now you have this thing - what do you do next? Click on the Get Access button to get a zip file containing all TLS certificates and a fully functional docker.env file:
 
@@ -79,18 +79,18 @@ That's pretty easy.
 
 ## Growing up
 
-Another cool thing is the ability to scale up the cluster via segments to expand available resources for your containers (segments are Docker Swarm hosts in the same cluster). This is also really easy (using the UI or CLI), for example click on the cog in the UI and "edit cluster":
+Another cool thing is the ability to scale up the cluster via nodes to expand available resources for your containers (nodes are Docker Swarm hosts in the same cluster). This is also really easy (using the UI or CLI), for example click on the cog in the UI and "edit cluster":
 
 ![edit cluster]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-edit-cluster.png %})
 
-Click on add segments (remember, max 3 for now) and you'll see the cluster go into a "growing" state:
+Click on add nodes (remember, max 3 for now) and you'll see the cluster go into a "growing" state:
 
-![add segments]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-add-segments.png %})
+![add nodes]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-add-nodes.png %})
 ![state growing]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-state-growing.png %})
 
 But what did that do? Let's check back on the command line:
 
-![CLI lots of segments]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-lotsofsegments.png %})
+![CLI lots of nodes]({% asset_path 2015-10-26-announcing-carina-by-rackspace/blog-cli-lotsofnodes.png %})
 
 Yeah, that's 3 independent docker hosts. You get a host, you get a host, and you and you!
 

@@ -35,7 +35,7 @@ This week the team took some time to show you how to connect to Rackspace data s
 
 1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
 
-1. Get the ServiceNet IP address of the segment Consul will advertise on and the public IP address of the segment.
+1. Get the ServiceNet IP address of the node Consul will advertise on and the public IP address of the node.
 
     ```
     $ export CONSUL_SERVICENET_IP=$(docker run --rm --net=host racknet/ip service ipv4)

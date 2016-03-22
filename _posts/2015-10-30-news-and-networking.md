@@ -49,7 +49,7 @@ Ah! Glad you asked - it's really important for us to hear from users on bugs, fe
 
 We're working on an official tutorial - but one of the most repeated pieces of feedback is "how do I do internal networking". We missed documenting this for launch time, but let's step through how you can get your stuff talking on the internal network.
 
-First, understand that each segment on Carina gets a public facing IP4 & IPv6 address:
+First, understand that each node on Carina gets a public facing IP4 & IPv6 address:
 
 ```
 $> carina credentials bob_ross
@@ -100,7 +100,7 @@ And I have a redis container running on that IPv4 public address, port mapped to
                When specifying ranges for both, the number of container ports in the range must match the number of host ports in the range. (e.g., `-p 1234-1236:1234-1236/tcp`)
 ```
 
-With Carina, we gain the power of the Rackspace public cloud - existing users of our cloud are familiar with the concept of ServiceNet - this is an internal, multi-tenant network you can use between individual cloud products, servers, etc. In the case of Carina we "inherit" the same ServiceNet construct which means your segments (Swarm Hosts) get two IP address - the public IPv4 and an internal ServiceNet address. This allows you to have internal networking amongst containers / swarm hosts without exposing them publicly.
+With Carina, we gain the power of the Rackspace public cloud - existing users of our cloud are familiar with the concept of ServiceNet - this is an internal, multi-tenant network you can use between individual cloud products, servers, etc. In the case of Carina we "inherit" the same ServiceNet construct which means your nodes (Swarm Hosts) get two IP address - the public IPv4 and an internal ServiceNet address. This allows you to have internal networking amongst containers / swarm hosts without exposing them publicly.
 
 Since the information isn't readily apparent (we'll work on exposing it in the UI and CLI as we go) we have a small docker image / tool called "racknet/ip" (for now) that allows dumping the networking information for your swarm host:
 
@@ -173,7 +173,7 @@ Console escape. Commands are:
 #
 ```
 
-There ya go; this means as you add segments / containers / etc you can communicate via ServiceNet or use normal inter-container networking patterns:
+There ya go; this means as you add nodes / containers / etc you can communicate via ServiceNet or use normal inter-container networking patterns:
 
 * [Docker networking basics]({{ site.baseurl }}/docs/concepts/docker-networking-basics/)
 * [Connect containers with Docker links]({{ site.baseurl }}/docs/tutorials/connect-docker-containers-with-links/)

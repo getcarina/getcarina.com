@@ -19,7 +19,7 @@ This tutorial describes how to acquire free TLS certificates from [Let's Encrypt
 
 ### Prerequisites
 
-Before you begin, you need to be able to [create and connect to a Carina cluster.]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) You need at least one segment with ports 80 and 443 available.
+Before you begin, you need to be able to [create and connect to a Carina cluster.]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) You need at least one node with ports 80 and 443 available.
 
 You also need to own a domain name and know how to create DNS records. Consult with your domain registrar for documentation on how to do this.
 
@@ -58,9 +58,9 @@ The first step is to create a data volume container to hold the Let's Encrypt ce
 
 ### Add a DNS A record to your domain
 
-Add a DNS A record to your domain that points to the public IP address of your cluster's segment. Even if your cluster has multiple segments, all of your containers will be running on the same segment as the data volume container you just created.
+Add a DNS A record to your domain that points to the public IP address of your cluster's node. Even if your cluster has multiple nodes, all of your containers will be running on the same node as the data volume container you just created.
 
-1. To find the segment's public IP address, run the following command:
+1. To find the node's public IP address, run the following command:
 
     ```bash
     $ docker inspect --format "{{ "{{ .Node.IP "}}}}" letsencrypt-data
@@ -92,7 +92,7 @@ Add a DNS A record to your domain that points to the public IP address of your c
 
 ### Issue TLS certificates
 
-Now you run a Let's Encrypt container to issue a new certificate. The Let's Encrypt client must be able to bind to ports 80 and 443 on the segment.
+Now you run a Let's Encrypt container to issue a new certificate. The Let's Encrypt client must be able to bind to ports 80 and 443 on the node.
 
 Note that running this container automatically accepts the Let's Encrypt [terms of service](https://letsencrypt.org/repository/) on your behalf. Review the terms of service before you run this container.
 
@@ -218,7 +218,7 @@ Construct an NGINX container that uses the issued TLS credentials and Diffie-Hel
     COPY index.html /data/www/index.html
     ```
 
-1. Use the Dockerfile to build the container image, specifying a [build affinity](https://docs.docker.com/swarm/scheduler/filter/#use-an-affinity-filter) to ensure that the image is available on the same segment as the volume that's storing your certificates. On Swarm, `docker build` commands build the container image on only *one* node, which can cause problems if a `docker run` command later attempts to schedule a container on a different Carina segment. Specifying `--build-arg affinity:container==letsencrypt-data` ensures that the image is built on the same segment as your data volume container, which is where you'll be running your containers.
+1. Use the Dockerfile to build the container image, specifying a [build affinity](https://docs.docker.com/swarm/scheduler/filter/#use-an-affinity-filter) to ensure that the image is available on the same node as the volume that's storing your certificates. On Swarm, `docker build` commands build the container image on only *one* node, which can cause problems if a `docker run` command later attempts to schedule a container on a different Carina node. Specifying `--build-arg affinity:container==letsencrypt-data` ensures that the image is built on the same node as your data volume container, which is where you'll be running your containers.
 
     ```bash
     $ docker build \
@@ -299,7 +299,7 @@ Let's Encrypt issues certificates that expire in a relatively short 90-day perio
     CMD ["/usr/sbin/crond", "-f", "-d", "8"]
     ```
 
-1. Use this Dockerfile to build a `my-cron` container, again using `--build-args` to ensure that the image is built on the correct segment:
+1. Use this Dockerfile to build a `my-cron` container, again using `--build-args` to ensure that the image is built on the correct node:
 
     ```bash
     $ docker build \
@@ -323,7 +323,7 @@ Let's Encrypt issues certificates that expire in a relatively short 90-day perio
     Successfully built 1d40ad924e88
     ```
 
-1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and specify an affinity to your data container to run on the correct segment.
+1. Run your cron job in a dedicated cron container. Mount the Docker socket from the host so that the `reissue` script's `docker` commands will work, and specify an affinity to your data container to run on the correct node.
 
     ```bash
     $ docker run \
@@ -463,7 +463,7 @@ If you aren't able to reach your domain at all with your browser, try the follow
 
 * Verify that the NGINX container is running. It should appear in the output of `docker ps -a` with a `STATUS` of `Up`. If you see a status of `Exited` instead, check the container's logs by running `docker logs my-nginx` to see what caused it to stop.
 * Ensure that the running NGINX container is listening on public ports 80 and 443. Its line in `docker ps -a` should include a `PORTS` section like the following one: `<myIP>:80->80/tcp, <myIP>:443->443/tcp`.
-* Verify that the IP address to which your domain points is the IP address of the Carina segment. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ "{{ .Node.IP " }}}}" letsencrypt-data` must match.
+* Verify that the IP address to which your domain points is the IP address of the Carina node. The output of `dig +short <myDomain>` (or `nslookup <myDomain>` on Windows) and `docker inspect --format "{{ "{{ .Node.IP " }}}}" letsencrypt-data` must match.
 
 If you see an error message instead of your `index.html` file, try the following steps:
 

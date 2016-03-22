@@ -32,7 +32,7 @@ You can reserve memory or CPU for a container by using runtime constraint flags
 when you execute the `docker run` command. These flags explicitly reserve the
 specified resource on the Docker host. If the automated scaling action, which runs
 every ten minutes, detects that the total reserved CPUs or the memory exceeds
-80 percent of total capacity, a new segment is provisioned.
+80 percent of total capacity, a new node is provisioned.
 
 For example, to reserve 1 GB of memory for your container, run the following command:
 
@@ -46,6 +46,6 @@ To reserve a specific amount of CPUs, run:
 $ docker run -d -c 5 <containerName>
 ```
 
-Each segment has a total memory capacity of 4 GB and 12 vCPUs. If runtime
+Each node has a total memory capacity of 4 GB and 12 vCPUs. If runtime
 constraints are used on a cluster that cannot provide the requested amount of
 memory or CPUs, an error message is issued and the container is not provisioned.

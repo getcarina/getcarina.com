@@ -47,7 +47,7 @@ nodes and clusters or controllers.
 
 ![Swarms]({% asset_path 2016-03-10-fastest-test-drive-of-docker-ucp/ucp-clusters.png%})
 
-With Carina, a cluster can host multiple Swarm nodes (segments). Each segment within
+With Carina, a cluster can host multiple Swarm nodes (nodes). Each node within
 a cluster gets its own Swarm controller, network, disk space, and so on. For more
 information, see U[Understanding how Carina uses Docker Swarm].
 

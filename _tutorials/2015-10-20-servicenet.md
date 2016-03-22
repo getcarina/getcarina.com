@@ -18,15 +18,15 @@ This tutorial describes using the internal network ServiceNet with Carina so tha
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) with two or more segments.
+[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) with two or more nodes.
 
 ### PublicNet and ServiceNet
 
 Carina network traffic runs over two networks, PublicNet and ServiceNet.
 
-PublicNet connects segments to the public Internet. When you create a segment, it gets an IPv4 and IPv6 address from PublicNet by default. This is the address that the segment uses to communicate with the public Internet.
+PublicNet connects nodes to the public Internet. When you create a node, it gets an IPv4 and IPv6 address from PublicNet by default. This is the address that the node uses to communicate with the public Internet.
 
-ServiceNet connects segments to the internal, multi-tenant network within Carina. When you create a segment, it gets only an IPv4 address from ServiceNet by default. This is the address that the segment can use to communicate with other segments in Carina.
+ServiceNet connects nodes to the internal, multi-tenant network within Carina. When you create a node, it gets only an IPv4 address from ServiceNet by default. This is the address that the node can use to communicate with other nodes in Carina.
 
 When containers are run with default flags, they are exposed on both PublicNet and ServiceNet. That means your containers are accessible from the public Internet and the internal, multi-tenant network within Carina by default.
 
@@ -62,7 +62,7 @@ Run a Redis container to see how containers are accessible by default.
 
 ### Run a Redis container exposed only on ServiceNet
 
-If you don't want your container to be exposed to the public Internet, you need to specify the internal IP address of a segment by using the `--publish ip:hostPort:containerPort` flag when you execute a `docker run` command. Because that flag requires a specific IP address, you first have to choose which segment you want the container to run on, and then discover the internal IP address of that segment.
+If you don't want your container to be exposed to the public Internet, you need to specify the internal IP address of a node by using the `--publish ip:hostPort:containerPort` flag when you execute a `docker run` command. Because that flag requires a specific IP address, you first have to choose which node you want the container to run on, and then discover the internal IP address of that node.
 
 1. View your cluster information.
 
@@ -89,9 +89,9 @@ If you don't want your container to be exposed to the public Internet, you need 
     Name: f11f822500bb
     ```
 
-1. Choose a segment (one of the nodes) from the output of `docker info`. Although any segment (node) will work, you could choose the one with the fewest running containers. In the preceding output, that would be `3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2`.
+1. Choose a node (one of the nodes) from the output of `docker info`. Although any node (node) will work, you could choose the one with the fewest running containers. In the preceding output, that would be `3947b48f-7b6b-409b-8a49-a9d71672a0d4-n2`.
 
-1. Get the internal IP address of the segment using the `racknet/ip` Docker utility image.
+1. Get the internal IP address of the node using the `racknet/ip` Docker utility image.
 
     ```bash
     $ docker run --rm \
@@ -102,7 +102,7 @@ If you don't want your container to be exposed to the public Internet, you need 
     10.176.225.205
     ```
 
-    The output of this command is the internal IP address of the segment on which you want to run a Redis container exposed only on ServiceNet. For example, `10.176.225.205`. For more information about the `racknet/ip` Docker utility image, see the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
+    The output of this command is the internal IP address of the node on which you want to run a Redis container exposed only on ServiceNet. For example, `10.176.225.205`. For more information about the `racknet/ip` Docker utility image, see the [Discover PublicNet and ServiceNet IP addresses](#discover-publicnet-and-servicenet-ip-addresses) section.
 
 1. Run a Redis container that is exposed only on ServiceNet
 
@@ -169,11 +169,11 @@ If you don't want your container to be exposed to the public Internet, you need 
 
 ### Discover PublicNet and ServiceNet IP addresses
 
-The `racknet/ip` Docker utility image is an image you can use to discover the PublicNet and ServiceNet IP addresses of your segments.
+The `racknet/ip` Docker utility image is an image you can use to discover the PublicNet and ServiceNet IP addresses of your nodes.
 
 For more information about specifying a constraint, see [Scheduling constraints]({{ site.baseurl }}/docs/concepts/introduction-docker-swarm/#scheduling-constraints).
 
-1. View the public IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
+1. View the public IP address of a node (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific node (node).
 
     ```bash
     $ docker run --rm \
@@ -184,9 +184,9 @@ For more information about specifying a constraint, see [Scheduling constraints]
     104.130.22.225
     ```
 
-    The output of this command is the public IP address of the segment on which you want to communicate with a container exposed on PublicNet.
+    The output of this command is the public IP address of the node on which you want to communicate with a container exposed on PublicNet.
 
-1. View the internal IP address of a segment (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific segment (node).
+1. View the internal IP address of a node (node). You use the `--env` flag to specify a constraint that this container should be scheduled to a specific node (node).
 
     ```bash
     $ docker run --rm \
@@ -197,7 +197,7 @@ For more information about specifying a constraint, see [Scheduling constraints]
     10.176.224.86
     ```
 
-    The output of this command is the internal IP address of a segment on which you want to communicate with a container exposed on ServiceNet.
+    The output of this command is the internal IP address of a node on which you want to communicate with a container exposed on ServiceNet.
 
 1. View the help information for the `racknet/ip` Docker utility image.
 

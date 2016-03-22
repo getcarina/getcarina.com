@@ -27,10 +27,10 @@ $ docker run --detach --publish 5000:5000 <custom-image>
 Error response from daemon: Error: unable to find a node that satisfies image==<custom-image>
 ```
 
-**Note**: This error occurs only after you scale your cluster to two or more segments.
+**Note**: This error occurs only after you scale your cluster to two or more nodes.
 
-This error message indicates that the container was scheduled on a different segment
-than the segment that built the image, and therefore the image could not be found.
+This error message indicates that the container was scheduled on a different node
+than the node that built the image, and therefore the image could not be found.
 To resolve this error, select one of the following options:
 
 * [Use a constraint](#use-a-constraint)
@@ -51,12 +51,12 @@ $ docker run --env constraint:node==*n1 <custom-image>
 ### Use an affinity
 
 **Note**: This is only applicable to older Carina clusters. New clusters implicitly apply
-the image affinity. If you need to run the container on multiple segments,
+the image affinity. If you need to run the container on multiple nodes,
 then a Docker registry is required. See the following sections for options.
 
 When you create or run a container that uses `<custom-image>`,
 specify `--env affinity:image==<custom-image>`. This command instructs Docker Swarm
-to schedule the new container on a segment that has your custom image.
+to schedule the new container on a node that has your custom image.
 
 ```
 $ docker build -t <custom-image> .
@@ -93,7 +93,7 @@ changes or command-line flags.
     docker push <dockerhub-user>/<custom-image>
     ```
 
-1. _(Optional)_ Pull the custom image down to every segment in your cluster.
+1. _(Optional)_ Pull the custom image down to every node in your cluster.
     This step is optional because Carina automatically discovers Docker Hub images.
 
     ```
@@ -103,7 +103,7 @@ changes or command-line flags.
     c44a-47ff-8f95-3af379443ce4-n1: Pulling <dockerhub-user>/<custom-image>... : downloaded
     ```
 
-    Each segment in the cluster downloads the image from Docker Hub, improving
+    Each node in the cluster downloads the image from Docker Hub, improving
     the performance of subsequent `run` commands.
 
 1. Run a container using the custom image.
@@ -146,7 +146,7 @@ to host your custom image.
     Docker uses the image name to determine to which registry the image should be pushed.
     For example, if the image name is `quay.io/myuser/myimage`, the image is pushed to the quay.io registry.
 
-1. Pull the custom image down to every segment in your cluster.
+1. Pull the custom image down to every node in your cluster.
 
     ```
     $ docker pull <registry>/<registry-user>/<custom-image>
@@ -156,7 +156,7 @@ to host your custom image.
     ```
 
     Docker uses the image name to determine from which registry the image should be pulled.
-    For example, if the image name is `quay.io/myuser/myrepo`, then each segment
+    For example, if the image name is `quay.io/myuser/myrepo`, then each node
     in the cluster pulls the image from the quay.io registry.
 
 1. Run a container using the custom image.
@@ -186,7 +186,7 @@ might be advantageous, especially when dealing with large images or images that 
     docker push 127.0.0.1:5000/<registry-user>/<custom-image>
     ```
 
-1. Pull the custom image down to every segment in your cluster.
+1. Pull the custom image down to every node in your cluster.
 
     ```
     $ docker pull 127.0.0.1:5000/<registry-user>/<custom-image>
@@ -197,7 +197,7 @@ might be advantageous, especially when dealing with large images or images that 
 
     Docker uses the image name to determine from which registry the image should be pulled.
     For example, if the image name is `127.0.0.1:5000/myuser/myimage`,
-    then each segment in the cluster pulls the image from your private registry.
+    then each node in the cluster pulls the image from your private registry.
 
 1. Run a container using the custom image.
 

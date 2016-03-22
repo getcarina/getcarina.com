@@ -168,7 +168,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Build the images
 
-To be able to pull your application images to every segment on your cluster, you first need to push them to Docker Hub. Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub, see the [Prerequisites](#prerequisites).
+To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub. Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub, see the [Prerequisites](#prerequisites).
 
 1. Login to Docker Hub
 

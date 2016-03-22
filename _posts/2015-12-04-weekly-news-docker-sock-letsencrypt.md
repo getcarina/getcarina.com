@@ -53,7 +53,7 @@ On Carina or any Docker host, you can set this up pretty quickly.
 
 Prerequisites:
 
-* A public facing Docker host or a [Carina cluster with only one segment](https://getcarina.com/docs/tutorials/create-connect-cluster/)
+* A public facing Docker host or a [Carina cluster with only one node](https://getcarina.com/docs/tutorials/create-connect-cluster/)
 * Your Docker environment set up
 * DNS "A" record set to the IP of your host
 

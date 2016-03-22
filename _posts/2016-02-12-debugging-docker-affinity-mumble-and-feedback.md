@@ -20,7 +20,7 @@ Woo! Almost the weekend - and of course that means some nice new bits of content
 
 <img src="{% asset_path weekly-news/affinity.png %}" alt="affinity"/>
 
-This new troubleshooting guide by the excellent [Carolyn Van Slyck](https://twitter.com/carolynvs) covers something everyone gets confused by at least once dealing with multiple independent Docker Swarm hosts/nodes (Carina Clusters & Segments). "`Error response from daemon: Error: image library/<custom-image> not found`" is a fairly cryptic error.
+This new troubleshooting guide by the excellent [Carolyn Van Slyck](https://twitter.com/carolynvs) covers something everyone gets confused by at least once dealing with multiple independent Docker Swarm hosts/nodes (Carina Clusters & Nodes). "`Error response from daemon: Error: image library/<custom-image> not found`" is a fairly cryptic error.
 
 <img class="right" src="{% asset_path weekly-news/confused.gif %}" alt="confused"/>
 

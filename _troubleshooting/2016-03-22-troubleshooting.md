@@ -96,27 +96,27 @@ $ docker exec test echo "Yay! :)" || echo "Aw Man :("
 Yay! :)
 ```
 
-### Running out of disk space on a segment
+### Running out of disk space on a node
 
-You get a certain amount of disk space per segment; see [Carina segments]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#carina-segments) to find out how much. If you run out of disk space, the applications in your containers might fail to start and your containers will immediately go into the "Exited" status. For example, MongoDB will fail to start and `Insufficient free space for journal files` will be in the log messages.
+You get a certain amount of disk space per node; see [Carina nodes]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#carina-nodes) to find out how much. If you run out of disk space, the applications in your containers might fail to start and your containers will immediately go into the "Exited" status. For example, MongoDB will fail to start and `Insufficient free space for journal files` will be in the log messages.
 
-Use the following commands to check the remaining disk space on your segments.
+Use the following commands to check the remaining disk space on your nodes.
 
 ```bash
 $ SEGMENTS=$(docker info | grep Nodes | awk '{print $2}')
 $ for (( i=1; i<=$SEGMENTS; i++ )); do
-   echo "*** Segment $i ***"
+   echo "*** Node $i ***"
    docker run -it --rm --env constraint:node==*-n$i alpine:3.3 df -h /
   done
-*** Segment 1 ***
+*** Node 1 ***
 Filesystem                Size      Used Available Use% Mounted on
 none                     19.4G      1.6G     16.8G   9% /
-*** Segment 2 ***
+*** Node 2 ***
 Filesystem                Size      Used Available Use% Mounted on
 none                     19.4G      1.1G     17.3G   6% /
 ```
 
-The output of these commands is the output of the `df` command being run on every segment in your cluster. You can clearly see how much disk space is used and how much is available per segment.
+The output of these commands is the output of the `df` command being run on every node in your cluster. You can clearly see how much disk space is used and how much is available per node.
 
 To help prevent this issue, reclaim disk space when you remove containers by using the `--volumes` flag (`-v` for short). However, take extreme care when you do because any data in the volumes associated with that container will be lost permanently.
 

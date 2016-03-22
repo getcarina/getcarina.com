@@ -65,12 +65,12 @@ $ docker run --detach --publish 8081:80 nginx
 ```
 
 ### Add capacity to the cluster
-If you are using Carina, add segments to add capacity.
+If you are using Carina, add nodes to add capacity.
 
 1. Log in to the [Carina control panel](https://app.getcarina.com).
 2. Click the gear icon associated with the cluster and select **Edit Cluster**.
-3. On the Cluster Details page, click **Add segments**.
-4. Specify the new cluster size and click **Add Segments**.
+3. On the Cluster Details page, click **Add nodes**.
+4. Specify the new cluster size and click **Add Nodes**.
 
 Otherwise, you can use Docker Machine to add a node to the Docker Swarm cluster.
 See the Docker Machine documentation for additional information about [how to manage
