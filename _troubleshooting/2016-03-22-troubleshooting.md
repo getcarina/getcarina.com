@@ -1,12 +1,12 @@
 ---
 title: Troubleshooting common problems
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-21
+date: 2016-03-22
 featured: true
 permalink: docs/troubleshooting/common-problems/
 description: Troubleshooting common problems on Carina
 docker-versions:
-  - 1.8.3
+  - 1.10.2
 topics:
   - troubleshooting
 ---
@@ -187,5 +187,5 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 
 [dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
 [carina-creds]: {{site.baseurl}}/docs/references/carina-credentials/
-[rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster)
+[rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster
 [rebuild-do]: {{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do
