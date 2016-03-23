@@ -1,12 +1,12 @@
 ---
 title: Troubleshooting common problems
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-09-21
+date: 2016-03-22
 featured: true
 permalink: docs/troubleshooting/common-problems/
 description: Troubleshooting common problems on Carina
 docker-versions:
-  - 1.8.3
+  - 1.10.2
 topics:
   - troubleshooting
 ---
@@ -39,9 +39,6 @@ To resolve this error:
 2. [Load your cluster credentials][carina-creds].
 3. Run `dvm use`. This switches your Docker client to the same version used by your cluster.
 
-[dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
-[carina-creds]: {{site.baseurl}}/docs/references/carina-credentials/
-
 ### Cannot connect to the Docker daemon
 
 The following error indicates one of two possible issues:
@@ -49,9 +46,21 @@ The following error indicates one of two possible issues:
 ```
 Cannot connect to the Docker daemon. Is "docker -d" running on this host?
 ```  
+
 1. You're behind a firewall or VPN and it's blocking port 2376 (a port used by Docker). To resolve this error, request your network administrator to open that port or retry your actions from a location where port 2376 isn't blocked.
 
-2. You've accidentally removed the Docker Swarm management containers. To resolve this error see [How do I rebuild a cluster?]({{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster) and [What does the cluster rebuild action do?]({{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do).
+2. You've accidentally removed the Docker Swarm management containers. To resolve this error see [How do I rebuild a cluster?][rebuild] and [What does the cluster rebuild action do?][rebuild-do]
+
+### error getting pools config from store
+
+If you accidentally deleted the container(s) named carina-svcd and attempt to create a network, you'll get the follow error message:
+
+```
+$ docker network create mynetwork
+Error response from daemon: 500 Internal Server Error: error getting pools config from store: could not get pools config from store: Get http://localhost:12000/v1/kv/docker/network/v1.0/ipam/default/config/GlobalDefault/?consistent=: dial tcp [::1]:12000: getsockopt: connection refused
+```
+
+To resolve this error see [How do I rebuild a cluster?][rebuild] and [What does the cluster rebuild action do?][rebuild-do]
 
 ### Debug a running container
 
@@ -175,3 +184,8 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 * [Error publishing a container to a specific port]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-port-unavailable/)
 * [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-windows-docker-vm-startup/)
 * [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)
+
+[dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
+[carina-creds]: {{site.baseurl}}/docs/references/carina-credentials/
+[rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster
+[rebuild-do]: {{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do
