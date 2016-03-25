@@ -26,7 +26,7 @@ the help of the Easter bunny.
 ### Segments are now nodes
 
 When Carina was launched, a conscious decision was made to use the term
-"segment" to describe a compute resource that serves as a Docker host. But as
+"segment" to describe a compute resource that serves as a Docker host. As
 time went on, we realized this term wasn't the clearest or easiest to grasp.
 Many folks became confused when we attempted to define what a segment was
 at meet-ups or talks, and we soon realized it wasn't worth the overall
@@ -39,7 +39,7 @@ principles of Carina: to give people a service that provisions architecture
 and gets out of their way, allowing them to use their container tooling and
 idioms of choice. We don't want to introduce our own unhelpful abstractions.
 
-So with that in mind, and after a [good community discussion](https://github.com/getcarina/feedback/issues/54),
+With that in mind, and after a [good community discussion](https://github.com/getcarina/feedback/issues/54),
 we're announcing the [renaming](https://github.com/getcarina/getcarina.com/pull/777)
 of "segment" to "node" in all our documentation and control panels.
 
