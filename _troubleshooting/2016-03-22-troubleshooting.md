@@ -51,9 +51,10 @@ Cannot connect to the Docker daemon. Is "docker -d" running on this host?
 
 2. You've accidentally removed the Docker Swarm management containers. To resolve this error see [How do I rebuild a cluster?][rebuild] and [What does the cluster rebuild action do?][rebuild-do]
 
-### error getting pools config from store
+### Error getting pools config from store
 
-If you accidentally deleted the container(s) named carina-svcd and attempt to create a network, you'll get the follow error message:
+If you accidentally delete the containers named `carina-svcd` and then attempt
+to create a network, you get the following error message:
 
 ```
 $ docker network create mynetwork
