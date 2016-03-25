@@ -18,17 +18,9 @@ you should be aware of the specific ways in which Carina implements Docker Swarm
 
 ### Carina nodes
 
-Docker Swarm uses the concept of a _host_ to represent a machine that runs a
-Docker daemon and stores containers. In Carina, the concept is almost
-identical, but the term is _node_. A node is a logical slice of resources that may or may not be on the same physical host.
+Docker Swarm uses the term _node_ to represent a machine that runs a Docker daemon and containers. Carina also uses the term _node_ to represent a machine that runs a Docker daemon and containers. However, the key difference is their underlying technology.
 
-A Carina node is similar to a Docker host because both of them house a set of
-Docker containers given to them by the Swarm scheduler. One of the key differences,
-however, is their underlying virtualization technology. A node is an LXC
-container provisioned by libvirt, whereas a Docker host is typically installed
-by you, or by a tool like Docker Machine, onto an operating system, often in a
-Virtual Machine (VM). Tests have shown a 60 percent performance boost when LXC
-containers are used instead of VM hosts.
+A Docker Swarm node is typically installed by a tool like Docker Machine onto a physical or virtual machine (VM). Whereas, a Carina node is an LXC container provisioned by libvirt onto a physical machine. Carina nodes within a cluster may or may not reside on the same physical machine. Tests have shown a 60 percent performance boost when LXC containers are used instead of VMs.
 
 Because your Docker containers run inside nodes, you cannot connect to the
 parent host using SSH, like you can with a traditional VM. There are also
