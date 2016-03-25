@@ -33,7 +33,7 @@ Cloud Files is an object storage service that provides storage for any type of f
 
 ### Run the Docker registry service
 
-Docker maintains an image for the image registry service. You need to run this service on every segment in your cluster and configure it to use Cloud Files as its storage. To use Cloud Files as storage for the images, the registry service needs to know your Rackspace username, password, and the region in which to store the images.
+Docker maintains an image for the image registry service. You need to run this service on every node in your cluster and configure it to use Cloud Files as its storage. To use Cloud Files as storage for the images, the registry service needs to know your Rackspace username, password, and the region in which to store the images.
 
 1. Export environment variables with your Rackspace information.
 
@@ -45,7 +45,7 @@ Docker maintains an image for the image registry service. You need to run this s
 
 1. Run the Docker registry service.
 
-    This whole code block loops over every segment in your cluster and issues a `docker run` command against each segment.
+    This whole code block loops over every node in your cluster and issues a `docker run` command against each node.
 
     This `docker run` command uses the `--publish` flag so that the registry service listens only on port 5000 of the localhost IP address of 127.0.0.1. As a result, only clients authenticated with your cluster credentials can access this  registry service. It also uses many `--env` flags prefixed by `REGISTRY_STORAGE` to configure access to Cloud Files.
 
@@ -75,7 +75,7 @@ Docker maintains an image for the image registry service. You need to run this s
 
 ### Build and distribute an image
 
-Build your image on a segment, store that image in the registry, and pull that image down to all segments.
+Build your image on a node, store that image in the registry, and pull that image down to all nodes.
 
 1. Create a text file named Dockerfile and copy the following code to it.
 
@@ -134,7 +134,7 @@ Build your image on a segment, store that image in the registry, and pull that i
 
     The output of this command is all of the layers of the image that have been uploaded to Cloud Files.
 
-1. Pull the image to all segments in your cluster.
+1. Pull the image to all nodes in your cluster.
 
     ```
     $ docker pull 127.0.0.1:5000/$RS_USERNAME/web
@@ -143,11 +143,11 @@ Build your image on a segment, store that image in the registry, and pull that i
     3f8cc9fa-84bc-4bfd-a5bd-b3e38986ed9c-n1: Pulling 127.0.0.1:5000/octopus/web:latest... : downloaded
     ```
 
-    The output of this command tells you that image has been downloaded to the segments in your cluster.
+    The output of this command tells you that image has been downloaded to the nodes in your cluster.
 
 ### Run a container from your image
 
-1. Run a container from your image on each segment in your cluster.
+1. Run a container from your image on each node in your cluster.
 
     This run command uses `127.0.0.1:5000/$RS_USERNAME/web` as the image name to point Docker at the local private registry service.
 

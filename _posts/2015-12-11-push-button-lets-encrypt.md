@@ -53,7 +53,7 @@ Furthermore, because this approach is automated, it uses the `--agree-tos` flag 
 
 Before you get started, you need:
 
- 1. [A Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) up, running and connected. It'll be easier if your cluster only has a single segment because the container's public IP address will be predictable. Otherwise, you'll need to fiddle around with Swarm affinities.
+ 1. [A Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) up, running and connected. It'll be easier if your cluster only has a single node because the container's public IP address will be predictable. Otherwise, you'll need to fiddle around with Swarm affinities.
  2. A domain name that you own with a DNS A record pointing to your cluster's public IP address.
  3. Any back-end service that understands HTTP running in a Docker container on your cluster. I have a [Sinatra test service](https://github.com/smashwilson/minimal-sinatra) that's handy for iterating on infrastructure like this. Make a note of the container's name. It does *not* need to be listening on a public port; in fact, it's better if it isn't, because then you can funnel all traffic through the secure entry point instead.
 
@@ -203,9 +203,9 @@ With that in place, everything's ready to go! All that's left to do is kick off 
 
 This is an experiment I cobbled together in a few days out of my own curiosity, so don't roll it into your production architecture! Specifically, it has a few significant limitations that you should be aware of.
 
- * **You can't easily use it for services that live behind a load balancer.** If you want to horizontally scale your web heads and distribute them across multiple segments, this won't help you. You'll need to find a different mechanism that will request the certificate *once* and share it among all of your web head containers, or a custom NGINX configuration to use NGINX as your load balancer.
+ * **You can't easily use it for services that live behind a load balancer.** If you want to horizontally scale your web heads and distribute them across multiple nodes, this won't help you. You'll need to find a different mechanism that will request the certificate *once* and share it among all of your web head containers, or a custom NGINX configuration to use NGINX as your load balancer.
 
- * **It requires the dedicated use of ports 80 and 443.** You can run only one domain and service per segment, and it needs to run on 80 and 443.
+ * **It requires the dedicated use of ports 80 and 443.** You can run only one domain and service per node, and it needs to run on 80 and 443.
 
  * **It doesn't provide an easy way to back up your issued certificates and credentials.** A better approach is to [store your credentials on a volume]({{ site.baseurl }}/blog/weekly-news-docker-sock-letsencrypt/#let-39-s-encrypt-with-free-certificates) that you can manage separately, back up, and mount to multiple containers as need.
 

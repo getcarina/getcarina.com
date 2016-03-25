@@ -44,7 +44,7 @@ The next obvious step was running our staging environment on it. We already had 
 
 We use [confd](https://github.com/kelseyhightower/confd) to write out our config files based on service discovery (in this case just using environment variables) and it was just a matter of using the standard Docker methods of passing environment variables.
 
-From there, we ran `docker-compose` and our staging environment was running both our API and Web servers in containers connecting back to our cloud database.  By setting Docker Swarm's anti-affinity rules and running `docker-compose scale web=3 api=3` we were able to run three of each container while ensuring that they didn't all run on the same cluster segment for a fault tolerant design.
+From there, we ran `docker-compose` and our staging environment was running both our API and Web servers in containers connecting back to our cloud database.  By setting Docker Swarm's anti-affinity rules and running `docker-compose scale web=3 api=3` we were able to run three of each container while ensuring that they didn't all run on the same cluster node for a fault tolerant design.
 
 We then pointed our Rackspace Cloud Load Balancer at the Docker Swarm cluster and after some testing removed the old VMs from the load balancer and destroyed them. After a few weeks of running staging in Carina with no issues, we decided it was time to move our production environment in as well.
 

@@ -95,7 +95,7 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
       If you have some clusters already running, you see output similar to the following output:
 
       ```
-      ClusterName       Flavor           Segments  AutoScale    Status
+      ClusterName       Flavor           Nodes  AutoScale    Status
       websocketsrock    container1-2G    2         true         active
       railsanne         container1-4G    4         true         active
       ```
@@ -105,14 +105,14 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 1. Create a Carina cluster by using the `carina create` command. Replace `mycluster` with the name of your cluster.
 
     ```bash
-    $ carina create mycluster --wait --segments=2 --autoscale
+    $ carina create mycluster --wait --nodes=2 --autoscale
 
     mycluster    container1-4G    2    true    active
 
     Read more about the parameters below:
     * --wait       wait for swarm cluster completion
-    * --segments=1    number of segments for the initial cluster
-    * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds segments as they are needed.
+    * --nodes=1    number of nodes for the initial cluster
+    * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds nodes as they are needed.
     ```
 
 2. After the cluster is created, download the credentials for the cluster. Replace `mycluster` with the name of your cluster.

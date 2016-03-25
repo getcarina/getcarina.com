@@ -50,7 +50,7 @@ Following are some specific guidelines for Carina content:
 
 - To create a link to a heading in the same article or a different article, you do not need to create a customized anchor. For the link, use the following format: `#heading-text`. For example, the link to the heading "GitHub workflow" in this topic would be formatted as `(#github-workflow)`.
 
-    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-segments)`.
+    To link to a heading in another article, append `#heading-text`to the permalink. For example, `(/docs/concepts/introduction-docker-swarm#strategies-for-distributing-containers-to-nodes)`.
 
     If the heading is long or contains special characters, you can create a custom anchor.
 

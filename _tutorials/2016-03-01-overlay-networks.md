@@ -12,7 +12,7 @@ topics:
   - networking
 ---
 
-An overlay network provides isolation for containers to communicate across all of the segments in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another.
+An overlay network provides isolation for containers to communicate across all of the nodes in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another.
 
 Among the many benefits are a few key features:
 
@@ -31,7 +31,7 @@ We strongly recommend using an overlay network anytime you need two or more cont
 
 ### Security
 
-Overlay networks run on an underlying network known as ServiceNet. ServiceNet connects cluster segments to the internal, multi-tenant network within Carina. Any container that publishes a port with the `--publish` or `--publish-all` flags is exposed to both the Internet and ServiceNet. In many cases, exposing a container to both the Internet and ServiceNet is undesirable because it increases the attack surface for your system.
+Overlay networks run on an underlying network known as ServiceNet. ServiceNet connects cluster nodes to the internal, multi-tenant network within Carina. Any container that publishes a port with the `--publish` or `--publish-all` flags is exposed to both the Internet and ServiceNet. In many cases, exposing a container to both the Internet and ServiceNet is undesirable because it increases the attack surface for your system.
 
 We strongly recommend using the `--net` flag and _not_ using the `--publish` or `--publish-all` flag anytime you run a container that does not need to communicate outside of your system.
 
@@ -147,7 +147,7 @@ You can perform more actions such as listing networks, removing networks, connec
 
 ### Overlay networks implementation in Carina
 
-The primary requirement to implement overlay networks on Docker Swarm is the use of a key-value store. The key-value store holds information about the network state that includes discovery, networks, endpoints, IP addresses, and more. For Carina, Consul is the key-value store. An instance of Consul runs in a container on each segment in your clusters. You can see these containers in the output of a `docker ps` command.
+The primary requirement to implement overlay networks on Docker Swarm is the use of a key-value store. The key-value store holds information about the network state that includes discovery, networks, endpoints, IP addresses, and more. For Carina, Consul is the key-value store. An instance of Consul runs in a container on each node in your clusters. You can see these containers in the output of a `docker ps` command.
 
 ```bash
 $ docker ps

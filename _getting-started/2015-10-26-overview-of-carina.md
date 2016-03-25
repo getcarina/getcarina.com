@@ -40,13 +40,13 @@ Docker is an open source project that automates the deployment of applications i
 
 Clusters are created by Carina. You use the Carina UI or the Carina CLI to issue create commands to the _control plane_. The control plane creates and configures the cluster for you.
 
-Clusters are composed of segments. One segment contains the cluster's Swarm manager. The Swarm manager orchestrates and schedules containers across the entire cluster. It assigns your containers to the segments via the Swarm agent.
+Clusters are composed of nodes. One node contains the cluster's Swarm manager. The Swarm manager orchestrates and schedules containers across the entire cluster. It assigns your containers to the nodes via the Swarm agent.
 
-#### Segments
+#### Nodes
 
-Segments are created by Carina. You use the Carina UI or the Carina CLI to issue grow commands to the control plane. The control plane creates and configures the segments for you and adds them to the cluster.
+Nodes are created by Carina. You use the Carina UI or the Carina CLI to issue grow commands to the control plane. The control plane creates and configures the nodes for you and adds them to the cluster.
 
-Segments are composed of a Swarm agent, a Docker Engine, and your Docker containers. The Swarm agent accepts commands from the Swarm manager to run containers on its segment. It then communicates with the Docker Engine to actually run the containers. The Docker Engine is a container runtime that builds and runs your Docker containers.
+Nodes are composed of a Swarm agent, a Docker Engine, and your Docker containers. The Swarm agent accepts commands from the Swarm manager to run containers on its node. It then communicates with the Docker Engine to actually run the containers. The Docker Engine is a container runtime that builds and runs your Docker containers.
 
 #### Docker containers
 
@@ -56,13 +56,13 @@ Containers are composed of your applications, their configuration, and anything 
 
 #### Overlay networks
 
-An overlay network provides isolation for containers to communicate across all of the segments in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another. An isolated network for containers that ensures only the services of your choice are exposed outside of your system reduces the attack surface for your applications.
+An overlay network provides isolation for containers to communicate across all of the nodes in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another. An isolated network for containers that ensures only the services of your choice are exposed outside of your system reduces the attack surface for your applications.
 
 #### Autoscaling
 
-Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a ten-minute interval. If a cluster needs resources, additional segments are automatically added.
+Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a ten-minute interval. If a cluster needs resources, additional nodes are automatically added.
 
-If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster is never scaled down and segments are never deleted automatically.
+If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster is never scaled down and nodes are never deleted automatically.
 
 Alternatively, you can manually scale a cluster through the control interfaces.
 

@@ -5,7 +5,7 @@ comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
 excerpt: >
-  In this week's roundup: A deeper dive into the security behind Carina, how to read your health data from Jawbone UP on Carina, and a tip on checking available disk space on your segments.
+  In this week's roundup: A deeper dive into the security behind Carina, how to read your health data from Jawbone UP on Carina, and a tip on checking available disk space on your nodes.
 categories:
  - Docker
  - Swarm
@@ -15,7 +15,7 @@ categories:
 authorIsRacker: true
 ---
 
-We've got a mix of things to share with you this week, from security to segments.
+We've got a mix of things to share with you this week, from security to nodes.
 
 ## Container security
 
@@ -31,25 +31,25 @@ This post provides a walk-through using Carina and Let's Encrypt along with a Ja
 
 [Reading your health data from Jawbone UP on Carina]({{ site.baseurl }}/blog/carina-jawbone/)
 
-## Check the remaining disk space on your segments
+## Check the remaining disk space on your nodes
 
-Every segment in your Carina cluster comes with 20 GB of disk space. Use the following commands to check the remaining disk space on your segments.
+Every node in your Carina cluster comes with 20 GB of disk space. Use the following commands to check the remaining disk space on your nodes.
 
 ```bash
 $ SEGMENTS=$(docker info | grep Nodes | awk '{print $2}')
 $ for (( i=1; i<=$SEGMENTS; i++ )); do
-   echo "*** Segment $i ***"
+   echo "*** Node $i ***"
    docker run -it --rm --env constraint:node==*-n$i alpine:3.3 df -h /
   done
-*** Segment 1 ***
+*** Node 1 ***
 Filesystem                Size      Used Available Use% Mounted on
 none                     19.4G      1.6G     16.8G   9% /
-*** Segment 2 ***
+*** Node 2 ***
 Filesystem                Size      Used Available Use% Mounted on
 none                     19.4G      1.1G     17.3G   6% /
 ```
 
-The output of these commands is the output of the `df` command being run on every segment in your cluster. You can clearly see How much disk space is used and how much is available per segment.
+The output of these commands is the output of the `df` command being run on every node in your cluster. You can clearly see How much disk space is used and how much is available per node.
 
 To reclaim disk space when you remove containers, use the `--volumes` flag (`-v` for short). However, take extreme care when you do because any data in the volumes associated with that container will be lost permanently.
 
