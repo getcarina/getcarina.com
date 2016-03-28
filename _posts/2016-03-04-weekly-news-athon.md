@@ -48,7 +48,7 @@ On February 22, Keith taught you how to [build a real-time game on Carina using 
 
 ## Edit on GitHub for blog posts and docs
 
-You can now click **Edit on GitHub** on posts and articles to go straight to the GitHub page for editing, even for this page! Our editor told me that it was completely fine to make typos all over this pge on purpose.
+You can now click **Edit on GitHub** on posts and articles to go straight to the GitHub page for editing, even for this page! Our editor told me that it was completely fine to make typos all over this page on purpose.
 
 loose fragment
 
