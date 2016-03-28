@@ -50,10 +50,6 @@ On February 22, Keith taught you how to [build a real-time game on Carina using 
 
 You can now click **Edit on GitHub** on posts and articles to go straight to the GitHub page for editing, even for this page! Our editor told me that it was completely fine to make typos all over this page on purpose.
 
-loose fragment
-
-pineapples
-
 ## Reactive map building
 
 Last week, Fallout Vault Boy, Kyle, put out another post in a series of posts on RxJS and Fallout, this time on [simulating a multiplayer map]({{ site.baseurl }}/blog/lets-build-a-reactive-map/). If you enjoyed going through it, [let him know](https://twitter.com/rgbkrk) if you would like to see more.
