@@ -13,29 +13,29 @@ topics:
 
 This tutorial describes how to develop a Python web application locally on VirtualBox and deploy it on Carina with Docker Compose.
 
-The application you're going to develop is a simple guestbook. It's enough to demonstrate a basic 3 tier app. To develop the application you'll be using the following technologies:
+The application is a simple guestbook. It's enough to demonstrate a basic three-tier application. To develop the application, you'll use the following technologies:
 
-* Nginx for the load balancer
-* For the app server:
+* NGINX for the load balancer
+* For the application server:
  * Python for the programming language
  * Flask for the web framework
  * Gunicorn for the WSGI server
 * MySQL for the database
 
-This is what the final result of moving your application from VirtualBox to Carina will look like.
+The final result of moving your application from VirtualBox to Carina will look as follows:
 
 ![Python Web App Development]({% asset_path python-web-app-dev/pythonwebapp.png %})
 
 ### Prerequisites
 
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
-* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
  * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
 
 ### Clone the repo
 
-Use `git` to clone the repo that contains all of the Compose files and application code you need to a location somewhere under your home directory.
+Use `git` to clone the `getcarina/examples` repo, which contains all of the Compose files and application code that you need to a location somewhere under your home directory.
 
 ```bash
 $ git clone https://github.com/getcarina/examples.git carina-examples
@@ -50,13 +50,17 @@ Checking connectivity... done.
 
 ### Development on VirtualBox
 
-You'll be using Docker on VirtualBox as your local development environment. This was installed as part of the Docker Toolbox, see the [Prerequisites](#prerequisites).
+You'll use Docker on VirtualBox as your local development environment. VirtualBox was installed as part of the Docker Toolbox (see [Prerequisites](#prerequisites)).
 
 ![VirtualBox]({% asset_path python-web-app-dev/virtualbox.png %})
 
 #### Initialize the environment
 
-1. When you open the Docker Quickstart Terminal for the first time, it should create a default VM. You can confirm this with the `docker-machine` command.
+1. Open the Docker Quickstart Terminal.
+
+    When you open the terminal for the first time, it should create a default VM.
+
+1. Confirm that the VM was created by running the following `docker-machine` command.
 
     ```bash
     $ docker-machine create --driver virtualbox default
@@ -67,7 +71,7 @@ You'll be using Docker on VirtualBox as your local development environment. This
     default          -        virtualbox   Running   tcp://192.168.99.100:2376                           v1.10.2
     ```
 
-    If the default VM wasn't already created, the `docker-machine create` command will create it.
+    If the default VM wasn't already created, the `docker-machine create` command creates it.
 
 1. Source the environment for the default VM.
 
@@ -81,7 +85,7 @@ You'll be using Docker on VirtualBox as your local development environment. This
     DOCKER_CERT_PATH=/Users/everett/.docker/machine/machines/default
     ```
 
-    The environment variables that were sourced into your environment configure the `docker` command line interface (CLI) to communicate with the default VM running a Docker Engine.
+    The environment variables that you source into your environment configure the `docker` command line interface (CLI) to communicate with the default VM running a Docker Engine.
 
 #### Run the application
 
@@ -106,17 +110,15 @@ You'll be using Docker on VirtualBox as your local development environment. This
     db_1                 | Version: '5.6.29'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server (GPL)
     ```
 
-    The output is interleaved log messages from the services you started. As you do you development, you can refer back to this terminal to see how the services react to your development and testing.
+    The output is interleaved log messages from the services that you started. As you do you development, you can refer back to this terminal to see how the services react to your development and testing.
 
-1. Open another terminal.
+1. Open another Docker Quickstart Terminal and run the following command.
 
     ```bash
     $ eval "$(docker-machine env default)"
     ```
 
-1. Initialize the database.
-
-    Use `docker-compose` to run the `create_db` function from your app to initialize the database.
+1. Use `docker-compose` to run the `create_db` function from your application to initialize the database.
 
     ```bash
     $ cd carina-examples/python-web-app
@@ -136,15 +138,15 @@ You'll be using Docker on VirtualBox as your local development environment. This
 
 #### Change the application
 
-1. Open `app/templates/index.html` for editing. Change "Guest" to "Ghost" everywhere with a case-sensitive find and replace.
+1. Open `app/templates/index.html` for editing and change every occurrence of "Guest" to "Ghost" with a case-sensitive find and replace.
 
 1. Reload your web browser.
 
-1. When you're ready to shutdown the application, use Ctrl+C in the terminal where you ran `docker-compose`.
+1. When you're ready to shut down the application, use **Ctrl+C** in the terminal where you ran `docker-compose`.
 
 ### Deployment on Carina
 
-You'll be using Docker Swarm cluster on Carina as your production deployment environment. This was created as part of creating and connecting to a cluster, see the [Prerequisites](#prerequisites).
+You'll be using a Docker Swarm cluster on Carina as your production deployment environment. This cluster was created as part of creating and connecting to a cluster (see [Prerequisites](#prerequisites)).
 
 When you are satisfied with your development and testing in your local development environment, you can run your application on Carina to share it with the world.
 
@@ -152,9 +154,9 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment
 
-1. Open a new terminal and initialize as per the instructions for the [Quickstart Terminal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal)
+1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for the [Quickstart Terminal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal).
 
-1. Check your environment
+1. Check your environment.
 
     ```bash
     $ env | grep DOCKER
@@ -166,11 +168,9 @@ When you are satisfied with your development and testing in your local developme
 
     The environment variables that were sourced into your environment configure the `docker` CLI to communicate with your Carina cluster.
 
-#### Build the images
+1. Log in to Docker Hub.
 
-To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub. Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub, see the [Prerequisites](#prerequisites).
-
-1. Login to Docker Hub
+    Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub (see [Prerequisites](#prerequisites)).
 
     ```bash
     $ docker login
@@ -182,7 +182,19 @@ To be able to pull your application images to every node on your cluster, you fi
     $ export DOCKER_HUB_USERNAME=<docker-hub-username>
     ```
 
-<a id="build-and-push-images"></a>
+1. Set environment variables to configure MySQL.
+
+    ```bash
+    echo "MYSQL_USER=guestbook-admin" > pythonwebapp-mysql-prod.env
+    echo "MYSQL_PASSWORD=my-random-password" >> pythonwebapp-mysql-prod.env
+    echo "MYSQL_ROOT_PASSWORD=my-random-root-password" > pythonwebapp-mysql-root-prod.env
+    ```
+
+    These environment variables are written to `env` files so that they can be reused in the future.
+
+#### Build and push the images
+
+To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub.
 
 1. Build and push the images
 
@@ -202,23 +214,11 @@ To be able to pull your application images to every node on your cluster, you fi
     latest: digest: sha256:defc0818f08cfa04fada7bfdd917a93054c833fd6c9142dc3c941689c78967e7 size: 7850
     ```
 
-    The output is the result of pushing your images to Docker Hub. You can view the images online at https://hub.docker.com/u/<docker-hub-username>/
+    The output is the result of pushing your images to Docker Hub. You can view the images online at `https://hub.docker.com/u/<docker-hub-username>/`
 
 #### Run the application
 
-1. Set environment variables to configure MySQL.
-
-    ```bash
-    echo "MYSQL_USER=guestbook-admin" > pythonwebapp-mysql-prod.env
-    echo "MYSQL_PASSWORD=my-random-password" >> pythonwebapp-mysql-prod.env
-    echo "MYSQL_ROOT_PASSWORD=my-random-root-password" > pythonwebapp-mysql-root-prod.env
-    ```
-
-    These environment variables are written to `env` files so they can be reused in the future.
-
-<a id="docker-compose-up"></a>
-
-1. Use the `docker-compose up` command to run the application. The `--file` flag is used to specify the production environment and the `-d` flag is used to detach from the run so closing your terminal does not kill the application.
+1. Use the `docker-compose up` command to run the application. The `--file` flag is used to specify the production environment and the `-d` flag is used to detach from the run so that closing your terminal does not kill the application.
 
     ```bash
     $ docker-compose --file docker-compose-prod.yml up -d
@@ -232,11 +232,9 @@ To be able to pull your application images to every node on your cluster, you fi
 
     No log messages are interleaved because you detached from the run.
 
-    To check log messages use the commands `docker logs pythonwebapp_app_1`, `docker logs pythonwebapp_db`, or `docker logs pythonwebapp_lb`.
+    To check log messages use the `docker-compose logs`, `docker logs pythonwebapp_app_1`, `docker logs pythonwebapp_db`, or `docker logs pythonwebapp_lb` command.
 
-1. Initialize the database.
-
-    Use `docker-compose` to run the `create_db` function from your app to initialize the database.
+1. Use `docker-compose` to run the `create_db` function from your application to initialize the database.
 
     ```bash
     $ docker-compose --file docker-compose-prod.yml run -d --rm --no-deps app python app.py create_db
@@ -256,17 +254,17 @@ To be able to pull your application images to every node on your cluster, you fi
 
 If you change the application in your development environment and you want to see those changes in your production environment, you need to rebuild your images and rerun your containers.
 
-1. Open `app/templates/index.html` for editing. Change "Ghost" back to "Guest" everywhere with a case-sensitive find and replace.
+1. Open `app/templates/index.html` for editing and change every occurrence of "Ghost" back to "Guest" with a case-sensitive find and replace.
 
-1. [Build and push the images](#build-and-push-images). You only need to build and push the images you've changed.
+1. [Build and push the images](#build-and-push-the-images). You only need to build and push the images you've changed.
 
-1. [Use the `docker-compose up` command to run the application](#docker-compose-up).
+1. [Use the `docker-compose up` command to run the application](#run-the-application).
 
 1. Reload your web browser.
 
 ### More actions on services
 
-Use the following commands to work with your services once they're running. Run `docker-compose` to see a full list of subcommands. Here are a number of useful subcommands.
+Use the following list of useful `docker-compose` subcommands to work with your services after they're running. Run `docker-compose` to see a full list of subcommands.
 
 1. `docker-compose ps` - List services.
 
@@ -287,10 +285,10 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/)
 * [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/)
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
-* [Nginx](https://www.nginx.com/)
+* [NGINX](https://www.nginx.com/)
 
 ### Next steps
 
-Store your data outside of a container by [Connecting a Carina container to a Rackspace MySQL Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/)
+Store your data outside of a container by [connecting a Carina container to a Rackspace MySQL Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/)
 
-Acquire free TLS certificates using [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/) and use them to secure your application.
+Acquire free TLS certificates by using [NGINX with Let's Encrypt]({{ site.baseurl }}/docs/tutorials/nginx-with-lets-encrypt/), and use them to secure your application.
