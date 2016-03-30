@@ -10,6 +10,7 @@ tips:
   -
     title: Alias to check your Docker environment.
     body: |
+    
       ```
       $ alias de='env | grep DOCKER | sort'
       $ de
@@ -20,7 +21,8 @@ tips:
       ```
   -
     title: Unset all Docker environment variables.
-    answer: |
+    body: |
+
       ```
       $ unset ${!DOCKER_*}
       ```
