@@ -44,6 +44,6 @@ tips:
   {% assign baseUrlVar = '{{ site.baseurl }}' %}
   <h4 id="{{ tip.title | slugify }}">{{ tip.title }}</h4>
   <div class="answer">
-    {{ faq.body | replace: baseUrlVar, site.baseurl }}
+    {{ tip.body | replace: baseUrlVar, site.baseurl }}
   </div>
 {% endfor %}
