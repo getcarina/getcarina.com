@@ -10,7 +10,7 @@ tips:
   -
     title: Alias to check your Docker environment.
     body: |
-    
+
       ```
       $ alias de='env | grep DOCKER | sort'
       $ de
@@ -32,7 +32,7 @@ tips:
   <h4>Contents</h4>
   <ul>
   {% for tip in page.tips %}
-    <li><a href="#{{ tip.title | slugify }}">{{ tip.body }}</a></li>
+    <li><a href="#{{ tip.title | slugify }}">{{ tip.title }}</a></li>
   {% endfor %}
   </ul>
 </div>
@@ -42,7 +42,7 @@ tips:
     This is a terrible, awful, no-good band-aid to parse one jekyll variable that we know gets used a lot in the frontmatter.
   {% endcomment %}
   {% assign baseUrlVar = '{{ site.baseurl }}' %}
-  <h4 id="{{ tip.title | slugify }}">{{ tip.body }}</h4>
+  <h4 id="{{ tip.title | slugify }}">{{ tip.title }}</h4>
   <div class="answer">
     {{ faq.body | replace: baseUrlVar, site.baseurl }}
   </div>
