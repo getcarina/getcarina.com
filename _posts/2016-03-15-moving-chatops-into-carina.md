@@ -229,7 +229,7 @@ pkg-add                        Adds an npm package to hubots manifest
 pkg-search                     Searches for an npm package upstream
 pkg-up                         Updates all packages in hubots manifest
 setup                          Setup dependencies via homebrew, pop venv
-$ make build
+$ make d-build
 Sending build context to Docker daemon  85.5 kB
 Step 1 : FROM node:4
  ---> 3538b8c69182
@@ -238,41 +238,24 @@ Step 55 : CMD bin/hubot -a slack
  ---> Using cache
  ---> 13115b0a1a31
 Successfully built 13115b0a1a31
-$ docker ps
+$ make d-ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-2c7497c66de7        carina/consul       "/bin/consul agent -b"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
-$ make run
-a476ac493bd27a744f34714845acc42c7c644652b780e012a1c6e010d050fa77
-$ make ps
+82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
+84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
+78e398317263        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
+2c7497c66de7        carina/consul       "/bin/consul agent -b"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
+073068bcc147        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
+$ make d-run
+64f69ec5117ff40a9ce50f98eecbfb16f6298702b1fd396f0f0f1ecd383a1c6c
+$ make d-ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-f444c6888322        designate-hubot     "/bin/sh -c 'bin/hubo"   6 seconds ago       Up 1 seconds                            5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/designate-hubot
-82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
-84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
-78e398317263        cirros              "/sbin/init"             7 days ago                                                  5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
-2c7497c66de7        carina/consul       "/bin/consul agent -b"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
-073068bcc147        cirros              "/sbin/init"             7 days ago                                                  5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
-$ make stop
-designate-hubot
-$ make ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                       PORTS               NAMES
-f444c6888322        designate-hubot     "/bin/sh -c 'bin/hubo"   40 seconds ago      Exited (137) 1 seconds ago                       5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/designate-hubot
-82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   7 days ago          Up 7 days                                        5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
-84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   7 days ago          Up 7 days                                        5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
-78e398317263        cirros              "/sbin/init"             7 days ago                                                           5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
-2c7497c66de7        carina/consul       "/bin/consul agent -b"   7 days ago          Up 7 days                                        5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
-073068bcc147        cirros              "/sbin/init"             7 days ago                                                           5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
-$ make rm
-designate-hubot
-$ make ps
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
-82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
-84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
-78e398317263        cirros              "/sbin/init"             7 days ago                                                  5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
-2c7497c66de7        carina/consul       "/bin/consul agent -b"   7 days ago          Up 7 days                               5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
-073068bcc147        cirros              "/sbin/init"             7 days ago                                                  5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
-$ make run
-b4f9d7017392dc385db3238ac4a8cf356ff59f8d3721df3cb0d1d89ca11d5c61
-$ make roll
+64f69ec5117f        designate-hubot     "/bin/sh -c 'bin/hubo"   23 seconds ago      Up 23 seconds                           5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/designate-hubot
+82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
+84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
+78e398317263        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
+2c7497c66de7        carina/consul       "/bin/consul agent -b"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
+073068bcc147        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
+$ make d-roll
 designate-hubot
 Sending build context to Docker daemon  85.5 kB
 Step 1 : FROM node:4
@@ -280,9 +263,42 @@ Step 1 : FROM node:4
 ...
 Step 55 : CMD bin/hubot -a slack
  ---> Using cache
- ---> 6c75c94c5d97
-Successfully built 6c75c94c5d97
-designate-hubot
+ ---> cc96dedbab4f
+Successfully built cc96dedbab4f
+5426b8a6d1931d395d6cba7faac05258f21c29f043be3568ec698a192b2c5164
+$ make d-ps
+  CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+  5426b8a6d193        designate-hubot     "/bin/sh -c 'bin/hubo"   5 seconds ago       Up 4 seconds                            5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/designate-hubot
+  82498aee00d1        swarm:1.1.0         "/swarm manage -H=tcp"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-manager
+  84f8c076d7ff        swarm:1.1.0         "/swarm join --addr=1"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-agent
+  78e398317263        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/swarm-data
+  2c7497c66de7        carina/consul       "/bin/consul agent -b"   3 weeks ago         Up 3 weeks                              5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd
+  073068bcc147        cirros              "/sbin/init"             3 weeks ago                                                 5b26b03f-f3ed-4b0c-835e-2d69745aacb4-n1/carina-svcd-data
+$ make d-logs
+npm info it worked if it ends with ok
+npm info using npm@2.14.12
+npm info using node@v4.3.2
+npm info preinstall designate-hubot@0.0.0
+npm info package.json githubot@1.0.0 No license field.
+npm info package.json htmlparser@1.7.7 No license field.
+npm info package.json hubot-reactgif@1.0.0 No license field.
+npm info package.json hubot-scripts@2.16.2 No license field.
+npm info package.json kg@1.0.0 license should be a valid SPDX license expression
+npm info package.json nodepie@0.7.0 No license field.
+npm info build /opt/bot
+npm info linkStuff designate-hubot@0.0.0
+npm info install designate-hubot@0.0.0
+npm info postinstall designate-hubot@0.0.0
+npm info prepublish designate-hubot@0.0.0
+npm info ok
+[Thu Mar 31 2016 15:27:57 GMT+0000 (UTC)] INFO Connecting...
+[Thu Mar 31 2016 15:27:57 GMT+0000 (UTC)] INFO Logged in as hubot of Cloud DNS, but not yet connected
+[Thu Mar 31 2016 15:27:57 GMT+0000 (UTC)] INFO Slack client now connected
+[Thu Mar 31 2016 15:27:57 GMT+0000 (UTC)] INFO /opt/bot/scripts/popapad.coffee is using deprecated documentation syntax
+(node) sys is deprecated. Use util instead.
+[Thu Mar 31 2016 15:28:01 GMT+0000 (UTC)] INFO hubot-redis-brain: Discovered redis from REDIS_URL environment variable
+[Thu Mar 31 2016 15:28:01 GMT+0000 (UTC)] INFO hubot-redis-brain: Successfully authenticated to Redis
+[Thu Mar 31 2016 15:28:01 GMT+0000 (UTC)] INFO hubot-redis-brain: Data for hubot brain retrieved from Redis
 ```
 
 This makes it trivial to hand these operations over to continuous integration in order to allow code changes to Hubot to lifecycle manage our always running ChatOps container in Carina!  Its as simple as a `make d-roll` to CI!
