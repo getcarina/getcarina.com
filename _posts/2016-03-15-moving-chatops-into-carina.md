@@ -100,7 +100,7 @@ ENV HUBOT_GITHUB_TOKEN                  somegithubtoken
 ENV HUBOT_RACKSPACE_API                 someracktoken
 ENV HUBOT_PAGERDUTY_USER_ID             somepagertoken
 ENV HUBOT_SLACK_TOKEN                   someslacktoken
-ENV REDIS_URL                           redis://someredispass@someobjectrockethash.publb.rackspaceclouddb.com:6379/
+ENV REDIS_URL                           redis://objectrocket:someredispass@someobjectrockethash.publb.rackspaceclouddb.com:6379/
 
 ENV BOTDIR /opt/bot
 
@@ -310,3 +310,7 @@ Another thing we are interested in pursuing is the idea of moving configuration 
 ![Impressive!]({% asset_path 2016-03-15-moving-chatops-into-carina/impressive.gif %})
 
 Overall the Cloud DNS product team was extremely impressed with how easy it was to get started using Carina.  Also the deployment story and workflows that teams can use to manage their containers in their swarm clusters is pretty powerful stuff.  The turnkey nature of Heroku is almost completely captured by Carina in addition to allowing for some deeper functionality if desired!
+
+## Update
+
+I circled back and corrected some inaccuracies in this writeup.  Namely I added a 'login' to the `REDIS_URL` string.  Its arbitrary, but something that the existing `redis-brain` plugin expects when it reads the redis string and chomps the authentication bits.  Without this arbitrary 'login', you would not see the hubot instance successfully binding to your `redis-brain`.
