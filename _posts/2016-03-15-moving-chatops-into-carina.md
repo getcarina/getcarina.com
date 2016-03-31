@@ -122,118 +122,113 @@ One other thing to note is that you do have to set another ingress permit from y
 
 One thing my team has some love for is using `Makefile`s in order to automate commonly-used tasks.  We setup some simple `make` targets which aim to help streamline Carina-based operations as they relate to Hubot.
 
-It assumes you've bootstrapped your shell's runtime using the necessary `carina credentials` and `carina env` commands:
+This takes advantage of [withenv](http://withenv.readthedocs.org/en/latest/), a little Python utility written by an [awesome team member](http://ionrock.org/) which chomps YAML and renders environment variables.  We seed a `.creds.yml` file with our Carina username (`CARINA_USERNAME`) and API key (`CARINA_APIKEY`) and voila!  Each `make` target prepends its operation with seeding the env with these vars to make `carina` and `docker` commands work without implicit steps to setup environment variables in your shell.
 
 ```bash
+.PHONY: help
+.DEFAULT_GOAL := help
+
 SHELL := /bin/bash
+VENV := .venv
+CARINA_CREDS_YML := .creds.yml
+CARINA_CLUSTER_NAME := 'designate-hubot'
+CONTAINER := $(CARINA_CLUSTER_NAME)
+WITH_CLUSTER := eval `$(VENV)/bin/we -e $(CARINA_CREDS_YML) carina env $(CARINA_CLUSTER_NAME)`
 
-CONTAINER = designate-hubot
-
+# Inspired by http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+# The pipe to sort in here sorts our friends, ignoring target places in the Makefile
 help:
-	@echo ""
-	@echo "setup       - setup carina client via homebrew"
-	@echo ""
-	@echo "create      - create carina cluster"
-	@echo "delete      - delete carina cluster"
-	@echo ""
-	@echo "info        - show carina stats via docker info"
-	@echo "ps          - check on running docker containers"
-	@echo ""
-	@echo "build       - build $(CONTAINER) docker image"
-	@echo "run         - run $(CONTAINER) docker container"
-	@echo "roll        - kicks off stop, build, start"
-	@echo ""
-	@echo "start       - start $(CONTAINER) docker container"
-	@echo "stop        - stop $(CONTAINER) docker container"
-	@echo "kill        - stop $(CONTAINER) docker container"
-	@echo "rm          - remove $(CONTAINER) docker container"
-	@echo "clean       - remove all exited docker containers"
-	@echo "restart     - kicks off kill, start"
-	@echo ""
-	@echo "logs        - pulls logs from $(CONTAINER) docker container"
-	@echo ""
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-check-vars:
-ifndef CARINA_USERNAME
-	$(error CARINA_USERNAME is undefined!)
+setup: ## Setup dependencies via homebrew, pop venv
+	@brew install carina docker npm jq
+	@if [ ! -d "$(VENV)" ]; then virtualenv $(VENV) ; fi
+	@$(VENV)/bin/pip install withenv
+
+carina-create: ## Create carina swarm cluster
+	@$(WITH_CLUSTER) && carina create --segments=1 --autoscale --wait $(CONTAINER)
+
+carina-delete: ## Delete carina swarm cluster
+	@$(WITH_CLUSTER) && carina delete $(CONTAINER)
+
+carina-info: ## Show carina stats via docker info
+	@$(WITH_CLUSTER) && docker info
+
+d-ps: ## Check on running docker containers
+
+	@$(WITH_CLUSTER) && docker ps -a
+
+d-build: ## Build designate-hubot docker container
+	@$(WITH_CLUSTER) && docker build -t $(CONTAINER) .
+
+d-run: ## Run designate-hubot docker container
+	@$(WITH_CLUSTER) && docker run --name $(CONTAINER) -d $(CONTAINER)
+
+d-rm: ## Remove designate-hubot docker container
+	@$(WITH_CLUSTER) && docker rm $(CONTAINER)
+
+d-clean: ## Remove all exited docker containers
+	@$(WITH_CLUSTER) && docker ps -a | grep Exit | cut -d ' ' -f 1 | xargs docker rm
+
+d-start: ## Start designate-hubot docker container
+	@$(WITH_CLUSTER) && docker start $(CONTAINER)
+
+d-stop: ## Stop designate-hubot docker container
+	@$(WITH_CLUSTER) && docker stop $(CONTAINER)
+
+d-kill: ## Kill designate-hubot docker container
+	@$(WITH_CLUSTER) && docker kill $(CONTAINER)
+
+d-roll: d-stop d-rm d-build d-run ## Kicks off stop, build, start
+
+d-restart: d-stop d-start ## Kicks off stop, start
+
+d-logs: ## Pulls logs from designate-hubot docker container
+	@$(WITH_CLUSTER) && docker logs $(CONTAINER)
+
+d-compose: ## Calls docker-compose up
+	@$(WITH_CLUSTER) && docker-compose up -d
+
+check-pkg-var:
+ifndef HUBOT_PACKAGE
+	$(error HUBOT_PACKAGE is undefined.  Try again with make target HUBOT_PACKAGE=hubot-awesome-package)
 endif
-ifndef CARINA_APIKEY
-	$(error CARINA_APIKEY is undefined!)
-endif
 
-setup:
-	brew install carina
+pkg-add: check-pkg-var ## Adds an npm package to hubots manifest
+	@$(WITH_CLUSTER) && npm install $(HUBOT_PACKAGE) --save
 
-create: check-vars
-	@carina create --nodes=1 --autoscale --wait $(CONTAINER)
+pkg-search: check-pkg-var ## Searches for an npm package upstream
+	@$(WITH_CLUSTER) && npm search $(HUBOT_PACKAGE)
 
-delete: check-vars
-	@carina delete $(CONTAINER)
-
-info: check-vars
-	@docker info
-
-ps: check-vars
-	@docker ps -a
-
-build: check-vars
-	@docker build -t $(CONTAINER) .
-
-run: check-vars
-	@docker run --name $(CONTAINER) -d $(CONTAINER)
-
-rm: check-vars
-	@docker rm $(CONTAINER)
-
-clean: check-vars
-	@$(shell docker ps -a | grep Exited | awk {'print $1'} | xargs -n1 -t docker rm)
-
-start: check-vars
-	@docker start $(CONTAINER)
-
-stop: check-vars
-	@docker stop $(CONTAINER)
-
-kill: check-vars
-	@docker kill $(CONTAINER)
-
-roll: stop build start
-
-restart: stop start
-
-logs: check-vars
-	@docker logs $(CONTAINER)
-
-compose:
-	@docker-compose up -d
+pkg-up: ## Updates all packages in hubots manifest
+	@$(shell $(WITH_CLUSTER) && for pkg in `cat package.json | jq .dependencies | \
+		grep \" | awk -F\" {'print $2'}` ; do \
+		npm install $pkg@\* --save ; done)
 ```
 
 This allows us to do some powerful things via some simple `make` targets which are close to the code.
 
 ```bash
 $ make
-
-setup       - setup carina client via homebrew
-
-create      - create carina cluster
-delete      - delete carina cluster
-
-info        - show carina stats via docker info
-ps          - check on running docker containers
-
-build       - build designate-hubot docker image
-run         - run designate-hubot docker container
-roll        - kicks off stop, build, start
-
-start       - start designate-hubot docker container
-stop        - stop designate-hubot docker container
-kill        - stop designate-hubot docker container
-rm          - remove designate-hubot docker container
-clean       - remove all exited docker containers
-restart     - kicks off kill, start
-
-logs        - pulls logs from designate-hubot docker container
-
+carina-create                  Create carina swarm cluster
+carina-delete                  Delete carina swarm cluster
+carina-info                    Show carina stats via docker info
+d-build                        Build designate-hubot docker container
+d-clean                        Remove all exited docker containers
+d-compose                      Calls docker-compose up
+d-kill                         Kill designate-hubot docker container
+d-logs                         Pulls logs from designate-hubot docker container
+d-ps                           Check on running docker containers
+d-restart                      Kicks off stop, start
+d-rm                           Remove designate-hubot docker container
+d-roll                         Kicks off stop, build, start
+d-run                          Run designate-hubot docker container
+d-start                        Start designate-hubot docker container
+d-stop                         Stop designate-hubot docker container
+pkg-add                        Adds an npm package to hubots manifest
+pkg-search                     Searches for an npm package upstream
+pkg-up                         Updates all packages in hubots manifest
+setup                          Setup dependencies via homebrew, pop venv
 $ make build
 Sending build context to Docker daemon  85.5 kB
 Step 1 : FROM node:4
@@ -290,7 +285,7 @@ Successfully built 6c75c94c5d97
 designate-hubot
 ```
 
-This makes it trivial to hand these operations over to continuous integration in order to allow code changes to Hubot to lifecycle manage our always running ChatOps container in Carina!
+This makes it trivial to hand these operations over to continuous integration in order to allow code changes to Hubot to lifecycle manage our always running ChatOps container in Carina!  Its as simple as a `make d-roll` to CI!
 
 One final thing we do is set a `.dockerignore` in the Hubot repository to keep cruft which doesnt need to go to the Docker daemon from going.  This keeps the 'context' thats sent to the Docker daemon lean for more rapid builds, rolls, etc.
 
@@ -314,3 +309,5 @@ Overall the Cloud DNS product team was extremely impressed with how easy it was 
 ## Update
 
 I circled back and corrected some inaccuracies in this writeup.  Namely I added a 'login' to the `REDIS_URL` string.  Its arbitrary, but something that the existing `redis-brain` plugin expects when it reads the redis string and chomps the authentication bits.  Without this arbitrary 'login', you would not see the hubot instance successfully binding to your `redis-brain`.
+
+Also I included some additional `Makefile` improvements that my team has iterated on.  The big takeaway is that the targets in this `Makefile` are 'self-documenting' via a [recent writeup](http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html).  This makes it trivial to onboard new targets that perform some sort of named function.  It means you dont have to remember to carry your 'docs' to the `help` target block to provide helper text to your users.  A++++ WOULD MAKE AGAIN!
