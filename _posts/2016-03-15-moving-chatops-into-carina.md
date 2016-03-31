@@ -25,7 +25,7 @@ Our ChatOps journey began like most teams in that we quickly spun up a proof-of-
 
 As our [product development matured](http://blog.rackspace.com/sign-now-early-access-rackspace-managed-dns-powered-openstack/), we realized that we needed to better [own the availability](http://www.whoownsmyavailability.com/) of our Hubot instance .  We were running on a skunkworks, no-cost plan at Heroku.  Moreover Heroku recently changed its service offering to enforce that said free plans enforce a ['sleep' policy](https://devcenter.heroku.com/articles/dyno-sleeping) on apps hosted in their fleet.  This means that there would be times where our instance would be unavailable.  Not good for a 3am on-call issue where ChatOps is integral to your team's incident response workflows!  While there are [some tactics to help maximize availability of your instance](https://github.com/hubot-scripts/hubot-heroku-keepalive), we realized that we would have to change things up for something so integral to our team's operations.
 
-Our initial thought was to bring the Hubot instance and its redis-based datastore into a Rackspace Public Cloud instance.  We started assembling the necessary configuration management code to do the needful.  However at the OpenStack Summit in Tokyo we got to see how easy Carina was to both get started with and to manage the lifecycle of container-based applications.
+Our initial thought was to bring the Hubot instance and its Redis-based datastore into a Rackspace Public Cloud instance.  We started assembling the necessary configuration management code to do the needful.  However at the OpenStack Summit in Tokyo we got to see how easy Carina was to both get started with and to manage the lifecycle of container-based applications.
 
 ![A Bright Idea]({% asset_path 2016-03-15-moving-chatops-into-carina/lloyd-idea.gif %})
 
@@ -43,7 +43,7 @@ And it literally took under an hour to do all that.  Color me impressed.
 
 ## Migrating To Carina
 
-The RedisToGo instance's connection information was available as the `REDISTOGO_URL` environment variable of the Hubot instance via the [`heroku-toolbelt`](https://toolbelt.heroku.com/) by way of a `heroku config --app=${APP}`.  Using this connection string information, we were able to use the `redis-cli` to pull down an `rdb` dump of the redis instance which powered Hubot's redis-brain.
+The RedisToGo instance's connection information was available as the `REDISTOGO_URL` environment variable of the Hubot instance via the [`heroku-toolbelt`](https://toolbelt.heroku.com/) by way of a `heroku config --app=${APP}`.  Using this connection string information, we were able to use the `redis-cli` to pull down an `rdb` dump of the Redis instance which powered Hubot's redis-brain.
 
 ```bash
 # Set some env vars
@@ -52,7 +52,7 @@ HOST=host.redistogo.com
 PORT=10411
 PASS=awesomerandopass
 
-# Dump redis to a local backup
+# Dump Redis to a local backup
 redis-cli \
 -h ${HOST} \
 -p ${PORT} \
@@ -66,9 +66,9 @@ After successfully capturing the dump, we verified the state of the dump was hea
 redis-check-dump ${DUMP}
 ```
 
-Finally, we provisioned a redis instance in ObjectRocket.  At the time of this blog, ObjectRocket's redis offering allows for a two-node [redis sentinel](http://redis.io/topics/sentinel) instance configured for high-availability.  It is available in the three US-based Rackspace regions and the London region.
+Finally, we provisioned a Redis instance in ObjectRocket.  At the time of this blog, ObjectRocket's Redis offering features a highly available two node Redis pod managed via [Sentinel](http://redis.io/topics/sentinel).  It is available in the three US-based Rackspace regions and the London region.
 
-One thing that contrasts ObjectRocket's redis offering from RedisToGo is that its ingress filtered by default ... which is a good thing!  Once provisioned we were able to use the ObjectRocket panel to allow an ingress permit from the host where we captured the RedisToGo dump to.  Using [`rdbtools`](https://github.com/sripathikrishnan/redis-rdb-tools), we were able to push our rdb-based dump into our newly-provisioned ObjectRocket redis instance:
+One thing that contrasts ObjectRocket's Redis offering from RedisToGo is that its ingress filtered by default ... which is a good thing!  Once provisioned we were able to use the ObjectRocket panel to allow an ingress permit from the host where we captured the RedisToGo dump to.  Using [`rdbtools`](https://github.com/sripathikrishnan/redis-rdb-tools), we were able to push our rdb-based dump into our newly-provisioned ObjectRocket Redis instance:
 
 ```bash
 HOST=lengthyhash.publb.rackspaceclouddb.com
@@ -116,7 +116,7 @@ CMD bin/hubot -a slack
 
 Voila!
 
-One other thing to note is that you do have to set another ingress permit from your swarm cluster in Carina into your ObjectRocket redis instance.  As mentioned, its firewalled off by default.  You can grab the IPv4 egress IP of your Carina cluster via a `docker info`.  Taking that IPv4 address to the ObjectRocket control panel to permit access into your hosted Redis instance should be all you need to have your Hubot instance talking to ObjectRocket-hosted redis-brain!
+One other thing to note is that you do have to set another ingress permit from your swarm cluster in Carina into your ObjectRocket Redis instance.  As mentioned, its firewalled off by default.  You can grab the IPv4 egress IP of your Carina cluster via a `docker info`.  Taking that IPv4 address to the ObjectRocket control panel to permit access into your hosted Redis instance should be all you need to have your Hubot instance talking to ObjectRocket-hosted redis-brain!
 
 ## `make` All The Things!
 
@@ -308,6 +308,6 @@ Overall the Cloud DNS product team was extremely impressed with how easy it was 
 
 ## Update
 
-I circled back and corrected some inaccuracies in this writeup.  Namely I added a 'login' to the `REDIS_URL` string.  Its arbitrary, but something that the existing `redis-brain` plugin expects when it reads the redis string and chomps the authentication bits.  Without this arbitrary 'login', you would not see the hubot instance successfully binding to your `redis-brain`.
+I circled back and corrected some inaccuracies in this writeup.  Namely I added a 'login' to the `REDIS_URL` string.  Its arbitrary, but something that the existing `redis-brain` plugin expects when it reads the Redis string and chomps the authentication bits.  Without this arbitrary 'login', you would not see the hubot instance successfully binding to your `redis-brain`.
 
 Also I included some additional `Makefile` improvements that my team has iterated on.  The big takeaway is that the targets in this `Makefile` are 'self-documenting' via a [recent writeup](http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html).  This makes it trivial to onboard new targets that perform some sort of named function.  It means you dont have to remember to carry your 'docs' to the `help` target block to provide helper text to your users.  A++++ WOULD MAKE AGAIN!
