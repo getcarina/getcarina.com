@@ -216,7 +216,7 @@ To be able to pull your application images to every node on your cluster, you fi
 
     The output is the result of pushing your images to Docker Hub. You can view the images online at `https://hub.docker.com/u/<docker-hub-username>/`
 
-#### Run the application
+#### Run the production application
 
 1. Use the `docker-compose up` command to run the application. The `--file` flag is used to specify the production environment and the `-d` flag is used to detach from the run so that closing your terminal does not kill the application.
 
@@ -258,7 +258,7 @@ If you change the application in your development environment and you want to se
 
 1. [Build and push the images](#build-and-push-the-images). You only need to build and push the images you've changed.
 
-1. [Use the `docker-compose up` command to run the application](#run-the-application).
+1. [Use the `docker-compose up` command to run the production application](#run-the-production-application).
 
 1. Reload your web browser.
 
