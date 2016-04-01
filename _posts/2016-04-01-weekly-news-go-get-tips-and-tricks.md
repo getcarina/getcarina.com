@@ -104,7 +104,9 @@ $ docker port temp-proxy 3306
 104.130.0.206:3306
 ```
 
-Then you can point your favourite SQL tool at that IP/Port.
+Then you can point your favourite SQL tool at that IP/Port. I use [Sequel Pro](http://www.sequelpro.com/).
+
+![Sequel Pro]({% asset_path weekly-news/sequel-pro.png %})
 
 Enjoy your weekend and tonight you can fall asleep to the [soothing sounds of your favourite Star Trek vessel](http://www.thinkgeek.com/product/ivmt/?pfm=HP_Carousel_WhiteNoiseGenerator_2).
 
