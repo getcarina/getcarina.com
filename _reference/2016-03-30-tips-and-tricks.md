@@ -68,3 +68,17 @@ Optionally, you can define an alias for this in your bash profile.
 ```
 alias dl='docker logs -f $(docker ps -lq)'
 ```
+
+### Print the port(s) assigned to the last run container
+This displays the port(s) assigned to the last container to run.
+
+```
+$ docker port $(docker ps -lq) | cut -d " " -f3
+172.99.73.31:80
+```
+
+Optionally, you can define an alias for this in your bash profile.
+
+```
+alias dp='docker port $(docker ps -lq) | cut -d " " -f3'
+```
