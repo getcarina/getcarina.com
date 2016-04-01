@@ -50,11 +50,11 @@ Checking connectivity... done.
 
 ### Development on VirtualBox
 
-You'll use Docker on VirtualBox as your local development environment. VirtualBox was installed as part of the Docker Toolbox (see [Prerequisites](#prerequisites)).
+You'll use Docker on VirtualBox as your local development environment (dev). VirtualBox was installed as part of the Docker Toolbox (see [Prerequisites](#prerequisites)).
 
 ![VirtualBox]({% asset_path python-web-app-dev/virtualbox.png %})
 
-#### Initialize the environment
+#### Initialize the environment in dev
 
 1. Open the Docker Quickstart Terminal.
 
@@ -87,7 +87,7 @@ You'll use Docker on VirtualBox as your local development environment. VirtualBo
 
     The environment variables that you source into your environment configure the `docker` command line interface (CLI) to communicate with the default VM running a Docker Engine.
 
-#### Run the application
+#### Run the application in dev
 
 1. Use the `docker-compose` command to run all of the services that make up the application.
 
@@ -136,7 +136,7 @@ You'll use Docker on VirtualBox as your local development environment. VirtualBo
 
     You can view the application site by copying and pasting the IP address into your web browser address bar.
 
-#### Change the application
+#### Change the application in dev
 
 1. Open `app/templates/index.html` for editing and change every occurrence of "Guest" to "Ghost" with a case-sensitive find and replace.
 
@@ -146,13 +146,13 @@ You'll use Docker on VirtualBox as your local development environment. VirtualBo
 
 ### Deployment on Carina
 
-You'll be using a Docker Swarm cluster on Carina as your production deployment environment. This cluster was created as part of creating and connecting to a cluster (see [Prerequisites](#prerequisites)).
+You'll be using a Docker Swarm cluster on Carina as your production deployment environment (prod). This cluster was created as part of creating and connecting to a cluster (see [Prerequisites](#prerequisites)).
 
 When you are satisfied with your development and testing in your local development environment, you can run your application on Carina to share it with the world.
 
 ![Carina]({% asset_path python-web-app-dev/carina.png %})
 
-#### Initialize the environment
+#### Initialize the environment in prod
 
 1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for the [Quickstart Terminal]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#quickstart-terminal).
 
@@ -192,7 +192,7 @@ When you are satisfied with your development and testing in your local developme
 
     These environment variables are written to `env` files so that they can be reused in the future.
 
-#### Build and push the images
+#### Build and push the images in prod
 
 To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub.
 
@@ -216,7 +216,7 @@ To be able to pull your application images to every node on your cluster, you fi
 
     The output is the result of pushing your images to Docker Hub. You can view the images online at `https://hub.docker.com/u/<docker-hub-username>/`
 
-#### Run the production application
+#### Run the application in prod
 
 1. Use the `docker-compose up` command to run the application. The `--file` flag is used to specify the production environment and the `-d` flag is used to detach from the run so that closing your terminal does not kill the application.
 
@@ -250,15 +250,15 @@ To be able to pull your application images to every node on your cluster, you fi
 
     You can view the application site by copying and pasting the IP address into your web browser address bar.
 
-#### Change the application
+#### Change the application in prod
 
 If you change the application in your development environment and you want to see those changes in your production environment, you need to rebuild your images and rerun your containers.
 
 1. Open `app/templates/index.html` for editing and change every occurrence of "Ghost" back to "Guest" with a case-sensitive find and replace.
 
-1. [Build and push the images](#build-and-push-the-images). You only need to build and push the images you've changed.
+1. [Build and push the images](#build-and-push-the-images-in-prod). You only need to build and push the images you've changed.
 
-1. [Use the `docker-compose up` command to run the production application](#run-the-production-application).
+1. [Use the `docker-compose up` command to run the production application](#run-the-application-in-prod).
 
 1. Reload your web browser.
 
