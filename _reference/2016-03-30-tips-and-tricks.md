@@ -10,9 +10,9 @@ topics:
   - tips
 ---
 
-A collection of tips and tricks for working with Docker Swarm on Carina.
+Here is a collection of tips and tricks for working with Docker Swarm on Carina.
 
-### Alias to check your Docker environment.
+### Use an alias to check your Docker environment
 
 ```
 $ alias de='env | grep DOCKER | sort'
@@ -23,17 +23,17 @@ DOCKER_TLS_VERIFY=1
 DOCKER_VERSION=1.10.2
 ```
 
-### Unset all Docker environment variables.
+### Unset all Docker environment variables
 
 ```
 $ unset ${!DOCKER_*}
 ```
 
-### Log into a container
-While it's not technically SSH, this function helps you quickly log into a
+### Log in to a container
+Although it's not technically SSH, this function helps you quickly log in to a
 running container so that you can look around and run commands.
 
-1. Add the following bash function to your bash profile.
+1. Add the following Bash function to your Bash profile.
 
     ```
     docker-ssh() {
@@ -42,20 +42,20 @@ running container so that you can look around and run commands.
     }
     ```
 
-1. Source your bash profile to load the new function.
+1. Source your Bash profile to load the new function.
 
     ```
     source ~/.bash_profile
     ```
 
-1. "SSH" into a running container by running the following command:
+1. Log in to a running container by running the following command:
 
     ```
     docker-ssh <container-name>
     ```
 
 ### View the logs for the last run container
-This displays the logs from the last container to run.
+The following command displays the logs from the last container to run.
 
 ```
 $ docker logs -f $(docker ps -lq)
@@ -63,21 +63,21 @@ Server has started...
 Now listening on http://0.0.0.0:8080
 ```
 
-Optionally, you can define an alias for this in your bash profile.
+Optionally, you can define an alias for this in your Bash profile.
 
 ```
 alias dl='docker logs -f $(docker ps -lq)'
 ```
 
-### Print the port(s) assigned to the last run container
-This displays the port(s) assigned to the last container to run.
+### Print the ports assigned to the last run container
+The following command displays the ports that are assigned to the last container to run.
 
 ```
 $ docker port $(docker ps -lq) | cut -d " " -f3
 172.99.73.31:80
 ```
 
-Optionally, you can define an alias for this in your bash profile.
+Optionally, you can define an alias for this in your Bash profile.
 
 ```
 alias dp='docker port $(docker ps -lq) | cut -d " " -f3'
