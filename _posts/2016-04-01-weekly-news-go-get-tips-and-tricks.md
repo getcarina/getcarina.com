@@ -19,7 +19,7 @@ authorIsRacker: true
 
 ### Filter the list of containers with a Go SDK for Docker
 
-If you're writing an application in Go that needs to interact with your Swarm cluster, it's usually a good idea to pick up one of the many Go SDKs for Docker out there and let it do some of the heavy lifting for you. Recently I needed to filter the list of containers by labels using the [samalba/dockerclient](https://github.com/samalba/dockerclient). Once you have a [Go development environment setup](https://golang.org/doc/code.html) and you've [created and connected to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/), here's how to do it.
+<img class="right" src="{% asset_path weekly-news/everybody-loves-a-skateboarding-dog.jpg %}" alt="Everybody loves a skateboarding dog"/>If you're writing an application in Go that needs to interact with your Swarm cluster, it's usually a good idea to pick up one of the many Go SDKs for Docker out there and let it do some of the heavy lifting for you. Recently I needed to filter the list of containers by labels using the [samalba/dockerclient](https://github.com/samalba/dockerclient). Once you have a [Go development environment setup](https://golang.org/doc/code.html) and you've [created and connected to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/), here's how to do it.
 
 Create a file called list-containers.go and copy in the following Go code. The complete lack of error handling is an April Fool's Day joke. Ha!
 
@@ -27,31 +27,31 @@ Create a file called list-containers.go and copy in the following Go code. The c
 package main
 
 import (
-  "encoding/json"
-  "fmt"
-  "net/url"
-  "os"
-  "github.com/samalba/dockerclient"
+    "encoding/json"
+    "fmt"
+    "net/url"
+    "os"
+    "github.com/samalba/dockerclient"
 )
 
 func main() {
-  tlsConfig, _ := dockerclient.TLSConfigFromCertPath(os.Getenv("DOCKER_CERT_PATH"))
-  docker, _ := dockerclient.NewDockerClient(os.Getenv("DOCKER_HOST"), tlsConfig)
+    tlsConfig, _ := dockerclient.TLSConfigFromCertPath(os.Getenv("DOCKER_CERT_PATH"))
+    docker, _ := dockerclient.NewDockerClient(os.Getenv("DOCKER_HOST"), tlsConfig)
 
-  filterMap := map[string][]string{ "label":[]string{"interlock.ext.service.name=myservice"} }
-	filterJSON, _ := json.Marshal(filterMap)
+    filterMap := map[string][]string{ "label":[]string{"interlock.ext.service.name=myservice"} }
+    filterJSON, _ := json.Marshal(filterMap)
 
-  filterStr := string(filterJSON)
-	fmt.Printf("filterStr = %s\n", filterStr)
+    filterStr := string(filterJSON)
+    fmt.Printf("filterStr = %s\n", filterStr)
 
-  filterQuery := url.QueryEscape(filterStr)
-  fmt.Printf("filterQuery = %s\n", filterQuery)
+    filterQuery := url.QueryEscape(filterStr)
+    fmt.Printf("filterQuery = %s\n", filterQuery)
 
-  containers, _ := docker.ListContainers(false, false, filterQuery)
+    containers, _ := docker.ListContainers(false, false, filterQuery)
 
-  for _, container := range containers {
-    fmt.Printf("container: names=%s labels=%s\n", container.Names, container.Labels)
-  }
+    for _, container := range containers {
+      fmt.Printf("container: names=%s labels=%s\n", container.Names, container.Labels)
+    }
 }
 ```
 
@@ -79,7 +79,7 @@ Feel free to click on the [Edit on GitHub](https://github.com/getcarina/getcarin
 
 ### Proxy traffic to a MySQL server
 
-If you've ever created a database server on Carina (e.g. [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/)) and connected it to an overlay network to avoid exposing it to the Internet hobgoblins, you'll find that you can't easily access it from your local machine. That very issue came up recently in the Carina community in [Connecting to DB via Terminal](https://community.getcarina.com/t/connecting-to-db-via-terminal/143) so I created a proxy that can give you temporary access.
+<img class="right" src="{% asset_path weekly-news/dance-corgi-dance.gif %}" alt="Dance Corgi Dance"/>If you've ever created a database server on Carina (e.g. [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/)) and connected it to an overlay network to avoid exposing it to the Internet hobgoblins, you'll find that you can't easily access it from your local machine. That very issue came up recently in the Carina community in [Connecting to DB via Terminal](https://community.getcarina.com/t/connecting-to-db-via-terminal/143) so I created a proxy that can give you temporary access.
 
 Here's how to run the proxy.
 
