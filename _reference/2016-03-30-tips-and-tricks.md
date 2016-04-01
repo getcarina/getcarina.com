@@ -53,3 +53,18 @@ running container so that you can look around and run commands.
     ```
     docker-ssh <container-name>
     ```
+
+### View the logs for the last run container
+This displays the logs from the last container to run.
+
+```
+$ docker logs -f $(docker ps -lq)
+Server has started...
+Now listening on http://0.0.0.0:8080
+```
+
+Optionally, you can define an alias for this in your bash profile.
+
+```
+alias dl='docker logs -f $(docker ps -lq)'
+```
