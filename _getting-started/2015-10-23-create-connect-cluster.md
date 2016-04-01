@@ -6,7 +6,7 @@ featured: true
 permalink: docs/tutorials/create-connect-cluster/
 description: Learn how to create and connect to a cluster in Carina so that you can start running your applications in containers
 docker-versions:
-  - 1.10.1
+  - 1.10.2
 topics:
   - docker
   - beginner
@@ -64,10 +64,10 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.10.1 client into the credentials directory.
-  - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.9.0) to `Downloads/mycluster`.
-  - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.9.0) to `Downloads/mycluster`.
-  - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.9.0.exe) to `Downloads/mycluster`.
+1. Download the Docker 1.10.2 client into the credentials directory.
+  - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.10.2) to `Downloads/mycluster`.
+  - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.2) to `Downloads/mycluster`.
+  - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.10.2.exe) to `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
   - On Linux and Mac OS X, open a terminal.
@@ -82,7 +82,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```bash
     $ cd Downloads/mycluster
     $ mkdir -p $HOME/bin
-    $ mv docker-1.9.0 $HOME/bin/docker
+    $ mv docker-1.10.2 $HOME/bin/docker
     $ chmod u+x $HOME/bin/docker
     $ export PATH=$HOME/bin:$PATH
     $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
@@ -94,7 +94,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     ```
     $ cd Downloads\mycluster
     $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.9.0.exe "$env:USERPROFILE\bin\docker.exe"
+    $ mv docker-1.10.2.exe "$env:USERPROFILE\bin\docker.exe"
     $ $env:PATH += ";$env:USERPROFILE\bin"
     $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
     $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
