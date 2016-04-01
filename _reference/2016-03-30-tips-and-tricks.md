@@ -28,3 +28,28 @@ DOCKER_VERSION=1.10.2
 ```
 $ unset ${!DOCKER_*}
 ```
+
+### Log into a container
+While it's not technically SSH, this function helps you quickly log into a
+running container so that you can look around and run commands.
+
+1. Add the following bash function to your bash profile.
+
+    ```
+    docker-ssh() {
+      # Try to run bash, then fallback to sh
+      docker exec -it $1 /bin/sh -c "if [ -e '/bin/bash' ]; then /bin/bash; else /bin/sh; fi"
+    }
+    ```
+
+1. Source your bash profile to load the new function.
+
+    ```
+    source ~/.bash_profile
+    ```
+
+1. "SSH" into a running container by running the following command:
+
+    ```
+    docker-ssh <container-name>
+    ```
