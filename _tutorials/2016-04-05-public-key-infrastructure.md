@@ -47,7 +47,31 @@ followed by a client cert + key.
 To make this simpler, we'll be using the `cloudpipe/keymaster` image, though you
 can run the OpenSSL commands within keymaster's scripts directly yourself.
 
-We're going to be writing 
+We're going to be writing certificates to a local directory, so you'll want to
+use your local Docker client. Make sure your `$DOCKER_HOST` is running locally  and then we can kick this off. We need a place to store certificates and we'll
+want a password for the CA.
+
+```
+mkdir -p certificates
+
+touch certificates/password
+chmod 600 certificates/password
+```
+
+With `./certificates` ready to receive a password, we'll go ahead and create a random string for the password:
+
+```
+cat /dev/random | head -c 128 | base64 > certificates/password
+```
+
+If you rewound this tutorial, you'll want to make sure to clean out *.csr, *.pem, and *.srl out of the certificates folder before proceeding.
+
+
+Now, let's make keymaster easy to use in scripts:
+
+```
+export KEYMASTER="docker run --rm -v $(pwd)/certificates/:/certificates/ cloudpipe/keymaster"
+```
 
 
 ### Troubleshooting
