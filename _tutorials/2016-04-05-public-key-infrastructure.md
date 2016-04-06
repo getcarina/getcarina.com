@@ -168,8 +168,6 @@ const options = {
   key: process.env.CLIENT_KEY,
   cert: process.env.CLIENT_CERT,
   ca: process.env.CA,
-  requestCert: true,
-  rejectUnauthorized: true,
 };
 
 const socket = tls.connect(options);
@@ -193,6 +191,7 @@ socket.on('end', () => {
 
 In both cases, the options object is very similar. We specify a `key`, `cert`,
 and `ca`. They both receive the contents of `certificates/ca.pem` (not the CA key).
+
 The important piece for strict PKI based authentication are these two options:
 
 * `requestCert` - the server will request a certificate from clients that connect and attempt to verify the certificate
