@@ -202,6 +202,31 @@ The important piece for strict PKI based authentication are these two options:
 
 The net effect here is that *only* valid clients can connect to the server. All others are rejected.
 
+Let's go ahead and run these each in a separate terminal.
+
+```
+$ source certs.env
+$ node raw-tcp/server.js
+listening on 27001
+```
+
+```
+$ source certs.env
+$ node raw-tcp/cli.js
+client connected authorized
+response Echo server
+
+Hello
+response Hello
+
+It's me
+response It's me
+
+I was wondering if after all these years
+response I was wondering if after all these years
+```
+
+
 ### Now for HTTPS!
 
 `https/cli.js`:
@@ -253,6 +278,9 @@ server.listen(27001, () => {
   console.log('listening on 27001');
 });
 ```
+
+Notice the difference between the raw TLS sockets we setup and the HTTPS options here. You'll notice that they're pretty much the same. You can use the same type of PKI setup whether you're using raw TCP sockets
+or HTTPS.
 
 ### Troubleshooting
 
