@@ -27,7 +27,7 @@ a service itself).
 ### Prerequisites
 
 * Local Docker (for generating certs)
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* OS X or Linux
 * node.js
 * Go (optional, if you want to try an alternative server)
 
@@ -108,6 +108,26 @@ The arguments to `signed-keypair` are
 * `-p` the purpose (client, server, or both)
 * `-h` the hostname
 * `-s` the alt name
+
+### Sourcing the certificates
+
+In following with the 12-factor app manifesto, we're going to provide the certificates
+as environment variables. Go ahead and create a file called certs.env with the
+following contents:
+
+```bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/certificates"
+
+export CLIENT_CERT=`cat $DIR/client-cert.pem`
+export CLIENT_KEY=`cat $DIR/client-key.pem`
+export SERVER_CERT=`cat $DIR/server-cert.pem`
+export SERVER_KEY=`cat $DIR/server-key.pem`
+export CA=`cat $DIR/ca.pem`
+```
+
+Now run `source certs.env`. You'll have all your certs set up as environment
+variables for the rest of this tutorial.
+
 
 
 ### Troubleshooting
