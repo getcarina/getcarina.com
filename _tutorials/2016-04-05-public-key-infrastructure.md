@@ -128,6 +128,77 @@ export CA=`cat $DIR/ca.pem`
 Now run `source certs.env`. You'll have all your certs set up as environment
 variables for the rest of this tutorial.
 
+### TLS over raw TCP sockets
+
+Now that we have the certificates all set up, we can create a simple client and
+server. Node.js makes the options setup fairly easy.
+
+`raw-tcp/server.js`:
+```js
+const tls = require('tls');
+
+const options = {
+  key: process.env.SERVER_KEY,
+  cert: process.env.SERVER_CERT,
+  ca: process.env.CA,
+  requestCert: true,
+  rejectUnauthorized: true,
+};
+
+const server = tls.createServer(options, (socket) => {
+  console.log('server connected',
+            socket.authorized ? 'authorized' : 'unauthorized');
+  socket.write('Echo server\r\n');
+  socket.pipe(socket);
+});
+
+server.listen(27001, () => {
+  console.log('listening on 27001');
+});
+```
+
+`raw-tcp/cli.js`:
+```js
+
+const tls = require('tls');
+
+const options = {
+  host: '127.0.0.1',
+  port: 27001,
+  key: process.env.CLIENT_KEY,
+  cert: process.env.CLIENT_CERT,
+  ca: process.env.CA,
+  requestCert: true,
+  rejectUnauthorized: true,
+};
+
+const socket = tls.connect(options);
+
+socket.on('secureConnect', () => {
+  console.log('client connected',
+              socket.authorized ? 'authorized' : 'unauthorized');
+  process.stdin.pipe(socket);
+  process.stdin.resume();
+});
+
+socket.setEncoding('ascii');
+socket.on('data', (data) => {
+  console.log('response', data);
+});
+
+socket.on('end', () => {
+  console.log('THE END');
+});
+```
+
+In both cases, the options object is very similar. We specify a `key`, `cert`,
+and `ca`. They both receive the contents of `certificates/ca.pem` (not the CA key).
+The important piece for strict PKI based authentication are these two options:
+
+* `requestCert` - the server will request a certificate from clients that connect and attempt to verify the certificate
+* `rejectUnauthorized` - the server will reject any connection which is not authorized with the configured CA
+
+The net effect here is that *only* valid clients can connect to the server. All others are rejected.
 
 
 ### Troubleshooting
