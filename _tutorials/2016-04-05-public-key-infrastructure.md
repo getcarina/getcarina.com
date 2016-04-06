@@ -22,7 +22,7 @@ a service itself).
 
 <!-- TODO: Show picture of CA, client key+cert --- server key + cert -->
 
-⚠️ WARNING: This tutorial can not possibly cover all facets of encryption and is not guaranteed to be 100%. Since we don't want to advocate cryptography abstinence, we err on the side of providing as much information, knowledge, and background for you to start your journey in securing the web. Pull requests are welcome as are issues to help peer review the content. ⚠️
+⚠️ WARNING: This tutorial can not possibly cover all facets of encryption and is not guaranteed to be 100% accurate. Since we don't want to advocate cryptography abstinence, we err on the side of providing as much information, knowledge, and background for you to start your journey in securing your corner of the web. Pull requests are welcome as are issues to help peer review the content. ⚠️
 
 ### Prerequisites
 
@@ -34,7 +34,7 @@ a service itself).
 ### Quick mode
 
 
-The examples for this tutorial are [available on GitHub as rgbkrk/pki-examples](https://github.com/rgbkrk/pki-examples), complete with scripts to automate the whole thing. Feel free to clone https://github.com/rgbkrk/pki-examples to run through this tutorial straight from source.
+The examples for this tutorial are [available on GitHub as rgbkrk/pki-examples](https://github.com/rgbkrk/pki-examples), complete with scripts that automate the whole thing. Feel free to clone https://github.com/rgbkrk/pki-examples to run through this tutorial straight from source.
 
 ### Set up your build environment
 
@@ -45,10 +45,10 @@ is the Certificate Authority. After that we'll create a server cert + key
 followed by a client cert + key.
 
 To make this simpler, we'll be using the `cloudpipe/keymaster` image, though you
-can run the OpenSSL commands within keymaster's scripts directly yourself.
+can run the OpenSSL commands within keymaster's scripts directly.
 
 We're going to be writing certificates to a local directory, so you'll want to
-use your local Docker client. Make sure your `$DOCKER_HOST` is running locally  and then we can kick this off. We need a place to store certificates and we'll
+use your local Docker client. Make sure your `$DOCKER_HOST` is running locally and then we can kick this off. We need a place to store certificates and we'll
 want a password for the CA.
 
 ```
