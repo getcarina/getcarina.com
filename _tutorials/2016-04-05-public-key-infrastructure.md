@@ -168,6 +168,7 @@ const options = {
   key: process.env.CLIENT_KEY,
   cert: process.env.CLIENT_CERT,
   ca: process.env.CA,
+  rejectUnauthorized: true,
 };
 
 const socket = tls.connect(options);
@@ -195,7 +196,7 @@ and `ca`. They both receive the contents of `certificates/ca.pem` (not the CA ke
 The important piece for strict PKI based authentication are these two options:
 
 * `requestCert` - the server will request a certificate from clients that connect and attempt to verify the certificate
-* `rejectUnauthorized` - the server will reject any connection which is not authorized with the configured CA
+* `rejectUnauthorized` - the server will reject any connection which is not authorized with the configured CA. For the client, the server certificate is verified against the list of supplied CAs.
 
 The net effect here is that *only* valid clients can connect to the server. All others are rejected.
 
