@@ -67,11 +67,47 @@ cat /dev/random | head -c 128 | base64 > certificates/password
 If you rewound this tutorial, you'll want to make sure to clean out *.csr, *.pem, and *.srl out of the certificates folder before proceeding.
 
 
-Now, let's make keymaster easy to use in scripts:
+Now, let's make keymaster easy to use for scripting:
 
 ```
 export KEYMASTER="docker run --rm -v $(pwd)/certificates/:/certificates/ cloudpipe/keymaster"
 ```
+
+First, generate the CA using `${KEYMASTER} ca`:
+
+```
+${KEYMASTER} ca
+```
+
+The output should look like:
+
+```
+[>>] Generating a CA certificate.
+Generating RSA private key, 2048 bit long modulus
+......................................+++
+..+++
+e is 65537 (0x10001)
+[<<] CA certificate generated.
+```
+
+Next we'll create the server cert and key
+
+```
+${KEYMASTER} signed-keypair -n server -h 127.0.0.1 -s IP:127.0.0.1 -p server
+```
+
+followed by a client cert and key
+
+```
+${KEYMASTER} signed-keypair -n client -h 127.0.0.1 -s IP:127.0.0.1 -p client
+```
+
+The arguments to `signed-keypair` are
+
+* `-n` the name for the cert holder
+* `-p` the purpose (client, server, or both)
+* `-h` the hostname
+* `-s` the alt name
 
 
 ### Troubleshooting
