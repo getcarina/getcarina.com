@@ -2,7 +2,7 @@
 title: Public Key Infrastructure for your services
 author: Kyle Kelley <kyle.kelley@rackspace.com>
 date: 2016-04-05
-permalink: docs/tutorials/backup-restore-data/
+permalink: docs/tutorials/public-key-infrastructure/
 description: >
   Learn how to set up your own public key infrastructure and strictly connect
   between services.
@@ -202,6 +202,57 @@ The important piece for strict PKI based authentication are these two options:
 
 The net effect here is that *only* valid clients can connect to the server. All others are rejected.
 
+### Now for HTTPS!
+
+`https/cli.js`:
+
+```js
+const https = require('https');
+
+const options = {
+  host: '127.0.0.1',
+  port: 27001,
+  key: process.env.CLIENT_KEY,
+  cert: process.env.CLIENT_CERT,
+  ca: process.env.CA,
+  rejectUnauthorized: true,
+
+  path: '/',
+  agent: false,
+};
+
+https.get(options, (res) => {
+  console.log('statusCode: ', res.statusCode);
+  console.log('headers: ', res.headers);
+
+  res.on('data', (d) => {
+    process.stdout.write(d);
+  });
+});
+```
+
+`https/server.js`:
+
+```js
+const https = require('https');
+
+const options = {
+  key: process.env.SERVER_KEY,
+  cert: process.env.SERVER_CERT,
+  ca: process.env.CA,
+  requestCert: true,
+  rejectUnauthorized: true,
+};
+
+const server = https.createServer(options, (req, res) => {
+  res.writeHead(200);
+  res.end('hello world\n');
+});
+
+server.listen(27001, () => {
+  console.log('listening on 27001');
+});
+```
 
 ### Troubleshooting
 
