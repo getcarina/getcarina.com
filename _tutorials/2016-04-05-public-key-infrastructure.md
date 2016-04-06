@@ -134,6 +134,7 @@ Now that we have the certificates all set up, we can create a simple client and
 server. Node.js makes the options setup fairly easy.
 
 `raw-tcp/server.js`:
+
 ```js
 const tls = require('tls');
 
@@ -158,6 +159,7 @@ server.listen(27001, () => {
 ```
 
 `raw-tcp/cli.js`:
+
 ```js
 
 const tls = require('tls');
