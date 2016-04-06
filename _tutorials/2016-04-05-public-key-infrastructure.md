@@ -282,13 +282,25 @@ server.listen(27001, () => {
 Notice the difference between the raw TLS sockets we setup and the HTTPS options here. You'll notice that they're pretty much the same. You can use the same type of PKI setup whether you're using raw TCP sockets
 or HTTPS.
 
-### Troubleshooting
+<!-- TODO
 
-See [Troubleshooting common problems]({{site.baseurl}}/docs/troubleshooting/common-problems/).
+### Deployment
+
+Let's now take a simple case of running a remote server with a local client that
+can issue API requests. We'll use the same certificates for this while provisioning
+the server onto a remote Docker Swarm cluster.
+
+-->
+
+### Troubleshooting
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help, or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
 
+* [Node.js TLS Documentation](https://nodejs.org/api/tls.html)
+* [Node.js HTTPS Documentation](https://nodejs.org/api/https.html)
 
 ### Next steps
+
+In the future you're going to want to handle key revocation, issuing new certificates, as well as your strategy for provisioning both certificates and the servers themselves.
