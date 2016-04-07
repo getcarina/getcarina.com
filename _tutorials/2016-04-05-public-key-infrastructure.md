@@ -26,13 +26,11 @@ a service itself).
 
 ### Prerequisites
 
-* Local Docker (for generating certs)
+* [Local Docker](https://www.docker.com/products/docker-toolbox) (for generating certs)
 * OS X or Linux
-* node.js
-* Go (optional, if you want to try an alternative server)
+* [node.js](https://nodejs.org/en/download/)
 
 ### Quick mode
-
 
 The examples for this tutorial are [available on GitHub as rgbkrk/pki-examples](https://github.com/rgbkrk/pki-examples), complete with scripts that automate the whole thing. Feel free to clone https://github.com/rgbkrk/pki-examples to run through this tutorial straight from source.
 
@@ -44,8 +42,9 @@ We need to create certificates in a particular order. The first set we'll create
 is the Certificate Authority. After that we'll create a server cert + key
 followed by a client cert + key.
 
-To make this simpler, we'll be using the `cloudpipe/keymaster` image, though you
-can run the OpenSSL commands within keymaster's scripts directly.
+To make this simpler, we'll be using the [`cloudpipe/keymaster`](https://github.com/cloudpipe/keymaster) image, though you
+can run the OpenSSL commands within keymaster's scripts directly. [keymaster](https://github.com/cloudpipe/keymaster) is a series of OpenSSL
+convenience scripts wrapped up in a Docker container for ease of use. It helps you create a certificate authority as well as signed keypairs.
 
 We're going to be writing certificates to a local directory, so you'll want to
 use your local Docker client. Make sure your `$DOCKER_HOST` is running locally and then we can kick this off. We need a place to store certificates and we'll
@@ -66,8 +65,7 @@ cat /dev/random | head -c 128 | base64 > certificates/password
 
 If you rewound this tutorial, you'll want to make sure to clean out *.csr, *.pem, and *.srl out of the certificates folder before proceeding.
 
-
-Now, let's make keymaster easy to use for scripting:
+Make sure you're running with local Docker / Docker toolbox. Now, let's make keymaster easy to use for scripting:
 
 ```
 export KEYMASTER="docker run --rm -v $(pwd)/certificates/:/certificates/ cloudpipe/keymaster"
@@ -289,6 +287,25 @@ or HTTPS.
 Let's now take a simple case of running a remote server with a local client that
 can issue API requests. We'll use the same certificates for this while provisioning
 the server onto a remote Docker Swarm cluster.
+
+We're going to try this out directly and it's going to fail spectactularly.
+
+```
+events.js:154
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: Hostname/IP doesn't match certificate's altnames: "IP: 104.130.22.185 is not in the cert's list: 127.0.0.1"
+    at Object.checkServerIdentity (tls.js:201:15)
+    at TLSSocket.<anonymous> (_tls_wrap.js:1071:29)
+    at emitNone (events.js:80:13)
+    at TLSSocket.emit (events.js:179:7)
+    at TLSSocket._init.ssl.onclienthello.ssl.oncertcb.TLSSocket._finishInit (_tls_wrap.js:593:8)
+    at TLSWrap.ssl.onclienthello.ssl.oncertcb.ssl.onnewsession.ssl.onhandshakedone (_tls_wrap.js:425:38)
+```
+
+We'll need to change the altname
+
 
 -->
 
