@@ -82,3 +82,13 @@ Optionally, you can define an alias for this in your Bash profile.
 ```
 alias dp='docker port $(docker ps -lq) | cut -d " " -f3'
 ```
+
+### Run a web server and get the same IP address every time
+
+Sometimes you need your publicly accessible web server to run on the same node every time so it keeps the same IP address. You need to use a `constraint` as in the following command.
+
+```
+$ docker run --detach --net mynetwork --publish 80:80 --env constraint:node==*n1 nginx:1.9
+```
+
+This runs an NGINX web server on node 1 (`n1`) of your cluster. You could also choose `n2` or `n3`.
