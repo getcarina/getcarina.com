@@ -1,11 +1,11 @@
 ---
-title: "Weekly news: Maintenance, OAuth and live appearances"
+title: "Weekly news: Maintenance, OAuth, and live appearances"
 date: 2016-04-08
 comments: true
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 published: true
 excerpt: >
-  This week we have an important announcement that may require action on your part. To make up for the trouble, we have rolled out OAuth integration and upgraded to the latest version of Docker (1.10.3) and Docker Swarm (1.1.3).
+  This week we have an important announcement that might require action on your part. To make up for the trouble, we have rolled out OAuth integration and upgraded to the latest version of Docker (1.10.3) and Docker Swarm (1.1.3).
 categories:
   - Docker
   - Swarm
@@ -23,15 +23,14 @@ authorIsRacker: true
 </h3>
 
 <img class="right" src="{% asset_path 2016-04-08-weekly-news/reboot-for-glory.png %}" style="height: 300px;" alt="Keep Calm and Reboot"/>
-The Linux Kernel has a bug affecting containers which requires a reboot to resolve.
-The Carina team will start rebooting all Carina instances on Tuesday April 12th at Noon CST.
+The Linux kernel has a bug that affects containers and requires a reboot to resolve.
+The Carina team will start rebooting all Carina instances on Tuesday, April 12th, at noon CST.
 This process will take approximately 90 minutes. User nodes will be unavailable
-for short periods of time throughout this process as we roll through rebooting
-infrastructure. Please make sure to [check restart settings][restart-policies] and backup your data.
+for short periods of time throughout this process. Be sure to [check restart settings][restart-policies] and backup your data.
 
-We will provide up to the minute updates during the maintenance window on our [status page](https://carinabyrackspace.statuspage.io/).
+We will provide up-to-the-minute updates during the maintenance window on our [status page](https://carinabyrackspace.statuspage.io/).
 
-See the [Linux Kernel bug][kernel-bug] for more information.
+For more information, see the [Linux kernel bug][kernel-bug] report.
 
 <div style="clear: both" />
 
@@ -41,17 +40,17 @@ See the [Linux Kernel bug][kernel-bug] for more information.
 Carina now supports OAuth v2 for integrating external applications!
 With Carina OAuth, you can authenticate users, download their cluster credentials,
 and create clusters on their behalf. This opens the door to some pretty interesting
-"bring your own compute" scenarios, such as [howtowhale.com](https://howtowhale.com)
+"bring your own compute" scenarios, such as [howtowhale.com](https://howtowhale.com),
 where Carolyn Van Slyck is using Carina to teach Docker directly in the web browser.
 
-Full details on how to integrate can be found in the [OAuth integration][oauth-reference] reference.
+You can find full details about how to integrate can be found in the [OAuth integration][oauth-reference] reference guide.
 
 <div style="clear: both" />
 
 ### Effective Swarm
 
-<img class="right" src="{% asset_path 2016-04-08-weekly-news/everett-inception.jpg %}" style="height:250px;" alt="Everett Toewes"/>
-The intrepid Everett Toewes gave Docker Austin the [rundown on Docker Swarm][swarm-talk] last night
+<img class="right" src="{% asset_path 2016-04-08-weekly-news/everett-inception.jpg %}" style="height:250px;" alt="Everett Toews"/>
+The intrepid Everett Toews gave Docker Austin the [rundown on Docker Swarm][swarm-talk] last night
 covering everything from Docker Swarm basics to advanced topics, such as networking and service discovery.
 Those who began the night wondering _"How do I even Swarm?"_ left with best practices for effectively leveraging
 Docker Swarm and fun ideas for how to use it.
