@@ -47,8 +47,7 @@ can run the OpenSSL commands within keymaster's scripts directly. [keymaster](ht
 convenience scripts wrapped up in a Docker container for ease of use. It helps you create a certificate authority as well as signed keypairs.
 
 We're going to be writing certificates to a local directory, so you'll want to
-use your local Docker client. Make sure your `$DOCKER_HOST` is running locally and then we can kick this off. We need a place to store certificates and we'll
-want a password for the CA.
+use your local Docker client. Make sure your `$DOCKER_HOST` is running locally and then we can kick this off. We need a place to store certificates and we'll want a password for the CA.
 
 ```
 mkdir -p certificates
@@ -280,22 +279,86 @@ server.listen(27001, () => {
 Notice the difference between the raw TLS sockets we setup and the HTTPS options here. You'll notice that they're pretty much the same. You can use the same type of PKI setup whether you're using raw TCP sockets
 or HTTPS.
 
-<!-- TODO
-
 ### Deployment
 
 Let's now take a simple case of running a remote server with a local client that
 can issue API requests. We'll use the same certificates for this while provisioning
 the server onto a remote Docker Swarm cluster.
 
-We're going to try this out directly and it's going to fail spectactularly.
+First thing we'll do is setup a Dockerfile for the node server.
+
+`https/Dockerfile`:
 
 ```
+FROM node:5.10.1-slim
+
+ADD server.js /srv/server.js
+
+CMD node /srv/server.js
+```
+
+#### Build the image
+
+```
+docker build -t pkit https/
+```
+
+#### Run the image
+
+```
+docker run --name pkit \
+           -e SERVER_KEY="$SERVER_KEY" \
+           -e SERVER_CERT="$SERVER_CERT" \
+           -e CA="$CA" -p 27001:27001 -d pkit
+```
+
+At this point, you can run `docker logs pkit` and should see output like:
+
+```
+$ docker logs pkit
+listening on 27001
+```
+
+We can also find out the IP of our running service using `docker port`:
+
+```
+$ docker port pkit
+27001/tcp -> 104.130.0.107:27001
+```
+
+### Connecting the client
+
+We'll need to update the client to allow for connecting to an arbitrary host.
+Let the environment variable `$HOST` be our pathway.
+
+```
+const options = {
+  host: process.env.HOST, // Replace the hardcoded IP with this
+  port: 27001,
+  key: process.env.CLIENT_KEY,
+  cert: process.env.CLIENT_CERT,
+  ca: process.env.CA,
+  rejectUnauthorized: true,
+
+  path: '/',
+  agent: false,
+};
+```
+
+Change `certs.env` to set the `HOST` env var to be the IP from `docker port pkit`.
+
+
+
+Go ahead and try to use the client against this remote endpoint. It should fail
+spectacularly like so:
+
+```
+$ node https/cli.js
 events.js:154
       throw er; // Unhandled 'error' event
       ^
 
-Error: Hostname/IP doesn't match certificate's altnames: "IP: 104.130.22.185 is not in the cert's list: 127.0.0.1"
+Error: Hostname/IP doesn't match certificate's altnames: "IP: 104.130.0.107 is not in the cert's list: 127.0.0.1"
     at Object.checkServerIdentity (tls.js:201:15)
     at TLSSocket.<anonymous> (_tls_wrap.js:1071:29)
     at emitNone (events.js:80:13)
@@ -304,10 +367,32 @@ Error: Hostname/IP doesn't match certificate's altnames: "IP: 104.130.22.185 is 
     at TLSWrap.ssl.onclienthello.ssl.oncertcb.ssl.onnewsession.ssl.onhandshakedone (_tls_wrap.js:425:38)
 ```
 
-We'll need to change the altname
+Remember how we specified `-s IP:127.0.0.1`? That's biting us here, since the
+name we're connecting to doesn't match what is on the certificate.
 
+Options:
 
--->
+* Set up our own DNS for services (recommended in general)
+* Configure the certificate for this IP address (what we're going to do now)
+
+We'll set the altname here to reflect the actual IP for now in `gencerts.sh`:
+
+```
+${KEYMASTER} signed-keypair -n server -h 127.0.0.1 -s "IP:127.0.0.1,IP:104.130.0.107" -p server
+```
+
+Note that you'll need to run `gencerts.sh` with your local Docker configured again.
+
+<!-- TODO: Relieve the pain point of swapping continuously -->
+
+Then `source certs.env` again and re-run the `docker run` command from above:
+
+```
+docker run --name pkit \
+           -e SERVER_KEY="$SERVER_KEY" \
+           -e SERVER_CERT="$SERVER_CERT" \
+           -e CA="$CA" -p 27001:27001 -d pkit
+```
 
 ### Troubleshooting
 
