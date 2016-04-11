@@ -23,7 +23,7 @@ Here's the video.
 
 <iframe width="800" height="450" src="https://www.youtube.com/embed/SShmLUlrals?rel=0" frameborder="0" allowfullscreen></iframe>
 
-The slide deck contains a fair amount of code and commands that you can follow. Use the left/right keys or swipe left/right to navigate.
+The [slide deck](https://everett-toews.github.io/effective-docker-swarm/slides/index.html) contains a fair amount of code and commands that you can follow. Click on the presentation below, and use the left/right keys or swipe left/right to navigate.
 
 <iframe width="800" height="450" frameborder="0" src="https://everett-toews.github.io/effective-docker-swarm/slides/index.html">
   Effective Docker Swarm slides
