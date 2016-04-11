@@ -41,7 +41,10 @@ I'm going to put less emphasis on Carina implementation details:
 * Takes emphasis away from developing and deploying apps on Carina
 * Better to say "Let's chat about it after the presentation"
 
-Overall it was a great meetup, and I really learned a lot from the audience.
+Overall it was a great meetup, and I really learned a lot from the audience. A colleague of mine, Margaret Eker, captured a great quote from an audience member and immortalized it in a tweet.
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Carina benefits? ...Spent 4 hours today configuring a Docker swarm cluster. Tried Carina, done in a few seconds. <a href="https://twitter.com/hashtag/getcarina?src=hash">#getcarina</a>, <a href="https://twitter.com/hashtag/DockerAustin?src=hash">#DockerAustin</a></p>&mdash; Margaret Eker (@meker) <a href="https://twitter.com/meker/status/718249490025746436">April 8, 2016</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 If you're in Austin on April 26 (perhaps for the OpenStack Summit), join the Carina team at the Rackspace Cantina using this [free invitation](http://www.cvent.com/d/pfq4wl/4W). You can hear from myself on Effective Docker Swarm, Ross Kukulinski of Yodlr on Using Carina in Production, and Tim Hockin of Google on Pain Management for Containerized Apps. Grab a t-shirt, have a drink and a bite to eat, and chat containers with us.
 
