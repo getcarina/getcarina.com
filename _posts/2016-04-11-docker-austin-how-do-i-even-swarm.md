@@ -17,7 +17,7 @@ authorIsRacker: true
 
 {{ page.excerpt }} I've since changed the title to Effective Docker Swarm.
 
-This is a meetup I've been attending for the past year and know everyone pretty well already. Thursday night was an audience of 40-50 and they were highly engaged to say the least. I got a lot of great, detailed questions on Carina and Swarm during the talk. I literally spent twelve minutes on the Carina architecture slide while getting peppered with questions.
+This is a meetup I've been attending for the past year and know everyone pretty well already. If you're in the Austin area, you're always welcome to join us at [Docker Austin](http://www.meetup.com/Docker-Austin/). Thursday night was an audience of 40-50 and they were highly engaged to say the least. I got a lot of great, detailed questions on Carina and Swarm during the talk. I literally spent twelve minutes on the Carina architecture slide while getting peppered with questions.
 
 Here's the video.
 
@@ -25,7 +25,7 @@ Here's the video.
 
 The slide deck contains a fair amount of code and commands that you can follow. Use the left/right keys or swipe left/right to navigate.
 
-<iframe width="800" height="450" frameborder="0" src="http://everett-toews.github.io/effective-docker-swarm/slides/index.html">
+<iframe width="800" height="450" frameborder="0" src="https://everett-toews.github.io/effective-docker-swarm/slides/index.html">
   Effective Docker Swarm slides
 </iframe>
 
@@ -46,7 +46,7 @@ I'm going to put less emphasis on:
 
 Overall it was a great meetup and I really learned a lot from the audience.
 
-If you're in the Austin area, you're welcome to join us a [Docker Austin](http://www.meetup.com/Docker-Austin/).
+If you're in Austin on April 26 (perhaps for the OpenStack Summit), join the Carina team at the Rackspace Cantina using this [free invite](http://www.cvent.com/d/pfq4wl/4W). You can hear from myself on Effective Docker Swarm, Ross Kukulinski of Yodlr on Using Carina in Production, and Tim Hockin of Google on Pain Management for Containerized Apps. Grab a t-shirt, have a drink and a bite to eat, and chat containers with us.
 
 ### User feedback
 
