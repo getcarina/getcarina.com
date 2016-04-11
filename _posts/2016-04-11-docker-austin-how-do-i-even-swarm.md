@@ -21,11 +21,11 @@ This is a meetup I've been attending for the past year and know everyone pretty 
 
 Here's the video.
 
-<iframe width="853" height="480" src="https://www.youtube.com/embed/SShmLUlrals?rel=0" frameborder="0" allowfullscreen></iframe>
+<iframe width="800" height="450" src="https://www.youtube.com/embed/SShmLUlrals?rel=0" frameborder="0" allowfullscreen></iframe>
 
 The slide deck contains a fair amount of code and commands that you can follow. Use the left/right keys or swipe left/right to navigate.
 
-<iframe width="853" height="480" marginheight="0" marginwidth="0" src="http://everett-toews.github.io/effective-docker-swarm/slides/index.html">
+<iframe width="800" height="450" frameborder="0" src="http://everett-toews.github.io/effective-docker-swarm/slides/index.html">
   Effective Docker Swarm slides
 </iframe>
 
