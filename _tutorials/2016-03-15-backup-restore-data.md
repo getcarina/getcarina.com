@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial explains how to back up and restore data from a MySQL database, so you can quickly restore your application data in the event of a system failure. While several of the steps described here are specific to backing up a MySQL server, the general concepts (especially the use of the `carinamarina/backup` Docker image) are applicable to any backup scenario.
+This tutorial explains how to back up and restore data from a MySQL database, so you can quickly restore your application data in the event of a system failure. Although several of the steps described here are specific to backing up a MySQL server, the general concepts (especially the use of the `carinamarina/backup` Docker image) are applicable to any backup scenario.
 
 ![Backups stored in Rackspace Cloud Files]({% asset_path cloud-files-backups.jpg %})
 
@@ -23,7 +23,7 @@ This tutorial explains how to back up and restore data from a MySQL database, so
 
 ### Create a MySQL instance
 
-In order to effectively test a backup process, you’ll need something worth backing up. In this section, you’ll create a MySQL instance with a separate data volume container for its data storage.
+To effectively test a backup process, you need something worth backing up. In this section, you create a MySQL instance with a separate data volume container for its data storage.
 
 1. Create an overlay network named `mysql` to allow multiple containers to communicate with one another.
 
@@ -70,7 +70,7 @@ In order to effectively test a backup process, you’ll need something worth bac
 
 ### Back up the database
 
-Now that you’ve created a MySQL instance with some data, you can use our `carinamarina/backup` Docker image to store the data in a safe place.
+Now that you’ve created a MySQL instance with some data, you can use the `carinamarina/backup` Docker image to store the data in a safe place.
 
 Dump the contents of your database to a single file in the `/backups` directory provided by your data volume container.
 
@@ -85,7 +85,7 @@ $ docker run \
 
 #### Back up the database dump to your local filesystem
 
-Run the `carinamarina/backup` image with the `--stdout` option. Pipe the container's output (the contents of the backup archive) to a file on your local filesystem.
+Run the `carinamarina/backup` image with the `--stdout` option. Redirect the container's output (the contents of the backup archive) to a file on your local filesystem.
 
 ```bash
 docker run \
@@ -98,11 +98,11 @@ docker run \
   --zip > my-local-backup.tar.gz
 ```
 
-This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipes it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
+This command adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipes it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
-#### _(Optional)_ Back up the database dump to Rackspace Cloud Files
+#### Back up the database dump to Rackspace Cloud Files _(optional)_
 
-If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
+If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container. A Cloud Files container is a place where you can store files in the Rackspace cloud and is unrelated to a container created by Docker, unfortunately the terminology is overlapping.
 
 ```bash
 $ docker run \
@@ -122,7 +122,7 @@ Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [<name-
 Done.
 ```
 
-Note that the uploaded object is named according to the following format:
+The uploaded object is named according to the following format:
 
 {% raw %}
 
@@ -151,7 +151,7 @@ Reading and unzipping archive...
 Done.
 ```
 
-#### _(Optional)_ Restore the database dump from Rackspace Cloud Files
+#### Restore the database dump from Rackspace Cloud Files _(optional)_ 
 
 Download the backup archive from Cloud Files, and unpack it to the `/backups/` volume.
 
