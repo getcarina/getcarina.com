@@ -54,11 +54,11 @@ When you get to [Add a database](https://objectrocket.com/docs/mongodb_getting_s
 * Username: guestbook-prod
 * Password: guestbook-prod-password
 
-#### Add an Access Control List
+#### Add an Access Control List (ACL)
 
 When you get to [Add an ACL](https://objectrocket.com/docs/mongodb_getting_started.html#add-an-access-control-list-acl), add an Access Control List for the Carina ServiceNet (SNet) IP address range.
 
- * IP Address: 10.176.224.0/19
+ * IP Address or CIDR Block: 10.176.224.0/19
  * Description: Carina SNet Range
 
 After the instance has been created, make note of the `SNet SSL Connect String` of the Connect section as you'll need it in the next step.
@@ -72,12 +72,14 @@ Communication from the application to the MongoDB instance is as secure as possi
 Get the values for `MONGO_HOST` and `MONGO_PORT` from the `SNet SSL Connect String` of the Connect section on the Mongo Details screen.
 
 ```bash
-$ export MONGO_HOST=iadX-sn-mongosX.objectrocket.com
-$ export MONGO_PORT=54321
-$ export MONGO_SSL=True
-$ export MONGO_DATABASE=guestbook
-$ export MONGO_USER=guestbook-prod
-$ export MONGO_PASSWORD=guestbook-prod-password
+$ cat << EOF > guestbook.env
+MONGO_HOST=iadX-sn-mongosX.objectrocket.com
+MONGO_PORT=54321
+MONGO_SSL=True
+MONGO_DATABASE=guestbook
+MONGO_USER=guestbook-prod
+MONGO_PASSWORD=guestbook-prod-password
+EOF
 ```
 
 #### Run a the application
@@ -87,12 +89,7 @@ The application code uses the environment variables to connect to ObjectRocket's
 ```bash
 $ docker run --detach \
   --name guestbook \
-  --env MONGO_HOST=$MONGO_HOST \
-  --env MONGO_PORT=$MONGO_PORT \
-  --env MONGO_SSL=$MONGO_SSL \
-  --env MONGO_DATABASE=$MONGO_DATABASE \
-  --env MONGO_USER=$MONGO_USER \
-  --env MONGO_PASSWORD=$MONGO_PASSWORD \
+  --env-file guestbook.env \
   --publish 5000:5000 \
   carinamarina/guestbook-mongo
 b2178dd6acf9e769e6d47ef73f06865c74f2a5c70b4f6b285392b9d3626b8b25
@@ -117,6 +114,19 @@ INFO:  * Debugger pin code: 183-701-214
 ```
 
 The output of this `docker logs` command are the log messages being logged to stdout and stderr from the application in the container.
+
+### _(Optional)_ Specify your exact ServiceNet IP address in the MongoDB instance ACL
+
+1. To further secure your MongoDB instance such that only it will only accept connections from the ServiceNet IP address where your application container is running, run the following command.
+
+    ```bash
+    $ docker run --rm --net=host --env affinity:container==guestbook racknet/ip service ipv4
+    10.176.229.26
+    ```
+
+    The output is the ServiceNet IP address of the node where your application container is running.
+
+1. Revisit the [Add an Access Control List](#add-an-access-control-list-acl) section but instead edit the IP Address of the `Carina SNet Range` rule to be the ServiceNet IP address of the node where your application container is running.
 
 #### View the application
 
@@ -144,14 +154,21 @@ Don't forget to remove your MongoDB instance in ObjectRocket, if you're not usin
 
 Run a new Mongo container, and open a shell so you can use the `mongo` command to explore your MongoDB instance.
 
-```bash
-$ docker run -it --rm mongo:3.0.8 /bin/bash
 ```
-
-Enter a running container, and open a shell so you can explore.
-
-```bash
-$ docker exec -it guestbook /bin/bash
+$ docker run -it --rm --env-file guestbook.env --env affinity:container==guestbook mongo:3.0.8 /bin/bash
+# mongo --ssl --sslAllowInvalidCertificates \
+  -u $MONGO_USER -p $MONGO_PASSWORD \
+  --authenticationDatabase $MONGO_DATABASE \
+  $MONGO_HOST:$MONGO_PORT/$MONGO_DATABASE
+MongoDB shell version: 3.0.8
+connecting to: iad1-sn-mongos1.objectrocket.com:26236/guestbook
+mongos> show collections
+guests
+objectrocket.init
+system.indexes
+mongos> db.guests.find()
+{ "_id" : ObjectId("570d2bf2c03ed200140abcd6"), "name" : "\\o/" }
+{ "_id" : ObjectId("570d2c00c03ed200140abcd7"), "name" : "¯\\_(ツ)_/¯" }
 ```
 
 See [Troubleshooting common problems]({{site.baseurl}}/docs/troubleshooting/common-problems/).
@@ -163,6 +180,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [ObjectRocket's MongoDB features](http://objectrocket.com/mongodb/)
 * [ObjectRocket's MongoDB documentation](http://objectrocket.com/docs/mongodb.html)
 * [Getting Started with the mongo Shell](http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/)
+* [Communicate between containers over the ServiceNet internal network]({{ site.baseurl }}/docs/tutorials/servicenet/)
 
 ### Next step
 
