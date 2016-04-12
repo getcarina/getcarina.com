@@ -15,6 +15,8 @@ Would you like to move your application to containers but are overwhelmed with t
 
 This tutorial describes how to connect a Carina container to an ObjectRocket MongoDB instance.
 
+![ObjectRocket]({% asset_path data-stores-mongodb-prod/ObjectRocket.png %})
+
 ### Prerequisites
 
 * [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
