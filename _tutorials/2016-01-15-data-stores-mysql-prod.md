@@ -104,14 +104,14 @@ You might encounter the following issues when connecting the container to the da
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
-### Next step
-
-If you want develop and test with MySQL in a container, read [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/).
-
 ### Resources
 
 * [Communicate between containers over the ServiceNet internal network]({{site.baseurl}}/docs/tutorials/servicenet/)
 * [Cloud Databases features](http://www.rackspace.com/cloud/databases)
 * [Cloud Databases documentation](http://www.rackspace.com/knowledge_center/getting-started/cloud-databases)
+
+### Next step
+
+If you want develop and test with MySQL in a container, read [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/).
 
 [control-panel]: http://mycloud.rackspace.com

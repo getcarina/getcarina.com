@@ -164,7 +164,9 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 * [Getting Started with the mongo Shell](http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/)
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
-### Next
+### Next steps
+
+Learn how to [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/), and [schedule tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/)
 
 If you want to store your data in a data volume container, read [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 

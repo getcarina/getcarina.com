@@ -72,114 +72,116 @@ In order to effectively test a backup process, you’ll need something worth bac
 
 Now that you’ve created a MySQL instance with some data, you can use our `carinamarina/backup` Docker image to store the data in a safe place.
 
-1. Dump the contents of your database to a single file in the `/backups` directory provided by your data volume container.
+Dump the contents of your database to a single file in the `/backups` directory provided by your data volume container.
 
-    ```bash
-    $ docker run \
-      --rm \
-      --net mysql \
-      --volumes-from mysql-data \
-      mysql \
-      bash -c "mysqldump -p<your-mysql-password> -h mysql-server --databases test > /backups/test.sql"
-    ```
+```bash
+$ docker run \
+  --rm \
+  --net mysql \
+  --volumes-from mysql-data \
+  mysql \
+  bash -c "mysqldump -p<your-mysql-password> -h mysql-server --databases test > /backups/test.sql"
+```
 
-#### Back up the database dump to your local filesystem.
+#### Back up the database dump to your local filesystem
 
-1. Run the `carinamarina/backup` image with the `--stdout` option. Pipe the container's output (the contents of the backup archive) to a file on your local filesystem.
+Run the `carinamarina/backup` image with the `--stdout` option. Pipe the container's output (the contents of the backup archive) to a file on your local filesystem.
 
-    ```bash
-    docker run \
-      --rm \
-      --volumes-from mysql-data \
-      carinamarina/backup \
-      backup \
-      --source /backups/ \
-      --stdout \
-      --zip > my-local-backup.tar.gz
-    ```
+```bash
+docker run \
+  --rm \
+  --volumes-from mysql-data \
+  carinamarina/backup \
+  backup \
+  --source /backups/ \
+  --stdout \
+  --zip > my-local-backup.tar.gz
+```
 
-    This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipes it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
+This adds all the contents of `/backups/` from your data volume container to a compressed tar archive and pipes it to a file on your local filesystem. Whatever you do with the backup file after this is up to you.
 
 #### _(Optional)_ Back up the database dump to Rackspace Cloud Files
 
-1. If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
+If you have a paid Rackspace account in addition to your Carina account, you can store your backups in a Cloud Files container.
 
-    ```bash
-    $ docker run \
-      --rm \
-      --env RS_USERNAME=<your-rackspace-username> \
-      --env RS_API_KEY=<your-rackspace-api-key> \
-      --env RS_REGION_NAME=IAD \
-      --volumes-from mysql-data \
-      carinamarina/backup \
-      backup \
-      --source /backups/ \
-      --container <name-of-cloud-files-container> \
-      --zip
-    Bundling archive...
-    Uploading archive to Cloud Files...
-    Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [<name-of-cloud-files-container>] in now
-    Done.
-    ```
+```bash
+$ docker run \
+  --rm \
+  --env RS_USERNAME=<your-rackspace-username> \
+  --env RS_API_KEY=<your-rackspace-api-key> \
+  --env RS_REGION_NAME=IAD \
+  --volumes-from mysql-data \
+  carinamarina/backup \
+  backup \
+  --source /backups/ \
+  --container <name-of-cloud-files-container> \
+  --zip
+Bundling archive...
+Uploading archive to Cloud Files...
+Finished! Uploaded object [2016/03/11/21-30-backups.tar.gz] to container [<name-of-cloud-files-container>] in now
+Done.
+```
 
-    Note that the uploaded object is named according to the following format:
+Note that the uploaded object is named according to the following format:
 
-    {% raw %}
+{% raw %}
 
-    ```
-    {{ year }}/{{ month }}/{{ day }}/{{ hour }}-{{ minute }}-{{ pathToSource }}.tar.gz
-    ```
+```
+{{ year }}/{{ month }}/{{ day }}/{{ hour }}-{{ minute }}-{{ pathToSource }}.tar.gz
+```
 
-    {% endraw %}
+{% endraw %}
 
-### Restore the database from your backup
+#### Restore the database dump from your local filesystem
 
-1. Unpack the backup archive to the `/backups/` volume by piping it from your local filesystem to a Docker command.
+Unpack the backup archive to the `/backups/` volume by piping it from your local filesystem to a Docker command.
 
-    ```bash
-    $ docker run \
-      --rm \
-      --interactive \
-      --volumes-from mysql-data \
-      carinamarina/backup \
-      restore \
-      --destination /backups/ \
-      --stdin \
-      --zip \
-      < my-local-backup.tar.gz
-    Reading and unzipping archive...
-    Done.
-    ```
+```bash
+$ docker run \
+  --rm \
+  --interactive \
+  --volumes-from mysql-data \
+  carinamarina/backup \
+  restore \
+  --destination /backups/ \
+  --stdin \
+  --zip \
+  < my-local-backup.tar.gz
+Reading and unzipping archive...
+Done.
+```
 
-1. _(Optional)_ Download the backup archive from Cloud Files, and unpack it to the `/backups/` volume.
+#### _(Optional)_ Restore the database dump from Rackspace Cloud Files
 
-    ```bash
-    $ docker run \
-      --rm \
-      --env RS_USERNAME=<your-rackspace-username> \
-      --env RS_API_KEY=<your-rackspace-api-key> \
-      --env RS_REGION_NAME=IAD \
-      --volumes-from mysql-data \
-      carinamarina/backup \
-      restore \
-      --container <name-of-cloud-files-container> \
-      --object 2016/03/11/21-30-backups.tar.gz \
-      --destination /backups/ \
-      --zip
-    Reading and unzipping archive...
-    Done.
-    ```
+Download the backup archive from Cloud Files, and unpack it to the `/backups/` volume.
 
-1. Import the unpacked database dump into your MySQL server.
+```bash
+$ docker run \
+  --rm \
+  --env RS_USERNAME=<your-rackspace-username> \
+  --env RS_API_KEY=<your-rackspace-api-key> \
+  --env RS_REGION_NAME=IAD \
+  --volumes-from mysql-data \
+  carinamarina/backup \
+  restore \
+  --container <name-of-cloud-files-container> \
+  --object 2016/03/11/21-30-backups.tar.gz \
+  --destination /backups/ \
+  --zip
+Reading and unzipping archive...
+Done.
+```
 
-    ```bash
-    $ docker run \
-      --rm \
-      --net mysql \
-      --volumes-from mysql-data \
-      mysql:latest \
-      bash -c "mysql -p<your-mysql-password> -h mysql-server < /backups/test.sql"
-    ```
+#### Import the unpacked database dump into your MySQL server
+
+```bash
+$ docker run \
+  --rm \
+  --net mysql \
+  --volumes-from mysql-data \
+  mysql:latest \
+  bash -c "mysql -p<your-mysql-password> -h mysql-server < /backups/test.sql"
+```
 
 That's all! You’ve successfully created a MySQL server, backed up the contents of a database to a compressed archive, and then restored data using your backup.
 
@@ -198,4 +200,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-* [Schedule regular backups using cron]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/)
+[Schedule regular backups using cron]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/)
