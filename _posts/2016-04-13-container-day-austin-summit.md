@@ -64,7 +64,7 @@ the location of the hidden rebel base.
 
 ### Join us!
 
-Grab a t-shirt, have a drink and a bite to eat, and chat containers with us.
+Grab a t-shirt or sticker, have a drink and a bite to eat, and chat containers with us.
 Hack on applications, learn, and experiment. It's all fair! We're geeks, so
 we're not focused on ABC (always be closing) we use ABc (always be containerizing).
 
