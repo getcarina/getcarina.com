@@ -50,7 +50,7 @@ We have a full array of speakers, including:
 ### Ermahgersh! how do I sign up if I'm not a Summit attendee?
 
 If you're a Summit attendee, you're already in/invites. If not, just
-[sign up here, for free](http://www.cvent.com/d/pfq4wl/4W) ,so we know we can
+[sign up here, for free](http://www.cvent.com/d/pfq4wl/4W), so we know we can
 have enough food, drink, stickers etc. Y'all are welcome, summit attendee or no!
 
 [No seriously sign up here](http://www.cvent.com/d/pfq4wl/4W).
