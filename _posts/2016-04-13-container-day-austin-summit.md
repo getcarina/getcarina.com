@@ -5,7 +5,7 @@ comments: true
 author: Jesse Noller <jesse.noller@rackspace.com>
 published: true
 excerpt: >
-  You're invited to join the Carina team Tuesday, April 24th for a full
+  You're invited to join the Carina team Tuesday, April 26th for a full
   afternoon of hands on hacking, talks in a meetup style atmosphere alongside
   the OpenStack Austin summit.
 categories:
@@ -65,7 +65,6 @@ the hidden rebel base.
 Grab a t-shirt, have a drink and a bite to eat, and chat containers with us. Hack
 on applications learn, experiment. It's all fair! We're geeks, so we're not
 focused on ABC (always be closing).
-
 
 ### User feedback
 
