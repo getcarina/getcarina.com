@@ -42,7 +42,7 @@ for a dedicated meet up!*
 
 We have a full array of speakers, including:
 
-* [Ross Kukulinski](https://twitter.com/rosskukulinski), of Yodlr, talking about *Using Carina in Production*
+* [Ross Kukulinski](https://twitter.com/rosskukulinski), of NodeSource, talking about *Using Carina in Production*
 * [Lee Calcote](https://twitter.com/lcalcote) talking about *Characterizing and Comparing Container Orchestrators*
 * [Tim Hockin](https://twitter.com/thockin), senior software engineer @ Google, talking about *Pain Management for Container Apps*
 * Our own [Everett Toews](https://twitter.com/everett_toews), talking about *Effective Docker Swarm*
