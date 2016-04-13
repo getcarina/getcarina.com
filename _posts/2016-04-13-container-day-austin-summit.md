@@ -55,6 +55,8 @@ have enough food, drink, stickers etc. Y'all are welcome, summit attendee or no!
 
 [No seriously sign up here](http://www.cvent.com/d/pfq4wl/4W).
 
+When you come, just tell the Rackers out front you're a Carina guest. *Boom*
+
 ### Where do I go?
 
 I'm glad you asked that. Here is a fully interactive Google Map that reveals
