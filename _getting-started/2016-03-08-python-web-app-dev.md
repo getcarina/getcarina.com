@@ -76,7 +76,7 @@ You'll use Docker on VirtualBox as your local development environment (dev). Vir
 1. Source the environment for the default VM.
 
     ```bash
-    $ eval "$(docker-machine env default)"
+    $ eval $(docker-machine env default)
 
     $ env | grep DOCKER
     DOCKER_HOST=tcp://192.168.99.100:2376
@@ -86,6 +86,20 @@ You'll use Docker on VirtualBox as your local development environment (dev). Vir
     ```
 
     The environment variables that you source into your environment configure the `docker` command line interface (CLI) to communicate with the default VM running a Docker Engine.
+
+1. Log in to Docker Hub.
+
+    Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub (see [Prerequisites](#prerequisites)).
+
+    ```bash
+    $ docker login
+    Username: <docker-hub-username>
+    Password:
+    WARNING: login credentials saved in /Users/everett/.docker/config.json
+    Login Succeeded
+
+    $ export DOCKER_HUB_USERNAME=<docker-hub-username>
+    ```
 
 #### Run the application in dev
 
@@ -115,7 +129,7 @@ You'll use Docker on VirtualBox as your local development environment (dev). Vir
 1. Open another Docker Quickstart Terminal and run the following command.
 
     ```bash
-    $ eval "$(docker-machine env default)"
+    $ eval $(docker-machine env default)
     ```
 
 1. Use `docker-compose` to run the `create_db` function from your application to initialize the database.
@@ -144,6 +158,28 @@ You'll use Docker on VirtualBox as your local development environment (dev). Vir
 
 1. When you're ready to shut down the application, use **Ctrl+C** in the terminal where you ran `docker-compose`.
 
+#### Build and push the images in dev
+
+To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub.
+
+1. Build and push the images
+
+    ```bash
+    $ declare -a images=(app db lb)
+
+    $ for image in "${images[@]}" ; do
+        IMAGE_NAME=pythonwebapp_${image}
+        docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME} ${image}
+        docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
+      done
+    Sending build context to Docker daemon 13.31 kB
+    Step 1 : FROM python:3.4
+    ...
+    latest: digest: sha256:defc0818f08cfa04fada7bfdd917a93054c833fd6c9142dc3c941689c78967e7 size: 7850
+    ```
+
+    The output is the result of pushing your images to Docker Hub. You can view the images online at `https://hub.docker.com/u/<docker-hub-username>/`
+
 ### Deployment on Carina
 
 You'll be using a Docker Swarm cluster on Carina as your production deployment environment (prod). This cluster was created as part of creating and connecting to a cluster (see [Prerequisites](#prerequisites)).
@@ -168,20 +204,6 @@ When you are satisfied with your development and testing in your local developme
 
     The environment variables that were sourced into your environment configure the `docker` CLI to communicate with your Carina cluster.
 
-1. Log in to Docker Hub.
-
-    Your `<docker-hub-username>` was created as part of signing up for an account on Docker Hub (see [Prerequisites](#prerequisites)).
-
-    ```bash
-    $ docker login
-    Username: <docker-hub-username>
-    Password:
-    WARNING: login credentials saved in /Users/everett/.docker/config.json
-    Login Succeeded
-
-    $ export DOCKER_HUB_USERNAME=<docker-hub-username>
-    ```
-
 1. Set environment variables to configure MySQL.
 
     ```bash
@@ -191,30 +213,6 @@ When you are satisfied with your development and testing in your local developme
     ```
 
     These environment variables are written to `env` files so that they can be reused in the future.
-
-#### Build and push the images in prod
-
-To be able to pull your application images to every node on your cluster, you first need to push them to Docker Hub.
-
-1. Build and push the images
-
-    ```bash
-    $ cd carina-examples/python-web-app
-
-    $ declare -a images=(app db lb)
-
-    $ for image in "${images[@]}" ; do
-        IMAGE_NAME=pythonwebapp_${image}
-        docker build -t ${DOCKER_HUB_USERNAME}/${IMAGE_NAME} ${image}
-        docker push ${DOCKER_HUB_USERNAME}/${IMAGE_NAME}
-      done
-    Sending build context to Docker daemon 13.31 kB
-    Step 1 : FROM python:3.4
-    ...
-    latest: digest: sha256:defc0818f08cfa04fada7bfdd917a93054c833fd6c9142dc3c941689c78967e7 size: 7850
-    ```
-
-    The output is the result of pushing your images to Docker Hub. You can view the images online at `https://hub.docker.com/u/<docker-hub-username>/`
 
 #### Run the application in prod
 
@@ -256,9 +254,9 @@ If you change the application in your development environment and you want to se
 
 1. Open `app/templates/index.html` for editing and change every occurrence of "Ghost" back to "Guest" with a case-sensitive find and replace.
 
-1. [Build and push the images](#build-and-push-the-images-in-prod). You only need to build and push the images you've changed.
+1. [Build and push the images](#build-and-push-the-images-in-dev). You only need to build and push the images you've changed.
 
-1. [Use the `docker-compose up` command to run the production application](#run-the-application-in-prod).
+1. Use the `docker-compose up` command to [run the application in production](#run-the-application-in-prod).
 
 1. Reload your web browser.
 
