@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Reboot Day, Meetup Day, Tax Day"
+title: "Weekly news: Reboot Day, Meetup Day, Tax&nbsp;Day"
 date: 2016-04-15
 comments: true
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
