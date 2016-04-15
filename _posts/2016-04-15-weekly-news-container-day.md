@@ -27,7 +27,7 @@ In addition to the meetup, members of the Carina team will be present throughout
 
 Our team completed the process of rebooting all Carina instances on Tuesday, April 12th to patch a [Linux kernal bug](https://tech.vijayp.ca/linux-kernel-bug-delivers-corrupt-tcp-ip-data-to-mesos-kubernetes-docker-containers-4986f88f7a19) that delivered corrupt network data to containers. The reboots went smoothly, and all Carina clusters are up and running again. All containers that were configured to reboot automatically should have done so, but please reach out to us in [the forums](https://community.getcarina.com/) or in [#carina on freenode](https://botbot.me/freenode/carina/) if you’re seeing any issues with your clusters following the reboot.
 
-### Replay and slides of “Essential Docker Swarm”
+### Replay and slides of “Effective Docker Swarm”
 
 <img class="right" src="{% asset_path 2016-04-15-weekly-news/swarmnado.gif %}" style="max-width: 25%;" />
 
