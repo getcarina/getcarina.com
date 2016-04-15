@@ -5,7 +5,7 @@ comments: true
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
 published: true
 excerpt: >
-  As the saying goes, “Nothing is certain but death and taxes.” Or is it “death and reboots”? Either way, we’re filing this week under “busy”! We completed a reboot of all Carina instances to patch a vulnerability, shared a great recap of Everett's “Effective Docker Swarm” talk at the Docker Austin meetup, and announced a Carina meetup during this month's OpenStack Summit in Austin. Let's itemize everything that happened this week! ()
+  As the saying goes, “Nothing is certain but death and taxes.” Or is it “death and reboots”? Either way, we’re filing this week under “busy”! We completed a reboot of all Carina instances to patch a vulnerability, shared a great recap of Everett's “Effective Docker Swarm” talk at the Docker Austin meetup, and announced a Carina meetup during this month's OpenStack Summit in Austin. Let's itemize everything that happened this week!
 categories:
   - Docker
   - Swarm
@@ -29,9 +29,11 @@ Our team completed the process of rebooting all Carina instances on Tuesday, Apr
 
 ### Replay and slides of “Essential Docker Swarm”
 
-<img class="right" src="{% asset_path 2016-04-15-weekly-news/swarmnado.gif %}" />
+<img class="right" src="{% asset_path 2016-04-15-weekly-news/swarmnado.gif %}" style="max-width: 25%;" />
 
 Everett shared the [video recording and slides](https://getcarina.com/blog/docker-austin-how-do-i-even-swarm/) of the great presentation he gave at last week’s Docker Austin meetup. Everett’s audience was very engaged and asked lots of great, detailed questions about Carina and Swarm in general. Watch the video if you missed the talk—you’ll learn almost as much from all the audience’s questions as you will from the talk itself!
+
+<div class="clearfix"></div>
 
 ### Use ObjectRocket’s MongoDB with Carina
 
