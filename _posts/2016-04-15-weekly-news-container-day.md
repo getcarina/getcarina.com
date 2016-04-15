@@ -56,4 +56,5 @@ As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Wan
 * [General feedback, bugs, etc.](https://github.com/getcarina/feedback)
 * [Website bugs](https://github.com/getcarina/getcarina.com/issues) (Also, request new tutorials here!)
 * [#carina on irc.freenode.net](https://botbot.me/freenode/carina/)
+* Use [#getcarina](https://twitter.com/search?q=%23getcarina) on Twitter
 * Are you doing something interesting with Carina that you’d like to tell the world about? Share it here! [Learn how](https://github.com/getcarina/getcarina.com/blob/master/CONTRIBUTING.md).
