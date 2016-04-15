@@ -25,11 +25,16 @@ In addition to the meetup, members of the Carina team will be present throughout
 
 ### Carina reboots completed
 
-Our team completed the process of rebooting all Carina instances on Tuesday, April 12th to patch a [Linux kernal bug](https://tech.vijayp.ca/linux-kernel-bug-delivers-corrupt-tcp-ip-data-to-mesos-kubernetes-docker-containers-4986f88f7a19) that delivered corrupt network data to containers. The reboots went smoothly, and all Carina clusters are up and running again. All containers that were configured to reboot automatically should have done so, but please reach out to us in [the forums](https://community.getcarina.com/) or in [#carina on freenode](https://botbot.me/freenode/carina/) if you’re seeing any issues with your clusters following the reboot.
+Our team completed the process of rebooting all Carina instances on Tuesday, April 12th to patch a [Linux kernal bug](https://tech.vijayp.ca/linux-kernel-bug-delivers-corrupt-tcp-ip-data-to-mesos-kubernetes-docker-containers-4986f88f7a19) that delivered corrupt network data to containers. The reboots went smoothly, and all Carina clusters are up and running again. All containers that were configured to [restart automatically](https://docs.docker.com/engine/reference/commandline/run/#restart-policies-restart) should have done so, but please reach out to us in [the forums](https://community.getcarina.com/) or in [#carina on freenode](https://botbot.me/freenode/carina/) if you’re seeing any issues with your clusters following the reboot.
 
 ### Replay and slides of “Effective Docker Swarm”
 
-<img class="right" src="{% asset_path 2016-04-15-weekly-news/swarmnado.gif %}" style="max-width: 25%;" />
+<figure class="right">
+  <img src="{% asset_path 2016-04-15-weekly-news/swarmnado.gif %}" />
+  <figcaption>
+    Image source: <a href="https://goto.docker.com/swarm-week.html">Docker, Inc.</a>
+  </figcaption>
+</figure>
 
 Everett shared the [video recording and slides](https://getcarina.com/blog/docker-austin-how-do-i-even-swarm/) of the great presentation he gave at last week’s Docker Austin meetup. Everett’s audience was very engaged and asked lots of great, detailed questions about Carina and Swarm in general. Watch the video if you missed the talk—you’ll learn almost as much from all the audience’s questions as you will from the talk itself!
 
