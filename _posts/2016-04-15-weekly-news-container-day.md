@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Reboot Day, Meetup Day, Tax&nbsp;Day"
+title: "Weekly news: Reboot day, Meetup day, Tax&nbsp;day"
 date: 2016-04-15
 comments: true
 author: Keith Bartholomew <keith.bartholomew@rackspace.com>
@@ -17,15 +17,15 @@ authorIsRacker: true
 
 {{ page.excerpt }}
 
-### Containers Meetup at OpenStack Summit Austin
+### Containers meetup at OpenStack Summit Austin
 
-The Carina team will be [hosting a containers meetup](https://getcarina.com/blog/container-day-austin-summit/) on April 26th, during the OpenStack Summit in Austin. The meetup will be a great time to see demos and discussions from early Carina users and other leaders in the containers ecosystem. The meetup is _not exclusive_ to summit attendees—anyone is welcome to come meet with our team and other Carina users.
+The Carina team will be [hosting a containers meetup](https://getcarina.com/blog/container-day-austin-summit/) on April 26 during the OpenStack Summit in Austin. The meetup will be a great time to see demos and discussions from early Carina users and other leaders in the containers ecosystem. The meetup is _not exclusive_ to summit attendees—anyone is welcome to come and meet with our team and other Carina users.
 
-In addition to the meetup, members of the Carina team will be present throughout the summit in the [“Rackspace Cantina”](http://blog.rackspace.com/relax-recharge-rackspace-cantina-openstack-summit-austin/). If you’re attending the summit, come see us on the rooftop patio at Michelada’s to relax and recharge!
+In addition to the meetup, members of the Carina team will be present throughout the summit in the [“Rackspace Cantina”](http://blog.rackspace.com/relax-recharge-rackspace-cantina-openstack-summit-austin/). If you’re attending the summit, come and see us on the rooftop patio at Micheladas to relax and recharge!
 
 ### Carina reboots completed
 
-Our team completed the process of rebooting all Carina instances on Tuesday, April 12th to patch a [Linux kernal bug](https://tech.vijayp.ca/linux-kernel-bug-delivers-corrupt-tcp-ip-data-to-mesos-kubernetes-docker-containers-4986f88f7a19) that delivered corrupt network data to containers. The reboots went smoothly, and all Carina clusters are up and running again. All containers that were configured to [restart automatically](https://docs.docker.com/engine/reference/commandline/run/#restart-policies-restart) should have done so, but please reach out to us in [the forums](https://community.getcarina.com/) or in [#carina on freenode](https://botbot.me/freenode/carina/) if you’re seeing any issues with your clusters following the reboot.
+Our team completed the process of rebooting all Carina instances on Tuesday, April 12, to patch a [Linux kernel bug](https://tech.vijayp.ca/linux-kernel-bug-delivers-corrupt-tcp-ip-data-to-mesos-kubernetes-docker-containers-4986f88f7a19) that delivered corrupt network data to containers. The reboots went smoothly, and all Carina clusters are up and running again. All containers that were configured to [restart automatically](https://docs.docker.com/engine/reference/commandline/run/#restart-policies-restart) should have done so, but please reach out to us in [the forums](https://community.getcarina.com/) or in [#carina on freenode](https://botbot.me/freenode/carina/) if you’re seeing any issues with your clusters following the reboot.
 
 ### Replay and slides of “Effective Docker Swarm”
 
@@ -49,7 +49,7 @@ Databases are often a critical component for applications, but managing them you
 
 Everett shows you how to heed [@kelseyhightower](https://twitter.com/kelseyhightower)’s advice and let ObjectRocket host MongoDB for you. [Using Carina with MongoDB from ObjectRocket](https://getcarina.com/docs/tutorials/data-stores-mongodb-prod/) gives you the best of both worlds: the speed and ease of development and deployment on Carina, plus the simplicity and reliability of ObjectRocket's managed MongoDB service.
 
-### Docker Releases Engine 1.11 and Compose 1.7
+### Docker releases Engine 1.11 and Compose 1.7
 
 Docker has released [version 1.11 of Docker Engine and version 1.7 of Docker Compose](https://blog.docker.com/2016/04/docker-engine-1-11-runc/) with a lot of exciting changes under the hood and a few exciting user-facing changes, including DNS round-robin load balancing for simple service discovery. Coming soon to a cluster near you!
 
