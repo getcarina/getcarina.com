@@ -8,6 +8,13 @@ topics:
   - docker
 ---
 
+### April 21, 2016
+
+#### What's new
+
+* Patched [EOF bug](https://github.com/getcarina/feedback/issues/65) in Docker Engine 1.10.3 
+* Miscellaneous bug fixes
+
 ### April 5, 2016
 
 #### What's new
