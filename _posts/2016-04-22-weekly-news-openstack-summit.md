@@ -29,6 +29,8 @@ Erik Nakagawa of Parse and Andy Woodward from ObjectRocket have published a vide
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HJ-iI-OiGCY" frameborder="0" allowfullscreen></iframe>
 
+View the [Parse session on Youtube](https://youtu.be/HJ-iI-OiGCY).
+
 ### Docker Load bug with Docker 1.10.3 deployments
 
 We've recently fixed a bug that was causing some users to have errors with `docker load`. If you ran into this problem you'll need to create a new cluster to get the updated image. More information is available in the [Carina Feedback GitHub issue](https://github.com/getcarina/feedback/issues/65).
