@@ -25,7 +25,7 @@ In addition to the meetup, members of the Carina team will be present throughout
 
 ### Migrating from Parse and using Carina for the Parse Server Tier
 
-Erik Nakagawa of Parse and Andy Woodward from ObjectRocket have published a video addressing how to migrate off of Parse, including using Carina as the deployment target for the server tier for Parse.
+Erik Nakagawa from Parse and Andy Woodward from ObjectRocket have published a video addressing how to migrate off of Parse, including using Carina as the deployment target for the server tier for Parse.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HJ-iI-OiGCY" frameborder="0" allowfullscreen></iframe>
 
