@@ -25,7 +25,7 @@ In addition to the meetup, members of the Carina team will be present throughout
 
 ### Migrating from Parse and using Carina for the Parse Server Tier
 
-Erik Nakagawa from Parse and Andy Woodward from ObjectRocket have published a video addressing how to migrate off of Parse, including using Carina as the deployment target for the server tier for Parse.
+Erik Nakagawa from Parse and Andy Woodward from ObjectRocket have published a video addressing how to migrate from Parse, including an option to migrate services to Carina.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HJ-iI-OiGCY" frameborder="0" allowfullscreen></iframe>
 
@@ -33,7 +33,7 @@ View the [Parse session on Youtube](https://youtu.be/HJ-iI-OiGCY).
 
 ### Docker EOF bug with Docker 1.10.3 deployments
 
-We've recently fixed a bug that was causing errors with `EOF` in the error message. If you ran into this problem you'll need to create a new cluster to get the updated image. More information is available in the [Carina Feedback GitHub issue](https://github.com/getcarina/feedback/issues/65).
+We recently fixed a bug that was causing errors with `EOF` in the error message. If you ran into this problem you'll need to create a new cluster to get the updated image. More information is available in the [Carina Feedback GitHub issue](https://github.com/getcarina/feedback/issues/65).
 
 ### Setting up push-based continuous deployment tutorial
 
