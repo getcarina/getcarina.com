@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Carina Cantina & Openstack Summit"
+title: "Weekly news: Carina Cantina & OpenStack Summit"
 date: 2016-04-22
 comments: true
 author: Ken Perkins <ken.perkins@rackspace.com>
