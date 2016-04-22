@@ -37,7 +37,7 @@ We recently fixed a bug that was causing errors with `EOF` in the error message.
 
 ### Setting up push-based continuous deployment tutorial
 
-Continuous deployment is the process of releasing new versions of software in a reliable and automatic way. [This tutorial](https://getcarina.com/docs/tutorials/push-based-cd/) will walk you through how to setup an environment for handling continuous deployment on Docker Swarm.
+Continuous deployment is the process of releasing new versions of software in a reliable and automatic way. Jamie's new tutorial will walk you through [how to set up an environment for continuous deployment](https://getcarina.com/docs/tutorials/push-based-cd/) on Docker Swarm
 
 Read the [Tutorial on push based continuous deployment](https://getcarina.com/docs/tutorials/push-based-cd/).
 
