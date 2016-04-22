@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Carina Cantina & OpenStack Summit"
+title: "Weekly news: Rackspace Cantina & OpenStack Summit"
 date: 2016-04-22
 comments: true
 author: Ken Perkins <ken.perkins@rackspace.com>
@@ -21,7 +21,7 @@ authorIsRacker: true
 
 The Carina team is [hosting a containers meetup](https://getcarina.com/blog/container-day-austin-summit/) next Tuesday,  April 26 during the OpenStack Summit in Austin. The meetup will be a great time to see demos and discussions from early Carina users and other leaders in the containers ecosystem. The meetup is _not exclusive_ to summit attendees—anyone is welcome to come and meet with our team and other Carina users.
 
-In addition to the meetup, members of the Carina team will be present throughout the summit in the [“Rackspace Cantina”](http://blog.rackspace.com/relax-recharge-rackspace-cantina-openstack-summit-austin/). If you’re attending the summit, come and see us on the rooftop patio at Micheladas to relax and recharge!
+In addition to the meetup, members of the Carina team will be present throughout the summit in the [Rackspace Cantina](http://blog.rackspace.com/relax-recharge-rackspace-cantina-openstack-summit-austin/). If you’re attending the summit, come and see us on the rooftop patio at Micheladas to relax and recharge!
 
 ### Migrating from Parse and using Carina for the Parse Server Tier
 
