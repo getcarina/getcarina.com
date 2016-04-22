@@ -5,7 +5,7 @@ comments: true
 author: Ken Perkins <ken.perkins@rackspace.com>
 published: true
 excerpt: >
-  It's almost Openstack Summit time! That means we're gearing up for our Containers meetup and the Carina Cantina. We've also got a new tutorial on push-based continuous deployment on Docker Swarm and a Video Session on migrating off of Parse to ObjectRocket and Carina.
+  It's almost OpenStack Summit time! That means we're gearing up for our Containers meetup and the Rackspace Cantina. We also have a new tutorial about push-based continuous deployment on Docker Swarm and a Video Session about migrating from Parse to ObjectRocket and Carina.
 categories:
   - Docker
   - Swarm
@@ -19,7 +19,7 @@ authorIsRacker: true
 
 ### Next Week: Containers meetup at OpenStack Summit Austin
 
-The Carina team will be [hosting a containers meetup](https://getcarina.com/blog/container-day-austin-summit/) next Tuesday,  April 26 during the OpenStack Summit in Austin. The meetup will be a great time to see demos and discussions from early Carina users and other leaders in the containers ecosystem. The meetup is _not exclusive_ to summit attendees—anyone is welcome to come and meet with our team and other Carina users.
+The Carina team is [hosting a containers meetup](https://getcarina.com/blog/container-day-austin-summit/) next Tuesday,  April 26 during the OpenStack Summit in Austin. The meetup will be a great time to see demos and discussions from early Carina users and other leaders in the containers ecosystem. The meetup is _not exclusive_ to summit attendees—anyone is welcome to come and meet with our team and other Carina users.
 
 In addition to the meetup, members of the Carina team will be present throughout the summit in the [“Rackspace Cantina”](http://blog.rackspace.com/relax-recharge-rackspace-cantina-openstack-summit-austin/). If you’re attending the summit, come and see us on the rooftop patio at Micheladas to relax and recharge!
 
