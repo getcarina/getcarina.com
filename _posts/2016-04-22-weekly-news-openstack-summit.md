@@ -33,7 +33,7 @@ View the [Parse session on Youtube](https://youtu.be/HJ-iI-OiGCY).
 
 ### Docker EOF bug with Docker 1.10.3 deployments
 
-We recently fixed a bug that was causing errors with `EOF` in the error message. If you ran into this problem you'll need to create a new cluster to get the updated image. More information is available in the [Carina Feedback GitHub issue](https://github.com/getcarina/feedback/issues/65).
+We recently fixed a bug that was causing errors with `EOF` in the error message. If you ran into this problem, you'll need to create a new cluster to get the updated image. More information is available in the [Carina Feedback GitHub issue](https://github.com/getcarina/feedback/issues/65).
 
 ### Setting up push-based continuous deployment tutorial
 
