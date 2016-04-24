@@ -30,10 +30,7 @@ the [Volumes](#volumes) section.
 Also, because your Docker containers run inside nodes, if a node dies your container will likewise disappear. This underscores the idea of a container being extremely ephemeral and typically not a good choice for permanent data storage.
 
 Each node is assigned a public IPv4 address, like a Docker host. You
-can see all of these addresses with `docker info` or by using the command
-provided in the
-[Retrieve your Swarm discovery token](#retrieve-your-swarm-discovery-token)
-section.
+can see all of these addresses with `docker info`.
 
 Each node has 20 GB of disk space, 4 GB of memory, and roughly the equivalent of 2 vCPUs. The
 maximum number of nodes that you can provision per cluster is 3. The maximum
