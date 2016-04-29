@@ -5,7 +5,7 @@ comments: true
 author: Kim Tryce <kim.tryce@rackspace.com>
 published: true
 excerpt: >
-See the highlights from the Openstack Summit and the Carina Cantina in this weekly's wrap-up including recorded talks from our presenters Ross Kukulinski, Google's Tim Hockin, Lee Calcote, and our own Everett Toews.
+  See the highlights from the Openstack Summit and the Carina Cantina in this weekly's wrap-up including recorded talks from our presenters Ross Kukulinski, Google's Tim Hockin, Lee Calcote, and our own Everett Toews.
 categories:
   - Docker
   - Swarm
