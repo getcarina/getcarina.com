@@ -19,7 +19,10 @@ authorIsRacker: true
 
 ### Containers meetup at OpenStack Summit Austin
 
-It was great seeing so many faces at the containers meetup this week at the Openstack Summit in Austin, Texas. We had a full day of containers talks which we have posted below.
+It was great seeing so many faces at the containers meetup this week at the Openstack Summit in Austin, Texas. We had a full day of containers talks which we have posted below.  For a preview, we've included a spiffy recap video that is only 2:30 in length.  Enjoy!
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AB1K49AkhDE" frameborder="0" allowfullscreen></iframe>
+
+View the [recap on YouTube](https://www.youtube.com/watch?v=AB1K49AkhDE).
 
 ### Carina in Production
 
