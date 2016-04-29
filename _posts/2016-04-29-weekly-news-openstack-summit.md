@@ -1,11 +1,11 @@
 ---
-title: "Weekly news: Rackspace Cantina & OpenStack Summit Wrap Up"
+title: "Weekly news: Rackspace Cantina & OpenStack Summit wrap-up"
 date: 2016-04-29
 comments: true
 author: Kim Tryce <kim.tryce@rackspace.com>
 published: true
 excerpt: >
-  See the highlights from the Openstack Summit and the Carina Cantina in this weekly's wrap-up including recorded talks from our presenters Ross Kukulinski, Google's Tim Hockin, Lee Calcote, and our own Everett Toews.
+  See the highlights from the OpenStack Summit and the Carina Cantina in this weekly's wrap-up, including recorded talks from our presenters Ross Kukulinski, Google's Tim Hockin, Lee Calcote, and our own Everett Toews.
 categories:
   - Docker
   - Swarm
@@ -19,7 +19,7 @@ authorIsRacker: true
 
 ### Containers meetup at OpenStack Summit Austin
 
-It was great seeing so many faces at the containers meetup this week at the Openstack Summit in Austin, Texas. We had a full day of containers talks which we have posted below.  For a preview, we've included a spiffy recap video that is only 2:30 in length.  Enjoy!
+It was great seeing so many faces at the containers meetup this week at the OpenStack Summit in Austin, Texas. We had a full day of containers talks which we have posted below.  For a preview, we've included a spiffy recap video that is only 2:30 in length.  Enjoy!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/AB1K49AkhDE" frameborder="0" allowfullscreen></iframe>
 
@@ -27,15 +27,15 @@ View the [recap on YouTube](https://www.youtube.com/watch?v=AB1K49AkhDE).
 
 ### Carina in Production
 
-[Ross Kukulinski] (https://twitter.com/rosskukulinski) of NodeSource and O'Reilly author provides insight and a use case of running Carina in production. "Without a doubt, Carina is the most forward thinking platform Rackspace has ever created." - Ross
+[Ross Kukulinski] (https://twitter.com/rosskukulinski) of NodeSource, and an O'Reilly author, provides insight and a use case of running Carina in production. "Without a doubt, Carina is the most forward thinking platform Rackspace has ever created." - Ross
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xOEBMq6mf9I" frameborder="0" allowfullscreen></iframe>
 
-View [Ross' talk on YouTube](https://www.youtube.com/watch?v=xOEBMq6mf9I).
+View [Ross's talk on YouTube](https://www.youtube.com/watch?v=xOEBMq6mf9I).
 
 ### Characterizing and Contrasting Container Orchestrators
 
-Engineering guru [Lee Calcote](https://twitter.com/lcalcote) provides an overview of different contianer providers and the pros/cons of each.
+Engineering guru [Lee Calcote](https://twitter.com/lcalcote) provides an overview of different container providers and the pros and cons of each.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ygEjpvnimm8" frameborder="0" allowfullscreen></iframe>
 
@@ -51,7 +51,7 @@ View [Tim's talk on YouTube](https://www.youtube.com/watch?v=f4xC48bP4h4).
 
 ### Effective Docker Swarm
 
-Last but certainly not least, our own [Everett Toews](https://twitter.com/everett_toews) provides a walk through on how to use Docker Swarm.
+Last but certainly not least, our own [Everett Toews](https://twitter.com/everett_toews) provides a walkthrough on how to use Docker Swarm.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H91v_PrB8-k" frameborder="0" allowfullscreen></iframe>
 
