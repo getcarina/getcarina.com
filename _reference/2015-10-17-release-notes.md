@@ -8,6 +8,12 @@ topics:
   - docker
 ---
 
+### May 3, 2016
+
+#### What's new
+
+* [Docker Swarm v1.2.0](https://github.com/docker/swarm/releases/tag/v1.2.0)
+
 ### April 21, 2016
 
 #### What's new
