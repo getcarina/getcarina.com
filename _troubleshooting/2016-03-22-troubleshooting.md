@@ -125,6 +125,51 @@ To help prevent this issue, reclaim disk space when you remove containers by usi
 $ docker rm -v my-container-name-or-id
 ```
 
+### Cannot start container xxxxxx: [8] System error: permission denied
+
+**Note**: The following troubleshooting tip only applies to clusters created before May 4th, 2016. Clusters created after that date will see error [CARINA-1002]({{ site.baseurl }}/docs/reference/error-codes/#carina-1002) `Host mount path(s) not allowed by policy`.
+
+If you attempt to bind mount a volume from the host using a volume flag of the form `--volume host-dir:container-dir`, you get an error message. For example,
+
+```bash
+$ docker run --rm --volume $HOME/src/config:/src/config cirros echo "Hello"
+Timestamp: 2015-11-09 19:46:32.746407404 +0000 UTC
+Code: System error
+
+Message: permission denied
+
+Frames:
+---
+0: setupRootfs
+Package: github.com/opencontainers/runc/libcontainer
+File: rootfs_linux.go@37
+---
+1: Init
+Package: github.com/opencontainers/runc/libcontainer.(*linuxStandardInit)
+File: standard_init_linux.go@52
+---
+2: StartInitialization
+Package: github.com/opencontainers/runc/libcontainer.(*LinuxFactory)
+File: factory_linux.go@242
+---
+3: initializer
+Package: github.com/docker/docker/daemon/execdriver/native
+File: init.go@35
+---
+4: Init
+Package: github.com/docker/docker/pkg/reexec
+File: reexec.go@26
+---
+5: main
+Package: main
+File: docker.go@19
+---
+6: main
+Package: runtimeError response from daemon: Cannot start container 1784f91f2f2cbd88c0eab24d24f7cfa7b7bf9cc882b28d02509e23238648c786: [8] System error: permission denied
+```
+
+This error occurs because of security restrictions on Carina. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#volumes) in [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/).
+
 ### Old PowerShell version on Windows
 
 If you are running PowerShell version 2 or less, the $PSScriptRoot variable in docker.ps1 is not supported and you get the following error message:
