@@ -16,7 +16,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ### Sign up for Carina
 
@@ -25,8 +25,6 @@ To run applications on Carina, create a free account (no credit card required) b
 ### Create your cluster
 
 A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications.
-
-To create your cluster, perform the following steps:
 
 1. Log in to [the Carina Control Panel](https://app.getcarina.com).
 
@@ -40,7 +38,7 @@ To create your cluster, perform the following steps:
 
 ### Connect to your cluster
 
-Connect to your cluster by loading the cluster credentials and downloading the Docker client. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
+Connect to your cluster by loading the cluster credentials and installing the Docker Version Manager (dvm). The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
@@ -54,46 +52,83 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.10.3 client into the unzipped directory.
-    - On Linux, download the Linux client ([x64](https://get.docker.com/builds/Linux/x86_64/docker-1.10.3) /
-      [x86](https://get.docker.com/builds/Linux/i386/docker-1.10.3)) to `Downloads/mycluster`.
-    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.3) to `Downloads/mycluster`.
-    - On Windows, download the Windows client ([x64](https://get.docker.com/builds/Windows/x86_64/docker-1.10.3.exe) /
-      [x86](https://get.docker.com/builds/Windows/i386/docker-1.10.3.exe)) to `Downloads/mycluster`.
-
 1. Open an application in which to run commands.
     - On Linux and Mac OS X, open a terminal.
     - On Windows, open a PowerShell.
 
-1. Configure the client.
+1. Install the Docker Version Manager (dvm).
 
-    **Note**: If you already have the Docker client in your home bin directory, make a backup of it first.
+    On Linux and Mac OS X terminals, run the following command:
+
+    ```bash
+    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    Downloading dvm.sh...
+    ######################################################################## 100.0%
+    Downloading bash_completion
+    ######################################################################## 100.0%
+    Downloading dvm-helper...
+    ######################################################################## 100.0%
+
+    Docker Version Manager (dvm) has been installed to ~/.dvm
+    Run the following command to start using dvm. Then add it to your bash profile (e.g. ~/.bashrc or ~/.bash_profile) to complete the installation.
+
+      source ~/.dvm/dvm.sh
+    ```
+
+    On Windows PowerShell, run the following command:
+
+    ```
+    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    Downloading dvm.ps1...
+    Downloading dvm.cmd...
+    Downloading dvm-helper.exe...
+
+    Docker Version Manager (dvm) has been installed to $env:USERPROFILE\.dvm
+
+    PowerShell Users: Run the following command to start using dvm. Then add it to your PowerShell profile to complete the installation.
+            . $env:USERPROFILE\.dvm\dvm.ps1
+
+    CMD Users: Run the first command to start using dvm. Then run the second command to add dvm to your PATH to complete the installation.
+            1. PATH=%PATH%;%USERPROFILE%\.dvm
+            2. setx PATH "%PATH%;%USERPROFILE%\.dvm"
+    ```
+
+1. Copy the commands from the output, and then paste and run them to finalize the installation.
+
+1. Configure the Docker client.
 
     On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ cd Downloads/mycluster
-    $ mkdir -p $HOME/bin
-    $ mv docker-1.10.3 $HOME/bin/docker
-    $ chmod u+x $HOME/bin/docker
-    $ export PATH=$HOME/bin:$PATH
-    $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
     $ source docker.env
+    $ dvm use
+    Now using Docker 1.10.3
     ```
 
     On Windows PowerShell, run the following commands:
 
     ```
-    $ cd Downloads\mycluster
-    $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.10.3.exe "$env:USERPROFILE\bin\docker.exe"
-    $ $env:PATH += ";$env:USERPROFILE\bin"
-    $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
-    $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-    $ .\docker.ps1
+    > cd Downloads\mycluster
+    > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    > .\docker.ps1
+    > dvm use
+    Now using Docker 1.10.3
     ```
 
     **Note**: On Windows PowerShell, use `docker.exe` instead of `docker` in all of the following commands.
+
+    <a id="quickstart-terminal"></a>
+
+    If you have installed the Docker Toolbox on Windows and are using the Quickstart Terminal, run the following commands:
+
+    ```bash
+    $ cd Downloads/mycluster
+    $ source docker.env
+    $ export DOCKER_CERT_PATH=$(echo $DOCKER_CERT_PATH | sed 's#\/##1' | sed 's#\/#:\/#1')
+    $ dvm use
+    Now using Docker 1.10.3
+    ```
 
 1. Connect to your cluster and display information about it.
 
@@ -117,14 +152,14 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Create a network
 
-1. Create a network to connect your containers.
+Create a network to connect your containers.
 
-    ```bash
-    $ docker network create wordnet
-    ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
-    ```
+```bash
+$ docker network create wordnet
+ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
+```
 
-    The output of this `docker network create` command is your network ID.
+The output of this `docker network create` command is your network ID.
 
 ### Run your first application
 
@@ -194,8 +229,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
+* [Docker Version Manager]({{ site.baseurl }}/docs/tutorials/docker-version-manager/)
 * [Carina documentation]({{ site.baseurl }}/docs/)
-* If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
 ### Next step
