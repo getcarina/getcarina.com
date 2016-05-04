@@ -40,7 +40,7 @@ To create your cluster, perform the following steps:
 
 ### Connect to your cluster
 
-Connect to your cluster by loading the cluster credentials and downloading the Docker client. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
+Connect to your cluster by loading the cluster credentials and installing the Docker Version Manager. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
@@ -54,43 +54,45 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.10.3 client into the unzipped directory.
-    - On Linux, download the Linux client ([x64](https://get.docker.com/builds/Linux/x86_64/docker-1.10.3) /
-      [x86](https://get.docker.com/builds/Linux/i386/docker-1.10.3)) to `Downloads/mycluster`.
-    - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.3) to `Downloads/mycluster`.
-    - On Windows, download the Windows client ([x64](https://get.docker.com/builds/Windows/x86_64/docker-1.10.3.exe) /
-      [x86](https://get.docker.com/builds/Windows/i386/docker-1.10.3.exe)) to `Downloads/mycluster`.
-
 1. Open an application in which to run commands.
     - On Linux and Mac OS X, open a terminal.
     - On Windows, open a PowerShell.
 
-1. Configure the client.
+1. Install the [Docker Version Manager](https://getcarina.com/docs/tutorials/docker-version-manager/) (dvm).
 
-    **Note**: If you already have the Docker client in your home bin directory, make a backup of it first.
+    On Linux and Mac OS X terminals, run the following command:
+
+    ```bash
+    curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    ```
+
+    On Windows PowerShell, run the following command:
+
+    ```powershell
+    iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    ```
+
+1. Copy the commands from the output, then paste and run them to finalize the installation.
+
+1. Configure the Docker client.
 
     On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ cd Downloads/mycluster
-    $ mkdir -p $HOME/bin
-    $ mv docker-1.10.3 $HOME/bin/docker
-    $ chmod u+x $HOME/bin/docker
-    $ export PATH=$HOME/bin:$PATH
-    $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
     $ source docker.env
+    $ dvm use
+    Now using Docker 1.10.3
     ```
 
     On Windows PowerShell, run the following commands:
 
-    ```
-    $ cd Downloads\mycluster
-    $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.10.3.exe "$env:USERPROFILE\bin\docker.exe"
-    $ $env:PATH += ";$env:USERPROFILE\bin"
-    $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
-    $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-    $ .\docker.ps1
+    ```powershell
+    > cd Downloads\mycluster
+    > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    > .\docker.ps1
+    > dvm use
+    Now using Docker 1.10.3
     ```
 
     **Note**: On Windows PowerShell, use `docker.exe` instead of `docker` in all of the following commands.
