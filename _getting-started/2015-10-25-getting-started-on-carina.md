@@ -55,9 +55,11 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
 1. Download the Docker 1.10.3 client into the unzipped directory.
-    - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.10.3) to `Downloads/mycluster`.
+    - On Linux, download the Linux client ([x64](https://get.docker.com/builds/Linux/x86_64/docker-1.10.3) /
+      [x86](https://get.docker.com/builds/Linux/i386/docker-1.10.3)) to `Downloads/mycluster`.
     - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.3) to `Downloads/mycluster`.
-    - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.10.3.exe) to `Downloads/mycluster`.
+    - On Windows, download the Windows client ([x64](https://get.docker.com/builds/Windows/x86_64/docker-1.10.3.exe) /
+      [x86](https://get.docker.com/builds/Windows/i386/docker-1.10.3.exe)) to `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
     - On Linux and Mac OS X, open a terminal.
