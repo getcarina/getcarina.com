@@ -127,6 +127,8 @@ $ docker rm -v my-container-name-or-id
 
 ### Cannot start container xxxxxx: [8] System error: permission denied
 
+**Note**: The following troubleshooting tip only applies to clusters created before May 4th, 2016. Clusters created after that date will see error [CARINA-1002]({{ site.baseurl }}/docs/reference/error-codes/#carina-1002) `Host mount path(s) not allowed by policy`.
+
 If you attempt to bind mount a volume from the host using a volume flag of the form `--volume host-dir:container-dir`, you get an error message. For example,
 
 ```bash
