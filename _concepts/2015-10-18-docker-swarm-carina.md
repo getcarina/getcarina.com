@@ -116,9 +116,6 @@ One of the features of Docker containers is the ability to mount directories fro
 
 As a result, you can only use the `--volume` flag when referring to node paths under `/var/lib/docker`. This means that any bind mount should take the following form: `--volume /var/lib/docker:/container-dir-of-your-choosing`.
 
-<!-- TODO: remove this caveat when Carina releases Docker 1.11 -->
-**Note**: [Auto-creating missing host paths for bind mounts](http://docs.docker.com/engine/misc/deprecated/#auto-creating-missing-host-paths-for-bind-mounts) has been deprecated by Docker. In the future, if your bind mounts take the following form `--volume /var/lib/docker/dir-that-does-not-exist-yet:/container-dir-of-your-choosing`, Docker will error out.
-
 Data volume containers are the preferred alternative to bind mounting from `/var/lib/docker`. For more information, see the [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/) article.
 
 ### TLS certificates
