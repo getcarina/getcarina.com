@@ -6,7 +6,7 @@ featured: true
 permalink: docs/tutorials/create-connect-cluster/
 description: Learn how to create and connect to a cluster in Carina so that you can start running your applications in containers
 docker-versions:
-  - 1.10.2
+  - 1.10.3
 topics:
   - docker
   - beginner
@@ -50,7 +50,7 @@ A Carina account. If you do not already have one, create a free account (no cred
 
 ### Connect to your cluster
 
-Connect to your cluster by loading the cluster credentials and downloading the Docker client.
+Connect to your cluster by loading the cluster credentials and downloading the Docker Version Manager (dvm).
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
@@ -64,41 +64,68 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
-1. Download the Docker 1.10.2 client into the credentials directory.
-  - On Linux, download the [Linux client](https://get.docker.com/builds/Linux/x86_64/docker-1.10.2) to `Downloads/mycluster`.
-  - On Mac OS X, download the [Mac client](https://get.docker.com/builds/Darwin/x86_64/docker-1.10.2) to `Downloads/mycluster`.
-  - On Windows, download the [Windows client](https://get.docker.com/builds/Windows/x86_64/docker-1.10.2.exe) to `Downloads/mycluster`.
-
 1. Open an application in which to run commands.
   - On Linux and Mac OS X, open a terminal.
   - On Windows, open a PowerShell.
 
-1. Configure the client.
+1. Install the Docker Version Manager (dvm).
 
-    **Note:** If you already have the Docker client in your home bin directory, make a backup of it first.
+    On Linux and Mac OS X terminals, run the following command:
+
+    ```bash
+    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    Downloading dvm.sh...
+    ######################################################################## 100.0%
+    Downloading bash_completion
+    ######################################################################## 100.0%
+    Downloading dvm-helper...
+    ######################################################################## 100.0%
+
+    Docker Version Manager (dvm) has been installed to ~/.dvm
+    Run the following command to start using dvm. Then add it to your bash profile (e.g. ~/.bashrc or ~/.bash_profile) to complete the installation.
+
+      source ~/.dvm/dvm.sh
+    ```
+
+    On Windows PowerShell, run the following command:
+
+    ```powershell
+    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    Downloading dvm.ps1...
+    Downloading dvm.cmd...
+    Downloading dvm-helper.exe...
+
+    Docker Version Manager (dvm) has been installed to $env:USERPROFILE\.dvm
+
+    PowerShell Users: Run the following command to start using dvm. Then add it to your PowerShell profile to complete the installation.
+            . $env:USERPROFILE\.dvm\dvm.ps1
+
+    CMD Users: Run the first command to start using dvm. Then run the second command to add dvm to your PATH to complete the installation.
+            1. PATH=%PATH%;%USERPROFILE%\.dvm
+            2. setx PATH "%PATH%;%USERPROFILE%\.dvm"
+    ```
+
+1. Copy the commands from the output, and then paste and run them to finalize the installation.
+
+1. Configure the Docker client.
 
     On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ cd Downloads/mycluster
-    $ mkdir -p $HOME/bin
-    $ mv docker-1.10.2 $HOME/bin/docker
-    $ chmod u+x $HOME/bin/docker
-    $ export PATH=$HOME/bin:$PATH
-    $ if [ -f ~/.bash_profile ]; then echo 'export PATH=$HOME/bin:$PATH' >> $HOME/.bash_profile; fi
     $ source docker.env
+    $ dvm use
+    Now using Docker 1.10.3
     ```
 
     On Windows PowerShell, run the following commands:
 
     ```
-    $ cd Downloads\mycluster
-    $ mkdir "$env:USERPROFILE\bin"
-    $ mv docker-1.10.2.exe "$env:USERPROFILE\bin\docker.exe"
-    $ $env:PATH += ";$env:USERPROFILE\bin"
-    $ [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
-    $ Set-ExecutionPolicy -Scope CurrentUser Unrestricted
-    $ .\docker.ps1
+    > cd Downloads\mycluster
+    > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
+    > .\docker.ps1
+    > dvm use
+    Now using Docker 1.10.3
     ```
 
     <a id="quickstart-terminal"></a>
@@ -109,6 +136,8 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     $ cd Downloads/mycluster
     $ source docker.env
     $ export DOCKER_CERT_PATH=$(echo $DOCKER_CERT_PATH | sed 's#\/##1' | sed 's#\/#:\/#1')
+    $ dvm use
+    Now using Docker 1.10.3
     ```
 
 

@@ -16,7 +16,7 @@ This tutorial shows you how to get your first containerized application up and r
 
 No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
 ### Sign up for Carina
 
@@ -25,8 +25,6 @@ To run applications on Carina, create a free account (no credit card required) b
 ### Create your cluster
 
 A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications.
-
-To create your cluster, perform the following steps:
 
 1. Log in to [the Carina Control Panel](https://app.getcarina.com).
 
@@ -40,7 +38,7 @@ To create your cluster, perform the following steps:
 
 ### Connect to your cluster
 
-Connect to your cluster by loading the cluster credentials and installing the Docker Version Manager. The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
+Connect to your cluster by loading the cluster credentials and installing the Docker Version Manager (dvm). The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
@@ -95,7 +93,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
             2. setx PATH "%PATH%;%USERPROFILE%\.dvm"
     ```
 
-1. Copy the commands from the output, then paste and run them to finalize the installation.
+1. Copy the commands from the output, and then paste and run them to finalize the installation.
 
 1. Configure the Docker client.
 
@@ -142,14 +140,14 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Create a network
 
-1. Create a network to connect your containers.
+Create a network to connect your containers.
 
-    ```bash
-    $ docker network create wordnet
-    ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
-    ```
+```bash
+$ docker network create wordnet
+ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
+```
 
-    The output of this `docker network create` command is your network ID.
+The output of this `docker network create` command is your network ID.
 
 ### Run your first application
 
@@ -219,9 +217,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
-* [Docker Version Manager](https://getcarina.com/docs/tutorials/docker-version-manager/)
+* [Docker Version Manager]({{ site.baseurl }}/docs/tutorials/docker-version-manager/)
 * [Carina documentation]({{ site.baseurl }}/docs/)
-* If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
 
 ### Next step
