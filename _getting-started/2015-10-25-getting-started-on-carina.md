@@ -118,6 +118,18 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     **Note**: On Windows PowerShell, use `docker.exe` instead of `docker` in all of the following commands.
 
+    <a id="quickstart-terminal"></a>
+
+    If you have installed the Docker Toolbox on Windows and are using the Quickstart Terminal, run the following commands:
+
+    ```bash
+    $ cd Downloads/mycluster
+    $ source docker.env
+    $ export DOCKER_CERT_PATH=$(echo $DOCKER_CERT_PATH | sed 's#\/##1' | sed 's#\/#:\/#1')
+    $ dvm use
+    Now using Docker 1.10.3
+    ```
+
 1. Connect to your cluster and display information about it.
 
     ```bash
