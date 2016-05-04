@@ -58,18 +58,41 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     - On Linux and Mac OS X, open a terminal.
     - On Windows, open a PowerShell.
 
-1. Install the [Docker Version Manager](https://getcarina.com/docs/tutorials/docker-version-manager/) (dvm).
+1. Install the Docker Version Manager (dvm).
 
     On Linux and Mac OS X terminals, run the following command:
 
     ```bash
-    curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    Downloading dvm.sh...
+    ######################################################################## 100.0%
+    Downloading bash_completion
+    ######################################################################## 100.0%
+    Downloading dvm-helper...
+    ######################################################################## 100.0%
+
+    Docker Version Manager (dvm) has been installed to ~/.dvm
+    Run the following command to start using dvm. Then add it to your bash profile (e.g. ~/.bashrc or ~/.bash_profile) to complete the installation.
+
+      source ~/.dvm/dvm.sh
     ```
 
     On Windows PowerShell, run the following command:
 
     ```powershell
-    iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    Downloading dvm.ps1...
+    Downloading dvm.cmd...
+    Downloading dvm-helper.exe...
+
+    Docker Version Manager (dvm) has been installed to $env:USERPROFILE\.dvm
+
+    PowerShell Users: Run the following command to start using dvm. Then add it to your PowerShell profile to complete the installation.
+            . $env:USERPROFILE\.dvm\dvm.ps1
+
+    CMD Users: Run the first command to start using dvm. Then run the second command to add dvm to your PATH to complete the installation.
+            1. PATH=%PATH%;%USERPROFILE%\.dvm
+            2. setx PATH "%PATH%;%USERPROFILE%\.dvm"
     ```
 
 1. Copy the commands from the output, then paste and run them to finalize the installation.
@@ -196,6 +219,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
+* [Docker Version Manager](https://getcarina.com/docs/tutorials/docker-version-manager/)
 * [Carina documentation]({{ site.baseurl }}/docs/)
 * If you're likely to be running multiple versions of Docker, use the [Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
