@@ -89,7 +89,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     On Windows PowerShell, run the following command:
 
-    ```powershell
+    ```
     > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
     Downloading dvm.ps1...
     Downloading dvm.cmd...

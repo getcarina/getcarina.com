@@ -77,7 +77,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     On Windows PowerShell, run the following command:
 
-    ```powershell
+    ```
     > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
     Downloading dvm.ps1...
     Downloading dvm.cmd...
@@ -108,7 +108,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
     On Windows PowerShell, run the following commands:
 
-    ```powershell
+    ```
     > cd Downloads\mycluster
     > Set-ExecutionPolicy -Scope CurrentUser Unrestricted
     > .\docker.ps1
