@@ -8,6 +8,12 @@ topics:
   - docker
 ---
 
+### May 5, 2016
+
+#### What's new
+
+* Improved error messages related to security restrictions. See [Carina Error Codes](https://getcarina.com/docs/reference/error-codes/) for more info.
+
 ### May 3, 2016
 
 #### What's new
