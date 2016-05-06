@@ -36,6 +36,7 @@ Migrating to a new cluster is much easier using the Carina CLI. If you haven't a
 
 ### Old cluster
 
+```bash
 eval $(carina env old)
 
 docker create \
@@ -49,9 +50,11 @@ docker run --rm \
   /bin/sh -c "echo 'data' > /var/lib/mysql/datafile"
 
 docker run --rm --volumes-from old cirros cat /var/lib/mysql/datafile
+```
 
 ### New cluster
 
+```bash
 eval $(carina env old)
 
 export DOCKER_CERT_PATH_OLD=$DOCKER_CERT_PATH
@@ -86,6 +89,7 @@ docker run --rm \
   docker cp old:/var/lib/mysql/datafile /var/lib/mysql/
 
 docker run --rm --volumes-from new cirros cat /var/lib/mysql/datafile
+```
 
 stop any databases first!
 
