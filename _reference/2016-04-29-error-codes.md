@@ -24,9 +24,9 @@ You attempted to run a container in privileged mode. This is not allowed in Cari
 
 ### CARINA-1002
 
-`Host mount path(s) not allowed by policy`
+`Host mount path(s) not allowed by policy: <blocked_mount_path [, blocked_mount_path...]>`
 
-You attempted to run a container that mounts a volume from a restricted directory of the node using a volume flag of the form `--volume /node/dir:/container/dir` or `-v /node/dir:/container/dir`. This is not allowed in Carina due to security restrictions, see [Understanding how Carina uses Docker Swarm][docker-swarm-carina]. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#volumes).
+You attempted to run a container that mounts a volume from a restricted directory on the node using a volume flag of the form `--volume /node/dir:/container/dir` or `-v /node/dir:/container/dir`. This is not allowed in Carina due to security restrictions, see [Understanding how Carina uses Docker Swarm][docker-swarm-carina]. To resolve this error, see the section on [Volumes]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#volumes).
 
 [docker-swarm-carina]: {{ site.baseurl }}/docs/concepts/docker-swarm-carina/
 
