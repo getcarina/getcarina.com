@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Shakespeare, improved error messages, DVM, and OSCON"
+title: "Weekly news: Shakespeare, DVM, and OSCON"
 date: 2016-05-06
 comments: true
 author: Ash Wilson <ash.wilson@rackspace.com>
@@ -13,56 +13,13 @@ categories:
 authorIsRacker: true
 ---
 
-This week's highlights include improved error messages, the use of DVM in our tutorials, and Carina representatives. But first, a little Shakespeare.
+This week's highlights include the use of DVM in our tutorials and Carina representation at OSCON. But first, a little Shakespeare.
 
 <!-- more -->
 
 ### Shakespeare
 
 Did you know that there's a esoteric programming language inspired by the works of William Shakespeare? Declare variables in a Dramatis Personæ, implement control flow with stage actions, and decrement counters with insults. Jamie Hannaford helped us celebrate the 400th anniversary of Shakespeare's death by [running some Shakespeare code on Carina]({{ site.baseurl }}/blog/celebrating-shakespeare/).
-
-### Improved error messages :bomb:
-
-Because we enforce security controls at the operating system level, running afoul of [Carina's security limitations]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/#apparmor-profiles) has not been a pleasant experience. At best, you may have seen a cryptic error from Docker's internals:
-
-```bash
-$ docker run --rm -it --privileged alpine:3.3 /bin/sh
-operation not permitted
-FATA[0000] Error response from daemon: Cannot start container 38cc65cfe9b63c7d507c322ce673205d806fb7b7ec3c587c23c714ab6425adb6: [8] System error: operation not permitted
-```
-
-Even more jarringly, the Docker client itself sometimes panics with a stack trace:
-
-```bash
-$ docker run --rm -it -v /:/wat alpine:3.3 /bin/sh
-Timestamp: 2016-05-06 14:31:45.978209702 +0000 UTC
-Code: System error
-
-Message: permission denied
-
-Frames:
----
-0: setupRootfs
-Package: github.com/docker/libcontainer
-File: rootfs_linux.go@29
----
-1: Init
-Package: github.com/docker/libcontainer.(*linuxStandardInit)
-File: standard_init_linux.go@52
----
-2: StartInitialization
-Package: github.com/docker/libcontainer.(*LinuxFactory)
-File: factory_linux.go@223
----
-3: initializer
-Package: FATA[0000] Error response from daemon: Cannot start container 046f6ff1c125c73acac6f2ffbb937739ba185d844f5a54275cbf795cec56e7c6: [8] System error: permission denied
-```
-
-Soon, disallowed docker commands on newly created Carina clusters will instead return [new and improved error messages]({{ site.baseurl }}/docs/reference/error-codes/) to help you understand what's gone wrong:
-
-```bash
-# TODO example CARINA-#### error code output
-```
 
 ### Docker version manager
 
