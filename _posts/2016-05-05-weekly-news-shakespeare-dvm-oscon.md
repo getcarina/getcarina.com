@@ -49,7 +49,7 @@ Server:
 
 `dvm` has been around for a while, and thanks to the continued efforts of Carolyn Van Slyck, it's now reached a level of maturity that makes us confident in recommending it to our users. Many of our tutorials that previously referenced manual Docker installations now use `dvm` instead.
 
-### Upcoming conferences
+### Upcoming appearances
 
 Next week O'Reilly's annual open source convention, [OSCON](http://conferences.oreilly.com/oscon/open-source-us), will take place in Austin, Texas. Catch members of the Carina team at any of these events:
 
