@@ -1,5 +1,5 @@
 ---
-title: "Weekly news: Shakespeare, DVM, and OSCON"
+title: "Weekly news: Shakespeare, container logs, and OSCON"
 date: 2016-05-06
 comments: true
 author: Ash Wilson <ash.wilson@rackspace.com>
