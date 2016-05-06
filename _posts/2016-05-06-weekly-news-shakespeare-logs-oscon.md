@@ -19,7 +19,7 @@ This week's highlights include container logs in the Carina web UI, the use of `
 
 ### Shakespeare
 
-Did you know that there's a esoteric programming language inspired by the works of William Shakespeare? Declare variables in a Dramatis Personæ, implement control flow with stage actions, and decrement counters with insults. Jamie Hannaford helped us celebrate the 400th anniversary of Shakespeare's death by [running some Shakespeare code on Carina]({% site.baseurl %}/blog/celebrating-shakespeare/).
+Did you know that there's a esoteric programming language inspired by the works of William Shakespeare? Declare variables in a Dramatis Personæ, implement control flow with stage actions, and decrement counters with insults. Jamie Hannaford helped us celebrate the 400th anniversary of Shakespeare's death by [running some Shakespeare code on Carina]({{ site.baseurl }}/blog/celebrating-shakespeare/).
 
 ![Shakespeare nods approvingly at your code]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/Shakespeare.jpg %})
 
