@@ -84,3 +84,14 @@ The week after next O'Reilly's annual open source convention, [OSCON](http://con
 * Wednesday at 2:40pm, Carolyn Van Slyck, Nick Silkey, and yours truly Ash Wilson will be presenting ["Think outside the container"](http://conferences.oreilly.com/oscon/open-source-us/public/schedule/detail/51253), an exploration of unconventional use-cases for Docker containers.
 
 Don't have a ticket yet? Get a free Expo Plus pass for OSCON with the code SPEXPO. Includes events, All the Bots Day, Open Container Day, [and more](http://oreil.ly/1T0euIj)!
+
+### User feedback
+
+As a quick reminder, we live and thrive on user feedback. Bugs? Sharp edges? Want a pony? Please get in touch:
+
+* [Community (any and all feedback)](https://community.getcarina.com/)
+* [General feedback, bugs, etc.](https://github.com/getcarina/feedback)
+* [Website bugs](https://github.com/getcarina/getcarina.com/issues) (Also, request new tutorials here!)
+* [#carina on irc.freenode.net](https://botbot.me/freenode/carina/)
+* Use [#getcarina](https://twitter.com/search?q=%23getcarina) on Twitter
+* Are you doing something interesting with Carina that you’d like to tell the world about? Share it here! [Learn how](https://github.com/getcarina/getcarina.com/blob/master/CONTRIBUTING.md).
