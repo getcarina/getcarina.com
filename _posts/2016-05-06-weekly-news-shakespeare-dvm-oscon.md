@@ -13,7 +13,7 @@ categories:
 authorIsRacker: true
 ---
 
-This week's highlights include the use of DVM in our tutorials, container logs  Carina representation at OSCON. But first, a little Shakespeare.
+This week's highlights include container logs in the Carina web UI, the use of `dvm` in our tutorials, and Carina representation at OSCON. But first, a little Shakespeare.
 
 <!-- more -->
 
@@ -22,6 +22,18 @@ This week's highlights include the use of DVM in our tutorials, container logs  
 Did you know that there's a esoteric programming language inspired by the works of William Shakespeare? Declare variables in a Dramatis Personæ, implement control flow with stage actions, and decrement counters with insults. Jamie Hannaford helped us celebrate the 400th anniversary of Shakespeare's death by [running some Shakespeare code on Carina]({{ site.baseurl }}/blog/celebrating-shakespeare/).
 
 ![Shakespeare nods approvingly at your code]({{ asset_path 2015-05-06-weekly-news-shakespeare-dvm-oscon/Shakespeare.jpg }})
+
+### Container logs in the Carina web UI
+
+Watch your containers' logs in real time, right from the [Carina control panel](https://app.getcarina.com/app/login)! Click on a cluster name, scroll to the "Containers" section, and click on the gear icon next to a container to reveal the option:
+
+!["container logs" option]({{ asset_path 2015-05-06-weekly-news-shakespeare-dvm-oscon/container-logs-option.jpg }})
+
+![log viewer]({{ asset_path 2015-05-06-weekly-news-shakespeare-dvm-oscon/log-viewer.jpg }})
+
+Add multiple container names to watch output from many containers at once, like `docker-compose`:
+
+![M-m-m-m-m-multilogs]({{ asset_path 2015-05-06-weekly-news-shakespeare-dvm-oscon/m-m-m-m-multi-logs.jpg }})
 
 ### Docker version manager
 
