@@ -37,6 +37,16 @@ Add multiple container names to watch output from many containers at once, like 
 
 ![M-m-m-m-m-multilogs]({{ asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/m-m-m-m-multi-logs.jpg }})
 
+### Fish support
+
+Credential .zip files contain a `docker.fish` file. If you use the [fish shell](https://fishshell.com/), source this file instead of `docker.env` to gain access to your cluster.
+
+:fish: :fish: :fish:
+
+Support for `docker.fish` in the [`carina` command-line client](https://github.com/getcarina/carina) is coming soon.
+
+![M-m-m-m-m-multilogs]({{ asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/fishy-fish.jpg }})
+
 ### Docker version manager
 
 If you've ever juggled multiple Carina clusters that all use different Docker versions, then you've met the dreaded ["client and server don't have the same version" error]({{ site.baseurl }}/docs/troubleshooting/common-problems/#error-response-from-daemon-client-and-server-don-39-t-have-same-version). Our solution to keep everything synchronized is the [Docker version manager, `dvm`](https://github.com/getcarina/dvm).
