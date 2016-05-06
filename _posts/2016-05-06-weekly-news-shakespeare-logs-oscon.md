@@ -21,21 +21,21 @@ This week's highlights include container logs in the Carina web UI, the use of `
 
 Did you know that there's a esoteric programming language inspired by the works of William Shakespeare? Declare variables in a Dramatis Personæ, implement control flow with stage actions, and decrement counters with insults. Jamie Hannaford helped us celebrate the 400th anniversary of Shakespeare's death by [running some Shakespeare code on Carina]({{ site.baseurl }}/blog/celebrating-shakespeare/).
 
-![Shakespeare nods approvingly at your code]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/Shakespeare.jpg %})
+![Shakespeare nods approvingly at your code]({% asset_path 2016-05-06-weekly-news-shakespeare-logs-oscon/Shakespeare.jpg %})
 
 ### Container logs in the Carina web UI
 
 Watch your containers' logs in real time, right from the [Carina control panel](https://app.getcarina.com/app/login)! Click on a cluster name, scroll to the "Containers" section, and click on the gear icon next to a container to reveal the option:
 
-!["container logs" option]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/container-logs-option.jpg %})
+!["container logs" option]({% asset_path 2016-05-06-weekly-news-shakespeare-logs-oscon/container-logs-option.jpg %})
 
 Clicking the link will launch the log viewer:
 
-![log viewer]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/log-viewer.jpg %})
+![log viewer]({% asset_path 2016-05-06-weekly-news-shakespeare-logs-oscon/log-viewer.jpg %})
 
 Add multiple container names to watch output from many containers at once, like `docker-compose`:
 
-![M-m-m-m-m-multilogs]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/m-m-m-m-multi-logs.jpg %})
+![M-m-m-m-m-multilogs]({% asset_path 2016-05-06-weekly-news-shakespeare-logs-oscon/m-m-m-m-multi-logs.jpg %})
 
 ### Fish support
 
@@ -45,7 +45,7 @@ Credential .zip files contain a `docker.fish` file. If you use the [fish shell](
 
 Support for `docker.fish` in the [`carina` command-line client](https://github.com/getcarina/carina) is coming soon.
 
-![M-m-m-m-m-multilogs]({% asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/fishy-fish.jpg %})
+![M-m-m-m-m-multilogs]({% asset_path 2016-05-06-weekly-news-shakespeare-logs-oscon/fishy-fish.jpg %})
 
 ### Docker version manager
 
