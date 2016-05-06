@@ -29,6 +29,8 @@ Watch your containers' logs in real time, right from the [Carina control panel](
 
 !["container logs" option]({{ asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/container-logs-option.jpg }})
 
+Clicking the link will launch the log viewer:
+
 ![log viewer]({{ asset_path 2016-05-06-weekly-news-shakespeare-dvm-oscon/log-viewer.jpg }})
 
 Add multiple container names to watch output from many containers at once, like `docker-compose`:
