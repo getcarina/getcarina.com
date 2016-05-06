@@ -41,7 +41,7 @@ Add multiple container names to watch output from many containers at once, like 
 
 Credential .zip files contain a `docker.fish` file. If you use the [fish shell](https://fishshell.com/), source this file instead of `docker.env` to gain access to your cluster.
 
-:fish: :fish: :fish:
+🐟 🐟 🐟
 
 Support for `docker.fish` in the [`carina` command-line client](https://github.com/getcarina/carina) is coming soon.
 
