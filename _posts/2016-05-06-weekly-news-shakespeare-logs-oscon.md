@@ -49,7 +49,7 @@ Support for `docker.fish` in the [`carina` command-line client](https://github.c
 
 ### Docker version manager
 
-If you've ever juggled multiple Carina clusters that all use different Docker versions, then you've met the dreaded ["client and server don't have the same version" error]({% site.baseurl %}/docs/troubleshooting/common-problems/#error-response-from-daemon-client-and-server-don-39-t-have-same-version). Our solution to keep everything synchronized is the [Docker version manager, `dvm`](https://github.com/getcarina/dvm).
+If you've ever juggled multiple Carina clusters that all use different Docker versions, then you've met the dreaded ["client and server don't have the same version" error]({{ site.baseurl }}/docs/troubleshooting/common-problems/#error-response-from-daemon-client-and-server-don-39-t-have-same-version). Our solution to keep everything synchronized is the [Docker version manager, `dvm`](https://github.com/getcarina/dvm).
 
 ```bash
 $ eval "$(carina env foo)"
