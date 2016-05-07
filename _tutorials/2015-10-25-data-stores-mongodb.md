@@ -168,6 +168,8 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 Learn how to [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/), and [schedule tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/)
 
+If you want to run your application with a production-grade database, read [Connect a Carina container to an ObjectRocket MongoDB instance]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb-prod/).
+
 If you want to store your data in a data volume container, read [Use data volume containers]({{ site.baseurl }}/docs/tutorials/data-volume-containers/).
 
 If MongoDB isn't the data store for you, read [Use MySQL on Carina]({{ site.baseurl }}/docs/tutorials/data-stores-mysql/).
