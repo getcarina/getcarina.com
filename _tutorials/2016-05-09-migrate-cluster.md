@@ -73,10 +73,7 @@ If you have data in the old cluster that you want to copy to the new cluster, us
       cirros
     c2f613ba8569b90aed1fd84a4f57c71f2468fd442a3966184aeda101ce41c871
 
-    $ docker cp $DOCKER_CERT_PATH_OLD/ca-key.pem old-swarm-data:/etc/docker/
-    $ docker cp $DOCKER_CERT_PATH_OLD/ca.pem old-swarm-data:/etc/docker/
-    $ docker cp $DOCKER_CERT_PATH_OLD/cert.pem old-swarm-data:/etc/docker/
-    $ docker cp $DOCKER_CERT_PATH_OLD/key.pem old-swarm-data:/etc/docker/
+    $ tar -c -C "$DOCKER_CERT_PATH_OLD" . | docker cp - old-swarm-data:/etc/docker/
     ```
 
 1. Create a data volume container on the new cluster to hold the data from the old cluster.
@@ -93,6 +90,8 @@ If you have data in the old cluster that you want to copy to the new cluster, us
 
     This command runs a container from the official Docker image in the new cluster. The Docker CLI within that container is configured using `--env` flags to connect to the old cluster. This is how `docker cp` can copy data to the new cluster from the old cluster.
 
+    Copy a single file.
+
     ```bash
     $ docker run --rm \
       --env DOCKER_HOST=$DOCKER_HOST_OLD \
@@ -105,14 +104,39 @@ If you have data in the old cluster that you want to copy to the new cluster, us
       docker cp old-dvc:/data/datafile /data/datafile
     ```
 
+    Copy a directory.
+
+    ```bash
+    $ docker run --rm \
+      --env DOCKER_HOST=$DOCKER_HOST_OLD \
+      --env DOCKER_VERSION=$DOCKER_VERSION_OLD \
+      --env DOCKER_TLS_VERIFY=1 \
+      --env DOCKER_CERT_PATH=/etc/docker \
+      --volumes-from new-dvc \
+      --volumes-from old-swarm-data \
+      --workdir /data/ \
+      docker:$DOCKER_VERSION_OLD \
+      /bin/sh -c "docker cp old-dvc:/data/directory/ - | tar -x"
+    ```
+
 ### Copy data from the old cluster to your local machine
 
 If you have data in the old cluster that you want to copy to your local machine, use the `docker cp` command to copy it. This requires that you are able to communicate to your old cluster from your local machine.
+
+Copy a single file.
 
 ```bash
 $ eval $(carina env old)
 
 $ docker cp old-dvc:/data/datafile /data/datafile
+```
+
+Copy a directory.
+
+```bash
+$ eval $(carina env old)
+
+$ docker cp old-dvc:/data/directory/ - | tar -x
 ```
 
 ### Update DNS
