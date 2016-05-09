@@ -5,9 +5,7 @@ comments: true
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 published: true
 excerpt: >
-  Jupyter is an exciting tool, empowering you to quickly dive into the fun parts of whatever problem you are solving. With it, you can do so much more than just your research. By combining JupyterHub with Carina, you have a learning platform, perfect for leading a workshop, trying a new language or just playing around with code. It provides push button user notebooks, where each user is not only isolated from others, but they are running on their own compute resources and can hit the "reset" button at any time to start over.<br/><br/>
-
-  Learn how howtowhale.com uses JupyterHub and Carina to teach Docker, with zero setup and immediate results.
+  Jupyter is an exciting tool, empowering you to quickly get a taste for a language, API or command-line tool with its live code snippet capabilities. How to Whale is using it to teach people Docker, and by using Carina as a Bring Your Own Compute resource, doesn't even need to foot the bill for its users. Learn how How to Whale takes advantage of Carina and JupyterHub to provide an interactive sandbox for exploring Docker.
 categories:
   - Docker
   - Swarm
@@ -25,7 +23,7 @@ authorIsRacker: true
 
 ![Docker Docker Docker MUSHROOM!]({% asset_path learning-howtowhale/howtowhale.png %})
 
-How to Whale is an amusing site all on its own, learning Docker with Docker before you know how to Docker is deliciously recursive and surprisingly effective. What's even more interesting though is the idea behind it: BYOC or Bring You Own Compute. How to Whale demonstrates how to integrate with Carina and offload a user's workload onto Carina. As the user base increases, the associated costs to run the site do not increase linearly along with it because when a user first signs up, a cluster is created on the user's Carina account. Every command that the user runs is executed on that user's cluster, not on How to Whale's infrastructure.
+How to Whale is an amusing concept all on its own, learning Docker with Docker before you know how to Docker is deliciously recursive and surprisingly effective. What's even more interesting though is the idea behind it: BYOC or Bring You Own Compute. How to Whale demonstrates how to integrate with Carina and offload a user's workload onto Carina. As its user base increases, the associated costs to run the site do not increase linearly along with it because when a user first signs up, a cluster is created on the user's Carina account. Every command that the user runs is executed on that user's cluster, not on How to Whale's infrastructure.
 
 ![Screenshot of the Try Docker tutorial]({% asset_path learning-howtowhale/try-docker.png %})
 
@@ -33,10 +31,10 @@ Under the hood, How to Whale combines JupyterHub and Carina along with some conf
 
 With [Jupyter][jupyter] notebooks, you can execute code, live in your web browser, and immediately see the output. It is a bit of an online REPL with super-powers. [JupyterHub][jupyterhub] is a server that gives multiple users access to Jupyter notebooks, running an independent Jupyter notebook server for each user. How to Whale is essentially a customized installation of JupyterHub which deploys a Jupyter server on the user's own Carina cluster.
 
-JupyterHub employs a simple proxy so that the user doesn't need to understand that the site they are seeing, for example https://howtowhale.com/jupyter/user/carolynvs, isn't actually served from howtowhale.com. Instead the user is interacting with the Jupyter server running on their Carina cluster.
+JupyterHub employs a simple proxy so that the user doesn't need to understand that the site they are seeing, for example https://howtowhale.com/jupyter/user/sally, isn't actually served from howtowhale.com. Instead the user is interacting with the Jupyter server running on their Carina cluster.
 
-The result is that each user has an isolated, pre-configured sandbox to try out Docker
-and the technology behind it all, Carina, Docker and Docker Swarm, are mostly transparent. Below
+The result is that each user has an isolated, pre-configured sandbox to try out Docker.
+The technology behind it all, Carina, Docker and Docker Swarm, are mostly transparent. Below
 is a flow diagram of how that simple `docker run hello-world` command is routed and executed.
 
 ![How to Whale Topology]({% asset_path learning-howtowhale/howtowhale-topology.png %})
@@ -54,7 +52,7 @@ is a flow diagram of how that simple `docker run hello-world` command is routed 
 ## Running JupyterHub on Carina
 <img class="right" src="{% asset_path learning-howtowhale/docker-jupyter.png %}" alt="Running JupyterHub on Carina"/>
 How to Whale uses this setup to teach Docker, but it can be used for a variety of other
-applications. The code to support integrating JupyterHub with Carina has been contributed back to the Jupyter Project. So you can use it to create your own Carina backed JupyterHub instance, or read just the code to see how to integrate with Carina for your own evil purposes.
+applications. The code to support integrating JupyterHub with Carina has been contributed back to the Jupyter Project. So you can use it to create your own Carina backed JupyterHub instance, or read the code to see how to integrate with Carina for your own evil purposes.
 
 Here are the steps to run your own JupyterHub:
 
