@@ -43,8 +43,7 @@ To understand the benefits of using data-only containers, create a DVC that will
 ```bash
 $ docker create --name data \
   --volume /var/lib/mysql \
-  mysql:5.6 \
-  /bin/true
+  cirros
 42350d0131d52cb0248df286b0fab04f8d16f6948edadc73d3f06c92c3be4c15
 ```
 
