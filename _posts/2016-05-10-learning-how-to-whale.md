@@ -5,7 +5,7 @@ comments: true
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 published: true
 excerpt: >
-  Jupyter is an exciting tool, empowering you to quickly get a taste for a language, API or command-line tool with its live code snippet capabilities. How to Whale is using it to teach people Docker, and by using Carina as a Bring Your Own Compute resource, doesn't even need to foot the bill for its users. Learn how How to Whale takes advantage of Carina and JupyterHub to provide an interactive sandbox for exploring Docker.
+  Learn How to Whale with JupyterHub and use Carina to provide a Bring Your Own Compute experience to users that encourages interactivity, play, and sharing.
 categories:
   - Docker
   - Swarm
