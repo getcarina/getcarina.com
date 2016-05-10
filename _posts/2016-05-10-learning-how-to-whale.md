@@ -58,7 +58,14 @@ Here are the steps to run your own JupyterHub instance:
 
 1. [Create a Carina account](https://getcarina.com).
 1. [Register with Carina OAuth]({{site.baseurl}}/docs/reference/oauth-integration/#register-your-application).
+    Use `https://<jupyterhub_domain>/hub/oauth_callback` for the Redirect URI, replacing
+    `<jupyterhub_domain>` with the IP address or domain name where you will host JupyterHub.
+
+    **Note**: If you configure a base_url for your JupyterHub instance, then this URL
+    should be updated to reflect the path to JupyterHub.
 1. [Install JupyterHub](https://github.com/jupyterhub/jupyterhub/blob/master/README.md).
+    You can either run JupyterHub on Carina by using the `jupyter/jupyterhub` as the base
+    Docker image for your Dockerfile or host JupyterHub on a traditional server.
 1. Install the jupyterhub-carina plug-in by running `pip install jupyterhub-carina`.
 1. Edit your JupyterHub configuration file, **jupyterhub-config.py**, so that
     it uses the jupyterhub-carina plug-in. Replace `<carina_username>` with your
@@ -71,7 +78,7 @@ Here are the steps to run your own JupyterHub instance:
     # Required: Configure JupyterHub to authenticate against Carina
     c.JupyterHub.authenticator_class = "jupyterhub_carina.CarinaAuthenticator"
     c.CarinaAuthenticator.admin_users = ["<carina_username>"]
-    c.CarinaAuthenticator.oauth_callback_url = "https://<jupyterhub_domain>/jupyter/hub/oauth_callback"
+    c.CarinaAuthenticator.oauth_callback_url = "https://<jupyterhub_domain>/hub/oauth_callback"
 
     # Required: Configure JupyterHub to spawn user servers on Carina
     c.JupyterHub.hub_ip = "0.0.0.0"
