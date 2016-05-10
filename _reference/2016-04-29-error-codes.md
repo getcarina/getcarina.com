@@ -51,3 +51,12 @@ To resolve this error, do not use the `--cap-add` flag.
 You attempted to run a container that drops Linux capabilities. This action is not allowed in Carina because of security restrictions. For more information, see [Understanding how Carina uses Docker Swarm][docker-swarm-carina]. 
 
 To resolve this error, do not use the `--cap-drop` flag.
+
+### CARINA-1005
+
+`Attempted to delete a Carina infrastructure container: <name/id>`
+
+You attempted to delete an infrastructure container needed by Carina. This action is not allowed because it will prevent
+your cluster from working properly.
+
+To resolve this error, do not run `docker rm` on this container.
