@@ -46,9 +46,17 @@ $ eval $(carina env new)
 
 Run all of the containers that your application uses in the new cluster. Ideally, use a script or Docker Compose so that you can run your application with a single command.
 
+### Restore data from back ups
+
+If you have followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) in the old cluster, restore your data to the new cluster.
+
+If you have *not* followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) in the old cluster, do so now and restore your data to the new cluster.
+
+Always follow the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) instructions for any cluster. You can also combine it with [scheduling tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/) to back up your data on a schedule.
+
 ### Copy data from the old cluster to the new cluster
 
-If you have data in the old cluster that you want to copy to the new cluster, use the `docker cp` command to copy it. This requires that you are able to communicate to your old cluster from your new cluster.
+If you have data in the old cluster that is not backed up but you want to copy to the new cluster, use the `docker cp` command to copy it. This requires that you are able to communicate to your old cluster from your new cluster.
 
 **Note**: If you are copying database files, stop your database running on the old cluster first.
 
@@ -62,7 +70,7 @@ If you have data in the old cluster that you want to copy to the new cluster, us
     $ export DOCKER_VERSION_OLD=$DOCKER_VERSION
     ```
 
-1. Create a data volume container on the new cluster to hold the certificates from the old cluster.
+1. Create a data volume container (DVC) on the new cluster to hold the certificates from the old cluster.
 
     ```bash
     eval $(carina env new)
@@ -78,17 +86,21 @@ If you have data in the old cluster that you want to copy to the new cluster, us
 
 1. Create a data volume container on the new cluster to hold the data from the old cluster.
 
+    Replace `<new-dvc>` with whatever you want to name your new DVC.
+
     ```bash
     $ docker create \
-      --name new-dvc \
+      --name <new-dvc> \
       --volume /data \
       cirros
     23a2a7e8ecc2866b00fda5882e7b7e1411adf1462c183162f724c6668eaf191b
     ```
 
+    **Note**: The image used for a DVC is irrelevant as you don't run the container. The `cirros` image is used in the previous command because the `cirros` image already exists on all Carina clusters and thus doesn't have to be downloaded.
+
 1. Copy the data to the new cluster from the old cluster.
 
-    This command runs a container from the official Docker image in the new cluster. The Docker CLI within that container is configured using `--env` flags to connect to the old cluster. This is how `docker cp` can copy data to the new cluster from the old cluster.
+    This command runs a container from the official Docker image in the new cluster. The Docker CLI within that container is configured using `--env` flags and the `--volumes-from old-swarm-data` to connect to the old cluster. This is how `docker cp` can copy data to the new cluster from the old cluster.
 
     Copy a single file.
 
@@ -98,7 +110,7 @@ If you have data in the old cluster that you want to copy to the new cluster, us
       --env DOCKER_VERSION=$DOCKER_VERSION_OLD \
       --env DOCKER_TLS_VERIFY=1 \
       --env DOCKER_CERT_PATH=/etc/docker \
-      --volumes-from new-dvc \
+      --volumes-from <new-dvc> \
       --volumes-from old-swarm-data \
       docker:$DOCKER_VERSION_OLD \
       docker cp old-dvc:/data/datafile /data/datafile
@@ -112,7 +124,7 @@ If you have data in the old cluster that you want to copy to the new cluster, us
       --env DOCKER_VERSION=$DOCKER_VERSION_OLD \
       --env DOCKER_TLS_VERIFY=1 \
       --env DOCKER_CERT_PATH=/etc/docker \
-      --volumes-from new-dvc \
+      --volumes-from <new-dvc> \
       --volumes-from old-swarm-data \
       --workdir /data/ \
       docker:$DOCKER_VERSION_OLD \
@@ -121,7 +133,7 @@ If you have data in the old cluster that you want to copy to the new cluster, us
 
 ### Copy data from the old cluster to your local machine
 
-If you have data in the old cluster that you want to copy to your local machine, use the `docker cp` command to copy it. This requires that you are able to communicate to your old cluster from your local machine.
+If you have data in the old cluster that is not backed up but you want to copy to your local machine, use the `docker cp` command to copy it. This requires that you are able to communicate to your old cluster from your local machine.
 
 Copy a single file.
 
@@ -146,10 +158,6 @@ Your new cluster has nodes with new IP addresses. If you have a domain names poi
 ### Store data off-cluster
 
 Containers excel at ephemeral computing workloads. Because of their ephemeral nature, they are not well-suited to storing persistent data. Consider storing your data off-cluster by [connecting a Carina container to a Rackspace Cloud Database]({{ site.baseurl }}/docs/tutorials/data-stores-mysql-prod/) or [connecting a Carina container to an ObjectRocket MongoDB instance]({{ site.baseurl }}/docs/tutorials/data-stores-mongodb-prod/). If your persistent data is stored off-cluster then migrating to a new cluster can be as simple as running your application on a new cluster and connecting it to your persistent data store.
-
-### Back up your data on a schedule
-
-If you prefer to store your data on-cluster, learn how to [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/), and combine that with [scheduling tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/) to back up your data on a schedule.
 
 ### Troubleshooting
 
