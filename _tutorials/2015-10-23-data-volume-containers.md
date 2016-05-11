@@ -49,6 +49,8 @@ $ docker create --name data \
 
 The output of this `docker create` command is the container ID.
 
+**Note**: The image used for a DVC is irrelevant as you don't run the container. The `cirros` image is used in the previous command because the `cirros` image already exists on all Carina clusters and thus doesn't have to be downloaded.
+
 ### Use a DVC
 
 Run a MySQL instance container that mounts the volume inside the DVC. The `--volumes-from <dataVolumeContainerName>` flag mounts all of the volumes from the DVC. You can specify this flag multiple times to mount volumes from multiple DVCs. In the following example, you mount the volume located at `/var/lib/mysql` inside the `data` container. All of the data files used by MySQL in this container will be stored there.
