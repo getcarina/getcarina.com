@@ -48,11 +48,11 @@ Run all of the containers that your application uses in the new cluster. Ideally
 
 ### Restore data from back ups
 
-If you have followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) in the old cluster, restore your data to the new cluster.
+If you have followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) tutorial in the old cluster, restore your data to the new cluster.
 
-If you have *not* followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) in the old cluster, do so now and restore your data to the new cluster.
+If you have *not* followed the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) tutorial in the old cluster, do so now and restore your data to the new cluster.
 
-Always follow the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) instructions for any cluster. You can also combine it with [scheduling tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/) to back up your data on a schedule.
+Always follow the [back up and restore container data]({{ site.baseurl }}/docs/tutorials/backup-restore-data/) tutorial for any cluster. You can also combine it with [scheduling tasks with a cron container]({{ site.baseurl }}/docs/tutorials/schedule-tasks-cron/) to back up your data on a schedule.
 
 ### Copy data from the old cluster to the new cluster
 
