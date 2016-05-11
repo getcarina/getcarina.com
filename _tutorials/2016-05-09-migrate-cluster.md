@@ -84,6 +84,8 @@ If you have data in the old cluster that is not backed up but you want to copy t
     $ tar -c -C "$DOCKER_CERT_PATH_OLD" . | docker cp - old-swarm-data:/etc/docker/
     ```
 
+    **Note**: The image used for a DVC is irrelevant as you don't run the container. The `cirros` image is used in the previous command because the `cirros` image already exists on all Carina clusters and thus doesn't have to be downloaded.
+
 1. Create a data volume container on the new cluster to hold the data from the old cluster.
 
     Replace `<new-dvc>` with whatever you want to name your new DVC.
@@ -95,8 +97,6 @@ If you have data in the old cluster that is not backed up but you want to copy t
       cirros
     23a2a7e8ecc2866b00fda5882e7b7e1411adf1462c183162f724c6668eaf191b
     ```
-
-    **Note**: The image used for a DVC is irrelevant as you don't run the container. The `cirros` image is used in the previous command because the `cirros` image already exists on all Carina clusters and thus doesn't have to be downloaded.
 
 1. Copy the data to the new cluster from the old cluster.
 
