@@ -21,7 +21,7 @@ authorIsRacker: true
 
 ### Migrate to a new cluster
 
-Here's how how to [migrate to a new cluster]({{ site.baseurl }}/docs/tutorials/migrate-cluster/) to take advantage of new features, security, services, and Docker versions. It demonstrates how to manage different Docker versions and how to move data from one cluster to another, and offers some tips to make the process go more smoothly in the future.
+Here's how to [migrate to a new cluster]({{ site.baseurl }}/docs/tutorials/migrate-cluster/) to take advantage of new features, security, services, and Docker versions. It demonstrates how to manage different Docker versions and how to move data from one cluster to another, and offers some tips to make the process go more smoothly in the future.
 
 <figure>
   <img src="{% asset_path migrate-cluster/migrate.jpg %}" alt="Canada goose migrating south" title="Canada goose migrating south"/>
@@ -33,17 +33,15 @@ Here's how how to [migrate to a new cluster]({{ site.baseurl }}/docs/tutorials/m
 
 ### Docker client behind corporate proxy
 
-This week we had a very determined user wanting to run the [Docker client behind corporate proxy](https://community.getcarina.com/t/docker-client-behind-corporate-proxy/205) so he could use Carina from his workplace. He came up with a nifty solution in this [docker-proxy](https://github.com/vertigobr/docker-proxy) repository on GitHub. In his own words,
-
-> Docker HTTPS proxy - to use when docker client and engine are separated by a corporate proxy (Carina users will love it)
+This week we had a very determined user wanting to run the [Docker client behind corporate proxy](https://community.getcarina.com/t/docker-client-behind-corporate-proxy/205) so he could use Carina from his workplace. He came up with a nifty solution in this [docker-proxy](https://github.com/vertigobr/docker-proxy) repository on GitHub. In his own words, "Docker HTTPS proxy - to use when docker client and engine are separated by a corporate proxy (Carina users will love it)."
 
 ### Upcoming appearances
 
-Next week, O'Reilly's annual open source convention, [OSCON](http://conferences.oreilly.com/oscon/open-source-us), will take place in Austin, Texas. Catch members of the Carina team at any of these events:
+Next week, O'Reilly's annual open source convention, [OSCON](http://conferences.oreilly.com/oscon/open-source-us), will take place in Austin, TX. Catch members of the Carina team at any of these events:
 
 * Tuesday at 9:05am, as part of Open Container Day, our own Everett Toews is hosting an [Intro to Docker Swarm](http://conferences.oreilly.com/oscon/open-source-us/public/schedule/detail/50961) tutorial.
 * Wednesday at 11:05am, Everett will be presenting [Effective Docker Swarm](http://conferences.oreilly.com/oscon/open-source-us/public/schedule/detail/51213) to share additional insights on developing and deploying real-world applications on Docker Swarm.
-* Wednesday at 2:40pm, Carolyn Van Slyck, Nick Silkey, and yours truly Ash Wilson will be presenting [Think outside the container](http://conferences.oreilly.com/oscon/open-source-us/public/schedule/detail/51253), an exploration of unconventional use-cases for Docker containers.
+* Wednesday at 2:40pm, Carolyn Van Slyck, Nick Silkey, and Ash Wilson will be presenting [Think outside the container](http://conferences.oreilly.com/oscon/open-source-us/public/schedule/detail/51253), an exploration of unconventional use-cases for Docker containers.
 
 Don't have a ticket yet? Get a free Expo Hall Plus pass for OSCON with the code SPEXPO. The pass includes events, "all the bots" day, "open container" day, [and more](http://oreil.ly/1T0euIj)!
 
