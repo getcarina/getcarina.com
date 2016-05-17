@@ -140,7 +140,7 @@ We’ll use those certs, by making another container with your Jawbone app conta
     ```
     $ docker run --detach \
       --name lets-nginx \
-      --link jawbone-demo \
+      --link jawbone-demo:jawbone-demo \
       --env EMAIL=annegentle@example.com \
       --env DOMAIN=sleepify.me \
       --env UPSTREAM=jawbone-demo:5000 \
@@ -157,7 +157,7 @@ We’ll use those certs, by making another container with your Jawbone app conta
 1. Check the progress of the creation by checking the logs for that container ID:
 
     ```
-    $ docker logs 4cf
+    $ docker logs lets-nginx
     ```
 
     At first, you'll see this note in the logs:
