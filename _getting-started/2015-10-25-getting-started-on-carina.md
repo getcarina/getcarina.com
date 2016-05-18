@@ -150,20 +150,18 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Name: 3e867f7a955f
     ```
 
-### Create a network
-
-Create a network to connect your containers.
-
-```bash
-$ docker network create wordnet
-ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
-```
-
-The output of this `docker network create` command is your network ID.
-
 ### Run your first application
 
-Run a WordPress blog with a MySQL database.
+Run a WordPress blog with a MySQL database on an overlay network.
+
+1. Create a network to connect your containers.
+
+    ```bash
+    $ docker network create wordnet
+    ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
+    ```
+
+    The output of this `docker network create` command is your network ID.
 
 1. Run a MySQL instance in a container. Give it a name and use **my-root-pw** as a password.
 
