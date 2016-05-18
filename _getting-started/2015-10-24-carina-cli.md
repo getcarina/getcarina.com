@@ -194,6 +194,8 @@ See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/co
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
-### Next step
+### Next steps
+
+[Run your first application]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/#run-your-first-application) by running a WordPress blog with a MySQL database on an overlay network.
 
 Learn about all of the features available to you in the [Overview of Carina.]({{ site.baseurl }}/docs/overview-of-carina/)
