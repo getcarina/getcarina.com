@@ -8,6 +8,13 @@ topics:
   - docker
 ---
 
+### May 23, 2016
+
+#### What's new
+
+* [Docker Engine 1.11.1](https://github.com/docker/docker/releases/tag/v1.11.1)
+* More improvements to error messages related to security restrictions. See [Carina Error Codes](https://getcarina.com/docs/reference/error-codes/) for more info.
+
 ### May 5, 2016
 
 #### What's new
