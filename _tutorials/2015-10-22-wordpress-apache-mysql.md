@@ -19,7 +19,7 @@ in a Docker container. Finally, use Apache to deliver traffic to your applicatio
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Create an overlay network
 

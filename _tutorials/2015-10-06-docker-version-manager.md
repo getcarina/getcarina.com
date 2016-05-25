@@ -85,7 +85,7 @@ Now using Docker 1.8.3
 Now using Docker 1.8.3
 ```
 
-[carina-credentials]: {{site.baseurl}}/docs/tutorials/create-connect-cluster/#connect-to-your-cluster
+[carina-credentials]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
 [carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
 
 <a id="stand-alone"></a>

@@ -37,7 +37,7 @@ We strongly recommend using the `--net` flag and _not_ using the `--publish` or 
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Create a network
 

@@ -19,7 +19,7 @@ authorIsRacker: true
 
 ### Filter the list of containers with a Go SDK for Docker
 
-<img class="right" src="{% asset_path weekly-news/everybody-loves-a-skateboarding-dog.jpg %}" alt="Everybody loves a skateboarding dog"/>If you're writing an application in Go that needs to interact with your Swarm cluster, it's usually a good idea to pick up one of the many Go SDKs for Docker out there and let it do some of the heavy lifting for you. Recently I needed to filter the list of containers by labels using the [samalba/dockerclient](https://github.com/samalba/dockerclient). Once you have a [Go development environment setup](https://golang.org/doc/code.html) and you've [created and connected to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/), here's how to do it.
+<img class="right" src="{% asset_path weekly-news/everybody-loves-a-skateboarding-dog.jpg %}" alt="Everybody loves a skateboarding dog"/>If you're writing an application in Go that needs to interact with your Swarm cluster, it's usually a good idea to pick up one of the many Go SDKs for Docker out there and let it do some of the heavy lifting for you. Recently I needed to filter the list of containers by labels using the [samalba/dockerclient](https://github.com/samalba/dockerclient). Once you have a [Go development environment setup](https://golang.org/doc/code.html) and you've [created and connected to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/), here's how to do it.
 
 Create a file called list-containers.go and copy in the following Go code. The complete lack of error handling is an April Fool's Day joke. Ha!
 

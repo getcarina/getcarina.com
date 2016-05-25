@@ -17,7 +17,7 @@ This tutorial describes using Redis on Carina so you can store data in a contain
 
 ### Prerequisites
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### A primer on Redis security
 

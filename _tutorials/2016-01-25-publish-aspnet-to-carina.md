@@ -24,7 +24,7 @@ This tutorial describes how to publish an ASP.NET website to Carina from the com
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 * [Install the Carina CLI](docs/getting-started/getting-started-carina-cli/)
 * Install package managers
   * [Chocolatey](http://chocolatey.org) for Windows
@@ -276,7 +276,7 @@ it to Carina.
         },
     ```
 
-1. If you have not already done so, [create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
+1. If you have not already done so, [create and connect to a cluster](/docs/getting-started/create-connect-cluster/).
 
 1. Build a Docker image of your website by running the following command:
 

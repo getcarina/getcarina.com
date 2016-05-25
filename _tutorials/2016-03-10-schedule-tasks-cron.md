@@ -15,7 +15,7 @@ This tutorial explains how to configure a container that runs the ubiquitous job
 
 ### Prerequisite
 
-Before you begin, you need to [create and connect to a Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/).
+Before you begin, you need to [create and connect to a Carina cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/).
 
 ### Create a cron image
 

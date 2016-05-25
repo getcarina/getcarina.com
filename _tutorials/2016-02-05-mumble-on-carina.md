@@ -23,7 +23,7 @@ This tutorial describes how to run Mumble on Carina.
 
 ### Prerequisites
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Select a Mumble image
 

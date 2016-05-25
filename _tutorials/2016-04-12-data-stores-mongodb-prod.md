@@ -19,7 +19,7 @@ This tutorial describes how to connect a Carina container to an ObjectRocket Mon
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 * A Rackspace cloud account that you can use to access the [Cloud Control Panel][control-panel].
  * If you don't have a Rackspace cloud account, you need to [sign up for one](https://www.rackspace.com/cloud).
 

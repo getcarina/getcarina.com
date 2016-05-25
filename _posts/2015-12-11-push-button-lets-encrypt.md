@@ -53,7 +53,7 @@ Furthermore, because this approach is automated, it uses the `--agree-tos` flag 
 
 Before you get started, you need:
 
- 1. [A Carina cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) up, running and connected. It'll be easier if your cluster only has a single node because the container's public IP address will be predictable. Otherwise, you'll need to fiddle around with Swarm affinities.
+ 1. [A Carina cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) up, running and connected. It'll be easier if your cluster only has a single node because the container's public IP address will be predictable. Otherwise, you'll need to fiddle around with Swarm affinities.
  2. A domain name that you own with a DNS A record pointing to your cluster's public IP address.
  3. Any back-end service that understands HTTP running in a Docker container on your cluster. I have a [Sinatra test service](https://github.com/smashwilson/minimal-sinatra) that's handy for iterating on infrastructure like this. Make a note of the container's name. It does *not* need to be listening on a public port; in fact, it's better if it isn't, because then you can funnel all traffic through the secure entry point instead.
 

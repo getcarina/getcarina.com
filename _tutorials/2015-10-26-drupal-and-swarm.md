@@ -22,7 +22,7 @@ This tutorial provides steps for running a Drupal instance and a MySQL database 
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Set up Drupal in Carina
 

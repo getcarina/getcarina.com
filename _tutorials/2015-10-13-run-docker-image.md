@@ -19,7 +19,7 @@ The benefit of Docker images is that anyone can create and share their images th
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Find and download a Docker image
 

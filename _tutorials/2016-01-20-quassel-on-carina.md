@@ -25,7 +25,7 @@ This tutorial describes how to run a Quassel core instance on Carina.
 
 ### Prerequisites
 
-- [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+- [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 - A Rackspace cloud account. If you don't have a Rackspace cloud account, you can
 [sign up for one](https://www.rackspace.com/cloud).

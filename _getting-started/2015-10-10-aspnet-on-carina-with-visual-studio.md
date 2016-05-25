@@ -25,7 +25,7 @@ This tutorial describes how to publish an ASP.NET website to Carina with Visual 
 
 ### Prerequisites
 
-1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+1. [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 1. [Install Visual Studio 2015](https://www.visualstudio.com/downloads/download-visual-studio-vs)
 1. [Install Microsoft ASP.NET and Web Tools 2015 Release Candidate](https://www.microsoft.com/en-us/download/details.aspx?id=49959)
 1. [Install Visual Studio Tools for Docker Preview](https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4)
@@ -80,7 +80,7 @@ repair mode for each installer in the order listed.
 Now that you have an ASP.NET website working locally, use Visual Studio's
 publish functionality to deploy the website to a Docker container on Carina.
 
-1. If you have not done so already, [create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
+1. If you have not done so already, [create and connect to a cluster](/docs/getting-started/create-connect-cluster/).
 
 1. Locate your credentials on the file system, and then open **docker.cmd**.
 

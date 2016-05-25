@@ -17,7 +17,7 @@ This tutorial explains how to back up and restore data from a MySQL database, so
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 * _(Optional)_ A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
   * If you don't have a Rackspace cloud account, you can [sign up](https://www.rackspace.com/cloud) for one.
 
