@@ -36,7 +36,7 @@ Error response from daemon: client and server don't have same version (client : 
 To resolve this error:
 
 1. Install the [Docker Version Manager (dvm)][dvm].
-2. [Load your cluster credentials][carina-creds].
+2. [Connect to your cluster][carina-creds].
 3. Run `dvm use`. This switches your Docker client to the same version used by your cluster.
 
 ### Cannot connect to the Docker daemon
@@ -189,6 +189,6 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 * [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)
 
 [dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
-[carina-creds]: {{site.baseurl}}/docs/references/carina-credentials/
+[carina-creds]: {{site.baseurl}}/docs/tutorials/create-connect-cluster/#connect-to-your-cluster
 [rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster
 [rebuild-do]: {{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do

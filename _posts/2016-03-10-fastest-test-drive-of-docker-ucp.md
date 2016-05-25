@@ -67,7 +67,7 @@ roughly 11 sections with a lot of sub-sections. Summarized these are:
 5. Deploying UCP
 6. Adding Swarm nodes
 7. UI walkthrough
-8. Download the credentials bundle (close to [Download Carina credentials]!)
+8. Download the credentials bundle at [Connect to your cluster]
 9. Deploying with the CLI
 
 There's a lot in there - mostly around setting up machine. Carina allows you
@@ -131,7 +131,7 @@ So thanks goes to the data plane team for many months of hard work.
 
 [Overview of Carina]: https://getcarina.com/docs/overview-of-carina/
 [Grab the CLI]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
-[Download Carina credentials]: https://getcarina.com/docs/references/carina-credentials/
+[Connect to your cluster]: https://getcarina.com/docs/tutorials/create-connect-cluster/#connect-to-your-cluster
 [Evaluation installation and quickstart]: https://docs.docker.com/ucp/evaluation-install/
 [Understanding how Carina uses Docker Swarm]: https://getcarina.com/docs/concepts/docker-swarm-carina/
 [tutum]: https://www.tutum.co/

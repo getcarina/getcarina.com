@@ -54,7 +54,7 @@ dvm upgrade
 
 <a id="carina"></a>
 ### Use dvm with Carina
-Carina's credentials are designed to work with dvm. After [you load your cluster credentials][carina-credentials],
+Carina's credentials are designed to work with dvm. After you [connect to your cluster][carina-credentials],
 run `dvm use` and dvm will switch to the version of Docker used by your cluster.
 It automatically knows the Docker version for your cluster because the Carina
 credentials set the `DOCKER_VERSION` environment variable. If you are just working with Carina,
@@ -85,7 +85,7 @@ Now using Docker 1.8.3
 Now using Docker 1.8.3
 ```
 
-[carina-credentials]: {{site.baseurl}}/docs/references/carina-credentials/
+[carina-credentials]: {{site.baseurl}}/docs/tutorials/create-connect-cluster/#connect-to-your-cluster
 [carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
 
 <a id="stand-alone"></a>
