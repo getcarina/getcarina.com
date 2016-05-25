@@ -24,6 +24,6 @@ These instructions are available online at [rack.to/carina-contest](http://rack.
 
 1. We'll give you a ticket to be entered into the draw for a Parrot Bebop quadcopter
  * The drawing is on Wednesday, June 1st @ 4:15PM
- * You must be present to win.
+ * You must be present to win
 
 ![Parrot Bebop quadcopter]({% asset_path contest/bebop.jpg %})
