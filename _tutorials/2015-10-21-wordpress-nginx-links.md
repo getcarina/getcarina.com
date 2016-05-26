@@ -24,7 +24,7 @@ This tutorial sets up a MySQL container to demonstrate container relationships.
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) that has at least two nodes.
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) that has at least two nodes.
 
 **Note:** If you completed the [previous tutorial]({{ site.baseurl }}/docs/tutorials/wordpress-apache-mysql/), you can reuse the same cluster, so long as all previous Docker containers have been removed. You can delete all of them with this command:
 

@@ -21,9 +21,9 @@ In the past, you had to run Murmur on an always-on machine that you own, or rent
 
 This tutorial describes how to run Mumble on Carina.
 
-### Prerequisites
+### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Select a Mumble image
 
@@ -84,9 +84,9 @@ This tutorial uses the easily configurable [extra/mumble](https://hub.docker.com
     ```
     docker port mumble
     ```
-    
+
     This command displays the following output:
-    
+
     ```
     64738/tcp -> 172.99.65.46:53453
     64738/udp -> 172.99.65.46:53453

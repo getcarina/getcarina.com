@@ -17,7 +17,7 @@ This tutorial describes using MySQL on Carina so that you can store data in a co
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 
 ### Create a network
 

@@ -18,7 +18,7 @@ Minecraft is a multi-player game that lets you explore a vast 3D world, craft it
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 * [Purchase Minecraft](https://minecraft.net/store/minecraft)
 * [Download and install the Minecraft game](https://minecraft.net/download)
 

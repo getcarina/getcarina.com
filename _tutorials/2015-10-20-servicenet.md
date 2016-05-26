@@ -18,7 +18,7 @@ This tutorial describes using the internal network ServiceNet with Carina so tha
 
 ### Prerequisite
 
-[Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) with two or more nodes.
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) with two or more nodes.
 
 ### PublicNet and ServiceNet
 

@@ -30,7 +30,7 @@ The final result of moving your application from VirtualBox to Carina will look 
 
 * [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
  * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
-* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
 
 ### Clone the repo
@@ -190,7 +190,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment in prod
 
-1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for [connecting to your cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/#connect-to-your-cluster).
+1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for [connecting to your cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster).
 
 1. Check your environment.
 

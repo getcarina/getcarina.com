@@ -15,7 +15,7 @@ When you use Carina to containerize your applications, Docker enables you to log
 
 ### Prerequisites
 
-* [Create and connect to a cluster]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 * A container to log its output
 
 ### Types of logging

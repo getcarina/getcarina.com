@@ -33,7 +33,7 @@ This week the team took some time to show you how to connect to Rackspace data s
 
 [Consul](https://www.consul.io) is a tool for discovering and configuring services in your infrastructure. It provides several key features such as service discovery, health checking, and key/value store. Here are some instructions to try it out on Carina.
 
-1. [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/).
+1. [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/).
 
 1. Get the ServiceNet IP address of the node Consul will advertise on and the public IP address of the node.
 

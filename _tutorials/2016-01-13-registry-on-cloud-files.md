@@ -27,7 +27,7 @@ Cloud Files is an object storage service that provides storage for any type of f
 
 ### Prerequisites
 
-* [Create and connect to a cluster](/docs/tutorials/create-connect-cluster/)
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 * A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
  * If you don't have a Rackspace cloud account, you need to [sign up for one](https://www.rackspace.com/cloud).
 

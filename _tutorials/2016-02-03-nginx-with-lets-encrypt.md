@@ -19,9 +19,9 @@ This tutorial describes how to acquire free TLS certificates from [Let's Encrypt
 
 ### Prerequisites
 
-Before you begin, you need to be able to [create and connect to a Carina cluster.]({{ site.baseurl }}/docs/tutorials/create-connect-cluster/) You need at least one node with ports 80 and 443 available.
-
-You also need to own a domain name and know how to create DNS records. Consult with your domain registrar for documentation on how to do this.
+* [Create and connect to a Carina cluster.]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
+* You need at least one node with ports 80 and 443 available.
+* You also need to own a domain name and know how to create DNS records. Consult with your domain registrar for documentation on how to do this.
 
 ### Create a data volume container
 
