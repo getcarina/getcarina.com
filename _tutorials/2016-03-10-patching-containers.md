@@ -25,7 +25,7 @@ tool called [watchtower](https://github.com/getcarina/watchtower).
 
 ### Prerequisite
 
-One or more running containers on a cluster
+* [Create and connect to a cluster](/docs/getting-started/create-connect-cluster/)
 
 ### Rebuild custom images
 

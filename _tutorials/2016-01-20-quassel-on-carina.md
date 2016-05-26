@@ -25,10 +25,9 @@ This tutorial describes how to run a Quassel core instance on Carina.
 
 ### Prerequisites
 
-- [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
-
-- A Rackspace cloud account. If you don't have a Rackspace cloud account, you can
-[sign up for one](https://www.rackspace.com/cloud).
+* [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
+* A Rackspace cloud account that you can use to access the [Cloud Control Panel](https://mycloud.rackspace.com/).
+ * If you don't have a Rackspace cloud account, you need to [sign up for one](https://www.rackspace.com/cloud).
 
 ### Create a docker [volume container](https://docs.docker.com/engine/userguide/dockervolumes/) to store your data
 
@@ -40,7 +39,6 @@ tutorial also describes how to automatically back up (and restore if needed) Qua
 data.
 
 Create a volume container to store data:
-
 
     docker create \
     --name quassel-data \
