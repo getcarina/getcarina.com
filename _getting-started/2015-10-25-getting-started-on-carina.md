@@ -53,8 +53,8 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
 
 1. Open an application in which to run commands.
-    - On Linux and Mac OS X, open a terminal.
-    - On Windows, open a PowerShell.
+    * On Linux and Mac OS X, open a terminal.
+    * On Windows, open a PowerShell.
 
 1. Configure your shell to connect to your cluster.
 

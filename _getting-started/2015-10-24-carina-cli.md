@@ -27,6 +27,10 @@ Note your Carina API key. To get it, go to the [Carina Control Panel](https://ap
 
 To download and install the `carina` CLI, use the appropriate instructions for your operating system.
 
+Open an application in which to run commands.
+* On Linux and Mac OS X, open a terminal.
+* On Windows, open a PowerShell.
+
 #### OS X with Homebrew
 
 If you're using [Homebrew](http://brew.sh/), run the following commands:

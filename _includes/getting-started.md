@@ -10,7 +10,7 @@
 
     On Windows PowerShell, run the following command:
 
-    ```
+    ```powershell
     > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
     ```
 
@@ -18,17 +18,8 @@
 
 1. Configure the Docker client.
 
-    On Linux and Mac OS X terminals, run the following command:
-
     ```bash
     $ dvm use
-    Now using Docker 1.11.1
-    ```
-
-    On Windows PowerShell, run the following command:
-
-    ```
-    > dvm use
     Now using Docker 1.11.1
     ```
 
