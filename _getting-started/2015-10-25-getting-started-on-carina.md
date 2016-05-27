@@ -34,7 +34,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 1. Click **Create Cluster**.
 
-    After a few moments, your cluster reaches a status of **active**.
+After a few moments, your cluster reaches a status of **active**.
 
 ### Connect to your cluster
 
@@ -75,6 +75,10 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 {% include getting-started.md %}
 
-### Next step
+### Next steps
 
 Learn how to [install the Carina CLI and use it to manage your clusters]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+
+Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
+
+Try another one of our [tutorials]({{ site.baseurl }}/docs/#tutorials).

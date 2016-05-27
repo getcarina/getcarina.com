@@ -97,22 +97,19 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
       websocketsrock    container1-2G    2         true         active
       ```
 
-### Manage Carina clusters
+### Create and connect to your cluster
 
 1. Create a Carina cluster by using the `carina create` command.
 
+    The `--wait` flag will wait for Swarm cluster to be active before returning.
+
     ```bash
-    $ carina create mycluster --wait --nodes=2 --autoscale
-
-    mycluster    container1-4G    2    true    active
-
-    Read more about the parameters below:
-    * --wait       wait for swarm cluster completion
-    * --nodes=1    number of nodes for the initial cluster
-    * --autoscale  Turn autoscale on or off. Turning it on means that Carina automatically adds nodes as they are needed.
+    $ carina create --wait mycluster
+    ClusterName         Flavor              Nodes               AutoScale           Status
+    mycluster           container1-4G       1                   false               active
     ```
 
-1. Configure your shell to communicate with the cluster.
+1. Configure your shell to connect to your cluster.
 
     **Bash**
 
@@ -130,4 +127,6 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
 ### Next steps
 
-Learn about all of the features available to you in the [Overview of Carina.]({{ site.baseurl }}/docs/overview-of-carina/)
+Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
+
+Try another one of our [tutorials]({{ site.baseurl }}/docs/#tutorials).
