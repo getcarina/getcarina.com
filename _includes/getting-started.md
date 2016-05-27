@@ -103,6 +103,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
 
     ```bash
     $ docker port wordpress 80
+    104.130.0.124:80
     ```
 
     The output of this `docker port` command is the IP address and port that WordPress is using.

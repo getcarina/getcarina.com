@@ -72,14 +72,14 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
 2. Set your environment variables to contain these credentials. For example:
 
-    **Bash**
+    On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ export CARINA_USERNAME=fnamelname
     $ export CARINA_APIKEY=ddd1233abcdef4a0bc5da6789123ab45c
     ```
 
-    **PowerShell**
+    On Windows PowerShell, run the following commands:
 
     ```powershell
     > $env:CARINA_USERNAME="fnamelname"
@@ -88,13 +88,13 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
 3. Verify that you can issue `carina` commands:
 
-      ```bash
-      $ carina ls
-      ClusterName       Flavor           Nodes  AutoScale    Status
-      websocketsrock    container1-2G    2      true         active
-      ```
+    ```bash
+    $ carina ls
+    ClusterName         Flavor              Nodes               AutoScale           Status
+    test                container1-4G       1                   false               active
+    ```
 
-      The output is your list of clusters, if you have some clusters already running.
+    The output is your list of clusters, if you already have some clusters already running.
 
 ### Create and connect to your cluster
 
