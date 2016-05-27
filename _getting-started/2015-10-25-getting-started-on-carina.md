@@ -56,7 +56,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     - On Linux and Mac OS X, open a terminal.
     - On Windows, open a PowerShell.
 
-1. Configure your shell to communicate with the cluster.
+1. Configure your shell to connect to your cluster.
 
     On Linux and Mac OS X terminals, run the following commands:
 

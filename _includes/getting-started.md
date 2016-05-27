@@ -1,82 +1,60 @@
-### Install the Docker Version Manager (dvm).
+### Install the Docker Version Manager (dvm)
 
-On Linux and Mac OS X terminals, run the following command:
+1. Install the Docker Version Manager (dvm)
 
-```bash
-$ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
-Downloading dvm.sh...
-######################################################################## 100.0%
-Downloading bash_completion
-######################################################################## 100.0%
-Downloading dvm-helper...
-######################################################################## 100.0%
+    On Linux and Mac OS X terminals, run the following command:
 
-Docker Version Manager (dvm) has been installed to ~/.dvm
-Run the following command to start using dvm. Then add it to your bash profile (e.g. ~/.bashrc or ~/.bash_profile) to complete the installation.
+    ```bash
+    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
+    ```
 
-  source ~/.dvm/dvm.sh
-```
+    On Windows PowerShell, run the following command:
 
-On Windows PowerShell, run the following command:
-
-```
-> iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
-Downloading dvm.ps1...
-Downloading dvm.cmd...
-Downloading dvm-helper.exe...
-
-Docker Version Manager (dvm) has been installed to $env:USERPROFILE\.dvm
-
-PowerShell Users: Run the following command to start using dvm. Then add it to your PowerShell profile to complete the installation.
-        . $env:USERPROFILE\.dvm\dvm.ps1
-
-CMD Users: Run the first command to start using dvm. Then run the second command to add dvm to your PATH to complete the installation.
-        1. PATH=%PATH%;%USERPROFILE%\.dvm
-        2. setx PATH "%PATH%;%USERPROFILE%\.dvm"
-```
+    ```
+    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    ```
 
 1. Copy the commands from the output, and then paste and run them to finalize the installation.
 
 1. Configure the Docker client.
 
-    On Linux and Mac OS X terminals, run the following commands:
+    On Linux and Mac OS X terminals, run the following command:
 
     ```bash
     $ dvm use
     Now using Docker 1.11.1
     ```
 
-    On Windows PowerShell, run the following commands:
+    On Windows PowerShell, run the following command:
 
     ```
     > dvm use
     Now using Docker 1.11.1
     ```
 
-1. Use your credentials to interact with your cluster:
+1. Use `docker` to interact with your cluster:
 
     ```bash
     $ docker info
-
-    Containers: 6
-    Images: 4
+    Containers: 5
+     Running: 3
+     Paused: 0
+     Stopped: 2
+    Images: 5
+    Server Version: swarm/1.2.0
     Role: primary
     Strategy: spread
-    Filters: affinity, health, constraint, port, dependency
-    Nodes: 2
-    1ca87d26-0d26-48cb-8a34-1b68ce124e6e-n1: 104.120.0.18:42376
-     └ Containers: 3
-     └ Reserved CPUs: 0 / 12
-     └ Reserved Memory: 0 B / 4.2 GiB
-     └ Labels: executiondriver=native-0.2, kernelversion=3.18.21-1-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy)     (containerized), storagedriver=aufs
-    4ca87d27-0d27-48cb-9a64-2b68ce124e6e-n2: 103.140.0.22:42376
-     └ Containers: 3
-     └ Reserved CPUs: 0 / 12
-     └ Reserved Memory: 0 B / 4.2 GiB
-     └ Labels: executiondriver=native-0.2, kernelversion=3.18.21-1-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
-    CPUs: 24
-    Total Memory: 8.4 GiB
-    Name: a1bc2d3456e7
+    Filters: health, port, dependency, affinity, constraint
+    Nodes: 1
+     1dba0f72-75bc-4825-a5a0-b2993c535599-n1: 172.99.70.6:42376
+      └ Status: Healthy
+      └ Containers: 5
+      └ Reserved CPUs: 0 / 12
+      └ Reserved Memory: 0 B / 4.2 GiB
+      └ Labels: com.docker.network.driver.overlay.bind_interface=eth1, executiondriver=, kernelversion=3.18.21-2-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
+      └ Error: (none)
+      └ UpdatedAt: 2016-05-27T19:27:24Z
+      └ ServerVersion: 1.11.1    
     ```
 
 ### Run your first application
@@ -92,7 +70,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
 
     The output of this `docker network create` command is your network ID.
 
-1. Run a MySQL instance in a container. Give it a name and use **my-root-pw** as a password.
+1. Run a MySQL instance in a container.
 
     ```bash
     $ docker run --detach --name mysql --net mynetwork --env MYSQL_ROOT_PASSWORD=my-root-pw mysql:5.6
@@ -101,7 +79,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
 
     The output of this `docker run` command is your running MySQL container ID.
 
-1. Run a WordPress instance in a container. Give it a name, link it to the MySQL instance, and publish the internal port 80 to the external port 8080.
+1. Run a WordPress instance in a container.
 
     ```bash
     $ docker run --detach --name wordpress --net mynetwork --publish 80:80 --env WORDPRESS_DB_HOST=mysql --env WORDPRESS_DB_PASSWORD=my-root-pw wordpress:4.4

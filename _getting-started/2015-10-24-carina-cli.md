@@ -13,6 +13,8 @@ topics:
 
 This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface (CLI) is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
 
+No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+
 **Note**: This guide uses the command-line interface to create a cluster. To use the graphical user interface, see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
 ### Sign up for Carina
@@ -52,7 +54,7 @@ If you are using [Chocolatey](http://chocolatey.org/), run the following command
 > choco install carina
 ```
 
-#### Windows (without Chocolatey)
+#### Windows without Chocolatey
 
 Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest). For quick installation, open PowerShell and run the following command:
 
@@ -88,14 +90,11 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
       ```bash
       $ carina ls
-      ```
-
-      If you have some clusters already running, you see output similar to the following output:
-
-      ```
       ClusterName       Flavor           Nodes  AutoScale    Status
-      websocketsrock    container1-2G    2         true         active
+      websocketsrock    container1-2G    2      true         active
       ```
+
+      The output is your list of clusters, if you have some clusters already running.
 
 ### Create and connect to your cluster
 
@@ -111,13 +110,13 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 
 1. Configure your shell to connect to your cluster.
 
-    **Bash**
+    On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
     $ eval $(carina env mycluster)
     ```
 
-    **PowerShell**
+    On Windows PowerShell, run the following commands:
 
     ```powershell
     > carina env --shell powershell mycluster | iex
