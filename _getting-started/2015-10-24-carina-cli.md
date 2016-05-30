@@ -72,7 +72,7 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 ### Configure with Carina credentials
 
 1. Gather the required information:
-  * Username (CARINA_USERNAME): Your Carina username from the [Carina Control Panel](https://app.getcarina.com).
+  * Username (CARINA_USERNAME): Your Carina username from the [Carina Control Panel](https://app.getcarina.com), displayed at the top right. In many cases, your username is your email address.
   * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Sign up for Carina](#sign-up-for-carina).
 
 2. Set your environment variables to contain these credentials. For example:
