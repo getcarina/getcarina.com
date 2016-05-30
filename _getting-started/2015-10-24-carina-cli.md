@@ -75,20 +75,20 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
   * Username (CARINA_USERNAME): Your Carina username from the [Carina Control Panel](https://app.getcarina.com), displayed at the top right. In many cases, your username is your email address.
   * API key (CARINA_APIKEY): Your Carina API key. To find it, see [Sign up for Carina](#sign-up-for-carina).
 
-2. Set your environment variables to contain these credentials. For example:
+2. Set your environment variables to contain these credentials. Replace `<username>` with your Carina username and `<apikey>` with your Carina password.
 
     On Linux and Mac OS X terminals, run the following commands:
 
     ```bash
-    $ export CARINA_USERNAME=fnamelname
-    $ export CARINA_APIKEY=ddd1233abcdef4a0bc5da6789123ab45c
+    $ export CARINA_USERNAME=<username>
+    $ export CARINA_APIKEY=<apikey>
     ```
 
     On Windows PowerShell, run the following commands:
 
     ```powershell
-    > $env:CARINA_USERNAME="fnamelname"
-    > $env:CARINA_APIKEY="ddd1233abcdef4a0bc5da6789123ab45c"
+    > $env:CARINA_USERNAME="<username>"
+    > $env:CARINA_APIKEY="<apikey>"
     ```
 
 3. Verify that you can issue `carina` commands:
