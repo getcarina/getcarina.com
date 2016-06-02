@@ -31,7 +31,7 @@ You will need a set of tools to be able to follow along.
 
 The purpose of this tutorial is to deploy an example Tomcat web application that can, on demand, provide a [Mumble](https://wiki.mumble.info/wiki/Main_Page) server to a user online. Mumble is a server/client VOIP telecommunication application.
 
-![Mumble]({% asset_path 2016-05-26-Simple-SaaS-with-jclouds-and-Carina/mumble_client.png %})
+![Mumble]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/mumble_client.png %})
 
 ### Credentials Setup
 
@@ -43,7 +43,7 @@ $ git clone https://github.com/getcarina/examples.git
 
 Log into Carina at getcarina.com. Download your access file.
 
-![Carina Access]({% asset_path 2016-05-26-Simple-SaaS-with-jclouds-and-Carina/carina_access.png %})
+![Carina Access]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/carina_access.png %})
 
 Extract the contents of your access file into the directory `access` within the cloned repo. The example web application will parse the extracted files to connect to your Carina account and start/stop Mumble containers on demand.
 
@@ -260,8 +260,8 @@ This uses port 8080 for the Tomcat application server. Connect to http://[addres
 
 Listing Mumble containers from the application:
 
-![Carina Access]({% asset_path 2016-05-26-Simple-SaaS-with-jclouds-and-Carina/listcontainer.png %})
+![Carina Access]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/listcontainer.png %})
 
 A new Mumble server:
 
-![Carina Access]({% asset_path 2016-05-26-Simple-SaaS-with-jclouds-and-Carina/createcontainer.png %})
+![Carina Access]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/createcontainer.png %})
