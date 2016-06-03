@@ -27,7 +27,7 @@ Docker put out a patch release about a month ago and we quickly followed by impl
 
 In addition to the Docker updates, we also have improved our error messages related to security restrictions.  You can find more information on our [error codes](https://getcarina.com/docs/reference/error-codes/) page.
 
-To stay up-to-date with ongoing release notes, maintenance, and any incidents, see our [status page](https://carinabyrackspace.statuspage.io/).
+To stay up-to-date with ongoing release notes, maintenance, and any incidents, see our [status page](https://status.getcarina.com/).
 
 
 ### Upcoming appearances
