@@ -17,7 +17,7 @@ authorIsRacker: true
 
 ### PyCon wrap up
 
-![Screenshot of Carina Workshop]({% asset_path 2016-06-03-weekly-news-pycon-and-release-information/Carina Workshop.png %})
+![Screenshot of Carina Workshop]({% asset_path "2016-06-03-weekly-news-pycon-and-release-information/Carina Workshop.png" %})
 
 We had a great showing at our Carina workshop and our booth at PyCon.  Everett Toews and Ash Wilson presented a [workshop](https://us.pycon.org/2016/schedule/presentation/2263/) "Deploy an Interactive Data Science Environment With JupyterHub On Docker Swarm" to a captive audience.  If you're thinking "Dang! I wish I had been able to attend," you're in luck!  You can [access the deck](http://getcarina.github.io/jupyterhub-tutorial/slides/#/welcome) to view and follow along with the presentation.  Happy hacking!
 
@@ -32,7 +32,7 @@ To stay up-to-date with ongoing release notes, maintenance, and any incidents, s
 
 ### Upcoming appearances
 
-![Screenshot of Dockercon]({% asset_path 2016-06-03-weekly-news-pycon-and-release-information/DockerCon.png %})
+![Screenshot of Dockercon]({% asset_path "2016-06-03-weekly-news-pycon-and-release-information/DockerCon.png" %})
 
 We'll be representing at [Dockercon 16](http://2016.dockercon.com/) this year, so come to the expo and chat with us about Carina and all things containers.  You can enter into our Carina contest, with a chance to win a Parrot Bebop Quadcopter Drone. Your neighbors will love you. 
 
