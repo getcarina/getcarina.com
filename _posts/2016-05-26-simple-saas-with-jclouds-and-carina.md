@@ -4,7 +4,7 @@ title: "Simple SaaS with jclouds and Carina"
 date: 2016-05-26 08:00
 comments: false
 author: Zack Shoylev
-published: false
+published: true
 categories:
     - jclouds
     - saas
@@ -21,11 +21,10 @@ Traditionally, attempting to create and monetize an online software solution has
 
 You will need a set of tools to be able to follow along.
 
-1. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-2. Java
-3. [maven](https://maven.apache.org/install.html)
-4. A [Carina](https://getcarina.com/) account
-5. Docker CLI; [Docker Version Manager](https://github.com/getcarina/dvm) recommended
+1. [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
+2. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. [Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+4. [maven](https://maven.apache.org/install.html)
 
 ### Goal
 
