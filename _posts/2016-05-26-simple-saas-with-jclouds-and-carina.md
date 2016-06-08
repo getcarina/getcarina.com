@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Simple SaaS with jclouds and Carina"
-date: 2016-05-26 08:00
+title: "Build Simple SaaS with jclouds and Carina"
+date: 2016-06-08 08:00
 comments: false
 author: Zack Shoylev
 published: true
@@ -13,146 +13,149 @@ categories:
     - sdk
 ---
 
-Traditionally, attempting to create and monetize an online software solution has been a difficult process. With Docker and Carina, it has become much easier to setup Software as a Service solutions online. This tutorial will provide an example of a Tomcat application that directly controls Carina using the Docker API to instantly start up user-specific software services on demand. 
+Traditionally, creating and monetizing an online software solution has been a difficult process. With Docker and Carina, it has become much easier to set up software as a service (SaaS) solutions online. This post provides an example of a Tomcat application that directly controls Carina by using the Docker API to instantly start up user-specific software services on demand. 
 
 <!-- more -->
 
 ### Prerequisites
 
-You will need a set of tools to be able to follow along.
+You need the following set of tools to follow along.
 
-1. [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
-2. [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. [Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-4. [maven](https://maven.apache.org/install.html)
+- [A Carina cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
+- [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [Java 8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+- [Apache Maven](https://maven.apache.org/install.html)
 
 ### Goal
 
-The purpose of this tutorial is to deploy an example Tomcat web application that can, on demand, provide a [Mumble](https://wiki.mumble.info/wiki/Main_Page) server to a user online. Mumble is a server/client VOIP telecommunication application.
+The goal is to deploy an example Tomcat web application that can, on demand, provide a [Mumble](https://wiki.mumble.info/wiki/Main_Page) server to a user online. Mumble is a server/client VOIP telecommunication application.
 
 ![Mumble]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/mumble_client.png %})
 
-### Credentials Setup
+### Set up credentials
 
-Using git, get the source code for this tutorial:
+1. Using Git, get the source code for the example application:
 
-``` 
-$ git clone https://github.com/getcarina/examples.git
-```
+    ``` 
+    $ git clone https://github.com/getcarina/examples.git
+    ```
 
-Log into Carina at getcarina.com. Download your access file.
+2. Log in to Carina.
+3. In the area for your cluster, click **Get access** and then download the access file.
 
 ![Carina Access]({% asset_path 2016-05-26-simple-saas-with-jclouds-and-carina/carina_access.png %})
 
-Extract the contents of your access file into the directory `access` within the cloned repo. The example web application will parse the extracted files to connect to your Carina account and start/stop Mumble containers on demand.
+4. Extract the contents of the access file into the directory `access` within the repo that you cloned. 
 
-### Project Setup
+The example web application parses the extracted files to connect to your Carina account and to start and stop Mumble containers on demand.
 
-This tutorial will use maven to handle building, packaging, and dependencies, as defined in the `pom.xml` file.
+### Set up the project
 
-Setting up project name, version, and packaging:
+This example project uses Maven to handle building, packaging, and dependencies, as defined in the `pom.xml` file.
 
-```
-<groupId>carina</groupId>
-<artifactId>cse</artifactId>
-<version>1.0-SNAPSHOT</version>
-<packaging>war</packaging>
-```
+1. Set up the project name, version, and packaging:
 
-The code uses some bugfixes and features that have not been released yet. To allow this, the Apache snapshot repository has to be included in the project:
+    ```
+    <groupId>carina</groupId>
+    <artifactId>cse</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    ```
 
-```
-<repositories>
-  <repository>
-      <id>apache.snapshots</id>
-      <name>Apache Development Snapshot Repository</name>
-      <url>https://repository.apache.org/content/repositories/snapshots/</url>
-      <releases>
-          <enabled>false</enabled>
-      </releases>
-      <snapshots>
-          <enabled>true</enabled>
-      </snapshots>
-  </repository>
-  </repositories>
-```
+2. Because the code uses some bug fixes and features that have not been released, you need to include the Apache snapshot repository in the project:
 
-Include the Tomcat servlet dependency. This will allow the application to run on Tomcat as a servlet:
+    ```
+    <repositories>
+      <repository>
+          <id>apache.snapshots</id>
+          <name>Apache Development Snapshot Repository</name>
+          <url>https://repository.apache.org/content/repositories/snapshots/</url>
+          <releases>
+              <enabled>false</enabled>
+          </releases>
+          <snapshots>
+              <enabled>true</enabled>
+          </snapshots>
+      </repository>
+      </repositories>
+      ```
 
-```
-<dependency>
-   <groupId>javax.servlet</groupId>
-   <artifactId>javax.servlet-api</artifactId>
-   <version>3.0.1</version>
-   <scope>provided</scope>
-</dependency>
-```
+3. Include the Tomcat servlet dependency, which enables the application to run on Tomcat as a servlet:
 
-Since the project uses Java and Java Server Pages, it needs templates to make displaying container data easier. This is what the JSP Standard Tag Library is for.
+    ```
+    <dependency>
+       <groupId>javax.servlet</groupId>
+       <artifactId>javax.servlet-api</artifactId>
+       <version>3.0.1</version>
+       <scope>provided</scope>
+    </dependency>
+    ```
 
-```
-<dependency>
-   <groupId>javax.servlet</groupId>
-   <artifactId>javax.servlet-api</artifactId>
-   <version>3.0.1</version>
-   <scope>provided</scope>
-</dependency>
-```
+4. Because the project uses Java and Java Server Pages, include the JSP Standard Tag Library to provide templates for displaying container data:
 
-The most important part here is being able to talk to Carina. Apache jclouds is an open-source multi-cloud SDK that supports the Docker API (Carina uses the Docker API). The Apache snapshot repo configuration included earlier was needed because the example project uses the snapshot version of the jclouds dependency.
+    ```
+    <dependency>
+       <groupId>javax.servlet</groupId>
+       <artifactId>javax.servlet-api</artifactId>
+       <version>3.0.1</version>
+       <scope>provided</scope>
+    </dependency>
+    ```
 
-```
-<dependency>
-   <groupId>org.apache.jclouds.labs</groupId>
-   <artifactId>docker</artifactId>   
-   <version>2.0.0-SNAPSHOT</version>
-</dependency>
-```
+5. Include Apache jclouds in the project. It is an open-source multi-cloud SDK that supports the Docker API (Carina uses the Docker API). Use the snapshot version of the jclouds dependency:       
 
-To generate a cryptographically secure password, we are going to use a dependency that provides a secure random algorithm from Apache Commons:
+    ```
+    <dependency>
+       <groupId>org.apache.jclouds.labs</groupId>
+       <artifactId>docker</artifactId>   
+       <version>2.0.0-SNAPSHOT</version>
+    </dependency>
+    ```
 
-```
-<dependency>
-   <groupId>org.apache.commons</groupId>
-   <artifactId>commons-lang3</artifactId>
-   <version>3.4</version>
-</dependency>
-```
+6. To generate a cryptographically secure password, use a dependency that provides a secure random algorithm from Apache Commons:
 
-Finally, the maven build settings:
+    ```
+    <dependency>
+       <groupId>org.apache.commons</groupId>
+       <artifactId>commons-lang3</artifactId>
+       <version>3.4</version>
+    </dependency>
+    ```
 
-```
-<build>
-    <finalName>cse</finalName>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.tomcat.maven</groupId>
-        <artifactId>tomcat7-maven-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <systemProperties>
-            <!-- Letting the application know we are running embedded -->
-            <cse.embeddedTomcat>true</cse.embeddedTomcat>
-          </systemProperties>
-        </configuration>
-      </plugin>
-    </plugins>
-</build>
-```
+7. Enter the Maven build settings:
 
-The first plugin enables building the project as a war package. The war package is an archive format that contains a Java application Tomcat can run. The second plugin allows us to run the project using an embedded Tomcat server. Thus, we don't need to deploy the project and can run it locally for debugging purposes.
+    ```
+    <build>
+        <finalName>cse</finalName>
+        <plugins>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.tomcat.maven</groupId>
+            <artifactId>tomcat7-maven-plugin</artifactId>
+            <version>2.2</version>
+            <configuration>
+              <systemProperties>
+                <!-- Letting the application know we are running embedded -->
+                <cse.embeddedTomcat>true</cse.embeddedTomcat>
+              </systemProperties>
+            </configuration>
+          </plugin>
+        </plugins>
+    </build>
+    ```
+
+    The first plug-in enables building the project as a war package. The war package is an archive format that contains a Java application that Tomcat can run. The second plug-in allows you to run the project by using an embedded Tomcat server. Thus, you don't need to deploy the project and can run it locally for debugging purposes.
 
 ### View
 
-In `web.xml` we define our servlet's mapping. This tells Tomcat how to route requests to our application. Routing is configured to use the ContainerController controller. The ContainerController will automatically redirect requests to `listcontainer.jsp`, a page that lists all available Mumble servers, and also provides a link tp create a new Mumble container. When a new Mumble container is created by ContainerController, details about it will be displayed in `newcontainer.jsp`. In ContainerController.java, we can see how the different variables displayed in our JSP views are populated, as well as all the logic to create, list, and delete Mumble containers.
+You define the servlet's mapping in the `web.xml` file. This mapping tells Tomcat how to route requests to the application. Routing is configured to use the ContainerController controller, which automatically redirects requests to the `listcontainer.jsp` page. This page lists all the available Mumble servers and provides a link to create a new Mumble container. When a new Mumble container is created by ContainerController, details about it are displayed in the `newcontainer.jsp` page. In the ContainerController.java file, you can see how the different variables displayed in the JSP views are populated, as see all the logic needed to create, list, and delete Mumble containers.
 
 ### Controller
 
-First, we need to obtain a "connection" to the Docker API in the ContainerController constructor:
+Obtain a "connection" to the Docker API in the ContainerController constructor:
 
 ```
 if("true".equals( System.getProperties().getProperty("cse.embeddedTomcat") )) {
@@ -162,9 +165,9 @@ if("true".equals( System.getProperties().getProperty("cse.embeddedTomcat") )) {
 }
 ```
 
-If running embedded, we parse the local "access" directory. Otherwise, the credentials files will be located on a Tomcat container, within the `/usr/loca/access` directory. That's right, the we will be running and testing the Tomcat example application within a Docker container as well, and it will control other Docker containers. This example runs everything containerized. 
+If Tomcat is running embedded, you parse the local "access" directory. Otherwise, the credentials files are located on a Tomcat container, within the `/usr/loca/access` directory. That's right, you will be running and testing the Tomcat example application within a Docker container as well, and it will control other Docker containers. This example runs everything containerized.
 
-The `doGet` method handles `GET` requests against our controller. The action executed is determined by the `action` get parameter:
+The `doGet` method handles `GET` requests against the controller. The action that is executed is determined by the `action` get parameter:
 
 ```
 String action = request.getParameter("action");
@@ -172,19 +175,19 @@ String action = request.getParameter("action");
 
 The variable `forward` determines which JSP view is used after the action is processed.
 
-##### Listing existing containers
+##### List existing containers
 
-The default behavior (when no other action is specified) is to list all the existing mumble containers.
+The default behavior (when no other action is specified) is to list all the existing Mumble containers.
 
 ```
 request.setAttribute("containers", filter(dockerApi.getContainerApi().listContainers(), Utils.isMumble));
 ```
 
-`Utils.isMumble` is a predicate that filters containers that have a name containing `mumble`. This also means that when the controller starts a new mumble container, it has to include `mumble` in the name.
+`Utils.isMumble` is a predicate that filters containers that have a name containing `mumble`. This also means that when the controller starts a new Mumble container, it has to include `mumble` in the name.
 
-##### Deleting a container
+##### Delete a container
 
-A container is deleted with the `delete` action with a `containerId` specified.
+To delete a container, use the `delete` action and specfy a `containerId` value:
 
 ```
 String containerId = request.getParameter("containerId");
@@ -192,70 +195,73 @@ dockerApi.getContainerApi().stopContainer(containerId);
 dockerApi.getContainerApi().removeContainer(containerId);
 ```
 
-##### Creating a new container
+##### Creat a new container
 
 The `create` action is the most complex.
 
-Fist, `Utils.getSecurePassword()` provides a secure password using `SecureRandom`.
+1. Use `Utils.getSecurePassword()` to get a secure password using `SecureRandom`.
 
-```
-String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-return RandomStringUtils.random( 10, 0, 0, false, false, characters.toCharArray(), new SecureRandom() );
-```
+    ```
+    String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    return RandomStringUtils.random( 10, 0, 0, false, false, characters.toCharArray(), new SecureRandom() );
+    ```
 
-Then, create and start the container:
+2. Create and start the container:
 
-```
-Container container = dockerApi.getContainerApi().createContainer("mumble" + UUID.randomUUID().toString(),
-               Config.builder()
-                     .image("extra/mumble")
-                     .hostConfig(
-                           HostConfig.builder()
-                                 .publishAllPorts(true)
-                                 .build())
-                     .env(
-                           ImmutableList.of(
-                                 "MAX_USERS=50",
-                                 "SERVER_TEXT=Welcome to My Mumble Server",
-                                 "SUPW=" + password
-                           ))
-                     .build());
-String id = container.id();
-dockerApi.getContainerApi().startContainer(id);
-```
+    ```
+    Container container = dockerApi.getContainerApi().createContainer("mumble" + UUID.randomUUID().toString(),
+                   Config.builder()
+                         .image("extra/mumble")
+                         .hostConfig(
+                               HostConfig.builder()
+                                     .publishAllPorts(true)
+                                     .build())
+                         .env(
+                               ImmutableList.of(
+                                     "MAX_USERS=50",
+                                     "SERVER_TEXT=Welcome to My Mumble Server",
+                                     "SUPW=" + password
+                               ))
+                         .build());
+    String id = container.id();
+    dockerApi.getContainerApi().startContainer(id);
+    ```
 
-The jclouds Docker API provides a `createContainer` method that accepts a name and a configuration object. The configuration object here specifies the [Docker Hub](https://hub.docker.com/) container image `extra/mumble`, requires all service ports be open, and also configures Mumble server configuration options through environment variables, such as maximum number of users, welcome text, and server administrator password. The `createContainer` method returns a Container object, which then the `startContainer` call starts.
+The jclouds Docker API provides a `createContainer` method that accepts a name and a configuration object. The configuration object here specifies the [Docker Hub](https://hub.docker.com/) container image `extra/mumble`, requires all service ports to be open, and configures Mumble server configuration options - such as maximum number of users, welcome text, and server administrator password - through environment variables. The `createContainer` method returns a Container object, which then the `startContainer` method starts.
 
 The ContainerController then populates the view variables for `ports` and `password` and redirects to the page responsible for displaying new containers.
 
-### Running embedded
+### Run the application locally
+
+Use the following code to run the application locally, without deploying to a Tomcat
+container:
 
 ```
 $ mvn clean tomcat7:run-war
 ```
 
-This will run the application locally, without deploying to a tomcat container. Use `mvndebug` instead of `mvn` to run in debug mode.
+To run in debug mode, use `mvndebug` instead of `mvn`.
 
-###  Deploying the Tomcat application to Docker
+###  Deploy the Tomcat application to Docker
 
-There is a `DOCKERFILE` included in the project. It creates a custom image based on the official Docker Hub Tomcat 8 image. The only additional files added:
+The project includes a `DOCKERFILE` that creates a custom image based on the official Docker Hub Tomcat 8 image. The following additional files are added:
 
-1. `cse.war`, the archived application; it will be available after a maven build has been executed.
-2. `docker.ps1`, `cert.pem`, `key.pem` - files used for authentication to Carina, placed in the `access` directory during project setup.
+- `cse.war`, the archived application; The file is available after a Maven build has been executed.
+- `docker.ps1`, `cert.pem`, `key.pem`. These files are used for authentication to Carina and are placed in the `access` directory during project setup.
 
-To build the custom image:
+To build the custom image, run the following command:
 
 ```
 $ docker build -t cse .
 ```
 
-After the custom image is ready, deploy to Carina (you need to have docker configured to connect to Carina): 
+After the custom image is ready, deploy it to Carina (you need to have Docker configured to connect to Carina): 
 
 ```
 $ docker run --name cse -d -p 8080:8080 cse
 ```
 
-This uses port 8080 for the Tomcat application server. Connect to http://[address]:8080/cse to view the example application's List Containers page.
+This uses port 8080 for the Tomcat application server. Connect to **http://[address]:8080/cse** to view the example application's List Containers page.
 
 Listing Mumble containers from the application:
 
