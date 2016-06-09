@@ -151,7 +151,7 @@ This example project uses Maven to handle building, packaging, and dependencies,
 
 ### View
 
-You define the servlet's mapping in the `web.xml` file. This mapping tells Tomcat how to route requests to the application. Routing is configured to use the ContainerController controller, which automatically redirects requests to the `listcontainer.jsp` page. This page lists all the available Mumble servers and provides a link to create a new Mumble container. When a new Mumble container is created by ContainerController, details about it are displayed in the `newcontainer.jsp` page. In the ContainerController.java file, you can see how the different variables displayed in the JSP views are populated, as see all the logic needed to create, list, and delete Mumble containers.
+You define the servlet's mapping in the `web.xml` file. This mapping tells Tomcat how to route requests to the application. Routing is configured to use the ContainerController controller, which automatically redirects requests to the `listcontainer.jsp` page. This page lists all the available Mumble servers and provides a link to create a new Mumble container. When a new Mumble container is created by ContainerController, details about it are displayed in the `newcontainer.jsp` page. In the ContainerController.java file, you can see how the different variables displayed in the JSP views are populated, and see all the logic needed to create, list, and delete Mumble containers.
 
 ### Controller
 
