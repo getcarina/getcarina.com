@@ -5,7 +5,7 @@ comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
 excerpt: >
-  Think outside the container with Carolyn Van Slyck and friends at OSCON 2016. Build and deploy applications effectively on Docker Swarm with Everett Toews at OSCON 2016. And finally, Zack Shoylev teaches us how to build a simple SaaS with jclouds and Carina.
+  Think outside the container with Carolyn Van Slyck and friends at OSCON 2016. Build and deploy applications effectively on Docker Swarm with Everett Toews at OSCON 2016. And finally, learn how to build a simple SaaS with jclouds and Carina with Zack Shoylev.
 categories:
   - Docker
   - Swarm
@@ -19,21 +19,21 @@ authorIsRacker: true
 
 ### Think outside the container
 
-There is much more to Docker than just deploying your flagship application. Carolyn Van Slyck, Ash Wilson, and Nick Silkey look at three use cases for Docker that go beyond the typical software development pipeline. Running a Hubot-based ChatOps bot, powering a GitHub based content management system, and teaching Docker with zero setup from the comfort of your web browser.
+There is much more to Docker than just deploying your flagship application. Carolyn Van Slyck, Ash Wilson, and Nick Silkey look at three use cases for Docker that go beyond the typical software development pipeline: running a Hubot-based ChatOps bot, powering a GitHub based content management system, and teaching Docker with zero setup from the comfort of your web browser.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/B9bAWsCslqg" frameborder="0" allowfullscreen></iframe>
 
-[View on YouTube](https://www.youtube.com/watch?v=B9bAWsCslqg).
+[View on YouTube](https://www.youtube.com/watch?v=B9bAWsCslqg)
 
 ### Effective Docker Swarm
 
-Swarm—Docker’s answer to clustering—treats a group of Docker hosts as a single host. It uses the native Docker API, so you can use it with the whole ecosystem of Docker tooling. If you’re already familiar with Docker, you can take everything you’ve already learned and immediately apply it to Swarm. If you’re unfamiliar with Docker, it’s very easy to get started.
+Swarm—Docker’s answer to clustering—treats a group of Docker hosts as a single host. It uses the native Docker API, so you can use it with the whole ecosystem of Docker tooling. If you’re already familiar with Docker, you can take everything you’ve already learned and immediately apply it to Swarm. If you’re unfamiliar with Docker, it's easy to get started.
 
 But how do you use Swarm effectively?
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FOs7UrGJnx8" frameborder="0" allowfullscreen></iframe>
 
-[View on YouTube](https://www.youtube.com/watch?v=FOs7UrGJnx8).
+[View on YouTube](https://www.youtube.com/watch?v=FOs7UrGJnx8)
 
 ### Build Simple SaaS with jclouds and Carina
 
