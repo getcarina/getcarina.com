@@ -22,8 +22,8 @@ These instructions are available online at [rack.to/carina-contest](http://rack.
      * Screenshot
      * "I did it" painted on the side of a cow that you ride by front of the booth
 
-1. We'll give you a ticket to be entered into the draw for a Parrot Bebop quadcopter
- * The drawing is on Tuesday, May 31st at 4:15 pm
+1. We'll give you a ticket to be entered into the draw for a Parrot Bebop Quadcopter
+ * The drawing is on Tuesday, June 21st at 3:20 pm
  * You must be present to win
 
 ![Parrot Bebop quadcopter]({% asset_path contest/bebop.jpg %})
