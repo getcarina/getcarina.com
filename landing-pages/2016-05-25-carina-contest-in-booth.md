@@ -7,6 +7,9 @@ description: Sign up for Carina, complete a tutorial, and get a ticket to win a 
 bodyClass: docs-single
 ---
 
+<a name="start"></a>
+<br>
+
 Sign up for Carina, create a Docker Swarm cluster, deploy WordPress, and get a ticket to win a prize!
 
 ### Sign up for Carina
