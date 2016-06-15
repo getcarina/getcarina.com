@@ -8,7 +8,6 @@ bodyClass: docs-single
 ---
 
 <a name="start"></a>
-<br>
 
 Sign up for Carina, create a Docker Swarm cluster, deploy WordPress, and get a ticket to win a prize!
 
@@ -30,37 +29,33 @@ In the Carina Control Panel (the other tab)
 1. Click **API Key**
 1. Copy the API Key (Command-C)
 
-### Configure and use the Carina CLI
+### Configure the Carina CLI
 
-In the terminal below
-
-Set your environment variables to contain these credentials
+In the terminal below set your environment variables to contain these credentials
 
 ```bash
 $ export CARINA_USERNAME=<email>
 $ export CARINA_APIKEY=<apikey>
-
-$ eval $(carina env mycluster)
 
 $ carina ls
 ClusterName         Flavor              Nodes               AutoScale           Status
 mycluster           container1-4G       1                   false               active
 ```
 
-### Configure and use the Docker CLI with the Docker Version Manager (dvm)
+### Configure the Docker CLI
 
-In the terminal below
+In the terminal below configure the Docker CLI using the Carina CLI and the Docker Version Manager (dvm)
 
 ```bash
+$ eval $(carina env mycluster)
+
 $ dvm use
 Now using Docker 1.11.1
 ```
 
 ### Run your first application
 
-In the terminal below (feel free to copy/paste commands)
-
-Run a WordPress blog with a MySQL database on an overlay network.
+In the terminal below run a WordPress blog with a MySQL database on an overlay network (feel free to copy/paste commands)
 
 1. Create a network to connect your containers.
 
