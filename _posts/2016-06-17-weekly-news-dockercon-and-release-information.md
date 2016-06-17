@@ -5,7 +5,7 @@ comments: true
 author: Everett Toews <everett.toews@rackspace.com>
 published: true
 excerpt: >
-  We released Docker Engine 1.11.2 today, which includes a key bug fix for containers that need to restart. We'll also be at DockerCon next week so if you're attending, drop by the booth to say hi and get a chance to win a Parrot Bebop Quadcopter.
+  We released Docker Engine 1.11.2 today, which includes a key fix for containers that need to restart. We'll also be at DockerCon next week, so if you're attending, drop by the booth to say hi and get a chance to win a Parrot Bebop Quadcopter.
 categories:
 - News
 - Docker
@@ -21,9 +21,9 @@ We deployed Docker Engine 1.11.2 today.
 
 ![Deploy like no on is watching]({% asset_path weekly-news/friday-deploy.jpg %})
 
-Here are the [release notes](https://github.com/docker/docker/releases/tag/v1.11.2) and a [side-by-side comparison](https://github.com/docker/docker/compare/v1.11.1...v1.11.2) of the different versions in the Docker Engine repo.
+For more information, see the [release notes](https://github.com/docker/docker/releases/tag/v1.11.2) and a [side-by-side comparison](https://github.com/docker/docker/compare/v1.11.1...v1.11.2) of the different versions in the Docker Engine repo.
 
-It includes a key bug fix for [containers that fail to start after a daemon restart if they depend on a containerized cluster store](https://github.com/docker/docker/pull/22561). Now when you set `restart=always` your containers should always restart, even if the host reboots.
+Docker Engine 1.11.2 includes a key fix for [containers that fail to start after a daemon restart if they depend on a containerized cluster store](https://github.com/docker/docker/pull/22561). When you set `restart=always`, your containers should always restart, even if the host reboots.
 
 To stay up-to-date with ongoing release notes, maintenance, and any incidents, see our [status page](https://status.getcarina.com/).
 
@@ -31,7 +31,7 @@ To stay up-to-date with ongoing release notes, maintenance, and any incidents, s
 
 ![Screenshot of DockerCon]({% asset_path "2016-06-03-weekly-news-pycon-and-release-information/DockerCon.png" %})
 
-We're representing at [DockerCon](http://2016.dockercon.com/) next week, so come to the expo and chat with us about Carina and all things containers. You can enter into our Carina contest, with a chance to win a Parrot Bebop Quadcopter Drone. Your neighbors will love you.
+We're representing at [DockerCon](http://2016.dockercon.com/) next week, so come to the expo and chat with us about Carina and all things containers. You can enter our Carina contest, with a chance to win a Parrot Bebop Quadcopter. Your neighbors will love you.
 
 ![Parrot Bebop quadcopter]({% asset_path contest/bebop.jpg %})
 
