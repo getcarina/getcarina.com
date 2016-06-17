@@ -7,6 +7,12 @@ description: Notes on Carina releases
 topics:
   - docker
 ---
+### June 17, 2016
+
+#### What's new
+
+* [Docker Engine 1.11.2](https://github.com/docker/docker/releases/tag/v1.11.2)
+* This release fixes [Docker bug #22486](https://github.com/docker/docker/issues/22486). Containers should restart properly if `restart=always` is set.
 
 ### May 23, 2016
 
