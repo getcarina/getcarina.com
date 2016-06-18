@@ -20,7 +20,7 @@
 
     ```bash
     $ dvm use
-    Now using Docker 1.11.1
+    Now using Docker 1.11.2
     ```
 
 1. Use `docker` to interact with your cluster:
@@ -45,7 +45,7 @@
       └ Labels: com.docker.network.driver.overlay.bind_interface=eth1, executiondriver=, kernelversion=3.18.21-2-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
       └ Error: (none)
       └ UpdatedAt: 2016-05-27T19:27:24Z
-      └ ServerVersion: 1.11.1    
+      └ ServerVersion: 1.11.2    
     ```
 
 ### Run your first application

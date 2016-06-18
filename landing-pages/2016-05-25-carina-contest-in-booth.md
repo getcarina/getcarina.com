@@ -50,7 +50,7 @@ In the terminal below configure the Docker CLI using the Carina CLI and the Dock
 $ eval $(carina env mycluster)
 
 $ dvm use
-Now using Docker 1.11.1
+Now using Docker 1.11.2 
 ```
 
 ### Run your first application
