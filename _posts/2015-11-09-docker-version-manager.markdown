@@ -29,6 +29,13 @@ switch between Docker clients. Let's install dvm and see what it can do.
 Run the following installation commands for your OS, and then copy, paste and
 run the commands from the output to finalize the installation.
 
+**Mac OS X with Homebrew**
+
+```bash
+$ brew update
+$ brew install dvm
+```
+
 **Mac OS X and Linux**
 
 ```bash

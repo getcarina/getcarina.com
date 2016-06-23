@@ -70,6 +70,23 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 1. Install the Docker Version Manager (dvm).
 
+    On Mac OS X with Homebrew, run the following commands:
+
+    ```bash
+    $ brew update
+    $ brew install dvm
+    ==> Downloading https://homebrew.bintray.com/bottles/dvm-0.6.2.el_capitan.bottle.tar.gz
+    ==> Pouring dvm-0.6.2.el_capitan.bottle.tar.gz
+    ==> Caveats
+    dvm is a shell function, and must be sourced before it can be used.
+    Add the following command to your bash profile:
+
+        [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+
+    ==> Summary
+    🍺  /usr/local/Cellar/dvm/0.6.2: 3 files, 8.4M
+    ```
+
     On Linux and Mac OS X terminals, run the following command:
 
     ```bash
