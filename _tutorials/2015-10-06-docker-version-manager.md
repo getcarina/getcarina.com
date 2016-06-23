@@ -24,6 +24,15 @@ session, and so the changes that dvm makes are temporary.
 ### Install dvm
 1. Run the following installation command for your operating system:
 
+    **Mac OS X with Homebrew**
+    
+    Open a terminal and execute the following command:
+
+    ```bash
+    $ brew update
+    $ brew install dvm
+    ```
+
     **Mac OS X and Linux**
 
     Open a terminal and execute the following command:

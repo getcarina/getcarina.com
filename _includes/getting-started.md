@@ -2,6 +2,13 @@
 
 1. Install the Docker Version Manager (dvm)
 
+    On Mac OS X with Homebrew, run the following commands:
+
+    ```bash
+    $ brew update
+    $ brew install dvm
+    ```
+
     On Linux and Mac OS X terminals, run the following command:
 
     ```bash
