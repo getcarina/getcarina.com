@@ -39,7 +39,7 @@ The first step is to create a data volume container to hold the Let's Encrypt ce
       -p /etc/letsencrypt/webrootauth/
     ```
 
-    No output is expected here.
+    You should see output showing Docker pulling the latest Let's Encrypt image, and then the container will run.
 
 1. Generate strong Diffie-Hellman parameters and store them within your data volume container. These parameters prevent NGINX from using weaker parameters while negotiating the initial TLS connection, and are necessary to reach that A+ rating on SSL labs.
 
