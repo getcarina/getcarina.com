@@ -7,6 +7,12 @@ description: Notes on Carina releases
 topics:
   - docker
 ---
+### July 5, 2016
+
+#### What's new
+
+* [Docker Swarm 1.2.3](https://github.com/docker/swarm/releases/tag/v1.2.3)
+
 ### June 17, 2016
 
 #### What's new
