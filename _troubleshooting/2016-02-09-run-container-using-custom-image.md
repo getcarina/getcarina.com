@@ -48,6 +48,15 @@ $ docker build --build-arg constraint:node==*n1 --tag <custom-image> .
 $ docker run --env constraint:node==*n1 <custom-image>
 ```
 
+To build an image on every node in your cluster, loop over the nodes.
+
+```bash
+$ NODES=$(docker info | grep Nodes | awk '{print $2}')
+$ for (( i=1; i<=$NODES; i++ )); do
+    docker build --build-arg constraint:node==*-n$i --tag <custom-image> .
+  done
+```
+
 ### Use an affinity
 
 **Note**: This is only applicable to older Carina clusters. New clusters implicitly apply
