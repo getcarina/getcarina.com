@@ -14,6 +14,8 @@ topics:
 
 This tutorial describes how to install and set up Docker on Mac OS X.
 
+**Note** [Docker for Mac](https://www.docker.com/products/docker#/mac) is availble for Apple macOS Yosemite 10.10.3 and above. Follow the instructions below to install docker on previous versions of Mac OS X.
+
 ###Prerequisites
 * A working Terminal application.
 * A Mac running OS X version 10.8 (Mountain Lion) or later. Display the version by clicking the Apple icon the top-left of your screen, and then selecting **About this Mac**.
