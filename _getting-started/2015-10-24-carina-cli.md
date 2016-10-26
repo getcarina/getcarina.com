@@ -65,7 +65,7 @@ Downloads for the [latest release](https://github.com/getcarina/carina/releases/
 > wget 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
 ```
 
-Then move `carina.exe` to a directory on your `%PATH%`.
+Now move `carina.exe` to a directory on your `%PATH%`.
 
 ### Configure with Carina credentials
 
@@ -93,8 +93,8 @@ Then move `carina.exe` to a directory on your `%PATH%`.
 
     ```bash
     $ carina clusters
-    ClusterName         Flavor              Nodes               AutoScale           Status
-    test                container1-4G       1                   false               active
+    ID                                      Name        Status    Template    Nodes
+    9f320718-e0b6-4687-9c43-0e0c39eba9e2    mycluster   active    swarm-dev   1
     ```
 
     The output is your list of clusters, if you already have some clusters already running.
@@ -107,8 +107,8 @@ Then move `carina.exe` to a directory on your `%PATH%`.
 
     ```bash
     $ carina create --wait --template swarm-dev mycluster
-    ClusterName         Flavor              Nodes               AutoScale           Status
-    mycluster           container1-4G       1                   false               active
+    ID                                      Name        Status    Template    Nodes
+    9f320718-e0b6-4687-9c43-0e0c39eba9e2    mycluster   active    swarm-dev   1
     ```
 
 1. Configure your shell to connect to your cluster.
@@ -122,7 +122,7 @@ Then move `carina.exe` to a directory on your `%PATH%`.
     On Windows PowerShell, run the following commands:
 
     ```powershell
-    > carina env --shell powershell mycluster | iex
+    > carina env mycluster --shell powershell  | iex
     ```
 
 {% include getting-started.md %}
