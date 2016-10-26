@@ -1,19 +1,17 @@
 ---
 title: Getting started with the Carina CLI
-author: Anne Gentle <anne.gentle@rackspace.com>
-date: 2015-10-24
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2016-10-31
 featured: true
 permalink: docs/getting-started/getting-started-carina-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
 topics:
   - carina
   - cli
-  - intermediate
+  - beginner
 ---
 
-This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Docker Swarm clusters on a Carina endpoint. The `carina` command-line interface (CLI) is a self-contained binary written in Go, so installation involves downloading a binary, making it executable, adding it to your path, and then configuring it with credentials.
-
-No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Carina clusters from the command line. No prior knowledge of containers, Docker or Kubernetes is necessary.
 
 **Note**: This guide uses the command-line interface to create a cluster. To use the graphical user interface, see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
 
@@ -30,7 +28,7 @@ To download and install the `carina` CLI, use the appropriate instructions for y
 Open an application in which to run commands.
 
 * On Linux and Mac OS X, open a terminal.
-* On Windows, open a PowerShell.
+* On Windows, open PowerShell.
 
 #### OS X with Homebrew
 
@@ -43,7 +41,7 @@ $ brew install carina
 
 #### Linux and OS X without Homebrew
 
-Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest) for 64-bit Linux and OS X. You can use `curl` to download the binary, move it to a directory on your `$PATH`, and make it executable:
+Downloads for the [latest release](https://github.com/getcarina/carina/releases/latest) of `carina` are available for Linux and OS X. Open a terminal and run the following commands:
 
 ```bash
 $ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
@@ -61,13 +59,13 @@ If you are using [Chocolatey](http://chocolatey.org/), run the following command
 
 #### Windows without Chocolatey
 
-Downloads for the latest release of `carina` are available in [releases](https://github.com/getcarina/carina/releases/latest). For quick installation, open PowerShell and run the following command:
+Downloads for the [latest release](https://github.com/getcarina/carina/releases/latest) of `carina` are available for Windows. Open PowerShell and run the following command:
 
 ```powershell
 > wget 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
 ```
 
-Be sure to move `carina.exe` to a directory on your `%PATH%`.
+Now move `carina.exe` to a directory on your `%PATH%`.
 
 ### Configure with Carina credentials
 
@@ -94,23 +92,23 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
 3. Verify that you can issue `carina` commands:
 
     ```bash
-    $ carina ls
-    ClusterName         Flavor              Nodes               AutoScale           Status
-    test                container1-4G       1                   false               active
+    $ carina clusters
+    ID                                      Name        Status    Template    Nodes
+    9f320718-e0b6-4687-9c43-0e0c39eba9e2    mycluster   active    swarm-dev   1
     ```
 
     The output is your list of clusters, if you already have some clusters already running.
 
 ### Create and connect to your cluster
 
-1. Create a Carina cluster by using the `carina create` command.
+1. Create a Docker Swarm cluster by using the `carina create` command.
 
-    The `--wait` flag will wait for Swarm cluster to be active before returning.
+    The `--wait` flag will wait for the cluster to become active before returning.
 
     ```bash
-    $ carina create --wait mycluster
-    ClusterName         Flavor              Nodes               AutoScale           Status
-    mycluster           container1-4G       1                   false               active
+    $ carina create --wait --template swarm-dev mycluster
+    ID                                      Name        Status    Template    Nodes
+    9f320718-e0b6-4687-9c43-0e0c39eba9e2    mycluster   active    swarm-dev   1
     ```
 
 1. Configure your shell to connect to your cluster.
@@ -124,7 +122,7 @@ Be sure to move `carina.exe` to a directory on your `%PATH%`.
     On Windows PowerShell, run the following commands:
 
     ```powershell
-    > carina env --shell powershell mycluster | iex
+    > carina env mycluster --shell powershell  | iex
     ```
 
 {% include getting-started.md %}
