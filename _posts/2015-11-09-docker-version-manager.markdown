@@ -48,7 +48,7 @@ PowerShell performs the initial installation; you can use `dvm` with PowerShell
 or CMD after it is installed. Open a PowerShell command prompt and execute the following:
 
 ```powershell
-> iex (iwr 'https://download.getcarina.com/dvm/latest/install.ps1')
+> iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
 ```
 
 After dvm is installed, list all installed versions of the Docker client:
