@@ -134,5 +134,5 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
 * [Docker Version Manager]({{ site.baseurl }}/docs/tutorials/docker-version-manager/)
-* [Carina documentation]({{ site.baseurl }}/docs/)
+* [Carina CLI]({{ site.baseurl }}/docs/reference/carina-cli/)
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
