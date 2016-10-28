@@ -25,14 +25,9 @@ Note your Carina API key. To get it, go to the [Carina Control Panel](https://ap
 
 To download and install the `carina` CLI, use the appropriate instructions for your operating system.
 
-Open an application in which to run commands.
-
-* On Linux and Mac OS X, open a terminal.
-* On Windows, open PowerShell.
-
 #### OS X with Homebrew
 
-If you're using [Homebrew](http://brew.sh/), run the following commands:
+If you're using [Homebrew](http://brew.sh/), open a terminal, and then run the following commands:
 
 ```bash
 $ brew update
@@ -41,7 +36,7 @@ $ brew install carina
 
 #### Linux and OS X without Homebrew
 
-Downloads for the [latest release](https://github.com/getcarina/carina/releases/latest) of `carina` are available for Linux and OS X. Open a terminal and run the following commands:
+Open a terminal and execute the following command:
 
 ```bash
 $ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
@@ -51,7 +46,7 @@ $ chmod u+x ~/bin/carina
 
 #### Windows with Chocolatey
 
-If you are using [Chocolatey](http://chocolatey.org/), run the following command:
+If you are using [Chocolatey](http://chocolatey.org/), open PowerShell, and then run the following command:
 
 ```powershell
 > choco install carina
@@ -59,13 +54,13 @@ If you are using [Chocolatey](http://chocolatey.org/), run the following command
 
 #### Windows without Chocolatey
 
-Downloads for the [latest release](https://github.com/getcarina/carina/releases/latest) of `carina` are available for Windows. Open PowerShell and run the following command:
+PowerShell performs the initial installation; you can use `carina` with PowerShell
+or CMD after it is installed. Open PowerShell, execute the following command,
+and then move `carina.exe` to a directory on your `%PATH%`.
 
 ```powershell
 > wget 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
 ```
-
-Now move `carina.exe` to a directory on your `%PATH%`.
 
 ### Configure with Carina credentials
 
@@ -102,8 +97,7 @@ Now move `carina.exe` to a directory on your `%PATH%`.
 ### Create and connect to your cluster
 
 1. Create a Docker Swarm cluster by using the `carina create` command.
-
-    The `--wait` flag will wait for the cluster to become active before returning.
+   The `--wait` flag will wait for the cluster to become active before returning.
 
     ```bash
     $ carina create --wait --template swarm-dev mycluster

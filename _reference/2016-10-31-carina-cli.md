@@ -35,7 +35,7 @@ To download and install the Carina client, use the appropriate instructions for 
 
 #### Mac OS X with Homebrew
 
-Open a terminal and execute the following command:
+If you're using [Homebrew](http://brew.sh/), open a terminal, and then run the following commands:
 
 ```bash
 $ brew update
@@ -54,7 +54,7 @@ $ chmod u+x ~/bin/carina
 
 #### Windows with Chocolatey
 
-Open PowerShell and execute the following command:
+If you are using [Chocolatey](http://chocolatey.org/), open PowerShell, and then run the following command:
 
 ```powershell
 > choco install carina
