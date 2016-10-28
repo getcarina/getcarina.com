@@ -59,7 +59,7 @@ or CMD after it is installed. Open PowerShell, execute the following command,
 and then move `carina.exe` to a directory on your `%PATH%`.
 
 ```powershell
-> wget 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
+> iwr 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
 ```
 
 ### Configure with Carina credentials
