@@ -62,6 +62,8 @@ and then move `carina.exe` to a directory on your `%PATH%`.
 > iwr 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
 ```
 
+**Note**: The download URL 32-bit systems is `https://download.getcarina.com/carina/latest/Windows/i686/carina.exe`.
+
 ### Configure with Carina credentials
 
 1. Gather the required information:
