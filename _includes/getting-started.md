@@ -18,7 +18,7 @@
     On Windows PowerShell, run the following command:
 
     ```powershell
-    > iex (iwr https://download.getcarina.com/dvm/latest/install.ps1)
+    > iex (iwr 'https://download.getcarina.com/dvm/latest/install.ps1')
     ```
 
 1. Copy the commands from the output, and then paste and run them to finalize the installation.
