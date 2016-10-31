@@ -83,19 +83,19 @@ The user credentials are used to automatically detect the cloud.
 In the following example, public cloud is detected because `--apikey` is specified:
 
 ```
-carina --username bob --apikey abc123 ls
+$ carina --username bob --apikey abc123 ls
 ```
 
 In the following example, private cloud is detected because `--password` is specified:
 
 ```
-carina --username bob --password ilovepuppies --project admin --auth-endpoint https://example.com/auth/v3 ls
+$ carina --username bob --password ilovepuppies --project admin --auth-endpoint https://example.com/auth/v3 ls
 ```
 
 In the following example, the private cloud is used, even when the Rackspace Public Cloud environment variables are present, because `--cloud` is specified:
 
 ```
-carina --cloud private ls
+$ carina --cloud private ls
 ```
 
 #### Flags
@@ -207,6 +207,9 @@ defines a cluster topology and configuration.
 
 ```bash
 $ carina templates
+Name              COE         Host
+Kubernetes LXC    kubernetes  lxc
+Swarm LXC         kubernetes  lxc
 ```
 
 ### Create a cluster
@@ -214,6 +217,12 @@ Create a cluster using a cluster template.
 
 ```bash
 $ carina create --template <template-name> <cluster-name>
+ID        b5c2858a-ec65-4c05-b9a4-4d2db70b183e
+Name      mycluster
+Status    creating
+Template  Kubernetes LXC
+Nodes     1
+Details
 ```
 
 * `--template <template-name>`: Name of the template, defining the cluster topology and configuration.
@@ -225,6 +234,8 @@ List information about your clusters.
 
 ```bash
 $ carina clusters
+ID                                    Name       Status    Template          Nodes
+b5c2858a-ec65-4c05-b9a4-4d2db70b183e  mycluster  active    Kubernetes LXC    1
 ```
 
 ### Download credentials
@@ -271,6 +282,7 @@ Delete a cluster and any downloaded credentials for the cluster.
 
 ```bash
 $ carina delete <cluster-name>
+Deleting cluster (mycluster)
 ```
 
 * `--wait`: Optional. Wait for the cluster to be deleted.
@@ -279,7 +291,13 @@ $ carina delete <cluster-name>
 Show information about a cluster
 
 ```bash
-$ carina delete <cluster-name>
+$ carina get <cluster-name>
+ID        b5c2858a-ec65-4c05-b9a4-4d2db70b183e
+Name      mycluster
+Status    active
+Template  Kubernetes LXC
+Nodes     1
+Details
 ```
 
 * `--wait`: Optional. Wait for the cluster to become active.
@@ -289,6 +307,8 @@ Display the maximum number of clusters and the maximum number of nodes per clust
 
 ```bash
 $ carina quotas
+Max Clusters           3
+Max Nodes per Cluster  1
 ```
 
 ### Generate bash completion
