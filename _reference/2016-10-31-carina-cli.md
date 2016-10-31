@@ -209,7 +209,7 @@ defines a cluster topology and configuration.
 $ carina templates
 Name              COE         Host
 Kubernetes LXC    kubernetes  lxc
-Swarm LXC         kubernetes  lxc
+Swarm LXC         swarm       lxc
 ```
 
 ### Create a cluster
