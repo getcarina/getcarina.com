@@ -102,7 +102,7 @@ carina --cloud private ls
 Command-line flags take higher precedence over environment variables or profiles.
 
 Use the `--cloud` flag to explicitly specify the cloud type: public, private. For a limited period of time,
-the original Carina beta can be specified by using `--cloud makeswarm`.
+the original Carina beta can be specified by using `--cloud make-swarm`.
 
 **Public Cloud**
 
