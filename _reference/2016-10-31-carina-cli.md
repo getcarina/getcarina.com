@@ -243,12 +243,16 @@ Download a cluster's credentials to your local file system.
 
 ```bash
 $ carina credentials <cluster-name>
+#
+# Credentials written to "/Users/chloe/.carina/clusters/public-chloe/mycluster"
+# To see how to connect to your cluster, run: carina env mycluster
+#
 ```
 
 * `--path <path>`: Optional. Full path to the directory where the credentials should be saved.
 
 ### Load a cluster environment
-Displays the command to connect `docker` or `kubectl` to a cluster by setting
+Connects `docker` or `kubectl` to a cluster by setting
 environment variables in the current shell session. After loading the cluster
 environment, you can test the connection by running `docker info` or `kubectl cluster-info`.
 
