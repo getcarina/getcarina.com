@@ -11,13 +11,14 @@ topics:
 ---
 
 The Carina client is a cross-platform command-line tool for managing your Carina
-clusters, capable of communicating with both Rackspace Public and Private Cloud.
+clusters. The client can communicate with both Rackspace Public Cloud and Private Cloud.
 
-This is the full documentation for the Carina client, see [Getting started with the Carina CLI]({{ site.base_url }}/docs/getting-started/getting-started-carina-cli/) for the quickstart guide.
-The source code is located at [https://github.com/getcarina/carina](https://github.com/getcarina/carina),
-feedback, bug reports and pull requests are welcome!
+This is the full documentation for the Carina client. For specific information about
+getting started, see [Getting started with the Carina CLI]({{ site.base_url }}/docs/getting-started/getting-started-carina-cli/).
+The source code is located at [https://github.com/getcarina/carina](https://github.com/getcarina/carina).
+Feedback, bug reports, and pull requests are welcome!
 
-* [Install](#install)
+* [Install](#install-the-carina-cli)
 * [Upgrade](#upgrade)
 * [Configure](#configure)
 * [List templates](#list-templates)
@@ -30,63 +31,21 @@ feedback, bug reports and pull requests are welcome!
 * [View user quotas](#view-user-quotas)
 * [Generate bash completion](#generate-bash-completion)
 
-### Install
-To download and install the Carina client, use the appropriate instructions for your operating system.
-
-#### Mac OS X with Homebrew
-
-If you're using [Homebrew](http://brew.sh/), open a terminal, and then run the following commands:
-
-```bash
-$ brew update
-$ brew install carina
-```
-
-#### Mac OS X and Linux without Homebrew
-
-Open a terminal and execute the following command:
-
-```bash
-$ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
-$ mv carina ~/bin/carina
-$ chmod u+x ~/bin/carina
-```
-
-#### Windows with Chocolatey
-
-If you are using [Chocolatey](http://chocolatey.org/), open PowerShell, and then run the following command:
-
-```powershell
-> choco install carina
-```
-
-#### Windows without Chocolatey
-
-PowerShell performs the initial installation; you can use `carina` with PowerShell
-or CMD after it is installed. Open PowerShell, execute the following command,
-and then move `carina.exe` to a directory on your `%PATH%`.
-
-```powershell
-> iwr 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe
-```
-
-### Upgrade
-If you installed `carina` with a package manager, use the appropriate upgrade command.
-Otherwise, repeat the manual installation instructions above.
+{% include install-carina.md %}
 
 ### Configure
-The Carina client can be configured to authenticate to Carina in multiple ways:
+You can configure the Carina client to authenticate to Carina in multiple ways:
 command-line [flags](#flags), [environment variables](#environment_variables), and [profiles](#profiles).
-In addition, the client can communicate with multiple clouds: Rackspace Public Cloud and Rackspace Private Cloud.
+In addition, the client can communicate with both Rackspace Public Cloud and Private Cloud.
 The user credentials are used to automatically detect the cloud.
 
-In the following example, public cloud is detected because `--apikey` is specified:
+In the following example, the public cloud is detected because `--apikey` is specified:
 
 ```
 $ carina --username bob --apikey abc123 ls
 ```
 
-In the following example, private cloud is detected because `--password` is specified:
+In the following example, the private cloud is detected because `--password` is specified:
 
 ```
 $ carina --username bob --password ilovepuppies --project admin --auth-endpoint https://example.com/auth/v3 ls
@@ -99,18 +58,16 @@ $ carina --cloud private ls
 ```
 
 #### Flags
-Command-line flags take higher precedence over environment variables or profiles.
+Command-line flags take higher precedence over environment variables and profiles.
 
-Use the `--cloud` flag to explicitly specify the cloud type: public, private. For a limited period of time,
-the original Carina beta can be specified by using `--cloud make-swarm`.
+Use the `--cloud` flag to explicitly specify the cloud type: `public` or `private`.
+For a limited period of time, you can specify the original Carina beta by using `--cloud make-swarm`.
 
-**Public Cloud**
-
+When you specify `--cloud public`, you use the following flags:
 * `--username`
 * `--apikey`
 
-**Private Cloud**
-
+When you specify `--cloud private`, you use the following flags:
 * `--username`
 * `--password`
 * `--auth-endpoint`
@@ -122,21 +79,18 @@ the original Carina beta can be specified by using `--cloud make-swarm`.
 Environment variables are a safe way to specify sensitive credentials without having them
 captured in your shell session history.
 
-First, `carina` looks for the Rackspace Public Cloud environment variables,
-then if not found, looks for the Rackspace Private Cloud environment variables.
+The client first looks for the Rackspace Public Cloud environment variables.
+If it does not find them, it looks for the Rackspace Private Cloud environment variables.
 For your convenience, the client also recognizes the environment variables used by the Rackspace
 command-line tool, `rack`. Use the `--cloud` flag to explicitly select a cloud.
 
-**Public Cloud**
-
+Set and use the following environment variables for public cloud:
 * `CARINA_USERNAME`, or `RS_USERNAME`
 * `CARINA_APIKEY`, or `RS_API_KEY`
 
-**Private Cloud**
-
-You can quickly set these environment variables by sourcing the [openrc file
+Set and use the following environment variables for private cloud.
+You can quickly set them by sourcing the [openrc file
 for your private cloud installation](https://developer.rackspace.com/docs/private-cloud/rpc/v10rpc-v10-op-user-guide/environment-variables/).
-
 * `OS_USERNAME`
 * `OS_PASSWORD`
 * `OS_AUTH_URL`
@@ -145,11 +99,11 @@ for your private cloud installation](https://developer.rackspace.com/docs/privat
 * `OS_REGION_NAME`
 
 #### Profiles
-Credentials can be saved under a profile name in `~/.carina/config.toml`, and
-then used with the `--profile` flag, for example, `carina --profile dev`. The
-file is in the [TOML file format](https://github.com/toml-lang/toml) and is not encrypted.
+You can save credentials under a profile name in the `~/.carina/config.toml` file, and
+then specify that profile name with the `--profile` flag—for example, `carina --profile cloud1`.
+The file is in the [TOML file format](https://github.com/toml-lang/toml) and is not encrypted.
 
-The following is a sample configuration file:
+Following is a sample configuration file:
 
 ```toml
 [cloud1]
@@ -168,7 +122,7 @@ region="RegionOne"
 ```
 
 When `--profile` is not specified and the configuration file contains a profile named `default`,
-that profile will be used when no command-line flags are provided. The default
+that profile is used if no command-line flags are provided. The default
 profile takes precedence over environment variables.
 
 ```toml
@@ -179,7 +133,7 @@ apikey="abc123"
 ```
 
 You can use environment variables in the configuration file by appending `-var`
-to the setting key, for example `username-var`.
+to the setting key—for example `username-var`.
 
 ```toml
 [cloud1]
@@ -199,7 +153,7 @@ region-var="OS_REGION_NAME"
 
 **Note**: By default, the client stores its configuration in the  `~/.carina` directory.
 You can change the configuration directory by setting the `CARINA_HOME` environment variable.
-The configuration file path can be overriden with the `--config` flag.
+The configuration file path can be overridden with the `--config` flag.
 
 ### List templates
 List the cluster templates that you can use to create a cluster. A cluster template
@@ -213,10 +167,10 @@ Swarm LXC         swarm       lxc
 ```
 
 ### Create a cluster
-Create a cluster using a cluster template.
+Create a cluster by using a cluster template.
 
 ```bash
-$ carina create --template <template-name> <cluster-name>
+$ carina create --template <templateName> <clusterName>
 ID        b5c2858a-ec65-4c05-b9a4-4d2db70b183e
 Name      mycluster
 Status    creating
@@ -225,9 +179,9 @@ Nodes     1
 Details
 ```
 
-* `--template <template-name>`: Name of the template, defining the cluster topology and configuration.
-* `--nodes <nodes>`: Optional. Number of nodes for the initial cluster (defaults to 1).
-* `--wait`: Optional. Wait for the cluster to become active.
+* `--template <templateName>`: The name of the template, which defines the cluster topology and configuration.
+* `--nodes <nodes>`: (_Optional_). The number of nodes for the initial cluster (defaults to 1).
+* `--wait`: (_Optional_) Wait for the cluster to become active before exiting.
 
 ### List clusters
 List information about your clusters.
@@ -242,60 +196,56 @@ b5c2858a-ec65-4c05-b9a4-4d2db70b183e  mycluster  active    Kubernetes LXC    1
 Download a cluster's credentials to your local file system.
 
 ```bash
-$ carina credentials <cluster-name>
+$ carina credentials <clusterName>
 #
 # Credentials written to "/Users/chloe/.carina/clusters/public-chloe/mycluster"
 # To see how to connect to your cluster, run: carina env mycluster
 #
 ```
 
-* `--path <path>`: Optional. Full path to the directory where the credentials should be saved.
+* `--path <path>`: (_Optional_) The full path to the directory where the credentials should be saved.
 
 ### Load a cluster environment
-Connects `docker` or `kubectl` to a cluster by setting
+Connects the `docker` or `kubectl` client to a cluster by setting
 environment variables in the current shell session. After loading the cluster
 environment, you can test the connection by running `docker info` or `kubectl cluster-info`.
 
 **Mac OS X and Linux**
 
 ```bash
-$ eval $(carina env <cluster-name>)
+$ eval $(carina env <clusterName>)
 ```
 
 **Windows**
 
-On Windows, you must include the `--shell` flag and specify if the command should
-output in `powershell` or `cmd` syntax.
+On Windows, you must include the `--shell` flag and specify whether the command
+outputs in `powershell` or `cmd` syntax.
 
-**PowerShell**
-
-```powershell
-> carina env <cluster-name> --shell powershell | iex
-```
-
-**CMD**
-
-Copy, paste, and then run the output of the following command:
-
-```
-> carina env <cluster-name> --shell cmd
-```
+* PowerShell
+    ```powershell
+    > carina env <clusterName> --shell powershell | iex
+    ```
+* CMD
+    Copy, paste, and then run the output of the following command:
+    ```
+    > carina env <clusterName> --shell cmd
+    ```
 
 ### Delete a cluster
 Delete a cluster and any downloaded credentials for the cluster.
 
 ```bash
-$ carina delete <cluster-name>
+$ carina delete <clusterName>
 Deleting cluster (mycluster)
 ```
 
-* `--wait`: Optional. Wait for the cluster to be deleted.
+* `--wait`: (_Optional_) Wait for the cluster to be deleted before exiting.
 
 ### View a cluster
 Show information about a cluster
 
 ```bash
-$ carina get <cluster-name>
+$ carina get <clusterName>
 ID        b5c2858a-ec65-4c05-b9a4-4d2db70b183e
 Name      mycluster
 Status    active
@@ -304,7 +254,7 @@ Nodes     1
 Details
 ```
 
-* `--wait`: Optional. Wait for the cluster to become active.
+* `--wait`: (_Optional_) Wait for the cluster to become active before exiting.
 
 ### View user quotas
 Display the maximum number of clusters and the maximum number of nodes per cluster.
@@ -317,7 +267,7 @@ Max Nodes per Cluster  1
 
 ### Generate bash completion
 Generate a bash completion file for use with the Bash shell. After generating the file,
-you must source it into your current shell session, or source it in your Bash profile.
+you must source it in your current shell session, or source it in your Bash profile.
 
 ```bash
 $ carina bash-completion > ~/.carina/bash-completion.sh
