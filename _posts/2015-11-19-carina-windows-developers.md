@@ -61,7 +61,7 @@ Rackspace developed the Docker Version Manager (dvm) to facilitate this requirem
 Download and install dvm by using a one-line PowerShell command, and then follow the instructions displayed.
 
 ```
-iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
 
 ```
 For example:

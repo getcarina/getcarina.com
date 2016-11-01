@@ -25,7 +25,7 @@ session, and so the changes that dvm makes are temporary.
 1. Run the following installation command for your operating system:
 
     **Mac OS X with Homebrew**
-    
+
     Open a terminal and execute the following command:
 
     ```bash
@@ -47,7 +47,7 @@ session, and so the changes that dvm makes are temporary.
     or CMD after it is installed. Open a PowerShell command prompt and execute the following command:
 
     ```powershell
-    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
+    > iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
     ```
 
 2. Copy the commands from the output, then paste and run them to finalize the installation.
