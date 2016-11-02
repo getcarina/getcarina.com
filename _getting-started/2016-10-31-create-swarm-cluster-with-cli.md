@@ -1,10 +1,12 @@
 ---
-title: Getting started with the Carina CLI
+title: Getting started with Docker Swarm and the Carina CLI
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
 featured: true
-permalink: docs/getting-started/getting-started-carina-cli/
+permalink: docs/getting-started/create-swarm-cluster-with-cli/
 description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
+docker-versions:
+  - 1.11.2
 topics:
   - carina
   - cli
@@ -13,7 +15,7 @@ topics:
 
 This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Carina clusters from the command line. No prior knowledge of containers, Docker, or Kubernetes is necessary.
 
-**Note**: This tutorial uses the command-line interface to create a cluster. To use the graphical user interface, see [Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+**Note**: This tutorial uses the command-line interface to create a cluster. To use the website, see [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/).
 
 ### Sign up for Carina
 
@@ -80,7 +82,7 @@ Note your Carina API key. To get it, go to the [Carina Control Panel](https://ap
     > carina env mycluster --shell powershell  | iex
     ```
 
-{% include getting-started.md %}
+{% include getting-started-with-docker.md %}
 
 ### Next steps
 

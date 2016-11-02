@@ -1,4 +1,4 @@
-### Install the Docker Version Manager (dvm)
+### Install the Docker Version Manager
 
 1. Install the Docker Version Manager (dvm)
 

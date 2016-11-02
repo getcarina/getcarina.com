@@ -1,12 +1,14 @@
 ---
-title: Getting started on Carina
-author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-10-25
+title: Getting started with Kubernetes
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2016-10-31
 featured: true
-permalink: docs/getting-started/getting-started-on-carina/
+permalink: docs/getting-started/create-kubernetes-cluster/
 description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
 docker-versions:
-  - 1.10.3
+  - 1.11.2
+kubernetes-versions:
+  - 1.4.5
 topics:
   - docker
   - beginner
@@ -14,9 +16,9 @@ topics:
 
 This tutorial shows you how to get your first containerized application up and running on Carina in a minimal amount of time.
 
-No prior knowledge of containers or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+No prior knowledge of containers, or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
 
-**Note**: This guide uses the graphical user interface to create a cluster. To use the command line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This guide uses the website to create a cluster. To use the command-line interface, see [Getting started with Kubernetes and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/).
 
 ### Sign up for Carina
 
@@ -73,11 +75,11 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     > .\docker.ps1
     ```
 
-{% include getting-started.md %}
+{% include getting-started-with-kubernetes.md %}
 
 ### Next steps
 
-Learn how to [install the Carina CLI and use it to manage your clusters]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+Learn how to [install the Carina CLI and use it to manage your Kubernetes clusters]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/).
 
 Learn about all of the features available to you in the [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
 

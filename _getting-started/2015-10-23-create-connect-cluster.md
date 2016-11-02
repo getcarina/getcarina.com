@@ -7,7 +7,7 @@ permalink: docs/getting-started/create-connect-cluster/
 description: Learn how to create and connect to a cluster on Carina so that you can start running your applications in containers
 docker-versions:
   - 1.11.2
-Kubernetes-versions:
+kubernetes-versions:
   - 1.4.5
 topics:
   - docker
@@ -30,7 +30,7 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 **Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them in to source control.
 
-**Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with Kubernetes and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/) or [Getting started with Docker Swarm and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster-with-cli/).
 
 ### Prerequisite
 
