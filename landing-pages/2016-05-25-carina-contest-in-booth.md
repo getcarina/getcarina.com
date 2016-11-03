@@ -26,7 +26,7 @@ Click **Add Cluster** and name it **mycluster**
 In the Carina Control Panel (the other tab)
 
 1. Click your username in the top-right corner
-1. Click **API Key**
+1. Click **Settings**
 1. Copy the API Key (Command-C)
 
 ### Configure the Carina CLI
