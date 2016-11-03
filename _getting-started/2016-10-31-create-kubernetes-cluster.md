@@ -24,6 +24,9 @@ No prior knowledge of containers, or Docker is necessary. This tutorial works on
 
 To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
 
+### Install the Kubernetes client
+{% include install-kubectl.md %}
+
 ### Create your cluster
 
 A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications.
