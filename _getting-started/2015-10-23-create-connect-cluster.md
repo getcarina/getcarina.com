@@ -1,6 +1,6 @@
 ---
 title: Create and connect to a cluster
-author: Kelly Holcomb <kelly.holcomb@rackspace.com>
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
 featured: true
 permalink: docs/getting-started/create-connect-cluster/
@@ -14,21 +14,21 @@ topics:
   - beginner
 ---
 
-This tutorial shows you how to create a cluster in Carina and then download its credentials so that you can securely connect to the cluster.
+This tutorial shows you how to create a cluster in Carina and download its credentials so that you can securely connect to the cluster.
 
-A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which you can download in a zip file from the Carina Control Panel. The credentials zip file contains the following files depending on the type of cluster:
+A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications. Clusters are secured with Transport Layer Security (TLS) certificates. Each cluster has its own set of credentials, which you can download in a zip file from the Carina Control Panel. The credentials zip file contains the following files, depending on the type of cluster:
 
-* ca.pem - Certificate Authority, used by clients to validate the cluster certificates
-* user.pem - Client Certificate, used by clients to identify themselves to the cluster
-* user-key.pem - Client Private Key, used by clients to encrypt their requests to the cluster
-* docker.env - Shell environment configuration script for Docker Swarm clusters
-* docker.ps1 - PowerShell environment configuration script for Docker Swarm clusters
-* docker.cmd - CMD shell environment configuration script for Docker Swarm clusters
-* kubectl.env - Shell environment configuration script for Kubernetes clusters
-* kubectl.ps1 - PowerShell environment configuration script for Kubernetes clusters
-* kubectl.cmd - CMD shell environment configuration script for Kubernetes clusters
+* ca.pem: Certificate Authority, used by clients to validate the cluster certificates
+* user.pem: Client Certificate, used by clients to identify themselves to the cluster
+* user-key.pem: Client Private Key, used by clients to encrypt their requests to the cluster
+* docker.env: Shell environment configuration script for Docker Swarm clusters
+* docker.ps1: PowerShell environment configuration script for Docker Swarm clusters
+* docker.cmd: CMD shell environment configuration script for Docker Swarm clusters
+* kubectl.env: Shell environment configuration script for Kubernetes clusters
+* kubectl.ps1: PowerShell environment configuration script for Kubernetes clusters
+* kubectl.cmd: CMD shell environment configuration script for Kubernetes clusters
 
-**Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them into source control.
+**Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them in to source control.
 
 **Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
 
@@ -71,7 +71,7 @@ To connect to your cluster, use the appropriate instructions for the cluster typ
 
 ### Connect to a Docker Swarm cluster
 
-Connect to your cluster by first downloading the Docker Version Manager (dvm),
+Connect to your cluster by first installing the Docker Version Manager (dvm)
 and then configuring `docker` to use the cluster credentials.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
@@ -80,7 +80,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
   - On Linux and Mac OS X, open a terminal.
   - On Windows, open PowerShell.
 
-1. Install the Docker Version Manager (dvm).
+1. Install `dvm`.
 
     On Mac OS X with Homebrew, run the following commands:
 
@@ -101,9 +101,9 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     > iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
     ```
 
-1. Copy the command to load `dvm` from the output, and then paste and run them to finalize the installation.
+1. From the output, copy the commands to load `dvm` from the output, and then paste and run them to finalize the installation.
 
-1. Configure the Docker client.
+1. Configure `docker`.
 
     On Linux and Mac OS X, run the following commands:
 
@@ -148,7 +148,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 ### Connect to a Kubernetes cluster
 
-Connect to your cluster by first downloading the Kubernetes client (kubectl),
+Connect to your cluster by first installing the Kubernetes client (kubectl),
 and then configuring it to use the cluster credentials.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
@@ -157,7 +157,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
   - On Linux and Mac OS X, open a terminal.
   - On Windows, open PowerShell.
 
-1. Install the Kubernetes client (kubectl).
+1. Install `kubectl`.
 
     On Mac OS X with Homebrew, run the following commands:
 
@@ -220,6 +220,14 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 See [Troubleshooting common problems]({{ site.baseurl }}/docs/troubleshooting/common-problems/).
 
+When running a `kubectl` command, you may see the following error message,
+which occurs when the `.kube` directory is missing. Create the directory in the
+location specified by the error message to resolve the error.
+
+```
+error: open C:\Users\chole/.kube/config: The system cannot find the path specified.
+```
+
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
 
 ### Resources
@@ -228,7 +236,7 @@ If you're new to Carina, Docker, and containers, see the following articles to l
 
 * [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/)
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
-* [Container 101]({{ site.baseurl }}/docs/concepts/containers-101/)
+* [Containers 101]({{ site.baseurl }}/docs/concepts/containers-101/)
 
 
 ### Next steps
