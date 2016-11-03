@@ -1,10 +1,10 @@
 ---
 title: Getting started with Docker Swarm
-author: Everett Toews <everett.toews@rackspace.com>
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
 featured: true
 permalink: docs/getting-started/create-swarm-cluster/
-description: Learn how to get your first containerized application up and running on Carina in a minimal amount of time
+description: Learn how to get your first containerized application running on Docker Swarm in a minimal amount of time
 docker-versions:
   - 1.11.2
 topics:
@@ -12,15 +12,17 @@ topics:
   - beginner
 ---
 
-This tutorial shows you how to get your first containerized application up and running on Carina in a minimal amount of time.
-
-No prior knowledge of containers, or Docker is necessary. This tutorial works on Linux, Mac, and Windows.
+This tutorial shows you how to get your first containerized application running on Docker Swarm in a minimal amount of time.
+No prior knowledge of containers, or Docker is necessary.
 
 **Note**: This guide uses the website to create a cluster. To use the command-line interface, see [Getting started with Docker Swarm and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster-with-cli/).
 
 ### Sign up for Carina
 
 To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
+
+### Install the Docker Version Manager
+{% include install-dvm.md %}
 
 ### Create a cluster
 
@@ -38,6 +40,8 @@ To run applications on Carina, create a free account (no credit card required) b
 
 ### Download the cluster credentials
 
+The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
+
 1. On the Carina Control Panel, click the cluster name.
 
 1. On the Cluster Details page, click the **Actions** button, and then click **Download Credentials**.
@@ -52,39 +56,11 @@ To run applications on Carina, create a free account (no credit card required) b
 
 ### Connect to the cluster
 
-Connect to your cluster by first downloading the Docker Version Manager (dvm),
-and then configuring `docker` to use the cluster credentials.
+Connect to your cluster by configuring the Docker client to use the cluster credentials.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
-1. Open an application in which to run commands.
-  - On Linux and Mac OS X, open a terminal.
-  - On Windows, open PowerShell.
-
-1. Install the Docker Version Manager (dvm).
-
-    On Mac OS X with Homebrew, run the following commands:
-
-    ```bash
-    $ brew update
-    $ brew install dvm
-    ```
-
-    On Linux and Mac OS X without Homebrew, run the following command:
-
-    ```bash
-    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
-    ```
-
-    On Windows PowerShell, run the following command:
-
-    ```powershell
-    > iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
-    ```
-
-1. Copy the command to load `dvm` from the output, and then paste and run them to finalize the installation.
-
-1. Configure the Docker client.
+1. Configure the Docker client (`docker`).
 
     On Linux and Mac OS X, run the following commands:
 
@@ -103,6 +79,39 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     > .\docker.ps1
     > dvm use
     Now using Docker 1.11.2
+    ```
+1. Use `docker` to connect to your cluster and display information about it.
+
+    ```bash
+    $ docker info
+    Containers: 3
+     Running: 2
+     Paused: 0
+     Stopped: 1
+    Images: 2
+    Server Version: swarm/1.2.5
+    Role: primary
+    Strategy: spread
+    Filters: health, port, containerslots, dependency, affinity, constraint
+    Nodes: 1
+     c2f86a90-4de6-4024-afb3-47358aa17136-production-master-00: 10.223.64.23:42376
+      └ ID: 7IBR:NYLQ:2P3A:IM2N:LMTY:6UBN:R7Y4:Y2OP:VXXN:R2BV:2NAY:YTHY
+      └ Status: Healthy
+      └ Containers: 3 (2 Running, 0 Paused, 1 Stopped)
+      └ Reserved CPUs: 0 / 12
+      └ Reserved Memory: 0 B / 8.4 GiB
+      └ Labels: kernelversion=3.18.21-24-rackos, operatingsystem=Debian GNU/Linux 8 (jessie) (containerized), storagedriver=aufs
+      └ UpdatedAt: 2016-11-03T20:24:50Z
+      └ ServerVersion: 1.11.2
+    Plugins:
+     Volume:
+     Network:
+    Kernel Version: 3.18.21-24-rackos
+    Operating System: linux
+    Architecture: amd64
+    CPUs: 12
+    Total Memory: 8.4 GiB
+    Name: c2f86a90-4de6-4024-afb3-47358aa17136-production-master-00
     ```
 
 {% include getting-started-with-docker.md %}

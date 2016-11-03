@@ -1,60 +1,3 @@
-### Install the Docker Version Manager
-
-1. Install the Docker Version Manager (dvm)
-
-    On Mac OS X with Homebrew, run the following commands:
-
-    ```bash
-    $ brew update
-    $ brew install dvm
-    ```
-
-    On Linux and Mac OS X terminals, run the following command:
-
-    ```bash
-    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
-    ```
-
-    On Windows PowerShell, run the following command:
-
-    ```powershell
-    > iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex
-    ```
-
-1. Copy the commands from the output, and then paste and run them to finalize the installation.
-
-1. Configure the Docker client.
-
-    ```bash
-    $ dvm use
-    Now using Docker 1.11.2
-    ```
-
-1. Use `docker` to interact with your cluster:
-
-    ```bash
-    $ docker info
-    Containers: 5
-     Running: 3
-     Paused: 0
-     Stopped: 2
-    Images: 5
-    Server Version: swarm/1.2.0
-    Role: primary
-    Strategy: spread
-    Filters: health, port, dependency, affinity, constraint
-    Nodes: 1
-     1dba0f72-75bc-4825-a5a0-b2993c535599-n1: 172.99.70.6:42376
-      └ Status: Healthy
-      └ Containers: 5
-      └ Reserved CPUs: 0 / 12
-      └ Reserved Memory: 0 B / 4.2 GiB
-      └ Labels: com.docker.network.driver.overlay.bind_interface=eth1, executiondriver=, kernelversion=3.18.21-2-rackos, operatingsystem=Debian GNU/Linux 7 (wheezy) (containerized), storagedriver=aufs
-      └ Error: (none)
-      └ UpdatedAt: 2016-05-27T19:27:24Z
-      └ ServerVersion: 1.11.2    
-    ```
-
 ### Run your first application
 
 Run a WordPress blog with a MySQL database on an overlay network.
@@ -122,7 +65,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
 
 You've successfully run your first containerized application.
 
-Carina has many more features and there is more to learn. Review the [Resources](#resources) and [Next step](#next-step) sections for more information.
+Carina has many more features and there is more to learn. Review the [Resources](#resources) and [Next steps](#next-steps) sections for more information.
 
 ### Troubleshooting
 
