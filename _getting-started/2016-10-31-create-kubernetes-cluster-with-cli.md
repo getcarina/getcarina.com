@@ -25,6 +25,7 @@ To run applications on Carina, create a free account (no credit card required) b
 
 Note your Carina API key. To get it, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
 
+### Install the Carina CLI
 {% include install-carina.md %}
 
 ### Configure with Carina credentials

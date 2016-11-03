@@ -31,7 +31,12 @@ Feedback, bug reports, and pull requests are welcome!
 * [View user quotas](#view-user-quotas)
 * [Generate bash completion](#generate-bash-completion)
 
+### Install
 {% include install-carina.md %}
+
+### Upgrade
+If you installed the `carina` CLI with a package manager, use the appropriate upgrade command.
+Otherwise, repeat the manual installation instructions in the preceding section.
 
 ### Configure
 You can configure the Carina client to authenticate to Carina in multiple ways:
