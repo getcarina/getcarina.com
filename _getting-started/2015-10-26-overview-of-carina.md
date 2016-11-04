@@ -76,7 +76,7 @@ Carina has an intuitive UI that you can use to control clusters from your web br
 
 #### The CLI
 
-Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/) to learn more.
+Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with Docker Swarm and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster-with-cli/) to learn more.
 
 ### Resources
 
@@ -90,4 +90,4 @@ Carina has a CLI that you can use to control clusters from a terminal or scripts
 
 ### Next step
 
-Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/) or [Getting started with Kubernetes]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster/).

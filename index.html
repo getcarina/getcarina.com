@@ -85,12 +85,11 @@ layout: default
           <span class="accent yellow">At Your Fingertips</span>
         </h2>
         <p>
-          Carina streamlines the entire experience to allow you to get started with containers <strong><a href="{{ site.baseurl }}/docs/getting-started/getting-started-on-carina/">quickly</a></strong>. <strong>Go even faster with <a href="{{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/"><code>carina</code></a>, the command line tool.</strong>
+          Carina streamlines the entire experience to allow you to get started with <strong><a href="{{ site.baseurl }}/docs/getting-started/create-swarm-cluster/">Docker Swarm</a></strong> or <strong><a href="{{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster/">Kubernetes</a></strong>. <strong>Go even faster with <a href="{{ site.baseurl }}/docs/reference/carina-cli/"><code>carina</code></a>, the command line tool.</strong>
         </p>
         <p>
-          {% for post in site.getting-started %}{% if post.url == '/docs/getting-started/getting-started-carina-cli/' %}
-            <a href="{{ post.url }}" class="carina-link">Get Started with Carina</a>
-          {% endif %}{% endfor %}
+          <a href="{{ site.baseurl }}/docs/getting-started/create-swarm-cluster/" class="carina-link">Try Docker Swarm</a>
+          <a href="{{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster/" class="carina-link">Try Kubernetes</a>
         </p>
       </div>
       <div class="demo">

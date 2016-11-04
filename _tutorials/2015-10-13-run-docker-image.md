@@ -89,4 +89,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next steps
 
-Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/).
