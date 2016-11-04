@@ -131,7 +131,7 @@ So thanks goes to the data plane team for many months of hard work.
 
 [Overview of Carina]: https://getcarina.com/docs/overview-of-carina/
 [Grab the CLI]: https://getcarina.com/docs/getting-started/getting-started-carina-cli/
-[Connect to your cluster]: https://getcarina.com/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
+[Connect to your cluster]: https://getcarina.com/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster
 [Evaluation installation and quickstart]: https://docs.docker.com/ucp/evaluation-install/
 [Understanding how Carina uses Docker Swarm]: https://getcarina.com/docs/concepts/docker-swarm-carina/
 [tutum]: https://www.tutum.co/

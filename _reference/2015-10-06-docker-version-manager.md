@@ -67,8 +67,8 @@ Now using Docker 1.8.3
 Now using Docker 1.8.3
 ```
 
-[carina-credentials]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
-[carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
+[carina-credentials]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster
+[carina-cli]: {{site.baseurl}}/docs/reference/carina-cli/
 
 <a id="stand-alone"></a>
 ### Use dvm stand-alone

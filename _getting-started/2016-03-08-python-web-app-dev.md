@@ -190,7 +190,7 @@ When you are satisfied with your development and testing in your local developme
 
 #### Initialize the environment in prod
 
-1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for [connecting to your cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster).
+1. Open a new Docker Quickstart Terminal and initialize it as per the instructions for [connecting to your cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster).
 
 1. Check your environment.
 
