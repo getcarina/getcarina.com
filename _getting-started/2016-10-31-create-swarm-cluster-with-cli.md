@@ -19,7 +19,7 @@ This tutorial shows you how to use the command line to get your first containeri
 
 ### Sign up for Carina
 
-To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
+To run applications on Carina, create a free account by following the [sign up process](https://app.getcarina.com/app/signup).
 
 Note your Carina API key. To view your API key, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **Settings**.
 

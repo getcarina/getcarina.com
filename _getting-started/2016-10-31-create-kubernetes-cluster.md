@@ -19,7 +19,7 @@ No prior knowledge of containers, or Kubernetes is necessary.
 
 ### Sign up for Carina
 
-To run applications on Carina, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
+To run applications on Carina, create a free account by following the [sign up process](https://app.getcarina.com/app/signup).
 
 ### Install the Kubernetes client
 {% include install-kubectl.md %}
