@@ -4,9 +4,7 @@ author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
 featured: true
 permalink: docs/getting-started/create-kubernetes-cluster-with-cli/
-description: Learn how to get started with the Carina command-line client (CLI) by installing, configuring, and performing commands
-docker-versions:
-  - 1.11.2
+description: Learn how to use the command line to get your first containerized application running on Kubernetes in a minimal amount of time
 kubernetes-versions:
   - 1.4.5
 topics:
@@ -15,7 +13,7 @@ topics:
   - beginner
 ---
 
-This tutorial demonstrates how to install and configure the Carina client so that you can use it to launch and control Carina clusters from the command line. No prior knowledge of containers, Docker, or Kubernetes is necessary.
+This tutorial demonstrates how to use the command line to get your first containerized application running on Kubernetes in a minimal amount of time. No prior knowledge of containers, or Kubernetes is necessary.
 
 **Note**: This tutorial uses the command-line interface to create a cluster. To use the website, see [Getting started with Kubernetes]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster/).
 
@@ -65,8 +63,18 @@ Note your Carina API key. To view your API key, go to the [Carina Control Panel]
 
 ### Create and connect to your cluster
 
-1. Create a Kubernetes cluster by running the `carina create` command.
-   The `--wait` flag indicates to wait for the cluster to become active before exiting.
+A cluster is a pool of compute, storage, and networking resources that serves as a host for one or more containerized applications.
+
+1. View the available cluster templates with `carina templates`.
+
+    ```bash
+    $ carina templates
+    Name                     COE         Host
+    Kubernetes 1.4.4 on LXC  kubernetes  lxc
+    Swarm 1.11.2 on LXC      swarm       lxc
+    ```
+
+1. Create a Kubernetes cluster by running the `carina create` command, using a template name from the previous step.
 
     ```bash
     $ carina create --wait --template "Kubernetes 1.4.4 on LXC" mycluster
@@ -74,7 +82,9 @@ Note your Carina API key. To view your API key, go to the [Carina Control Panel]
     9f320718-e0b6-4687-9c43-0e0c39eba9e2    mycluster   active    Kubernetes 1.4.4 on LXC   1
     ```
 
-1. Configure your shell to connect to your cluster.
+    The `--wait` flag indicates that the client should wait for the cluster to become active before exiting.
+
+1. Configure the Kubernetes client (`kubectl`).
 
     On Linux and Mac OS X terminals, run the following commands:
 
@@ -88,7 +98,7 @@ Note your Carina API key. To view your API key, go to the [Carina Control Panel]
     > carina env mycluster --shell powershell  | iex
     ```
 
-1. Connect to your cluster and display information about it.
+1. Use `kubectl` to connect to your cluster and display information about it.
 
     ```bash
     $ kubectl cluster-info
