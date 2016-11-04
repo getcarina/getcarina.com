@@ -2,6 +2,7 @@
 title: Carina CLI
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
+featured: true
 permalink: docs/reference/carina-cli/
 description: Manage your Carina clusters with the Carina CLI
 topics:

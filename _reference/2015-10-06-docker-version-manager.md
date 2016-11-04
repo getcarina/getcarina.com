@@ -2,6 +2,7 @@
 title: Manage Docker client versions with dvm
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-06
+featured: true
 permalink: docs/reference/docker-version-manager/
 description: Manage your Docker clients with the Docker Version Manager (dvm)
 topics:
