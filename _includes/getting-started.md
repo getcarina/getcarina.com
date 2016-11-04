@@ -133,6 +133,6 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 ### Resources
 
 * [Docker 101]({{ site.baseurl }}/docs/concepts/docker-101/)
-* [Docker Version Manager]({{ site.baseurl }}/docs/tutorials/docker-version-manager/)
+* [Docker Version Manager]({{ site.baseurl }}/docs/reference/docker-version-manager/)
 * [Carina CLI]({{ site.baseurl }}/docs/reference/carina-cli/)
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)

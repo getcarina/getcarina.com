@@ -38,7 +38,7 @@ We strongly recommend using an overlay anytime you need two or more containers t
 
 ## Overlay network example
 
-To get a feel for how you can work with overlay networks on Carina, let’s run through an example. For this example, you need to [create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) with at least two nodes. Overlay networks are available only on clusters created after February 15, 2016, and existing clusters cannot be upgraded to include overlay networks. If you find yourself juggling clusters with different Docker versions, we recommend that you [manage your Docker clients with the Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+To get a feel for how you can work with overlay networks on Carina, let’s run through an example. For this example, you need to [create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) with at least two nodes. Overlay networks are available only on clusters created after February 15, 2016, and existing clusters cannot be upgraded to include overlay networks. If you find yourself juggling clusters with different Docker versions, we recommend that you [manage your Docker clients with the Docker Version Manager (dvm)]({{ site.baseurl }}/docs/reference/docker-version-manager/).
 
 Use the `docker network create` command to create an overlay network.
 
