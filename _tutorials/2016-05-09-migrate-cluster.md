@@ -24,7 +24,7 @@ This tutorial describes how to migrate to a new cluster to take advantage of new
 
 ### Install the Docker Version Manager
 
-Migrating to a new cluster likely means using a newer version of Docker. That means you will have two or more clusters with different versions of Docker. To make it easy to work with different versions of the Docker client, follow the tutorial to [manage Docker client versions with Docker Version Manager (dvm)]({{ site.baseurl }}/docs/tutorials/docker-version-manager/).
+Migrating to a new cluster likely means using a newer version of Docker. That means you will have two or more clusters with different versions of Docker. To make it easy to work with different versions of the Docker client, follow the tutorial to [manage Docker client versions with Docker Version Manager (dvm)]({{ site.baseurl }}/docs/reference/docker-version-manager/).
 
 ### Install the Carina CLI
 

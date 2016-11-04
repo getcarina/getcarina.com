@@ -188,7 +188,7 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 * [Troubleshooting the Docker Toolbox setup on Windows 7, 8.1, and 10]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-windows-docker-vm-startup/)
 * [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)
 
-[dvm]: {{site.baseurl}}/docs/tutorials/docker-version-manager/
+[dvm]: {{site.baseurl}}/docs/reference/docker-version-manager/
 [carina-creds]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
 [rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster
 [rebuild-do]: {{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do
