@@ -1,9 +1,9 @@
 ---
 title: Develop a Python web application
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2016-03-08
+date: 2016-11-08
 permalink: docs/tutorials/develop-a-python-web-application/
-description: Develop a Python web application locally on VirtualBox and deploy it on Carina
+description: Develop a Python web application locally and deploy it to Carina
 docker-versions:
   - 1.10.2
 topics:
@@ -11,7 +11,7 @@ topics:
   - intermediate
 ---
 
-This tutorial describes how to develop a Python web application locally on VirtualBox and deploy it on Carina with Docker Compose.
+This tutorial describes how to develop a Python web application locally and deploy it to Carina with Docker Compose.
 
 The application is a simple guestbook. It's enough to demonstrate a basic three-tier application. To develop the application, you'll use the following technologies:
 
@@ -22,14 +22,13 @@ The application is a simple guestbook. It's enough to demonstrate a basic three-
  * Gunicorn for the WSGI server
 * MySQL for the database
 
-The final result of moving your application from VirtualBox to Carina will look as follows:
+The final result of moving your application from your local development environment to Carina will look as follows:
 
 ![Python Web App Development]({% asset_path python-web-app-dev/pythonwebapp.png %})
 
 ### Prerequisites
-
-* [Install Docker Toolbox](https://www.docker.com/products/docker-toolbox)
- * On Windows during installation, check the "Git for Windows" option for easy access to `git` from the Docker Quickstart Terminal.
+* [Install Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Set up a local Docker development environment]({{ site.baseurl }}/docs/tutorials/set-up-local-docker/)
 * [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/)
 * [Sign up for an account on Docker Hub](https://hub.docker.com/)
 
@@ -48,9 +47,9 @@ Resolving deltas: 100% (114/114), done.
 Checking connectivity... done.
 ```
 
-### Development on VirtualBox
+### Local Development Environment
 
-You'll use Docker on VirtualBox as your local development environment (dev). VirtualBox was installed as part of the Docker Toolbox (see [Prerequisites](#prerequisites)).
+You will develop your application first on your local development environment (dev). VirtualBox was installed as part of the Docker Toolbox (see [Prerequisites](#prerequisites)).
 
 ![VirtualBox]({% asset_path python-web-app-dev/virtualbox.png %})
 
