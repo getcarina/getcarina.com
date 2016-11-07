@@ -1,11 +1,11 @@
 ---
-title: Set up a virtual environment with a Docker host
-author: Nathaniel Archer <nate.archer@rackspace.com>
-date: 2015-09-28
-permalink: docs/tutorials/set-up-docker-machine/
-description: Learn how to set up your virtual environment with a Docker host using a Docker Machine
+title: Set up a local Docker development environment
+author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
+date: 2016-11-10
+permalink: docs/tutorials/set-up-local-docker/
+description: Learn how to set up a local Docker development environment
 docker-versions:
-  -1.10.1
+  -1.11.2
 topics:
   -Docker
   -beginner
