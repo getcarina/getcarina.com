@@ -16,10 +16,10 @@ Docker Swarm is a management system for Docker. It enables an application to be 
 A Docker Swarm cluster has a few management containers that are necessary for cluster management. When you run `docker ps -a` on a cluster, the following result is displayed:
 
 ```bash
-CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                                    NAMES
-08681ba30ff8        swarm               "/swarm manage -H=tcp"   59 seconds ago       Up 58 seconds       2375/tcp, 104.130.0.172:2376->2376/tcp   e02b0e2f-0330-4957-8e3f-efce52db29cd-n1/swarm-manager
-ccd8588777ae        swarm               "/swarm join --addr=1"   59 seconds ago       Up 58 seconds       2375/tcp                                 e02b0e2f-0330-4957-8e3f-efce52db29cd-n1/swarm-agent
-ef7be6079c21        cirros              "/sbin/init"             About a minute ago                                                                e02b0e2f-0330-4957-8e3f-efce52db29cd-n1/swarm-data
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+315d9db6f181        swarm:1.2.5         "/swarm manage -H=tcp"   2 hours ago         Up 2 hours                              34ee722d-48b3-47b5-8e17-92935280e6bd-production-master-00/swarm-manager
+675e25337d5a        swarm:1.2.5         "/swarm join --addr=1"   2 hours ago         Up 2 hours                              34ee722d-48b3-47b5-8e17-92935280e6bd-production-master-00/swarm-agent
+1b0392d0cfa8        cirros              "/sbin/init"             2 hours ago         Created                                 34ee722d-48b3-47b5-8e17-92935280e6bd-production-master-00/swarm-data
 ```
 
 This result shows three containers. At the far right, the names of these containers are displayed: `swarm-manager`, `swarm-agent`, and `swarm-data`.
