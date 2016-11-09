@@ -7,7 +7,7 @@ permalink: docs/getting-started/create-connect-cluster/
 description: Learn how to create and connect to a cluster on Carina so that you can start running your applications in containers
 docker-versions:
   - 1.11.2
-Kubernetes-versions:
+kubernetes-versions:
   - 1.4.5
 topics:
   - docker
@@ -30,11 +30,11 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 **Note**: The credential files are _sensitive_ and should be safe-guarded. Do not check them in to source control.
 
-**Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/).
+**Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with Kubernetes and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/) or [Getting started with Docker Swarm and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster-with-cli/).
 
 ### Prerequisite
 
-A Carina account. If you do not already have one, create a free account (no credit card required) by following the [sign up process](https://app.getcarina.com/app/signup).
+A Carina account. If you do not already have one, create a free account by following the [sign up process](https://app.getcarina.com/app/signup).
 
 ### Create a cluster
 
@@ -72,7 +72,7 @@ To connect to your cluster, use the appropriate instructions for the cluster typ
 ### Connect to a Docker Swarm cluster
 
 Connect to your cluster by first installing the Docker Version Manager (dvm)
-and then configuring `docker` to use the cluster credentials.
+and then configuring the Docker client to use the cluster credentials.
 
 If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
@@ -103,7 +103,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
 
 1. From the output, copy the commands to load `dvm` from the output, and then paste and run them to finalize the installation.
 
-1. Configure `docker`.
+1. Configure the Docker client with `dvm`.
 
     On Linux and Mac OS X, run the following commands:
 
@@ -124,7 +124,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     Now using Docker 1.11.2
     ```
 
-1. Connect to your cluster and display information about it.
+1. Use `docker` to connect to your cluster and display information about it.
 
     ```bash
     $ docker info

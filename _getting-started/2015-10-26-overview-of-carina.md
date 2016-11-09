@@ -22,7 +22,7 @@ Carina is built on the open-source Docker Swarm project.  It exposes the Docker 
 
 You also have access to an intuitive user interface (UI), a command-line interface (CLI), and Carina specific developer tooling, in addition to the ecosystem of tools already compatible with the Docker API. You also have access to a wealth of documentation, from getting started guides to detailed tutorials and best practices. If you need help, you can access community support directly from other developers.
 
-The path from creating a free account (no credit card required) to running a containerized application on a cluster takes under two minutes. You will use open-source software like Docker to compose your applications. And because the infrastructure is managed by Carina, you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business, and your applications.
+The path from creating a free account to running a containerized application on a cluster takes under two minutes. You will use open-source software like Docker to compose your applications. And because the infrastructure is managed by Carina, you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business, and your applications.
 
 ### How does Carina work?
 
@@ -76,7 +76,7 @@ Carina has an intuitive UI that you can use to control clusters from your web br
 
 #### The CLI
 
-Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with the Carina CLI]({{ site.baseurl }}/docs/getting-started/getting-started-carina-cli/) to learn more.
+Carina has a CLI that you can use to control clusters from a terminal or scripts. You can easily automate cluster creation and growth from the command line. The CLI is available on all operating systems as a single file executable which makes installation easy and painless. Go to [Getting started with Docker Swarm and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster-with-cli/) to learn more.
 
 ### Resources
 
@@ -90,4 +90,4 @@ Carina has a CLI that you can use to control clusters from a terminal or scripts
 
 ### Next step
 
-Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/) or [Getting started with Kubernetes]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster/).

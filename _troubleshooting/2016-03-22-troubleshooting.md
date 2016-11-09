@@ -23,7 +23,7 @@ Get http:///var/run/docker.sock/v1.20/info: dial unix /var/run/docker.sock: no s
 * Is your docker daemon up and running?
 ```
 
-To resolve this error, ensure that you have gone through each step of [Connect to your cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster).
+To resolve this error, ensure that you have gone through each step of [Connect to your cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster).
 
 ### Error response from daemon: client and server don't have same version
 
@@ -189,6 +189,6 @@ To resolve this error, upgrade PowerShell to version 3 or above.
 * [Error running interactive Docker shell on Windows]({{ site.baseurl }}/docs/troubleshooting/troubleshooting-cannot-enable-tty-mode-on-windows/)
 
 [dvm]: {{site.baseurl}}/docs/reference/docker-version-manager/
-[carina-creds]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
+[carina-creds]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster
 [rebuild]: {{site.baseurl}}/docs/reference/faq/#how-do-i-rebuild-a-cluster
 [rebuild-do]: {{site.baseurl}}/docs/reference/faq/#what-does-the-cluster-rebuild-action-do

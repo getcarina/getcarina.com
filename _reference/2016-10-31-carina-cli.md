@@ -2,6 +2,7 @@
 title: Carina CLI
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2016-10-31
+featured: true
 permalink: docs/reference/carina-cli/
 description: Manage your Carina clusters with the Carina CLI
 topics:
@@ -14,7 +15,8 @@ The Carina client is a cross-platform command-line tool for managing your Carina
 clusters. The client can communicate with both Rackspace Public Cloud and Private Cloud.
 
 This is the full documentation for the Carina client. For specific information about
-getting started, see [Getting started with the Carina CLI]({{ site.base_url }}/docs/getting-started/getting-started-carina-cli/).
+getting started, see [Getting started with Docker swarm and the Carina CLI]({{ site.base_url }}/docs/getting-started/create-swarm-cluster-with-cli/)
+or [Getting started with Kubernetes and the Carina CLI]({{ site.base_url }}/docs/getting-started/create-kubernetes-cluster-with-cli/).
 The source code is located at [https://github.com/getcarina/carina](https://github.com/getcarina/carina).
 Feedback, bug reports, and pull requests are welcome!
 
@@ -31,7 +33,12 @@ Feedback, bug reports, and pull requests are welcome!
 * [View user quotas](#view-user-quotas)
 * [Generate bash completion](#generate-bash-completion)
 
+### Install
 {% include install-carina.md %}
+
+### Upgrade
+If you installed the `carina` CLI with a package manager, use the appropriate upgrade command.
+Otherwise, repeat the manual installation instructions in the preceding section.
 
 ### Configure
 You can configure the Carina client to authenticate to Carina in multiple ways:

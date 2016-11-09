@@ -137,4 +137,4 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next
 
-For further information on how to get up and running with Carina, read [Getting Started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+For further information on how to get up and running with Carina, read [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/).
