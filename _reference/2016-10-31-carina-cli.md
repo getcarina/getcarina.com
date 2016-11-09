@@ -110,6 +110,8 @@ You can save credentials under a profile name in the `~/.carina/config.toml` fil
 then specify that profile name with the `--profile` flag—for example, `carina --profile cloud1`.
 The file is in the [TOML file format](https://github.com/toml-lang/toml) and is not encrypted.
 
+**Note**: When using profiles, flags and ambient environment variables are ignored.
+
 Following is a sample configuration file:
 
 ```toml
