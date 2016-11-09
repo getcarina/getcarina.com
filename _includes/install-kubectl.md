@@ -1,4 +1,4 @@
-To download and install the Kubernetes client, use the appropriate instructions for your operating system.
+To download and install the Kubernetes client (`kubectl`), use the appropriate instructions for your operating system.
 
 #### Mac OS X with Homebrew
 

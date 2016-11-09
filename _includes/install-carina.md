@@ -11,7 +11,7 @@ $ brew install carina
 
 #### Linux and Mac OS X without Homebrew
 
-Open a terminal and run the following commands:
+Open a terminal, and then run the following commands:
 
 ```bash
 $ curl -L https://download.getcarina.com/carina/latest/$(uname -s)/$(uname -m)/carina -o carina
@@ -30,7 +30,9 @@ Open PowerShell, and then run the following command:
 #### Windows without Chocolatey
 
 PowerShell performs the initial installation; you can use the `carina` CLI with PowerShell
-or CMD after it is installed. Open PowerShell and run the following command (for 64-bit systems):
+or CMD after it is installed.
+
+Open PowerShell, and then run the following command (for 64-bit systems):
 
 ```powershell
 > iwr 'https://download.getcarina.com/carina/latest/Windows/x86_64/carina.exe' -OutFile carina.exe

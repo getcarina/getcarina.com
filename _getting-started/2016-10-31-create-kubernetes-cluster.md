@@ -12,10 +12,10 @@ topics:
   - beginner
 ---
 
-This tutorial shows you how to get your first containerized application running on Kubernetes in a minimal amount of time.
-No prior knowledge of containers, or Kubernetes is necessary.
+This tutorial demonstrates how to run your first containerized application on Kubernetes in a minimal amount of time.
+No prior knowledge of containers or Kubernetes is necessary.
 
-**Note**: This guide uses the website to create a cluster. To use the command-line interface, see [Getting started with Kubernetes and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/).
+**Note**: This tutorial uses the website to create a cluster. To use the command-line interface, see [Getting started with Kubernetes and the Carina CLI]({{ site.baseurl }}/docs/getting-started/create-kubernetes-cluster-with-cli/).
 
 ### Sign up for Carina
 
@@ -34,27 +34,14 @@ A cluster is a pool of compute, storage, and networking resources that serves as
 
 1. On the Create Cluster page, enter a name for the cluster. For example, `mycluster`.
 
-1. Select Kubernetes for the cluster type.
+1. For the cluster type, select **Kubernetes**.
 
 1. Click **Create Cluster**.
 
 After a few moments, your cluster reaches a status of **active**.
 
 ### Download the cluster credentials
-
-The cluster credentials and configuration are a set of files that allow you to securely access your cluster.
-
-1. On the Carina Control Panel, click the cluster name.
-
-1. On the Cluster Details page, click the **Actions** button, and then click **Download Credentials**.
-
-1. Save the zip file to a location on your computer. For example, the `Downloads` folder.
-
-    The name of the zip file is the same as the name of your cluster.
-
-1. Unzip the file.
-
-    The name of the directory that is created is the same as the name of the cluster. For example, `Downloads/mycluster`.
+{% include manual-credentials-download.md %}
 
 ### Connect to your cluster
 
@@ -88,6 +75,7 @@ If you have any problems, see the [Troubleshooting](#troubleshooting) section.
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
+### Run your first application on Kubernetes
 {% include getting-started-with-kubernetes.md %}
 
 ### Next steps

@@ -1,5 +1,3 @@
-### Run your first application on Kubernetes
-
 Run a WordPress blog with a MySQL database.
 
 1. Identify the IP address of the cluster. In the following example, the cluster IP address is `23.253.149.70`.
@@ -54,7 +52,8 @@ Run a WordPress blog with a MySQL database.
 
 1. *(Optional)* Remove your WordPress site.
 
-    If you aren't going to use your WordPress site, we recommend that you remove it. This will delete any data and any posts you've made in the WordPress site.
+    If you aren't going to use your WordPress site, we recommend that you remove it.
+    Removing it deletes any data and any posts that you've made in the site.
 
     ```bash
     $ kubectl delete service wordpress mysql

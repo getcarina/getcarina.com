@@ -1,4 +1,7 @@
-To download and install the Docker Version Manager (dvm), use the appropriate instructions for your operating system. Copy the command to load `dvm` from the output, and then paste and run them to finalize the installation.
+The Docker Version Manager (`dvm`) is a cross-platform command-line tool that helps you install and switch between Docker clients.
+
+To download and install the Docker Version Manager, use the appropriate instructions for your operating system.
+Copy the commands to load `dvm` from the output, and then paste and run them to finalize the installation.
 
 #### Mac OS X with Homebrew
 
@@ -20,7 +23,9 @@ $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
 #### Windows
 
 PowerShell performs the initial installation; you can use dvm with PowerShell or
-CMD after it is installed. Open a PowerShell command prompt and execute the following command:
+CMD after it is installed.
+
+Open PowerShell, and then run the following command:
 
 ```powershell
 > iwr 'https://download.getcarina.com/dvm/latest/install.ps1' -UseBasicParsing | iex

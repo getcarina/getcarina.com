@@ -1,5 +1,3 @@
-### Run your first application
-
 Run a WordPress blog with a MySQL database on an overlay network.
 
 1. Create a network to connect your containers.
@@ -9,7 +7,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
     ec98e17a760b82b5c0857e2e0d561019af67ef790170fac8413697d5ee183288
     ```
 
-    The output of this `docker network create` command is your network ID.
+    The output is your network ID.
 
 1. Run a MySQL instance in a container.
 
@@ -18,7 +16,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
     ab8ca480c46d10143217c0ee323f8420b6ab93737033c937c2f4dbf8578435bb
     ```
 
-    The output of this `docker run` command is your running MySQL container ID.
+    The output is the MySQL container ID.
 
 1. Run a WordPress instance in a container.
 
@@ -27,7 +25,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
     6770c91929409196976f5ad30631b0f2836cd3d888c39bb3e322e0f60ca7eb18
     ```
 
-    The output of this `docker run` command is your running WordPress container ID.
+    The output is the WordPress container ID.
 
 1. Verify that your run was successful by viewing your running containers.
 
@@ -38,7 +36,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
     ab8ca480c46d        mysql:5.6           "/entrypoint.sh mysql"   6 minutes ago        Up 6 minutes        3306/tcp                     57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/mysql,57d513b9-ed36-487d-8415-4ac65b6d41a8-n1/wordpress/mysql
     ```
 
-    The output of this `docker ps` command is your running containers.
+    The output is a list of your running containers.
 
 1. View your WordPress site by running the following command and pasting the result into the address bar of a browser.
 
@@ -47,11 +45,12 @@ Run a WordPress blog with a MySQL database on an overlay network.
     104.130.0.124:80
     ```
 
-    The output of this `docker port` command is the IP address and port that WordPress is using.
+    The output is the IP address and port that WordPress is using.
 
 1. *(Optional)* Remove your WordPress site.
 
-    If you aren't going to use your WordPress site, we recommend that you remove it. Doing so removes both your WordPress and MySQL containers. This will delete any data and any posts you've made in the WordPress site.
+    If you aren't going to use your WordPress site, we recommend that you remove it.
+    Removing it deletes any data and any posts that you've made in the site.
 
     ```bash
     $ docker rm --force --volumes wordpress mysql
@@ -59,7 +58,7 @@ Run a WordPress blog with a MySQL database on an overlay network.
     mysql
     ```
 
-    The output of this `docker rm` command are the names of the WordPress and MySQL containers that you removed.
+    The output are the names of the WordPress and MySQL containers that you removed.
 
 ### Congratulations!
 
