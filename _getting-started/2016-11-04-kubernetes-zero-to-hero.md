@@ -11,12 +11,9 @@ topics:
   - beginner
 ---
 
-## Prerequisities
+## Prerequisites
 
-- A running cluster. To set up follow our tutorial to create a cluster through
-  [the UI](./create-kubernetes-cluster) or [CLI](./create-kubernetes-cluster-with-cli).
-
-- Kubectl installed and configured.
+- [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster#prerequisite)
 
 # Secrets
 
@@ -185,7 +182,7 @@ $ cat > mysql_deployment.yaml <<EOL
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: wordpress-mysql
+  name: mysql
   labels:
     app: wordpress
 spec:
@@ -216,7 +213,7 @@ $ cat > mysql_deployment.yaml <<EOL
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: wordpress-mysql
+  name: mysql
   labels:
     app: wordpress
 spec:
@@ -252,7 +249,7 @@ EOL
 
 A lot is going on here, so let's break it down piece by piece:
 
-* We are creating a `Deployment` resource named `wordpress-mysql`. You will
+* We are creating a `Deployment` resource named `mysql`. You will
   notice that the API version is not `v1`, but `extensions/v1beta1`. This means
   it is a beta extension.
 
@@ -298,7 +295,7 @@ Now you are ready to create it:
 
 ```bash
 $ kubectl create -f mysql_deployment.yaml
-deployment "wordpress-mysql" created
+deployment "mysql" created
 ```
 
 To verify that the resources have been created, run:
@@ -306,7 +303,12 @@ To verify that the resources have been created, run:
 ```bash
 $ kubectl get deployments
 NAME              DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-wordpress-mysql   1         1         1            0           5s
+mysql             1         1         1            1           5s
+```
+```bash
+$ kubectl get pods
+NAME                               READY     STATUS    RESTARTS   AGE
+mysql-2454340998-3ugcb   1/1       Running   0          29s
 ```
 
 ### Service
@@ -322,7 +324,7 @@ $ cat > mysql_service.yaml <<EOL
 apiVersion: v1
 kind: Service
 metadata:
-  name: wordpress-mysql
+  name: mysql
   labels:
     app: wordpress
 spec:
@@ -335,7 +337,7 @@ spec:
 EOL
 ```
 
-You are creating a Service named `wordpress-mysql` which, like the previous
+You are creating a Service named `mysql` which, like the previous
 resources, has an `app` label which helps categorise what it is used for.
 
 The `ports` section declares which ports this service listens on, in this
@@ -352,7 +354,7 @@ sets up a DNS A record for each Pod which this Service resource represents.
 
 ```bash
 $ kubectl create -f mysql_service.yaml
-service "wordpress-mysql" created
+service "mysql" created
 ```
 
 To test it was created:
@@ -361,7 +363,7 @@ To test it was created:
 $ kubectl get services
 NAME              CLUSTER-IP   EXTERNAL-IP   PORT(S)    AGE
 kubernetes        10.32.0.1    <none>        443/TCP    9m
-wordpress-mysql   None         <none>        3306/TCP   28s
+mysql             None         <none>        3306/TCP   28s
 ```
 
 ### Test
@@ -369,8 +371,21 @@ wordpress-mysql   None         <none>        3306/TCP   28s
 To test that MySQL is up-and-running, we can run a MySQL client pod like so:
 
 ```bash
-$ kubectl run mysql-client --rm -i --tty --image=mysql -- mysql -hwordpress-mysql -uroot -p$MYSQL_PASSWORD
-> show tables;
+$ kubectl run mysql-client --rm -i --tty --image=mysql -- mysql -hmysql -uroot -p$MYSQL_PASSWORD
+Waiting for pod default/mysql-client-285651661-owq8j to be running, status is Pending, pod ready: false
+Waiting for pod default/mysql-client-285651661-owq8j to be running, status is Pending, pod ready: false
+Waiting for pod default/mysql-client-285651661-owq8j to be running, status is Pending, pod ready: false\
+
+Hit enter for command prompt
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
 > exit;
 ```
 
@@ -419,7 +434,7 @@ $ kubectl create -f wp_pvc.yaml
 The next step is to create the deployment manifest file:
 
 ```bash
-$ cat > wp_deployment.yaml EOL
+$ cat > wp_deployment.yaml <<EOL
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -440,7 +455,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          value: mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -473,7 +488,7 @@ spec:
         name: wordpress
         env:
         - name: WORDPRESS_DB_HOST
-          value: wordpress-mysql
+          value: mysql
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -498,12 +513,19 @@ This Deployment is very similar to the MySQL resource, just with a different
  `WORDPRESS_DB_HOST` environment variable which refers to the hostname of the
  MySQL pod you previously created.
 
+To create:
+
+```bash
+$ kubectl create -f wp_deployment.yaml
+deployment "mysql" created
+```
+
 ### Service
 
 The finale step is to create the WordPress service manifest:
 
 ```bash
-$ cat > wp_service.yaml EOL
+$ cat > wp_service.yaml <<EOL
 apiVersion: v1
 kind: Service
 metadata:
@@ -531,14 +553,34 @@ the service itself. The `nodePort: 80` definition means that the host will
 proxy traffic from its own port 80 and forward on to pods associated with this
 service (which are themselves listening on port 80).
 
+To create:
+
+```bash
+$ kubectl create -f wp_service.yaml
+You have exposed your service on an external port on all nodes in your
+cluster.  If you want to expose this service to the external internet, you may
+need to set up firewall rules for the service port(s) (tcp:80) to serve traffic.
+
+See http://releases.k8s.io/release-1.2/docs/user-guide/services-firewalls.md for more details.
+service "wordpress" created
+```
+
 # Test out your live blog
 
 To verify that everything is working, open up a browser and go to your
 node's IP address, like so:
 
 ```bash
-$ open http://$(kubectl get pod wordpress --template={% raw %}{{.status.hostIP}}){% endraw %}
+$ open http://`kubectl cluster-info | awk 'NF>1{print $NF}' | head -n 1`
 ```
 
 You should see the WordPress installation screen. And there you have it! You
 have a live blog running on a managed Kubernetes cluster in Carina.
+
+# (_Optional_) Remove your WordPress site
+
+If you aren't going to use your WordPress site, we recommend that you remove it. Removing it deletes any data and any posts that you've made in the site.
+
+```
+$ kubectl delete deploy/wordpress deploy/mysql svc/wordpress svc/mysql secrets/mysql-pass
+```
