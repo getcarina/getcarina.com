@@ -85,7 +85,6 @@ Carina has a CLI that you can use to control clusters from a terminal or scripts
 * [Carina community forums](https://community.getcarina.com)
 * [Understanding how Carina uses Docker Swarm]({{ site.baseurl }}/docs/concepts/docker-swarm-carina/)
 * [Use overlay networks in Carina]({{ site.baseurl }}/docs/tutorials/overlay-networks/)
-* [Autoscaling resources in Carina]({{ site.baseurl }}/docs/reference/autoscaling-carina/)
 * [Glossary]({{ site.baseurl }}/docs/reference/glossary/)
 
 ### Next step
