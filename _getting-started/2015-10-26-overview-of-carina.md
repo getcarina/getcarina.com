@@ -22,7 +22,7 @@ Carina is built on the open-source Docker Swarm and Kubernetes projects.  It exp
 
 You also have access to an intuitive user interface (UI), a command-line interface (CLI), and Carina specific developer tooling, in addition to the ecosystem of tools already compatible with the Docker and Kubernetes APIs. You also have access to a wealth of documentation, from getting started guides to detailed tutorials and best practices. If you need help, you can access community support directly from other developers.
 
-The path from creating a free account (no credit card required) to running a containerized application on a cluster takes under two minutes. You will use open-source software to compose your applications. And because the infrastructure is managed by Carina, you can take advantage of features like autoscaling. Now you can focus on what's important to you, your business, and your applications.
+The path from creating a free account to running a containerized application on a cluster takes under two minutes. You will use open-source software to compose your applications. Now you can focus on what's important to you, your business, and your applications.
 
 ### How does Carina work?
 
@@ -30,7 +30,8 @@ Carina provisions Docker Swarm and Kubernetes clusters for you to run your conta
 
 The following diagram shows a high level overview of Carina's architecture and key components.
 
-![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
+![Docker Swarm overview]({% asset_path overview-of-carina/swarm-cluster.svg %})
+![Kubernetes overview]({% asset_path overview-of-carina/kubernetes-cluster.svg %})
 
 #### Docker
 
@@ -52,7 +53,7 @@ Nodes are created by Carina. You use the Carina UI or the Carina CLI to issue gr
 
 For Docker Swarm clusters, nodes are composed of a Swarm agent, a Docker Engine, and your Docker containers. The Swarm agent accepts commands from the Swarm manager to run containers on its node. It then communicates with the Docker Engine to actually run the containers. The Docker Engine is a container runtime that builds and runs your Docker containers.
 
-For Kubernetes clusters, masters are composed of the Kubernetes API, the scheduler and the controller. Nodes are composed of the kubelet and kube-proxy services that allows them to host Pods and other Kubernetes resources.
+For Kubernetes clusters, masters are composed of the Kubernetes API, the scheduler and the controller. Nodes are composed of the kubelet and kube-proxy services that allows them to host Pods and other Kubernetes resources. For now, new Kubernetes clusters will be configured on a single node, so that the master and node are on the same LXC instance.
 
 #### Docker containers
 
@@ -63,14 +64,6 @@ Containers are composed of your applications, their configuration, and anything 
 #### Overlay networks
 
 An overlay network provides isolation for containers to communicate across all of the nodes in your cluster on Carina. Overlay networks add another layer of security to your application deployments and make it easier for your containers to communicate with one another. An isolated network for containers that ensures only the services of your choice are exposed outside of your system reduces the attack surface for your applications.
-
-<!-- #### Autoscaling
-
-Because the infrastructure is managed by Carina, you can choose to turn on autoscaling for your clusters. If you do, every cluster is monitored on a ten-minute interval. If a cluster needs resources, additional nodes are automatically added.
-
-If you want to control this behavior more closely, you can provide Carina with scheduler hints like reserving memory for your containers. The automated scaling action is triggered when either 80 percent of either reserved memory or CPU is being consumed. To avoid data loss, the cluster is never scaled down and nodes are never deleted automatically.
-
-Alternatively, you can manually scale a cluster through the control interfaces. -->
 
 ### The control interfaces
 
