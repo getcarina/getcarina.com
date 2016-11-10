@@ -15,8 +15,6 @@ Today on behalf of the entire Carina and Rackspace teams, I'm proud to introduce
 
 This is an open, free Beta designed for developers. Signup is fast, no credit card is required, and you can get started using containers via Docker and Docker Swarm in under a minute.
 
-<!-- more -->
-
 [Carina] is designed with you—developers and operators—in mind. We've focused on the developer experience, from our comprehensive tutorials, to a [command line interface] that is easy to [get started] with, to a streamlined user interface.
 
 You're going to want to take a look at three key tutorials:
@@ -31,7 +29,7 @@ Your containers run in a bare-metal libvirt/LXC environment, which avoids the "h
 Quite simply Carina is a lightweight provisioning system for securely deploying container orchestration environments (COEs). When you "get" a cluster, you get direct access to Docker Swarm. Later, other COEs such as Kubernetes, and other "surfaces" (virtual machines vs. libvirt/lxc) will be supported.
 
 Here's a diagram!
-![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})
+![Carina overview]({% asset_path overview-of-carina/swarm-cluster.svg %})
 
 ## End to End experience
 

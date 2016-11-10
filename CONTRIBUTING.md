@@ -91,7 +91,7 @@ If an article or post requires a diagram, follow these steps:
 4. In your content file, add your diagram by using this syntax: `![<titleOfDiagram>]({% asset_path
 <articleName>/<nameOfDiagramFile> %})`. `asset_path` is relative to the `_assets/img` directory.
 
-    Example: `![Carina overview]({% asset_path overview-of-carina/carina-cluster.svg %})`
+    Example: `![Carina overview]({% asset_path overview-of-carina/swarm-cluster.svg %})`
 
 ### Visuals
 
