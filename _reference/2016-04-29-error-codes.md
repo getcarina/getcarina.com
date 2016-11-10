@@ -60,3 +60,11 @@ You attempted to delete an infrastructure container needed by Carina. This actio
 your cluster from working properly.
 
 To resolve this error, do not run `docker rm` on this container.
+
+### CARINA-1006
+
+`Setting ipc=host not allowed by policy`
+
+You attempted to run a container with the IPC namespace set to "host". This action is not allowed in Carina because of security restrictions. For more information, see [Understanding how Carina uses Docker Swarm][docker-swarm-carina]. 
+
+To resolve this error, do not use the `--ipc=host` flag.
