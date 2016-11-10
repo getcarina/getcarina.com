@@ -537,7 +537,7 @@ To verify that everything is working, open up a browser and go to your
 node's IP address, like so:
 
 ```bash
-$ open http://$(kubectl get pod wordpress --template={{.status.hostIP}})
+$ open http://$(kubectl get pod wordpress --template={% raw %}{{.status.hostIP}}){% endraw %}
 ```
 
 You should see the WordPress installation screen. And there you have it! You
