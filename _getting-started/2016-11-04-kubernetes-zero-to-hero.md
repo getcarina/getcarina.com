@@ -58,7 +58,7 @@ NAME                  TYPE                                  DATA      AGE
 default-token-ea4vq   kubernetes.io/service-account-token   3         6m
 mysql-pass            Opaque                                1         15s
 ```
-
+<!--
 # Persistent volumes
 
 In order for your data to live beyond the lifecycle of pods (which are
@@ -127,10 +127,10 @@ $ kubectl get persistentvolumes
 NAME      CAPACITY   ACCESSMODES   STATUS      CLAIM     REASON    AGE
 pv-1      20Gi       RWO           Available                       12s
 pv-2      20Gi       RWO           Available                       11s
-```
+``` -->
 
 # Launch MySQL
-
+<!--
 ## PersistentVolumeClaim
 
 In order for your MySQL database to be stateful, it needs guaranteed access to
@@ -171,7 +171,7 @@ And to verify it was created:
 $ kubectl get persistentvolumeclaims
 NAME             STATUS    VOLUME    CAPACITY   ACCESSMODES   AGE
 mysql-pv-claim   Bound     pv-1      20Gi       RWO           13s
-```
+``` -->
 
 ## Deployment
 
@@ -209,6 +209,37 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
+EOL
+```
+<!-- ```bash
+$ cat > mysql_deployment.yaml <<EOL
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wordpress-mysql
+  labels:
+    app: wordpress
+spec:
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        ports:
+        - containerPort: 3306
+          name: mysql
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
@@ -217,7 +248,7 @@ spec:
         persistentVolumeClaim:
           claimName: mysql-pv-claim
 EOL
-```
+``` -->
 
 A lot is going on here, so let's break it down piece by piece:
 
@@ -252,7 +283,7 @@ A lot is going on here, so let's break it down piece by piece:
 * A port mapping is specified for the container too, and allows the 3306 port
   on the container to receive traffic from the pod.
 
-* The final detail to notice is how volumes are used. The last `volumes` key
+<!-- * The final detail to notice is how volumes are used. The last `volumes` key
   specifies all of the volumes used by containers in the pod. The pod
   references its persistent volume claim (a Kubernetes resource which
   guarantees storage for a Pod), in this case the one we made in the previous
@@ -261,7 +292,7 @@ A lot is going on here, so let's break it down piece by piece:
   Once this defined, the Docker container itself then has a volume to mount.
   This mount is defined by the `volumeMounts` key. It references the name of
   the volume in the pod, and also specifies the path in the container where it
-  should be mounted to.
+  should be mounted to. -->
 
 Now you are ready to create it:
 
@@ -352,8 +383,9 @@ to internal cluster IPs.
 # Configure WordPress
 
 The set up stage for WordPress is almost identical to MySQL. First we create a
-PersistentVolumeClaim, then a Deployment, and finally a Service.
+Deployment and then a Service.
 
+<!--
 ### PersistentVolumeClaim
 
 First save the manifest to a file:
@@ -380,13 +412,46 @@ just with a different esource name. To create it:
 
 ```bash
 $ kubectl create -f wp_pvc.yaml
-```
+``` -->
 
 ### Deployment
 
 The next step is to create the deployment manifest file:
 
 ```bash
+$ cat > wp_deployment.yaml EOL
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: wordpress
+  labels:
+    app: wordpress
+spec:
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        tier: frontend
+    spec:
+      containers:
+      - image: wordpress:4.4-apache
+        name: wordpress
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: wordpress-mysql
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-pass
+              key: password
+        ports:
+        - containerPort: 80
+          name: wordpress
+EOL
+```
+<!-- ```bash
 $ cat > wp_deployment.yaml EOL
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -425,7 +490,7 @@ spec:
         persistentVolumeClaim:
           claimName: wp-pv-claim
 EOL
-```
+``` -->
 
 This Deployment is very similar to the MySQL resource, just with a different
  resource `name`, `labels` and container spec. The Docker container specification
