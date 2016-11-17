@@ -11,43 +11,43 @@ topics:
   - beginner
 ---
 
-## Prerequisites
+In this tutorial you will learn the basics of Kubernetes and be introduced to the concepts that make up a functional Kubernetes cluster. No previous experience with Kubernetes is assumed, but by the end of this tutorial, you will have deployed a secure, multi-component blog application running WordPress and MySQL.
 
-- [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster#prerequisite)
+## Prerequisite
 
-# Secrets
+[Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster#prerequisite)
 
-Most web applications have to deal with the problem of storing secrets or
-credentials in a safe, appropriate manner. Kubernetes makes this storage
-very easy and actually offers a dedicated `Secret` resource to represent them.
+## Store secrets
+
+Most web applications must store secrets or credentials in a safe, appropriate manner. Kubernetes makes this storage easy and offers a dedicated `Secret` resource to represent your credentials.
 
 In your WordPress application, the only secret that requires secure storage
 is the MySQL password.
 
-## Generate secure password
+### Generate a secure password
 
-If you do not have a secure password already, you can generate one like so:
+If you do not have a secure password already, you can generate one as follows:
 
 ```bash
 $ export MYSQL_PASSWORD=$(base64 < /dev/random | head -c 30)
 ```
 
-If you do already have a password, set it like so:
+If you already have a password, set it as follows:
 
 ```bash
 $ export MYSQL_PASSWORD="..."
 ```
 
-## Create secret resource
+### Create a Secret resource
 
-To store the password value in Kubernetes, you run:
+To store the password value in Kubernetes, run the following command:
 
 ```bash
 $ kubectl create secret generic mysql-pass --from-literal password=$MYSQL_PASSWORD
 secret "mysql-pass" created
 ```
 
-and to verify it was created, you can run:
+To verify that the `Secret` resource was created, run the following command:
 
 ```bash
 $ kubectl get secrets
@@ -126,7 +126,10 @@ pv-1      20Gi       RWO           Available                       12s
 pv-2      20Gi       RWO           Available                       11s
 ``` -->
 
-# Launch MySQL
+## Launch MySQL
+
+In this section, you will create the database used by WordPress to store state.
+
 <!--
 ## PersistentVolumeClaim
 
@@ -170,12 +173,12 @@ NAME             STATUS    VOLUME    CAPACITY   ACCESSMODES   AGE
 mysql-pv-claim   Bound     pv-1      20Gi       RWO           13s
 ``` -->
 
-## Deployment
+### Create a Deployment resource
 
-The first step you need to take next is launching a `Deployment` resource. A
-deployment resource is a way to declaratively manage Pods and ReplicaSets. You
-describe the desired state of a pod set, and the controller will automatically
-manage it for you, instead of you doing it manually.
+The next step is launching a `Deployment` resource. A `Deployment` resource is a way to declaratively manage pods and Replica Sets. You describe the required state of a group of pods, and the controller automatically
+manages it for you, instead of you doing it manually.
+
+You create a manifest file for the `Deployment` resource, as shown in the following example. An explanation of the parts of the file follows the example.
 
 ```bash
 $ cat > mysql_deployment.yaml <<EOL
@@ -247,38 +250,21 @@ spec:
 EOL
 ``` -->
 
-A lot is going on here, so let's break it down piece by piece:
+Let's look at each part of the file:
 
-* We are creating a `Deployment` resource named `mysql`. You will
-  notice that the API version is not `v1`, but `extensions/v1beta1`. This means
-  it is a beta extension.
+* The `Deployment` resource is named `mysql`.  Note that the API version is not `v1`, but `extensions/v1beta1`. This means that it is a beta extension.
 
-* We are assigning the resource a custom `app` label which describes what the
-  database pod is for: it is a member of a group of pods that makes up an
-  app named `wordpress`. You can assign additional labels if you wish that
-  provide granular levels of identity to the deployment, such as `tier=backend`
-  or `db_type=mysql`.
+* The resource is assigned a custom `app` label, which describes the purpose of the database pod; it is a member of a group of pods that makes up an app named `wordpress`. You can assign additional labels that provide granular levels of identity to the deployment, such as `tier=backend` or `db_type=mysql`.
 
-* The `strategy` of a Deployment refers to the strategy used to replace old
-  Pods by new ones. The allowed values are `RollingUpdate` (the default) or
-  `Recreate`. The former allows for you to gracefully roll out new pods without
-  service disruption, and the latter is a more simple mechanism which kills
-  existing pods before new ones are created.
+* The `strategy` of a deployment refers to the strategy used to replace old pods by new ones. The allowed values are `RollingUpdate` (the default) or `Recreate`. The former enables you to gracefully roll out new pods without service disruption, and the latter is a simple mechanism that deletes existing pods before new ones are created.
 
-* All pods for this Deployment are also assigned labels. In this case, they
-  are assigned an additional `tier` label.
+* All pods for this deployment are assigned labels. In this case, they are assigned an additional `tier` label.
 
-* There is a single Docker container per pod, named `mysql` and based off the
-  `mysql:5.6` Docker image.
+* There is a single Docker container per pod, named `mysql` and based on the `mysql:5.6` Docker image.
 
-* One environment variable, named `MYSQL_ROOT_PASSWORD`, is specified for the
-  Docker container. Its value is retrieved from the Secret resource you created
-  earlier in this article. You specify this relation with `secretKeyRef`. The
-  `name` refers to the name of the Secret resource (`mysql-pass`) and `key`
-  refers to the key assigned in the resource which holds the password (`password`).
+* One environment variable, `MYSQL_ROOT_PASSWORD`, is specified for the Docker container. Its value is retrieved from the `Secret` resource that you created earlier in this article. You specify this relationship with `secretKeyRef`. The `name` refers to the name of the `Secret` resource (`mysql-pass`) and `key` refers to the key assigned in the resource that holds the password (`password`).
 
-* A port mapping is specified for the container too, and allows the 3306 port
-  on the container to receive traffic from the pod.
+* A port mapping is specified for the container too, and allows the 3306 port on the container to receive traffic from the pod.
 
 <!-- * The final detail to notice is how volumes are used. The last `volumes` key
   specifies all of the volumes used by containers in the pod. The pod
@@ -291,14 +277,14 @@ A lot is going on here, so let's break it down piece by piece:
   the volume in the pod, and also specifies the path in the container where it
   should be mounted to. -->
 
-Now you are ready to create it:
+Now you can create the `Deployment` resource:
 
 ```bash
 $ kubectl create -f mysql_deployment.yaml
 deployment "mysql" created
 ```
 
-To verify that the resources have been created, run:
+To verify that the resources were created, run the following commands:
 
 ```bash
 $ kubectl get deployments
@@ -311,13 +297,12 @@ NAME                               READY     STATUS    RESTARTS   AGE
 mysql-2454340998-3ugcb   1/1       Running   0          29s
 ```
 
-### Service
+### Create a Service resource
 
-The final resource that needs to be created is the service. A service is the
-front-end load balancer that accepts traffic and routes to an available pod.
-The name of the service serves as its hostname, allowing for easy service
-discovery within the cluster, allowing you to avoid hard-coding the internal
-IPv4s of pods.
+The final resource to create is the service. A service is the front-end load balancer that accepts traffic and routes to an available pod. The name of the service serves as its hostname, allowing for easy service
+discovery within the cluster, which enables you to avoid hardcoding the internal IPv4 addresses of pods.
+
+You create a manifest file for the Service resource, as shown in the following example. An explanation of the parts of the file follows the example.
 
 ```bash
 $ cat > mysql_service.yaml <<EOL
@@ -337,27 +322,24 @@ spec:
 EOL
 ```
 
-You are creating a Service named `mysql` which, like the previous
-resources, has an `app` label which helps categorise what it is used for.
+Let's look at each part of the file:
 
-The `ports` section declares which ports this service listens on, in this
-case port 3306.
+* The service is named `mysql`, and like the previous resources, it has an `app` label that helps categorize its purpose.
 
-The `selector` section declares which Pods traffic is routed to. You will
-notice that the Selector keys refer exactly to the Label keys previously
-defined on our Pods resource. This is the way services are associated with pods:
-the selector selects pods based on their labels.
+* The `ports` section declares which ports this service listens on, in this case port 3306.
 
-The `clusterIP: None` definition tells Kubernetes to not set up load balancing
-for this service or assign it a single IP. Instead, it does the bare minimum:
-sets up a DNS A record for each Pod which this Service resource represents.
+* The `selector` section declares the pods to which traffic is routed. Note that the selector keys refer exactly to the label keys previously defined in the `Deployment` resource. This is how services are associated with pods: the selector selects pods based on their labels.
+
+* The `clusterIP: None` definition tells Kubernetes not to set up load balancing for this service or assign it a single IP address. Instead, it sets up a DNS A record for each pod that this `Service` resource represents.
+
+Now you can create the Service resource:
 
 ```bash
 $ kubectl create -f mysql_service.yaml
 service "mysql" created
 ```
 
-To test it was created:
+To verify that the resource was created, run the following command:
 
 ```bash
 $ kubectl get services
@@ -366,9 +348,9 @@ kubernetes        10.32.0.1    <none>        443/TCP    9m
 mysql             None         <none>        3306/TCP   28s
 ```
 
-### Test
+### Test the MySQL connection
 
-To test that MySQL is up-and-running, we can run a MySQL client pod like so:
+To test that MySQL is running, you can run a MySQL client pod, as follows:
 
 ```bash
 $ kubectl run mysql-client --rm -i --tty --image=mysql -- mysql -hmysql -uroot -p$MYSQL_PASSWORD
@@ -389,16 +371,11 @@ mysql> show databases;
 > exit;
 ```
 
-You will notice that we can address MySQL by its service name `mysql` whilst
-inside the cluster. Any pod that has a Service associated with it is
-addressable by its service name by pods throughout the cluster. The kube-proxy
-component works in tandem with the DNS server to resolve these service names
-to internal cluster IPs.
+Note that you can address MySQL by its service name `mysql` while inside the cluster. Any pod that has a service associated with it is addressable by its service name by pods throughout the cluster. The `kube-proxy` component works in tandem with the DNS server to resolve these service names to internal cluster IP addresses.
 
-# Configure WordPress
+## Configure WordPress
 
-The set up stage for WordPress is almost identical to MySQL. First we create a
-Deployment and then a Service.
+The setup stage for WordPress is almost identical to the one for MySQL. First you create a deployment and then a service.
 
 <!--
 ### PersistentVolumeClaim
@@ -429,9 +406,9 @@ just with a different esource name. To create it:
 $ kubectl create -f wp_pvc.yaml
 ``` -->
 
-### Deployment
+### Create a Deployment resource
 
-The next step is to create the deployment manifest file:
+Create the deployment manifest file, as shown in the following example:
 
 ```bash
 $ cat > wp_deployment.yaml <<EOL
@@ -507,13 +484,9 @@ spec:
 EOL
 ``` -->
 
-This Deployment is very similar to the MySQL resource, just with a different
- resource `name`, `labels` and container spec. The Docker container specification
- uses the `wordpress:4.4-apache` Docker image and specifies an additional
- `WORDPRESS_DB_HOST` environment variable which refers to the hostname of the
- MySQL pod you previously created.
+This deployment is similar to the MySQL resource, with just a different resource name, labels, and container spec. The Docker container specification uses the `wordpress:4.4-apache` Docker image and specifies an additional `WORDPRESS_DB_HOST` environment variable, which refers to the hostname of the MySQL pod that you previously created.
 
-To create:
+To create the deployment, run the following command:
 
 ```bash
 $ kubectl create -f wp_deployment.yaml
@@ -522,7 +495,7 @@ deployment "mysql" created
 
 ### Service
 
-The finale step is to create the WordPress service manifest:
+The final step is to create the WordPress service manifest, as shown in the following example:
 
 ```bash
 $ cat > wp_service.yaml <<EOL
@@ -543,17 +516,11 @@ spec:
 EOL
 ```
 
-This service listens on port 80 and, unlike the MySQL service, does not set
-the `clusterIP` to `None`. Instead it is assigned a cluster IP and will use
-load balancing to evenly distribute traffic to its selected pods.
+This service listens on port 80 and, unlike the MySQL service, does not set the `clusterIP` value to `None`. Instead the service is assigned a cluster IP address and will use load balancing to evenly distribute traffic to its selected pods.
 
-Another key difference is that is of the `NodePort` service type. This means
-that traffic which is sent to the host node on a specified port is proxied into
-the service itself. The `nodePort: 80` definition means that the host will
-proxy traffic from its own port 80 and forward on to pods associated with this
-service (which are themselves listening on port 80).
+Another key difference is the `NodePort` service type. Traffic that is sent to the host node on a specified port is proxied into the service itself. The `nodePort: 80` definition means that the host proxies traffic from its own port 80 and forwards it to pods associated with this service (which are themselves listening on port 80).
 
-To create:
+To create the service, run the following command:
 
 ```bash
 $ kubectl create -f wp_service.yaml
@@ -565,19 +532,19 @@ See http://releases.k8s.io/release-1.2/docs/user-guide/services-firewalls.md for
 service "wordpress" created
 ```
 
-# Test out your live blog
+## Test your live blog
 
-To verify that everything is working, open up a browser and go to your
-node's IP address, like so:
+To verify that everything is working, open a browser window and go to your node's IP address, as follows:
 
 ```bash
 $ open http://`kubectl cluster-info | awk 'NF>1{print $NF}' | head -n 1`
 ```
 
-You should see the WordPress installation screen. And there you have it! You
-have a live blog running on a managed Kubernetes cluster in Carina.
+You should see the WordPress installation screen.
 
-# (_Optional_) Remove your WordPress site
+Congratulations! You have a live blog running on a managed Kubernetes cluster in Carina
+
+## Remove your WordPress site (optional)
 
 If you aren't going to use your WordPress site, we recommend that you remove it. Removing it deletes any data and any posts that you've made in the site.
 
