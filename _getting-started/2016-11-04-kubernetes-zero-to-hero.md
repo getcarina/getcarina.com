@@ -28,22 +28,25 @@ is the MySQL password.
 
 If you do not have a secure password already, you can generate one as follows:
 
+**Bash**
+
 ```bash
-$ export MYSQL_PASSWORD=$(base64 < /dev/random | head -c 30)
+$ base64 < /dev/random | head -c 30
 ```
 
-If you already have a password, set it as follows:
+**PowerShell**
 
-```bash
-$ export MYSQL_PASSWORD="..."
+```powershell
+> -join (33..126 | ForEach-Object {[char]$_} | Get-Random -Count 30)
 ```
 
 ### Create a Secret resource
 
-To store the password value in Kubernetes, run the following command:
+To store the password value in Kubernetes, run the following command, replacing `<mysqlRootPassword>`
+with a secure password:
 
 ```bash
-$ kubectl create secret generic mysql-pass --from-literal password=$MYSQL_PASSWORD
+$ kubectl create secret generic mysql-pass --from-literal password=<mysqlRootPassword>
 secret "mysql-pass" created
 ```
 
@@ -178,10 +181,9 @@ mysql-pv-claim   Bound     pv-1      20Gi       RWO           13s
 The next step is launching a `Deployment` resource. A `Deployment` resource is a way to declaratively manage pods and Replica Sets. You describe the required state of a group of pods, and the controller automatically
 manages it for you, instead of you doing it manually.
 
-You create a manifest file for the `Deployment` resource, as shown in the following example. An explanation of the parts of the file follows the example.
+Create a manifest file for the `Deployment` resource named **mysql_deployment.yaml** and populate it with the following content.
 
-```bash
-$ cat > mysql_deployment.yaml <<EOL
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -209,7 +211,6 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
-EOL
 ```
 <!-- ```bash
 $ cat > mysql_deployment.yaml <<EOL
@@ -302,10 +303,9 @@ mysql-2454340998-3ugcb   1/1       Running   0          29s
 The final resource to create is the service. A service is the front-end load balancer that accepts traffic and routes to an available pod. The name of the service serves as its hostname, allowing for easy service
 discovery within the cluster, which enables you to avoid hardcoding the internal IPv4 addresses of pods.
 
-You create a manifest file for the Service resource, as shown in the following example. An explanation of the parts of the file follows the example.
+Create a manifest file for the Service resource named **mysql_service.yaml** and populate it with the following content.
 
-```bash
-$ cat > mysql_service.yaml <<EOL
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -319,7 +319,6 @@ spec:
     app: wordpress
     tier: mysql
   clusterIP: None
-EOL
 ```
 
 Let's look at each part of the file:
@@ -408,10 +407,9 @@ $ kubectl create -f wp_pvc.yaml
 
 ### Create a Deployment resource
 
-Create the deployment manifest file, as shown in the following example:
+Create a deployment manifest file named **wp_deployment.yaml** and populate it with the following content.
 
-```bash
-$ cat > wp_deployment.yaml <<EOL
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -441,7 +439,6 @@ spec:
         ports:
         - containerPort: 80
           name: wordpress
-EOL
 ```
 <!-- ```bash
 $ cat > wp_deployment.yaml EOL
@@ -495,10 +492,9 @@ deployment "mysql" created
 
 ### Service
 
-The final step is to create the WordPress service manifest, as shown in the following example:
+The final step is to create a WordPress service manifest file named **wp_service.yaml** and populate it with the following content.
 
-```bash
-$ cat > wp_service.yaml <<EOL
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -513,7 +509,6 @@ spec:
     app: wordpress
     tier: frontend
   type: NodePort
-EOL
 ```
 
 This service listens on port 80 and, unlike the MySQL service, does not set the `clusterIP` value to `None`. Instead the service is assigned a cluster IP address and will use load balancing to evenly distribute traffic to its selected pods.
@@ -536,8 +531,16 @@ service "wordpress" created
 
 To verify that everything is working, open a browser window and go to your node's IP address, as follows:
 
+**Bash**
+
 ```bash
 $ open http://`kubectl cluster-info | awk 'NF>1{print $NF}' | head -n 1`
+```
+
+**PowerShell**
+
+```powershell
+> start "http://$($(kubectl cluster-info).Split("//")[2])"
 ```
 
 You should see the WordPress installation screen.
