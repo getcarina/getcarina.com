@@ -20,7 +20,7 @@ or [Getting started with Kubernetes and the Carina CLI]({{ site.base_url }}/docs
 The source code is located at [https://github.com/getcarina/carina](https://github.com/getcarina/carina).
 Feedback, bug reports, and pull requests are welcome!
 
-* [Install](#install-the-carina-cli)
+* [Install](#install)
 * [Upgrade](#upgrade)
 * [Configure](#configure)
 * [List templates](#list-templates)
