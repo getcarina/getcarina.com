@@ -28,6 +28,7 @@ Feedback, bug reports, and pull requests are welcome!
 * [List clusters](#list-clusters)
 * [Download credentials](#download-credentials)
 * [Load a cluster environment](#load-a-cluster-environment)
+* [Resize a cluster](#resize-a-cluster)
 * [Delete a cluster](#delete-a-cluster)
 * [View a cluster](#view-a-cluster)
 * [View user quotas](#view-user-quotas)
@@ -239,6 +240,22 @@ outputs in `powershell` or `cmd` syntax.
     ```
     > carina env <clusterName> --shell cmd
     ```
+
+### Resize a cluster
+Change the number of nodes in the cluster.
+
+```bash
+$ carina resize --nodes <nodes> <clusterName>
+ID        b5c2858a-ec65-4c05-b9a4-4d2db70b183e
+Name      mycluster
+Status    resizing
+Template  Kubernetes LXC
+Nodes     1
+Details
+```
+
+* `--nodes <nodes>`: The desired number of nodes in the cluster.
+* `--wait`: (_Optional_) Wait for the cluster to become active before exiting.
 
 ### Delete a cluster
 Delete a cluster and any downloaded credentials for the cluster.
