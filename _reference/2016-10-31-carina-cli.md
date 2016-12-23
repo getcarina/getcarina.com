@@ -108,10 +108,12 @@ for your private cloud installation](https://developer.rackspace.com/docs/privat
 
 #### Profiles
 You can save credentials under a profile name in the `~/.carina/config.toml` file, and
-then specify that profile name with the `--profile` flag—for example, `carina --profile cloud1`.
-The file is in the [TOML file format](https://github.com/toml-lang/toml) and is not encrypted.
+then specify that profile name with the `--profile`, or by setting the `CARINA_PROFILE`
+environment variable. The file is in the [TOML file format](https://github.com/toml-lang/toml)
+and is not encrypted.
 
-**Note**: When using profiles, flags and ambient environment variables are ignored.
+**Note**: When using profiles, other authentication flags and ambient environment
+variables are ignored.
 
 Following is a sample configuration file:
 
