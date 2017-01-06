@@ -222,6 +222,13 @@ Connects the `docker` or `kubectl` client to a cluster by setting
 environment variables in the current shell session. After loading the cluster
 environment, you can test the connection by running `docker info` or `kubectl cluster-info`.
 
+The following environment variables are set when you load an environment:
+
+* `CARINA_CLUSTER_NAME` helps you remember which cluster is currently connected
+* `DOCKER_HOST`, `DOCKER_CERT_PATH` and `DOCKER_TLS_VERIFY` are used by `docker` to connect to your cluster.
+* `DOCKER_VERSION` is designed to work with the Docker Version Manager (dvm). Run `dvm use` and it will use that environment variable to load the right Docker client binary into the current session.
+* `KUBECONFIG` is used by `kubectl` to connect to your cluster.
+
 **Mac OS X and Linux**
 
 ```bash
