@@ -61,7 +61,7 @@ $ dvm ls
 	system (1.9.0)
 ```
 
-See the [DVM announcement](https://getcarina.com/blog/docker-version-manager/) and tutorial on [Managing Docker client versions with dvm](https://getcarina.com/docs/tutorials/docker-version-manager/) for more!
+See the [DVM announcement](https://getcarina.com/blog/docker-version-manager/) and tutorial on [Managing Docker client versions with dvm](https://getcarina.com/docs/reference/docker-version-manager/) for more!
 
 ## app.getcarina.com updates
 

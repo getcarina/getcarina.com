@@ -53,7 +53,7 @@ you posted on that feature. We are happy we can now see errors from nodes that f
 the cluster. And if you want to play around with private registries and authentication,
 take a look at the [Swarm API docs](https://docs.docker.com/swarm/swarm-api/#registry-authentication).
 
-[Docker version manager](https://getcarina.com/docs/tutorials/docker-version-manager/)
+[Docker version manager](https://getcarina.com/docs/reference/docker-version-manager/)
 makes it so much easier to manage what versions you're running locally and switch between
 them as needed. This is a good week to install it!
 

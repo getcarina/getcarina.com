@@ -18,7 +18,7 @@ Note: This tutorial uses interlock version 0.3.2. It has been tested with `docke
 ### Prerequisites
 
 * [Create and connect to a cluster]({{ site.baseurl }}/docs/getting-started/create-connect-cluster/) named `boatie`
-* Your API Key. Go to the [Carina control panel](https://app.getcarina.com), click your username in the top-right corner, and then click **API Key**.
+* Your API Key. To view your API key, go to the [Carina Control Panel](https://app.getcarina.com), click your username in the top-right corner, and then click **Settings**.
 
 ### Interlock
 
@@ -57,7 +57,7 @@ For additional assistance, ask the [community](https://community.getcarina.com/)
 
 ### Next step
 
-Run your first containerized application by [getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+Run your first containerized application by [Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/).
 
 <!--
 TODO: Use the text below when that tutorial is back in for M2.

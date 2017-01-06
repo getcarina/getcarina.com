@@ -165,7 +165,7 @@ to the ecosystem of container-related tools.
 To begin learning about Carina itself, see
 [Overview of Carina]({{ site.baseurl }}/docs/overview-of-carina/).
 To begin using Carina, see
-[Getting started on Carina]({{ site.baseurl }}/docs/getting-started/getting-started-on-carina/).
+[Getting started with Docker Swarm]({{ site.baseurl }}/docs/getting-started/create-swarm-cluster/).
 
 ### About the author
 

@@ -2,7 +2,8 @@
 title: Manage Docker client versions with dvm
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
 date: 2015-10-06
-permalink: docs/tutorials/docker-version-manager/
+featured: true
+permalink: docs/reference/docker-version-manager/
 description: Manage your Docker clients with the Docker Version Manager (dvm)
 topics:
   - Carina
@@ -22,40 +23,13 @@ Error response from daemon: client is newer than server (client API version: 1.2
 session, and so the changes that dvm makes are temporary.
 
 ### Install dvm
-1. Run the following installation command for your operating system:
-
-    **Mac OS X with Homebrew**
-    
-    Open a terminal and execute the following command:
-
-    ```bash
-    $ brew update
-    $ brew install dvm
-    ```
-
-    **Mac OS X and Linux**
-
-    Open a terminal and execute the following command:
-
-    ```bash
-    $ curl -sL https://download.getcarina.com/dvm/latest/install.sh | sh
-    ```
-
-    **Windows**
-
-    PowerShell performs the initial installation; you can use dvm with PowerShell
-    or CMD after it is installed. Open a PowerShell command prompt and execute the following command:
-
-    ```powershell
-    > iex (wget https://download.getcarina.com/dvm/latest/install.ps1)
-    ```
-
-2. Copy the commands from the output, then paste and run them to finalize the installation.
+{% include install-dvm.md %}
 
 After dvm is installed, you can use it with [Carina](#carina) or [stand-alone](#stand-alone).
 
 ### Upgrade dvm
-To upgrade dvm to the latest version, run the following command:
+If you installed the `carina` CLI with a package manager, use the appropriate upgrade command.
+Otherwise, run the following command:
 
 ```bash
 dvm upgrade
@@ -94,8 +68,8 @@ Now using Docker 1.8.3
 Now using Docker 1.8.3
 ```
 
-[carina-credentials]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-your-cluster
-[carina-cli]: {{site.baseurl}}/docs/getting-started/getting-started-carina-cli/
+[carina-credentials]: {{site.baseurl}}/docs/getting-started/create-connect-cluster/#connect-to-a-docker-swarm-cluster
+[carina-cli]: {{site.baseurl}}/docs/reference/carina-cli/
 
 <a id="stand-alone"></a>
 ### Use dvm stand-alone
