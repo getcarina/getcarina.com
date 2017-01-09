@@ -11,13 +11,13 @@ topics:
   - kubernetes
 ---
 
-Normally, running a custom Docker image on a Kubernetes cluster requires that you
+Normally running a custom Docker image on a Kubernetes cluster requires that you
 build the Docker image on your local machine, and then publish the image to a
-Docker registry. However, with Carina you can build and run a custom Docker image
+Docker registry. With Carina, however, you can build and run a custom Docker image
 directly on your Kubernetes cluster.
 
-**Note**: At this time, you can only run a custom Docker image, without using a
-Docker registry, on single-node clusters.
+**Note**: At this time, you can run a custom Docker image, without using a
+Docker registry, only on single-node clusters.
 
 ### Prerequisites
 
@@ -34,7 +34,7 @@ $ docker info
 ```
 
 ### Create a Dockerfile
-The `hello-world-app` image is a Python web application, running on port 5000, which prints "Hello World!".
+The `hello-world-app` image is a Python web application, running on port 5000, that prints "Hello World!".
 
 1. Clone the Carina Examples repository:
 
@@ -42,19 +42,22 @@ The `hello-world-app` image is a Python web application, running on port 5000, w
     $ git clone https://github.com/getcarina/examples.git carina-examples
     ```
 
-1. Change to the `hello-world-app` directory.
+1. Change to the `hello-world-app` directory:
 
     ```
     $ cd carina-examples/hello-world-app
     ```
 
 ### Build a custom image
-The following command builds the image directly on your Kubernetes
-cluster.
+Run the following command to build the image directly on your Kubernetes cluster:
 
 ```
 $ docker build -t hello-world-app:v1 .
 ```
+
+Kubernetes treats images tagged with `latest` as a special case, always pulling
+the latest version of the image from the registry. For simplicity, we recommend
+building the image with a tag, instead of using `latest` or omitting the tag.
 
 ### Run a custom image
 Now that the image has been built directly on your Kubernetes worker node,
@@ -65,7 +68,12 @@ the image is available to be run without first pulling it from a registry.
     ```
     $ kubectl run hello-world --image hello-world-app:v1
     ```
-1. Verify that the deployment was successful. If the number in **Available** column
+
+    If the image is tagged with `latest`, or the tag is not specified, you must
+    specify `--image-pull-policy IfNotPresent`. This flag stops Kubernetes from
+    attempting to pull the latest version of the image from the registry.
+
+1. Verify that the deployment was successful. If the number in the **Available** column
     is 0, then the deployment failed, and you should following the steps in the
     [Troubleshooting](#troubleshooting) section.
 
@@ -83,7 +91,7 @@ the image is available to be run without first pulling it from a registry.
     KubeDNS is running at https://23.253.149.70/api/v1/proxy/namespaces/kube-system/services/kube-dns
     ```
 
-1. Expose the application as a service, available on the public internet.
+1. Expose the application as a service, available on the public Internet.
     Replace `<clusterIP>` with the IP address of the cluster.
 
     ```
@@ -93,18 +101,18 @@ the image is available to be run without first pulling it from a registry.
 1. View the application by opening a web browser and navigating to `http://<clusterIP>`.
     You should see "Hello World!".
 
-1. Remove the application.
+1. Remove the application:
 
     ```
     $ kubectl delete deploy/hello-world service/hello-world
     ```
 
 ### Use a custom image in a configuration file
-While the kubectl commands are useful when learning how Kubernetes works, most
+Although the kubectl commands are useful when you are learning how Kubernetes works, most
 of the time you will be using configuration files. Here is a workflow for
 using a custom Docker image with Kubernetes configuration files.
 
-1. Build the image on your Kubernetes cluster.
+1. Build the image on your Kubernetes cluster:
 
     ```
     docker build -t hello-world-app:latest .
@@ -113,11 +121,11 @@ using a custom Docker image with Kubernetes configuration files.
 1. Create a file named `hello-world.yaml` and populate it with the following contents,
     replacing `<clusterIP>` with the IP address of the cluster.
 
-    **Note**: Since the tag of the image is `latest`, the container's `imagePullPolicy`
-    is set to `IfNotPresent` to prevent Kubernetes from pulling the image from a registry.
+    **Note**: Because the tag of the image is `latest`, the container's `imagePullPolicy`
+    is set to `IfNotPresent` to stop Kubernetes from pulling the image from the registry.
 
     ```yaml
-    apiVersion: v1
+    apiVersion: extensions/v1beta1
     kind: Deployment
     metadata:
       name: hello-world
@@ -159,100 +167,39 @@ using a custom Docker image with Kubernetes configuration files.
 1. View the application by opening a web browser and navigating to `http://<clusterIP>`.
     You should see "Hello World!".
 
-1. Remove the application.
+1. Remove the application:
 
     ```
-    $ kubectl delete hello-world.yaml
+    $ kubectl delete -f hello-world.yaml
     ```
 
 ### Troubleshooting
 
 See [Troubleshooting common problems]({{site.baseurl}}/docs/troubleshooting/common-problems/).
 
-If you did not specify a tag for your custom image, or used `latest`, then the
-`kubctl run` command completes successfully but the deployment fails with `ErrImagePull`.
+#### The pod status is ErrImagePull
 
-1. Find the name of the failed pod:
+There are two possible reasons why Kubernetes was unable to find the custom image:
 
-    ```
-    $ kubectl get pods
-    NAME                                 READY     STATUS         RESTARTS   AGE
-    hello-world-4125925501-3va8a         0/1       ErrImagePull   0          4s
-    ```
+* **The cluster has multiple nodes**
 
-1. Inspect the pod to view the error message by running the following command:
+  You cannot run a custom image on a multi-node cluster without publishing the image to a registry.
+  Verify that current cluster only contains a single node by running the following command:
 
-    ```
-    $ kubectl describe pod <podName>
-    ```
+  ```
+  $ carina get <clusterName>
+  ```
 
-    From the output below, the error reason: `ImagePullBackOff` indicates that
-    Kubernetes was unable to pull the image. Scroll to the bottom of the output
-    to view the full error message under the `Events` section: `Error syncing pod, skipping: failed to "StartContainer" for "hello-world" with ImagePullBackOff: "Back-off pulling image \"hello-world-app\""`.
+  **Note**: The name of the current cluster is available in the `CARINA_CLUSTER_NAME` environment variable.
 
-    ```
-    Name:		hello-world-4125925501-3va8a
-    Namespace:	default
-    Node:		10.223.64.14/10.223.64.14
-    Start Time:	Thu, 22 Dec 2016 10:40:15 -0600
-    Labels:		pod-template-hash=4125925501
-    		run=hello-world
-    Status:		Pending
-    IP:		172.20.69.4
-    Controllers:	ReplicaSet/hello-world-4125925501
-    Containers:
-      hello-world:
-        Container ID:
-        Image:		hello-world-app
-        Image ID:
-        Port:
-        State:		Waiting
-          Reason:		ImagePullBackOff
-        Ready:		False
-        Restart Count:	0
-        Volume Mounts:
-          /var/run/secrets/kubernetes.io/serviceaccount from default-token-b1xol (ro)
-        Environment Variables:	<none>
-    Conditions:
-      Type		Status
-      Initialized 	True
-      Ready 	False
-      PodScheduled 	True
-    Volumes:
-      default-token-b1xol:
-        Type:	Secret (a volume populated by a Secret)
-        SecretName:	default-token-b1xol
-    QoS Class:	BestEffort
-    Tolerations:	<none>
-    Events:
-      FirstSeen	LastSeen	Count	From			SubobjectPath			Type		Reason		Message
-      ---------	--------	-----	----			-------------			--------	------		-------
-      2m		2m		1	{default-scheduler }					Normal		Scheduled	Successfully assigned hello-world-4125925501-3va8a to 10.223.64.14
-      2m		52s		4	{kubelet 10.223.64.14}	spec.containers{hello-world}	Normal		Pulling		pulling image "hello-world-app"
-      2m		51s		4	{kubelet 10.223.64.14}	spec.containers{hello-world}	Warning		Failed		Failed to pull image "hello-world-app": Error: image library/hello-world-app not found
-      2m		51s		4	{kubelet 10.223.64.14}					Warning		FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "hello-world" with ErrImagePull: "Error: image library/hello-world-app not found"
+* **The image pull policy was not specified**
 
-      2m	7s	8	{kubelet 10.223.64.14}	spec.containers{hello-world}	Normal	BackOff		Back-off pulling image "hello-world-app"
-      2m	7s	8	{kubelet 10.223.64.14}					Warning	FailedSync	Error syncing pod, skipping: failed to "StartContainer" for "hello-world" with ImagePullBackOff: "Back-off pulling image \"hello-world-app\""
-    ```
-1. Delete the failed deployment:
+  If the image is tagged with `latest`, or the tag was omitted, then the image pull
+  policy must be explicitly set to `IfNotPresent`.
 
-    ```
-    $ kubectl delete deploy/hello-world
-    ```
-
-1. Repeat the deployment, this time instructing Kubernetes to skip pulling
-    the image by including `--image-pull-policy IfNotPresent`:
-
-    ```
-    $ kubectl run hello-world --image hello-world-app --image-pull-policy IfNotPresent
-    ```
-
-For simplicity, we recommend building the Docker image with a tag, instead
-of using `latest`. However by explicitly specifying the image pull policy, you can
-use the latest tag. The image pull policy can be specified either as a flag to
-the `kubectl run` command, or defined in the resource file with `imagePullPolicy: IfNotPresent`.
-See [Use a custom image in a configuration file](#use-a-custom-image-in-a-configuration-file)
-for an example of how to use the `latest` tag with `imagePullPolicy`.
+  * See [Run a custom image](#run-a-custom-image) for an example of how to specify
+    the image pull policy in `kubectl run`.
+  * See [Use a custom image in a configuration file](#use-a-custom-image-in-a-configuration-file)
+    for an example of how to specify the image pull policy in a configuration file.
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
