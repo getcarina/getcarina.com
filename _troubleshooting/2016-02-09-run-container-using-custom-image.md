@@ -37,8 +37,8 @@ Error response from daemon: Error: unable to find a node that satisfies image==<
 **Kubernetes**
 
 This error message indicates that Kubernetes failed to pull the image.
-It can be caused by running a unpublished image on multi-node cluster, or
-when the image tag is `latest` and the image pull policy was not specified.
+It can be caused by running an unpublished image on multi-node cluster, or
+the image pull policy is not specified when the image tag is `latest`.
 
 ```
 $ docker build --tag <custom-image> .
@@ -110,23 +110,18 @@ changes or command-line flags.
     docker push <dockerhub-user>/<custom-image>
     ```
 
-1. _(Optional)_ Pull the custom image down to every node in your cluster.
-    This step is optional because Carina automatically discovers Docker Hub images.
-
-    ```
-    $ docker pull <dockerhub-user>/<custom-image>
-    c44a-47ff-8f95-3af379443ce4-n3: Pulling <dockerhub-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n2: Pulling <dockerhub-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n1: Pulling <dockerhub-user>/<custom-image>... : downloaded
-    ```
-
-    Each node in the cluster downloads the image from Docker Hub, improving
-    the performance of subsequent `run` commands.
-
 1. Run a container using the custom image.
+
+    **Docker Swarm**
 
     ```
     docker run <dockerhub-user>/<custom-image>
+    ```
+
+    **Kubernetes**
+
+    ```
+    kubectl run <deploy-name> --image <dockerhub-user>/<custom-image>
     ```
 
 ### Use a public Docker registry
@@ -163,23 +158,18 @@ to host your custom image.
     Docker uses the image name to determine to which registry the image should be pushed.
     For example, if the image name is `quay.io/myuser/myimage`, the image is pushed to the quay.io registry.
 
-1. Pull the custom image down to every node in your cluster.
-
-    ```
-    $ docker pull <registry>/<registry-user>/<custom-image>
-    c44a-47ff-8f95-3af379443ce4-n3: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n2: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n1: Pulling <registry>/<registry-user>/<custom-image>... : downloaded
-    ```
-
-    Docker uses the image name to determine from which registry the image should be pulled.
-    For example, if the image name is `quay.io/myuser/myrepo`, then each node
-    in the cluster pulls the image from the quay.io registry.
-
 1. Run a container using the custom image.
+
+    **Docker Swarm**
 
     ```
     docker run <registry>/<registry-user>/<custom-image>
+    ```
+
+    **Kubernetes**
+
+    ```
+    kubectl run <deploy-name> --image <registry>/<registry-user>/<custom-image>
     ```
 
 ### Use a private Docker registry
@@ -202,19 +192,6 @@ might be advantageous, especially when dealing with large images or images that 
     ```
     docker push 127.0.0.1:5000/<registry-user>/<custom-image>
     ```
-
-1. Pull the custom image down to every node in your cluster.
-
-    ```
-    $ docker pull 127.0.0.1:5000/<registry-user>/<custom-image>
-    c44a-47ff-8f95-3af379443ce4-n3: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n2: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
-    c44a-47ff-8f95-3af379443ce4-n1: Pulling 127.0.0.1:5000/<registry-user>/<custom-image>... : downloaded
-    ```
-
-    Docker uses the image name to determine from which registry the image should be pulled.
-    For example, if the image name is `127.0.0.1:5000/myuser/myimage`,
-    then each node in the cluster pulls the image from your private registry.
 
 1. Run a container using the custom image.
 
