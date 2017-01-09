@@ -1,20 +1,27 @@
 ---
 title: Error running a container using a custom image
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2016-02-09
+date: 2016-01-09
 permalink: docs/troubleshooting/run-container-using-custom-image/
-description: Troubleshoot the "image is not found" error when running a container
+description: Troubleshoot the "image is not found" or ErrImagePull error when running a container
 docker-versions:
-  - 1.10.1
+  - 1.11.2
 topics:
   - docker
+  - kubernetes
   - swarm
   - troubleshooting
 ---
 
-When you try to run a Docker container using a custom image that you have built,
-as shown in the following example, it does not start and the following error
-message is displayed:
+When you try to run a container using a custom image that you have built,
+as shown in the following examples, it does not start and one of the following error
+messages is displayed:
+
+**Docker Swarm**
+
+This error message indicates that the container was scheduled on a different node
+than the node that built the image, and therefore the image could not be found.
+This error occurs only after you scale your cluster to two or more nodes.
 
 ```
 $ docker build --tag <custom-image> .
@@ -27,50 +34,51 @@ $ docker run --detach --publish 5000:5000 <custom-image>
 Error response from daemon: Error: unable to find a node that satisfies image==<custom-image>
 ```
 
-**Note**: This error occurs only after you scale your cluster to two or more nodes.
+**Kubernetes**
 
-This error message indicates that the container was scheduled on a different node
-than the node that built the image, and therefore the image could not be found.
+This error message indicates that Kubernetes failed to pull the image.
+It can be caused by running a unpublished image on multi-node cluster, or
+when the image tag is `latest` and the image pull policy was not specified.
+
+```
+$ docker build --tag <custom-image> .
+Successfully built abf38d5a0750
+
+$ kubectl run mydeploy --labels name=mydeploy --image <custom-image>
+deployment mydeploy created
+
+$ kubectl describe pod -l name=mydeploy
+Name:        mydeploy-3232079581-ojxkk
+Namespace:   default
+Node:        10.223.64.94/10.223.64.94
+Start Time:  Mon, 09 Jan 2017 10:34:11 -0600
+Labels:      name=mydeploy
+             pod-template-hash=3232079581
+Status:      Pending
+IP:          172.20.25.4
+Controllers: ReplicaSet/mydeploy-3232079581
+Containers:
+  mydeploy:
+    Container ID:
+    Image:        <custom-image>
+    Image ID:
+    Port:
+    State:        Waiting
+      Reason:     ErrImagePull
+    Ready:        False
+```
+
 To resolve this error, select one of the following options:
 
-* [Use a constraint](#use-a-constraint)
-* [Use an affinity](#use-an-affinity)
+* [Specify the Kubernetes image pull policy](#specify-the-kubernetes-image-pull-policy)
 * [Use Docker Hub](#use-docker-hub)
 * [Use another public Docker registry](#use-a-public-docker-registry)
 * [Use a private Docker registry](#use-a-private-docker-registry)
 
-### Use a constraint
+### Specify the Kubernetes image pull policy
 
-When you build an image, you can use a constraint to specify where to build and run the image.
-
-```
-$ docker build --build-arg constraint:node==*n1 --tag <custom-image> .
-$ docker run --env constraint:node==*n1 <custom-image>
-```
-
-To build an image on every node in your cluster, loop over the nodes.
-
-```bash
-$ NODES=$(docker info | grep Nodes | awk '{print $2}')
-$ for (( i=1; i<=$NODES; i++ )); do
-    docker build --build-arg constraint:node==*-n$i --tag <custom-image> .
-  done
-```
-
-### Use an affinity
-
-**Note**: This is only applicable to older Carina clusters. New clusters implicitly apply
-the image affinity. If you need to run the container on multiple nodes,
-then a Docker registry is required. See the following sections for options.
-
-When you create or run a container that uses `<custom-image>`,
-specify `--env affinity:image==<custom-image>`. This command instructs Docker Swarm
-to schedule the new container on a node that has your custom image.
-
-```
-$ docker build -t <custom-image> .
-$ docker run --env affinity:image==<custom-image> <custom-image>
-```
+If this error occurs on a single-node Kubernetes cluster, and the image tag is `latest` or
+is omitted, then [specify the image pull policy]({{site.baseurl}}/docs/tutorials/run-a-custom-image-on-kubernetes/#image-pull-policy).
 
 ### Use Docker Hub
 
@@ -216,5 +224,6 @@ might be advantageous, especially when dealing with large images or images that 
 
 ### Resources
 
+* [Run a custom Docker image on Kubernetes]({{site.baseurl}}/docs/tutorials/run-a-custom-image-on-kubernetes/)
 * [Understanding how Carina uses Docker Swarm]({{site.baseurl}}/docs/concepts/docker-swarm-carina/)
 * [Docker best practices: image repository]({{site.baseurl}}/docs/best-practices/docker-best-practices-image-repository/)

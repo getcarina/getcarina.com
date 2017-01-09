@@ -183,23 +183,25 @@ There are two possible reasons why Kubernetes was unable to find the custom imag
 
 * **The cluster has multiple nodes**
 
-  You cannot run a custom image on a multi-node cluster without publishing the image to a registry.
-  Verify that current cluster only contains a single node by running the following command:
+    You cannot run a custom image on a multi-node cluster without publishing the image to a registry.
+    Verify that current cluster only contains a single node by running the following command:
 
-  ```
-  $ carina get <clusterName>
-  ```
+    ```
+    $ carina get <clusterName>
+    ```
 
-  **Note**: The name of the current cluster is available in the `CARINA_CLUSTER_NAME` environment variable.
+    **Note**: The name of the current cluster is available in the `CARINA_CLUSTER_NAME` environment variable.
+
+    <a id="image-pull-policy"></a>
 
 * **The image pull policy was not specified**
 
-  If the image is tagged with `latest`, or the tag was omitted, then the image pull
-  policy must be explicitly set to `IfNotPresent`.
+    If the image is tagged with `latest`, or the tag was omitted, then the image pull
+    policy must be explicitly set to `IfNotPresent`.
 
-  * See [Run a custom image](#run-a-custom-image) for an example of how to specify
-    the image pull policy in `kubectl run`.
-  * See [Use a custom image in a configuration file](#use-a-custom-image-in-a-configuration-file)
-    for an example of how to specify the image pull policy in a configuration file.
+    * See [Run a custom image](#run-a-custom-image) for an example of how to specify
+      the image pull policy in `kubectl run`.
+    * See [Use a custom image in a configuration file](#use-a-custom-image-in-a-configuration-file)
+      for an example of how to specify the image pull policy in a configuration file.
 
 For additional assistance, ask the [community](https://community.getcarina.com/) for help or join us in IRC at [#carina on Freenode](http://webchat.freenode.net/?channels=carina).
