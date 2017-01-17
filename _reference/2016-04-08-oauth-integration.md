@@ -1,7 +1,7 @@
 ---
 title: OAuth integration
 author: Carolyn Van Slyck <carolyn.vanslyck@rackspace.com>
-date: 2016-04-08
+date: 2017-01-17
 permalink: docs/reference/oauth-integration/
 description: Learn how to integrate your application with Carina using OAuth
 ---
@@ -133,8 +133,9 @@ The following OAuth scopes are available, granting your application varying
 levels of access to a user's account.
 
 * [Identity](#identity)
-* [Cluster credentials](#cluster-credentials)
-* [Create cluster](#create-cluster)
+* [Read](#read)
+* [Write](#write)
+* [Execute](#execute)
 
 All requests must include an authorization header, `Authorization: bearer <access_token>`,
 replacing `<access_token>` with the OAuth token returned from the `/oauth/token` endpoint.
@@ -144,11 +145,9 @@ The `identity` scope enables an application to read a user's profile. Because th
 amount of information in a user's profile is limited, this scope is mainly useful
 for delegating your application's authentication to Carina.
 
-**Example request**
+**Get current user**
 
-`GET https://oauth.getcarina.com/me`
-
-**Example response**
+`GET https://oauth.getcarina.com/users/current`
 
 ```json
 {
@@ -159,52 +158,153 @@ for delegating your application's authentication to Carina.
 }
 ```
 
-#### Cluster credentials
-The `cluster_credentials` scope enables an application to download the credentials
-zip file for a user's Carina cluster. Replace `<clusterName>` with name of the cluster.
+#### Read
+The `read` scope enable an application to query for information about the clusters
+on the user's Carina account.
 
-**Example request**
+**List clusters**
 
-`GET https://oauth.getcarina.com/clusters/<clusterName>`
+`GET https://oauth.getcarina.com/proxy/clusters`
 
-**Example responses**
+```json
+{
+  "clusters": [
+    {
+      "status": "active",
+      "name": "mycluster",
+      "cluster_type": {
+        "active": true,
+        "coe": "kubernetes",
+        "host_type": "lxc",
+        "name": "Kubernetes 1.4.4 on LXC",
+        "id": 17
+      },
+      "created_at": "2017-01-11T21:56:34.327946+00:00",
+      "updated_at": "2017-01-11T21:56:31.799278+00:00",
+      "node_count": 1,
+      "id": "d09da2f3-1d31-4521-b856-54256fb0c52f"
+    }
+  ]
+}
+```
+
+**Get cluster**
+
+`GET https://oauth.getcarina.com/proxy/clusters/<clusterId>`
+
+```json
+{
+  "status": "active",
+  "name": "mycluster",
+  "cluster_type": {
+    "active": true,
+    "coe": "kubernetes",
+    "host_type": "lxc",
+    "name": "Kubernetes 1.4.4 on LXC",
+    "id": 17
+  },
+  "created_at": "2017-01-11T21:56:34.327946+00:00",
+  "updated_at": "2017-01-11T21:56:31.799278+00:00",
+  "node_count": 1,
+  "id": "d09da2f3-1d31-4521-b856-54256fb0c52f"
+}
+```
+
+**List cluster templates**
+
+`GET https://oauth.getcarina.com/proxy/cluster_types`
+
+```json
+{
+  "cluster_types": [
+    {
+      "active": true,
+      "coe": "swarm",
+      "host_type": "lxc",
+      "name": "Swarm 1.11.2 on LXC",
+      "id": 16
+    },
+    {
+      "active": true,
+      "coe": "kubernetes",
+      "host_type": "lxc",
+      "name": "Kubernetes 1.4.4 on LXC",
+      "id": 17
+    }
+  ]
+}
+```
+#### Write
+The `write` scope enables an application to create and delete clusters on the user's
+Carina account.
+
+**Create cluster**
+
+```
+POST https://oauth.getcarina.com/proxy/clusters
+{
+  "cluster_type_id": "17",
+  "node_count": 1,
+  "name": "<clusterName>"
+}
+```
+
+```json
+{
+  "status": "creating",
+  "name": "mycluster",
+  "cluster_type": {
+    "active": true,
+    "coe": "kubernetes",
+    "host_type": "lxc",
+    "name": "Kubernetes 1.4.4 on LXC",
+    "id": 17
+  },
+  "created_at": "2017-01-16T17:47:58.023553+00:00",
+  "updated_at": "2017-01-16T17:47:58.023553+00:00",
+  "node_count": 1,
+  "id": "f6589883-3ab5-4c9e-b06e-9d6f70af1e80"
+}
+```
+
+**Delete cluster**
+
+`DELETE https://oauth.getcarina.com/proxy/clusters/<clusterId>`
+
+```json
+{
+  "status": "deleting",
+  "name": "mycluster",
+  "cluster_type": {
+    "active": true,
+    "coe": "kubernetes",
+    "host_type": "lxc",
+    "name": "Kubernetes 1.4.4 on LXC",
+    "id": 17
+  },
+  "created_at": "2017-01-16T17:47:58.023553+00:00",
+  "updated_at": "2017-01-16T17:47:58.023553+00:00",
+  "node_count": 1,
+  "id": "f6589883-3ab5-4c9e-b06e-9d6f70af1e80"
+}
+```
+
+#### Execute
+The `execute` scope enables an application to download the credentials
+zip file for a user's Carina cluster. Replace `<clusterId>` with id of the cluster.
+
+**Download cluster credentials**
+
+`GET https://oauth.getcarina.com/proxy/clusters/<clusterId>/credentials/zip`
 
 The body of the response is the user's cluster credentials zip file, provided as
 an `application/zip` encoded binary attachment.
 
 If the cluster is not yet active, a `404 NOT FOUND` response is returned.
-After a new cluster is created, it can take 2-3 minutes for the cluster to become active.
-Poll the cluster credentials endpoint at a reasonable interval, such as every 30 seconds,
+After a new cluster is created, it can take a few minutes for the cluster to become active.
+Poll the cluster endpoint at a reasonable interval, such as every 30 seconds,
 until the cluster is active.
 
-```json
-{
-  "message": "The cluster is not yet active. Retry this request later."
-}
-```
-
-#### Create cluster
-The `create_cluster` scope enables an application to create a cluster on the user's
-Carina account. Replace `<clusterName>` with the name of the cluster to create.
-
-**Note**: If the cluster already exists, rather than returning an error, the request
-is considered successful and the cluster information is returned. 
-
-**Example request**
-
-`PUT https://oauth.getcarina.com/clusters/<clusterName>`
-
-**Example response**
-
-```json
-{
-  "cluster_name": "<clusterName>",
-  "status": "building",
-  "autoscale": false,
-  "flavor": "container1-4G",
-  "nodes": 1
-}
-```
 
 ### Resources
 * [OAuth2 libraries][oauth-libs]
