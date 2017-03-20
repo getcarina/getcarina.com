@@ -14,3 +14,5 @@ unsearchable: true
   UI Developer: Keith Bartholomew
   Site: http://keithbartholomew.com/
   Location: Dallas, TX
+
+  Debugger-in-chief: Ken Perkins
