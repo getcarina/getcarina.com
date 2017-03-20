@@ -1,6 +1,6 @@
 ---
 title: "Carina Beta Ending April 18, 2017"
-date: 2017-03-20 13:00
+date: 2017-03-20
 comments: true
 author: Trey Hoehne <trey.hoehne@rackspace.com>
 published: true
