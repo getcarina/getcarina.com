@@ -1,12 +1,26 @@
 ---
 title: Release notes
 author: Everett Toews <everett.toews@rackspace.com>
-date: 2015-10-17
+date: 2016-12-13
 permalink: docs/reference/release-notes/
 description: Notes on Carina releases
 topics:
   - docker
 ---
+
+### December 13, 2016
+
+#### What's new
+
+* Resize next generation Carina clusters using the website or [the CLI](/betadocs/docs/reference/carina-cli/#resize-a-cluster).
+
+### November 14, 2016
+
+#### What's new
+
+* [Limited Availability Beta](/betadocs/) for the next generation Carina! 🎉
+* [Create Kubernetes clusters](/betadocs/docs/getting-started/create-kubernetes-cluster/)
+
 ### July 5, 2016
 
 #### What's new
@@ -43,7 +57,7 @@ topics:
 
 #### What's new
 
-* Patched [EOF bug](https://github.com/getcarina/feedback/issues/65) in Docker Engine 1.10.3 
+* Patched [EOF bug](https://github.com/getcarina/feedback/issues/65) in Docker Engine 1.10.3
 * Miscellaneous bug fixes
 
 ### April 5, 2016
